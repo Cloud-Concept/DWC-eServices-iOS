@@ -35,6 +35,8 @@
 static NSString * const RemoteAccessConsumerKey = @"3MVG9Iu66FKeHhINkB1l7xt7kR8czFcCTUhgoA8Ol2Ltf1eYHOU4SqQRSEitYFDUpqRWcoQ2.dBv_a1Dyu5xa";
 static NSString * const OAuthRedirectURI        = @"testsfdc:///mobilesdk/detect/oauth/done";
 
+static NSString * const LoginHostUrl            = @"bpark-dwc.cs7.force.com/portal";
+
 @interface AppDelegate ()
 
 /**
@@ -63,6 +65,8 @@ static NSString * const OAuthRedirectURI        = @"testsfdc:///mobilesdk/detect
         [SalesforceSDKManager sharedManager].connectedAppId = RemoteAccessConsumerKey;
         [SalesforceSDKManager sharedManager].connectedAppCallbackUri = OAuthRedirectURI;
         [SalesforceSDKManager sharedManager].authScopes = @[ @"web", @"api" ];
+        [SFUserAccountManager sharedInstance].loginHost = LoginHostUrl;
+        
         __weak AppDelegate *weakSelf = self;
         [SalesforceSDKManager sharedManager].postLaunchAction = ^(SFSDKLaunchAction launchActionList) {
             [weakSelf log:SFLogLevelInfo format:@"Post-launch: launch actions taken: %@", [SalesforceSDKManager launchActionsStringRepresentation:launchActionList]];
@@ -86,6 +90,10 @@ static NSString * const OAuthRedirectURI        = @"testsfdc:///mobilesdk/detect
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    UIImage *navBackgroundImage = [UIImage imageNamed:@"Home NavBar Background"];
+    [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self initializeAppViewState];
     
@@ -128,9 +136,13 @@ static NSString * const OAuthRedirectURI        = @"testsfdc:///mobilesdk/detect
 
 - (void)setupRootViewController
 {
-    RootViewController *rootVC = [[RootViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
-    self.window.rootViewController = navVC;
+    //RootViewController *rootVC = [[RootViewController alloc] initWithNibName:nil bundle:nil];
+    //UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *vc =[storybord instantiateInitialViewController];
+    
+    self.window.rootViewController = vc;
 }
 
 - (void)resetViewState:(void (^)(void))postResetBlock

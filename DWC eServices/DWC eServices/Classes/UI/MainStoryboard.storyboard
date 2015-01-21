@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xJr-xJ-zZY">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="CorisandeLight.ttf">
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="22Q-D7-LZn">
+            <objects>
+                <navigationController id="xJr-xJ-zZY" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hfp-96-qTz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="l6l-zZ-r53" kind="relationship" relationship="rootViewController" id="IFE-Iw-fle"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x9m-Ib-aSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-687" y="376"/>
+        </scene>
+        <!--Home Page View Controller-->
+        <scene sceneID="v1k-6n-hoV">
+            <objects>
+                <viewController id="l6l-zZ-r53" customClass="HomePageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dco-4e-v7v"/>
+                        <viewControllerLayoutGuide type="bottom" id="BEz-QD-hqW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="axp-BZ-dXa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X9p-Wu-SPe">
+                                <rect key="frame" x="6" y="70" width="363" height="90"/>
+                                <color key="backgroundColor" red="0.17254901960784313" green="0.14901960784313725" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-JR-V0W">
+                                <rect key="frame" x="6" y="166" width="178" height="137"/>
+                                <color key="backgroundColor" red="0.38039215686274508" green="0.52941176470588236" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <state key="normal" title="DASHBOARD">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R1-9G-NpB">
+                                <rect key="frame" x="190" y="166" width="86" height="89"/>
+                                <color key="backgroundColor" red="0.62352941176470589" green="0.52941176470588236" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <state key="normal" title="MY REQUEST">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JE-ua-Xp0">
+                                <rect key="frame" x="283" y="166" width="86" height="89"/>
+                                <color key="backgroundColor" red="0.34509803921568627" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <state key="normal" title="NOTIFICATION">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fp8-oh-eg1">
+                                <rect key="frame" x="6" y="309" width="178" height="88"/>
+                                <color key="backgroundColor" red="0.098039215686274508" green="0.43529411764705883" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <state key="normal" title="EMPLOYEES">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ser-GU-2ic">
+                                <rect key="frame" x="190" y="261" width="179" height="136"/>
+                                <color key="backgroundColor" red="0.48627450980392156" green="0.38039215686274508" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHN-Fe-t9Y">
+                                <rect key="frame" x="282" y="403" width="87" height="138"/>
+                                <color key="backgroundColor" red="0.396078431372549" green="0.32941176470588235" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <state key="normal" title="REPORTS">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxK-JZ-3Vl">
+                                <rect key="frame" x="6" y="403" width="270" height="138"/>
+                                <color key="backgroundColor" red="0.36862745098039218" green="0.47450980392156861" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <state key="normal" title="SERVICES">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWd-jd-qrP">
+                                <rect key="frame" x="6" y="547" width="86" height="90"/>
+                                <color key="backgroundColor" red="0.043137254901960784" green="0.32941176470588235" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <state key="normal" title="NEED HELP">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ss-iX-Fna">
+                                <rect key="frame" x="282" y="547" width="87" height="90"/>
+                                <color key="backgroundColor" red="0.40392156862745099" green="0.44313725490196076" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <state key="normal" title="LOGOUT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgN-E5-iGe">
+                                <rect key="frame" x="98" y="547" width="178" height="90"/>
+                                <color key="backgroundColor" red="0.32156862745098036" green="0.61960784313725492" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <state key="normal" title="QUICK ACCESS">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="298-E8-10y"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9Q-6I-jDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.5" y="375.5"/>
+        </scene>
+    </scenes>
+</document>

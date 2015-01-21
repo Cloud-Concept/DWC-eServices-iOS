@@ -10,10 +10,18 @@
 		1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BACC1A6F83A4004E6325 /* InitialViewController.m */; };
 		1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1307BACD1A6F83A4004E6325 /* InitialViewController.xib */; };
 		1307BAD41A6F83A4004E6325 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BAD01A6F83A4004E6325 /* RootViewController.m */; };
+		1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */; };
+		1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BAD81A6F8FEE004E6325 /* HomePageViewController.m */; };
+		1307BAE31A6F938B004E6325 /* Californian Bold.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADC1A6F938B004E6325 /* Californian Bold.TTF */; };
+		1307BAE41A6F938B004E6325 /* CorisandeBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADD1A6F938B004E6325 /* CorisandeBold.ttf */; };
+		1307BAE51A6F938B004E6325 /* CorisandeLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADE1A6F938B004E6325 /* CorisandeLight.ttf */; };
+		1307BAE61A6F938B004E6325 /* CorisandeRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADF1A6F938B004E6325 /* CorisandeRegular.ttf */; };
+		1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAE01A6F938B004E6325 /* Images.xcassets */; };
+		1307BAE81A6F938B004E6325 /* SalesforceSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAE11A6F938B004E6325 /* SalesforceSDKResources.bundle */; };
+		1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAE21A6F938B004E6325 /* Settings.bundle */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
 		4F3F413617E7CA71008B3283 /* libMKNetworkKit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F412B17E7C9CA008B3283 /* libMKNetworkKit-iOS.a */; };
 		4F3F413717E7CA84008B3283 /* libSalesforceNetworkSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413317E7C9CA008B3283 /* libSalesforceNetworkSDK.a */; };
-		4F7484BF18DD1324006E7D50 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F7484BE18DD1324006E7D50 /* Images.xcassets */; };
 		4FC109751A0C4FA300AC6284 /* libSmartSync.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FC109741A0C4FA300AC6284 /* libSmartSync.a */; };
 		824A9DD91724E16400C9BD79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9DD81724E16400C9BD79 /* UIKit.framework */; };
 		824A9DDB1724E16400C9BD79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9DDA1724E16400C9BD79 /* Foundation.framework */; };
@@ -22,8 +30,6 @@
 		824A9DE51724E16400C9BD79 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824A9DE41724E16400C9BD79 /* main.m */; };
 		824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 824A9E321724E2A900C9BD79 /* AppDelegate.m */; };
 		824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 824A9E3C1724E9F400C9BD79 /* readme.txt */; };
-		824A9E3F1724EC6300C9BD79 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 824A9E3E1724EC6300C9BD79 /* Settings.bundle */; };
-		824A9E411724ECC600C9BD79 /* SalesforceSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 824A9E401724ECC600C9BD79 /* SalesforceSDKResources.bundle */; };
 		824A9FDD1725079100C9BD79 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9F321725079000C9BD79 /* libcrypto.a */; };
 		824A9FDE1725079100C9BD79 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9F331725079000C9BD79 /* libssl.a */; };
 		824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 824A9F341725079000C9BD79 /* openssl_license.txt */; };
@@ -51,6 +57,16 @@
 		1307BACD1A6F83A4004E6325 /* InitialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
 		1307BACF1A6F83A4004E6325 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		1307BAD01A6F83A4004E6325 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		1307BAD71A6F8FEE004E6325 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		1307BAD81A6F8FEE004E6325 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		1307BADC1A6F938B004E6325 /* Californian Bold.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Californian Bold.TTF"; sourceTree = "<group>"; };
+		1307BADD1A6F938B004E6325 /* CorisandeBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CorisandeBold.ttf; sourceTree = "<group>"; };
+		1307BADE1A6F938B004E6325 /* CorisandeLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CorisandeLight.ttf; sourceTree = "<group>"; };
+		1307BADF1A6F938B004E6325 /* CorisandeRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CorisandeRegular.ttf; sourceTree = "<group>"; };
+		1307BAE01A6F938B004E6325 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1307BAE11A6F938B004E6325 /* SalesforceSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SalesforceSDKResources.bundle; sourceTree = "<group>"; };
+		1307BAE21A6F938B004E6325 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		4F3F412517E7C9CA008B3283 /* MKNetworkEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
 		4F3F412617E7C9CA008B3283 /* MKNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
 		4F3F412717E7C9CA008B3283 /* MKNetworkOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
@@ -65,7 +81,6 @@
 		4F3F413317E7C9CA008B3283 /* libSalesforceNetworkSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSalesforceNetworkSDK.a; sourceTree = "<group>"; };
 		4F3F413417E7CA5C008B3283 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		4F57794817F4CF5B004706EE /* SFRestAPI+Files.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SFRestAPI+Files.h"; sourceTree = "<group>"; };
-		4F7484BE18DD1324006E7D50 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4FC109651A0C4FA300AC6284 /* SFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFObject.h; sourceTree = "<group>"; };
 		4FC109661A0C4FA300AC6284 /* SFObjectType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFObjectType.h; sourceTree = "<group>"; };
 		4FC109671A0C4FA300AC6284 /* SFObjectTypeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFObjectTypeLayout.h; sourceTree = "<group>"; };
@@ -97,8 +112,6 @@
 		824A9E311724E2A900C9BD79 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		824A9E321724E2A900C9BD79 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		824A9E3C1724E9F400C9BD79 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
-		824A9E3E1724EC6300C9BD79 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		824A9E401724ECC600C9BD79 /* SalesforceSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SalesforceSDKResources.bundle; sourceTree = "<group>"; };
 		824A9F321725079000C9BD79 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		824A9F331725079000C9BD79 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		824A9F341725079000C9BD79 /* openssl_license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = openssl_license.txt; sourceTree = "<group>"; };
@@ -240,6 +253,7 @@
 				1307BAC91A6F83A4004E6325 /* HomePageViewController */,
 				1307BACA1A6F83A4004E6325 /* InitialViewController */,
 				1307BACE1A6F83A4004E6325 /* RootViewController */,
+				1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -247,6 +261,8 @@
 		1307BAC91A6F83A4004E6325 /* HomePageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1307BAD71A6F8FEE004E6325 /* HomePageViewController.h */,
+				1307BAD81A6F8FEE004E6325 /* HomePageViewController.m */,
 			);
 			path = HomePageViewController;
 			sourceTree = "<group>";
@@ -275,6 +291,28 @@
 			children = (
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1307BADA1A6F938B004E6325 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1307BADB1A6F938B004E6325 /* Fonts */,
+				1307BAE01A6F938B004E6325 /* Images.xcassets */,
+				1307BAE11A6F938B004E6325 /* SalesforceSDKResources.bundle */,
+				1307BAE21A6F938B004E6325 /* Settings.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1307BADB1A6F938B004E6325 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1307BADC1A6F938B004E6325 /* Californian Bold.TTF */,
+				1307BADD1A6F938B004E6325 /* CorisandeBold.ttf */,
+				1307BADE1A6F938B004E6325 /* CorisandeLight.ttf */,
+				1307BADF1A6F938B004E6325 /* CorisandeRegular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		4F3F412217E7C9CA008B3283 /* MKNetworkKit-iOS */ = {
@@ -417,7 +455,7 @@
 				824A9E3C1724E9F400C9BD79 /* readme.txt */,
 				824A9E301724E2A900C9BD79 /* Classes */,
 				824A9F301725079000C9BD79 /* Dependencies */,
-				824A9E421724EF9800C9BD79 /* Resources */,
+				1307BADA1A6F938B004E6325 /* Resources */,
 				824A9DDF1724E16400C9BD79 /* Supporting Files */,
 			);
 			path = "DWC eServices";
@@ -443,16 +481,6 @@
 				824A9E321724E2A900C9BD79 /* AppDelegate.m */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		824A9E421724EF9800C9BD79 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4F7484BE18DD1324006E7D50 /* Images.xcassets */,
-				824A9E401724ECC600C9BD79 /* SalesforceSDKResources.bundle */,
-				824A9E3E1724EC6300C9BD79 /* Settings.bundle */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		824A9F301725079000C9BD79 /* Dependencies */ = {
@@ -746,13 +774,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1307BAE61A6F938B004E6325 /* CorisandeRegular.ttf in Resources */,
+				1307BAE81A6F938B004E6325 /* SalesforceSDKResources.bundle in Resources */,
+				1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */,
+				1307BAE51A6F938B004E6325 /* CorisandeLight.ttf in Resources */,
 				824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */,
 				824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */,
-				824A9E3F1724EC6300C9BD79 /* Settings.bundle in Resources */,
+				1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
-				824A9E411724ECC600C9BD79 /* SalesforceSDKResources.bundle in Resources */,
-				4F7484BF18DD1324006E7D50 /* Images.xcassets in Resources */,
+				1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */,
+				1307BAE31A6F938B004E6325 /* Californian Bold.TTF in Resources */,
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
+				1307BAE41A6F938B004E6325 /* CorisandeBold.ttf in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -766,6 +799,7 @@
 			files = (
 				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
 				824A9DE51724E16400C9BD79 /* main.m in Sources */,
+				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
 				1307BAD41A6F83A4004E6325 /* RootViewController.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
 			);
