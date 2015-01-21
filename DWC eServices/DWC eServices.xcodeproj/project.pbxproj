@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BACC1A6F83A4004E6325 /* InitialViewController.m */; };
+		1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1307BACD1A6F83A4004E6325 /* InitialViewController.xib */; };
+		1307BAD41A6F83A4004E6325 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BAD01A6F83A4004E6325 /* RootViewController.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
 		4F3F413617E7CA71008B3283 /* libMKNetworkKit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F412B17E7C9CA008B3283 /* libMKNetworkKit-iOS.a */; };
 		4F3F413717E7CA84008B3283 /* libSalesforceNetworkSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413317E7C9CA008B3283 /* libSalesforceNetworkSDK.a */; };
@@ -18,9 +21,6 @@
 		824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 824A9DE11724E16400C9BD79 /* InfoPlist.strings */; };
 		824A9DE51724E16400C9BD79 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824A9DE41724E16400C9BD79 /* main.m */; };
 		824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 824A9E321724E2A900C9BD79 /* AppDelegate.m */; };
-		824A9E361724E45100C9BD79 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824A9E351724E45100C9BD79 /* RootViewController.m */; };
-		824A9E3A1724E58200C9BD79 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824A9E381724E58200C9BD79 /* InitialViewController.m */; };
-		824A9E3B1724E58200C9BD79 /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824A9E391724E58200C9BD79 /* InitialViewController.xib */; };
 		824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 824A9E3C1724E9F400C9BD79 /* readme.txt */; };
 		824A9E3F1724EC6300C9BD79 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 824A9E3E1724EC6300C9BD79 /* Settings.bundle */; };
 		824A9E411724ECC600C9BD79 /* SalesforceSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 824A9E401724ECC600C9BD79 /* SalesforceSDKResources.bundle */; };
@@ -46,6 +46,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1307BACB1A6F83A4004E6325 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
+		1307BACC1A6F83A4004E6325 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
+		1307BACD1A6F83A4004E6325 /* InitialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
+		1307BACF1A6F83A4004E6325 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		1307BAD01A6F83A4004E6325 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4F3F412517E7C9CA008B3283 /* MKNetworkEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
 		4F3F412617E7C9CA008B3283 /* MKNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
 		4F3F412717E7C9CA008B3283 /* MKNetworkOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
@@ -91,11 +96,6 @@
 		824A9DE61724E16400C9BD79 /* DWCeServices-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DWCeServices-Prefix.pch"; sourceTree = "<group>"; };
 		824A9E311724E2A900C9BD79 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		824A9E321724E2A900C9BD79 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		824A9E341724E45000C9BD79 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		824A9E351724E45100C9BD79 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		824A9E371724E58100C9BD79 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
-		824A9E381724E58200C9BD79 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
-		824A9E391724E58200C9BD79 /* InitialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
 		824A9E3C1724E9F400C9BD79 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		824A9E3E1724EC6300C9BD79 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		824A9E401724ECC600C9BD79 /* SalesforceSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SalesforceSDKResources.bundle; sourceTree = "<group>"; };
@@ -234,6 +234,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1307BAC81A6F83A4004E6325 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1307BAC91A6F83A4004E6325 /* HomePageViewController */,
+				1307BACA1A6F83A4004E6325 /* InitialViewController */,
+				1307BACE1A6F83A4004E6325 /* RootViewController */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1307BAC91A6F83A4004E6325 /* HomePageViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomePageViewController;
+			sourceTree = "<group>";
+		};
+		1307BACA1A6F83A4004E6325 /* InitialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1307BACB1A6F83A4004E6325 /* InitialViewController.h */,
+				1307BACC1A6F83A4004E6325 /* InitialViewController.m */,
+				1307BACD1A6F83A4004E6325 /* InitialViewController.xib */,
+			);
+			path = InitialViewController;
+			sourceTree = "<group>";
+		};
+		1307BACE1A6F83A4004E6325 /* RootViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1307BACF1A6F83A4004E6325 /* RootViewController.h */,
+				1307BAD01A6F83A4004E6325 /* RootViewController.m */,
+			);
+			path = RootViewController;
+			sourceTree = "<group>";
+		};
+		1307BAD11A6F83A4004E6325 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		4F3F412217E7C9CA008B3283 /* MKNetworkKit-iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,13 +437,10 @@
 		824A9E301724E2A900C9BD79 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1307BAC81A6F83A4004E6325 /* UI */,
+				1307BAD11A6F83A4004E6325 /* Utilities */,
 				824A9E311724E2A900C9BD79 /* AppDelegate.h */,
 				824A9E321724E2A900C9BD79 /* AppDelegate.m */,
-				824A9E371724E58100C9BD79 /* InitialViewController.h */,
-				824A9E381724E58200C9BD79 /* InitialViewController.m */,
-				824A9E391724E58200C9BD79 /* InitialViewController.xib */,
-				824A9E341724E45000C9BD79 /* RootViewController.h */,
-				824A9E351724E45100C9BD79 /* RootViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -707,9 +747,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */,
-				824A9E3B1724E58200C9BD79 /* InitialViewController.xib in Resources */,
 				824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */,
 				824A9E3F1724EC6300C9BD79 /* Settings.bundle in Resources */,
+				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
 				824A9E411724ECC600C9BD79 /* SalesforceSDKResources.bundle in Resources */,
 				4F7484BF18DD1324006E7D50 /* Images.xcassets in Resources */,
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
@@ -724,10 +764,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
 				824A9DE51724E16400C9BD79 /* main.m in Sources */,
+				1307BAD41A6F83A4004E6325 /* RootViewController.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
-				824A9E361724E45100C9BD79 /* RootViewController.m in Sources */,
-				824A9E3A1724E58200C9BD79 /* InitialViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
