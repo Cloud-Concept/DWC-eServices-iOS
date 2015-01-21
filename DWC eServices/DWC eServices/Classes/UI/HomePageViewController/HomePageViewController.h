@@ -10,4 +10,15 @@
 
 @interface HomePageViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *dashboardButton;
+@property (weak, nonatomic) IBOutlet UIButton *employeesButton;
+@property (weak, nonatomic) IBOutlet UIButton *myRequestButton;
+@property (weak, nonatomic) IBOutlet UIButton *notificationButton;
+@property (weak, nonatomic) IBOutlet UIButton *quickAccessButton;
+@property (weak, nonatomic) IBOutlet UIButton *needHelpButton;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UIButton *reportsButton;
+@property (weak, nonatomic) IBOutlet UIButton *servicesButton;
+
+
 @end

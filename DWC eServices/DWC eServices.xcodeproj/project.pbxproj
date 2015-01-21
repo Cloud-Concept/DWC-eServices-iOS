@@ -19,6 +19,7 @@
 		1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAE01A6F938B004E6325 /* Images.xcassets */; };
 		1307BAE81A6F938B004E6325 /* SalesforceSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAE11A6F938B004E6325 /* SalesforceSDKResources.bundle */; };
 		1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAE21A6F938B004E6325 /* Settings.bundle */; };
+		1307BAEC1A6FDAC3004E6325 /* HelperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BAEB1A6FDAC3004E6325 /* HelperClass.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
 		4F3F413617E7CA71008B3283 /* libMKNetworkKit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F412B17E7C9CA008B3283 /* libMKNetworkKit-iOS.a */; };
 		4F3F413717E7CA84008B3283 /* libSalesforceNetworkSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413317E7C9CA008B3283 /* libSalesforceNetworkSDK.a */; };
@@ -67,6 +68,8 @@
 		1307BAE01A6F938B004E6325 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1307BAE11A6F938B004E6325 /* SalesforceSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SalesforceSDKResources.bundle; sourceTree = "<group>"; };
 		1307BAE21A6F938B004E6325 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		1307BAEA1A6FDAC3004E6325 /* HelperClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperClass.h; sourceTree = "<group>"; };
+		1307BAEB1A6FDAC3004E6325 /* HelperClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperClass.m; sourceTree = "<group>"; };
 		4F3F412517E7C9CA008B3283 /* MKNetworkEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
 		4F3F412617E7C9CA008B3283 /* MKNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
 		4F3F412717E7C9CA008B3283 /* MKNetworkOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
@@ -289,6 +292,8 @@
 		1307BAD11A6F83A4004E6325 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				1307BAEA1A6FDAC3004E6325 /* HelperClass.h */,
+				1307BAEB1A6FDAC3004E6325 /* HelperClass.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -801,6 +806,7 @@
 				824A9DE51724E16400C9BD79 /* main.m in Sources */,
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
 				1307BAD41A6F83A4004E6325 /* RootViewController.m in Sources */,
+				1307BAEC1A6FDAC3004E6325 /* HelperClass.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
