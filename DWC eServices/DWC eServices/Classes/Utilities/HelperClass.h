@@ -11,4 +11,5 @@
 @interface HelperClass : NSObject
 + (void)setupButtonWithTextUnderImage:(UIButton*)button;
 + (void)setupButtonWithTextLeftToImage:(UIButton*)button;
++ (void)setupButtonWithBadgeOnImage:(UIButton*)button Value:(NSInteger)value;
 @end

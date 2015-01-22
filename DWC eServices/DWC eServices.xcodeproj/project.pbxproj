@@ -12,14 +12,15 @@
 		1307BAD41A6F83A4004E6325 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BAD01A6F83A4004E6325 /* RootViewController.m */; };
 		1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */; };
 		1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BAD81A6F8FEE004E6325 /* HomePageViewController.m */; };
-		1307BAE31A6F938B004E6325 /* Californian Bold.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADC1A6F938B004E6325 /* Californian Bold.TTF */; };
-		1307BAE41A6F938B004E6325 /* CorisandeBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADD1A6F938B004E6325 /* CorisandeBold.ttf */; };
-		1307BAE51A6F938B004E6325 /* CorisandeLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADE1A6F938B004E6325 /* CorisandeLight.ttf */; };
-		1307BAE61A6F938B004E6325 /* CorisandeRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADF1A6F938B004E6325 /* CorisandeRegular.ttf */; };
+		1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADC1A6F938B004E6325 /* Californian-Bold.ttf */; };
+		1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADD1A6F938B004E6325 /* Corisande-Bold.ttf */; };
+		1307BAE51A6F938B004E6325 /* Corisande-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADE1A6F938B004E6325 /* Corisande-Light.ttf */; };
+		1307BAE61A6F938B004E6325 /* Corisande-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADF1A6F938B004E6325 /* Corisande-Regular.ttf */; };
 		1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAE01A6F938B004E6325 /* Images.xcassets */; };
 		1307BAE81A6F938B004E6325 /* SalesforceSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAE11A6F938B004E6325 /* SalesforceSDKResources.bundle */; };
 		1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAE21A6F938B004E6325 /* Settings.bundle */; };
 		1307BAEC1A6FDAC3004E6325 /* HelperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BAEB1A6FDAC3004E6325 /* HelperClass.m */; };
+		13E255A81A711A49001BEC19 /* UIView+MGBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E255A61A711A49001BEC19 /* UIView+MGBadgeView.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
 		4F3F413617E7CA71008B3283 /* libMKNetworkKit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F412B17E7C9CA008B3283 /* libMKNetworkKit-iOS.a */; };
 		4F3F413717E7CA84008B3283 /* libSalesforceNetworkSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413317E7C9CA008B3283 /* libSalesforceNetworkSDK.a */; };
@@ -61,16 +62,18 @@
 		1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1307BAD71A6F8FEE004E6325 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		1307BAD81A6F8FEE004E6325 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
-		1307BADC1A6F938B004E6325 /* Californian Bold.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Californian Bold.TTF"; sourceTree = "<group>"; };
-		1307BADD1A6F938B004E6325 /* CorisandeBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CorisandeBold.ttf; sourceTree = "<group>"; };
-		1307BADE1A6F938B004E6325 /* CorisandeLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CorisandeLight.ttf; sourceTree = "<group>"; };
-		1307BADF1A6F938B004E6325 /* CorisandeRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CorisandeRegular.ttf; sourceTree = "<group>"; };
+		1307BADC1A6F938B004E6325 /* Californian-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Californian-Bold.ttf"; sourceTree = "<group>"; };
+		1307BADD1A6F938B004E6325 /* Corisande-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Bold.ttf"; sourceTree = "<group>"; };
+		1307BADE1A6F938B004E6325 /* Corisande-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Light.ttf"; sourceTree = "<group>"; };
+		1307BADF1A6F938B004E6325 /* Corisande-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Regular.ttf"; sourceTree = "<group>"; };
 		1307BAE01A6F938B004E6325 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1307BAE11A6F938B004E6325 /* SalesforceSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SalesforceSDKResources.bundle; sourceTree = "<group>"; };
 		1307BAE21A6F938B004E6325 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		1307BAEA1A6FDAC3004E6325 /* HelperClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperClass.h; sourceTree = "<group>"; };
 		1307BAEB1A6FDAC3004E6325 /* HelperClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperClass.m; sourceTree = "<group>"; };
-		1356A9501A70D78600CF217A /* CorisandeBold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CorisandeBold Italic.ttf"; sourceTree = "<group>"; };
+		1356A9501A70D78600CF217A /* Corisande-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Bold-Italic.ttf"; sourceTree = "<group>"; };
+		13E255A51A711A49001BEC19 /* UIView+MGBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MGBadgeView.h"; sourceTree = "<group>"; };
+		13E255A61A711A49001BEC19 /* UIView+MGBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MGBadgeView.m"; sourceTree = "<group>"; };
 		4F3F412517E7C9CA008B3283 /* MKNetworkEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
 		4F3F412617E7C9CA008B3283 /* MKNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
 		4F3F412717E7C9CA008B3283 /* MKNetworkOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
@@ -257,6 +260,7 @@
 				1307BAC91A6F83A4004E6325 /* HomePageViewController */,
 				1307BACA1A6F83A4004E6325 /* InitialViewController */,
 				1307BACE1A6F83A4004E6325 /* RootViewController */,
+				13E255A31A711A49001BEC19 /* UIView+MGBadgeView */,
 				1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */,
 			);
 			path = UI;
@@ -313,13 +317,22 @@
 		1307BADB1A6F938B004E6325 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				1307BADC1A6F938B004E6325 /* Californian Bold.TTF */,
-				1356A9501A70D78600CF217A /* CorisandeBold Italic.ttf */,
-				1307BADD1A6F938B004E6325 /* CorisandeBold.ttf */,
-				1307BADE1A6F938B004E6325 /* CorisandeLight.ttf */,
-				1307BADF1A6F938B004E6325 /* CorisandeRegular.ttf */,
+				1307BADC1A6F938B004E6325 /* Californian-Bold.ttf */,
+				1356A9501A70D78600CF217A /* Corisande-Bold-Italic.ttf */,
+				1307BADD1A6F938B004E6325 /* Corisande-Bold.ttf */,
+				1307BADE1A6F938B004E6325 /* Corisande-Light.ttf */,
+				1307BADF1A6F938B004E6325 /* Corisande-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		13E255A31A711A49001BEC19 /* UIView+MGBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				13E255A51A711A49001BEC19 /* UIView+MGBadgeView.h */,
+				13E255A61A711A49001BEC19 /* UIView+MGBadgeView.m */,
+			);
+			path = "UIView+MGBadgeView";
 			sourceTree = "<group>";
 		};
 		4F3F412217E7C9CA008B3283 /* MKNetworkKit-iOS */ = {
@@ -781,18 +794,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1307BAE61A6F938B004E6325 /* CorisandeRegular.ttf in Resources */,
+				1307BAE61A6F938B004E6325 /* Corisande-Regular.ttf in Resources */,
 				1307BAE81A6F938B004E6325 /* SalesforceSDKResources.bundle in Resources */,
 				1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */,
-				1307BAE51A6F938B004E6325 /* CorisandeLight.ttf in Resources */,
+				1307BAE51A6F938B004E6325 /* Corisande-Light.ttf in Resources */,
 				824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */,
 				824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */,
 				1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
 				1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */,
-				1307BAE31A6F938B004E6325 /* Californian Bold.TTF in Resources */,
+				1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */,
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
-				1307BAE41A6F938B004E6325 /* CorisandeBold.ttf in Resources */,
+				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -806,6 +819,7 @@
 			files = (
 				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
 				824A9DE51724E16400C9BD79 /* main.m in Sources */,
+				13E255A81A711A49001BEC19 /* UIView+MGBadgeView.m in Sources */,
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
 				1307BAD41A6F83A4004E6325 /* RootViewController.m in Sources */,
 				1307BAEC1A6FDAC3004E6325 /* HelperClass.m in Sources */,

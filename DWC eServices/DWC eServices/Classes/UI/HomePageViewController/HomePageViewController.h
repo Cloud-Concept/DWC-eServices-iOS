@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *reportsButton;
 @property (weak, nonatomic) IBOutlet UIButton *servicesButton;
 
+@property (weak, nonatomic) IBOutlet UIImageView *companyLogoImageView;
 
 @end

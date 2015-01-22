@@ -7,6 +7,7 @@
 //
 
 #import "HelperClass.h"
+#import "UIView+MGBadgeView.h"
 
 @implementation HelperClass
 
@@ -30,9 +31,26 @@
     CGSize titleSize = [button.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
     button.imageEdgeInsets = UIEdgeInsetsMake(
                                               - (titleSize.height + spacing), 0.0, 0.0, - titleSize.width);
+}
+
++ (void)setupButtonWithBadgeOnImage:(UIButton*)button Value:(NSInteger)value {
     
-    //button.titleEdgeInsets = UIEdgeInsetsMake(0, -button.imageView.frame.size.width, 0, button.imageView.frame.size.width);
-    //button.imageEdgeInsets = UIEdgeInsetsMake(0, button.titleLabel.frame.size.width, 0, -button.titleLabel.frame.size.width - 10);
+    [button.imageView setClipsToBounds:NO];
+    
+    [button.imageView.badgeView setBadgeValue:value];
+    
+    [button.imageView.badgeView setOutlineWidth:1];
+    
+    [button.imageView.badgeView setPosition:MGBadgePositionTopRight];
+    
+    [button.imageView.badgeView setOutlineColor:[UIColor colorWithRed:.24f green:.89f blue:.88f alpha:1.0f]];
+    [button.imageView.badgeView setBadgeColor:[UIColor colorWithRed:.21f green:.75f blue:.74f alpha:1.0f]];
+    [button.imageView.badgeView setTextColor:[UIColor whiteColor]];
+    
+    [button.imageView.badgeView setFont:[UIFont fontWithName:@"CorisandeLight" size:8.0f]];
+    [button.imageView.badgeView setMinDiameter:10.0f];
+    
+    [button.imageView.badgeView setDisplayIfZero:NO];
 }
 
 @end

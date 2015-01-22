@@ -30,6 +30,9 @@
     [HelperClass setupButtonWithTextUnderImage:self.logoutButton];
     [HelperClass setupButtonWithTextUnderImage:self.reportsButton];
     [HelperClass setupButtonWithTextUnderImage:self.servicesButton];
+    
+    [HelperClass setupButtonWithBadgeOnImage:self.notificationButton Value:40];
+    
 }
 
 - (void)didReceiveMemoryWarning {

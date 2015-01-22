@@ -6,12 +6,12 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="CorisandeBold Italic.ttf">
+        <mutableArray key="Corisande-Bold-Italic.ttf">
             <string>CorisandeBoldItalic</string>
             <string>CorisandeBoldItalic</string>
             <string>CorisandeBoldItalic</string>
         </mutableArray>
-        <mutableArray key="CorisandeLight.ttf">
+        <mutableArray key="Corisande-Light.ttf">
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
@@ -27,7 +27,7 @@
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
         </mutableArray>
-        <mutableArray key="CorisandeRegular.ttf">
+        <mutableArray key="Corisande-Regular.ttf">
             <string>CorisandeRegular</string>
         </mutableArray>
     </customFonts>
@@ -377,6 +377,7 @@
                     <navigationItem key="navigationItem" id="298-E8-10y"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="companyLogoImageView" destination="ODz-Hc-XjO" id="2nw-hB-SyC"/>
                         <outlet property="dashboardButton" destination="aC8-JR-V0W" id="F04-cK-1jk"/>
                         <outlet property="employeesButton" destination="fp8-oh-eg1" id="KqL-9h-cbB"/>
                         <outlet property="logoutButton" destination="3ss-iX-Fna" id="AaB-OK-1jK"/>
