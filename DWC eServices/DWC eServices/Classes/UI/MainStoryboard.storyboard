@@ -65,94 +65,96 @@
                                 <rect key="frame" x="6" y="70" width="363" height="90"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ODz-Hc-XjO">
-                                        <rect key="frame" x="8" y="13" width="118" height="64"/>
+                                        <rect key="frame" x="8" y="8" width="118" height="74"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="118" id="lgo-5l-npv"/>
+                                            <constraint firstAttribute="width" secondItem="ODz-Hc-XjO" secondAttribute="height" multiplier="59:37" id="IU2-cX-dPi"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Company Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNK-dp-S8v">
-                                        <rect key="frame" x="134" y="13" width="91" height="15"/>
-                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Company Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNK-dp-S8v">
+                                        <rect key="frame" x="134" y="19" width="70" height="12"/>
+                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfT-Fe-NvK">
-                                        <rect key="frame" x="233" y="13" width="122" height="15"/>
-                                        <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="13"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="License Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41J-4h-ILx">
-                                        <rect key="frame" x="134" y="37" width="91" height="15"/>
-                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License Expiry:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0a-PD-4Ln">
-                                        <rect key="frame" x="134" y="62" width="91" height="15"/>
-                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfL-va-PNC">
-                                        <rect key="frame" x="233" y="62" width="122" height="15"/>
-                                        <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="13"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="License Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41J-4h-ILx">
+                                        <rect key="frame" x="134" y="39" width="70" height="12"/>
+                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBF-K4-XRE">
-                                        <rect key="frame" x="233" y="37" width="122" height="15"/>
-                                        <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="13"/>
+                                        <rect key="frame" x="212" y="39" width="143" height="12"/>
+                                        <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="10"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="License Expiry:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0a-PD-4Ln">
+                                        <rect key="frame" x="134" y="59" width="70" height="12"/>
+                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Expiry Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfL-va-PNC">
+                                        <rect key="frame" x="212" y="59" width="143" height="12"/>
+                                        <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="10"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfT-Fe-NvK">
+                                        <rect key="frame" x="212" y="19" width="143" height="12"/>
+                                        <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.17254901960784313" green="0.14901960784313725" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="X9p-Wu-SPe" secondAttribute="height" multiplier="121:30" id="6Mo-eh-c0R"/>
-                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="leading" secondItem="ODz-Hc-XjO" secondAttribute="trailing" constant="8" id="6O1-t8-rfo"/>
-                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="leading" secondItem="41J-4h-ILx" secondAttribute="leading" id="FPU-oW-Q4I"/>
-                                    <constraint firstAttribute="bottom" secondItem="ODz-Hc-XjO" secondAttribute="bottom" constant="13" id="HfV-z4-zvQ"/>
-                                    <constraint firstItem="W0a-PD-4Ln" firstAttribute="bottom" secondItem="wfL-va-PNC" secondAttribute="bottom" id="Hsf-0Z-JXS"/>
-                                    <constraint firstItem="ZfT-Fe-NvK" firstAttribute="leading" secondItem="kNK-dp-S8v" secondAttribute="trailing" constant="8" id="KtX-M7-6hA"/>
-                                    <constraint firstItem="41J-4h-ILx" firstAttribute="top" secondItem="kNK-dp-S8v" secondAttribute="bottom" constant="9" id="Lo7-y3-hFf"/>
-                                    <constraint firstItem="kBF-K4-XRE" firstAttribute="bottom" secondItem="41J-4h-ILx" secondAttribute="bottom" id="N2I-ut-zsT"/>
-                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="bottom" secondItem="ZfT-Fe-NvK" secondAttribute="bottom" id="Nyp-Dd-BBo"/>
-                                    <constraint firstItem="wfL-va-PNC" firstAttribute="leading" secondItem="kBF-K4-XRE" secondAttribute="leading" id="QFU-03-lYa"/>
-                                    <constraint firstItem="kBF-K4-XRE" firstAttribute="top" secondItem="41J-4h-ILx" secondAttribute="top" id="Seo-AZ-Og2"/>
-                                    <constraint firstItem="W0a-PD-4Ln" firstAttribute="top" secondItem="41J-4h-ILx" secondAttribute="bottom" constant="10" id="Tri-ys-Wxc"/>
-                                    <constraint firstItem="ODz-Hc-XjO" firstAttribute="leading" secondItem="X9p-Wu-SPe" secondAttribute="leading" constant="8" id="Wn8-XE-oLJ"/>
-                                    <constraint firstItem="ZfT-Fe-NvK" firstAttribute="trailing" secondItem="wfL-va-PNC" secondAttribute="trailing" id="Xw4-pg-9KU"/>
-                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="top" secondItem="ZfT-Fe-NvK" secondAttribute="top" id="aUW-R0-Mbp"/>
-                                    <constraint firstItem="ODz-Hc-XjO" firstAttribute="top" secondItem="X9p-Wu-SPe" secondAttribute="top" constant="13" id="abN-Hg-XzG"/>
-                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="top" secondItem="X9p-Wu-SPe" secondAttribute="top" constant="13" id="cKl-7W-J56"/>
-                                    <constraint firstItem="ZfT-Fe-NvK" firstAttribute="trailing" secondItem="kBF-K4-XRE" secondAttribute="trailing" id="ddI-eU-7pG"/>
-                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="leading" secondItem="ODz-Hc-XjO" secondAttribute="trailing" constant="8" id="did-Wo-n5g"/>
-                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="leading" secondItem="W0a-PD-4Ln" secondAttribute="leading" id="hZM-Pf-cn0"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZfT-Fe-NvK" secondAttribute="trailing" constant="8" id="lr1-h5-tSu"/>
-                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="trailing" secondItem="W0a-PD-4Ln" secondAttribute="trailing" id="lso-cp-DfQ"/>
-                                    <constraint firstItem="W0a-PD-4Ln" firstAttribute="top" secondItem="wfL-va-PNC" secondAttribute="top" id="oXQ-Sr-9cI"/>
-                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="trailing" secondItem="41J-4h-ILx" secondAttribute="trailing" id="oZa-F9-rJf"/>
-                                    <constraint firstItem="ZfT-Fe-NvK" firstAttribute="top" secondItem="X9p-Wu-SPe" secondAttribute="top" constant="13" id="rYf-j9-MfT"/>
-                                    <constraint firstAttribute="bottom" secondItem="W0a-PD-4Ln" secondAttribute="bottom" constant="13" id="uqO-HH-tT1"/>
-                                    <constraint firstItem="kBF-K4-XRE" firstAttribute="leading" secondItem="ZfT-Fe-NvK" secondAttribute="leading" id="x1b-GQ-tnO"/>
+                                    <constraint firstItem="41J-4h-ILx" firstAttribute="leading" secondItem="ODz-Hc-XjO" secondAttribute="trailing" constant="8" id="2aA-mT-tdh"/>
+                                    <constraint firstAttribute="centerY" secondItem="41J-4h-ILx" secondAttribute="centerY" id="3ai-K0-vqe"/>
+                                    <constraint firstItem="wfL-va-PNC" firstAttribute="top" secondItem="W0a-PD-4Ln" secondAttribute="top" id="7kz-EO-0le"/>
+                                    <constraint firstItem="ODz-Hc-XjO" firstAttribute="leading" secondItem="X9p-Wu-SPe" secondAttribute="leading" constant="8" id="8Sj-Dk-h2B"/>
+                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="top" secondItem="ZfT-Fe-NvK" secondAttribute="top" id="8iR-vU-Vtp"/>
+                                    <constraint firstItem="W0a-PD-4Ln" firstAttribute="trailing" secondItem="41J-4h-ILx" secondAttribute="trailing" id="95t-f9-638"/>
+                                    <constraint firstAttribute="bottom" secondItem="ODz-Hc-XjO" secondAttribute="bottom" constant="8" id="G9T-eN-AkQ"/>
+                                    <constraint firstItem="kBF-K4-XRE" firstAttribute="trailing" secondItem="ZfT-Fe-NvK" secondAttribute="trailing" id="MsU-aH-JMb"/>
+                                    <constraint firstItem="kBF-K4-XRE" firstAttribute="top" secondItem="41J-4h-ILx" secondAttribute="top" id="Pxg-qA-bSL"/>
+                                    <constraint firstItem="ODz-Hc-XjO" firstAttribute="top" secondItem="X9p-Wu-SPe" secondAttribute="top" constant="8" id="QFJ-WQ-n90"/>
+                                    <constraint firstItem="41J-4h-ILx" firstAttribute="leading" secondItem="kNK-dp-S8v" secondAttribute="leading" id="TSn-hG-5f7"/>
+                                    <constraint firstItem="wfL-va-PNC" firstAttribute="bottom" secondItem="W0a-PD-4Ln" secondAttribute="bottom" id="UNR-th-L8L"/>
+                                    <constraint firstItem="41J-4h-ILx" firstAttribute="trailing" secondItem="kNK-dp-S8v" secondAttribute="trailing" id="XAw-3D-kX9"/>
+                                    <constraint firstItem="kBF-K4-XRE" firstAttribute="leading" secondItem="ZfT-Fe-NvK" secondAttribute="leading" id="bYj-Rx-EBs"/>
+                                    <constraint firstItem="wfL-va-PNC" firstAttribute="trailing" secondItem="kBF-K4-XRE" secondAttribute="trailing" id="fno-6X-Vwx"/>
+                                    <constraint firstItem="41J-4h-ILx" firstAttribute="top" secondItem="kNK-dp-S8v" secondAttribute="bottom" constant="8" id="fr3-ew-cxb"/>
+                                    <constraint firstItem="W0a-PD-4Ln" firstAttribute="leading" secondItem="41J-4h-ILx" secondAttribute="leading" id="hWX-NT-zAC"/>
+                                    <constraint firstItem="kNK-dp-S8v" firstAttribute="bottom" secondItem="ZfT-Fe-NvK" secondAttribute="bottom" id="i7h-Vz-Z9S"/>
+                                    <constraint firstItem="kBF-K4-XRE" firstAttribute="leading" secondItem="41J-4h-ILx" secondAttribute="trailing" constant="8" id="ja0-LY-m7P"/>
+                                    <constraint firstAttribute="trailing" secondItem="kBF-K4-XRE" secondAttribute="trailing" constant="8" id="mNL-0d-25P"/>
+                                    <constraint firstItem="W0a-PD-4Ln" firstAttribute="top" secondItem="41J-4h-ILx" secondAttribute="bottom" constant="8" id="sbM-Zh-Ra6"/>
+                                    <constraint firstItem="wfL-va-PNC" firstAttribute="leading" secondItem="kBF-K4-XRE" secondAttribute="leading" id="vp2-0O-XbE"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEH-Df-bZ0">
                                 <rect key="frame" x="6" y="166" width="179" height="232"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-JR-V0W">
-                                        <rect key="frame" x="0.0" y="0.0" width="178" height="137"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aC8-JR-V0W">
+                                        <rect key="frame" x="0.0" y="0.0" width="179" height="137"/>
                                         <color key="backgroundColor" red="0.38039215686274508" green="0.52941176470588236" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="aC8-JR-V0W" secondAttribute="height" multiplier="179:137" id="HqV-nK-itT"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="DASHBOARD" image="Home Dashboard Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fp8-oh-eg1">
-                                        <rect key="frame" x="0.0" y="143" width="178" height="88"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fp8-oh-eg1">
+                                        <rect key="frame" x="0.0" y="143" width="179" height="89"/>
                                         <color key="backgroundColor" red="0.098039215686274508" green="0.43529411764705883" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fp8-oh-eg1" secondAttribute="height" multiplier="179:89" id="pMB-y7-Sau"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="EMPLOYEES" image="Home Employees Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -162,47 +164,48 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="aC8-JR-V0W" firstAttribute="top" secondItem="qEH-Df-bZ0" secondAttribute="top" id="2u9-SA-pDg"/>
+                                    <constraint firstItem="aC8-JR-V0W" firstAttribute="trailing" secondItem="fp8-oh-eg1" secondAttribute="trailing" id="Hmd-YK-KOp"/>
+                                    <constraint firstItem="aC8-JR-V0W" firstAttribute="leading" secondItem="qEH-Df-bZ0" secondAttribute="leading" id="LLJ-y8-ngN"/>
+                                    <constraint firstAttribute="trailing" secondItem="aC8-JR-V0W" secondAttribute="trailing" id="Nc8-yb-LRH"/>
+                                    <constraint firstAttribute="bottom" secondItem="fp8-oh-eg1" secondAttribute="bottom" id="SeA-CC-yy7"/>
                                     <constraint firstAttribute="width" secondItem="qEH-Df-bZ0" secondAttribute="height" multiplier="178:231" id="WOH-DT-TLU"/>
+                                    <constraint firstItem="fp8-oh-eg1" firstAttribute="top" secondItem="aC8-JR-V0W" secondAttribute="bottom" constant="6" id="ca3-sh-5PV"/>
+                                    <constraint firstItem="aC8-JR-V0W" firstAttribute="leading" secondItem="fp8-oh-eg1" secondAttribute="leading" id="tQC-Hn-ZX7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bY-3z-8cH">
                                 <rect key="frame" x="191" y="166" width="178" height="232"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R1-9G-NpB">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R1-9G-NpB">
                                         <rect key="frame" x="0.0" y="0.0" width="86" height="89"/>
                                         <color key="backgroundColor" red="0.62352941176470589" green="0.52941176470588236" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="5R1-9G-NpB" secondAttribute="height" multiplier="86:89" id="tja-0f-Qaf"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="MY REQUEST" image="Home My Request Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JE-ua-Xp0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JE-ua-Xp0">
                                         <rect key="frame" x="92" y="0.0" width="86" height="89"/>
                                         <color key="backgroundColor" red="0.34509803921568627" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="2JE-ua-Xp0" secondAttribute="height" multiplier="86:89" id="5Lt-r8-y1S"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="NOTIFICATION" image="Home Notification Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ser-GU-2ic">
-                                        <rect key="frame" x="0.0" y="95" width="178" height="136"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ser-GU-2ic">
+                                        <rect key="frame" x="0.0" y="95" width="178" height="137"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CURRENT BALANCE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zr-nc-Wme">
-                                                <rect key="frame" x="8" y="14" width="162" height="16"/>
-                                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="21,358 AED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOK-5m-Ue0">
-                                                <rect key="frame" x="8" y="29" width="162" height="28"/>
-                                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="23"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bV9-Bg-aC0">
-                                                <rect key="frame" x="8" y="84" width="162" height="39"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bV9-Bg-aC0">
+                                                <rect key="frame" x="8" y="84" width="162" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
                                                 <state key="normal" title="View Statement">
@@ -210,59 +213,113 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y3Z-Ou-R8V">
-                                                <rect key="frame" x="8" y="65" width="162" height="6"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHj-K3-J7K">
+                                                <rect key="frame" x="8" y="68" width="162" height="2"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </imageView>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="2" id="LqL-Pb-1oB"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="CURRENT BALANCE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zr-nc-Wme">
+                                                <rect key="frame" x="8" y="6" width="162" height="12"/>
+                                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="21,358 AED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOK-5m-Ue0">
+                                                <rect key="frame" x="8" y="30" width="162" height="26"/>
+                                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="23"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.48627450980392156" green="0.38039215686274508" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="5zr-nc-Wme" secondAttribute="trailing" constant="8" id="656-CO-l1c"/>
+                                            <constraint firstAttribute="centerY" secondItem="fHj-K3-J7K" secondAttribute="centerY" id="6QS-1l-ocr"/>
+                                            <constraint firstItem="bV9-Bg-aC0" firstAttribute="leading" secondItem="Ser-GU-2ic" secondAttribute="leading" constant="8" id="8qN-ge-32R"/>
+                                            <constraint firstAttribute="centerX" secondItem="fHj-K3-J7K" secondAttribute="centerX" id="F6P-4Y-5pc"/>
+                                            <constraint firstItem="nOK-5m-Ue0" firstAttribute="leading" secondItem="Ser-GU-2ic" secondAttribute="leading" constant="8" id="FRm-js-uvx"/>
+                                            <constraint firstAttribute="width" secondItem="Ser-GU-2ic" secondAttribute="height" multiplier="178:137" id="SIY-QE-2yN"/>
+                                            <constraint firstAttribute="bottom" secondItem="bV9-Bg-aC0" secondAttribute="bottom" constant="13" id="VHd-Nn-2gr"/>
+                                            <constraint firstAttribute="trailing" secondItem="fHj-K3-J7K" secondAttribute="trailing" constant="8" id="Zaq-k1-fiA"/>
+                                            <constraint firstAttribute="trailing" secondItem="bV9-Bg-aC0" secondAttribute="trailing" constant="8" id="iNL-yb-e2n"/>
+                                            <constraint firstItem="bV9-Bg-aC0" firstAttribute="top" secondItem="fHj-K3-J7K" secondAttribute="bottom" constant="14" id="ktQ-ch-jjL"/>
+                                            <constraint firstItem="fHj-K3-J7K" firstAttribute="leading" secondItem="Ser-GU-2ic" secondAttribute="leading" constant="8" id="lIK-q0-fbV"/>
+                                            <constraint firstAttribute="trailing" secondItem="nOK-5m-Ue0" secondAttribute="trailing" constant="8" id="mc0-qy-vhy"/>
+                                            <constraint firstItem="fHj-K3-J7K" firstAttribute="top" secondItem="nOK-5m-Ue0" secondAttribute="bottom" constant="12" id="n81-xn-IPh"/>
+                                            <constraint firstItem="5zr-nc-Wme" firstAttribute="top" secondItem="Ser-GU-2ic" secondAttribute="top" constant="6" id="t1s-f0-akR"/>
+                                            <constraint firstItem="5zr-nc-Wme" firstAttribute="leading" secondItem="Ser-GU-2ic" secondAttribute="leading" constant="8" id="waS-Xd-sq5"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8bY-3z-8cH" secondAttribute="height" multiplier="178:231" id="04l-Ud-DhM"/>
+                                    <constraint firstItem="2JE-ua-Xp0" firstAttribute="leading" secondItem="5R1-9G-NpB" secondAttribute="trailing" constant="6" id="AP4-Lt-Oz7"/>
+                                    <constraint firstItem="5R1-9G-NpB" firstAttribute="top" secondItem="2JE-ua-Xp0" secondAttribute="top" id="LtB-RN-u3F"/>
+                                    <constraint firstItem="Ser-GU-2ic" firstAttribute="leading" secondItem="5R1-9G-NpB" secondAttribute="leading" id="RMR-2l-PmP"/>
+                                    <constraint firstAttribute="trailing" secondItem="2JE-ua-Xp0" secondAttribute="trailing" id="TYf-c3-LD2"/>
+                                    <constraint firstItem="Ser-GU-2ic" firstAttribute="trailing" secondItem="2JE-ua-Xp0" secondAttribute="trailing" id="a6s-Fp-5qx"/>
+                                    <constraint firstItem="5R1-9G-NpB" firstAttribute="leading" secondItem="8bY-3z-8cH" secondAttribute="leading" id="lw1-oJ-9Lb"/>
+                                    <constraint firstItem="Ser-GU-2ic" firstAttribute="top" secondItem="2JE-ua-Xp0" secondAttribute="bottom" constant="6" id="sNd-vG-teS"/>
+                                    <constraint firstItem="5R1-9G-NpB" firstAttribute="top" secondItem="8bY-3z-8cH" secondAttribute="top" id="x5K-pX-tsF"/>
+                                    <constraint firstItem="5R1-9G-NpB" firstAttribute="bottom" secondItem="2JE-ua-Xp0" secondAttribute="bottom" id="xHQ-xg-nrW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ser-GU-2ic" secondAttribute="bottom" id="y6a-2K-Dqf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADE-zJ-RfB">
                                 <rect key="frame" x="6" y="403" width="363" height="258"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWd-jd-qrP">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWd-jd-qrP">
                                         <rect key="frame" x="0.0" y="168" width="86" height="90"/>
                                         <color key="backgroundColor" red="0.043137254901960784" green="0.32941176470588235" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="gWd-jd-qrP" secondAttribute="height" multiplier="43:45" id="5NY-zp-S6B"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="NEED HELP" image="Home Need Help Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ss-iX-Fna">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ss-iX-Fna">
                                         <rect key="frame" x="276" y="168" width="87" height="90"/>
                                         <color key="backgroundColor" red="0.40392156862745099" green="0.44313725490196076" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="3ss-iX-Fna" secondAttribute="height" multiplier="29:30" id="hHo-r9-09W"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="LOGOUT" image="Home Logout Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHN-Fe-t9Y">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHN-Fe-t9Y">
                                         <rect key="frame" x="276" y="0.0" width="87" height="162"/>
                                         <color key="backgroundColor" red="0.396078431372549" green="0.32941176470588235" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="KHN-Fe-t9Y" secondAttribute="height" multiplier="29:54" id="3Mi-UO-eak"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="REPORTS" image="Home Reports Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxK-JZ-3Vl">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxK-JZ-3Vl">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="162"/>
                                         <color key="backgroundColor" red="0.36862745098039218" green="0.47450980392156861" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="OxK-JZ-3Vl" secondAttribute="height" multiplier="5:3" id="zgB-dJ-vPI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="SERVICES" image="Home Services Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgN-E5-iGe">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgN-E5-iGe">
                                         <rect key="frame" x="92" y="168" width="178" height="90"/>
                                         <color key="backgroundColor" red="0.32156862745098036" green="0.61960784313725492" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
@@ -274,6 +331,22 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="leading" secondItem="ADE-zJ-RfB" secondAttribute="leading" id="0Lx-kQ-0te"/>
+                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="bottom" secondItem="gWd-jd-qrP" secondAttribute="bottom" id="0rx-Cd-kjI"/>
+                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="top" secondItem="gWd-jd-qrP" secondAttribute="top" id="0yf-1h-ZpU"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="top" secondItem="ADE-zJ-RfB" secondAttribute="top" id="9cp-3s-pBI"/>
+                                    <constraint firstItem="WgN-E5-iGe" firstAttribute="bottom" secondItem="gWd-jd-qrP" secondAttribute="bottom" id="CwY-89-ZPa"/>
+                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="leading" secondItem="WgN-E5-iGe" secondAttribute="trailing" constant="6" id="Hcz-ne-goY"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="top" secondItem="KHN-Fe-t9Y" secondAttribute="top" id="Jwu-oQ-mf7"/>
+                                    <constraint firstItem="WgN-E5-iGe" firstAttribute="leading" secondItem="gWd-jd-qrP" secondAttribute="trailing" constant="6" id="Kiv-J7-kdZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="KHN-Fe-t9Y" secondAttribute="trailing" id="Nhs-cx-tux"/>
+                                    <constraint firstItem="WgN-E5-iGe" firstAttribute="top" secondItem="gWd-jd-qrP" secondAttribute="top" id="Nm3-qx-r8i"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="leading" secondItem="gWd-jd-qrP" secondAttribute="leading" id="QKi-Cj-HsU"/>
+                                    <constraint firstItem="gWd-jd-qrP" firstAttribute="top" secondItem="OxK-JZ-3Vl" secondAttribute="bottom" constant="6" id="WIj-s0-U31"/>
+                                    <constraint firstItem="KHN-Fe-t9Y" firstAttribute="leading" secondItem="OxK-JZ-3Vl" secondAttribute="trailing" constant="6" id="efe-fv-x8Y"/>
+                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="trailing" secondItem="KHN-Fe-t9Y" secondAttribute="trailing" id="gA5-SZ-8Te"/>
+                                    <constraint firstAttribute="bottom" secondItem="gWd-jd-qrP" secondAttribute="bottom" id="gi3-gP-LvS"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="bottom" secondItem="KHN-Fe-t9Y" secondAttribute="bottom" id="qby-cm-JTW"/>
                                     <constraint firstAttribute="width" secondItem="ADE-zJ-RfB" secondAttribute="height" multiplier="121:86" id="w4M-Z6-1rO"/>
                                 </constraints>
                             </view>
@@ -317,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9Q-6I-jDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.5" y="354.5"/>
+            <point key="canvasLocation" x="124.5" y="354.5"/>
         </scene>
     </scenes>
     <resources>
