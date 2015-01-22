@@ -70,6 +70,7 @@
 		1307BAE21A6F938B004E6325 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		1307BAEA1A6FDAC3004E6325 /* HelperClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperClass.h; sourceTree = "<group>"; };
 		1307BAEB1A6FDAC3004E6325 /* HelperClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelperClass.m; sourceTree = "<group>"; };
+		1356A9501A70D78600CF217A /* CorisandeBold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CorisandeBold Italic.ttf"; sourceTree = "<group>"; };
 		4F3F412517E7C9CA008B3283 /* MKNetworkEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
 		4F3F412617E7C9CA008B3283 /* MKNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
 		4F3F412717E7C9CA008B3283 /* MKNetworkOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
@@ -313,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				1307BADC1A6F938B004E6325 /* Californian Bold.TTF */,
+				1356A9501A70D78600CF217A /* CorisandeBold Italic.ttf */,
 				1307BADD1A6F938B004E6325 /* CorisandeBold.ttf */,
 				1307BADE1A6F938B004E6325 /* CorisandeLight.ttf */,
 				1307BADF1A6F938B004E6325 /* CorisandeRegular.ttf */,
