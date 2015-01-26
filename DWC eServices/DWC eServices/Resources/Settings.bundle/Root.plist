@@ -12,6 +12,7 @@
 			<key>Title</key>
 			<string>GROUP_TITLE_ACCOUNT</string>
 		</dict>
+<<<<<<< HEAD
 		<dict>
 			<key>DefaultValue</key>
 			<false/>
@@ -84,6 +85,8 @@
 				<string>VERSION</string>
 			</array>
 		</dict>
+=======
+>>>>>>> FETCH_HEAD
 	</array>
 </dict>
 </plist>
