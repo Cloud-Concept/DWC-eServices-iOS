@@ -31,6 +31,7 @@
 		13081AFF1A76559D00B33509 /* WebForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 13081AF61A76559D00B33509 /* WebForm.m */; };
 		13081B041A7655BD00B33509 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13081B021A7655BD00B33509 /* DatePickerViewController.m */; };
 		13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13081B031A7655BD00B33509 /* DatePickerViewController.xib */; };
+		136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136377BE1A767C2C00282F72 /* FVCustomAlertView.m */; };
 		13E255A81A711A49001BEC19 /* UIView+MGBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E255A61A711A49001BEC19 /* UIView+MGBadgeView.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
 		4F3F413617E7CA71008B3283 /* libMKNetworkKit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F412B17E7C9CA008B3283 /* libMKNetworkKit-iOS.a */; };
@@ -104,6 +105,8 @@
 		13081B021A7655BD00B33509 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		13081B031A7655BD00B33509 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 		1356A9501A70D78600CF217A /* Corisande-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Bold-Italic.ttf"; sourceTree = "<group>"; };
+		136377BD1A767C2C00282F72 /* FVCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVCustomAlertView.h; sourceTree = "<group>"; };
+		136377BE1A767C2C00282F72 /* FVCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVCustomAlertView.m; sourceTree = "<group>"; };
 		13E255A51A711A49001BEC19 /* UIView+MGBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MGBadgeView.h"; sourceTree = "<group>"; };
 		13E255A61A711A49001BEC19 /* UIView+MGBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MGBadgeView.m"; sourceTree = "<group>"; };
 		4F3F412517E7C9CA008B3283 /* MKNetworkEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
@@ -289,6 +292,7 @@
 		1307BAC81A6F83A4004E6325 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				136377BB1A767C2C00282F72 /* FVCustomAlertView */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				1307BAC91A6F83A4004E6325 /* HomePageViewController */,
 				1307BACA1A6F83A4004E6325 /* InitialViewController */,
@@ -384,6 +388,15 @@
 				13081B031A7655BD00B33509 /* DatePickerViewController.xib */,
 			);
 			path = DatePickerViewController;
+			sourceTree = "<group>";
+		};
+		136377BB1A767C2C00282F72 /* FVCustomAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				136377BD1A767C2C00282F72 /* FVCustomAlertView.h */,
+				136377BE1A767C2C00282F72 /* FVCustomAlertView.m */,
+			);
+			path = FVCustomAlertView;
 			sourceTree = "<group>";
 		};
 		13E255A31A711A49001BEC19 /* UIView+MGBadgeView */ = {
@@ -883,6 +896,7 @@
 				13081AE31A7625C400B33509 /* Globals.m in Sources */,
 				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
 				824A9DE51724E16400C9BD79 /* main.m in Sources */,
+				136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */,
 				13081AFE1A76559D00B33509 /* Visa.m in Sources */,
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,

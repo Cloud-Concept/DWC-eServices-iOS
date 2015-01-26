@@ -24,7 +24,6 @@
 
 #import "AppDelegate.h"
 #import "InitialViewController.h"
-#import "RootViewController.h"
 #import "SFPushNotificationManager.h"
 #import "SFDefaultUserManagementViewController.h"
 #import "SalesforceSDKManager.h"
