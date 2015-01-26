@@ -84,4 +84,14 @@
     [button.imageView.badgeView setDisplayIfZero:NO];
 }
 
++ (NSString*)formatDateToString:(NSDate*)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    
+    NSString *dateStr = [formatter stringFromDate:date];
+    
+    NSLog(@"%@", dateStr);
+    
+    return dateStr;
+}
 @end

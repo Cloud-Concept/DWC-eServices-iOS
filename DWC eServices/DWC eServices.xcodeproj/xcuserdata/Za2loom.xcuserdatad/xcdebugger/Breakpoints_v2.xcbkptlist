@@ -70,7 +70,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
@@ -83,7 +83,7 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__41-[HomePageViewController loadCompanyInfo]_block_invoke55"
@@ -97,7 +97,7 @@
                   offsetFromSymbolStart = "835">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__41-[HomePageViewController loadCompanyInfo]_block_invoke55"
@@ -135,7 +135,7 @@
                   symbolName = "__41-[HomePageViewController loadCompanyInfo]_block_invoke"
                   moduleName = "DWCeServices"
                   urlString = "file:///Users/Za2loom/Development/CloudConcept/iOS/DWC-eServices-iOS/DWC%20eServices/DWC%20eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
-                  timestampString = "443964968.0643"
+                  timestampString = "443966798.086251"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -149,7 +149,7 @@
                   symbolName = "__41-[HomePageViewController loadCompanyInfo]_block_invoke"
                   moduleName = "DWCeServices"
                   urlString = "file:///Users/Za2loom/Development/CloudConcept/iOS/DWC-eServices-iOS/DWC%20eServices/DWC%20eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
-                  timestampString = "443964968.064497"
+                  timestampString = "443966798.086433"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -162,7 +162,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
@@ -175,7 +175,7 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__41-[HomePageViewController loadCompanyInfo]_block_invoke55"
@@ -189,7 +189,7 @@
                   offsetFromSymbolStart = "835">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__41-[HomePageViewController loadCompanyInfo]_block_invoke55"
@@ -217,6 +217,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
+            landmarkName = "-loadCompanyInfo"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
+            timestampString = "443966187.388033"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-loadCompanyInfo"
             landmarkType = "5">
          </BreakpointContent>

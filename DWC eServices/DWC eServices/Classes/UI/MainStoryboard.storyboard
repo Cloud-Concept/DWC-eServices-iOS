@@ -77,13 +77,19 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfT-Fe-NvK">
+                                        <rect key="frame" x="212" y="19" width="143" height="12"/>
+                                        <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="10"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="License Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41J-4h-ILx">
                                         <rect key="frame" x="134" y="39" width="70" height="12"/>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBF-K4-XRE">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBF-K4-XRE">
                                         <rect key="frame" x="212" y="39" width="143" height="12"/>
                                         <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -95,14 +101,8 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Expiry Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfL-va-PNC">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfL-va-PNC">
                                         <rect key="frame" x="212" y="59" width="143" height="12"/>
-                                        <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="10"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfT-Fe-NvK">
-                                        <rect key="frame" x="212" y="19" width="143" height="12"/>
                                         <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -226,7 +226,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="21,358 AED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOK-5m-Ue0">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0 AED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOK-5m-Ue0">
                                                 <rect key="frame" x="8" y="30" width="162" height="26"/>
                                                 <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="23"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -378,8 +378,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="companyLogoImageView" destination="ODz-Hc-XjO" id="2nw-hB-SyC"/>
+                        <outlet property="companyNameValueLabel" destination="ZfT-Fe-NvK" id="rJh-Aa-fTV"/>
+                        <outlet property="currentBalanceValueLabel" destination="nOK-5m-Ue0" id="xg0-7m-hFc"/>
                         <outlet property="dashboardButton" destination="aC8-JR-V0W" id="F04-cK-1jk"/>
                         <outlet property="employeesButton" destination="fp8-oh-eg1" id="KqL-9h-cbB"/>
+                        <outlet property="licenseExpiryDateValueLabel" destination="wfL-va-PNC" id="GgF-Ku-rqr"/>
+                        <outlet property="licenseNumberValueLabel" destination="kBF-K4-XRE" id="WOM-O1-tyi"/>
                         <outlet property="logoutButton" destination="3ss-iX-Fna" id="AaB-OK-1jK"/>
                         <outlet property="myRequestButton" destination="5R1-9G-NpB" id="EK1-fB-HX9"/>
                         <outlet property="needHelpButton" destination="gWd-jd-qrP" id="ASU-VM-iVI"/>

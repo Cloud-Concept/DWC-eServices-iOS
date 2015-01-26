@@ -21,5 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *servicesButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *companyLogoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *companyNameValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *licenseNumberValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *licenseExpiryDateValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentBalanceValueLabel;
 
 @end
