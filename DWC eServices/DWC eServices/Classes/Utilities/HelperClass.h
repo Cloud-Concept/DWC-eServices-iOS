@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface HelperClass : NSObject
++ (NSDate*)dateTimeFromString:(NSString*)dateStringValue;
++ (NSString*)stringCheckNull:(NSString*)stringValue;
++ (NSNumber*)numberCheckNull:(NSNumber*)numberValue;
 + (void)setupButtonWithTextUnderImage:(UIButton*)button;
 + (void)setupButtonWithTextLeftToImage:(UIButton*)button;
 + (void)setupButtonWithBadgeOnImage:(UIButton*)button Value:(NSInteger)value;

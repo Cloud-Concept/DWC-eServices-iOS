@@ -11,6 +11,37 @@
 
 @implementation HelperClass
 
++ (NSDate*)dateTimeFromString:(NSString*)dateStringValue {
+    dateStringValue = [HelperClass stringCheckNull:dateStringValue];
+    
+    if ([dateStringValue isEqualToString:@""]) {
+        return [NSDate date];
+    }
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    dateStringValue = [dateStringValue stringByReplacingOccurrencesOfString:@"T" withString:@" "];
+    dateStringValue = [dateStringValue substringToIndex:[dateStringValue rangeOfString:@"."].location];
+    
+    return [format dateFromString:dateStringValue];
+}
+
++ (NSString*)stringCheckNull:(NSString*)stringValue {
+    if(![stringValue isKindOfClass:[NSNull class]])
+        return stringValue;
+    else
+        return @"";
+}
+
++ (NSNumber*)numberCheckNull:(NSNumber*)numberValue {
+    if(![numberValue isKindOfClass:[NSNull class]])
+        return numberValue;
+    else
+        return 0;
+}
+
 + (void)setupButtonWithTextLeftToImage:(UIButton*)button {
     button.titleEdgeInsets = UIEdgeInsetsMake(0, -button.imageView.frame.size.width, 0, button.imageView.frame.size.width);
     button.imageEdgeInsets = UIEdgeInsetsMake(0, button.titleLabel.frame.size.width, 0, -button.titleLabel.frame.size.width - 10);

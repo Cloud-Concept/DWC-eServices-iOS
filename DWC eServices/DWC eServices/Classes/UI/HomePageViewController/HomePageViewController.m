@@ -8,6 +8,10 @@
 
 #import "HomePageViewController.h"
 #import "HelperClass.h"
+#import "SFRestAPI+Blocks.h"
+#import "SFUserAccountManager.h"
+#import "Globals.h"
+#import "Account.h"
 
 @interface HomePageViewController ()
 
@@ -31,13 +35,60 @@
     [HelperClass setupButtonWithTextUnderImage:self.reportsButton];
     [HelperClass setupButtonWithTextUnderImage:self.servicesButton];
     
-    [HelperClass setupButtonWithBadgeOnImage:self.notificationButton Value:40];
+    [HelperClass setupButtonWithBadgeOnImage:self.notificationButton Value:0];
     
+    [self loadCompanyInfo];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadCompanyInfo {
+    
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            
+            [alert show];
+        });
+        
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        
+        
+        NSDictionary *accountDict = [[dict objectForKey:@"Contact"] objectForKey:@"Account"];
+        Account *account = [[Account alloc] initAccount:[accountDict objectForKey:@"Id" ]
+                                                   Name:[accountDict objectForKey:@"Name" ]
+                                         AccountBalance:[accountDict objectForKey:@"Account_Balance__c" ]
+                                            BillingCity:[accountDict objectForKey:@"BillingCity" ]
+                                     BillingCountryCode:[accountDict objectForKey:@"BillingCountryCode" ]
+                                   LicenseNumberFormula:[accountDict objectForKey:@"License_Number_Formula__c" ]
+                               LicenseExpiryDateFormula:[accountDict objectForKey:@"License_Expiry_Date_Formula__c" ]];
+        
+        [Globals setCurrentAccount:account];
+        
+        [Globals setContactId:[dict objectForKey:@"ContactId"]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+        });
+        
+    };
+    
+    
+    SFUserAccountManager *accountManager = [SFUserAccountManager sharedInstance];
+    
+    
+    NSArray *fields = @[@"ContactId, Contact.Name", @"Contact.Account.Id", @"Contact.Account.Account_Balance__c", @"Contact.Account.Name", @"Contact.Account.License_Number_Formula__c", @"Contact.Account.BillingCity", @"Contact.Account.BillingCountryCode", @"Contact.Account.License_Expiry_Date_Formula__c"];
+    
+    [[SFRestAPI sharedInstance] performRetrieveWithObjectType:@"User"
+                                                     objectId:accountManager.currentUser.credentials.userId
+                                                    fieldList:fields
+                                                    failBlock:errorBlock
+                                                completeBlock:successBlock];
 }
 
 /*
