@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BACC1A6F83A4004E6325 /* InitialViewController.m */; };
 		1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1307BACD1A6F83A4004E6325 /* InitialViewController.xib */; };
-		1307BAD41A6F83A4004E6325 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BAD01A6F83A4004E6325 /* RootViewController.m */; };
 		1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */; };
 		1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BAD81A6F8FEE004E6325 /* HomePageViewController.m */; };
 		1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADC1A6F938B004E6325 /* Californian-Bold.ttf */; };
@@ -69,8 +68,6 @@
 		1307BACB1A6F83A4004E6325 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
 		1307BACC1A6F83A4004E6325 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
 		1307BACD1A6F83A4004E6325 /* InitialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
-		1307BACF1A6F83A4004E6325 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		1307BAD01A6F83A4004E6325 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1307BAD71A6F8FEE004E6325 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		1307BAD81A6F8FEE004E6325 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
@@ -295,7 +292,6 @@
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				1307BAC91A6F83A4004E6325 /* HomePageViewController */,
 				1307BACA1A6F83A4004E6325 /* InitialViewController */,
-				1307BACE1A6F83A4004E6325 /* RootViewController */,
 				13E255A31A711A49001BEC19 /* UIView+MGBadgeView */,
 				1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */,
 			);
@@ -319,15 +315,6 @@
 				1307BACD1A6F83A4004E6325 /* InitialViewController.xib */,
 			);
 			path = InitialViewController;
-			sourceTree = "<group>";
-		};
-		1307BACE1A6F83A4004E6325 /* RootViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1307BACF1A6F83A4004E6325 /* RootViewController.h */,
-				1307BAD01A6F83A4004E6325 /* RootViewController.m */,
-			);
-			path = RootViewController;
 			sourceTree = "<group>";
 		};
 		1307BAD11A6F83A4004E6325 /* Utilities */ = {
@@ -904,7 +891,6 @@
 				13081AFA1A76559D00B33509 /* EServiceAdministration.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,
-				1307BAD41A6F83A4004E6325 /* RootViewController.m in Sources */,
 				13081AF91A76559D00B33509 /* Country.m in Sources */,
 				1307BAEC1A6FDAC3004E6325 /* HelperClass.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
