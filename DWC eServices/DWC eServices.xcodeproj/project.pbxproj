@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1302913C1A76C88D000E119C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1302913B1A76C88D000E119C /* SWRevealViewController.m */; };
 		1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BACC1A6F83A4004E6325 /* InitialViewController.m */; };
 		1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1307BACD1A6F83A4004E6325 /* InitialViewController.xib */; };
 		1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */; };
@@ -31,6 +32,8 @@
 		13081AFF1A76559D00B33509 /* WebForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 13081AF61A76559D00B33509 /* WebForm.m */; };
 		13081B041A7655BD00B33509 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13081B021A7655BD00B33509 /* DatePickerViewController.m */; };
 		13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13081B031A7655BD00B33509 /* DatePickerViewController.xib */; };
+		132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */; };
+		132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */; };
 		136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136377BE1A767C2C00282F72 /* FVCustomAlertView.m */; };
 		13E255A81A711A49001BEC19 /* UIView+MGBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E255A61A711A49001BEC19 /* UIView+MGBadgeView.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
@@ -66,6 +69,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1302913A1A76C88D000E119C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		1302913B1A76C88D000E119C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		1307BACB1A6F83A4004E6325 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
 		1307BACC1A6F83A4004E6325 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
 		1307BACD1A6F83A4004E6325 /* InitialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
@@ -104,6 +109,10 @@
 		13081B011A7655BD00B33509 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		13081B021A7655BD00B33509 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		13081B031A7655BD00B33509 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		132CCFAA1A779C1A007A40AE /* EmployeeTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeTypeViewController.h; sourceTree = "<group>"; };
+		132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeTypeViewController.m; sourceTree = "<group>"; };
+		132CCFAE1A779C6B007A40AE /* SidebarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewController.h; sourceTree = "<group>"; };
+		132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
 		1356A9501A70D78600CF217A /* Corisande-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Bold-Italic.ttf"; sourceTree = "<group>"; };
 		136377BD1A767C2C00282F72 /* FVCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVCustomAlertView.h; sourceTree = "<group>"; };
 		136377BE1A767C2C00282F72 /* FVCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVCustomAlertView.m; sourceTree = "<group>"; };
@@ -289,13 +298,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		130291391A76C88D000E119C /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1302913A1A76C88D000E119C /* SWRevealViewController.h */,
+				1302913B1A76C88D000E119C /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		1307BAC81A6F83A4004E6325 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				136377BB1A767C2C00282F72 /* FVCustomAlertView */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
+				132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */,
+				136377BB1A767C2C00282F72 /* FVCustomAlertView */,
 				1307BAC91A6F83A4004E6325 /* HomePageViewController */,
 				1307BACA1A6F83A4004E6325 /* InitialViewController */,
+				132CCFAD1A779C5F007A40AE /* SidebarTableViewController */,
+				130291391A76C88D000E119C /* SWRevealViewController */,
 				13E255A31A711A49001BEC19 /* UIView+MGBadgeView */,
 				1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */,
 			);
@@ -388,6 +409,24 @@
 				13081B031A7655BD00B33509 /* DatePickerViewController.xib */,
 			);
 			path = DatePickerViewController;
+			sourceTree = "<group>";
+		};
+		132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				132CCFAA1A779C1A007A40AE /* EmployeeTypeViewController.h */,
+				132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */,
+			);
+			path = EmployeeTypeViewController;
+			sourceTree = "<group>";
+		};
+		132CCFAD1A779C5F007A40AE /* SidebarTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				132CCFAE1A779C6B007A40AE /* SidebarTableViewController.h */,
+				132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */,
+			);
+			path = SidebarTableViewController;
 			sourceTree = "<group>";
 		};
 		136377BB1A767C2C00282F72 /* FVCustomAlertView */ = {
@@ -893,6 +932,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13081AF71A76559D00B33509 /* Account.m in Sources */,
+				1302913C1A76C88D000E119C /* SWRevealViewController.m in Sources */,
 				13081AE31A7625C400B33509 /* Globals.m in Sources */,
 				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
 				824A9DE51724E16400C9BD79 /* main.m in Sources */,
@@ -904,9 +944,11 @@
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
 				13081AFA1A76559D00B33509 /* EServiceAdministration.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
+				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,
 				13081AF91A76559D00B33509 /* Country.m in Sources */,
 				1307BAEC1A6FDAC3004E6325 /* HelperClass.m in Sources */,
+				132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
 				13081B041A7655BD00B33509 /* DatePickerViewController.m in Sources */,
 				13081AFF1A76559D00B33509 /* WebForm.m in Sources */,
