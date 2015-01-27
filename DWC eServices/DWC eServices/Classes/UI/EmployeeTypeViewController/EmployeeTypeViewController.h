@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseFrontRevealViewController.h"
 
-@interface EmployeeTypeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+typedef enum {
+    PermanentEmployee,
+    VisitVisaEmployee,
+    ContractorEmployee,
+} DWCEmployeeType;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableview;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sideMenuBarButton;
+@interface EmployeeTypeViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    NSArray *employeesTypesArray;
+}
 
 @end

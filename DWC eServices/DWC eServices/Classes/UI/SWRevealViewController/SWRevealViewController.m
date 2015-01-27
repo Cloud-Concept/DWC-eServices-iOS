@@ -544,6 +544,10 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 {
     [super touchesMoved:touches withEvent:event];
     
+    if (_beginPoint.x > 40) {
+        self.state = UIGestureRecognizerStateFailed;
+    }
+    
     if ( _dragging || self.state == UIGestureRecognizerStateFailed)
         return;
     

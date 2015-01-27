@@ -18,16 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    SWRevealViewController *revealViewController = self.revealViewController;
+    employeesTypesArray = @[@"Permanent Employee", @"Visit Visa", @"Contractors"];
+    
+    /*SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
     {
         [self.sideMenuBarButton setTarget: self.revealViewController];
         [self.sideMenuBarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    }
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    }*/
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,15 +42,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return employeesTypesArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Employee Type Cell" forIndexPath:indexPath];
     
     // Configure the cell...
+    cell.textLabel.text = [employeesTypesArray objectAtIndex:indexPath.row];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }

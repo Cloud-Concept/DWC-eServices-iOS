@@ -34,6 +34,7 @@
 		13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13081B031A7655BD00B33509 /* DatePickerViewController.xib */; };
 		132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */; };
 		132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */; };
+		132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */; };
 		136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136377BE1A767C2C00282F72 /* FVCustomAlertView.m */; };
 		13E255A81A711A49001BEC19 /* UIView+MGBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E255A61A711A49001BEC19 /* UIView+MGBadgeView.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
@@ -113,6 +114,8 @@
 		132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeTypeViewController.m; sourceTree = "<group>"; };
 		132CCFAE1A779C6B007A40AE /* SidebarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewController.h; sourceTree = "<group>"; };
 		132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
+		132CCFB21A77C529007A40AE /* BaseFrontRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFrontRevealViewController.h; sourceTree = "<group>"; };
+		132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFrontRevealViewController.m; sourceTree = "<group>"; };
 		1356A9501A70D78600CF217A /* Corisande-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Bold-Italic.ttf"; sourceTree = "<group>"; };
 		136377BD1A767C2C00282F72 /* FVCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVCustomAlertView.h; sourceTree = "<group>"; };
 		136377BE1A767C2C00282F72 /* FVCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVCustomAlertView.m; sourceTree = "<group>"; };
@@ -310,6 +313,7 @@
 		1307BAC81A6F83A4004E6325 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */,
 				136377BB1A767C2C00282F72 /* FVCustomAlertView */,
@@ -427,6 +431,15 @@
 				132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */,
 			);
 			path = SidebarTableViewController;
+			sourceTree = "<group>";
+		};
+		132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				132CCFB21A77C529007A40AE /* BaseFrontRevealViewController.h */,
+				132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */,
+			);
+			path = BaseFrontRevealViewController;
 			sourceTree = "<group>";
 		};
 		136377BB1A767C2C00282F72 /* FVCustomAlertView */ = {
@@ -951,6 +964,7 @@
 				132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
 				13081B041A7655BD00B33509 /* DatePickerViewController.m in Sources */,
+				132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */,
 				13081AFF1A76559D00B33509 /* WebForm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
