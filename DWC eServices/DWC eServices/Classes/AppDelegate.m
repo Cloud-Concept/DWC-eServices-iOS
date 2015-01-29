@@ -34,6 +34,7 @@
 static NSString * const RemoteAccessConsumerKey = @"3MVG9Iu66FKeHhINkB1l7xt7kR8czFcCTUhgoA8Ol2Ltf1eYHOU4SqQRSEitYFDUpqRWcoQ2.dBv_a1Dyu5xa";
 static NSString * const OAuthRedirectURI        = @"testsfdc:///mobilesdk/detect/oauth/done";
 
+// Update the plist SFDCOAuthLoginHost
 static NSString * const LoginHostUrl            = @"bpark-dwc.cs7.force.com/portal";
 
 @interface AppDelegate ()
@@ -64,7 +65,6 @@ static NSString * const LoginHostUrl            = @"bpark-dwc.cs7.force.com/port
         [SalesforceSDKManager sharedManager].connectedAppId = RemoteAccessConsumerKey;
         [SalesforceSDKManager sharedManager].connectedAppCallbackUri = OAuthRedirectURI;
         [SalesforceSDKManager sharedManager].authScopes = @[ @"web", @"api" ];
-        [SFUserAccountManager sharedInstance].loginHost = LoginHostUrl;
         
         __weak AppDelegate *weakSelf = self;
         [SalesforceSDKManager sharedManager].postLaunchAction = ^(SFSDKLaunchAction launchActionList) {

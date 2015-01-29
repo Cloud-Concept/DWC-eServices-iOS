@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xJr-xJ-zZY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xJr-xJ-zZY">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -488,6 +488,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="nqg-iG-M4U" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Uzc-9V-jUW"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Services Cell" id="Bah-yo-mdK">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -646,6 +649,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="14r-ba-Dog" kind="push" id="91F-Rl-TIH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -670,11 +676,85 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bottomTabBar" destination="WBt-41-E4S" id="sse-xd-p2p"/>
+                        <outlet property="tableView" destination="bzf-bo-YaO" id="Cjg-x6-48z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xjc-Rq-oSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1644.5" y="1168.5"/>
+        </scene>
+        <!--Employee List View Controller-->
+        <scene sceneID="4PU-oB-tQV">
+            <objects>
+                <viewController id="14r-ba-Dog" customClass="EmployeeListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PHN-kr-5EF"/>
+                        <viewControllerLayoutGuide type="bottom" id="tH7-nY-tvb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c1j-7L-QaJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCv-EY-Std">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="c8c-hT-T00"/>
+                                    <tabBarItem systemItem="more" id="ERf-n5-GGT"/>
+                                </items>
+                            </tabBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Uq2-Dh-PBD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="nrA-da-yQc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="v0w-un-UOc">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v0w-un-UOc" id="sju-Jf-etQ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="14r-ba-Dog" id="vvI-cK-0Wd"/>
+                                    <outlet property="delegate" destination="14r-ba-Dog" id="Fid-O5-nLi"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Uq2-Dh-PBD" firstAttribute="leading" secondItem="jCv-EY-Std" secondAttribute="leading" id="35L-Ii-LET"/>
+                            <constraint firstItem="Uq2-Dh-PBD" firstAttribute="top" secondItem="PHN-kr-5EF" secondAttribute="bottom" id="9vn-R6-Fcw"/>
+                            <constraint firstItem="Uq2-Dh-PBD" firstAttribute="trailing" secondItem="jCv-EY-Std" secondAttribute="trailing" id="QI1-PY-O1m"/>
+                            <constraint firstItem="Uq2-Dh-PBD" firstAttribute="leading" secondItem="c1j-7L-QaJ" secondAttribute="leading" id="YSR-Ch-Kt3"/>
+                            <constraint firstItem="jCv-EY-Std" firstAttribute="top" secondItem="Uq2-Dh-PBD" secondAttribute="bottom" id="Yut-iF-7sq"/>
+                            <constraint firstItem="tH7-nY-tvb" firstAttribute="top" secondItem="jCv-EY-Std" secondAttribute="bottom" id="gBN-4r-GkT"/>
+                            <constraint firstAttribute="trailing" secondItem="Uq2-Dh-PBD" secondAttribute="trailing" id="qcl-cg-rMt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cKh-7K-TW5"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bottomTabBar" destination="jCv-EY-Std" id="6Jl-pG-CN0"/>
+                        <outlet property="employeesTableView" destination="Uq2-Dh-PBD" id="yFg-gr-cH0"/>
+                        <outlet property="searchDisplayController" destination="PV9-71-4TY" id="bto-cf-c2e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gri-a3-CLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="PV9-71-4TY">
+                    <connections>
+                        <outlet property="delegate" destination="14r-ba-Dog" id="5hO-Gq-ah1"/>
+                        <outlet property="searchContentsController" destination="14r-ba-Dog" id="G9R-xN-8YS"/>
+                        <outlet property="searchResultsDataSource" destination="14r-ba-Dog" id="Wbx-MD-bue"/>
+                        <outlet property="searchResultsDelegate" destination="14r-ba-Dog" id="Ju8-ff-Hfe"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2152.5" y="1168.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KHg-LT-MaD">
@@ -712,4 +792,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Uzc-9V-jUW"/>
+    </inferredMetricsTieBreakers>
 </document>

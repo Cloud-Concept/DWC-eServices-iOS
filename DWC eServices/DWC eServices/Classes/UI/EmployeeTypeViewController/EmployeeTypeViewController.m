@@ -7,7 +7,10 @@
 //
 
 #import "EmployeeTypeViewController.h"
+#import "EmployeeListViewController.h"
 #import "SWRevealViewController.h"
+#import "DWCEmployee.h"
+#import "SOQLQueries.h"
 
 @interface EmployeeTypeViewController ()
 
@@ -18,15 +21,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    employeesTypesArray = @[@"Permanent Employee", @"Visit Visa", @"Contractors"];
+    dwcEmployeesTypesArray = [NSMutableArray new];
     
-    /*SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
-        [self.sideMenuBarButton setTarget: self.revealViewController];
-        [self.sideMenuBarButton setAction: @selector( revealToggle: )];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    }*/
+    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Permanent Employee"
+                                                           DWCEmployeeType:PermanentEmployee
+                                                                     Query:[SOQLQueries permanentEmployeesQuery]]];
+    
+    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Visit Visa"
+                                                           DWCEmployeeType:VisitVisaEmployee]];
+    
+    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Contractors"
+                                                           DWCEmployeeType:ContractorEmployee]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,18 +48,26 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return employeesTypesArray.count;
+    return dwcEmployeesTypesArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Employee Type Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [employeesTypesArray objectAtIndex:indexPath.row];
+    DWCEmployee *employeeType = [dwcEmployeesTypesArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = employeeType.Label;
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    /*EmployeeListViewController *employeeListVC = [EmployeeListViewController new];
+     employeeListVC.currentDWCEmployee = [dwcEmployeesTypesArray objectAtIndex:indexPath.row];
+     
+     [self.navigationController pushViewController:employeeListVC animated:YES];*/
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -62,14 +75,19 @@
     return 0.01f;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UIViewController *destinationVC = [segue destinationViewController];
+    if ([destinationVC isKindOfClass:[EmployeeListViewController class]]) {
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForCell:sender];
+        ((EmployeeListViewController*)destinationVC).currentDWCEmployee = [dwcEmployeesTypesArray objectAtIndex:selectedIndexPath.row];
+    }
 }
-*/
+
 
 @end

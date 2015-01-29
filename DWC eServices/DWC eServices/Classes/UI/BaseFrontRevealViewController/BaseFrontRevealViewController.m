@@ -50,6 +50,9 @@
 }
 
 - (void) initTabBar {
+    if (!self.bottomTabBar)
+        return;
+    
     self.bottomTabBar.barStyle = UIBarStyleBlack;
     
     self.bottomTabBar.backgroundColor = [UIColor colorWithRed:0.17f
