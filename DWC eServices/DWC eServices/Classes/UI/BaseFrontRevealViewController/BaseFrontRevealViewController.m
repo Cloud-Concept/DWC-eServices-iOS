@@ -18,12 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
+    self.showSlidingMenu = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self initNavigationItem];
+    if (self.showSlidingMenu)
+        [self initNavigationItem];
+    
     [self initTabBar];
 }
 

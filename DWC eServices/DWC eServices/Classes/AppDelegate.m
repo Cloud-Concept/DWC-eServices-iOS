@@ -92,6 +92,7 @@ static NSString * const LoginHostUrl            = @"bpark-dwc.cs7.force.com/port
     
     UIImage *navBackgroundImage = [UIImage imageNamed:@"Home NavBar Background"];
     [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self initializeAppViewState];

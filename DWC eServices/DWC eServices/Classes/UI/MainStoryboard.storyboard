@@ -30,6 +30,7 @@
         <mutableArray key="Corisande-Regular.ttf">
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -712,7 +713,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="v0w-un-UOc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="v0w-un-UOc">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v0w-un-UOc" id="sju-Jf-etQ">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -756,6 +757,73 @@
             </objects>
             <point key="canvasLocation" x="2152.5" y="1168.5"/>
         </scene>
+        <!--Employee Main View Controller-->
+        <scene sceneID="wMB-iG-hK0">
+            <objects>
+                <viewController storyboardIdentifier="EmployeeMainViewController" id="1fn-XC-e1P" customClass="EmployeeMainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZKX-Qh-EPp"/>
+                        <viewControllerLayoutGuide type="bottom" id="06r-kB-hdd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SpX-GG-Lr2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syL-eu-We9">
+                                <rect key="frame" x="0.0" y="137" width="375" height="481"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fIC-if-TeH">
+                                <rect key="frame" x="154" y="28" width="66" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="ArJ-Bv-bGT"/>
+                                    <constraint firstAttribute="width" constant="66" id="eWP-P6-shn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsZ-Pa-WhQ">
+                                <rect key="frame" x="8" y="111" width="359" height="18"/>
+                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o2U-qa-QPd">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="Din-IY-hgN"/>
+                                    <tabBarItem systemItem="more" id="BU9-am-2M0"/>
+                                </items>
+                            </tabBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.87058823529999996" green="0.90588235289999997" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fIC-if-TeH" firstAttribute="top" secondItem="ZKX-Qh-EPp" secondAttribute="bottom" constant="8" id="2Iu-Re-2yi"/>
+                            <constraint firstAttribute="centerX" secondItem="fIC-if-TeH" secondAttribute="centerX" id="7t8-ej-KVd"/>
+                            <constraint firstItem="WsZ-Pa-WhQ" firstAttribute="leading" secondItem="SpX-GG-Lr2" secondAttribute="leading" constant="8" id="CHd-73-IlM"/>
+                            <constraint firstAttribute="trailing" secondItem="WsZ-Pa-WhQ" secondAttribute="trailing" constant="8" id="CaQ-eE-mgA"/>
+                            <constraint firstItem="WsZ-Pa-WhQ" firstAttribute="top" secondItem="fIC-if-TeH" secondAttribute="bottom" constant="17" id="GM5-lA-Lhq"/>
+                            <constraint firstItem="06r-kB-hdd" firstAttribute="top" secondItem="o2U-qa-QPd" secondAttribute="bottom" id="KYy-s0-RLq"/>
+                            <constraint firstItem="syL-eu-We9" firstAttribute="top" secondItem="WsZ-Pa-WhQ" secondAttribute="bottom" constant="8" id="Kzg-99-gK2"/>
+                            <constraint firstItem="o2U-qa-QPd" firstAttribute="top" secondItem="syL-eu-We9" secondAttribute="bottom" id="cTf-LS-pu7"/>
+                            <constraint firstItem="o2U-qa-QPd" firstAttribute="leading" secondItem="SpX-GG-Lr2" secondAttribute="leading" id="gEb-wp-2xA"/>
+                            <constraint firstAttribute="trailing" secondItem="syL-eu-We9" secondAttribute="trailing" id="hO0-pm-33Z"/>
+                            <constraint firstAttribute="trailing" secondItem="o2U-qa-QPd" secondAttribute="trailing" id="ker-XE-Z9X"/>
+                            <constraint firstItem="syL-eu-We9" firstAttribute="leading" secondItem="SpX-GG-Lr2" secondAttribute="leading" id="lsv-BO-s5X"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="u4g-eb-Ujt"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bottomTabBar" destination="o2U-qa-QPd" id="Ego-hw-GjM"/>
+                        <outlet property="employeeNameLabel" destination="WsZ-Pa-WhQ" id="Qb9-Sn-GtE"/>
+                        <outlet property="paginationView" destination="syL-eu-We9" id="ExW-0o-oJn"/>
+                        <outlet property="profilePictureImageView" destination="fIC-if-TeH" id="btr-m7-E1f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hDK-Dl-Oiz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2681.5" y="1168.5"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="KHg-LT-MaD">
             <objects>
@@ -771,7 +839,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tak-cT-3NK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119.5" y="1168.5"/>
+            <point key="canvasLocation" x="1153.5" y="1168.5"/>
         </scene>
     </scenes>
     <resources>
@@ -793,6 +861,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Uzc-9V-jUW"/>
+        <segue reference="2kn-8S-W3V"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,6 +18,7 @@
 #import "Occupation.h"
 #import "UIImageView+SFAttachment.h"
 #import "UIView+RoundCorner.h"
+#import "EmployeeMainViewController.h"
 
 @interface EmployeeListViewController ()
 
@@ -224,6 +225,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    EmployeeMainViewController *employeeMainVC = [storybord instantiateViewControllerWithIdentifier:@"EmployeeMainViewController"];
+    Visa *currentVisa = [dataRows objectAtIndex:indexPath.row];
+    employeeMainVC.currentVisa = currentVisa;
+    [self.navigationController pushViewController:employeeMainVC animated:YES];
 }
 
 /*

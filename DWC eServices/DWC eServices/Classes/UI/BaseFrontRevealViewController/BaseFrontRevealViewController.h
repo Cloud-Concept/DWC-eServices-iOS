@@ -11,4 +11,6 @@
 @interface BaseFrontRevealViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITabBar *bottomTabBar;
+@property (nonatomic) BOOL showSlidingMenu;
+
 @end
