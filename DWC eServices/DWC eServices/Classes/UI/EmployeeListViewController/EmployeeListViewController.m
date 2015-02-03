@@ -220,6 +220,7 @@
                                                                   Duration:[recordDict objectForKey:@"Duration__c"]
                                                             CardExpiryDate:[recordDict objectForKey:@"Card_Expiry_Date__c"]
                                                              CardIssueDate:[recordDict objectForKey:@"Card_Issue_Date__c"]
+                                                            PassportNumber:[recordDict objectForKey:@"Passport_Number__c"]
                                                                 RecordType:recordType
                                                                Nationality:nationality]];
             
@@ -344,6 +345,74 @@
     recordVC.DetailsSectionsArray = sectionsArray;
 }
 
+- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForVisitVisa:(Visa*)visa {
+    recordVC.NameValue = visa.applicantFullName;
+    recordVC.PhotoId = visa.personalPhotoId;
+    NSMutableArray *sectionsArray = [NSMutableArray new];
+    
+    NSMutableArray *fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Gender"
+                                                                         FieldValue:visa.applicantGender]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Birth Date"
+                                                                         FieldValue:[HelperClass formatDateToString:visa.dateOfBirth]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Mobile"
+                                                                         FieldValue:visa.applicantMobileNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Email"
+                                                                         FieldValue:visa.applicantEmail]];
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Employee Information" Fields:fieldsArray]];
+    
+    
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Visa Number"
+                                                                         FieldValue:visa.name]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Status"
+                                                                         FieldValue:visa.validityStatus]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Expiry"
+                                                                         FieldValue:[HelperClass formatDateToString:visa.expiryDate]]];
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Visa Information" Fields:fieldsArray]];
+    
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Passport"
+                                                                         FieldValue:visa.passportNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Expriry Date"
+                                                                         FieldValue:[HelperClass formatDateToString:visa.passportExpiry]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Issue Country"
+                                                                         FieldValue:visa.passportCountry]];
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Passport Information" Fields:fieldsArray]];
+    
+    recordVC.DetailsSectionsArray = sectionsArray;
+}
+
+- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForContractor:(CardManagement*)card {
+    recordVC.NameValue = card.fullName;
+    recordVC.PhotoId = card.personalPhoto;
+    NSMutableArray *sectionsArray = [NSMutableArray new];
+    
+    NSMutableArray *fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Card Number"
+                                                                         FieldValue:card.cardNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Type"
+                                                                         FieldValue:card.cardType]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Expiry Date"
+                                                                         FieldValue:[HelperClass formatDateToString:card.cardExpiryDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Status"
+                                                                         FieldValue:card.status]];
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Card Details" Fields:fieldsArray]];
+    
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Passport Number"
+                                                                         FieldValue:card.passportNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Nationality"
+                                                                         FieldValue:card.nationality.name]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Designation"
+                                                                         FieldValue:card.designation]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Sponsor Company"
+                                                                         FieldValue:card.sponsor]];
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Person Details" Fields:fieldsArray]];
+    
+    recordVC.DetailsSectionsArray = sectionsArray;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -388,10 +457,10 @@
             [self configureRecordMainViewController:recordMainVC ForPermanentEmployee:[dataRows objectAtIndex:indexPath.row]];
             break;
         case VisitVisaEmployee:
-            
+            [self configureRecordMainViewController:recordMainVC ForVisitVisa:[dataRows objectAtIndex:indexPath.row]];
             break;
         case ContractorEmployee:
-            
+            [self configureRecordMainViewController:recordMainVC ForContractor:[dataRows objectAtIndex:indexPath.row]];
             break;
         default:
             break;

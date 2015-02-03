@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSString *fullName;
 @property (nonatomic, strong) NSString *designation;
 @property (nonatomic, strong) NSString *duration;
+@property (nonatomic, strong) NSString *passportNumber;
 
 @property (nonatomic, strong) NSDate *cardExpiryDate;
 @property (nonatomic, strong) NSDate *cardIssueDate;
@@ -31,6 +32,6 @@
 @property (nonatomic, strong) RecordType *recordType;
 @property (nonatomic, strong) Country *nationality;
 
-- (id)initCardManagement:(NSString*)Id Name:(NSString*)Name PersonalPhoto:(NSString*)PersonalPhoto CardNumber:(NSString*)CardNumber Status:(NSString*)Status Sponsor:(NSString*)Sponsor CardType:(NSString*)CardType Salutation:(NSString*)Salutation FullName:(NSString*)FullName Designation:(NSString*)Designation Duration:(NSString*)Duration CardExpiryDate:(NSString*)CardExpiryDate CardIssueDate:(NSString*)CardIssueDate RecordType:(RecordType*)RecordType Nationality:(Country*)Nationality;
+- (id)initCardManagement:(NSString*)Id Name:(NSString*)Name PersonalPhoto:(NSString*)PersonalPhoto CardNumber:(NSString*)CardNumber Status:(NSString*)Status Sponsor:(NSString*)Sponsor CardType:(NSString*)CardType Salutation:(NSString*)Salutation FullName:(NSString*)FullName Designation:(NSString*)Designation Duration:(NSString*)Duration CardExpiryDate:(NSString*)CardExpiryDate CardIssueDate:(NSString*)CardIssueDate PassportNumber:(NSString*)PassportNumber RecordType:(RecordType*)RecordType Nationality:(Country*)Nationality;
 
 @end

@@ -12,7 +12,7 @@
 
 @implementation CardManagement
 
-- (id)initCardManagement:(NSString*)Id Name:(NSString*)Name PersonalPhoto:(NSString*)PersonalPhoto CardNumber:(NSString*)CardNumber Status:(NSString*)Status Sponsor:(NSString*)Sponsor CardType:(NSString*)CardType Salutation:(NSString*)Salutation FullName:(NSString*)FullName Designation:(NSString*)Designation Duration:(NSString*)Duration CardExpiryDate:(NSString*)CardExpiryDate CardIssueDate:(NSString*)CardIssueDate RecordType:(RecordType*)RecordType Nationality:(Country*)Nationality {
+- (id)initCardManagement:(NSString*)Id Name:(NSString*)Name PersonalPhoto:(NSString*)PersonalPhoto CardNumber:(NSString*)CardNumber Status:(NSString*)Status Sponsor:(NSString*)Sponsor CardType:(NSString*)CardType Salutation:(NSString*)Salutation FullName:(NSString*)FullName Designation:(NSString*)Designation Duration:(NSString*)Duration CardExpiryDate:(NSString*)CardExpiryDate CardIssueDate:(NSString*)CardIssueDate PassportNumber:(NSString*)PassportNumber RecordType:(RecordType*)RecordType Nationality:(Country*)Nationality {
     if (!(self = [super init]))
         return nil;
     
@@ -27,8 +27,8 @@
     self.fullName = [HelperClass stringCheckNull:FullName];
     self.designation = [HelperClass stringCheckNull:Designation];
     self.duration = [HelperClass stringCheckNull:Duration];
+    self.passportNumber = [HelperClass stringCheckNull:PassportNumber];
     
-    ;
     if ([CardExpiryDate isKindOfClass:[NSNull class]])
         self.cardExpiryDate = nil;
     else
