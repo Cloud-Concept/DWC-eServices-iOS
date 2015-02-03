@@ -7,6 +7,7 @@
 //
 
 #import "Occupation.h"
+#import "HelperClass.h"
 
 @implementation Occupation
 
@@ -14,11 +15,11 @@
     if (!(self = [super init]))
         return nil;
     
-    self.Id = OccupationId;
-    self.name = OccupationName;
-    self.arabicName = ArabicName;
-    self.eDNRDName = DNRDName;
-    self.eFormCode = FormCode;
+    self.Id = [HelperClass stringCheckNull:OccupationId];
+    self.name = [HelperClass stringCheckNull:OccupationName];
+    self.arabicName = [HelperClass stringCheckNull:ArabicName];
+    self.eDNRDName = [HelperClass stringCheckNull:DNRDName];
+    self.eFormCode = [HelperClass stringCheckNull:FormCode];
     self.isActive = IsActive;
     
     return self;

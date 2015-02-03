@@ -25,13 +25,15 @@
     
     [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Permanent Employee"
                                                            DWCEmployeeType:PermanentEmployee
-                                                                     Query:[SOQLQueries permanentEmployeesQuery]]];
+                                                                     Query:[SOQLQueries visaEmployeesQuery]]];
     
     [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Visit Visa"
-                                                           DWCEmployeeType:VisitVisaEmployee]];
+                                                           DWCEmployeeType:VisitVisaEmployee
+                                                                     Query:[SOQLQueries visaEmployeesQuery]]];
     
     [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Contractors"
-                                                           DWCEmployeeType:ContractorEmployee]];
+                                                           DWCEmployeeType:ContractorEmployee
+                                                                     Query:[SOQLQueries contractorsQuery]]];
 }
 
 - (void)didReceiveMemoryWarning {

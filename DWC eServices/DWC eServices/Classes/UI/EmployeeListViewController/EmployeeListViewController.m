@@ -13,9 +13,12 @@
 #import "Account.h"
 #import "Visa.h"
 #import "EmployeeTableViewCell.h"
+#import "ContractorTableViewCell.h"
 #import "HelperClass.h"
 #import "Country.h"
 #import "Occupation.h"
+#import "RecordType.h"
+#import "CardManagement.h"
 #import "UIImageView+SFAttachment.h"
 #import "UIView+RoundCorner.h"
 #import "EmployeeMainViewController.h"
@@ -32,10 +35,8 @@
     
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
-            [self loadPermanentEmployees];
-            break;
         case VisitVisaEmployee:
-            [self loadVisitVisaEmployees];
+            [self loadVisaEmployees];
             break;
         case ContractorEmployee:
             [self loadContactorEmployees];
@@ -50,7 +51,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)loadPermanentEmployees {
+- (void)loadVisaEmployees {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
@@ -69,19 +70,22 @@
         
         for (NSDictionary *dict in records) {
             NSDictionary *visaHolderDictionary = [dict objectForKey:@"Visa_Holder__r"];
-            Account *visaHolder = [[Account alloc] initAccount:[dict objectForKey:@"Visa_Holder__c"]
-                                                          Name:[visaHolderDictionary objectForKey:@"Name"]
-                                                   BillingCity:[visaHolderDictionary objectForKey:@"BillingCity"]
-                                            BillingCountryCode:[visaHolderDictionary objectForKey:@"BillingCountryCode"]];
+            Account *visaHolder = [Account new];
+            if(![visaHolderDictionary isKindOfClass:[NSNull class]])
+                visaHolder = [[Account alloc] initAccount:[dict objectForKey:@"Visa_Holder__c"]
+                                                     Name:[visaHolderDictionary objectForKey:@"Name"]
+                                              BillingCity:[visaHolderDictionary objectForKey:@"BillingCity"]
+                                       BillingCountryCode:[visaHolderDictionary objectForKey:@"BillingCountryCode"]];
             
             NSDictionary *sponsoringCompanyDict = [dict objectForKey:@"Sponsoring_Company__r"];
-            Account *sponsoringCompany = [[Account alloc] initAccount:[dict objectForKey:@"Sponsoring_Company__c"]
-                                                                 Name:[sponsoringCompanyDict objectForKey:@"Name"]
-                                                          BillingCity:@""
-                                                   BillingCountryCode:@""];
+            Account *sponsoringCompany = [Account new];
+            if([sponsoringCompanyDict isKindOfClass:[NSNull class]])
+                sponsoringCompany = [[Account alloc] initAccount:[dict objectForKey:@"Sponsoring_Company__c"]
+                                                            Name:[sponsoringCompanyDict objectForKey:@"Name"]
+                                                     BillingCity:@""
+                                              BillingCountryCode:@""];
             
             NSDictionary *countryOfBirthDict = [dict objectForKey:@"Country_of_Birth__r"];
-            
             Country *countryOfBirth = [Country new];
             if(![countryOfBirthDict isKindOfClass:[NSNull class]])
                 countryOfBirth = [[Country alloc] initCountry:[countryOfBirthDict objectForKey:@"Id"]
@@ -95,7 +99,9 @@
                                         NationalityNameArabic:@""];
             
             NSDictionary *currentNationalityDict = [dict objectForKey:@"Current_Nationality__r"];
-            Country *currentNationality = [[Country alloc] initCountry:[currentNationalityDict objectForKey:@"Id"]
+            Country *currentNationality = [Country new];
+            if(![currentNationalityDict isKindOfClass:[NSNull class]])
+            currentNationality = [[Country alloc] initCountry:[currentNationalityDict objectForKey:@"Id"]
                                                                   Name:[currentNationalityDict objectForKey:@"Name"]
                                                      AramexCountryCode:@""
                                                      CountryNameArabic:@""
@@ -106,7 +112,9 @@
                                                  NationalityNameArabic:@""];
             
             NSDictionary *jobTitleAtImmigrationDict = [dict objectForKey:@"Job_Title_at_Immigration__r"];
-            Occupation *jobTitleAtImmigration = [[Occupation alloc] initOccupation:[jobTitleAtImmigrationDict objectForKey:@"Id"]
+            Occupation *jobTitleAtImmigration = [Occupation new];
+            if(![jobTitleAtImmigrationDict isKindOfClass:[NSNull class]])
+            jobTitleAtImmigration = [[Occupation alloc] initOccupation:[jobTitleAtImmigrationDict objectForKey:@"Id"]
                                                                     OccupationName:[jobTitleAtImmigrationDict objectForKey:@"Name"]
                                                                         ArabicName:@""
                                                                           DNRDName:@""
@@ -145,7 +153,7 @@
             [self.employeesTableView reloadData];
         });
     };
-
+    
     [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:@"Loading..." withBlur:YES];
     
     [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDWCEmployee.SOQLQuery
@@ -153,15 +161,79 @@
                                    completeBlock:successBlock];
 }
 
-- (void)loadVisitVisaEmployees {
-    
-}
-
 - (void)loadContactorEmployees {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            
+            [alert show];
+            
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+        
+    };
     
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        NSArray *records = [dict objectForKey:@"records"];
+        
+        dataRows = [NSMutableArray new];
+        
+        for (NSDictionary *recordDict in records) {
+            NSDictionary *nationalityDict = [recordDict objectForKey:@"Nationality__r"];
+            Country *nationality = [Country new];
+            if (![nationalityDict isKindOfClass:[NSNull class]]) {
+                nationality = [[Country alloc] initCountry:[nationalityDict objectForKey:@"Id"]
+                                                      Name:[nationalityDict objectForKey:@"Name"]
+                                         AramexCountryCode:@""
+                                         CountryNameArabic:@""
+                                                  DNRDName:@""
+                                                  FromCode:@""
+                                                  IsActive:YES
+                                           NationalityName:@""
+                                     NationalityNameArabic:@""];
+            }
+            
+            NSDictionary *recordTypeDict = [recordDict objectForKey:@"RecordType"];
+            RecordType *recordType = [RecordType new];
+            if (![recordTypeDict isKindOfClass:[NSNull class]]) {
+                recordType = [[RecordType alloc] initRecordType:[recordTypeDict objectForKey:@"Id"]
+                                                           Name:[recordTypeDict objectForKey:@"Name"]
+                                                  DeveloperName:[recordTypeDict objectForKey:@"DeveloperName"]
+                                                       IsActive:YES
+                                                     ObjectType:@""];
+            }
+            
+            [dataRows addObject:[[CardManagement alloc] initCardManagement:[recordDict objectForKey:@"Id"]
+                                                                      Name:[recordDict objectForKey:@"Name"]
+                                                             PersonalPhoto:[recordDict objectForKey:@"Personal_Photo__c"]
+                                                                CardNumber:[recordDict objectForKey:@"Card_Number__c"]
+                                                                    Status:[recordDict objectForKey:@"Status__c"]
+                                                                   Sponsor:[recordDict objectForKey:@"Sponsor__c"]
+                                                                  CardType:[recordDict objectForKey:@"Card_Type__c"]
+                                                                Salutation:[recordDict objectForKey:@"Salutation__c"]
+                                                                  FullName:[recordDict objectForKey:@"Full_Name__c"]
+                                                               Designation:[recordDict objectForKey:@"Designation__c"]
+                                                                  Duration:[recordDict objectForKey:@"Duration__c"]
+                                                            CardExpiryDate:[recordDict objectForKey:@"Card_Expiry_Date__c"]
+                                                             CardIssueDate:[recordDict objectForKey:@"Card_Issue_Date__c"]
+                                                                RecordType:recordType
+                                                               Nationality:nationality]];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+                [self.employeesTableView reloadData];
+            });
+        }
+    };
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:@"Loading..." withBlur:YES];
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDWCEmployee.SOQLQuery
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
 }
 
-- (UITableViewCell *)cellPermanentEmployeesForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView {
+- (UITableViewCell *)cellVisaEmployeesForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView {
     EmployeeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmployeeTableViewCell"];
     
     if(!cell) {
@@ -191,6 +263,37 @@
     return cell;
 }
 
+- (UITableViewCell *)cellContractorEmployeesForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView {
+    ContractorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContractorTableViewCell"];
+    
+    if(!cell) {
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ContractorTableViewCell" owner:self options:nil];
+        // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
+        cell = [topLevelObjects objectAtIndex:0];
+    }
+    
+    CardManagement *currentCard = [dataRows objectAtIndex:indexPath.row];
+    
+    cell.contractorNameLabel.text = currentCard.fullName;
+    cell.cardTypeValueLabel.text = currentCard.cardType;
+    
+    [cell.profilePictureImageView loadImageFromSFAttachment:currentCard.personalPhoto
+                                           placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
+    [cell.profilePictureImageView createRoundBorderedWithRadius:3.0 Shadows:NO ClipToBounds:YES];
+    
+    if (currentCard.cardExpiryDate) {
+        cell.cardExpiryLabel.hidden = NO;
+        cell.cardExpiryValueLabel.hidden = NO;
+        cell.cardExpiryValueLabel.text = [HelperClass formatDateToString:currentCard.cardExpiryDate];
+    }
+    else {
+        cell.cardExpiryValueLabel.hidden = YES;
+        cell.cardExpiryLabel.hidden = YES;
+    }
+    
+    return cell;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -208,13 +311,11 @@
     
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
-            cell = [self cellPermanentEmployeesForRowAtIndexPath:indexPath tableView:tableView];
-            break;
         case VisitVisaEmployee:
-            [self loadVisitVisaEmployees];
+            cell = [self cellVisaEmployeesForRowAtIndexPath:indexPath tableView:tableView];
             break;
         case ContractorEmployee:
-            [self loadContactorEmployees];
+            cell = [self cellContractorEmployeesForRowAtIndexPath:indexPath tableView:tableView];
             break;
         default:
             break;
@@ -236,7 +337,7 @@
     [self.navigationController pushViewController:employeeMainVC animated:YES];
 }
 
-/*
+/* 
  - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
  return 30.0f;
  }
@@ -251,7 +352,7 @@
  }
  
  - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
+ 
  }
  */
 

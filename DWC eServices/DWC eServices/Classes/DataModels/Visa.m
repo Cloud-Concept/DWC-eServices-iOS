@@ -8,6 +8,7 @@
 
 #import "Visa.h"
 #import "SFDateUtil.h"
+#import "HelperClass.h"
 
 @implementation Visa
 
@@ -34,27 +35,35 @@
 
 - (id)initVisa:(NSString*)VisaId Name:(NSString*)Name PersonalPhoto:(NSString*)PersonalPhoto Salutation:(NSString*)Salutation SalutationArabic:(NSString*)SalutationArabic ApplicantFullName:(NSString*)ApplicantFullName ApplicantFirstNameArabic:(NSString*)ApplicantFirstNameArabic ApplicantMiddleNameArabic:(NSString*)ApplicantMiddleNameArabic ApplicantLastNameArabic:(NSString*)ApplicantLastNameArabic ApplicantEmail:(NSString*)ApplicantEmail ApplicantMobileNumber:(NSString*)ApplicantMobileNumber ApplicantGender:(NSString*)ApplicantGender PassportCountry:(NSString*)PassportCountry PassportNumber:(NSString*)PassportNumber Religion:(NSString*)Religion VisaType:(NSString*)VisaType ValidityStatus:(NSString*)ValidityStatus ExpiryDate:(NSString*)ExpiryDate DateOfBirth:(NSString*)DateOfBirth SponsoringCompany:(Account*)SponsoringCompany VisaHolder:(Account*)VisaHolder CountryOfBirth:(Country*)CountryOfBirth CurrentNationality:(Country*)CurrentNationality JobTitleAtImmigration:(Occupation*)JobTitleAtImmigration {
     
+    return [self initVisa:VisaId Name:Name PersonalPhoto:PersonalPhoto Salutation:Salutation SalutationArabic:SalutationArabic ApplicantFullName:ApplicantFullName ApplicantFirstNameArabic:ApplicantFirstNameArabic ApplicantMiddleNameArabic:ApplicantMiddleNameArabic ApplicantLastNameArabic:ApplicantLastNameArabic ApplicantEmail:ApplicantEmail ApplicantMobileNumber:ApplicantMobileNumber ApplicantGender:ApplicantGender PassportCountry:PassportCountry PassportNumber:PassportNumber Religion:Religion VisaType:VisaType ValidityStatus:ValidityStatus ExpiryDate:ExpiryDate DateOfBirth:DateOfBirth AccompaniedBy:@"" VisitVisaDuration:@"" SponsoringCompany:SponsoringCompany VisaHolder:VisaHolder CountryOfBirth:CountryOfBirth CurrentNationality:CurrentNationality JobTitleAtImmigration:JobTitleAtImmigration];
+    
+}
+
+-(id)initVisa:(NSString*)VisaId Name:(NSString*)Name PersonalPhoto:(NSString*)PersonalPhoto Salutation:(NSString*)Salutation SalutationArabic:(NSString*)SalutationArabic ApplicantFullName:(NSString*)ApplicantFullName ApplicantFirstNameArabic:(NSString*)ApplicantFirstNameArabic ApplicantMiddleNameArabic:(NSString*)ApplicantMiddleNameArabic ApplicantLastNameArabic:(NSString*)ApplicantLastNameArabic ApplicantEmail:(NSString*)ApplicantEmail ApplicantMobileNumber:(NSString*)ApplicantMobileNumber ApplicantGender:(NSString*)ApplicantGender PassportCountry:(NSString*)PassportCountry PassportNumber:(NSString*)PassportNumber Religion:(NSString*)Religion VisaType:(NSString*)VisaType ValidityStatus:(NSString*)ValidityStatus ExpiryDate:(NSString*)ExpiryDate DateOfBirth:(NSString*)DateOfBirth AccompaniedBy:(NSString*)AccompaniedBy VisitVisaDuration:(NSString*)VisitVisaDuration SponsoringCompany:(Account*)SponsoringCompany VisaHolder:(Account*)VisaHolder CountryOfBirth:(Country*)CountryOfBirth CurrentNationality:(Country*)CurrentNationality JobTitleAtImmigration:(Occupation*)JobTitleAtImmigration {
+    
     if (!(self = [super init]))
         return nil;
     
-    self.Id = VisaId;
-    self.name = Name;
-    self.personalPhotoId = PersonalPhoto;
-    self.salutation = Salutation;
-    self.salutationArabic = SalutationArabic;
-    self.applicantFullName = ApplicantFullName;
-    self.applicantFirstNameArabic = ApplicantFirstNameArabic;
-    self.applicantMiddleNameArabic = ApplicantMiddleNameArabic;
-    self.applicantLastNameArabic = ApplicantLastNameArabic;
-    self.applicantEmail = ApplicantEmail;
-    self.applicantMobileNumber = ApplicantMobileNumber;
-    self.applicantGender = ApplicantGender;
-    self.passportCountry = PassportCountry;
-    self.passportNumber = PassportNumber;
-    self.religion = Religion;
-    self.visaType = VisaType;
-    self.validityStatus = ValidityStatus;
-    
+    self.Id = [HelperClass stringCheckNull:VisaId];
+    self.name = [HelperClass stringCheckNull:Name];
+    self.personalPhotoId = [HelperClass stringCheckNull:PersonalPhoto];
+    self.salutation = [HelperClass stringCheckNull:Salutation];
+    self.salutationArabic = [HelperClass stringCheckNull:SalutationArabic];
+    self.applicantFullName = [HelperClass stringCheckNull:ApplicantFullName];
+    self.applicantFirstNameArabic = [HelperClass stringCheckNull:ApplicantFirstNameArabic];
+    self.applicantMiddleNameArabic = [HelperClass stringCheckNull:ApplicantMiddleNameArabic];
+    self.applicantLastNameArabic = [HelperClass stringCheckNull:ApplicantLastNameArabic];
+    self.applicantEmail = [HelperClass stringCheckNull:ApplicantEmail];
+    self.applicantMobileNumber = [HelperClass stringCheckNull:ApplicantMobileNumber];
+    self.applicantGender = [HelperClass stringCheckNull:ApplicantGender];
+    self.passportCountry = [HelperClass stringCheckNull:PassportCountry];
+    self.passportNumber = [HelperClass stringCheckNull:PassportNumber];
+    self.religion = [HelperClass stringCheckNull:Religion];
+    self.visaType = [HelperClass stringCheckNull:VisaType];
+    self.validityStatus = [HelperClass stringCheckNull:ValidityStatus];
+    self.accompaniedBy = [HelperClass stringCheckNull:AccompaniedBy];
+    self.visitVisaDuration = [HelperClass stringCheckNull:VisitVisaDuration];
+
     if ([ExpiryDate isKindOfClass:[NSNull class]])
         self.expiryDate = [NSDate new];
     else

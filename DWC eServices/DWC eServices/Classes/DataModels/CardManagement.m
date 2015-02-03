@@ -7,25 +7,40 @@
 //
 
 #import "CardManagement.h"
+#import "HelperClass.h"
+#import "SFDateUtil.h"
 
 @implementation CardManagement
 
-- (id)initCardManagement:(NSString*)CardId CardExpiryDate:(NSString*)CardExpiryDate CardNumber:(NSString*)CardNumber CardType:(NSString*)CardType CompanyName:(NSString*)CompanyName Duration:(NSString*)Duration FullName:(NSString*)FullName Name:(NSString*)Name Nationality:(Country*)Nationality Recordtype:(RecordType*)Recordtype Status:(NSString*)Status {
-    
+- (id)initCardManagement:(NSString*)Id Name:(NSString*)Name PersonalPhoto:(NSString*)PersonalPhoto CardNumber:(NSString*)CardNumber Status:(NSString*)Status Sponsor:(NSString*)Sponsor CardType:(NSString*)CardType Salutation:(NSString*)Salutation FullName:(NSString*)FullName Designation:(NSString*)Designation Duration:(NSString*)Duration CardExpiryDate:(NSString*)CardExpiryDate CardIssueDate:(NSString*)CardIssueDate RecordType:(RecordType*)RecordType Nationality:(Country*)Nationality {
     if (!(self = [super init]))
         return nil;
     
-    self.Id = CardId;
-    self.cardExpiryDate = CardExpiryDate;
-    self.cardNumber = CardNumber;
-    self.cardType = CardType;
-    self.companyName = CompanyName;
-    self.duration = Duration;
-    self.fullName = FullName;
-    self.name = Name;
+    self.Id = [HelperClass stringCheckNull:Id];
+    self.name = [HelperClass stringCheckNull:Name];
+    self.personalPhoto = [HelperClass stringCheckNull:PersonalPhoto];
+    self.cardNumber = [HelperClass stringCheckNull:CardNumber];
+    self.status = [HelperClass stringCheckNull:Status];
+    self.sponsor = [HelperClass stringCheckNull:Sponsor];
+    self.cardType = [HelperClass stringCheckNull:CardType];
+    self.salutation = [HelperClass stringCheckNull:Salutation];
+    self.fullName = [HelperClass stringCheckNull:FullName];
+    self.designation = [HelperClass stringCheckNull:Designation];
+    self.duration = [HelperClass stringCheckNull:Duration];
+    
+    ;
+    if ([CardExpiryDate isKindOfClass:[NSNull class]])
+        self.cardExpiryDate = nil;
+    else
+        self.cardExpiryDate = [SFDateUtil SOQLDateTimeStringToDate:CardExpiryDate];
+    
+    if ([CardIssueDate isKindOfClass:[NSNull class]])
+        self.cardIssueDate = [NSDate new];
+    else
+        self.cardIssueDate = [SFDateUtil SOQLDateTimeStringToDate:CardIssueDate];
+    
+    self.recordType = RecordType;
     self.nationality = Nationality;
-    self.recordType = Recordtype;
-    self.status = Status;
     
     return self;
 }

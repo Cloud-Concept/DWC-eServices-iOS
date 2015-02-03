@@ -25,7 +25,7 @@ static const char *kAttachmentSFRequestKey = "kAttachmentSFRequestKey";
         [self.attachmentSFRequest cancel];
     
     // Manually set up request object
-    if (![attachmentId isKindOfClass:[NSNull class]]) {
+    if (![attachmentId isKindOfClass:[NSNull class]] && ![attachmentId isEqualToString:@""]) {
         self.attachmentSFRequest = [[SFRestRequest alloc] init];
         self.attachmentSFRequest.endpoint = [NSString stringWithFormat:@"/services/data/v31.0/sobjects/Attachment/%@/Body", attachmentId];
         self.attachmentSFRequest.method = SFRestMethodGET;
