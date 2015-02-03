@@ -10,7 +10,8 @@
 
 @interface SOQLQueries : NSObject
 
-+ (NSString*)visaEmployeesQuery;
++ (NSString*)visitVisaEmployeesQuery;
++ (NSString*)permanentEmployeesQuery;
 + (NSString*)contractorsQuery;
 
 @end

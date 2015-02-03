@@ -25,11 +25,11 @@
     
     [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Permanent Employee"
                                                            DWCEmployeeType:PermanentEmployee
-                                                                     Query:[SOQLQueries visaEmployeesQuery]]];
+                                                                     Query:[SOQLQueries permanentEmployeesQuery]]];
     
     [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Visit Visa"
                                                            DWCEmployeeType:VisitVisaEmployee
-                                                                     Query:[SOQLQueries visaEmployeesQuery]]];
+                                                                     Query:[SOQLQueries visitVisaEmployeesQuery]]];
     
     [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Contractors"
                                                            DWCEmployeeType:ContractorEmployee

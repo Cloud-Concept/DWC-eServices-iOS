@@ -32,14 +32,15 @@
 		13081AFF1A76559D00B33509 /* WebForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 13081AF61A76559D00B33509 /* WebForm.m */; };
 		13081B041A7655BD00B33509 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13081B021A7655BD00B33509 /* DatePickerViewController.m */; };
 		13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13081B031A7655BD00B33509 /* DatePickerViewController.xib */; };
-		130C30011A78DE0200C95600 /* ContractorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C2FFF1A78DE0200C95600 /* ContractorTableViewCell.m */; };
-		130C30021A78DE0200C95600 /* ContractorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130C30001A78DE0200C95600 /* ContractorTableViewCell.xib */; };
-		130C30061A78E09400C95600 /* EmployeeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C30041A78E09400C95600 /* EmployeeTableViewCell.m */; };
-		130C30071A78E09400C95600 /* EmployeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130C30051A78E09400C95600 /* EmployeeTableViewCell.xib */; };
+		130C30011A78DE0200C95600 /* EmployeeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C2FFF1A78DE0200C95600 /* EmployeeTableViewCell.m */; };
+		130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130C30001A78DE0200C95600 /* EmployeeTableViewCell.xib */; };
 		130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C30091A78E1FE00C95600 /* EmployeeListViewController.m */; };
 		130C300D1A78E7BF00C95600 /* DWCEmployee.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C300C1A78E7BF00C95600 /* DWCEmployee.m */; };
-		132B92CE1A7F677A00C237B0 /* EmployeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132B92CC1A7F677A00C237B0 /* EmployeeDetailViewController.m */; };
-		132B92CF1A7F677A00C237B0 /* EmployeeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132B92CD1A7F677A00C237B0 /* EmployeeDetailViewController.xib */; };
+		131CA86E1A80C93400A79B12 /* TableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA86D1A80C93400A79B12 /* TableViewSection.m */; };
+		131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA8701A80C94400A79B12 /* TableViewSectionField.m */; };
+		131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA8781A80E45200A79B12 /* RecordDetailsTableViewController.m */; };
+		131CA87E1A80F91500A79B12 /* RecordDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA87C1A80F91500A79B12 /* RecordDetailTableViewCell.m */; };
+		131CA87F1A80F91500A79B12 /* RecordDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */; };
 		132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */; };
 		132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */; };
 		132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */; };
@@ -52,7 +53,7 @@
 		139E6B6E1A7A6F2600D1D451 /* UIView+MGBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B6C1A7A6F2600D1D451 /* UIView+MGBadgeView.m */; };
 		139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */; };
 		13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */; };
-		13EE67981A7E556F00255174 /* EmployeeMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67971A7E556F00255174 /* EmployeeMainViewController.m */; };
+		13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67971A7E556F00255174 /* RecordMainViewController.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
 		4F3F413617E7CA71008B3283 /* libMKNetworkKit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F412B17E7C9CA008B3283 /* libMKNetworkKit-iOS.a */; };
 		4F3F413717E7CA84008B3283 /* libSalesforceNetworkSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413317E7C9CA008B3283 /* libSalesforceNetworkSDK.a */; };
@@ -126,19 +127,22 @@
 		13081B011A7655BD00B33509 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		13081B021A7655BD00B33509 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		13081B031A7655BD00B33509 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
-		130C2FFE1A78DE0200C95600 /* ContractorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractorTableViewCell.h; sourceTree = "<group>"; };
-		130C2FFF1A78DE0200C95600 /* ContractorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractorTableViewCell.m; sourceTree = "<group>"; };
-		130C30001A78DE0200C95600 /* ContractorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContractorTableViewCell.xib; sourceTree = "<group>"; };
-		130C30031A78E09400C95600 /* EmployeeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeTableViewCell.h; sourceTree = "<group>"; };
-		130C30041A78E09400C95600 /* EmployeeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeTableViewCell.m; sourceTree = "<group>"; };
-		130C30051A78E09400C95600 /* EmployeeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployeeTableViewCell.xib; sourceTree = "<group>"; };
+		130C2FFE1A78DE0200C95600 /* EmployeeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeTableViewCell.h; sourceTree = "<group>"; };
+		130C2FFF1A78DE0200C95600 /* EmployeeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeTableViewCell.m; sourceTree = "<group>"; };
+		130C30001A78DE0200C95600 /* EmployeeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployeeTableViewCell.xib; sourceTree = "<group>"; };
 		130C30081A78E1FE00C95600 /* EmployeeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeListViewController.h; sourceTree = "<group>"; };
 		130C30091A78E1FE00C95600 /* EmployeeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeListViewController.m; sourceTree = "<group>"; };
 		130C300B1A78E7BF00C95600 /* DWCEmployee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCEmployee.h; sourceTree = "<group>"; };
 		130C300C1A78E7BF00C95600 /* DWCEmployee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCEmployee.m; sourceTree = "<group>"; };
-		132B92CB1A7F677A00C237B0 /* EmployeeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeDetailViewController.h; sourceTree = "<group>"; };
-		132B92CC1A7F677A00C237B0 /* EmployeeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeDetailViewController.m; sourceTree = "<group>"; };
-		132B92CD1A7F677A00C237B0 /* EmployeeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployeeDetailViewController.xib; sourceTree = "<group>"; };
+		131CA86C1A80C93400A79B12 /* TableViewSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewSection.h; sourceTree = "<group>"; };
+		131CA86D1A80C93400A79B12 /* TableViewSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewSection.m; sourceTree = "<group>"; };
+		131CA86F1A80C94400A79B12 /* TableViewSectionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewSectionField.h; sourceTree = "<group>"; };
+		131CA8701A80C94400A79B12 /* TableViewSectionField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewSectionField.m; sourceTree = "<group>"; };
+		131CA8771A80E45200A79B12 /* RecordDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailsTableViewController.h; sourceTree = "<group>"; };
+		131CA8781A80E45200A79B12 /* RecordDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailsTableViewController.m; sourceTree = "<group>"; };
+		131CA87B1A80F91500A79B12 /* RecordDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailTableViewCell.h; sourceTree = "<group>"; };
+		131CA87C1A80F91500A79B12 /* RecordDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailTableViewCell.m; sourceTree = "<group>"; };
+		131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordDetailTableViewCell.xib; sourceTree = "<group>"; };
 		132CCFAA1A779C1A007A40AE /* EmployeeTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeTypeViewController.h; sourceTree = "<group>"; };
 		132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeTypeViewController.m; sourceTree = "<group>"; };
 		132CCFAE1A779C6B007A40AE /* SidebarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewController.h; sourceTree = "<group>"; };
@@ -163,8 +167,8 @@
 		139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RoundCorner.m"; sourceTree = "<group>"; };
 		13EE67921A7E50A500255174 /* RKSwipeBetweenViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKSwipeBetweenViewControllers.h; sourceTree = "<group>"; };
 		13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKSwipeBetweenViewControllers.m; sourceTree = "<group>"; };
-		13EE67961A7E556F00255174 /* EmployeeMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeMainViewController.h; sourceTree = "<group>"; };
-		13EE67971A7E556F00255174 /* EmployeeMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeMainViewController.m; sourceTree = "<group>"; };
+		13EE67961A7E556F00255174 /* RecordMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordMainViewController.h; sourceTree = "<group>"; };
+		13EE67971A7E556F00255174 /* RecordMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordMainViewController.m; sourceTree = "<group>"; };
 		4F3F412517E7C9CA008B3283 /* MKNetworkEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
 		4F3F412617E7C9CA008B3283 /* MKNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
 		4F3F412717E7C9CA008B3283 /* MKNetworkOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
@@ -360,7 +364,7 @@
 				132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				130C2FFB1A78DDE600C95600 /* EmployeeListViewController */,
-				13EE67951A7E555600255174 /* EmployeeMainViewController */,
+				13EE67951A7E555600255174 /* RecordMainViewController */,
 				132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */,
 				136377BB1A767C2C00282F72 /* FVCustomAlertView */,
 				1307BAC91A6F83A4004E6325 /* HomePageViewController */,
@@ -453,6 +457,10 @@
 				13081AF41A76559D00B33509 /* Visa.m */,
 				13081AF51A76559D00B33509 /* WebForm.h */,
 				13081AF61A76559D00B33509 /* WebForm.m */,
+				131CA86C1A80C93400A79B12 /* TableViewSection.h */,
+				131CA86D1A80C93400A79B12 /* TableViewSection.m */,
+				131CA86F1A80C94400A79B12 /* TableViewSectionField.h */,
+				131CA8701A80C94400A79B12 /* TableViewSectionField.m */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -470,8 +478,7 @@
 		130C2FFB1A78DDE600C95600 /* EmployeeListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				130C2FFC1A78DDE600C95600 /* ContractorTableViewCell */,
-				130C2FFD1A78DDE600C95600 /* EmployeeTableViewCell */,
+				130C2FFC1A78DDE600C95600 /* EmployeeTableViewCell */,
 				139E6B561A7A17A000D1D451 /* EmployeeListHeaderView */,
 				130C30081A78E1FE00C95600 /* EmployeeListViewController.h */,
 				130C30091A78E1FE00C95600 /* EmployeeListViewController.m */,
@@ -479,40 +486,41 @@
 			path = EmployeeListViewController;
 			sourceTree = "<group>";
 		};
-		130C2FFC1A78DDE600C95600 /* ContractorTableViewCell */ = {
+		130C2FFC1A78DDE600C95600 /* EmployeeTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				130C2FFE1A78DE0200C95600 /* ContractorTableViewCell.h */,
-				130C2FFF1A78DE0200C95600 /* ContractorTableViewCell.m */,
-				130C30001A78DE0200C95600 /* ContractorTableViewCell.xib */,
-			);
-			path = ContractorTableViewCell;
-			sourceTree = "<group>";
-		};
-		130C2FFD1A78DDE600C95600 /* EmployeeTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				130C30031A78E09400C95600 /* EmployeeTableViewCell.h */,
-				130C30041A78E09400C95600 /* EmployeeTableViewCell.m */,
-				130C30051A78E09400C95600 /* EmployeeTableViewCell.xib */,
+				130C2FFE1A78DE0200C95600 /* EmployeeTableViewCell.h */,
+				130C2FFF1A78DE0200C95600 /* EmployeeTableViewCell.m */,
+				130C30001A78DE0200C95600 /* EmployeeTableViewCell.xib */,
 			);
 			path = EmployeeTableViewCell;
 			sourceTree = "<group>";
 		};
-		132B92C91A7F676300C237B0 /* EmployeeDetailsViewController */ = {
+		131CA87A1A80F8FD00A79B12 /* RecordDetailTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				132B92CB1A7F677A00C237B0 /* EmployeeDetailViewController.h */,
-				132B92CC1A7F677A00C237B0 /* EmployeeDetailViewController.m */,
-				132B92CD1A7F677A00C237B0 /* EmployeeDetailViewController.xib */,
+				131CA87B1A80F91500A79B12 /* RecordDetailTableViewCell.h */,
+				131CA87C1A80F91500A79B12 /* RecordDetailTableViewCell.m */,
+				131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */,
 			);
-			path = EmployeeDetailsViewController;
+			path = RecordDetailTableViewCell;
 			sourceTree = "<group>";
 		};
-		132B92CA1A7F676300C237B0 /* EmployeeRelatedViewController */ = {
+		132B92C91A7F676300C237B0 /* RecordDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				131CA87A1A80F8FD00A79B12 /* RecordDetailTableViewCell */,
+				131CA8771A80E45200A79B12 /* RecordDetailsTableViewController.h */,
+				131CA8781A80E45200A79B12 /* RecordDetailsTableViewController.m */,
+			);
+			path = RecordDetailsViewController;
+			sourceTree = "<group>";
+		};
+		132B92CA1A7F676300C237B0 /* RecordRelatedViewController */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			name = RecordRelatedViewController;
 			path = EmployeeRelatedViewController;
 			sourceTree = "<group>";
 		};
@@ -608,15 +616,15 @@
 			path = RKSwipeBetweenViewControllers;
 			sourceTree = "<group>";
 		};
-		13EE67951A7E555600255174 /* EmployeeMainViewController */ = {
+		13EE67951A7E555600255174 /* RecordMainViewController */ = {
 			isa = PBXGroup;
 			children = (
-				132B92C91A7F676300C237B0 /* EmployeeDetailsViewController */,
-				132B92CA1A7F676300C237B0 /* EmployeeRelatedViewController */,
-				13EE67961A7E556F00255174 /* EmployeeMainViewController.h */,
-				13EE67971A7E556F00255174 /* EmployeeMainViewController.m */,
+				132B92C91A7F676300C237B0 /* RecordDetailsViewController */,
+				132B92CA1A7F676300C237B0 /* RecordRelatedViewController */,
+				13EE67961A7E556F00255174 /* RecordMainViewController.h */,
+				13EE67971A7E556F00255174 /* RecordMainViewController.m */,
 			);
-			path = EmployeeMainViewController;
+			path = RecordMainViewController;
 			sourceTree = "<group>";
 		};
 		4F3F412217E7C9CA008B3283 /* MKNetworkKit-iOS */ = {
@@ -1087,14 +1095,13 @@
 				824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */,
 				824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */,
 				1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */,
-				130C30021A78DE0200C95600 /* ContractorTableViewCell.xib in Resources */,
+				130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
 				1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */,
 				1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */,
+				131CA87F1A80F91500A79B12 /* RecordDetailTableViewCell.xib in Resources */,
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
-				132B92CF1A7F677A00C237B0 /* EmployeeDetailViewController.xib in Resources */,
 				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
-				130C30071A78E09400C95600 /* EmployeeTableViewCell.xib in Resources */,
 				13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */,
 				139E6B5B1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,
@@ -1108,14 +1115,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13EE67981A7E556F00255174 /* EmployeeMainViewController.m in Sources */,
+				13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */,
 				13081AF71A76559D00B33509 /* Account.m in Sources */,
-				130C30011A78DE0200C95600 /* ContractorTableViewCell.m in Sources */,
+				130C30011A78DE0200C95600 /* EmployeeTableViewCell.m in Sources */,
 				1302913C1A76C88D000E119C /* SWRevealViewController.m in Sources */,
 				130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */,
 				13081AE31A7625C400B33509 /* Globals.m in Sources */,
 				139E6B591A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m in Sources */,
 				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
+				131CA86E1A80C93400A79B12 /* TableViewSection.m in Sources */,
+				131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */,
+				131CA87E1A80F91500A79B12 /* RecordDetailTableViewCell.m in Sources */,
 				824A9DE51724E16400C9BD79 /* main.m in Sources */,
 				136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */,
 				139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */,
@@ -1125,7 +1135,7 @@
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
 				13081AFA1A76559D00B33509 /* EServiceAdministration.m in Sources */,
-				130C30061A78E09400C95600 /* EmployeeTableViewCell.m in Sources */,
+				131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,
@@ -1141,7 +1151,6 @@
 				139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */,
 				132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */,
 				13081AFF1A76559D00B33509 /* WebForm.m in Sources */,
-				132B92CE1A7F677A00C237B0 /* EmployeeDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

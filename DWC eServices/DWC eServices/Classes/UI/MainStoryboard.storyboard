@@ -704,7 +704,7 @@
                                     <tabBarItem systemItem="more" id="ERf-n5-GGT"/>
                                 </items>
                             </tabBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Uq2-Dh-PBD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Uq2-Dh-PBD">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="nrA-da-yQc">
@@ -757,10 +757,10 @@
             </objects>
             <point key="canvasLocation" x="2152.5" y="1168.5"/>
         </scene>
-        <!--Employee Main View Controller-->
+        <!--Record Main View Controller-->
         <scene sceneID="wMB-iG-hK0">
             <objects>
-                <viewController storyboardIdentifier="EmployeeMainViewController" id="1fn-XC-e1P" customClass="EmployeeMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmployeeMainViewController" id="1fn-XC-e1P" customClass="RecordMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZKX-Qh-EPp"/>
                         <viewControllerLayoutGuide type="bottom" id="06r-kB-hdd"/>

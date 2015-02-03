@@ -1,14 +1,14 @@
 //
-//  ContractorTableViewCell.m
+//  RecordDetailTableViewCell.m
 //  DWC eServices
 //
-//  Created by Mina Zaklama on 1/28/15.
+//  Created by Mina Zaklama on 2/3/15.
 //  Copyright (c) 2015 Cloud Concept. All rights reserved.
 //
 
-#import "EmployeeTableViewCell.h"
+#import "RecordDetailTableViewCell.h"
 
-@implementation EmployeeTableViewCell
+@implementation RecordDetailTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

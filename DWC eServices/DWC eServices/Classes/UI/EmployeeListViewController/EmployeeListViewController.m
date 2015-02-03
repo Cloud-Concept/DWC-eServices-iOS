@@ -13,7 +13,7 @@
 #import "Account.h"
 #import "Visa.h"
 #import "EmployeeTableViewCell.h"
-#import "ContractorTableViewCell.h"
+#import "EmployeeTableViewCell.h"
 #import "HelperClass.h"
 #import "Country.h"
 #import "Occupation.h"
@@ -21,7 +21,9 @@
 #import "CardManagement.h"
 #import "UIImageView+SFAttachment.h"
 #import "UIView+RoundCorner.h"
-#import "EmployeeMainViewController.h"
+#import "RecordMainViewController.h"
+#import "TableViewSection.h"
+#import "TableViewSectionField.h"
 
 @interface EmployeeListViewController ()
 
@@ -123,6 +125,7 @@
             
             [dataRows addObject:[[Visa alloc] initVisa:[dict objectForKey:@"Id"]
                                                   Name:[dict objectForKey:@"Name"]
+                                            EmployeeId:[dict objectForKey:@"Employee_ID__c"]
                                          PersonalPhoto:[dict objectForKey:@"Personal_Photo__c"]
                                             Salutation:[dict objectForKey:@"Salutation__c"]
                                       SalutationArabic:[dict objectForKey:@"Salutation_Arabic__c"]
@@ -135,6 +138,7 @@
                                        ApplicantGender:[dict objectForKey:@"Applicant_Gender__c"]
                                        PassportCountry:[dict objectForKey:@"Passport_Country__c"]
                                         PassportNumber:[dict objectForKey:@"Passport_Number__c"]
+                                        PassportExpiry:[dict objectForKey:@"Passport_Expiry__c"]
                                               Religion:[dict objectForKey:@"Religion__c"]
                                               VisaType:[dict objectForKey:@"Visa_Type__c"]
                                         ValidityStatus:[dict objectForKey:@"Visa_Validity_Status__c"]
@@ -245,53 +249,99 @@
     Visa *currentVisa = [dataRows objectAtIndex:indexPath.row];
     
     cell.employeeNameLabel.text = currentVisa.applicantFullName;
-    cell.visaStatusValueLabel.text = currentVisa.validityStatus;
+    
+    cell.rowOneLabel.text = @"Status";
+    cell.rowOneValueLabel.text = currentVisa.validityStatus;
     
     [cell.profilePictureImageView loadImageFromSFAttachment:currentVisa.personalPhotoId
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
     [cell.profilePictureImageView createRoundBorderedWithRadius:3.0 Shadows:NO ClipToBounds:YES];
     
     if ([currentVisa.validityStatus isEqualToString:@"Issued"] || [currentVisa.validityStatus isEqualToString:@"Expired"]) {
-        cell.visaExpiryValueLabel.text = [HelperClass formatDateToString:currentVisa.expiryDate];
-        cell.visaExpiryValueLabel.hidden = NO;
-        cell.visaExpiryLabel.hidden = NO;
+        cell.rowTwoValueLabel.text = [HelperClass formatDateToString:currentVisa.expiryDate];
+        cell.rowTwoValueLabel.hidden = NO;
+        cell.rowTwoLabel.text = @"Expiry";
+        cell.rowTwoLabel.hidden = NO;
     }
     else {
-        cell.visaExpiryValueLabel.hidden = YES;
-        cell.visaExpiryLabel.hidden = YES;
+        cell.rowTwoLabel.hidden = YES;
+        cell.rowTwoValueLabel.hidden = YES;
     }
+    
     return cell;
 }
 
 - (UITableViewCell *)cellContractorEmployeesForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView {
-    ContractorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContractorTableViewCell"];
+    EmployeeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmployeeTableViewCell"];
     
     if(!cell) {
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"ContractorTableViewCell" owner:self options:nil];
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EmployeeTableViewCell" owner:self options:nil];
         // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
         cell = [topLevelObjects objectAtIndex:0];
     }
     
     CardManagement *currentCard = [dataRows objectAtIndex:indexPath.row];
     
-    cell.contractorNameLabel.text = currentCard.fullName;
-    cell.cardTypeValueLabel.text = currentCard.cardType;
+    cell.employeeNameLabel.text = currentCard.fullName;
+    cell.rowOneLabel.text = @"Type";
+    cell.rowOneValueLabel.text = currentCard.cardType;
     
     [cell.profilePictureImageView loadImageFromSFAttachment:currentCard.personalPhoto
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
     [cell.profilePictureImageView createRoundBorderedWithRadius:3.0 Shadows:NO ClipToBounds:YES];
     
     if (currentCard.cardExpiryDate) {
-        cell.cardExpiryLabel.hidden = NO;
-        cell.cardExpiryValueLabel.hidden = NO;
-        cell.cardExpiryValueLabel.text = [HelperClass formatDateToString:currentCard.cardExpiryDate];
+        cell.rowTwoLabel.hidden = NO;
+        cell.rowTwoLabel.text = @"Expiry";
+        cell.rowTwoValueLabel.hidden = NO;
+        cell.rowTwoValueLabel.text = [HelperClass formatDateToString:currentCard.cardExpiryDate];
     }
     else {
-        cell.cardExpiryValueLabel.hidden = YES;
-        cell.cardExpiryLabel.hidden = YES;
+        cell.rowTwoLabel.hidden = YES;
+        cell.rowTwoValueLabel.hidden = YES;
     }
     
     return cell;
+}
+
+- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForPermanentEmployee:(Visa*)visa {
+    recordVC.NameValue = visa.applicantFullName;
+    recordVC.PhotoId = visa.personalPhotoId;
+    NSMutableArray *sectionsArray = [NSMutableArray new];
+    
+    NSMutableArray *fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Employee ID"
+                                                                         FieldValue:visa.employeeID]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Gender"
+                                                                         FieldValue:visa.applicantGender]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Birth Date"
+                                                                         FieldValue:[HelperClass formatDateToString:visa.dateOfBirth]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Mobile"
+                                                                         FieldValue:visa.applicantMobileNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Email"
+                                                                         FieldValue:visa.applicantEmail]];
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Employee Information" Fields:fieldsArray]];
+    
+    
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Visa Number"
+                                                                         FieldValue:visa.name]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Status"
+                                                                         FieldValue:visa.validityStatus]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Expiry"
+                                                                         FieldValue:[HelperClass formatDateToString:visa.expiryDate]]];
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Visa Information" Fields:fieldsArray]];
+    
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Passport"
+                                                                         FieldValue:visa.passportNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Expriry Date"
+                                                                         FieldValue:[HelperClass formatDateToString:visa.passportExpiry]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Issue Country"
+                                                                         FieldValue:visa.passportCountry]];
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Passport Information" Fields:fieldsArray]];
+    
+    recordVC.DetailsSectionsArray = sectionsArray;
 }
 
 #pragma mark - Table view data source
@@ -331,13 +381,26 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    EmployeeMainViewController *employeeMainVC = [storybord instantiateViewControllerWithIdentifier:@"EmployeeMainViewController"];
-    Visa *currentVisa = [dataRows objectAtIndex:indexPath.row];
-    employeeMainVC.currentVisa = currentVisa;
-    [self.navigationController pushViewController:employeeMainVC animated:YES];
+    RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"EmployeeMainViewController"];
+    
+    switch (self.currentDWCEmployee.Type) {
+        case PermanentEmployee:
+            [self configureRecordMainViewController:recordMainVC ForPermanentEmployee:[dataRows objectAtIndex:indexPath.row]];
+            break;
+        case VisitVisaEmployee:
+            
+            break;
+        case ContractorEmployee:
+            
+            break;
+        default:
+            break;
+    }
+    
+    [self.navigationController pushViewController:recordMainVC animated:YES];
 }
 
-/* 
+/*
  - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
  return 30.0f;
  }

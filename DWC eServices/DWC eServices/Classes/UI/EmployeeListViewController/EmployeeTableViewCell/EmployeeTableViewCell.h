@@ -1,5 +1,5 @@
 //
-//  EmployeeTableViewCell.h
+//  ContractorTableViewCell.h
 //  DWC eServices
 //
 //  Created by Mina Zaklama on 1/28/15.
@@ -12,9 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
 @property (weak, nonatomic) IBOutlet UILabel *employeeNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *visaStatusLabel;
-@property (weak, nonatomic) IBOutlet UILabel *visaStatusValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *visaExpiryLabel;
-@property (weak, nonatomic) IBOutlet UILabel *visaExpiryValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rowOneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rowOneValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rowTwoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rowTwoValueLabel;
 
 @end

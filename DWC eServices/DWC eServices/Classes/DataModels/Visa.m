@@ -33,19 +33,20 @@
     return self;
 }
 
-- (id)initVisa:(NSString*)VisaId Name:(NSString*)Name PersonalPhoto:(NSString*)PersonalPhoto Salutation:(NSString*)Salutation SalutationArabic:(NSString*)SalutationArabic ApplicantFullName:(NSString*)ApplicantFullName ApplicantFirstNameArabic:(NSString*)ApplicantFirstNameArabic ApplicantMiddleNameArabic:(NSString*)ApplicantMiddleNameArabic ApplicantLastNameArabic:(NSString*)ApplicantLastNameArabic ApplicantEmail:(NSString*)ApplicantEmail ApplicantMobileNumber:(NSString*)ApplicantMobileNumber ApplicantGender:(NSString*)ApplicantGender PassportCountry:(NSString*)PassportCountry PassportNumber:(NSString*)PassportNumber Religion:(NSString*)Religion VisaType:(NSString*)VisaType ValidityStatus:(NSString*)ValidityStatus ExpiryDate:(NSString*)ExpiryDate DateOfBirth:(NSString*)DateOfBirth SponsoringCompany:(Account*)SponsoringCompany VisaHolder:(Account*)VisaHolder CountryOfBirth:(Country*)CountryOfBirth CurrentNationality:(Country*)CurrentNationality JobTitleAtImmigration:(Occupation*)JobTitleAtImmigration {
+- (id)initVisa:(NSString*)VisaId Name:(NSString*)Name EmployeeId:(NSString*)EmployeeId PersonalPhoto:(NSString*)PersonalPhoto Salutation:(NSString*)Salutation SalutationArabic:(NSString*)SalutationArabic ApplicantFullName:(NSString*)ApplicantFullName ApplicantFirstNameArabic:(NSString*)ApplicantFirstNameArabic ApplicantMiddleNameArabic:(NSString*)ApplicantMiddleNameArabic ApplicantLastNameArabic:(NSString*)ApplicantLastNameArabic ApplicantEmail:(NSString*)ApplicantEmail ApplicantMobileNumber:(NSString*)ApplicantMobileNumber ApplicantGender:(NSString*)ApplicantGender PassportCountry:(NSString*)PassportCountry PassportNumber:(NSString*)PassportNumber PassportExpiry:(NSString*)PassportExpiry Religion:(NSString*)Religion VisaType:(NSString*)VisaType ValidityStatus:(NSString*)ValidityStatus ExpiryDate:(NSString*)ExpiryDate DateOfBirth:(NSString*)DateOfBirth SponsoringCompany:(Account*)SponsoringCompany VisaHolder:(Account*)VisaHolder CountryOfBirth:(Country*)CountryOfBirth CurrentNationality:(Country*)CurrentNationality JobTitleAtImmigration:(Occupation*)JobTitleAtImmigration {
     
-    return [self initVisa:VisaId Name:Name PersonalPhoto:PersonalPhoto Salutation:Salutation SalutationArabic:SalutationArabic ApplicantFullName:ApplicantFullName ApplicantFirstNameArabic:ApplicantFirstNameArabic ApplicantMiddleNameArabic:ApplicantMiddleNameArabic ApplicantLastNameArabic:ApplicantLastNameArabic ApplicantEmail:ApplicantEmail ApplicantMobileNumber:ApplicantMobileNumber ApplicantGender:ApplicantGender PassportCountry:PassportCountry PassportNumber:PassportNumber Religion:Religion VisaType:VisaType ValidityStatus:ValidityStatus ExpiryDate:ExpiryDate DateOfBirth:DateOfBirth AccompaniedBy:@"" VisitVisaDuration:@"" SponsoringCompany:SponsoringCompany VisaHolder:VisaHolder CountryOfBirth:CountryOfBirth CurrentNationality:CurrentNationality JobTitleAtImmigration:JobTitleAtImmigration];
+    return [self initVisa:VisaId Name:Name EmployeeId:EmployeeId PersonalPhoto:PersonalPhoto Salutation:Salutation SalutationArabic:SalutationArabic ApplicantFullName:ApplicantFullName ApplicantFirstNameArabic:ApplicantFirstNameArabic ApplicantMiddleNameArabic:ApplicantMiddleNameArabic ApplicantLastNameArabic:ApplicantLastNameArabic ApplicantEmail:ApplicantEmail ApplicantMobileNumber:ApplicantMobileNumber ApplicantGender:ApplicantGender PassportCountry:PassportCountry PassportNumber:PassportNumber PassportExpiry:PassportExpiry Religion:Religion VisaType:VisaType ValidityStatus:ValidityStatus ExpiryDate:ExpiryDate DateOfBirth:DateOfBirth AccompaniedBy:@"" VisitVisaDuration:@"" SponsoringCompany:SponsoringCompany VisaHolder:VisaHolder CountryOfBirth:CountryOfBirth CurrentNationality:CurrentNationality JobTitleAtImmigration:JobTitleAtImmigration];
     
 }
 
--(id)initVisa:(NSString*)VisaId Name:(NSString*)Name PersonalPhoto:(NSString*)PersonalPhoto Salutation:(NSString*)Salutation SalutationArabic:(NSString*)SalutationArabic ApplicantFullName:(NSString*)ApplicantFullName ApplicantFirstNameArabic:(NSString*)ApplicantFirstNameArabic ApplicantMiddleNameArabic:(NSString*)ApplicantMiddleNameArabic ApplicantLastNameArabic:(NSString*)ApplicantLastNameArabic ApplicantEmail:(NSString*)ApplicantEmail ApplicantMobileNumber:(NSString*)ApplicantMobileNumber ApplicantGender:(NSString*)ApplicantGender PassportCountry:(NSString*)PassportCountry PassportNumber:(NSString*)PassportNumber Religion:(NSString*)Religion VisaType:(NSString*)VisaType ValidityStatus:(NSString*)ValidityStatus ExpiryDate:(NSString*)ExpiryDate DateOfBirth:(NSString*)DateOfBirth AccompaniedBy:(NSString*)AccompaniedBy VisitVisaDuration:(NSString*)VisitVisaDuration SponsoringCompany:(Account*)SponsoringCompany VisaHolder:(Account*)VisaHolder CountryOfBirth:(Country*)CountryOfBirth CurrentNationality:(Country*)CurrentNationality JobTitleAtImmigration:(Occupation*)JobTitleAtImmigration {
+-(id)initVisa:(NSString*)VisaId Name:(NSString*)Name EmployeeId:(NSString*)EmployeeId PersonalPhoto:(NSString*)PersonalPhoto Salutation:(NSString*)Salutation SalutationArabic:(NSString*)SalutationArabic ApplicantFullName:(NSString*)ApplicantFullName ApplicantFirstNameArabic:(NSString*)ApplicantFirstNameArabic ApplicantMiddleNameArabic:(NSString*)ApplicantMiddleNameArabic ApplicantLastNameArabic:(NSString*)ApplicantLastNameArabic ApplicantEmail:(NSString*)ApplicantEmail ApplicantMobileNumber:(NSString*)ApplicantMobileNumber ApplicantGender:(NSString*)ApplicantGender PassportCountry:(NSString*)PassportCountry PassportNumber:(NSString*)PassportNumber PassportExpiry:(NSString*)PassportExpiry Religion:(NSString*)Religion VisaType:(NSString*)VisaType ValidityStatus:(NSString*)ValidityStatus ExpiryDate:(NSString*)ExpiryDate DateOfBirth:(NSString*)DateOfBirth AccompaniedBy:(NSString*)AccompaniedBy VisitVisaDuration:(NSString*)VisitVisaDuration SponsoringCompany:(Account*)SponsoringCompany VisaHolder:(Account*)VisaHolder CountryOfBirth:(Country*)CountryOfBirth CurrentNationality:(Country*)CurrentNationality JobTitleAtImmigration:(Occupation*)JobTitleAtImmigration {
     
     if (!(self = [super init]))
         return nil;
     
     self.Id = [HelperClass stringCheckNull:VisaId];
     self.name = [HelperClass stringCheckNull:Name];
+    self.employeeID = [HelperClass stringCheckNull:EmployeeId];
     self.personalPhotoId = [HelperClass stringCheckNull:PersonalPhoto];
     self.salutation = [HelperClass stringCheckNull:Salutation];
     self.salutationArabic = [HelperClass stringCheckNull:SalutationArabic];
@@ -73,6 +74,11 @@
         self.dateOfBirth = [NSDate new];
     else
         self.dateOfBirth = [SFDateUtil SOQLDateTimeStringToDate:DateOfBirth];
+    
+    if ([PassportExpiry isKindOfClass:[NSNull class]])
+        self.passportExpiry = [NSDate new];
+    else
+        self.passportExpiry = [SFDateUtil SOQLDateTimeStringToDate:PassportExpiry];
     
     self.sponsoringCompany = SponsoringCompany;
     self.visaHolder = VisaHolder;
