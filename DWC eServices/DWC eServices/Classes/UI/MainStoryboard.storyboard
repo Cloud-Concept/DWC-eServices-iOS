@@ -26,6 +26,7 @@
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
         </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
             <string>CorisandeRegular</string>
@@ -281,7 +282,7 @@
                                         <rect key="frame" x="0.0" y="168" width="86" height="90"/>
                                         <color key="backgroundColor" red="0.043137254901960784" green="0.32941176470588235" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="gWd-jd-qrP" secondAttribute="height" multiplier="43:45" id="5NY-zp-S6B"/>
+                                            <constraint firstAttribute="width" secondItem="gWd-jd-qrP" secondAttribute="height" multiplier="43:45" id="Avg-Pj-5go"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="NEED HELP" image="Home Need Help Icon">
@@ -292,9 +293,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ss-iX-Fna">
                                         <rect key="frame" x="276" y="168" width="87" height="90"/>
                                         <color key="backgroundColor" red="0.40392156862745099" green="0.44313725490196076" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="3ss-iX-Fna" secondAttribute="height" multiplier="29:30" id="hHo-r9-09W"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="LOGOUT" image="Home Logout Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -305,22 +303,10 @@
                                         <rect key="frame" x="276" y="0.0" width="87" height="162"/>
                                         <color key="backgroundColor" red="0.396078431372549" green="0.32941176470588235" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="KHN-Fe-t9Y" secondAttribute="height" multiplier="29:54" id="3Mi-UO-eak"/>
+                                            <constraint firstAttribute="width" secondItem="KHN-Fe-t9Y" secondAttribute="height" multiplier="29:54" id="GIB-JU-8pY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="REPORTS" image="Home Reports Icon">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxK-JZ-3Vl">
-                                        <rect key="frame" x="0.0" y="0.0" width="270" height="162"/>
-                                        <color key="backgroundColor" red="0.36862745098039218" green="0.47450980392156861" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="OxK-JZ-3Vl" secondAttribute="height" multiplier="5:3" id="zgB-dJ-vPI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
-                                        <state key="normal" title="SERVICES" image="Home Services Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -334,25 +320,53 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxK-JZ-3Vl">
+                                        <rect key="frame" x="0.0" y="0.0" width="132" height="162"/>
+                                        <color key="backgroundColor" red="0.36862745098039218" green="0.47450980392156861" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="OxK-JZ-3Vl" secondAttribute="height" multiplier="22:27" id="3y2-wH-VRq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
+                                        <state key="normal" title="SERVICES" image="Home Services Icon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoA-2D-G5q">
+                                        <rect key="frame" x="138" y="0.0" width="132" height="162"/>
+                                        <color key="backgroundColor" red="0.69411764705882351" green="0.34901960784313724" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="OoA-2D-G5q" secondAttribute="height" multiplier="22:27" id="VdR-QA-Mnz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
+                                        <state key="normal" title="COMPANY INFO" image="Home Company Info Icon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="leading" secondItem="ADE-zJ-RfB" secondAttribute="leading" id="0Lx-kQ-0te"/>
-                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="bottom" secondItem="gWd-jd-qrP" secondAttribute="bottom" id="0rx-Cd-kjI"/>
-                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="top" secondItem="gWd-jd-qrP" secondAttribute="top" id="0yf-1h-ZpU"/>
-                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="top" secondItem="ADE-zJ-RfB" secondAttribute="top" id="9cp-3s-pBI"/>
-                                    <constraint firstItem="WgN-E5-iGe" firstAttribute="bottom" secondItem="gWd-jd-qrP" secondAttribute="bottom" id="CwY-89-ZPa"/>
-                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="leading" secondItem="WgN-E5-iGe" secondAttribute="trailing" constant="6" id="Hcz-ne-goY"/>
-                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="top" secondItem="KHN-Fe-t9Y" secondAttribute="top" id="Jwu-oQ-mf7"/>
-                                    <constraint firstItem="WgN-E5-iGe" firstAttribute="leading" secondItem="gWd-jd-qrP" secondAttribute="trailing" constant="6" id="Kiv-J7-kdZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="KHN-Fe-t9Y" secondAttribute="trailing" id="Nhs-cx-tux"/>
-                                    <constraint firstItem="WgN-E5-iGe" firstAttribute="top" secondItem="gWd-jd-qrP" secondAttribute="top" id="Nm3-qx-r8i"/>
-                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="leading" secondItem="gWd-jd-qrP" secondAttribute="leading" id="QKi-Cj-HsU"/>
-                                    <constraint firstItem="gWd-jd-qrP" firstAttribute="top" secondItem="OxK-JZ-3Vl" secondAttribute="bottom" constant="6" id="WIj-s0-U31"/>
-                                    <constraint firstItem="KHN-Fe-t9Y" firstAttribute="leading" secondItem="OxK-JZ-3Vl" secondAttribute="trailing" constant="6" id="efe-fv-x8Y"/>
-                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="trailing" secondItem="KHN-Fe-t9Y" secondAttribute="trailing" id="gA5-SZ-8Te"/>
-                                    <constraint firstAttribute="bottom" secondItem="gWd-jd-qrP" secondAttribute="bottom" id="gi3-gP-LvS"/>
-                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="bottom" secondItem="KHN-Fe-t9Y" secondAttribute="bottom" id="qby-cm-JTW"/>
+                                    <constraint firstItem="gWd-jd-qrP" firstAttribute="bottom" secondItem="WgN-E5-iGe" secondAttribute="bottom" id="0e3-c1-N68"/>
+                                    <constraint firstItem="KHN-Fe-t9Y" firstAttribute="leading" secondItem="OoA-2D-G5q" secondAttribute="trailing" constant="6" id="3vU-ap-saP"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="leading" secondItem="gWd-jd-qrP" secondAttribute="leading" id="7gD-kc-KnU"/>
+                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="bottom" secondItem="WgN-E5-iGe" secondAttribute="bottom" id="AU6-0l-Ya7"/>
+                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="leading" secondItem="KHN-Fe-t9Y" secondAttribute="leading" id="AZS-20-T92"/>
+                                    <constraint firstItem="KHN-Fe-t9Y" firstAttribute="top" secondItem="OoA-2D-G5q" secondAttribute="top" id="Awm-N9-yF2"/>
+                                    <constraint firstItem="WgN-E5-iGe" firstAttribute="leading" secondItem="gWd-jd-qrP" secondAttribute="trailing" constant="6" id="CPq-BB-LsU"/>
+                                    <constraint firstItem="OoA-2D-G5q" firstAttribute="trailing" secondItem="WgN-E5-iGe" secondAttribute="trailing" id="D3R-a2-Hln"/>
+                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="trailing" secondItem="KHN-Fe-t9Y" secondAttribute="trailing" id="Fxi-CD-Esy"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="top" secondItem="ADE-zJ-RfB" secondAttribute="top" id="Jzc-oB-OhC"/>
+                                    <constraint firstAttribute="trailing" secondItem="KHN-Fe-t9Y" secondAttribute="trailing" id="MJv-vr-76W"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="bottom" secondItem="OoA-2D-G5q" secondAttribute="bottom" id="Ri8-LG-pZo"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="top" secondItem="OoA-2D-G5q" secondAttribute="top" id="TtY-cO-Fgj"/>
+                                    <constraint firstItem="OoA-2D-G5q" firstAttribute="leading" secondItem="OxK-JZ-3Vl" secondAttribute="trailing" constant="6" id="ZP2-B1-11b"/>
+                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="top" secondItem="WgN-E5-iGe" secondAttribute="top" id="cXa-Xy-lZ8"/>
+                                    <constraint firstItem="gWd-jd-qrP" firstAttribute="top" secondItem="WgN-E5-iGe" secondAttribute="top" id="dfa-Qe-tYm"/>
+                                    <constraint firstItem="gWd-jd-qrP" firstAttribute="top" secondItem="OxK-JZ-3Vl" secondAttribute="bottom" constant="6" id="efx-uc-COV"/>
+                                    <constraint firstItem="KHN-Fe-t9Y" firstAttribute="bottom" secondItem="OoA-2D-G5q" secondAttribute="bottom" id="feR-jx-fC2"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="leading" secondItem="ADE-zJ-RfB" secondAttribute="leading" id="gBa-gK-wNW"/>
+                                    <constraint firstAttribute="bottom" secondItem="gWd-jd-qrP" secondAttribute="bottom" id="lJM-7Z-NdW"/>
                                     <constraint firstAttribute="width" secondItem="ADE-zJ-RfB" secondAttribute="height" multiplier="121:86" id="w4M-Z6-1rO"/>
                                 </constraints>
                             </view>
@@ -383,6 +397,7 @@
                     <navigationItem key="navigationItem" id="298-E8-10y"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="companyInfoButton" destination="OoA-2D-G5q" id="OSj-3a-tXY"/>
                         <outlet property="companyLogoImageView" destination="ODz-Hc-XjO" id="2nw-hB-SyC"/>
                         <outlet property="companyNameValueLabel" destination="ZfT-Fe-NvK" id="rJh-Aa-fTV"/>
                         <outlet property="currentBalanceValueLabel" destination="nOK-5m-Ue0" id="xg0-7m-hFc"/>
@@ -760,7 +775,7 @@
         <!--Record Main View Controller-->
         <scene sceneID="wMB-iG-hK0">
             <objects>
-                <viewController storyboardIdentifier="EmployeeMainViewController" id="1fn-XC-e1P" customClass="RecordMainViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordMainViewController" id="1fn-XC-e1P" customClass="RecordMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZKX-Qh-EPp"/>
                         <viewControllerLayoutGuide type="bottom" id="06r-kB-hdd"/>

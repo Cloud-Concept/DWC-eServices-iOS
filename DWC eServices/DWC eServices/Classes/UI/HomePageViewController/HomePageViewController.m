@@ -35,6 +35,7 @@
     [HelperClass setupButtonWithTextUnderImage:self.logoutButton];
     [HelperClass setupButtonWithTextUnderImage:self.reportsButton];
     [HelperClass setupButtonWithTextUnderImage:self.servicesButton];
+    [HelperClass setupButtonWithTextUnderImage:self.companyInfoButton];
     
     [HelperClass setupButtonWithBadgeOnImage:self.notificationButton Value:0];
     

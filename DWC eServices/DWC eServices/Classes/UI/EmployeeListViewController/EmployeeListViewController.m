@@ -450,7 +450,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"EmployeeMainViewController"];
+    RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
