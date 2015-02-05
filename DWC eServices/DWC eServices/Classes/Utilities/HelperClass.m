@@ -47,6 +47,20 @@
     button.imageEdgeInsets = UIEdgeInsetsMake(0, button.titleLabel.frame.size.width, 0, -button.titleLabel.frame.size.width - 10);
 }
 
++ (void)setupButtonWithImageAlignedToLeft:(UIButton*)button {
+    [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    
+    CGFloat imageLeft = 15;
+    CGFloat imageRight = imageLeft + button.imageView.frame.size.width;
+    
+    button.imageEdgeInsets = UIEdgeInsetsMake(0, imageLeft, 0, imageRight);
+    
+    CGFloat titleLeft = imageRight + 25;
+    CGFloat titleRight = titleLeft + button.titleLabel.frame.size.width;
+    
+    button.titleEdgeInsets = UIEdgeInsetsMake(0, titleLeft, 0, titleRight);
+}
+
 + (void)setupButtonWithTextUnderImage:(UIButton*)button {
     // the space between the image and text
     CGFloat spacing = 6.0;
@@ -54,14 +68,12 @@
     // lower the text and push it left so it appears centered
     //  below the image
     CGSize imageSize = button.imageView.image.size;
-    button.titleEdgeInsets = UIEdgeInsetsMake(
-                                              0.0, - imageSize.width, - (imageSize.height + spacing), 0.0);
+    button.titleEdgeInsets = UIEdgeInsetsMake(0.0, - imageSize.width, - (imageSize.height + spacing), 0.0);
     
     // raise the image and push it right so it appears centered
     //  above the text
     CGSize titleSize = [button.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
-    button.imageEdgeInsets = UIEdgeInsetsMake(
-                                              - (titleSize.height + spacing), 0.0, 0.0, - titleSize.width);
+    button.imageEdgeInsets = UIEdgeInsetsMake(- (titleSize.height + spacing), 0.0, 0.0, - titleSize.width);
 }
 
 + (void)setupButtonWithBadgeOnImage:(UIButton*)button Value:(NSInteger)value {

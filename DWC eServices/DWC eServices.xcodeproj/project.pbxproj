@@ -44,6 +44,9 @@
 		132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */; };
 		132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */; };
 		132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */; };
+		13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13481AE41A82257100093331 /* RecordRelatedViewController.m */; };
+		13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13481AE51A82257100093331 /* RecordRelatedViewController.xib */; };
+		13481AF01A823A5B00093331 /* RelatedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 13481AEF1A823A5B00093331 /* RelatedService.m */; };
 		136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136377BE1A767C2C00282F72 /* FVCustomAlertView.m */; };
 		139E6B591A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B581A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m */; };
 		139E6B5B1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139E6B5A1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib */; };
@@ -149,6 +152,11 @@
 		132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
 		132CCFB21A77C529007A40AE /* BaseFrontRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFrontRevealViewController.h; sourceTree = "<group>"; };
 		132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFrontRevealViewController.m; sourceTree = "<group>"; };
+		13481AE31A82257100093331 /* RecordRelatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordRelatedViewController.h; path = "DWC eServices/Classes/UI/RecordMainViewController/RecordRelatedViewController/RecordRelatedViewController.h"; sourceTree = SOURCE_ROOT; };
+		13481AE41A82257100093331 /* RecordRelatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordRelatedViewController.m; path = "DWC eServices/Classes/UI/RecordMainViewController/RecordRelatedViewController/RecordRelatedViewController.m"; sourceTree = SOURCE_ROOT; };
+		13481AE51A82257100093331 /* RecordRelatedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordRelatedViewController.xib; path = "DWC eServices/Classes/UI/RecordMainViewController/RecordRelatedViewController/RecordRelatedViewController.xib"; sourceTree = SOURCE_ROOT; };
+		13481AEE1A823A5B00093331 /* RelatedService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelatedService.h; sourceTree = "<group>"; };
+		13481AEF1A823A5B00093331 /* RelatedService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelatedService.m; sourceTree = "<group>"; };
 		1356A9501A70D78600CF217A /* Corisande-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Bold-Italic.ttf"; sourceTree = "<group>"; };
 		136377BD1A767C2C00282F72 /* FVCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVCustomAlertView.h; sourceTree = "<group>"; };
 		136377BE1A767C2C00282F72 /* FVCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVCustomAlertView.m; sourceTree = "<group>"; };
@@ -461,6 +469,8 @@
 				131CA86D1A80C93400A79B12 /* TableViewSection.m */,
 				131CA86F1A80C94400A79B12 /* TableViewSectionField.h */,
 				131CA8701A80C94400A79B12 /* TableViewSectionField.m */,
+				13481AEE1A823A5B00093331 /* RelatedService.h */,
+				13481AEF1A823A5B00093331 /* RelatedService.m */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -519,9 +529,11 @@
 		132B92CA1A7F676300C237B0 /* RecordRelatedViewController */ = {
 			isa = PBXGroup;
 			children = (
+				13481AE31A82257100093331 /* RecordRelatedViewController.h */,
+				13481AE41A82257100093331 /* RecordRelatedViewController.m */,
+				13481AE51A82257100093331 /* RecordRelatedViewController.xib */,
 			);
-			name = RecordRelatedViewController;
-			path = EmployeeRelatedViewController;
+			path = RecordRelatedViewController;
 			sourceTree = "<group>";
 		};
 		132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */ = {
@@ -1093,6 +1105,7 @@
 				1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */,
 				1307BAE51A6F938B004E6325 /* Corisande-Light.ttf in Resources */,
 				824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */,
+				13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */,
 				824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */,
 				1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */,
 				130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */,
@@ -1129,12 +1142,14 @@
 				824A9DE51724E16400C9BD79 /* main.m in Sources */,
 				136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */,
 				139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */,
+				13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */,
 				13081AFE1A76559D00B33509 /* Visa.m in Sources */,
 				139E6B611A7A432500D1D451 /* SOQLQueries.m in Sources */,
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
 				13081AFA1A76559D00B33509 /* EServiceAdministration.m in Sources */,
+				13481AF01A823A5B00093331 /* RelatedService.m in Sources */,
 				131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,

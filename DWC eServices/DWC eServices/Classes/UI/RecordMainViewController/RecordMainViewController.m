@@ -11,6 +11,7 @@
 #import "UIView+RoundCorner.h"
 #import "UIImageView+SFAttachment.h"
 #import "RecordDetailsTableViewController.h"
+#import "RecordRelatedViewController.h"
 
 @interface RecordMainViewController ()
 
@@ -48,9 +49,9 @@
     
     RecordDetailsTableViewController *demo = [RecordDetailsTableViewController new];
     demo.SectionsArray = self.DetailsSectionsArray;
-    UIViewController *demo2 = [[UIViewController alloc]init];
+    RecordRelatedViewController *demo2 = [RecordRelatedViewController new];
     //demo.view.backgroundColor = [UIColor redColor];
-    demo2.view.backgroundColor = [UIColor whiteColor];
+    //demo2.view.backgroundColor = [UIColor whiteColor];
     [navigationController.viewControllerArray addObjectsFromArray:@[demo,demo2]];
     navigationController.buttonText = @[@"DETAILS", @"RELATED"];
     

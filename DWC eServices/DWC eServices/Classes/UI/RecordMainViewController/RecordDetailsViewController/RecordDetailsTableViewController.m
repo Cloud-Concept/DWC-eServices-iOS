@@ -21,9 +21,9 @@
     [super viewDidLoad];
     
     [self.tableView setAllowsSelection:NO];
-    [self.tableView setBackgroundColor:[UIColor colorWithRed:0.95f
-                                                       green:0.95f
-                                                        blue:0.95f
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:244.0f/255.0f
+                                                       green:246.0f/255.0f
+                                                        blue:246.0f/255.0f
                                                        alpha:1]];
 }
 
@@ -52,7 +52,7 @@
     RecordDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RecordDetailTableViewCell"];
     
     if(!cell) {
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"RecordDetailTableViewCell" owner:self options:nil];
+        NSArray *topLevelObjects =  [[NSBundle mainBundle] loadNibNamed:@"RecordDetailTableViewCell" owner:self options:nil];
         // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
         cell = [topLevelObjects objectAtIndex:0];
     }
