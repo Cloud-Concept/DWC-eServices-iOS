@@ -10,7 +10,7 @@
 
 @implementation RelatedService
 
-- (id)initRelatedService:(NSString*)ServiceName Label:(NSString*)ServiceLabel Icon:(NSString*)ServiceIconName Mask:(NSUInteger)ServiceMask {
+- (id)initRelatedService:(NSString*)ServiceName Label:(NSString*)ServiceLabel Icon:(NSString*)ServiceIconName Mask:(RelatedServiceType)ServiceMask {
     if (!(self = [super init]))
         return nil;
     

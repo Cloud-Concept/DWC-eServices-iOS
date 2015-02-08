@@ -15,6 +15,8 @@
     UIView *servicesContentView;
 }
 
+@property (nonatomic) NSUInteger RelatedServicesMask;
+
 @property (weak, nonatomic) IBOutlet UIScrollView *servicesScrollView;
 
 @end

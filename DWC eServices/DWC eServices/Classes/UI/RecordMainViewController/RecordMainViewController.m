@@ -47,12 +47,12 @@
     RKSwipeBetweenViewControllers *navigationController =
     [[RKSwipeBetweenViewControllers alloc]initWithRootViewController:pageController];
     
-    RecordDetailsTableViewController *demo = [RecordDetailsTableViewController new];
-    demo.SectionsArray = self.DetailsSectionsArray;
-    RecordRelatedViewController *demo2 = [RecordRelatedViewController new];
-    //demo.view.backgroundColor = [UIColor redColor];
-    //demo2.view.backgroundColor = [UIColor whiteColor];
-    [navigationController.viewControllerArray addObjectsFromArray:@[demo,demo2]];
+    RecordDetailsTableViewController *recordDetailsVC = [RecordDetailsTableViewController new];
+    recordDetailsVC.SectionsArray = self.DetailsSectionsArray;
+    RecordRelatedViewController *recordRelatedVC = [RecordRelatedViewController new];
+    recordRelatedVC.RelatedServicesMask = self.RelatedServicesMask;
+    
+    [navigationController.viewControllerArray addObjectsFromArray:@[recordDetailsVC, recordRelatedVC]];
     navigationController.buttonText = @[@"DETAILS", @"RELATED"];
     
     

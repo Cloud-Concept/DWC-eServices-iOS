@@ -24,6 +24,7 @@
 #import "RecordMainViewController.h"
 #import "TableViewSection.h"
 #import "TableViewSectionField.h"
+#import "RelatedService.h"
 
 @interface EmployeeListViewController ()
 
@@ -343,6 +344,17 @@
     [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Passport Information" Fields:fieldsArray]];
     
     recordVC.DetailsSectionsArray = sectionsArray;
+    
+    NSUInteger servicesMask = 0;
+    if ([visa.validityStatus isEqualToString:@"Issued"])
+        servicesMask |= RelatedServiceTypeNewNOC;
+    
+    if ([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"]) {
+        servicesMask |= RelatedServiceTypeRenewVisa;
+        servicesMask |= RelatedServiceTypeCancelVisa;
+    }
+    
+    recordVC.RelatedServicesMask = servicesMask;
 }
 
 - (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForVisitVisa:(Visa*)visa {
@@ -381,6 +393,13 @@
     [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Passport Information" Fields:fieldsArray]];
     
     recordVC.DetailsSectionsArray = sectionsArray;
+    
+    NSUInteger servicesMask = 0;
+    
+    if ([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"])
+        servicesMask |= RelatedServiceTypeCancelVisa;
+    
+    recordVC.RelatedServicesMask = servicesMask;
 }
 
 - (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForContractor:(CardManagement*)card {
@@ -411,6 +430,17 @@
     [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Person Details" Fields:fieldsArray]];
     
     recordVC.DetailsSectionsArray = sectionsArray;
+    
+    NSUInteger servicesMask = 0;
+    if ([card.status isEqualToString:@"Active"])
+        servicesMask |= RelatedServiceTypeReplaceCard;
+    
+    if ([card.status isEqualToString:@"Active"] || [card.status isEqualToString:@"Expired"]) {
+        servicesMask |= RelatedServiceTypeRenewCard;
+        servicesMask |= RelatedServiceTypeCancelCard;
+    }
+    
+    recordVC.RelatedServicesMask = servicesMask;
 }
 
 #pragma mark - Table view data source

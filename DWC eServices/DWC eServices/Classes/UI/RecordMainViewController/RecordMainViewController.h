@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString *NameValue;
 @property (strong, nonatomic) NSString *PhotoId;
 @property (strong, nonatomic) NSArray *DetailsSectionsArray;
+@property (nonatomic) NSUInteger RelatedServicesMask;
 
 @property (weak, nonatomic) IBOutlet UIView *paginationView;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;

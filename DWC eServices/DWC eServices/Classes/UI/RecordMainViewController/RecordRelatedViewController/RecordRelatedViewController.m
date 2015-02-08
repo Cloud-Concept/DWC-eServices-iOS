@@ -84,8 +84,17 @@
     [self initRelatedServicesContentView];
     
     NSMutableDictionary *viewsDictionary = [NSMutableDictionary new];
+    NSMutableArray *displayedServiesArray = [NSMutableArray new];
     
     for (RelatedService *service in relatedServicesArray) {
+        
+        if ((self.RelatedServicesMask & service.Mask) != 0) {
+            [displayedServiesArray addObject:service];
+        }
+        else {
+            continue;
+        }
+        
         UIButton *button = [UIButton new];
         [viewsDictionary setObject:button forKey:service.Name];
         
@@ -116,8 +125,8 @@
                               @"bottomMargin": @20
                               };
     
-    for (NSInteger index = 0; index < relatedServicesArray.count; index++) {
-        RelatedService *currentRelatedService = [relatedServicesArray objectAtIndex:index];
+    for (NSInteger index = 0; index < displayedServiesArray.count; index++) {
+        RelatedService *currentRelatedService = [displayedServiesArray objectAtIndex:index];
         RelatedService *previousRelatedService = nil;
         
         NSString *heightRule = [NSString stringWithFormat:@"V:[%@(buttonHeight)]", currentRelatedService.Name];
@@ -136,7 +145,7 @@
         //[self.servicesScrollView addConstraints:field_constraint_H];
         
         if(index != 0)
-            previousRelatedService = [relatedServicesArray objectAtIndex:index - 1];
+            previousRelatedService = [displayedServiesArray objectAtIndex:index - 1];
         
         NSString *horizontalRule = [NSString stringWithFormat:@"H:|-leftMargin-[%@]-rightMargin-|", currentRelatedService.Name];
         NSArray *constraint_POS_H = [NSLayoutConstraint constraintsWithVisualFormat:horizontalRule
@@ -157,7 +166,7 @@
         
         [verticalRule appendFormat:@"[%@]", currentRelatedService.Name];
         
-        if (index == relatedServicesArray.count - 1) {
+        if (index == displayedServiesArray.count - 1) {
             [verticalRule appendString:@"-bottomMargin-|"];
         }
         

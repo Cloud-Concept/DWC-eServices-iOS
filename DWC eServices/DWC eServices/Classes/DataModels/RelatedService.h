@@ -24,8 +24,8 @@ typedef enum {
 @property (nonatomic, strong) NSString *IconName;
 @property (nonatomic, strong) NSString *Name;
 @property (nonatomic, strong) NSString *Label;
-@property (nonatomic) NSUInteger Mask;
+@property (nonatomic) RelatedServiceType Mask;
 
-- (id)initRelatedService:(NSString*)ServiceName Label:(NSString*)ServiceLabel Icon:(NSString*)ServiceIconName Mask:(NSUInteger)ServiceMask;
+- (id)initRelatedService:(NSString*)ServiceName Label:(NSString*)ServiceLabel Icon:(NSString*)ServiceIconName Mask:(RelatedServiceType)ServiceMask;
 
 @end
