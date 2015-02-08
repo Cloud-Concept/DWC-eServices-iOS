@@ -55,6 +55,7 @@
 		139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B691A7A6F2600D1D451 /* UIImageView+SFAttachment.m */; };
 		139E6B6E1A7A6F2600D1D451 /* UIView+MGBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B6C1A7A6F2600D1D451 /* UIView+MGBadgeView.m */; };
 		139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */; };
+		13D97BB51A8766E800DD71FF /* UIImageView+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */; };
 		13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */; };
 		13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67971A7E556F00255174 /* RecordMainViewController.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
@@ -173,6 +174,8 @@
 		139E6B6C1A7A6F2600D1D451 /* UIView+MGBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MGBadgeView.m"; sourceTree = "<group>"; };
 		139E6B701A7A6FC200D1D451 /* UIView+RoundCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RoundCorner.h"; sourceTree = "<group>"; };
 		139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RoundCorner.m"; sourceTree = "<group>"; };
+		13D97BB31A8766E800DD71FF /* UIImageView+MaskImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MaskImage.h"; sourceTree = "<group>"; };
+		13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MaskImage.m"; sourceTree = "<group>"; };
 		13EE67921A7E50A500255174 /* RKSwipeBetweenViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKSwipeBetweenViewControllers.h; sourceTree = "<group>"; };
 		13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKSwipeBetweenViewControllers.m; sourceTree = "<group>"; };
 		13EE67961A7E556F00255174 /* RecordMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordMainViewController.h; sourceTree = "<group>"; };
@@ -585,6 +588,7 @@
 		139E6B661A7A6F2600D1D451 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				13D97BB21A8766A600DD71FF /* UIImageView+MaskImage */,
 				139E6B671A7A6F2600D1D451 /* UIImageView+SFAttachment */,
 				139E6B6A1A7A6F2600D1D451 /* UIView+MGBadgeView */,
 				139E6B6F1A7A6FB500D1D451 /* UIView+RoundCorner */,
@@ -617,6 +621,15 @@
 				139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */,
 			);
 			path = "UIView+RoundCorner";
+			sourceTree = "<group>";
+		};
+		13D97BB21A8766A600DD71FF /* UIImageView+MaskImage */ = {
+			isa = PBXGroup;
+			children = (
+				13D97BB31A8766E800DD71FF /* UIImageView+MaskImage.h */,
+				13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */,
+			);
+			path = "UIImageView+MaskImage";
 			sourceTree = "<group>";
 		};
 		13EE67911A7E50A500255174 /* RKSwipeBetweenViewControllers */ = {
@@ -1166,6 +1179,7 @@
 				139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */,
 				132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */,
 				13081AFF1A76559D00B33509 /* WebForm.m in Sources */,
+				13D97BB51A8766E800DD71FF /* UIImageView+MaskImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

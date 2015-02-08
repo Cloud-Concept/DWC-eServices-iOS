@@ -7,6 +7,8 @@
 //
 
 #import "SidebarTableViewController.h"
+#import "UIImageView+MaskImage.h"
+#import "SFUserAccountManager.h"
 
 @interface SidebarTableViewController ()
 
@@ -17,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    menuItems = @[@"Dashboard Cell", @"My Request Cell", @"Employees Cell", @"Services Cell", @"Company Info Cell", @"Reports Cell", @"Quick Access Cell", @"Need Help Cell", @"Logout Cell"];
+    menuItems = @[@"User Cell", @"Dashboard Cell", @"My Request Cell", @"Employees Cell", @"Services Cell", @"Company Info Cell", @"Reports Cell", @"Need Help Cell", @"Logout Cell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +51,21 @@
     
     // Configure the cell...
     
+    if (indexPath.row == 0) {
+        UIImageView *imageView = (UIImageView*)[cell viewWithTag:10];
+        [imageView maskImageToCircle];
+        
+        SFUserAccountManager *accountManager = [SFUserAccountManager sharedInstance];
+        
+        UILabel *nameLabel = (UILabel*)[cell viewWithTag:20];
+        nameLabel.text = accountManager.currentUser.fullName;
+    }
+    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.row == 0 ? 154 : 45;
 }
 
 /*

@@ -17,4 +17,5 @@
 + (void)setupButtonWithTextLeftToImage:(UIButton*)button;
 + (void)setupButtonWithBadgeOnImage:(UIButton*)button Value:(NSInteger)value;
 + (NSString*)formatDateToString:(NSDate*)date;
++ (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
 @end
