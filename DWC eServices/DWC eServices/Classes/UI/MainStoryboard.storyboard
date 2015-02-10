@@ -41,6 +41,7 @@
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -849,6 +850,56 @@
             </objects>
             <point key="canvasLocation" x="2681.5" y="1168.5"/>
         </scene>
+        <!--NewNOC View Controller-->
+        <scene sceneID="1Rk-kc-RUr">
+            <objects>
+                <viewController storyboardIdentifier="NewNOCViewController" id="Ymp-e6-R3b" customClass="NewNOCViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KSs-yR-Osj"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lqm-Cu-zF0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Juf-1H-RaR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiB-Ku-ab0">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="wD8-5K-yIS"/>
+                                    <tabBarItem systemItem="more" id="7Jd-DM-tYG"/>
+                                </items>
+                            </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ku8-UZ-KMl">
+                                <rect key="frame" x="16" y="28" width="343" height="40"/>
+                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                                <state key="normal" title="NOC Type" backgroundImage="Dropdown Button">
+                                    <color key="titleColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseNOCTypeButtonClicked:" destination="Ymp-e6-R3b" eventType="touchUpInside" id="ATc-gu-KfU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PiB-Ku-ab0" secondAttribute="trailing" id="0xN-V6-6gI"/>
+                            <constraint firstItem="Lqm-Cu-zF0" firstAttribute="top" secondItem="PiB-Ku-ab0" secondAttribute="bottom" id="9GC-bf-QzR"/>
+                            <constraint firstItem="PiB-Ku-ab0" firstAttribute="leading" secondItem="Juf-1H-RaR" secondAttribute="leading" id="e7n-oj-tZG"/>
+                            <constraint firstAttribute="trailing" secondItem="ku8-UZ-KMl" secondAttribute="trailing" constant="16" id="erU-Ph-B96"/>
+                            <constraint firstItem="ku8-UZ-KMl" firstAttribute="top" secondItem="KSs-yR-Osj" secondAttribute="bottom" constant="8" id="gkj-Ew-LfZ"/>
+                            <constraint firstItem="ku8-UZ-KMl" firstAttribute="leading" secondItem="Juf-1H-RaR" secondAttribute="leading" constant="16" id="ma9-ox-MXk"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bottomTabBar" destination="PiB-Ku-ab0" id="VLk-20-vti"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6qN-kS-MZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3385.5" y="1168.5"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="KHg-LT-MaD">
             <objects>
@@ -869,6 +920,7 @@
     </scenes>
     <resources>
         <image name="Default Person Image" width="75" height="75"/>
+        <image name="Dropdown Button" width="46" height="40"/>
         <image name="Home Company Info Icon" width="15" height="31"/>
         <image name="Home Dashboard Icon" width="30" height="30"/>
         <image name="Home Employees Icon" width="31" height="31"/>

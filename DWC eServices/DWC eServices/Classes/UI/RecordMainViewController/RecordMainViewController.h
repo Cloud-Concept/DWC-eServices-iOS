@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
+#import "RecordRelatedViewController.h"
 
-@interface RecordMainViewController : BaseFrontRevealViewController
+@interface RecordMainViewController : BaseFrontRevealViewController <RecordRelatedViewControllerDelegate>
 
 @property (strong, nonatomic) NSString *NameValue;
 @property (strong, nonatomic) NSString *PhotoId;

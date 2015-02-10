@@ -12,6 +12,7 @@
 #import "UIImageView+SFAttachment.h"
 #import "RecordDetailsTableViewController.h"
 #import "RecordRelatedViewController.h"
+#import "NewNOCViewController.h"
 
 @interface RecordMainViewController ()
 
@@ -51,6 +52,7 @@
     recordDetailsVC.SectionsArray = self.DetailsSectionsArray;
     RecordRelatedViewController *recordRelatedVC = [RecordRelatedViewController new];
     recordRelatedVC.RelatedServicesMask = self.RelatedServicesMask;
+    recordRelatedVC.delegate = self;
     
     [navigationController.viewControllerArray addObjectsFromArray:@[recordDetailsVC, recordRelatedVC]];
     navigationController.buttonText = @[@"DETAILS", @"RELATED"];
@@ -74,5 +76,41 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - RecordRelatedViewControllerDelegate
+
+- (void)relatedServiceNewNOCButtonClicked {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    NewNOCViewController *newNOCVC = [storybord instantiateViewControllerWithIdentifier:@"NewNOCViewController"];
+    [self.navigationController pushViewController:newNOCVC animated:YES];
+}
+
+- (void)relatedServiceNewCardButtonClicked {
+    
+}
+
+- (void)relatedServiceRenewCardButtonClicked {
+    
+}
+
+- (void)relatedServiceCancelCardButtonClicked {
+    
+}
+
+- (void)relatedServiceReplaceCardButtonClicked {
+    
+}
+
+- (void)relatedServiceNewVisaButtonClicked {
+    
+}
+
+- (void)relatedServiceRenewVisaButtonClicked {
+    
+}
+
+- (void)relatedServiceCancelVisaButtonClicked {
+    
+}
 
 @end

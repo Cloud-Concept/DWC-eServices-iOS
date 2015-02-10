@@ -41,6 +41,8 @@
 		131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA8781A80E45200A79B12 /* RecordDetailsTableViewController.m */; };
 		131CA87E1A80F91500A79B12 /* RecordDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA87C1A80F91500A79B12 /* RecordDetailTableViewCell.m */; };
 		131CA87F1A80F91500A79B12 /* RecordDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */; };
+		1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1324D8981A89E9AB003AA356 /* PickerTableViewController.m */; };
+		1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */; };
 		132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */; };
 		132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */; };
 		132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */; };
@@ -48,6 +50,9 @@
 		13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13481AE51A82257100093331 /* RecordRelatedViewController.xib */; };
 		13481AF01A823A5B00093331 /* RelatedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 13481AEF1A823A5B00093331 /* RelatedService.m */; };
 		136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136377BE1A767C2C00282F72 /* FVCustomAlertView.m */; };
+		1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA121A88B6E700ECED05 /* NewNOCViewController.m */; };
+		1394EA1F1A88D31F00ECED05 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1C1A88D31F00ECED05 /* WYPopoverController.m */; };
+		1394EA201A88D31F00ECED05 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1E1A88D31F00ECED05 /* WYStoryboardPopoverSegue.m */; };
 		139E6B591A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B581A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m */; };
 		139E6B5B1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139E6B5A1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib */; };
 		139E6B5E1A7A3CED00D1D451 /* Occupation.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B5D1A7A3CED00D1D451 /* Occupation.m */; };
@@ -147,6 +152,9 @@
 		131CA87B1A80F91500A79B12 /* RecordDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailTableViewCell.h; sourceTree = "<group>"; };
 		131CA87C1A80F91500A79B12 /* RecordDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailTableViewCell.m; sourceTree = "<group>"; };
 		131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordDetailTableViewCell.xib; sourceTree = "<group>"; };
+		1324D8971A89E9AB003AA356 /* PickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerTableViewController.h; sourceTree = "<group>"; };
+		1324D8981A89E9AB003AA356 /* PickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerTableViewController.m; sourceTree = "<group>"; };
+		1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerTableViewController.xib; sourceTree = "<group>"; };
 		132CCFAA1A779C1A007A40AE /* EmployeeTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeTypeViewController.h; sourceTree = "<group>"; };
 		132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeTypeViewController.m; sourceTree = "<group>"; };
 		132CCFAE1A779C6B007A40AE /* SidebarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewController.h; sourceTree = "<group>"; };
@@ -161,6 +169,12 @@
 		1356A9501A70D78600CF217A /* Corisande-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Bold-Italic.ttf"; sourceTree = "<group>"; };
 		136377BD1A767C2C00282F72 /* FVCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVCustomAlertView.h; sourceTree = "<group>"; };
 		136377BE1A767C2C00282F72 /* FVCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVCustomAlertView.m; sourceTree = "<group>"; };
+		1394EA111A88B6E700ECED05 /* NewNOCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNOCViewController.h; sourceTree = "<group>"; };
+		1394EA121A88B6E700ECED05 /* NewNOCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNOCViewController.m; sourceTree = "<group>"; };
+		1394EA1B1A88D31F00ECED05 /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
+		1394EA1C1A88D31F00ECED05 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
+		1394EA1D1A88D31F00ECED05 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
+		1394EA1E1A88D31F00ECED05 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
 		139E6B571A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeListTableViewHeaderFooterView.h; sourceTree = "<group>"; };
 		139E6B581A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeListTableViewHeaderFooterView.m; sourceTree = "<group>"; };
 		139E6B5A1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployeeListTableViewHeaderFooterView.xib; sourceTree = "<group>"; };
@@ -375,14 +389,17 @@
 				132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				130C2FFB1A78DDE600C95600 /* EmployeeListViewController */,
-				13EE67951A7E555600255174 /* RecordMainViewController */,
 				132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */,
 				136377BB1A767C2C00282F72 /* FVCustomAlertView */,
 				1307BAC91A6F83A4004E6325 /* HomePageViewController */,
 				1307BACA1A6F83A4004E6325 /* InitialViewController */,
+				1394EA101A88B5C000ECED05 /* NewNOCViewController */,
+				1324D8961A89E98B003AA356 /* PickerTableViewController */,
+				13EE67951A7E555600255174 /* RecordMainViewController */,
 				13EE67911A7E50A500255174 /* RKSwipeBetweenViewControllers */,
 				132CCFAD1A779C5F007A40AE /* SidebarTableViewController */,
 				130291391A76C88D000E119C /* SWRevealViewController */,
+				1394EA1A1A88D31E00ECED05 /* WYPopoverController */,
 				1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */,
 			);
 			path = UI;
@@ -519,6 +536,16 @@
 			path = RecordDetailTableViewCell;
 			sourceTree = "<group>";
 		};
+		1324D8961A89E98B003AA356 /* PickerTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1324D8971A89E9AB003AA356 /* PickerTableViewController.h */,
+				1324D8981A89E9AB003AA356 /* PickerTableViewController.m */,
+				1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */,
+			);
+			path = PickerTableViewController;
+			sourceTree = "<group>";
+		};
 		132B92C91A7F676300C237B0 /* RecordDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,6 +600,26 @@
 				136377BE1A767C2C00282F72 /* FVCustomAlertView.m */,
 			);
 			path = FVCustomAlertView;
+			sourceTree = "<group>";
+		};
+		1394EA101A88B5C000ECED05 /* NewNOCViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1394EA111A88B6E700ECED05 /* NewNOCViewController.h */,
+				1394EA121A88B6E700ECED05 /* NewNOCViewController.m */,
+			);
+			path = NewNOCViewController;
+			sourceTree = "<group>";
+		};
+		1394EA1A1A88D31E00ECED05 /* WYPopoverController */ = {
+			isa = PBXGroup;
+			children = (
+				1394EA1B1A88D31F00ECED05 /* WYPopoverController.h */,
+				1394EA1C1A88D31F00ECED05 /* WYPopoverController.m */,
+				1394EA1D1A88D31F00ECED05 /* WYStoryboardPopoverSegue.h */,
+				1394EA1E1A88D31F00ECED05 /* WYStoryboardPopoverSegue.m */,
+			);
+			path = WYPopoverController;
 			sourceTree = "<group>";
 		};
 		139E6B561A7A17A000D1D451 /* EmployeeListHeaderView */ = {
@@ -1121,6 +1168,7 @@
 				13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */,
 				824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */,
 				1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */,
+				1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */,
 				130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
 				1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */,
@@ -1151,9 +1199,11 @@
 				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
 				131CA86E1A80C93400A79B12 /* TableViewSection.m in Sources */,
 				131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */,
+				1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */,
 				131CA87E1A80F91500A79B12 /* RecordDetailTableViewCell.m in Sources */,
 				824A9DE51724E16400C9BD79 /* main.m in Sources */,
 				136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */,
+				1394EA1F1A88D31F00ECED05 /* WYPopoverController.m in Sources */,
 				139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */,
 				13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */,
 				13081AFE1A76559D00B33509 /* Visa.m in Sources */,
@@ -1164,6 +1214,7 @@
 				13081AFA1A76559D00B33509 /* EServiceAdministration.m in Sources */,
 				13481AF01A823A5B00093331 /* RelatedService.m in Sources */,
 				131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */,
+				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,
@@ -1177,6 +1228,7 @@
 				13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */,
 				13081B041A7655BD00B33509 /* DatePickerViewController.m in Sources */,
 				139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */,
+				1394EA201A88D31F00ECED05 /* WYStoryboardPopoverSegue.m in Sources */,
 				132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */,
 				13081AFF1A76559D00B33509 /* WebForm.m in Sources */,
 				13D97BB51A8766E800DD71FF /* UIImageView+MaskImage.m in Sources */,

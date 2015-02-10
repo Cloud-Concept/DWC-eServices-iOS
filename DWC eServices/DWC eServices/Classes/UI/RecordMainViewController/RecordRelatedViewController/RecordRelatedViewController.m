@@ -98,6 +98,7 @@
         UIButton *button = [UIButton new];
         [viewsDictionary setObject:button forKey:service.Name];
         
+        [button setTag:service.Mask];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button setTitle:service.Label forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:service.IconName] forState:UIControlStateNormal];
@@ -106,7 +107,7 @@
                                                    green:0.88
                                                     blue:0.89
                                                    alpha:1]];
-        
+        [button addTarget:self action:@selector(serviceButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [HelperClass setupButtonWithImageAlignedToLeft:button];
         
         [button createRoundBorderedWithRadius:10
@@ -213,6 +214,41 @@
     
     [self.servicesScrollView addConstraints:constraint_POS_H];
     [self.servicesScrollView addConstraints:constraint_POS_V];
+}
+
+- (void)serviceButtonClicked:(UIButton*)sender {
+    
+    if (!self.delegate)
+        return;
+    
+    switch (sender.tag) {
+        case RelatedServiceTypeNewNOC:
+            [self.delegate relatedServiceNewNOCButtonClicked];
+            break;
+        case RelatedServiceTypeNewCard:
+            [self.delegate relatedServiceNewCardButtonClicked];
+            break;
+        case RelatedServiceTypeRenewCard:
+            [self.delegate relatedServiceRenewCardButtonClicked];
+            break;
+        case RelatedServiceTypeCancelCard:
+            [self.delegate relatedServiceCancelCardButtonClicked];
+            break;
+        case RelatedServiceTypeReplaceCard:
+            [self.delegate relatedServiceReplaceCardButtonClicked];
+            break;
+        case RelatedServiceTypeNewVisa:
+            [self.delegate relatedServiceNewVisaButtonClicked];
+            break;
+        case RelatedServiceTypeRenewVisa:
+            [self.delegate relatedServiceRenewVisaButtonClicked];
+            break;
+        case RelatedServiceTypeCancelVisa:
+            [self.delegate relatedServiceCancelVisaButtonClicked];
+            break;
+        default:
+            break;
+    }
 }
 
 /*
