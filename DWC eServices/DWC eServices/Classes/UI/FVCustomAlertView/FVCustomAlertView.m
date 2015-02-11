@@ -292,4 +292,7 @@ static UIView *currentView = nil;
            }];
 }
 
++ (BOOL)isShowingAlert {
+    return currentView != nil;
+}
 @end

@@ -13,7 +13,7 @@
 @protocol PickerTableViewControllerDelegate <NSObject>
 
 - (void)valuePickCanceled:(PickerTableViewController *)picklist;
-- (void)valuePicked:(NSString *)value pickList:(PickerTableViewController *)picklist;
+- (void)valuePicked:(NSString *)value AtIndex:(NSIndexPath *)indexPath pickList:(PickerTableViewController *)picklist;
 
 @end
 
@@ -27,5 +27,6 @@
 @property (weak, nonatomic) id<PickerTableViewControllerDelegate> delegate;
 
 - (void)showPopoverFromView:(UIView*)sender;
+-(void)dismissPopover:(BOOL)animated;
 
 @end

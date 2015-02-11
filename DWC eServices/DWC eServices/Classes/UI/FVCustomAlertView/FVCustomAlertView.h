@@ -135,4 +135,5 @@ typedef enum {
 
 + (void)hideAlertFromMainWindowWithFading:(BOOL)fading;
 
++ (BOOL)isShowingAlert;
 @end

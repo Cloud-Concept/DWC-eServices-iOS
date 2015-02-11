@@ -34,6 +34,10 @@
     [popoverController presentPopoverFromRect:sender.bounds inView:sender permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES];
 }
 
+- (void)dismissPopover:(BOOL)animated {
+    [popoverController dismissPopoverAnimated:animated];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -74,7 +78,7 @@
         return;
     
     NSString *selectedValue = [self.valuesArray objectAtIndex:indexPath.row];
-    [self.delegate valuePicked:selectedValue pickList:self];
+    [self.delegate valuePicked:selectedValue AtIndex:indexPath pickList:self];
 }
 
 

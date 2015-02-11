@@ -116,4 +116,12 @@
     return newImage;
 }
 
++ (NSString*)formatNumberToString:(NSNumber*)number FormatStyle:(NSNumberFormatterStyle)numberFormatStyle MaximumFractionDigits:(NSUInteger)fractionDigits {
+    NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
+    [fmt setNumberStyle:numberFormatStyle]; // to get commas (or locale equivalent)
+    [fmt setMaximumFractionDigits:fractionDigits]; // to avoid any decimal
+    
+    return [fmt stringFromNumber:number];
+}
+
 @end

@@ -101,10 +101,9 @@
     [self.licenseNumberValueLabel setText:[Globals currentAccount].licenseNumberFormula];
     [self.licenseExpiryDateValueLabel setText:[HelperClass formatDateToString:[Globals currentAccount].licenseExpiryDateFormula]];
     
-    NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
-    [fmt setNumberStyle:NSNumberFormatterDecimalStyle]; // to get commas (or locale equivalent)
-    [fmt setMaximumFractionDigits:0]; // to avoid any decimal
-    [self.currentBalanceValueLabel setText:[NSString stringWithFormat:@"%@ AED", [fmt stringFromNumber:[Globals currentAccount].accountBalance]]];
+    NSString *balanceStr = [HelperClass formatNumberToString:[Globals currentAccount].accountBalance FormatStyle:NSNumberFormatterDecimalStyle MaximumFractionDigits:2];
+    
+    [self.currentBalanceValueLabel setText:[NSString stringWithFormat:@"%@ AED", balanceStr]];
 }
 
 /*

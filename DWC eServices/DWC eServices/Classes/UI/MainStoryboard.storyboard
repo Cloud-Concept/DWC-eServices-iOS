@@ -27,8 +27,15 @@
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
         </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
@@ -848,7 +855,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDK-Dl-Oiz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2681.5" y="1168.5"/>
+            <point key="canvasLocation" x="2640.5" y="1168.5"/>
         </scene>
         <!--NewNOC View Controller-->
         <scene sceneID="1Rk-kc-RUr">
@@ -862,17 +869,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PiB-Ku-ab0">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="wD8-5K-yIS"/>
-                                    <tabBarItem systemItem="more" id="7Jd-DM-tYG"/>
-                                </items>
-                            </tabBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ku8-UZ-KMl">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ku8-UZ-KMl">
                                 <rect key="frame" x="16" y="28" width="343" height="40"/>
-                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="44" maxY="0.0"/>
                                 <state key="normal" title="NOC Type" backgroundImage="Dropdown Button">
                                     <color key="titleColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -880,25 +880,145 @@
                                     <action selector="chooseNOCTypeButtonClicked:" destination="Ymp-e6-R3b" eventType="touchUpInside" id="ATc-gu-KfU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Courier Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSr-50-QYL">
+                                <rect key="frame" x="16" y="92" width="170" height="18"/>
+                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j8Y-t0-ao2">
+                                <rect key="frame" x="252" y="86" width="51" height="31"/>
+                                <color key="onTintColor" red="0.094117647060000004" green="0.41176470590000003" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="courierRequiredSwitchValueChanged:" destination="Ymp-e6-R3b" eventType="valueChanged" id="Bs2-Ro-agr"/>
+                                </connections>
+                            </switch>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ly-XB-WCc">
+                                <rect key="frame" x="16" y="136" width="170" height="18"/>
+                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Corporate Rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uW-7f-WBH">
+                                <rect key="frame" x="16" y="184" width="170" height="18"/>
+                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="cvW-CD-pC8">
+                                <rect key="frame" x="194" y="125" width="165" height="40"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="e0K-Mp-Ogt">
+                                <rect key="frame" x="194" y="173" width="165" height="40"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09R-mX-6Dk">
+                                <rect key="frame" x="16" y="600" width="163" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="09R-mX-6Dk" secondAttribute="height" multiplier="163:47" id="tkR-eq-j7n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                                <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonClicked:" destination="Ymp-e6-R3b" eventType="touchUpInside" id="dOw-Hk-a3k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge9-6e-On7">
+                                <rect key="frame" x="196" y="600" width="163" height="47"/>
+                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                                <state key="normal" title="Next" backgroundImage="Blue Button Background">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Hys-jk-GpD" kind="push" identifier="ServicesDynamicFormSegue" id="JC9-H1-b9S"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="PiB-Ku-ab0" secondAttribute="trailing" id="0xN-V6-6gI"/>
-                            <constraint firstItem="Lqm-Cu-zF0" firstAttribute="top" secondItem="PiB-Ku-ab0" secondAttribute="bottom" id="9GC-bf-QzR"/>
-                            <constraint firstItem="PiB-Ku-ab0" firstAttribute="leading" secondItem="Juf-1H-RaR" secondAttribute="leading" id="e7n-oj-tZG"/>
+                            <constraint firstItem="NSr-50-QYL" firstAttribute="leading" secondItem="Juf-1H-RaR" secondAttribute="leading" constant="16" id="0hu-4g-ewF"/>
+                            <constraint firstItem="e0K-Mp-Ogt" firstAttribute="top" secondItem="cvW-CD-pC8" secondAttribute="bottom" constant="8" id="4RR-Ti-I30"/>
+                            <constraint firstItem="cvW-CD-pC8" firstAttribute="trailing" secondItem="e0K-Mp-Ogt" secondAttribute="trailing" id="5H1-3c-prJ"/>
+                            <constraint firstAttribute="trailing" secondItem="j8Y-t0-ao2" secondAttribute="trailing" constant="74" id="69k-gz-DMd"/>
+                            <constraint firstItem="NSr-50-QYL" firstAttribute="trailing" secondItem="6Ly-XB-WCc" secondAttribute="trailing" id="6lK-12-H48"/>
+                            <constraint firstAttribute="trailing" secondItem="cvW-CD-pC8" secondAttribute="trailing" constant="16" id="6rN-0g-zN5"/>
+                            <constraint firstItem="cvW-CD-pC8" firstAttribute="leading" secondItem="e0K-Mp-Ogt" secondAttribute="leading" id="C0G-oy-hH1"/>
+                            <constraint firstItem="NSr-50-QYL" firstAttribute="top" secondItem="ku8-UZ-KMl" secondAttribute="bottom" constant="24" id="FyV-az-gXH"/>
+                            <constraint firstItem="j8Y-t0-ao2" firstAttribute="leading" secondItem="NSr-50-QYL" secondAttribute="trailing" constant="66" id="IGO-vm-AX6"/>
+                            <constraint firstItem="09R-mX-6Dk" firstAttribute="height" secondItem="ge9-6e-On7" secondAttribute="height" id="Ieq-SR-LeF"/>
+                            <constraint firstItem="NSr-50-QYL" firstAttribute="leading" secondItem="6Ly-XB-WCc" secondAttribute="leading" id="Krr-Dg-p4J"/>
+                            <constraint firstItem="09R-mX-6Dk" firstAttribute="top" secondItem="ge9-6e-On7" secondAttribute="top" id="LgQ-9g-2QB"/>
+                            <constraint firstItem="1uW-7f-WBH" firstAttribute="trailing" secondItem="6Ly-XB-WCc" secondAttribute="trailing" id="QSZ-py-cCV"/>
+                            <constraint firstAttribute="trailing" secondItem="ge9-6e-On7" secondAttribute="trailing" constant="16" id="Sib-Hd-APo"/>
+                            <constraint firstItem="1uW-7f-WBH" firstAttribute="top" secondItem="6Ly-XB-WCc" secondAttribute="bottom" constant="30" id="TPU-B1-wbm"/>
+                            <constraint firstItem="cvW-CD-pC8" firstAttribute="leading" secondItem="6Ly-XB-WCc" secondAttribute="trailing" constant="8" id="XCm-Cm-BaJ"/>
+                            <constraint firstItem="ge9-6e-On7" firstAttribute="leading" secondItem="09R-mX-6Dk" secondAttribute="trailing" constant="17" id="XEF-Zl-ukJ"/>
+                            <constraint firstItem="e0K-Mp-Ogt" firstAttribute="height" secondItem="ku8-UZ-KMl" secondAttribute="height" id="Xhp-mF-UYe"/>
+                            <constraint firstItem="Lqm-Cu-zF0" firstAttribute="top" secondItem="09R-mX-6Dk" secondAttribute="bottom" constant="20" id="cuM-O5-vI0"/>
+                            <constraint firstItem="1uW-7f-WBH" firstAttribute="leading" secondItem="6Ly-XB-WCc" secondAttribute="leading" id="dGv-Jz-Zfr"/>
                             <constraint firstAttribute="trailing" secondItem="ku8-UZ-KMl" secondAttribute="trailing" constant="16" id="erU-Ph-B96"/>
                             <constraint firstItem="ku8-UZ-KMl" firstAttribute="top" secondItem="KSs-yR-Osj" secondAttribute="bottom" constant="8" id="gkj-Ew-LfZ"/>
+                            <constraint firstItem="09R-mX-6Dk" firstAttribute="leading" secondItem="Juf-1H-RaR" secondAttribute="leading" constant="16" id="kNn-fq-0zG"/>
                             <constraint firstItem="ku8-UZ-KMl" firstAttribute="leading" secondItem="Juf-1H-RaR" secondAttribute="leading" constant="16" id="ma9-ox-MXk"/>
+                            <constraint firstItem="e0K-Mp-Ogt" firstAttribute="height" secondItem="cvW-CD-pC8" secondAttribute="height" id="oKs-bE-SSU"/>
+                            <constraint firstItem="6Ly-XB-WCc" firstAttribute="top" secondItem="NSr-50-QYL" secondAttribute="bottom" constant="26" id="of7-Jy-4Hi"/>
+                            <constraint firstItem="09R-mX-6Dk" firstAttribute="bottom" secondItem="ge9-6e-On7" secondAttribute="bottom" id="pSF-pC-OFD"/>
+                            <constraint firstItem="cvW-CD-pC8" firstAttribute="top" secondItem="j8Y-t0-ao2" secondAttribute="bottom" constant="8" id="qir-1G-nUh"/>
+                            <constraint firstItem="j8Y-t0-ao2" firstAttribute="top" secondItem="ku8-UZ-KMl" secondAttribute="bottom" constant="18" id="tOA-BT-ka2"/>
+                            <constraint firstItem="09R-mX-6Dk" firstAttribute="width" secondItem="ge9-6e-On7" secondAttribute="width" id="wDx-3W-oKP"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="bottomTabBar" destination="PiB-Ku-ab0" id="VLk-20-vti"/>
+                        <outlet property="chooseNOCTypeButton" destination="ku8-UZ-KMl" id="Oa6-AK-d2n"/>
+                        <outlet property="courierCorporateRateLabel" destination="1uW-7f-WBH" id="DWI-AY-AZ4"/>
+                        <outlet property="courierCorporateRateTextField" destination="e0K-Mp-Ogt" id="jKM-cK-Dgo"/>
+                        <outlet property="courierRateLabel" destination="6Ly-XB-WCc" id="ubS-fU-Uh3"/>
+                        <outlet property="courierRateTextField" destination="cvW-CD-pC8" id="1la-uV-RTY"/>
+                        <outlet property="courierRequiredSwitch" destination="j8Y-t0-ao2" id="1MG-SC-Jpm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qN-kS-MZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3385.5" y="1168.5"/>
+            <point key="canvasLocation" x="3118.5" y="1168.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XTW-Z1-hWs">
+            <objects>
+                <viewController id="Hys-jk-GpD" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WjF-1e-TfI"/>
+                        <viewControllerLayoutGuide type="bottom" id="QdY-9T-GnD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nzq-9g-Wmf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0p-Pc-1lm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="p0p-Pc-1lm" firstAttribute="top" secondItem="nzq-9g-Wmf" secondAttribute="top" id="O7w-FL-315"/>
+                            <constraint firstItem="p0p-Pc-1lm" firstAttribute="leading" secondItem="nzq-9g-Wmf" secondAttribute="leading" id="ndK-Tl-8dy"/>
+                            <constraint firstItem="QdY-9T-GnD" firstAttribute="top" secondItem="p0p-Pc-1lm" secondAttribute="bottom" id="r8G-Rp-UcP"/>
+                            <constraint firstAttribute="trailing" secondItem="p0p-Pc-1lm" secondAttribute="trailing" id="y6C-BL-Kf1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bk7-0D-gk2"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="juX-EJ-iJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3685.5" y="1168.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KHg-LT-MaD">
@@ -919,6 +1039,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Black Button Background" width="5" height="5"/>
+        <image name="Blue Button Background" width="7" height="38"/>
         <image name="Default Person Image" width="75" height="75"/>
         <image name="Dropdown Button" width="46" height="40"/>
         <image name="Home Company Info Icon" width="15" height="31"/>
@@ -940,6 +1062,7 @@
         <image name="Slide Menu Services Icon" width="8" height="8"/>
         <image name="Slide Menu Settings Icon" width="9" height="8"/>
         <image name="TabBar Home Icon" width="18" height="17"/>
+        <image name="Textfield Background" width="7" height="39"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

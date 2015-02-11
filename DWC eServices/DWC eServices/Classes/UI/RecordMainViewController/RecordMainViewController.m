@@ -30,7 +30,10 @@
     [self.profilePictureImageView loadImageFromSFAttachment:self.PhotoId
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
     [self.profilePictureImageView createRoundBorderedWithRadius:3.0 Shadows:NO ClipToBounds:YES];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self setupPaginationView];
 }
 
@@ -82,6 +85,7 @@
 - (void)relatedServiceNewNOCButtonClicked {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     NewNOCViewController *newNOCVC = [storybord instantiateViewControllerWithIdentifier:@"NewNOCViewController"];
+    newNOCVC.cancelViewController = self;
     [self.navigationController pushViewController:newNOCVC animated:YES];
 }
 

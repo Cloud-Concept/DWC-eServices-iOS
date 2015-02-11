@@ -18,4 +18,5 @@
 + (void)setupButtonWithBadgeOnImage:(UIButton*)button Value:(NSInteger)value;
 + (NSString*)formatDateToString:(NSDate*)date;
 + (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
++ (NSString*)formatNumberToString:(NSNumber*)number FormatStyle:(NSNumberFormatterStyle)numberFormatStyle MaximumFractionDigits:(NSUInteger)fractionDigits;
 @end
