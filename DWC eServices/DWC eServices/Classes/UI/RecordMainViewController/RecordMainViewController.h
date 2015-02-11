@@ -10,11 +10,14 @@
 #import "BaseFrontRevealViewController.h"
 #import "RecordRelatedViewController.h"
 
+@class Visa;
+
 @interface RecordMainViewController : BaseFrontRevealViewController <RecordRelatedViewControllerDelegate>
 
 @property (strong, nonatomic) NSString *NameValue;
 @property (strong, nonatomic) NSString *PhotoId;
 @property (strong, nonatomic) NSArray *DetailsSectionsArray;
+@property (strong, nonatomic) Visa *visaObject;
 @property (nonatomic) NSUInteger RelatedServicesMask;
 
 @property (weak, nonatomic) IBOutlet UIView *paginationView;

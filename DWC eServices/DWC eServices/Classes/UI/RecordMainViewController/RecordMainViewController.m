@@ -86,6 +86,7 @@
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     NewNOCViewController *newNOCVC = [storybord instantiateViewControllerWithIdentifier:@"NewNOCViewController"];
     newNOCVC.cancelViewController = self;
+    newNOCVC.currentVisaObject = self.visaObject;
     [self.navigationController pushViewController:newNOCVC animated:YES];
 }
 

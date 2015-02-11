@@ -15,9 +15,9 @@
 @property (strong, nonatomic) NSString *serviceIdentifier;
 @property (strong, nonatomic) NSNumber *amount;
 @property (strong, nonatomic) NSString *relatedToObject;
-@property (strong, nonatomic) NSString *visualForceGenerator;
+@property (strong, nonatomic) NSString *editNewVFGenerator;
 @property (strong, nonatomic) NSArray *serviceDocumentsArray;
 
-- (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject VisualForceGenerator:(NSString*)VisualForceGenerator ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray;
+- (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject NewEditVFGenerator:(NSString*)NewEditVFGenerator ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray;
 
 @end

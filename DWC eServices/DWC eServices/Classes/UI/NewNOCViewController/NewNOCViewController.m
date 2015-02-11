@@ -13,6 +13,7 @@
 #import "Account.h"
 #import "Globals.h"
 #import "HelperClass.h"
+#import "ServicesDynamicFormViewController.h"
 
 @interface NewNOCViewController ()
 
@@ -39,16 +40,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 - (IBAction)chooseNOCTypeButtonClicked:(id)sender {
     NSMutableArray *stringArray = [NSMutableArray new];
@@ -126,7 +117,7 @@
                                                                               ServiceIdentifier:[dict objectForKey:@"Service_Identifier__c"]
                                                                                          Amount:[dict objectForKey:@"Amount__c"]
                                                                                 RelatedToObject:[dict objectForKey:@"Related_to_Object__c"]
-                                                                           VisualForceGenerator:[dict objectForKey:@"New_Edit_VF_Generator__c"]
+                                                                           NewEditVFGenerator:[dict objectForKey:@"New_Edit_VF_Generator__c"]
                                                                           ServiceDocumentsArray:documentRecordsArray]];
         }
         
@@ -208,6 +199,33 @@
     [self showLoadingDialog];
     
     [[SFRestAPI sharedInstance] send:aramexRequest delegate:self];
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    if([segue.identifier isEqualToString:@"ServicesDynamicFormSegue"]) {
+        ServicesDynamicFormViewController *destinationVC = [segue destinationViewController];
+        destinationVC.cancelViewController = self.cancelViewController;
+        EServiceAdministration *eService = [nocTypesArray objectAtIndex:selectedNOCTypeIndexPath.row];
+        destinationVC.currentWebformId = eService.editNewVFGenerator;
+        destinationVC.visaObject = self.currentVisaObject;
+    }
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    BOOL shouldPerform = YES;
+    
+    if ([identifier isEqualToString:@"ServicesDynamicFormSegue"] && !selectedNOCTypeIndexPath) {
+        shouldPerform = NO;
+        [HelperClass displayAlertDialogWithTitle:@"Error" Message:@"Please select a service."];
+    }
+    
+    return shouldPerform;
 }
 
 #pragma mark - PickerTableViewControllerDelegate

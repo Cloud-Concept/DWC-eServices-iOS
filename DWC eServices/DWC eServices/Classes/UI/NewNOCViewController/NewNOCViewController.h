@@ -11,6 +11,8 @@
 #import "PickerTableViewController.h"
 #import "SFRestAPI.h"
 
+@class Visa;
+
 @interface NewNOCViewController : BaseFrontRevealViewController <PickerTableViewControllerDelegate, SFRestDelegate>
 {
     NSMutableArray *nocTypesArray;
@@ -29,6 +31,7 @@
 }
 
 @property (strong, nonatomic) UIViewController *cancelViewController;
+@property (strong, nonatomic) Visa *currentVisaObject;
 
 @property (weak, nonatomic) IBOutlet UIButton *chooseNOCTypeButton;
 @property (weak, nonatomic) IBOutlet UISwitch *courierRequiredSwitch;

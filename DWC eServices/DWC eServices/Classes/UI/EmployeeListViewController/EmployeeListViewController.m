@@ -307,6 +307,7 @@
 }
 
 - (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForPermanentEmployee:(Visa*)visa {
+    recordVC.visaObject = visa;
     recordVC.NameValue = visa.applicantFullName;
     recordVC.PhotoId = visa.personalPhotoId;
     NSMutableArray *sectionsArray = [NSMutableArray new];

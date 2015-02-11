@@ -124,4 +124,27 @@
     return [fmt stringFromNumber:number];
 }
 
++ (void)displayAlertDialogWithTitle:(NSString *)title Message:(NSString *)message {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    
+    [alert show];
+}
+
++ (NSString*)getRelationshipValue:(NSDictionary*)dictionary Key:(NSString*)key {
+    if ([key containsString:@"."]) {
+        //NSArray *keyValue = [key componentsSeparatedByString:@"."];
+        //NSDictionary *newDictionary = [dictionary objectForKey:[keyValue objectAtIndex:0]];
+        //NSString *newKey = [keyValue objectAtIndex:1];
+        
+        NSRange range = [key rangeOfString:@"."];
+        NSDictionary *newDictionary = [dictionary objectForKey:[key substringToIndex:range.location]];
+        NSString *newKey = [key substringFromIndex:range.location + 1];
+        
+        return [HelperClass getRelationshipValue:newDictionary Key:newKey];
+    }
+    else
+        return [dictionary objectForKey:key];
+    
+}
+
 @end

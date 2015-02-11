@@ -12,7 +12,7 @@
 
 @implementation EServiceAdministration
 
-- (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject VisualForceGenerator:(NSString*)VisualForceGenerator ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray {
+- (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject NewEditVFGenerator:(NSString*)NewEditVFGenerator ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray {
     
     if(!(self = [super init]))
         return nil;
@@ -22,7 +22,7 @@
     self.serviceIdentifier = [HelperClass stringCheckNull:ServiceIdentifier];
     self.amount = [HelperClass numberCheckNull:Amount];
     self.relatedToObject = [HelperClass stringCheckNull:RelatedToObject];
-    self.visualForceGenerator = [HelperClass stringCheckNull:VisualForceGenerator];
+    self.editNewVFGenerator = [HelperClass stringCheckNull:NewEditVFGenerator];
     
     NSMutableArray *documentsMutableArray = [NSMutableArray new];
     for (NSDictionary *obj in ServiceDocumentsArray) {
