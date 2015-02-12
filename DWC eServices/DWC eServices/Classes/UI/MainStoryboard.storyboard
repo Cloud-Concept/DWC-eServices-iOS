@@ -888,7 +888,7 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j8Y-t0-ao2">
                                 <rect key="frame" x="252" y="86" width="51" height="31"/>
-                                <color key="onTintColor" red="0.094117647060000004" green="0.41176470590000003" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="onTintColor" red="0.27450980392156865" green="0.54509803921568623" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="courierRequiredSwitchValueChanged:" destination="Ymp-e6-R3b" eventType="valueChanged" id="Bs2-Ro-agr"/>
                                 </connections>

@@ -17,6 +17,9 @@
 {
     UIView *servicesContentView;
     WebForm *currentWebForm;
+    
+    UIButton *cancelButton;
+    UIButton *nextButton;
 }
 
 @property (strong, nonatomic) Visa *visaObject;

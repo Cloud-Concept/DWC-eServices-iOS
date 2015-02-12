@@ -9,13 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "SFPickListViewController.h"
 #import "DatePickerViewController.h"
+#import "PickerTableViewController.h"
 
-@interface FormField : NSObject <SFPickListViewDelegate, DatePickerViewControllerDelegate, UIPopoverControllerDelegate, NSCopying>
+@interface FormField : NSObject <PickerTableViewControllerDelegate, DatePickerViewControllerDelegate, UIPopoverControllerDelegate, NSCopying>
 {
     NSString *formFieldValue;
     UIView *fieldView;
     UILabel *labelView;
     UIPopoverController *popoverController;
+    
+    NSIndexPath *selectedPicklistIndexPath;
 }
 
 @property (strong, nonatomic) NSString *Id;

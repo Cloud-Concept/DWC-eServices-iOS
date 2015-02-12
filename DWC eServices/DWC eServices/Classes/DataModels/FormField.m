@@ -94,35 +94,60 @@
 }
 
 - (UILabel*)getLabelView {
-    if (labelView == nil) {
+    if (!labelView) {
         labelView = [UILabel new];
         [labelView setText:self.mobileLabel];
-        [labelView setTextColor:[UIColor blackColor]];
+        [labelView setTextColor:[UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1]];
+        
+        [labelView setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
     }
     
     return labelView;
 }
 
 - (UIView*)getFieldView {
-    if (fieldView == nil) {
-        if ([self.type isEqualToString:@"PICKLIST"]) {
+    if (!fieldView) {
+        
+        if ([self.type isEqualToString:@"PICKLIST"] ||
+            [self.type isEqualToString:@"DATE"]) {
             fieldView = [UIButton new];
-            [((UIButton*)fieldView) setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+            [((UIButton*)fieldView) setTitleColor:[UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1]
+                                         forState:UIControlStateNormal];
             [((UIButton*)fieldView) setTitle:self.mobileLabel forState:UIControlStateNormal];
+            [((UIButton*)fieldView).titleLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
+            [((UIButton*)fieldView) setBackgroundImage:[UIImage imageNamed:@"Dropdown Button"]
+                                              forState:UIControlStateNormal];
+            
+            [((UIButton*)fieldView) setContentEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 44)];
             
             if(![formFieldValue isEqualToString:@""])
                 [((UIButton*)fieldView) setTitle:formFieldValue forState:UIControlStateNormal];
             
-            [(UIButton*)fieldView addTarget:self action:@selector(openPickList) forControlEvents:UIControlEventTouchUpInside];
+            SEL actionSelector = ([self.type isEqualToString:@"DATE"]) ? @selector(openDatePicker) : @selector(openPickList);
+            
+            [(UIButton*)fieldView addTarget:self
+                                     action:actionSelector
+                           forControlEvents:UIControlEventTouchUpInside];
         }
-        else if ([self.type isEqualToString:@"STRING"]) {
+        else if ([self.type isEqualToString:@"STRING"] ||
+                 [self.type isEqualToString:@"DOUBLE"]) {
+            
             fieldView = [UITextField new];
-            [((UITextField*)fieldView) setBorderStyle:UITextBorderStyleRoundedRect];
-            [((UITextField*)fieldView) setKeyboardType:UIKeyboardTypeASCIICapable];
+            [((UITextField*)fieldView) setBorderStyle:UITextBorderStyleNone];
+            [((UITextField*)fieldView) setBackground:[UIImage imageNamed:@"Textfield Background"]];
+            
+            UIKeyboardType keyboardType = [self.type isEqualToString:@"STRING"] ? UIKeyboardTypeASCIICapable:UIKeyboardTypeDecimalPad;
+            [((UITextField*)fieldView) setKeyboardType:keyboardType];
+            
             [((UITextField*)fieldView) setPlaceholder:self.mobileLabel];
             [((UITextField*)fieldView) setText:formFieldValue];
+            [((UITextField*)fieldView) setTextColor:[UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1]];
+            [((UITextField*)fieldView) setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
+            [((UITextField*)fieldView) setTextAlignment:NSTextAlignmentCenter];
             
-            [((UITextField*)fieldView) addTarget:self action:@selector(textFieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
+            [((UITextField*)fieldView) addTarget:self
+                                          action:@selector(textFieldEditingChanged:)
+                                forControlEvents:UIControlEventEditingChanged];
         }
         else if ([self.type isEqualToString:@"CUSTOMTEXT"]) {
             fieldView = [UITextField new];
@@ -130,28 +155,11 @@
             [((UITextField*)fieldView) setPlaceholder:self.mobileLabel];
             [((UITextField*)fieldView) setText:formFieldValue];
         }
-        else if ([self.type isEqualToString:@"DOUBLE"]) {
-            fieldView = [UITextField new];
-            [((UITextField*)fieldView) setBorderStyle:UITextBorderStyleRoundedRect];
-            [((UITextField*)fieldView) setKeyboardType:UIKeyboardTypeDecimalPad];
-            [((UITextField*)fieldView) setPlaceholder:self.mobileLabel];
-            [((UITextField*)fieldView) setText:formFieldValue];
-
-            [((UITextField*)fieldView) addTarget:self action:@selector(textFieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
-        }
-        else if ([self.type isEqualToString:@"DATE"]) {
-            fieldView = [UIButton new];
-            [((UIButton*)fieldView) setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-            [((UIButton*)fieldView) setTitle:self.mobileLabel forState:UIControlStateNormal];
-            
-            if(![formFieldValue isEqualToString:@""])
-                [((UIButton*)fieldView) setTitle:formFieldValue forState:UIControlStateNormal];
-            
-            [(UIButton*)fieldView addTarget:self action:@selector(openDatePicker) forControlEvents:UIControlEventTouchUpInside];
-        }
+        
+        
+        [fieldView setUserInteractionEnabled:!self.isCalculated];
     }
     
-    [fieldView setUserInteractionEnabled:!self.isCalculated];
     
     return fieldView;
 }
@@ -161,18 +169,17 @@
 }
 
 - (void)openPickList {
+    
     NSArray *stringArray = [self.picklistEntries componentsSeparatedByString:@","];
 
     UIButton *senderButton = (UIButton*)fieldView;
     
-    SFPickListViewController *pickListViewController = [SFPickListViewController createPickListViewController:stringArray selectedValue:formFieldValue];
+    PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.valuesArray = stringArray;
+    pickerTableVC.selectedIndexPath = selectedPicklistIndexPath;
+    pickerTableVC.delegate = self;
     
-    pickListViewController.delegate = self;
-    pickListViewController.preferredContentSize = CGSizeMake(320, stringArray.count * 44);
-    
-    popoverController = [[UIPopoverController alloc] initWithContentViewController:pickListViewController];
-    
-    [popoverController presentPopoverFromRect:senderButton.frame inView:senderButton.superview permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [pickerTableVC showPopoverFromView:senderButton];
 }
 
 - (void)openDatePicker {
@@ -214,15 +221,16 @@
     }
 }
 
-#pragma SFPickListViewDelegate
-- (void)valuePickCanceled:(SFPickListViewController *)picklist {
+#pragma mark - PickerTableViewControllerDelegate
+- (void)valuePickCanceled:(PickerTableViewController *)picklist {
     
 }
 
-- (void)valuePicked:(NSString *)value pickList:(SFPickListViewController *)picklist {
-    [popoverController dismissPopoverAnimated:YES];
+- (void)valuePicked:(NSString *)value AtIndex:(NSIndexPath *)indexPath pickList:(PickerTableViewController *)picklist {
+    selectedPicklistIndexPath = indexPath;
     formFieldValue = value;
     [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
+    [picklist dismissPopover:YES];
 }
 
 #pragma DatePickerViewControllerDelegate

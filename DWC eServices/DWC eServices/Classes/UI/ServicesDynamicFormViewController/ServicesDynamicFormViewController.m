@@ -28,7 +28,7 @@
     
     self.showSlidingMenu = false;
     
-    //[self initServiceFieldsContentView];
+    [self initializeButtons];
     
     [self getWebForm];
 }
@@ -47,6 +47,30 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)initializeButtons {
+    cancelButton = [UIButton new];
+    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [cancelButton setBackgroundImage:[UIImage imageNamed:@"Black Button Background"] forState:UIControlStateNormal];
+    [cancelButton.titleLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
+    [cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    nextButton = [UIButton new];
+    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [nextButton setBackgroundImage:[UIImage imageNamed:@"Blue Button Background"] forState:UIControlStateNormal];
+    [nextButton.titleLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
+    [nextButton addTarget:self action:@selector(nextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)cancelButtonClicked:(id)sender {
+    [self.navigationController popToViewController:self.cancelViewController animated:YES];
+}
+
+- (void)nextButtonClicked:(id)sender {
+    
+}
 
 - (void)showLoadingDialog {
     if(![FVCustomAlertView isShowingAlert])
@@ -192,7 +216,7 @@
 
 - (void)displayWebForm {
     [self initServiceFieldsContentView];
-    [servicesContentView drawFormFields:currentWebForm];
+    [servicesContentView drawFormFields:currentWebForm cancelButton:cancelButton nextButton:nextButton];
 }
 
 - (void)initServiceFieldsContentView {
