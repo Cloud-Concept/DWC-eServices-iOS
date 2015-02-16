@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseFrontRevealViewController.h"
+#import "BaseServicesViewController.h"
 
 @class EServiceAdministration;
 @class WebForm;
 @class Visa;
 
-@interface ServicesDynamicFormViewController : BaseFrontRevealViewController
+@interface ServicesDynamicFormViewController : BaseServicesViewController
 {
     UIView *servicesContentView;
     WebForm *currentWebForm;
@@ -24,7 +24,6 @@
 
 @property (strong, nonatomic) Visa *visaObject;
 
-@property (strong, nonatomic) UIViewController *cancelViewController;
 @property (strong, nonatomic) NSString *currentWebformId;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *servicesScrollView;

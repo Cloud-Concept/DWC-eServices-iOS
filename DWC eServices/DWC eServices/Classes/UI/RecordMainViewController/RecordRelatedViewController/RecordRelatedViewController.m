@@ -135,12 +135,13 @@
                                                                               options:0
                                                                               metrics:metrics
                                                                                 views:viewsDictionary];
-        
+        /*
         NSString *widthtRule = [NSString stringWithFormat:@"H:[%@(==buttonWidth)]", currentRelatedService.Name];
         NSArray *field_constraint_H = [NSLayoutConstraint constraintsWithVisualFormat:widthtRule
                                                                               options:0
                                                                               metrics:metrics
                                                                                 views:viewsDictionary];
+        */
         
         [servicesContentView addConstraints:field_constraint_V];
         //[self.servicesScrollView addConstraints:field_constraint_H];

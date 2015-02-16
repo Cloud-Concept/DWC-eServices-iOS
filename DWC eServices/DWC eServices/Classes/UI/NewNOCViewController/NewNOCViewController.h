@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseFrontRevealViewController.h"
+#import "BaseServicesViewController.h"
 #import "PickerTableViewController.h"
 #import "SFRestAPI.h"
 
 @class Visa;
 
-@interface NewNOCViewController : BaseFrontRevealViewController <PickerTableViewControllerDelegate, SFRestDelegate>
+@interface NewNOCViewController : BaseServicesViewController <PickerTableViewControllerDelegate, SFRestDelegate>
 {
     NSMutableArray *nocTypesArray;
     
@@ -30,7 +30,6 @@
     NSString *corporateCourierRate;
 }
 
-@property (strong, nonatomic) UIViewController *cancelViewController;
 @property (strong, nonatomic) Visa *currentVisaObject;
 
 @property (weak, nonatomic) IBOutlet UIButton *chooseNOCTypeButton;

@@ -65,7 +65,7 @@
 }
 
 - (void)cancelButtonClicked:(id)sender {
-    [self.navigationController popToViewController:self.cancelViewController animated:YES];
+    [self cancelServiceButtonClicked];
 }
 
 - (void)nextButtonClicked:(id)sender {

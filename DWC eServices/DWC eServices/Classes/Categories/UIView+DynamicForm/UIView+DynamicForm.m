@@ -58,13 +58,13 @@
                                                                               options:0
                                                                               metrics:metrics
                                                                                 views:viewsDictionary];
-        
+        /*
         NSString *widthtRule = [NSString stringWithFormat:@"H:[%@(100)]", currentField.name];
         NSArray *field_constraint_H = [NSLayoutConstraint constraintsWithVisualFormat:widthtRule
                                                                               options:0
                                                                               metrics:metrics
                                                                                 views:viewsDictionary];
-        
+        */
         [self addConstraints:field_constraint_V];
         //[self addConstraints:field_constraint_H];
         
@@ -75,13 +75,13 @@
                                                                               options:0
                                                                               metrics:metrics
                                                                                 views:viewsDictionary];
-        
+        /*
         NSString *labelWidthtRule = [NSString stringWithFormat:@"H:[%@(200)]", labelName];
         NSArray *label_constraint_H = [NSLayoutConstraint constraintsWithVisualFormat:labelWidthtRule
                                                                               options:0
                                                                               metrics:metrics
                                                                                 views:viewsDictionary];
-        
+        */
         [self addConstraints:label_constraint_V];
         //[self addConstraints:label_constraint_H];
         

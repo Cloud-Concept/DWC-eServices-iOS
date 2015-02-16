@@ -38,6 +38,9 @@
 		130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130C30001A78DE0200C95600 /* EmployeeTableViewCell.xib */; };
 		130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C30091A78E1FE00C95600 /* EmployeeListViewController.m */; };
 		130C300D1A78E7BF00C95600 /* DWCEmployee.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C300C1A78E7BF00C95600 /* DWCEmployee.m */; };
+		131819401A91CAB200CAA4D6 /* BaseServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1318193F1A91CAB200CAA4D6 /* BaseServicesViewController.m */; };
+		131819441A91D65900CAA4D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 131819421A91D65900CAA4D6 /* InfoPlist.strings */; };
+		131819471A91D6C100CAA4D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 131819451A91D6C100CAA4D6 /* Localizable.strings */; };
 		131CA86E1A80C93400A79B12 /* TableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA86D1A80C93400A79B12 /* TableViewSection.m */; };
 		131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA8701A80C94400A79B12 /* TableViewSectionField.m */; };
 		131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA8781A80E45200A79B12 /* RecordDetailsTableViewController.m */; };
@@ -72,7 +75,6 @@
 		824A9DD91724E16400C9BD79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9DD81724E16400C9BD79 /* UIKit.framework */; };
 		824A9DDB1724E16400C9BD79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9DDA1724E16400C9BD79 /* Foundation.framework */; };
 		824A9DDD1724E16400C9BD79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824A9DDC1724E16400C9BD79 /* CoreGraphics.framework */; };
-		824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 824A9DE11724E16400C9BD79 /* InfoPlist.strings */; };
 		824A9DE51724E16400C9BD79 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 824A9DE41724E16400C9BD79 /* main.m */; };
 		824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 824A9E321724E2A900C9BD79 /* AppDelegate.m */; };
 		824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 824A9E3C1724E9F400C9BD79 /* readme.txt */; };
@@ -149,6 +151,10 @@
 		130C30091A78E1FE00C95600 /* EmployeeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeListViewController.m; sourceTree = "<group>"; };
 		130C300B1A78E7BF00C95600 /* DWCEmployee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCEmployee.h; sourceTree = "<group>"; };
 		130C300C1A78E7BF00C95600 /* DWCEmployee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCEmployee.m; sourceTree = "<group>"; };
+		1318193E1A91CAB200CAA4D6 /* BaseServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseServicesViewController.h; sourceTree = "<group>"; };
+		1318193F1A91CAB200CAA4D6 /* BaseServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseServicesViewController.m; sourceTree = "<group>"; };
+		131819431A91D65900CAA4D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		131819461A91D6C100CAA4D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		131CA86C1A80C93400A79B12 /* TableViewSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewSection.h; sourceTree = "<group>"; };
 		131CA86D1A80C93400A79B12 /* TableViewSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewSection.m; sourceTree = "<group>"; };
 		131CA86F1A80C94400A79B12 /* TableViewSectionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewSectionField.h; sourceTree = "<group>"; };
@@ -239,7 +245,6 @@
 		824A9DDA1724E16400C9BD79 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		824A9DDC1724E16400C9BD79 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		824A9DE01724E16400C9BD79 /* DWCeServices-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DWCeServices-Info.plist"; sourceTree = "<group>"; };
-		824A9DE21724E16400C9BD79 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		824A9DE41724E16400C9BD79 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		824A9DE61724E16400C9BD79 /* DWCeServices-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DWCeServices-Prefix.pch"; sourceTree = "<group>"; };
 		824A9E311724E2A900C9BD79 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -411,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */,
+				1318193D1A91CA9C00CAA4D6 /* BaseServicesViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				130C2FFB1A78DDE600C95600 /* EmployeeListViewController */,
 				132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */,
@@ -549,6 +555,24 @@
 				130C30001A78DE0200C95600 /* EmployeeTableViewCell.xib */,
 			);
 			path = EmployeeTableViewCell;
+			sourceTree = "<group>";
+		};
+		1318193D1A91CA9C00CAA4D6 /* BaseServicesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1318193E1A91CAB200CAA4D6 /* BaseServicesViewController.h */,
+				1318193F1A91CAB200CAA4D6 /* BaseServicesViewController.m */,
+			);
+			path = BaseServicesViewController;
+			sourceTree = "<group>";
+		};
+		131819411A91D65900CAA4D6 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				131819421A91D65900CAA4D6 /* InfoPlist.strings */,
+				131819451A91D6C100CAA4D6 /* Localizable.strings */,
+			);
+			path = en.lproj;
 			sourceTree = "<group>";
 		};
 		131CA87A1A80F8FD00A79B12 /* RecordDetailTableViewCell */ = {
@@ -874,8 +898,8 @@
 		824A9DDF1724E16400C9BD79 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				131819411A91D65900CAA4D6 /* en.lproj */,
 				824A9DE01724E16400C9BD79 /* DWCeServices-Info.plist */,
-				824A9DE11724E16400C9BD79 /* InfoPlist.strings */,
 				824A9DE41724E16400C9BD79 /* main.m */,
 				824A9DE61724E16400C9BD79 /* DWCeServices-Prefix.pch */,
 			);
@@ -1190,11 +1214,12 @@
 				1307BAE81A6F938B004E6325 /* SalesforceSDKResources.bundle in Resources */,
 				1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */,
 				1307BAE51A6F938B004E6325 /* Corisande-Light.ttf in Resources */,
-				824A9DE31724E16400C9BD79 /* InfoPlist.strings in Resources */,
 				13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */,
+				131819471A91D6C100CAA4D6 /* Localizable.strings in Resources */,
 				824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */,
 				1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */,
 				1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */,
+				131819441A91D65900CAA4D6 /* InfoPlist.strings in Resources */,
 				130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
 				1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */,
@@ -1250,6 +1275,7 @@
 				132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
 				130C300D1A78E7BF00C95600 /* DWCEmployee.m in Sources */,
+				131819401A91CAB200CAA4D6 /* BaseServicesViewController.m in Sources */,
 				139E6B5E1A7A3CED00D1D451 /* Occupation.m in Sources */,
 				13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */,
 				13081B041A7655BD00B33509 /* DatePickerViewController.m in Sources */,
@@ -1266,12 +1292,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		824A9DE11724E16400C9BD79 /* InfoPlist.strings */ = {
+		131819421A91D65900CAA4D6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				824A9DE21724E16400C9BD79 /* en */,
+				131819431A91D65900CAA4D6 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		131819451A91D6C100CAA4D6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				131819461A91D6C100CAA4D6 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1351,6 +1385,7 @@
 					"$(SRCROOT)/DWCeServices/Dependencies/SalesforceSecurity/Headers",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/DWC eServices/DWCeServices-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/DWC eServices/Dependencies/openssl\"",
@@ -1391,6 +1426,7 @@
 					"$(SRCROOT)/DWCeServices/Dependencies/SalesforceSecurity/Headers",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/DWC eServices/DWCeServices-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/DWC eServices/Dependencies/openssl\"",

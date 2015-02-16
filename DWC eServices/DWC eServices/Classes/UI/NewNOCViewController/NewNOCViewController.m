@@ -73,7 +73,7 @@
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-    [self.navigationController popToViewController:self.cancelViewController animated:YES];
+    [self cancelServiceButtonClicked];
 }
 
 - (void)courierFieldsSetHidden:(BOOL)hidden {
