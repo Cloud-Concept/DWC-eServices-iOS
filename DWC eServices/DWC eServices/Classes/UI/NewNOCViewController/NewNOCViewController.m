@@ -213,6 +213,7 @@
         destinationVC.cancelViewController = self.cancelViewController;
         EServiceAdministration *eService = [nocTypesArray objectAtIndex:selectedNOCTypeIndexPath.row];
         destinationVC.currentWebformId = eService.editNewVFGenerator;
+        destinationVC.currentServiceAdministration = eService;
         destinationVC.visaObject = self.currentVisaObject;
     }
 }

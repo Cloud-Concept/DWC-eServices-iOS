@@ -39,4 +39,7 @@
     return self;
 }
 
+- (BOOL)hasDocuments {
+    return self.serviceDocumentsArray.count > 0;
+}
 @end

@@ -20,4 +20,6 @@
 
 - (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject NewEditVFGenerator:(NSString*)NewEditVFGenerator ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray;
 
+- (BOOL)hasDocuments;
+
 @end

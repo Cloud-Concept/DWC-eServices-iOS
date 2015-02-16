@@ -13,3 +13,15 @@
 "ConfirmAlertTitle" = "Confirm";
 
 "CancelServiceAlertMessage" = "Are you sure you want to cancel this service?";
+
+"homeDashboardButton" = "DASHBOARD";
+"homeMyRequestButton" = "MY REQUEST";
+"homeNotificationButton" = "NOTIFICATION";
+"homeEmployeesButton" = "EMPLOYEES";
+"homeCurrentBalanceLabel" = "CURRENT BALANCE";
+"homeViewStatementButton" = "View Statement";
+"homeServicesButton" = "SERVICES";
+"homeCompanyInfoButton" = "COMPANY INFO";
+"homeCompanyDocumentsButton" = "COMPANY DOCUMENTS";
+"homeNeedHelpButton" = "NEED HELP";
+"homeLogoutButton" = "LOGOUT";

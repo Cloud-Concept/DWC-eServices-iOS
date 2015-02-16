@@ -26,16 +26,15 @@
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Home NavBar DWC Logo"]];
     
-    [HelperClass setupButtonWithTextUnderImage:self.dashboardButton];
-    [HelperClass setupButtonWithTextUnderImage:self.employeesButton];
-    [HelperClass setupButtonWithTextUnderImage:self.myRequestButton];
-    [HelperClass setupButtonWithTextUnderImage:self.notificationButton];
-    [HelperClass setupButtonWithTextUnderImage:self.quickAccessButton];
-    [HelperClass setupButtonWithTextUnderImage:self.needHelpButton];
-    [HelperClass setupButtonWithTextUnderImage:self.logoutButton];
-    [HelperClass setupButtonWithTextUnderImage:self.reportsButton];
-    [HelperClass setupButtonWithTextUnderImage:self.servicesButton];
-    [HelperClass setupButtonWithTextUnderImage:self.companyInfoButton];
+    [self setupHomeButton:self.dashboardButton TitleKey:@"homeDashboardButton"];
+    [self setupHomeButton:self.employeesButton TitleKey:@"homeEmployeesButton"];
+    [self setupHomeButton:self.myRequestButton TitleKey:@"homeMyRequestButton"];
+    [self setupHomeButton:self.notificationButton TitleKey:@"homeNotificationButton"];
+    [self setupHomeButton:self.companyDocumentsButton TitleKey:@"homeCompanyDocumentsButton"];
+    [self setupHomeButton:self.needHelpButton TitleKey:@"homeNeedHelpButton"];
+    [self setupHomeButton:self.logoutButton TitleKey:@"homeLogoutButton"];
+    [self setupHomeButton:self.servicesButton TitleKey:@"homeServicesButton"];
+    [self setupHomeButton:self.companyInfoButton TitleKey:@"homeCompanyInfoButton"];
     
     [HelperClass setupButtonWithBadgeOnImage:self.notificationButton Value:0];
     
@@ -104,6 +103,11 @@
     NSString *balanceStr = [HelperClass formatNumberToString:[Globals currentAccount].accountBalance FormatStyle:NSNumberFormatterDecimalStyle MaximumFractionDigits:2];
     
     [self.currentBalanceValueLabel setText:[NSString stringWithFormat:@"%@ AED", balanceStr]];
+}
+
+- (void)setupHomeButton:(UIButton*)button TitleKey:(NSString*)titleKey {
+    [button setTitle:NSLocalizedString(titleKey, @"") forState:UIControlStateNormal];
+    [HelperClass setupButtonWithTextUnderImage:button];
 }
 
 /*

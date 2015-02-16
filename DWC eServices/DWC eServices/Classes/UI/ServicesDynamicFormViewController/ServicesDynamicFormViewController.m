@@ -69,7 +69,12 @@
 }
 
 - (void)nextButtonClicked:(id)sender {
-    
+    if ([self.currentServiceAdministration hasDocuments]) {
+        
+    }
+    else {
+        
+    }
 }
 
 - (void)showLoadingDialog {

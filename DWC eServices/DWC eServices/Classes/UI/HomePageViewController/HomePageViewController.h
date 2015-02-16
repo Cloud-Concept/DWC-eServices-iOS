@@ -14,10 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *employeesButton;
 @property (weak, nonatomic) IBOutlet UIButton *myRequestButton;
 @property (weak, nonatomic) IBOutlet UIButton *notificationButton;
-@property (weak, nonatomic) IBOutlet UIButton *quickAccessButton;
+@property (weak, nonatomic) IBOutlet UIButton *companyDocumentsButton;
 @property (weak, nonatomic) IBOutlet UIButton *needHelpButton;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
-@property (weak, nonatomic) IBOutlet UIButton *reportsButton;
 @property (weak, nonatomic) IBOutlet UIButton *servicesButton;
 @property (weak, nonatomic) IBOutlet UIButton *companyInfoButton;
 

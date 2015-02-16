@@ -27,7 +27,6 @@
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
-            <string>CorisandeLight</string>
         </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
             <string>CorisandeRegular</string>
@@ -306,32 +305,14 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ss-iX-Fna">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ss-iX-Fna">
                                         <rect key="frame" x="276" y="168" width="87" height="90"/>
                                         <color key="backgroundColor" red="0.40392156862745099" green="0.44313725490196076" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
-                                        <state key="normal" title="LOGOUT" image="Home Logout Icon">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHN-Fe-t9Y">
-                                        <rect key="frame" x="276" y="0.0" width="87" height="162"/>
-                                        <color key="backgroundColor" red="0.396078431372549" green="0.32941176470588235" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="KHN-Fe-t9Y" secondAttribute="height" multiplier="29:54" id="GIB-JU-8pY"/>
+                                            <constraint firstAttribute="width" secondItem="3ss-iX-Fna" secondAttribute="height" multiplier="29:30" id="ICs-NP-8Mq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
-                                        <state key="normal" title="REPORTS" image="Home Reports Icon">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgN-E5-iGe">
-                                        <rect key="frame" x="92" y="168" width="178" height="90"/>
-                                        <color key="backgroundColor" red="0.32156862745098036" green="0.61960784313725492" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
-                                        <state key="normal" title="QUICK ACCESS" image="Home Quick Access Icon">
+                                        <state key="normal" title="LOGOUT" image="Home Logout Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -349,13 +330,25 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoA-2D-G5q">
-                                        <rect key="frame" x="138" y="0.0" width="132" height="162"/>
+                                        <rect key="frame" x="138" y="0.0" width="225" height="162"/>
                                         <color key="backgroundColor" red="0.69411764705882351" green="0.34901960784313724" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="OoA-2D-G5q" secondAttribute="height" multiplier="22:27" id="VdR-QA-Mnz"/>
+                                            <constraint firstAttribute="width" secondItem="OoA-2D-G5q" secondAttribute="height" multiplier="25:18" id="NgC-9O-CQd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <state key="normal" title="COMPANY INFO" image="Home Company Info Icon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgN-E5-iGe">
+                                        <rect key="frame" x="92" y="168" width="178" height="90"/>
+                                        <color key="backgroundColor" red="0.396078431372549" green="0.32941176470588235" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="WgN-E5-iGe" secondAttribute="height" multiplier="89:45" id="ry1-22-eUu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
+                                        <state key="normal" title="COMPANY DOCUMENTS" image="Home Reports Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -364,25 +357,23 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="gWd-jd-qrP" firstAttribute="bottom" secondItem="WgN-E5-iGe" secondAttribute="bottom" id="0e3-c1-N68"/>
-                                    <constraint firstItem="KHN-Fe-t9Y" firstAttribute="leading" secondItem="OoA-2D-G5q" secondAttribute="trailing" constant="6" id="3vU-ap-saP"/>
+                                    <constraint firstAttribute="trailing" secondItem="OoA-2D-G5q" secondAttribute="trailing" id="56f-dU-7hX"/>
                                     <constraint firstItem="OxK-JZ-3Vl" firstAttribute="leading" secondItem="gWd-jd-qrP" secondAttribute="leading" id="7gD-kc-KnU"/>
                                     <constraint firstItem="3ss-iX-Fna" firstAttribute="bottom" secondItem="WgN-E5-iGe" secondAttribute="bottom" id="AU6-0l-Ya7"/>
-                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="leading" secondItem="KHN-Fe-t9Y" secondAttribute="leading" id="AZS-20-T92"/>
-                                    <constraint firstItem="KHN-Fe-t9Y" firstAttribute="top" secondItem="OoA-2D-G5q" secondAttribute="top" id="Awm-N9-yF2"/>
+                                    <constraint firstItem="OoA-2D-G5q" firstAttribute="bottom" secondItem="OxK-JZ-3Vl" secondAttribute="bottom" id="AxK-62-AIT"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="leading" secondItem="ADE-zJ-RfB" secondAttribute="leading" id="BWN-hE-gJa"/>
                                     <constraint firstItem="WgN-E5-iGe" firstAttribute="leading" secondItem="gWd-jd-qrP" secondAttribute="trailing" constant="6" id="CPq-BB-LsU"/>
-                                    <constraint firstItem="OoA-2D-G5q" firstAttribute="trailing" secondItem="WgN-E5-iGe" secondAttribute="trailing" id="D3R-a2-Hln"/>
-                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="trailing" secondItem="KHN-Fe-t9Y" secondAttribute="trailing" id="Fxi-CD-Esy"/>
                                     <constraint firstItem="OxK-JZ-3Vl" firstAttribute="top" secondItem="ADE-zJ-RfB" secondAttribute="top" id="Jzc-oB-OhC"/>
-                                    <constraint firstAttribute="trailing" secondItem="KHN-Fe-t9Y" secondAttribute="trailing" id="MJv-vr-76W"/>
-                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="bottom" secondItem="OoA-2D-G5q" secondAttribute="bottom" id="Ri8-LG-pZo"/>
-                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="top" secondItem="OoA-2D-G5q" secondAttribute="top" id="TtY-cO-Fgj"/>
-                                    <constraint firstItem="OoA-2D-G5q" firstAttribute="leading" secondItem="OxK-JZ-3Vl" secondAttribute="trailing" constant="6" id="ZP2-B1-11b"/>
+                                    <constraint firstItem="OoA-2D-G5q" firstAttribute="leading" secondItem="OxK-JZ-3Vl" secondAttribute="trailing" constant="6" id="PvZ-1H-AzL"/>
+                                    <constraint firstItem="OxK-JZ-3Vl" firstAttribute="top" secondItem="ADE-zJ-RfB" secondAttribute="top" id="Qqy-fT-BCg"/>
+                                    <constraint firstItem="OoA-2D-G5q" firstAttribute="top" secondItem="OxK-JZ-3Vl" secondAttribute="top" id="bYm-I5-ttu"/>
                                     <constraint firstItem="3ss-iX-Fna" firstAttribute="top" secondItem="WgN-E5-iGe" secondAttribute="top" id="cXa-Xy-lZ8"/>
                                     <constraint firstItem="gWd-jd-qrP" firstAttribute="top" secondItem="WgN-E5-iGe" secondAttribute="top" id="dfa-Qe-tYm"/>
                                     <constraint firstItem="gWd-jd-qrP" firstAttribute="top" secondItem="OxK-JZ-3Vl" secondAttribute="bottom" constant="6" id="efx-uc-COV"/>
-                                    <constraint firstItem="KHN-Fe-t9Y" firstAttribute="bottom" secondItem="OoA-2D-G5q" secondAttribute="bottom" id="feR-jx-fC2"/>
                                     <constraint firstItem="OxK-JZ-3Vl" firstAttribute="leading" secondItem="ADE-zJ-RfB" secondAttribute="leading" id="gBa-gK-wNW"/>
                                     <constraint firstAttribute="bottom" secondItem="gWd-jd-qrP" secondAttribute="bottom" id="lJM-7Z-NdW"/>
+                                    <constraint firstItem="3ss-iX-Fna" firstAttribute="leading" secondItem="WgN-E5-iGe" secondAttribute="trailing" constant="6" id="lWy-ou-UYQ"/>
+                                    <constraint firstItem="OoA-2D-G5q" firstAttribute="trailing" secondItem="3ss-iX-Fna" secondAttribute="trailing" id="nLu-ry-BKM"/>
                                     <constraint firstAttribute="width" secondItem="ADE-zJ-RfB" secondAttribute="height" multiplier="121:86" id="w4M-Z6-1rO"/>
                                 </constraints>
                             </view>
@@ -413,6 +404,7 @@
                     <navigationItem key="navigationItem" id="298-E8-10y"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="companyDocumentsButton" destination="WgN-E5-iGe" id="5yY-fo-I0d"/>
                         <outlet property="companyInfoButton" destination="OoA-2D-G5q" id="OSj-3a-tXY"/>
                         <outlet property="companyLogoImageView" destination="ODz-Hc-XjO" id="2nw-hB-SyC"/>
                         <outlet property="companyNameValueLabel" destination="ZfT-Fe-NvK" id="rJh-Aa-fTV"/>
@@ -425,8 +417,6 @@
                         <outlet property="myRequestButton" destination="5R1-9G-NpB" id="EK1-fB-HX9"/>
                         <outlet property="needHelpButton" destination="gWd-jd-qrP" id="ASU-VM-iVI"/>
                         <outlet property="notificationButton" destination="2JE-ua-Xp0" id="t1a-qL-xcI"/>
-                        <outlet property="quickAccessButton" destination="WgN-E5-iGe" id="spi-4Y-7l2"/>
-                        <outlet property="reportsButton" destination="KHN-Fe-t9Y" id="BCN-kr-PBc"/>
                         <outlet property="servicesButton" destination="OxK-JZ-3Vl" id="gpg-L0-49R"/>
                     </connections>
                 </viewController>
@@ -1052,7 +1042,6 @@
         <image name="Home My Request Icon" width="36" height="23"/>
         <image name="Home Need Help Icon" width="31" height="31"/>
         <image name="Home Notification Icon" width="31" height="31"/>
-        <image name="Home Quick Access Icon" width="32" height="26"/>
         <image name="Home Reports Icon" width="28" height="31"/>
         <image name="Home Services Icon" width="34" height="31"/>
         <image name="Slide Menu Company Info Icon" width="5" height="9"/>
