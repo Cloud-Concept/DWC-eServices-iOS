@@ -13,5 +13,5 @@
 @interface UIView (DynamicForm)
 
 - (void)drawFormFields:(WebForm *)webForm cancelButton:(UIButton *)cancelButton nextButton:(UIButton *)nextButton;
-
+- (void)drawAttachmentButtons:(NSArray *) attachmentArray cancelButton:(UIButton *)cancelButton nextButton:(UIButton *)nextButton viewController:(UIViewController *)viewController;
 @end

@@ -14,7 +14,7 @@
 #import "UIView+DynamicForm.h"
 #import "Visa.h"
 #import "EServiceAdministration.h"
-#import "FVCustomAlertView.h"
+#import "ServicesUploadViewController.h"
 
 @interface ServicesDynamicFormViewController ()
 
@@ -24,11 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
-    
-    self.showSlidingMenu = false;
-    
-    [self initializeButtons];
+    [self initializeButtonsWithNextAction:@selector(nextButtonClicked:)];
     
     [self getWebForm];
 }
@@ -48,42 +46,25 @@
 }
 */
 
-- (void)initializeButtons {
-    cancelButton = [UIButton new];
-    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
-    [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [cancelButton setBackgroundImage:[UIImage imageNamed:@"Black Button Background"] forState:UIControlStateNormal];
-    [cancelButton.titleLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
-    [cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    nextButton = [UIButton new];
-    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [nextButton setBackgroundImage:[UIImage imageNamed:@"Blue Button Background"] forState:UIControlStateNormal];
-    [nextButton.titleLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
-    [nextButton addTarget:self action:@selector(nextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)cancelButtonClicked:(id)sender {
-    [self cancelServiceButtonClicked];
-}
-
 - (void)nextButtonClicked:(id)sender {
+    if (![self validateInput]) {
+        [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                         Message:NSLocalizedString(@"RequiredFieldsAlertMessage", @"")];
+        return;
+    }
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     if ([self.currentServiceAdministration hasDocuments]) {
         
+        ServicesUploadViewController *servicesUploadVC = [storybord instantiateViewControllerWithIdentifier:@"ServicesUploadViewController"];
+        servicesUploadVC.cancelViewController = self.cancelViewController;
+        servicesUploadVC.currentServiceAdministration = self.currentServiceAdministration;
+        
+        [self.navigationController pushViewController:servicesUploadVC animated:YES];
     }
     else {
         
     }
-}
-
-- (void)showLoadingDialog {
-    if(![FVCustomAlertView isShowingAlert])
-        [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:@"Loading..." withBlur:YES];
-}
-
-- (void)hideLoadingDialog {
-    [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
 }
 
 - (void)getWebForm {
@@ -257,6 +238,16 @@
     
     [self.servicesScrollView addConstraints:constraint_POS_H];
     [self.servicesScrollView addConstraints:constraint_POS_V];
+}
+
+- (BOOL)validateInput {
+    BOOL returnValue = YES;
+    for (FormField *formField in currentWebForm.formFields) {
+        if(formField.required && [[formField getFormFieldValue] isEqualToString:@""])
+            returnValue = NO;
+    }
+    
+    return returnValue;
 }
 
 @end

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseServicesViewController.h"
 
-@class EServiceAdministration;
 @class WebForm;
 @class Visa;
 
@@ -17,15 +16,10 @@
 {
     UIView *servicesContentView;
     WebForm *currentWebForm;
-    
-    UIButton *cancelButton;
-    UIButton *nextButton;
 }
 
 @property (strong, nonatomic) Visa *visaObject;
-
 @property (strong, nonatomic) NSString *currentWebformId;
-@property (strong, nonatomic) EServiceAdministration *currentServiceAdministration;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *servicesScrollView;
 

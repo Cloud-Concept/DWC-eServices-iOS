@@ -31,6 +31,7 @@
     loadingCourierCharges = NO;
     courierChargesLoaded = NO;
     
+    
     [self courierFieldsSetHidden:YES];
     
     [self getNOCTypes];
@@ -73,7 +74,7 @@
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-    [self cancelServiceButtonClicked];
+    [self cancelServiceButtonClicked:sender];
 }
 
 - (void)courierFieldsSetHidden:(BOOL)hidden {
