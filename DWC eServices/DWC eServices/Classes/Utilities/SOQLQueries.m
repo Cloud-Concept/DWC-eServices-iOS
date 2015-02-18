@@ -20,16 +20,29 @@ static NSString *visitVisaFilter = @" AND Visa_Type__c in ('Visit')";
 
 static NSString *contractorsQuery = @"SELECT Id, Name, Personal_Photo__c, Card_Number__c, Status__c, Sponsor__c, Card_Type__c, Salutation__c, Card_Expiry_Date__c, Card_Issue_Date__c, Full_Name__c, Designation__c, Duration__c, Passport_Number__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, Nationality__r.Id, Nationality__r.Name FROM Card_Management__c WHERE Account__c = '%@' and Status__c NOT IN ('Renewed') ORDER BY Full_Name__c";
 
-+ (NSString*)visitVisaEmployeesQuery {
+static NSString *nocTypesQuery = @"SELECT ID, Name, Service_Identifier__c, Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Related_to_Object__c = 'NOC' AND RecordType.DeveloperName = 'Auto_Generated_Invoice' AND Is_Active__c = true %@ ORDER BY Service_Identifier__c";
+
+static NSString *employeeNOCTypesFilter = @"AND NOC_Type__c = 'Employee'";
+static NSString *companyNOCTypesFilter = @"AND NOC_Type__c = 'Company'";
+
++ (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
 }
 
-+ (NSString*)permanentEmployeesQuery {
++ (NSString *)permanentEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, permanentEmployeeFilter];
 }
 
-+ (NSString*)contractorsQuery {
++ (NSString *)contractorsQuery {
     return [NSString stringWithFormat:contractorsQuery, [Globals currentAccount].Id];
+}
+
++ (NSString *)employeeNOCTypesQuery {
+    return [NSString stringWithFormat:nocTypesQuery, employeeNOCTypesFilter];
+}
+
++ (NSString *)companyNOCTypesQuery {
+    return [NSString stringWithFormat:nocTypesQuery, companyNOCTypesFilter];
 }
 
 @end

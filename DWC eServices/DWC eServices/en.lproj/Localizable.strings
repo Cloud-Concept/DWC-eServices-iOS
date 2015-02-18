@@ -38,3 +38,6 @@
 "homeLogoutButton" = "LOGOUT";
 
 "uploadDocumentTitle" = "Upload Document";
+
+"chooseAuthorityButton" = "Choose Authority";
+"chooseLanguageButton" = "Choose Language";

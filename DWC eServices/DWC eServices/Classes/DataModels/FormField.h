@@ -11,7 +11,7 @@
 #import "DatePickerViewController.h"
 #import "PickerTableViewController.h"
 
-@interface FormField : NSObject <PickerTableViewControllerDelegate, DatePickerViewControllerDelegate, UIPopoverControllerDelegate, NSCopying>
+@interface FormField : NSObject <DatePickerViewControllerDelegate, UIPopoverControllerDelegate, NSCopying>
 {
     NSString *formFieldValue;
     UIView *fieldView;

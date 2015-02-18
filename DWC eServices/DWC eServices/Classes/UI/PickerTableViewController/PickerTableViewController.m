@@ -74,20 +74,20 @@
     self.selectedIndexPath = indexPath;
     [self.tableView reloadData];
     
-    if (!self.delegate)
+    if (!self.valuePicked)
         return;
     
     NSString *selectedValue = [self.valuesArray objectAtIndex:indexPath.row];
-    [self.delegate valuePicked:selectedValue AtIndex:indexPath pickList:self];
+    self.valuePicked(selectedValue, indexPath, self);
 }
 
 
 #pragma mark - WYPopoverControllerDelegate
 - (void)popoverControllerDidDismissPopover:(WYPopoverController *)popoverController {
-    if (!self.delegate)
+    if (!self.valuePickCanceled)
         return;
     
-    [self.delegate valuePickCanceled:self];
+    self.valuePickCanceled(self);
 }
 
 /*

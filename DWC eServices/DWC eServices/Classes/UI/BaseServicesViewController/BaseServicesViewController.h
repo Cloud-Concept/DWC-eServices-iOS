@@ -19,11 +19,14 @@
 
 @property (strong, nonatomic) UIViewController *cancelViewController;
 @property (strong, nonatomic) EServiceAdministration *currentServiceAdministration;
+@property (strong, nonatomic) NSDictionary *caseFields;
+@property (strong, nonatomic) NSDictionary *serviceFields;
+@property (strong, nonatomic) NSDictionary *parameters;
+@property (strong, nonatomic) NSString *serviceObject;
 
 - (void)initializeButtonsWithNextAction:(SEL)nextAction;
 - (void)showLoadingDialog;
 - (void)hideLoadingDialog;
 - (void)cancelServiceButtonClicked:(id)sender;
-//- (void)setCurrentServiceAdministration:(EServiceAdministration *)value;
 
 @end

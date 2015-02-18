@@ -13,5 +13,6 @@
 + (NSString*)visitVisaEmployeesQuery;
 + (NSString*)permanentEmployeesQuery;
 + (NSString*)contractorsQuery;
-
++ (NSString *)employeeNOCTypesQuery;
++ (NSString *)companyNOCTypesQuery;
 @end

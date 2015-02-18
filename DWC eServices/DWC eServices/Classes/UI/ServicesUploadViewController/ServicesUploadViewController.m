@@ -27,6 +27,15 @@
     [self displayDocuments];
 }
 
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
+        for (EServiceDocument* document in self.currentServiceAdministration.serviceDocumentsArray) {
+            [document deleteDocumentAndButton];
+        }
+    }
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

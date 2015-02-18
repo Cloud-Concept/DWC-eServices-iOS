@@ -14,6 +14,8 @@
 #import "Globals.h"
 #import "HelperClass.h"
 #import "ServicesDynamicFormViewController.h"
+#import "Visa.h"
+#import "SOQLQueries.h"
 
 @interface NewNOCViewController ()
 
@@ -31,7 +33,7 @@
     loadingCourierCharges = NO;
     courierChargesLoaded = NO;
     
-    
+    [self resetAuthorityLanguageButtons];
     [self courierFieldsSetHidden:YES];
     
     [self getNOCTypes];
@@ -53,7 +55,59 @@
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
     pickerTableVC.valuesArray = stringArray;
     pickerTableVC.selectedIndexPath = selectedNOCTypeIndexPath;
-    pickerTableVC.delegate = self;
+    pickerTableVC.valuePicked = ^(NSString *value, NSIndexPath *indexPath, PickerTableViewController *picklist) {
+        selectedNOCTypeIndexPath = indexPath;
+        [self.chooseNOCTypeButton setTitle:value forState:UIControlStateNormal];
+        [picklist dismissPopover:YES];
+        [self resetAuthorityLanguageButtons];
+        [self.chooseAuthorityButton setEnabled:YES];
+    };
+    
+    [pickerTableVC showPopoverFromView:senderButton];
+}
+
+- (IBAction)chooseAuthorityButtonClicked:(id)sender {
+    EServiceAdministration *selectedService = [nocTypesArray objectAtIndex:selectedNOCTypeIndexPath.row];
+    NSMutableArray *stringArray = [NSMutableArray new];
+    UIButton *senderButton = sender;
+    
+    for (NSString *authority in selectedService.authoritiesOrderedSet) {
+        [stringArray addObject:authority];
+    }
+    
+    PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.valuesArray = stringArray;
+    pickerTableVC.selectedIndexPath = selectedAuthorityIndexPath;
+    pickerTableVC.valuePicked = ^(NSString *value, NSIndexPath *indexPath, PickerTableViewController *picklist) {
+        selectedAuthorityIndexPath = indexPath;
+        selectedAuthority = value;
+        [self.chooseAuthorityButton setTitle:value forState:UIControlStateNormal];
+        [picklist dismissPopover:YES];
+        [self resetLanguageButton:YES];
+    };
+    
+    [pickerTableVC showPopoverFromView:senderButton];
+}
+
+- (IBAction)chooseLanguageButtonClicked:(id)sender {
+    EServiceAdministration *selectedService = [nocTypesArray objectAtIndex:selectedNOCTypeIndexPath.row];
+    NSOrderedSet *langaugesOrderedSet = [selectedService.authorityLanguagesDictionary objectForKey:selectedAuthority];
+    NSMutableArray *stringArray = [NSMutableArray new];
+    UIButton *senderButton = sender;
+    
+    for (NSString *language in langaugesOrderedSet) {
+        [stringArray addObject:language];
+    }
+    
+    PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.valuesArray = stringArray;
+    pickerTableVC.selectedIndexPath = selectedLanguageIndexPath;
+    pickerTableVC.valuePicked = ^(NSString *value, NSIndexPath *indexPath, PickerTableViewController *picklist) {
+        selectedLanguageIndexPath = indexPath;
+        [self.chooseLanguageButton setTitle:value forState:UIControlStateNormal];
+        [picklist dismissPopover:YES];
+        selectedLanguage = value;
+    };
     
     [pickerTableVC showPopoverFromView:senderButton];
 }
@@ -77,16 +131,26 @@
     [self cancelServiceButtonClicked:sender];
 }
 
+- (void)resetAuthorityLanguageButtons {
+    [self.chooseAuthorityButton setTitle:NSLocalizedString(@"chooseAuthorityButton", @"")
+                                forState:UIControlStateNormal];
+    selectedAuthorityIndexPath = nil;
+    [self resetLanguageButton:NO];
+}
+
+- (void)resetLanguageButton:(BOOL)enabled {
+    [self.chooseLanguageButton setTitle:NSLocalizedString(@"chooseLanguageButton", @"")
+                               forState:UIControlStateNormal];
+    selectedLanguageIndexPath = nil;
+    [self.chooseLanguageButton setEnabled:enabled];
+}
+
 - (void)courierFieldsSetHidden:(BOOL)hidden {
-    [self.courierCorporateRateLabel setHidden:hidden];
-    [self.courierCorporateRateTextField setHidden:hidden];
     [self.courierRateLabel setHidden:hidden];
     [self.courierRateTextField setHidden:hidden];
 }
 
 - (void)setCourierValuesToFields {
-    [self.courierCorporateRateTextField setText:[NSString stringWithFormat:@"AED %@", corporateCourierRate]];
-    
     [self.courierRateTextField setText:[NSString stringWithFormat:@"AED %@", retailCourierRate]];
 }
 
@@ -118,7 +182,7 @@
                                                                               ServiceIdentifier:[dict objectForKey:@"Service_Identifier__c"]
                                                                                          Amount:[dict objectForKey:@"Amount__c"]
                                                                                 RelatedToObject:[dict objectForKey:@"Related_to_Object__c"]
-                                                                           NewEditVFGenerator:[dict objectForKey:@"New_Edit_VF_Generator__c"]
+                                                                             NewEditVFGenerator:[dict objectForKey:@"New_Edit_VF_Generator__c"]
                                                                           ServiceDocumentsArray:documentRecordsArray]];
         }
         
@@ -139,9 +203,7 @@
     loadingNOCTypes = YES;
     [self showLoadingDialog];
     
-    NSString *selectQuery = @"SELECT ID, Name, Service_Identifier__c, Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c FROM eServices_Document_Checklists__r WHERE Document_Type__c = 'Upload') FROM Receipt_Template__c WHERE Related_to_Object__c INCLUDES ('NOC') AND Redirect_Page__c != null AND RecordType.DeveloperName = 'Auto_Generated_Invoice' AND Is_Active__c = true ORDER BY Service_Identifier__c";
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
+    [[SFRestAPI sharedInstance] performSOQLQuery:[SOQLQueries employeeNOCTypesQuery]
                                        failBlock:errorBlock
                                    completeBlock:successBlock];
 }
@@ -216,29 +278,49 @@
         destinationVC.currentWebformId = eService.editNewVFGenerator;
         destinationVC.currentServiceAdministration = eService;
         destinationVC.visaObject = self.currentVisaObject;
+        destinationVC.serviceObject = @"NOC__c";
+        destinationVC.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]] ,@"isCourierRequired__c",
+                                    corporateCourierRate, @"Courier_Corporate_Fee__c",
+                                    retailCourierRate, @"Courier_Retail_Fee__c",
+                                    eService.Id, @"Service_Requested__c",
+                                    self.currentVisaObject.visaHolder.Id, @"Employee_Ref__c",
+                                    [Globals currentAccount].Id, @"AccountId",
+                                    caseRecordTypeId, @"RecordTypeId",
+                                    @"Draft", @"Status",
+                                    @"NOC Services", @"Type",
+                                    @"Mobile", @"Origin",
+                                    nil];
+        
+        destinationVC.serviceFields = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       self.currentVisaObject.visaHolder.Id, @"Person__c",
+                                       [Globals currentAccount].Id, @"Current_Sponsor__c",
+                                       self.currentVisaObject.Id, @"Current_Visa__c",
+                                       @"Application Received", @"Application_Status__c",
+                                       eService.serviceIdentifier, @"Document_Name__c",
+                                       nocRecordTypeId, @"RecordTypeId",
+                                       [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]], @"isCourierRequired__c",
+                                       /*caseId, @"Request__c",*/
+                                       nil];
+        
+        destinationVC.parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    selectedAuthority, @"auth",
+                                    selectedLanguage, @"lang",
+                                    nil];
+        
     }
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     BOOL shouldPerform = YES;
     
-    if ([identifier isEqualToString:@"ServicesDynamicFormSegue"] && !selectedNOCTypeIndexPath) {
+    if ([identifier isEqualToString:@"ServicesDynamicFormSegue"] && !(selectedNOCTypeIndexPath && selectedAuthorityIndexPath && selectedLanguageIndexPath)) {
         shouldPerform = NO;
-        [HelperClass displayAlertDialogWithTitle:@"Error" Message:@"Please select a service."];
+        [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                         Message:NSLocalizedString(@"RequiredFieldsAlertMessage", @"")];
     }
     
     return shouldPerform;
-}
-
-#pragma mark - PickerTableViewControllerDelegate
-- (void)valuePickCanceled:(PickerTableViewController *)picklist {
-    
-}
-
-- (void)valuePicked:(NSString *)value AtIndex:(NSIndexPath *)indexPath pickList:(PickerTableViewController *)picklist {
-    selectedNOCTypeIndexPath = indexPath;
-    [self.chooseNOCTypeButton setTitle:value forState:UIControlStateNormal];
-    [picklist dismissPopover:YES];
 }
 
 #pragma mark - SFRestAPIDelegate

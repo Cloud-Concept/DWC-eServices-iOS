@@ -8,10 +8,11 @@
 
 #import "EServiceDocument.h"
 #import "ServiceDocumentHelperClass.h"
+#import "HelperClass.h"
 
 @implementation EServiceDocument
 
-- (id)initEServiceDocument:(NSString*)ServiceId Name:(NSString*)Name Type:(NSString*)Type Language:(NSString*)Language DocumentType:(NSString*)DocumentType {
+- (id)initEServiceDocument:(NSString*)ServiceId Name:(NSString*)Name Type:(NSString*)Type Language:(NSString*)Language Authority:(NSString*)Authority DocumentType:(NSString*)DocumentType {
     if (!(self = [super init]))
         return nil;
     
@@ -19,14 +20,10 @@
     self.name = Name;
     self.nameNoSpace = [Name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     
-    if(![Type isKindOfClass:[NSNull class]])
-        self.type = Type;
-    
-    if(![Language isKindOfClass:[NSNull class]])
-        self.language = Language;
-    
-    if(![DocumentType isKindOfClass:[NSNull class]])
-        self.documentType = DocumentType;
+    self.authority = [HelperClass stringCheckNull:Authority];
+    self.type = [HelperClass stringCheckNull:Type];
+    self.language = [HelperClass stringCheckNull:Language];
+    self.documentType = [HelperClass stringCheckNull:DocumentType];
     
     return self;
 }
@@ -38,6 +35,11 @@
     }
     
     return documentButton;
+}
+
+- (void)deleteDocumentAndButton {
+    [self deleteDocument];
+    documentButton = nil;
 }
 
 - (void)deleteDocument {

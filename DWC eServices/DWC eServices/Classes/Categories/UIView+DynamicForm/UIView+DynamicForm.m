@@ -34,7 +34,7 @@
     [self addSubview:cancelButton];
     [self addSubview:nextButton];
     
-    NSDictionary *metrics = @{@"fieldHeight": @44,
+    NSDictionary *metrics = @{@"fieldHeight": @40,
                               @"labelHeight": @20,
                               @"leftMargin": @16,
                               @"rightMargin": @16,
@@ -218,7 +218,7 @@
     [self addSubview:cancelButton];
     [self addSubview:nextButton];
     
-    NSDictionary *metrics = @{@"fieldHeight": @44,
+    NSDictionary *metrics = @{@"fieldHeight": @40,
                               @"leftMargin": @16,
                               @"rightMargin": @16,
                               @"fieldsMargin": @16,

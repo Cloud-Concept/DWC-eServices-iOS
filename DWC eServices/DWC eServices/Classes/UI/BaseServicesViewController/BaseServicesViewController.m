@@ -17,6 +17,9 @@
 @implementation BaseServicesViewController
 
 @synthesize currentServiceAdministration;
+@synthesize caseFields;
+@synthesize serviceFields;
+@synthesize parameters;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -62,14 +65,14 @@
 }
 
 - (void)initializeButtonsWithNextAction:(SEL)nextAction {
-    cancelButton = [UIButton new];
+    cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [cancelButton setTitle:NSLocalizedString(@"cancel", @"") forState:UIControlStateNormal];
     [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [cancelButton setBackgroundImage:[UIImage imageNamed:@"Black Button Background"] forState:UIControlStateNormal];
     [cancelButton.titleLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
     [cancelButton addTarget:self action:@selector(cancelServiceButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    nextButton = [UIButton new];
+    nextButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [nextButton setTitle:NSLocalizedString(@"next", @"") forState:UIControlStateNormal];
     [nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [nextButton setBackgroundImage:[UIImage imageNamed:@"Blue Button Background"] forState:UIControlStateNormal];

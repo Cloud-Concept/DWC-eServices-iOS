@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSString *relatedToObject;
 @property (strong, nonatomic) NSString *editNewVFGenerator;
 @property (strong, nonatomic) NSArray *serviceDocumentsArray;
+@property (strong, nonatomic) NSOrderedSet *authoritiesOrderedSet;
+@property (strong, nonatomic) NSDictionary *authorityLanguagesDictionary;
 
 - (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject NewEditVFGenerator:(NSString*)NewEditVFGenerator ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray;
 

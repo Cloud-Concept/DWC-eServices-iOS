@@ -13,7 +13,7 @@
 @implementation ServiceDocumentHelperClass
 
 + (UIButton *)getButtonForDocument:(EServiceDocument *)document Taregt:(id)target Action:(SEL)action {
-    UIButton *button = [UIButton new];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [button setTitleColor:[UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1]
                  forState:UIControlStateNormal];
@@ -25,6 +25,8 @@
     
     [button setBackgroundImage:[UIImage imageNamed:backgroundImageName]
                       forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:nil forState:UIControlStateHighlighted];
     
     [button setContentEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 44)];
     
@@ -47,21 +49,21 @@
                                                                    message:NSLocalizedString(@"DeleteDocumentAlertMessage", @"")
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"delete", @"")
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"delete", @"")
                                                         style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction *action) {
                                                           NSLog(@"Delete action");
                                                           [document deleteDocument];
                                                       }];
     
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", @"")
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", @"")
                                                         style:UIAlertActionStyleCancel
                                                       handler:^(UIAlertAction *action) {
                                                           NSLog(@"Cancel action");
                                                       }];
     
-    [alert addAction:noAction];
-    [alert addAction:yesAction];
+    [alert addAction:deleteAction];
+    [alert addAction:cancelAction];
     
     [viewController presentViewController:alert animated:YES completion:nil];
 }

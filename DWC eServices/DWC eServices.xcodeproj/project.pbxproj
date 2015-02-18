@@ -52,6 +52,7 @@
 		132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */; };
 		132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */; };
 		132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */; };
+		132F0D081A948FCC003FFC24 /* ServicesReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132F0D071A948FCC003FFC24 /* ServicesReviewViewController.m */; };
 		13411AFB1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 13411AFA1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m */; };
 		13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13481AE41A82257100093331 /* RecordRelatedViewController.m */; };
 		13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13481AE51A82257100093331 /* RecordRelatedViewController.xib */; };
@@ -177,6 +178,8 @@
 		132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
 		132CCFB21A77C529007A40AE /* BaseFrontRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFrontRevealViewController.h; sourceTree = "<group>"; };
 		132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFrontRevealViewController.m; sourceTree = "<group>"; };
+		132F0D061A948FCC003FFC24 /* ServicesReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesReviewViewController.h; sourceTree = "<group>"; };
+		132F0D071A948FCC003FFC24 /* ServicesReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesReviewViewController.m; sourceTree = "<group>"; };
 		13411AF91A931E8E009AC2F5 /* ServiceDocumentHelperClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDocumentHelperClass.h; sourceTree = "<group>"; };
 		13411AFA1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDocumentHelperClass.m; sourceTree = "<group>"; };
 		13481AE31A82257100093331 /* RecordRelatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordRelatedViewController.h; path = "DWC eServices/Classes/UI/RecordMainViewController/RecordRelatedViewController/RecordRelatedViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -434,6 +437,7 @@
 				13EE67951A7E555600255174 /* RecordMainViewController */,
 				13EE67911A7E50A500255174 /* RKSwipeBetweenViewControllers */,
 				13063A861A8B6C0000A1DEA2 /* ServicesDynamicFormViewController */,
+				132F0D051A948FB2003FFC24 /* ServicesReviewViewController */,
 				131819481A91FC8B00CAA4D6 /* ServicesUploadViewController */,
 				132CCFAD1A779C5F007A40AE /* SidebarTableViewController */,
 				130291391A76C88D000E119C /* SWRevealViewController */,
@@ -658,6 +662,15 @@
 				132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */,
 			);
 			path = BaseFrontRevealViewController;
+			sourceTree = "<group>";
+		};
+		132F0D051A948FB2003FFC24 /* ServicesReviewViewController */ = {
+			isa = PBXGroup;
+			children = (
+				132F0D061A948FCC003FFC24 /* ServicesReviewViewController.h */,
+				132F0D071A948FCC003FFC24 /* ServicesReviewViewController.m */,
+			);
+			path = ServicesReviewViewController;
 			sourceTree = "<group>";
 		};
 		136377BB1A767C2C00282F72 /* FVCustomAlertView */ = {
@@ -1291,6 +1304,7 @@
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,
 				13081AF91A76559D00B33509 /* Country.m in Sources */,
 				139E6B6E1A7A6F2600D1D451 /* UIView+MGBadgeView.m in Sources */,
+				132F0D081A948FCC003FFC24 /* ServicesReviewViewController.m in Sources */,
 				1307BAEC1A6FDAC3004E6325 /* HelperClass.m in Sources */,
 				132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,

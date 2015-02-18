@@ -125,7 +125,11 @@
 }
 
 + (void)displayAlertDialogWithTitle:(NSString *)title Message:(NSString *)message {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"ok", @"")
+                                          otherButtonTitles: nil];
     
     [alert show];
 }

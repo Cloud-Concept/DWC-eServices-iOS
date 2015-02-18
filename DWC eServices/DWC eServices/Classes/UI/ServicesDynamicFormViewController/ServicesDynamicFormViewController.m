@@ -54,17 +54,31 @@
     }
     
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    BaseServicesViewController *nextVC;
+    
     if ([self.currentServiceAdministration hasDocuments]) {
         
-        ServicesUploadViewController *servicesUploadVC = [storybord instantiateViewControllerWithIdentifier:@"ServicesUploadViewController"];
-        servicesUploadVC.cancelViewController = self.cancelViewController;
-        servicesUploadVC.currentServiceAdministration = self.currentServiceAdministration;
-        
-        [self.navigationController pushViewController:servicesUploadVC animated:YES];
+        nextVC = [storybord instantiateViewControllerWithIdentifier:@"ServicesUploadViewController"];
+        nextVC.cancelViewController = self.cancelViewController;
+        nextVC.currentServiceAdministration = self.currentServiceAdministration;
     }
     else {
-        
+#warning TODO
+        return;
     }
+    
+    NSMutableDictionary *newFields = [NSMutableDictionary dictionaryWithDictionary:self.serviceFields];
+    
+    for (FormField *formField in currentWebForm.formFields) {
+        if(!formField.isCalculated)
+            [newFields setValue:[formField getFormFieldValue] forKey:formField.name];
+    }
+    
+    nextVC.serviceFields = [NSDictionary dictionaryWithDictionary:newFields];
+    nextVC.caseFields = self.caseFields;
+    
+    [self.navigationController pushViewController:nextVC animated:YES];
 }
 
 - (void)getWebForm {
@@ -179,6 +193,10 @@
     
     BOOL queryFields = NO;
     for (FormField *formField in currentWebForm.formFields) {
+        if (formField.isParameter) {
+            [formField setFormFieldValue:[self.parameters objectForKey:formField.textValue]];
+        }
+        
         if(!formField.isQuery)
             continue;
         

@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "WYPopoverController.h"
-@class PickerTableViewController;
-
-@protocol PickerTableViewControllerDelegate <NSObject>
-
-- (void)valuePickCanceled:(PickerTableViewController *)picklist;
-- (void)valuePicked:(NSString *)value AtIndex:(NSIndexPath *)indexPath pickList:(PickerTableViewController *)picklist;
-
-@end
 
 @interface PickerTableViewController : UITableViewController <WYPopoverControllerDelegate>
 {
@@ -24,7 +16,9 @@
 
 @property (strong, nonatomic) NSArray *valuesArray;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
-@property (weak, nonatomic) id<PickerTableViewControllerDelegate> delegate;
+
+@property (nonatomic, copy) void (^valuePicked)(NSString *, NSIndexPath *, PickerTableViewController *);
+@property (nonatomic, copy) void (^valuePickCanceled)(PickerTableViewController *);
 
 - (void)showPopoverFromView:(UIView*)sender;
 -(void)dismissPopover:(BOOL)animated;

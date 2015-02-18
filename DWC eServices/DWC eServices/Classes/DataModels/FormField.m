@@ -108,14 +108,17 @@
 - (UIView*)getFieldView {
     if (!fieldView) {
         
+        BOOL isEnabled = !(self.isCalculated || self.isParameter);
+        
         if ([self.type isEqualToString:@"PICKLIST"] ||
             [self.type isEqualToString:@"DATE"]) {
-            fieldView = [UIButton new];
+            fieldView = [UIButton buttonWithType:UIButtonTypeSystem];
             [((UIButton*)fieldView) setTitleColor:[UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1]
                                          forState:UIControlStateNormal];
             [((UIButton*)fieldView) setTitle:self.mobileLabel forState:UIControlStateNormal];
             [((UIButton*)fieldView).titleLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
-            [((UIButton*)fieldView) setBackgroundImage:[UIImage imageNamed:@"Dropdown Button"]
+            NSString *backgroundImage = isEnabled ? @"Dropdown Button" : @"Textfield Background";
+            [((UIButton*)fieldView) setBackgroundImage:[UIImage imageNamed:backgroundImage]
                                               forState:UIControlStateNormal];
             
             [((UIButton*)fieldView) setContentEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 44)];
@@ -144,6 +147,7 @@
             [((UITextField*)fieldView) setTextColor:[UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1]];
             [((UITextField*)fieldView) setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
             [((UITextField*)fieldView) setTextAlignment:NSTextAlignmentCenter];
+            [((UITextField*)fieldView) setEnabled:isEnabled];
             
             [((UITextField*)fieldView) addTarget:self
                                           action:@selector(textFieldEditingChanged:)
@@ -154,12 +158,11 @@
             [((UITextField*)fieldView) setBorderStyle:UITextBorderStyleRoundedRect];
             [((UITextField*)fieldView) setPlaceholder:self.mobileLabel];
             [((UITextField*)fieldView) setText:formFieldValue];
+            [((UITextField*)fieldView) setEnabled:NO];
         }
         
-        
-        [fieldView setUserInteractionEnabled:!self.isCalculated];
+        [fieldView setUserInteractionEnabled:isEnabled];
     }
-    
     
     return fieldView;
 }
@@ -177,7 +180,12 @@
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
     pickerTableVC.valuesArray = stringArray;
     pickerTableVC.selectedIndexPath = selectedPicklistIndexPath;
-    pickerTableVC.delegate = self;
+    pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
+        selectedPicklistIndexPath = indexPath;
+        formFieldValue = value;
+        [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
+        [picklist dismissPopover:YES];
+    };
     
     [pickerTableVC showPopoverFromView:senderButton];
 }
@@ -219,18 +227,6 @@
             [((UITextField*)fieldView) setText:formFieldValue];
         }
     }
-}
-
-#pragma mark - PickerTableViewControllerDelegate
-- (void)valuePickCanceled:(PickerTableViewController *)picklist {
-    
-}
-
-- (void)valuePicked:(NSString *)value AtIndex:(NSIndexPath *)indexPath pickList:(PickerTableViewController *)picklist {
-    selectedPicklistIndexPath = indexPath;
-    formFieldValue = value;
-    [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
-    [picklist dismissPopover:YES];
 }
 
 #pragma DatePickerViewControllerDelegate
