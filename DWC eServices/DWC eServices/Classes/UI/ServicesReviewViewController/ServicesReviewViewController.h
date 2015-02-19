@@ -12,6 +12,10 @@
 @interface ServicesReviewViewController : BaseServicesViewController
 {
     UIView *servicesContentView;
+    NSString *insertedCaseId;
+    NSString *insertedServiceId;
 }
+
+@property (weak, nonatomic) IBOutlet UIScrollView *servicesScrollView;
 
 @end

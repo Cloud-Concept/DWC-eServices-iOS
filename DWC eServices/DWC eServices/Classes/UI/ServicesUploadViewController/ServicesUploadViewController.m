@@ -10,6 +10,7 @@
 #import "UIView+DynamicForm.h"
 #import "EServiceAdministration.h"
 #import "EServiceDocument.h"
+#import "HelperClass.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ServicesUploadViewController ()
@@ -42,7 +43,33 @@
 }
 
 - (void)nextButtonClicked:(id)sender {
+    if (![self validateDocuments]) {
+        [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                         Message:NSLocalizedString(@"RequiredDocumentsAlertMessage", @"")];
+        return;
+    }
     
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
+    BaseServicesViewController *nextVC = [storybord instantiateViewControllerWithIdentifier:@"ServicesReviewViewController"];
+    nextVC.cancelViewController = self.cancelViewController;
+    nextVC.currentServiceAdministration = self.currentServiceAdministration;
+    nextVC.serviceFields = self.serviceFields;
+    nextVC.caseFields = self.caseFields;
+    nextVC.serviceObject = self.serviceObject;
+    
+    [self.navigationController pushViewController:nextVC animated:YES];
+}
+
+- (BOOL)validateDocuments {
+    BOOL isValid = YES;
+    
+    for (EServiceDocument *document in self.currentServiceAdministration.serviceDocumentsArray) {
+        if (!document.attachment)
+            isValid = NO;
+    }
+    
+    return isValid;
 }
 
 - (void)displayDocuments {
