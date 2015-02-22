@@ -11,6 +11,7 @@
 #import "EServiceAdministration.h"
 #import "EServiceDocument.h"
 #import "HelperClass.h"
+#import "BaseServicesViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ServicesUploadViewController ()
@@ -23,18 +24,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self initializeButtonsWithNextAction:@selector(nextButtonClicked:)];
+    [self.baseServicesViewController initializeButtonsWithNextAction:@selector(nextButtonClicked:) target:self];
     
-    [self displayDocuments];
-}
-
--(void) viewWillDisappear:(BOOL)animated {
-    if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
-        for (EServiceDocument* document in self.currentServiceAdministration.serviceDocumentsArray) {
+    self.baseServicesViewController.backAction = ^(void) {
+        for (EServiceDocument* document in self.baseServicesViewController.currentServiceAdministration.serviceDocumentsArray) {
             [document deleteDocumentAndButton];
         }
-    }
-    [super viewWillDisappear:animated];
+    };
+    
+    [self displayDocuments];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,22 +47,13 @@
         return;
     }
     
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    
-    BaseServicesViewController *nextVC = [storybord instantiateViewControllerWithIdentifier:@"ServicesReviewViewController"];
-    nextVC.cancelViewController = self.cancelViewController;
-    nextVC.currentServiceAdministration = self.currentServiceAdministration;
-    nextVC.serviceFields = self.serviceFields;
-    nextVC.caseFields = self.caseFields;
-    nextVC.serviceObject = self.serviceObject;
-    
-    [self.navigationController pushViewController:nextVC animated:YES];
+    [self.baseServicesViewController nextButtonClicked:ServiceFlowAttachmentsPage];
 }
 
 - (BOOL)validateDocuments {
     BOOL isValid = YES;
     
-    for (EServiceDocument *document in self.currentServiceAdministration.serviceDocumentsArray) {
+    for (EServiceDocument *document in self.baseServicesViewController.currentServiceAdministration.serviceDocumentsArray) {
         if (!document.attachment)
             isValid = NO;
     }
@@ -74,9 +63,10 @@
 
 - (void)displayDocuments {
     [self initServiceFieldsContentView];
-    [servicesContentView drawAttachmentButtons:self.currentServiceAdministration.serviceDocumentsArray
-                                  cancelButton:cancelButton
-                                    nextButton:nextButton
+    
+    [servicesContentView drawAttachmentButtons:self.baseServicesViewController.currentServiceAdministration.serviceDocumentsArray
+                                  cancelButton:self.baseServicesViewController.cancelButton
+                                    nextButton:self.baseServicesViewController.nextButton
                                 viewController:self];
 }
 

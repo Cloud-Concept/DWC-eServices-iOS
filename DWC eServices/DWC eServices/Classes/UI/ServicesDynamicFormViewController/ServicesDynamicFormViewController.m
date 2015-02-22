@@ -15,6 +15,7 @@
 #import "Visa.h"
 #import "EServiceAdministration.h"
 #import "ServicesUploadViewController.h"
+#import "BaseServicesViewController.h"
 
 @interface ServicesDynamicFormViewController ()
 
@@ -26,7 +27,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    [self initializeButtonsWithNextAction:@selector(nextButtonClicked:)];
+    [self.baseServicesViewController initializeButtonsWithNextAction:@selector(nextButtonClicked:) target:self];
     
     [self getWebForm];
 }
@@ -53,32 +54,24 @@
         return;
     }
     
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    
-    BaseServicesViewController *nextVC;
-    
-    if ([self.currentServiceAdministration hasDocuments]) {
-        
-        nextVC = [storybord instantiateViewControllerWithIdentifier:@"ServicesUploadViewController"];
-        nextVC.cancelViewController = self.cancelViewController;
-        nextVC.currentServiceAdministration = self.currentServiceAdministration;
-    }
-    else {
-#warning TODO
-        return;
-    }
-    
-    NSMutableDictionary *newFields = [NSMutableDictionary dictionaryWithDictionary:self.serviceFields];
+    NSMutableDictionary *newFields = [NSMutableDictionary dictionaryWithDictionary:self.baseServicesViewController.serviceFields];
     
     for (FormField *formField in currentWebForm.formFields) {
         if(!formField.isCalculated)
             [newFields setValue:[formField getFormFieldValue] forKey:formField.name];
     }
     
-    nextVC.serviceFields = [NSDictionary dictionaryWithDictionary:newFields];
-    nextVC.caseFields = self.caseFields;
+    self.baseServicesViewController.serviceFields = [NSDictionary dictionaryWithDictionary:newFields];
+    self.baseServicesViewController.caseFields = self.baseServicesViewController.caseFields;
+    ServiceFlowPageType serviceFlowPage;
+    if ([self.baseServicesViewController.currentServiceAdministration hasDocuments]) {
+        serviceFlowPage = ServiceFlowAttachmentsPage;
+    }
+    else {
+        serviceFlowPage = ServiceFlowReviewPage;
+    }
     
-    [self.navigationController pushViewController:nextVC animated:YES];
+    [self.baseServicesViewController nextButtonClicked:ServiceFlowFieldsPage];
 }
 
 - (void)getWebForm {
@@ -136,7 +129,7 @@
             currentWebForm.formFields = [NSArray arrayWithArray:fieldsArray];
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideLoadingDialog];
+                [self.baseServicesViewController hideLoadingDialog];
                 [self getFormFieldsValues];
             });
         }
@@ -145,17 +138,17 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
 #warning handle error here
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideLoadingDialog];
+            [self.baseServicesViewController hideLoadingDialog];
         });
     };
     
-    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, Description__c, Title__c, isNotesAttachments__c, Object_Label__c, Object_Name__c, (SELECT Id, Name, APIRequired__c, Boolean_Value__c, Currency_Value__c, DateTime_Value__c, Date_Value__c, Email_Value__c , Hidden__c, isCalculated__c, isParameter__c, isQuery__c, Label__c, Number_Value__c, Order__c, Percent_Value__c, Phone_Value__c, Picklist_Value__c, PicklistEntries__c, Required__c, Text_Area_Long_Value__c, Text_Area_Value__c, Text_Value__c, Type__c, URL_Value__c, Web_Form__c, Width__c, isMobileAvailable__c, Mobile_Label__c, Mobile_Order__c  FROM R00N70000002DiOrEAK WHERE isMobileAvailable__c = true ORDER BY Mobile_Order__c) FROM Web_Form__c WHERE ID = '%@'", self.currentWebformId];
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, Description__c, Title__c, isNotesAttachments__c, Object_Label__c, Object_Name__c, (SELECT Id, Name, APIRequired__c, Boolean_Value__c, Currency_Value__c, DateTime_Value__c, Date_Value__c, Email_Value__c , Hidden__c, isCalculated__c, isParameter__c, isQuery__c, Label__c, Number_Value__c, Order__c, Percent_Value__c, Phone_Value__c, Picklist_Value__c, PicklistEntries__c, Required__c, Text_Area_Long_Value__c, Text_Area_Value__c, Text_Value__c, Type__c, URL_Value__c, Web_Form__c, Width__c, isMobileAvailable__c, Mobile_Label__c, Mobile_Order__c  FROM R00N70000002DiOrEAK WHERE isMobileAvailable__c = true ORDER BY Mobile_Order__c) FROM Web_Form__c WHERE ID = '%@'", self.baseServicesViewController.currentWebformId];
     
     [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
                                        failBlock:errorBlock
                                    completeBlock:successBlock];
     
-    [self showLoadingDialog];
+    [self.baseServicesViewController showLoadingDialog];
     
 }
 
@@ -178,14 +171,14 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self displayWebForm];
-            [self hideLoadingDialog];
+            [self.baseServicesViewController hideLoadingDialog];
         });
     };
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
 #warning handle error here
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideLoadingDialog];
+            [self.baseServicesViewController hideLoadingDialog];
         });
     };
     
@@ -194,7 +187,7 @@
     BOOL queryFields = NO;
     for (FormField *formField in currentWebForm.formFields) {
         if (formField.isParameter) {
-            [formField setFormFieldValue:[self.parameters objectForKey:formField.textValue]];
+            [formField setFormFieldValue:[self.baseServicesViewController.parameters objectForKey:formField.textValue]];
         }
         
         if(!formField.isQuery)
@@ -205,13 +198,13 @@
     }
     
     if (queryFields) {
-        [selectQuery appendFormat:@" FROM Visa__c WHERE ID = '%@' LIMIT 1", self.visaObject.Id];
+        [selectQuery appendFormat:@" FROM Visa__c WHERE ID = '%@' LIMIT 1", self.baseServicesViewController.currentVisaObject.Id];
         
         [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
                                            failBlock:errorBlock
                                        completeBlock:successBlock];
         
-        [self showLoadingDialog];
+        [self.baseServicesViewController showLoadingDialog];
     }
     else {
         [self displayWebForm];
@@ -220,7 +213,9 @@
 
 - (void)displayWebForm {
     [self initServiceFieldsContentView];
-    [servicesContentView drawFormFields:currentWebForm cancelButton:cancelButton nextButton:nextButton];
+    [servicesContentView drawFormFields:currentWebForm
+                           cancelButton:self.baseServicesViewController.cancelButton
+                             nextButton:self.baseServicesViewController.nextButton];
 }
 
 - (void)initServiceFieldsContentView {

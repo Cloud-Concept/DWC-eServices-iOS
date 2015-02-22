@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "BaseServicesViewController.h"
 
-@interface ServicesReviewViewController : BaseServicesViewController
+@interface ServicesReviewViewController : UIViewController
 {
     UIView *servicesContentView;
-    NSString *insertedCaseId;
-    NSString *insertedServiceId;
 }
+
+@property (weak, nonatomic) BaseServicesViewController *baseServicesViewController;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *servicesScrollView;
 

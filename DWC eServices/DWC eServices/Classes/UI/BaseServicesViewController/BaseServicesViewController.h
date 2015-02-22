@@ -8,25 +8,52 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
+#import "RelatedService.h"
 
 @class EServiceAdministration;
+@class Visa;
+@class Stack;
+
+typedef enum {
+    ServiceFlowInitialPage,
+    ServiceFlowFieldsPage,
+    ServiceFlowAttachmentsPage,
+    ServiceFlowReviewPage,
+} ServiceFlowPageType;
 
 @interface BaseServicesViewController : BaseFrontRevealViewController <UIAlertViewDelegate>
 {
-    UIButton *cancelButton;
-    UIButton *nextButton;
+    Stack *viewControllersStack;
+    
+    NSString *insertedCaseId;
+    NSString *insertedServiceId;
+    
+    NSInteger totalAttachmentsToUpload;
+    NSInteger attachmentsReturned;
+    NSMutableArray *failedImagedArray;
 }
 
-@property (strong, nonatomic) UIViewController *cancelViewController;
+@property (nonatomic) RelatedServiceType relatedServiceType;
+@property (strong, nonatomic) Visa *currentVisaObject;
+
 @property (strong, nonatomic) EServiceAdministration *currentServiceAdministration;
 @property (strong, nonatomic) NSDictionary *caseFields;
 @property (strong, nonatomic) NSDictionary *serviceFields;
 @property (strong, nonatomic) NSDictionary *parameters;
 @property (strong, nonatomic) NSString *serviceObject;
+@property (strong, nonatomic) NSString *currentWebformId;
 
-- (void)initializeButtonsWithNextAction:(SEL)nextAction;
+@property (strong, nonatomic) UIButton *cancelButton;
+@property (strong, nonatomic) UIButton *nextButton;
+
+@property (nonatomic, copy) void (^backAction)(void);
+
+@property (weak, nonatomic) IBOutlet UIView *serviceFlowView;
+
+- (void)initializeButtonsWithNextAction:(SEL)nextAction target:(id)target;
 - (void)showLoadingDialog;
 - (void)hideLoadingDialog;
-- (void)cancelServiceButtonClicked:(id)sender;
+- (void)cancelServiceButtonClicked;
+- (void)nextButtonClicked:(ServiceFlowPageType)serviceFlowPageType;
 
 @end

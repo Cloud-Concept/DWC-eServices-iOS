@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Corisande-Bold-Italic.ttf">
@@ -26,16 +25,8 @@
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
-            <string>CorisandeLight</string>
         </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
-            <string>CorisandeRegular</string>
-            <string>CorisandeRegular</string>
-            <string>CorisandeRegular</string>
-            <string>CorisandeRegular</string>
-            <string>CorisandeRegular</string>
-            <string>CorisandeRegular</string>
-            <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
@@ -847,225 +838,39 @@
             </objects>
             <point key="canvasLocation" x="2640.5" y="1168.5"/>
         </scene>
-        <!--NewNOC View Controller-->
-        <scene sceneID="1Rk-kc-RUr">
+        <!--Base Services View Controller-->
+        <scene sceneID="ndV-Lg-TXx">
             <objects>
-                <viewController storyboardIdentifier="NewNOCViewController" id="Ymp-e6-R3b" customClass="NewNOCViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BaseServicesViewController" id="Ntn-01-Voj" customClass="BaseServicesViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KSs-yR-Osj"/>
-                        <viewControllerLayoutGuide type="bottom" id="Lqm-Cu-zF0"/>
+                        <viewControllerLayoutGuide type="top" id="YyQ-OQ-8DA"/>
+                        <viewControllerLayoutGuide type="bottom" id="srF-oc-Hfu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Juf-1H-RaR">
+                    <view key="view" contentMode="scaleToFill" id="uq1-vD-sR4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ku8-UZ-KMl">
-                                <rect key="frame" x="16" y="28" width="343" height="40"/>
-                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="44" maxY="0.0"/>
-                                <state key="normal" title="NOC Type" backgroundImage="Dropdown Button">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="chooseNOCTypeButtonClicked:" destination="Ymp-e6-R3b" eventType="touchUpInside" id="ATc-gu-KfU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WqW-Hl-WpI">
-                                <rect key="frame" x="16" y="76" width="343" height="40"/>
-                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="44" maxY="0.0"/>
-                                <state key="normal" title="Authority" backgroundImage="Dropdown Button">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="chooseAuthorityButtonClicked:" destination="Ymp-e6-R3b" eventType="touchUpInside" id="l39-jz-nC1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqp-li-QqJ">
-                                <rect key="frame" x="16" y="124" width="343" height="40"/>
-                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="44" maxY="0.0"/>
-                                <state key="normal" title="Language" backgroundImage="Dropdown Button">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="chooseLanguageButtonClicked:" destination="Ymp-e6-R3b" eventType="touchUpInside" id="PAt-v4-u3v"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Courier Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSr-50-QYL">
-                                <rect key="frame" x="16" y="172" width="170" height="31"/>
-                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j8Y-t0-ao2">
-                                <rect key="frame" x="252" y="172" width="51" height="31"/>
-                                <color key="onTintColor" red="0.27450980392156865" green="0.54509803921568623" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="courierRequiredSwitchValueChanged:" destination="Ymp-e6-R3b" eventType="valueChanged" id="Bs2-Ro-agr"/>
-                                </connections>
-                            </switch>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="cvW-CD-pC8">
-                                <rect key="frame" x="194" y="211" width="165" height="40"/>
-                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09R-mX-6Dk">
-                                <rect key="frame" x="16" y="600" width="163" height="47"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="09R-mX-6Dk" secondAttribute="height" multiplier="163:47" id="ame-th-pzC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
-                                <state key="normal" title="Cancel" backgroundImage="Black Button Background">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonClicked:" destination="Ymp-e6-R3b" eventType="touchUpInside" id="dOw-Hk-a3k"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge9-6e-On7">
-                                <rect key="frame" x="196" y="600" width="163" height="47"/>
-                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
-                                <state key="normal" title="Next" backgroundImage="Blue Button Background">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Hys-jk-GpD" kind="push" identifier="ServicesDynamicFormSegue" id="JC9-H1-b9S"/>
-                                </connections>
-                            </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ly-XB-WCc">
-                                <rect key="frame" x="16" y="211" width="170" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="6Ri-aQ-JXg"/>
-                                    <constraint firstAttribute="width" constant="170" id="oND-Ja-tJT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xrl-iU-npJ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="639"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ge9-6e-On7" firstAttribute="bottom" secondItem="09R-mX-6Dk" secondAttribute="bottom" id="35t-sC-3Qn"/>
-                            <constraint firstItem="Lqm-Cu-zF0" firstAttribute="top" secondItem="09R-mX-6Dk" secondAttribute="bottom" constant="20" id="7JX-jL-Wv5"/>
-                            <constraint firstItem="cvW-CD-pC8" firstAttribute="trailing" secondItem="Oqp-li-QqJ" secondAttribute="trailing" id="94Q-6P-f56"/>
-                            <constraint firstItem="NSr-50-QYL" firstAttribute="top" secondItem="Oqp-li-QqJ" secondAttribute="bottom" constant="8" id="D1h-uf-7er"/>
-                            <constraint firstAttribute="trailing" secondItem="j8Y-t0-ao2" secondAttribute="trailing" constant="74" id="FkY-ce-QSD"/>
-                            <constraint firstItem="ku8-UZ-KMl" firstAttribute="trailing" secondItem="Oqp-li-QqJ" secondAttribute="trailing" id="H8h-eT-lj7"/>
-                            <constraint firstItem="NSr-50-QYL" firstAttribute="bottom" secondItem="j8Y-t0-ao2" secondAttribute="bottom" id="IW6-vR-j1a"/>
-                            <constraint firstItem="j8Y-t0-ao2" firstAttribute="leading" secondItem="NSr-50-QYL" secondAttribute="trailing" constant="66" id="JZp-Ti-aeE"/>
-                            <constraint firstItem="NSr-50-QYL" firstAttribute="leading" secondItem="6Ly-XB-WCc" secondAttribute="leading" id="OQe-uo-pSt"/>
-                            <constraint firstItem="ku8-UZ-KMl" firstAttribute="trailing" secondItem="WqW-Hl-WpI" secondAttribute="trailing" id="RNI-1J-hCW"/>
-                            <constraint firstAttribute="trailing" secondItem="ku8-UZ-KMl" secondAttribute="trailing" constant="16" id="UpO-X0-wFk"/>
-                            <constraint firstItem="09R-mX-6Dk" firstAttribute="leading" secondItem="Juf-1H-RaR" secondAttribute="leading" constant="16" id="Xtk-R5-Yle"/>
-                            <constraint firstItem="ge9-6e-On7" firstAttribute="width" secondItem="09R-mX-6Dk" secondAttribute="width" id="aBF-kh-hMv"/>
-                            <constraint firstItem="ku8-UZ-KMl" firstAttribute="top" secondItem="KSs-yR-Osj" secondAttribute="bottom" constant="8" id="bGM-JA-3in"/>
-                            <constraint firstItem="ku8-UZ-KMl" firstAttribute="leading" secondItem="Oqp-li-QqJ" secondAttribute="leading" id="dql-YV-poJ"/>
-                            <constraint firstItem="Oqp-li-QqJ" firstAttribute="top" secondItem="WqW-Hl-WpI" secondAttribute="bottom" constant="8" id="eNh-ct-BZ8"/>
-                            <constraint firstItem="ge9-6e-On7" firstAttribute="height" secondItem="09R-mX-6Dk" secondAttribute="height" id="fQb-6Z-dyI"/>
-                            <constraint firstItem="cvW-CD-pC8" firstAttribute="top" secondItem="6Ly-XB-WCc" secondAttribute="top" id="jEd-bH-ANa"/>
-                            <constraint firstItem="cvW-CD-pC8" firstAttribute="bottom" secondItem="6Ly-XB-WCc" secondAttribute="bottom" id="kEa-6Y-TVw"/>
-                            <constraint firstItem="ge9-6e-On7" firstAttribute="top" secondItem="09R-mX-6Dk" secondAttribute="top" id="kUr-iP-INJ"/>
-                            <constraint firstItem="ku8-UZ-KMl" firstAttribute="leading" secondItem="WqW-Hl-WpI" secondAttribute="leading" id="lSh-0D-diA"/>
-                            <constraint firstItem="6Ly-XB-WCc" firstAttribute="top" secondItem="NSr-50-QYL" secondAttribute="bottom" constant="8" id="mtg-j6-v7K"/>
-                            <constraint firstItem="ku8-UZ-KMl" firstAttribute="leading" secondItem="Juf-1H-RaR" secondAttribute="leading" constant="16" id="oMR-BY-wJT"/>
-                            <constraint firstItem="NSr-50-QYL" firstAttribute="top" secondItem="j8Y-t0-ao2" secondAttribute="top" id="q3B-Nq-1my"/>
-                            <constraint firstItem="ge9-6e-On7" firstAttribute="trailing" secondItem="Juf-1H-RaR" secondAttribute="trailingMargin" id="qTQ-Bn-33N"/>
-                            <constraint firstItem="ge9-6e-On7" firstAttribute="leading" secondItem="09R-mX-6Dk" secondAttribute="trailing" constant="17" id="tHu-MW-W8P"/>
-                            <constraint firstItem="NSr-50-QYL" firstAttribute="leading" secondItem="Oqp-li-QqJ" secondAttribute="leading" id="tVR-NI-CVx"/>
-                            <constraint firstItem="cvW-CD-pC8" firstAttribute="leading" secondItem="6Ly-XB-WCc" secondAttribute="trailing" constant="8" id="tc7-SO-qD1"/>
-                            <constraint firstItem="NSr-50-QYL" firstAttribute="trailing" secondItem="6Ly-XB-WCc" secondAttribute="trailing" id="wLO-66-5aK"/>
-                            <constraint firstItem="WqW-Hl-WpI" firstAttribute="top" secondItem="ku8-UZ-KMl" secondAttribute="bottom" constant="8" id="ydO-6s-6dk"/>
+                            <constraint firstItem="Xrl-iU-npJ" firstAttribute="top" secondItem="YyQ-OQ-8DA" secondAttribute="bottom" constant="8" id="0FP-dz-1bx"/>
+                            <constraint firstItem="srF-oc-Hfu" firstAttribute="top" secondItem="Xrl-iU-npJ" secondAttribute="bottom" id="KzF-Lv-WCU"/>
+                            <constraint firstAttribute="trailing" secondItem="Xrl-iU-npJ" secondAttribute="trailing" id="lJh-fH-MpJ"/>
+                            <constraint firstItem="Xrl-iU-npJ" firstAttribute="leading" secondItem="uq1-vD-sR4" secondAttribute="leading" id="ycC-QP-bUi"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="chooseAuthorityButton" destination="WqW-Hl-WpI" id="ELb-0V-evX"/>
-                        <outlet property="chooseLanguageButton" destination="Oqp-li-QqJ" id="cJw-aA-cYJ"/>
-                        <outlet property="chooseNOCTypeButton" destination="ku8-UZ-KMl" id="Oa6-AK-d2n"/>
-                        <outlet property="courierRateLabel" destination="6Ly-XB-WCc" id="ubS-fU-Uh3"/>
-                        <outlet property="courierRateTextField" destination="cvW-CD-pC8" id="1la-uV-RTY"/>
-                        <outlet property="courierRequiredSwitch" destination="j8Y-t0-ao2" id="1MG-SC-Jpm"/>
+                        <outlet property="serviceFlowView" destination="Xrl-iU-npJ" id="fWe-WL-57c"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6qN-kS-MZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g5L-2W-hXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3118.5" y="1168.5"/>
-        </scene>
-        <!--Services Dynamic Form View Controller-->
-        <scene sceneID="XTW-Z1-hWs">
-            <objects>
-                <viewController id="Hys-jk-GpD" customClass="ServicesDynamicFormViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="WjF-1e-TfI"/>
-                        <viewControllerLayoutGuide type="bottom" id="QdY-9T-GnD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="nzq-9g-Wmf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0p-Pc-1lm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="p0p-Pc-1lm" firstAttribute="top" secondItem="nzq-9g-Wmf" secondAttribute="top" id="O7w-FL-315"/>
-                            <constraint firstItem="p0p-Pc-1lm" firstAttribute="leading" secondItem="nzq-9g-Wmf" secondAttribute="leading" id="ndK-Tl-8dy"/>
-                            <constraint firstItem="QdY-9T-GnD" firstAttribute="top" secondItem="p0p-Pc-1lm" secondAttribute="bottom" id="r8G-Rp-UcP"/>
-                            <constraint firstAttribute="trailing" secondItem="p0p-Pc-1lm" secondAttribute="trailing" id="y6C-BL-Kf1"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="bk7-0D-gk2"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="servicesScrollView" destination="p0p-Pc-1lm" id="kt8-Bq-7K3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="juX-EJ-iJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3685.5" y="1168.5"/>
-        </scene>
-        <!--Services Upload View Controller-->
-        <scene sceneID="Ynm-He-q9z">
-            <objects>
-                <viewController storyboardIdentifier="ServicesUploadViewController" id="ZWr-pt-Ajv" customClass="ServicesUploadViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KKy-AS-fhy"/>
-                        <viewControllerLayoutGuide type="bottom" id="b6E-Op-jgo"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EH2-3i-Ocr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sZ-Q9-lSN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="0sZ-Q9-lSN" secondAttribute="trailing" id="Bk9-Xh-5fm"/>
-                            <constraint firstItem="0sZ-Q9-lSN" firstAttribute="top" secondItem="EH2-3i-Ocr" secondAttribute="top" id="KuI-TE-Zye"/>
-                            <constraint firstItem="0sZ-Q9-lSN" firstAttribute="leading" secondItem="EH2-3i-Ocr" secondAttribute="leading" id="VXg-ev-Wvh"/>
-                            <constraint firstItem="b6E-Op-jgo" firstAttribute="top" secondItem="0sZ-Q9-lSN" secondAttribute="bottom" id="Vbj-U3-6BR"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="servicesScrollView" destination="0sZ-Q9-lSN" id="Af2-hb-chr"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dFR-Zb-cih" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4165.5" y="1168.5"/>
+            <point key="canvasLocation" x="3142.5" y="1168.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KHg-LT-MaD">
@@ -1084,45 +889,9 @@
             </objects>
             <point key="canvasLocation" x="1153.5" y="1168.5"/>
         </scene>
-        <!--Services Review View Controller-->
-        <scene sceneID="nHz-WJ-Q8W">
-            <objects>
-                <viewController storyboardIdentifier="ServicesReviewViewController" id="Wek-ZG-hYU" customClass="ServicesReviewViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NpV-ne-4II"/>
-                        <viewControllerLayoutGuide type="bottom" id="GOm-Vk-xBk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qZy-lf-JNg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MY3-LL-fFd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="MY3-LL-fFd" secondAttribute="trailing" id="A5e-mi-wKH"/>
-                            <constraint firstItem="GOm-Vk-xBk" firstAttribute="top" secondItem="MY3-LL-fFd" secondAttribute="bottom" id="FH6-hF-H3E"/>
-                            <constraint firstItem="MY3-LL-fFd" firstAttribute="leading" secondItem="qZy-lf-JNg" secondAttribute="leading" id="Xn6-hC-wdA"/>
-                            <constraint firstItem="MY3-LL-fFd" firstAttribute="top" secondItem="qZy-lf-JNg" secondAttribute="top" id="scB-KL-EU6"/>
-                        </constraints>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <connections>
-                        <outlet property="servicesScrollView" destination="MY3-LL-fFd" id="drB-b1-jBf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8SU-BB-0b2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4591.5" y="1168.5"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="Black Button Background" width="5" height="5"/>
-        <image name="Blue Button Background" width="7" height="38"/>
         <image name="Default Person Image" width="75" height="75"/>
-        <image name="Dropdown Button" width="46" height="40"/>
         <image name="Home Company Info Icon" width="15" height="31"/>
         <image name="Home Dashboard Icon" width="30" height="30"/>
         <image name="Home Employees Icon" width="31" height="31"/>
@@ -1141,7 +910,6 @@
         <image name="Slide Menu Services Icon" width="8" height="8"/>
         <image name="Slide Menu Settings Icon" width="9" height="8"/>
         <image name="TabBar Home Icon" width="18" height="17"/>
-        <image name="Textfield Background" width="7" height="39"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

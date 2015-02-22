@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewNOCViewController">
+            <connections>
+                <outlet property="chooseAuthorityButton" destination="lc6-5D-UGE" id="XO3-d9-Zwg"/>
+                <outlet property="chooseLanguageButton" destination="VbW-4b-uMq" id="nOv-Qe-uVd"/>
+                <outlet property="chooseNOCTypeButton" destination="EBF-Lf-F00" id="JJW-ZC-gxv"/>
+                <outlet property="courierRateLabel" destination="TTX-9m-U8S" id="goq-aR-hJu"/>
+                <outlet property="courierRateTextField" destination="tEA-yH-Ny6" id="YY1-dy-H7H"/>
+                <outlet property="courierRequiredSwitch" destination="bG1-uX-uKt" id="Xo7-tW-cPP"/>
+                <outlet property="view" destination="iN0-l3-epB" id="GEH-uk-6RL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTX-9m-U8S">
+                    <rect key="frame" x="16" y="199" width="170" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="h8Z-r6-bJf"/>
+                        <constraint firstAttribute="width" constant="170" id="hOy-Tb-YtB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Courier Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHW-B2-36L">
+                    <rect key="frame" x="16" y="160" width="170" height="31"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lc6-5D-UGE">
+                    <rect key="frame" x="16" y="64" width="343" height="40"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="44" maxY="0.0"/>
+                    <state key="normal" title="Authority" backgroundImage="Dropdown Button">
+                        <color key="titleColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="disabled">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="chooseAuthorityButtonClicked:" destination="-1" eventType="touchUpInside" id="2gx-pJ-jTf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbW-4b-uMq">
+                    <rect key="frame" x="16" y="112" width="343" height="40"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="44" maxY="0.0"/>
+                    <state key="normal" title="Language" backgroundImage="Dropdown Button">
+                        <color key="titleColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="disabled">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="chooseLanguageButtonClicked:" destination="-1" eventType="touchUpInside" id="Du9-lk-dHu"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jne-bg-pfz">
+                    <rect key="frame" x="16" y="600" width="163" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="jne-bg-pfz" secondAttribute="height" multiplier="163:47" id="QoL-kv-Z8p"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                    <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonClicked:" destination="-1" eventType="touchUpInside" id="MnZ-uv-Y6Z"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBF-Lf-F00">
+                    <rect key="frame" x="16" y="16" width="343" height="40"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="44" maxY="0.0"/>
+                    <state key="normal" title="NOC Type" backgroundImage="Dropdown Button">
+                        <color key="titleColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="chooseNOCTypeButtonClicked:" destination="-1" eventType="touchUpInside" id="Y5X-PS-cvS"/>
+                    </connections>
+                </button>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="tEA-yH-Ny6">
+                    <rect key="frame" x="194" y="199" width="165" height="40"/>
+                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eb-b5-G2F">
+                    <rect key="frame" x="196" y="600" width="163" height="47"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                    <state key="normal" title="Next" backgroundImage="Blue Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="nextButtonClicked:" destination="-1" eventType="touchUpInside" id="wzp-6t-zVw"/>
+                    </connections>
+                </button>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bG1-uX-uKt">
+                    <rect key="frame" x="310" y="160" width="51" height="31"/>
+                    <color key="onTintColor" red="0.27450980390000002" green="0.5450980392" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="courierRequiredSwitchValueChanged:" destination="-1" eventType="valueChanged" id="v7d-X5-zcs"/>
+                    </connections>
+                </switch>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="jne-bg-pfz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="2rB-dK-egj"/>
+                <constraint firstItem="RHW-B2-36L" firstAttribute="bottom" secondItem="bG1-uX-uKt" secondAttribute="bottom" id="3Fo-WG-2If"/>
+                <constraint firstItem="EBF-Lf-F00" firstAttribute="trailing" secondItem="lc6-5D-UGE" secondAttribute="trailing" id="9my-py-fKL"/>
+                <constraint firstItem="EBF-Lf-F00" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Bmf-UO-NAc"/>
+                <constraint firstItem="tEA-yH-Ny6" firstAttribute="bottom" secondItem="TTX-9m-U8S" secondAttribute="bottom" id="DRt-8u-qOF"/>
+                <constraint firstItem="RHW-B2-36L" firstAttribute="top" secondItem="VbW-4b-uMq" secondAttribute="bottom" constant="8" id="ItQ-zo-3q3"/>
+                <constraint firstItem="tEA-yH-Ny6" firstAttribute="leading" secondItem="TTX-9m-U8S" secondAttribute="trailing" constant="8" id="JSz-V6-8KS"/>
+                <constraint firstItem="7eb-b5-G2F" firstAttribute="height" secondItem="jne-bg-pfz" secondAttribute="height" id="KIe-r7-dhU"/>
+                <constraint firstItem="RHW-B2-36L" firstAttribute="top" secondItem="bG1-uX-uKt" secondAttribute="top" id="LHF-fk-5aC"/>
+                <constraint firstItem="RHW-B2-36L" firstAttribute="leading" secondItem="VbW-4b-uMq" secondAttribute="leading" id="Q9c-B7-8YR"/>
+                <constraint firstItem="VbW-4b-uMq" firstAttribute="leading" secondItem="lc6-5D-UGE" secondAttribute="leading" id="S0o-aK-geo"/>
+                <constraint firstAttribute="trailing" secondItem="EBF-Lf-F00" secondAttribute="trailing" constant="16" id="UbP-ke-Tmz"/>
+                <constraint firstItem="VbW-4b-uMq" firstAttribute="trailing" secondItem="lc6-5D-UGE" secondAttribute="trailing" id="bYA-BC-oh4"/>
+                <constraint firstItem="7eb-b5-G2F" firstAttribute="width" secondItem="jne-bg-pfz" secondAttribute="width" id="biM-EQ-Rb4"/>
+                <constraint firstItem="VbW-4b-uMq" firstAttribute="trailing" secondItem="bG1-uX-uKt" secondAttribute="trailing" id="dv2-Es-aPO"/>
+                <constraint firstItem="7eb-b5-G2F" firstAttribute="bottom" secondItem="jne-bg-pfz" secondAttribute="bottom" id="e1Z-9X-RHn"/>
+                <constraint firstItem="7eb-b5-G2F" firstAttribute="leading" secondItem="jne-bg-pfz" secondAttribute="trailing" constant="17" id="eOw-zu-XWM"/>
+                <constraint firstItem="tEA-yH-Ny6" firstAttribute="top" secondItem="TTX-9m-U8S" secondAttribute="top" id="f6L-e5-KRj"/>
+                <constraint firstAttribute="trailing" secondItem="7eb-b5-G2F" secondAttribute="trailing" constant="16" id="fW7-FT-PHn"/>
+                <constraint firstItem="TTX-9m-U8S" firstAttribute="top" secondItem="RHW-B2-36L" secondAttribute="bottom" constant="8" id="gPy-R6-nOY"/>
+                <constraint firstAttribute="bottom" secondItem="jne-bg-pfz" secondAttribute="bottom" constant="20" id="jgW-zs-1mZ"/>
+                <constraint firstItem="EBF-Lf-F00" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="8" id="mL0-8d-Ncd"/>
+                <constraint firstItem="tEA-yH-Ny6" firstAttribute="trailing" secondItem="VbW-4b-uMq" secondAttribute="trailing" id="pCE-jR-W6y"/>
+                <constraint firstItem="lc6-5D-UGE" firstAttribute="top" secondItem="EBF-Lf-F00" secondAttribute="bottom" constant="8" id="qSe-9J-MGr"/>
+                <constraint firstItem="7eb-b5-G2F" firstAttribute="top" secondItem="jne-bg-pfz" secondAttribute="top" id="sHk-gt-Oza"/>
+                <constraint firstItem="RHW-B2-36L" firstAttribute="leading" secondItem="TTX-9m-U8S" secondAttribute="leading" id="tAe-0J-zH1"/>
+                <constraint firstItem="EBF-Lf-F00" firstAttribute="leading" secondItem="lc6-5D-UGE" secondAttribute="leading" id="xrY-Gm-rnA"/>
+                <constraint firstItem="RHW-B2-36L" firstAttribute="trailing" secondItem="TTX-9m-U8S" secondAttribute="trailing" id="ySy-4H-eo0"/>
+                <constraint firstItem="VbW-4b-uMq" firstAttribute="top" secondItem="lc6-5D-UGE" secondAttribute="bottom" constant="8" id="yWt-di-JTh"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Black Button Background" width="5" height="5"/>
+        <image name="Blue Button Background" width="7" height="38"/>
+        <image name="Dropdown Button" width="46" height="40"/>
+        <image name="Textfield Background" width="7" height="39"/>
+    </resources>
+</document>

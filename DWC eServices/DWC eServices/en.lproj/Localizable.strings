@@ -13,6 +13,7 @@
 "ok" = "OK";
 "delete" = "Delete";
 "loading" = "Loading";
+"back" = "Back";
 
 "ConfirmAlertTitle" = "Confirm";
 "ErrorAlertTitle" = "Error";
@@ -25,6 +26,7 @@
 "RequiredDocumentsAlertMessage" = "Please upload all required documents.";
 "DeleteDocumentAlertMessage" = "Are you sure you want to delete this document?";
 "DocumentSourceAlertMessage" = "Choose document source.";
+"DocumentsUploadAlertMessage" = "An error occurred while uploading your documents.";
 
 "galleryDocumentSource" = "Gallery";
 

@@ -7,19 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseServicesViewController.h"
 
 @class WebForm;
 @class Visa;
+@class BaseServicesViewController;
 
-@interface ServicesDynamicFormViewController : BaseServicesViewController
+@interface ServicesDynamicFormViewController : UIViewController
 {
     UIView *servicesContentView;
     WebForm *currentWebForm;
 }
 
-@property (strong, nonatomic) Visa *visaObject;
-@property (strong, nonatomic) NSString *currentWebformId;
+@property (weak, nonatomic) BaseServicesViewController *baseServicesViewController;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *servicesScrollView;
 

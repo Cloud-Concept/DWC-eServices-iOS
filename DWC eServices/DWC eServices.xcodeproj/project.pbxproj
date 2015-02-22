@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1302913C1A76C88D000E119C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1302913B1A76C88D000E119C /* SWRevealViewController.m */; };
+		130523DE1A99C05500EF2268 /* ServicesUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130523DD1A99C05500EF2268 /* ServicesUploadViewController.xib */; };
+		130523E61A99C56D00EF2268 /* UIViewController+ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 130523E51A99C56D00EF2268 /* UIViewController+ChildViewController.m */; };
+		130523E81A99F96800EF2268 /* ServicesReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130523E71A99F96800EF2268 /* ServicesReviewViewController.xib */; };
 		13063A891A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13063A881A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m */; };
 		13063A8D1A8B74AC00A1DEA2 /* UIView+DynamicForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 13063A8C1A8B74AC00A1DEA2 /* UIView+DynamicForm.m */; };
 		1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BACC1A6F83A4004E6325 /* InitialViewController.m */; };
@@ -49,6 +52,8 @@
 		131CA87F1A80F91500A79B12 /* RecordDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */; };
 		1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1324D8981A89E9AB003AA356 /* PickerTableViewController.m */; };
 		1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */; };
+		1328E7D91A95C7DF00475E90 /* NewNOCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1328E7D81A95C7DF00475E90 /* NewNOCViewController.xib */; };
+		1328E7DB1A96042600475E90 /* ServicesDynamicFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1328E7DA1A96042600475E90 /* ServicesDynamicFormViewController.xib */; };
 		132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */; };
 		132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */; };
 		132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */; };
@@ -71,6 +76,7 @@
 		13D97BB51A8766E800DD71FF /* UIImageView+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */; };
 		13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */; };
 		13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67971A7E556F00255174 /* RecordMainViewController.m */; };
+		13F877BE1A97290500245B05 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F877BD1A97290500245B05 /* Stack.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
 		4F3F413617E7CA71008B3283 /* libMKNetworkKit-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F412B17E7C9CA008B3283 /* libMKNetworkKit-iOS.a */; };
 		4F3F413717E7CA84008B3283 /* libSalesforceNetworkSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413317E7C9CA008B3283 /* libSalesforceNetworkSDK.a */; };
@@ -105,6 +111,10 @@
 /* Begin PBXFileReference section */
 		1302913A1A76C88D000E119C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		1302913B1A76C88D000E119C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		130523DD1A99C05500EF2268 /* ServicesUploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesUploadViewController.xib; sourceTree = "<group>"; };
+		130523E41A99C56D00EF2268 /* UIViewController+ChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ChildViewController.h"; sourceTree = "<group>"; };
+		130523E51A99C56D00EF2268 /* UIViewController+ChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ChildViewController.m"; sourceTree = "<group>"; };
+		130523E71A99F96800EF2268 /* ServicesReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesReviewViewController.xib; sourceTree = "<group>"; };
 		13063A871A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesDynamicFormViewController.h; sourceTree = "<group>"; };
 		13063A881A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesDynamicFormViewController.m; sourceTree = "<group>"; };
 		13063A8B1A8B74AC00A1DEA2 /* UIView+DynamicForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DynamicForm.h"; sourceTree = "<group>"; };
@@ -172,6 +182,8 @@
 		1324D8971A89E9AB003AA356 /* PickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerTableViewController.h; sourceTree = "<group>"; };
 		1324D8981A89E9AB003AA356 /* PickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerTableViewController.m; sourceTree = "<group>"; };
 		1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerTableViewController.xib; sourceTree = "<group>"; };
+		1328E7D81A95C7DF00475E90 /* NewNOCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewNOCViewController.xib; sourceTree = "<group>"; };
+		1328E7DA1A96042600475E90 /* ServicesDynamicFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesDynamicFormViewController.xib; sourceTree = "<group>"; };
 		132CCFAA1A779C1A007A40AE /* EmployeeTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeTypeViewController.h; sourceTree = "<group>"; };
 		132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeTypeViewController.m; sourceTree = "<group>"; };
 		132CCFAE1A779C6B007A40AE /* SidebarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewController.h; sourceTree = "<group>"; };
@@ -215,6 +227,8 @@
 		13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKSwipeBetweenViewControllers.m; sourceTree = "<group>"; };
 		13EE67961A7E556F00255174 /* RecordMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordMainViewController.h; sourceTree = "<group>"; };
 		13EE67971A7E556F00255174 /* RecordMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordMainViewController.m; sourceTree = "<group>"; };
+		13F877BC1A97290500245B05 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		13F877BD1A97290500245B05 /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
 		4F3F412517E7C9CA008B3283 /* MKNetworkEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkEngine.h; sourceTree = "<group>"; };
 		4F3F412617E7C9CA008B3283 /* MKNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkKit.h; sourceTree = "<group>"; };
 		4F3F412717E7C9CA008B3283 /* MKNetworkOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNetworkOperation.h; sourceTree = "<group>"; };
@@ -403,11 +417,21 @@
 			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		130523E31A99C56D00EF2268 /* UIViewController+ChildViewController */ = {
+			isa = PBXGroup;
+			children = (
+				130523E41A99C56D00EF2268 /* UIViewController+ChildViewController.h */,
+				130523E51A99C56D00EF2268 /* UIViewController+ChildViewController.m */,
+			);
+			path = "UIViewController+ChildViewController";
+			sourceTree = "<group>";
+		};
 		13063A861A8B6C0000A1DEA2 /* ServicesDynamicFormViewController */ = {
 			isa = PBXGroup;
 			children = (
 				13063A871A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.h */,
 				13063A881A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m */,
+				1328E7DA1A96042600475E90 /* ServicesDynamicFormViewController.xib */,
 			);
 			path = ServicesDynamicFormViewController;
 			sourceTree = "<group>";
@@ -535,6 +559,8 @@
 				131CA8701A80C94400A79B12 /* TableViewSectionField.m */,
 				13481AEE1A823A5B00093331 /* RelatedService.h */,
 				13481AEF1A823A5B00093331 /* RelatedService.m */,
+				13F877BC1A97290500245B05 /* Stack.h */,
+				13F877BD1A97290500245B05 /* Stack.m */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -593,6 +619,7 @@
 			children = (
 				131819491A91FCB900CAA4D6 /* ServicesUploadViewController.h */,
 				1318194A1A91FCB900CAA4D6 /* ServicesUploadViewController.m */,
+				130523DD1A99C05500EF2268 /* ServicesUploadViewController.xib */,
 			);
 			path = ServicesUploadViewController;
 			sourceTree = "<group>";
@@ -669,6 +696,7 @@
 			children = (
 				132F0D061A948FCC003FFC24 /* ServicesReviewViewController.h */,
 				132F0D071A948FCC003FFC24 /* ServicesReviewViewController.m */,
+				130523E71A99F96800EF2268 /* ServicesReviewViewController.xib */,
 			);
 			path = ServicesReviewViewController;
 			sourceTree = "<group>";
@@ -687,6 +715,7 @@
 			children = (
 				1394EA111A88B6E700ECED05 /* NewNOCViewController.h */,
 				1394EA121A88B6E700ECED05 /* NewNOCViewController.m */,
+				1328E7D81A95C7DF00475E90 /* NewNOCViewController.xib */,
 			);
 			path = NewNOCViewController;
 			sourceTree = "<group>";
@@ -720,6 +749,7 @@
 				13063A8A1A8B749E00A1DEA2 /* UIView+DynamicForm */,
 				139E6B6A1A7A6F2600D1D451 /* UIView+MGBadgeView */,
 				139E6B6F1A7A6FB500D1D451 /* UIView+RoundCorner */,
+				130523E31A99C56D00EF2268 /* UIViewController+ChildViewController */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1254,10 +1284,14 @@
 				130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
 				1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */,
+				1328E7D91A95C7DF00475E90 /* NewNOCViewController.xib in Resources */,
+				130523DE1A99C05500EF2268 /* ServicesUploadViewController.xib in Resources */,
+				1328E7DB1A96042600475E90 /* ServicesDynamicFormViewController.xib in Resources */,
 				1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */,
 				131CA87F1A80F91500A79B12 /* RecordDetailTableViewCell.xib in Resources */,
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
 				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
+				130523E81A99F96800EF2268 /* ServicesReviewViewController.xib in Resources */,
 				13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */,
 				139E6B5B1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,
@@ -1292,6 +1326,7 @@
 				13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */,
 				13081AFE1A76559D00B33509 /* Visa.m in Sources */,
 				139E6B611A7A432500D1D451 /* SOQLQueries.m in Sources */,
+				130523E61A99C56D00EF2268 /* UIViewController+ChildViewController.m in Sources */,
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
@@ -1319,6 +1354,7 @@
 				1394EA201A88D31F00ECED05 /* WYStoryboardPopoverSegue.m in Sources */,
 				132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */,
 				13081AFF1A76559D00B33509 /* WebForm.m in Sources */,
+				13F877BE1A97290500245B05 /* Stack.m in Sources */,
 				13D97BB51A8766E800DD71FF /* UIImageView+MaskImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

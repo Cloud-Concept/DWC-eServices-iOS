@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseServicesViewController.h"
 #import "PickerTableViewController.h"
 #import "SFRestAPI.h"
 
+@class BaseServicesViewController;
 @class Visa;
 
-@interface NewNOCViewController : BaseServicesViewController <SFRestDelegate>
+@interface NewNOCViewController : UIViewController <SFRestDelegate>
 {
     NSMutableArray *nocTypesArray;
     
@@ -35,7 +35,7 @@
     NSString *selectedLanguage;
 }
 
-@property (strong, nonatomic) Visa *currentVisaObject;
+@property (weak, nonatomic) BaseServicesViewController *baseServicesViewController;
 
 @property (weak, nonatomic) IBOutlet UIButton *chooseNOCTypeButton;
 @property (weak, nonatomic) IBOutlet UIButton *chooseAuthorityButton;
@@ -49,5 +49,6 @@
 - (IBAction)chooseLanguageButtonClicked:(id)sender;
 - (IBAction)courierRequiredSwitchValueChanged:(id)sender;
 - (IBAction)cancelButtonClicked:(id)sender;
+- (IBAction)nextButtonClicked:(id)sender;
 
 @end

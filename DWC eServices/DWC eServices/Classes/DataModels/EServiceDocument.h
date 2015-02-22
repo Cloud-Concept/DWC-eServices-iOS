@@ -21,7 +21,9 @@
 @property (strong, nonatomic) NSString *authority;
 @property (strong, nonatomic) NSString *documentType;
 @property (strong, nonatomic) NSString *nameNoSpace;
+@property (strong, nonatomic) NSString *companyDocumentId;
 @property (strong, nonatomic) NSData *attachment;
+@property (nonatomic) BOOL attachmentUploaded;
 
 - (id)initEServiceDocument:(NSString *)ServiceId Name:(NSString *)Name Type:(NSString *)Type Language:(NSString *)Language Authority:(NSString*)Authority DocumentType:(NSString *)DocumentType;
 

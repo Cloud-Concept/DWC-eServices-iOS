@@ -7,17 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseServicesViewController.h"
 
 @class EServiceDocument;
+@class BaseServicesViewController;
 
-@interface ServicesUploadViewController : BaseServicesViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ServicesUploadViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     UIView *servicesContentView;
-    //WebForm *currentWebForm;
     BOOL _newMedia;
     EServiceDocument *currentUploadingDocument;
 }
+
+@property (weak, nonatomic) BaseServicesViewController *baseServicesViewController;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *servicesScrollView;
 

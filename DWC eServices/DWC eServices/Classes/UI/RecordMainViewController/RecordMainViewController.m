@@ -12,6 +12,7 @@
 #import "UIImageView+SFAttachment.h"
 #import "RecordDetailsTableViewController.h"
 #import "RecordRelatedViewController.h"
+#import "BaseServicesViewController.h"
 #import "NewNOCViewController.h"
 
 @interface RecordMainViewController ()
@@ -84,10 +85,10 @@
 
 - (void)relatedServiceNewNOCButtonClicked {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    NewNOCViewController *newNOCVC = [storybord instantiateViewControllerWithIdentifier:@"NewNOCViewController"];
-    newNOCVC.cancelViewController = self;
-    newNOCVC.currentVisaObject = self.visaObject;
-    [self.navigationController pushViewController:newNOCVC animated:YES];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = RelatedServiceTypeNewNOC;
+    baseServicesVC.currentVisaObject = self.visaObject;
+    [self.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
 - (void)relatedServiceNewCardButtonClicked {

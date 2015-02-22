@@ -9,13 +9,13 @@
 #import "NewNOCViewController.h"
 #import "EServiceAdministration.h"
 #import "SFRestAPI+Blocks.h"
-#import "FVCustomAlertView.h"
 #import "Account.h"
 #import "Globals.h"
 #import "HelperClass.h"
 #import "ServicesDynamicFormViewController.h"
 #import "Visa.h"
 #import "SOQLQueries.h"
+#import "BaseServicesViewController.h"
 
 @interface NewNOCViewController ()
 
@@ -26,16 +26,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.showSlidingMenu = NO;
     
     loadingNOCTypes = NO;
     loadingRecordTypes = NO;
     loadingCourierCharges = NO;
     courierChargesLoaded = NO;
     
+    corporateCourierRate = @"";
+    retailCourierRate = @"";
+    
     [self resetAuthorityLanguageButtons];
     [self courierFieldsSetHidden:YES];
     
+    [self getNOCRecordType];
     [self getNOCTypes];
 }
 
@@ -128,7 +131,13 @@
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-    [self cancelServiceButtonClicked:sender];
+    [self.baseServicesViewController cancelServiceButtonClicked];
+}
+
+- (IBAction)nextButtonClicked:(id)sender {
+    if ([self validateInput]) {
+        [self prepareForNextFlowPage];
+    }
 }
 
 - (void)resetAuthorityLanguageButtons {
@@ -155,20 +164,19 @@
 }
 
 - (void)showLoadingDialog {
-    if(![FVCustomAlertView isShowingAlert])
-        [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:@"Loading..." withBlur:YES];
+    [self.baseServicesViewController showLoadingDialog];
 }
 
 - (void)hideLoadingDialog {
     if (!(loadingNOCTypes || loadingRecordTypes))
-        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        [self.baseServicesViewController hideLoadingDialog];
 }
 
 - (void)getNOCTypes {
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         NSArray *records = [dict objectForKey:@"records"];
-        NSLog(@"request:didLoadResponse: #records: %d", records.count);
+        NSLog(@"request:didLoadResponse: #records: %lud", (unsigned long)records.count);
         
         nocTypesArray = [[NSMutableArray alloc] init];
         
@@ -264,57 +272,50 @@
     [[SFRestAPI sharedInstance] send:aramexRequest delegate:self];
 }
 
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForNextFlowPage {
+    EServiceAdministration *eService = [nocTypesArray objectAtIndex:selectedNOCTypeIndexPath.row];
+    self.baseServicesViewController.currentWebformId = eService.editNewVFGenerator;
+    self.baseServicesViewController.currentServiceAdministration = eService;
+    self.baseServicesViewController.serviceObject = @"NOC__c";
     
-    if([segue.identifier isEqualToString:@"ServicesDynamicFormSegue"]) {
-        ServicesDynamicFormViewController *destinationVC = [segue destinationViewController];
-        destinationVC.cancelViewController = self.cancelViewController;
-        EServiceAdministration *eService = [nocTypesArray objectAtIndex:selectedNOCTypeIndexPath.row];
-        destinationVC.currentWebformId = eService.editNewVFGenerator;
-        destinationVC.currentServiceAdministration = eService;
-        destinationVC.visaObject = self.currentVisaObject;
-        destinationVC.serviceObject = @"NOC__c";
-        destinationVC.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]] ,@"isCourierRequired__c",
-                                    corporateCourierRate, @"Courier_Corporate_Fee__c",
-                                    retailCourierRate, @"Courier_Retail_Fee__c",
-                                    eService.Id, @"Service_Requested__c",
-                                    self.currentVisaObject.visaHolder.Id, @"Employee_Ref__c",
-                                    [Globals currentAccount].Id, @"AccountId",
-                                    caseRecordTypeId, @"RecordTypeId",
-                                    @"Draft", @"Status",
-                                    @"NOC Services", @"Type",
-                                    @"Mobile", @"Origin",
-                                    nil];
-        
-        destinationVC.serviceFields = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       self.currentVisaObject.visaHolder.Id, @"Person__c",
-                                       [Globals currentAccount].Id, @"Current_Sponsor__c",
-                                       self.currentVisaObject.Id, @"Current_Visa__c",
-                                       @"Application Received", @"Application_Status__c",
-                                       eService.serviceIdentifier, @"Document_Name__c",
-                                       nocRecordTypeId, @"RecordTypeId",
-                                       [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]], @"isCourierRequired__c",
-                                       /*caseId, @"Request__c",*/
-                                       nil];
-        
-        destinationVC.parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    selectedAuthority, @"auth",
-                                    selectedLanguage, @"lang",
-                                    nil];
-        
-    }
+    self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                  [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]] ,@"isCourierRequired__c",
+                                                  /*
+                                                  corporateCourierRate, @"Courier_Corporate_Fee__c",
+                                                  retailCourierRate, @"Courier_Retail_Fee__c",
+                                                  */
+                                                  eService.Id, @"Service_Requested__c",
+                                                  self.baseServicesViewController.currentVisaObject.visaHolder.Id, @"Employee_Ref__c",
+                                                  [Globals currentAccount].Id, @"AccountId",
+                                                  caseRecordTypeId, @"RecordTypeId",
+                                                  @"Draft", @"Status",
+                                                  @"NOC Services", @"Type",
+                                                  @"Mobile", @"Origin",
+                                                  nil];
+    
+    self.baseServicesViewController.serviceFields = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                     self.baseServicesViewController.currentVisaObject.visaHolder.Id, @"Person__c",
+                                                     [Globals currentAccount].Id, @"Current_Sponsor__c",
+                                                     self.baseServicesViewController.currentVisaObject.Id, @"Current_Visa__c",
+                                                     @"Application Received", @"Application_Status__c",
+                                                     eService.serviceIdentifier, @"Document_Name__c",
+                                                     nocRecordTypeId, @"RecordTypeId",
+                                                     [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]], @"isCourierRequired__c",
+                                                     /*caseId, @"Request__c",*/
+                                                     nil];
+    
+    self.baseServicesViewController.parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                  selectedAuthority, @"auth",
+                                                  selectedLanguage, @"lang",
+                                                  nil];
+    
+    [self.baseServicesViewController nextButtonClicked:ServiceFlowInitialPage];
 }
 
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+- (BOOL)validateInput {
     BOOL shouldPerform = YES;
     
-    if ([identifier isEqualToString:@"ServicesDynamicFormSegue"] && !(selectedNOCTypeIndexPath && selectedAuthorityIndexPath && selectedLanguageIndexPath)) {
+    if (!(selectedNOCTypeIndexPath && selectedAuthorityIndexPath && selectedLanguageIndexPath)) {
         shouldPerform = NO;
         [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
                                          Message:NSLocalizedString(@"RequiredFieldsAlertMessage", @"")];

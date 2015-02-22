@@ -134,7 +134,7 @@ static UIView *currentView = nil;
         [window addSubview:resultView];
     }
     
-    currentView = view;
+    currentView = resultView;
 }
 
 + (void)showDefaultLoadingAlertOnView:(UIView *)view withTitle:(NSString *)title withBlur:(BOOL)blur {
