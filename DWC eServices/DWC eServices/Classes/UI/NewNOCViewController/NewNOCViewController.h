@@ -43,6 +43,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *courierRequiredSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *courierRateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *courierRateTextField;
+@property (weak, nonatomic) IBOutlet UILabel *servicePriceLabel;
+@property (weak, nonatomic) IBOutlet UITextField *servicePriceTextField;
 
 - (IBAction)chooseNOCTypeButtonClicked:(id)sender;
 - (IBAction)chooseAuthorityButtonClicked:(id)sender;

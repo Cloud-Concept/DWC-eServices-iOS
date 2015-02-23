@@ -64,6 +64,14 @@
         [picklist dismissPopover:YES];
         [self resetAuthorityLanguageButtons];
         [self.chooseAuthorityButton setEnabled:YES];
+        
+        
+        EServiceAdministration *selectedService = [nocTypesArray objectAtIndex:selectedNOCTypeIndexPath.row];
+        NSString *balanceStr = [HelperClass formatNumberToString:selectedService.amount
+                                                     FormatStyle:NSNumberFormatterDecimalStyle
+                                           MaximumFractionDigits:2];
+        
+        [self.servicePriceTextField setText:[NSString stringWithFormat:@"AED %@", balanceStr]];
     };
     
     [pickerTableVC showPopoverFromView:senderButton];
