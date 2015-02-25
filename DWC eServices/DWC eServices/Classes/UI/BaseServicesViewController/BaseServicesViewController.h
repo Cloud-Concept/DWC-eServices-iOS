@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
 #import "RelatedService.h"
+#import "SFRestAPI.h"
 
 @class EServiceAdministration;
 @class Visa;
 @class Stack;
+@class WebForm;
 
 typedef enum {
     ServiceFlowInitialPage,
@@ -21,7 +23,7 @@ typedef enum {
     ServiceFlowReviewPage,
 } ServiceFlowPageType;
 
-@interface BaseServicesViewController : BaseFrontRevealViewController <UIAlertViewDelegate>
+@interface BaseServicesViewController : BaseFrontRevealViewController <UIAlertViewDelegate, SFRestDelegate>
 {
     Stack *viewControllersStack;
     
@@ -35,6 +37,7 @@ typedef enum {
 
 @property (nonatomic) RelatedServiceType relatedServiceType;
 @property (strong, nonatomic) Visa *currentVisaObject;
+@property (strong, nonatomic) WebForm *currentWebForm;
 
 @property (strong, nonatomic) EServiceAdministration *currentServiceAdministration;
 @property (strong, nonatomic) NSDictionary *caseFields;
@@ -55,5 +58,7 @@ typedef enum {
 - (void)hideLoadingDialog;
 - (void)cancelServiceButtonClicked;
 - (void)nextButtonClicked:(ServiceFlowPageType)serviceFlowPageType;
+- (void)callPayAndSubmitWebservice;
+- (NSString *)getCaseReviewQuery;
 
 @end

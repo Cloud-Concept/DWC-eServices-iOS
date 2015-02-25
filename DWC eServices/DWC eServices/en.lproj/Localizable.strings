@@ -19,6 +19,7 @@
 "ErrorAlertTitle" = "Error";
 "DeleteAlertTitle" = "Delete";
 "DocumentSourceAlertTitle" = "Document Source";
+"ThanksAlertTitle" = "Thank you.";
 
 "ErrorAlertMessage" = "An error occurred";
 "CancelServiceAlertMessage" = "Are you sure you want to cancel this service?";
@@ -27,6 +28,8 @@
 "DeleteDocumentAlertMessage" = "Are you sure you want to delete this document?";
 "DocumentSourceAlertMessage" = "Choose document source.";
 "DocumentsUploadAlertMessage" = "An error occurred while uploading your documents.";
+"PayAndSubmitAlertMessage" = "Are you sure you want to Pay and Submit your request?";
+"ApplicationSubmittedAlertMessage" = "Your application has been successfully submitted.";
 
 "galleryDocumentSource" = "Gallery";
 
@@ -46,3 +49,12 @@
 
 "chooseAuthorityButton" = "Choose Authority";
 "chooseLanguageButton" = "Choose Language";
+"PayAndSubmitButton" = "Pay/Submit";
+
+"RequestNumberLabel" = "Request Number";
+"RequestStatusLabel" = "Request Status";
+"RequestTypeLabel" = "Request Type";
+"RequestCreatedDateLabel" = "Request Date";
+"RequestTotalAmountLabel" = "Service Price";
+"RequestIsCourierRequiredLabel" = "Courier Required";
+"RequestInfoLabel" = "Request Information";

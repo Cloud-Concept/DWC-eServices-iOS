@@ -15,11 +15,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E2q-kC-Yut">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2q-kC-Yut">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="E2q-kC-Yut" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BRd-2J-KFC"/>
+                <constraint firstAttribute="trailing" secondItem="E2q-kC-Yut" secondAttribute="trailing" id="SDn-of-RE2"/>
+                <constraint firstAttribute="bottom" secondItem="E2q-kC-Yut" secondAttribute="bottom" id="aQv-UK-uGm"/>
+                <constraint firstItem="E2q-kC-Yut" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="o9k-1A-zdJ"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>

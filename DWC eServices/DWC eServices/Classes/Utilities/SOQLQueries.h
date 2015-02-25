@@ -10,9 +10,10 @@
 
 @interface SOQLQueries : NSObject
 
-+ (NSString*)visitVisaEmployeesQuery;
-+ (NSString*)permanentEmployeesQuery;
-+ (NSString*)contractorsQuery;
++ (NSString *)visitVisaEmployeesQuery;
++ (NSString *)permanentEmployeesQuery;
++ (NSString *)contractorsQuery;
 + (NSString *)employeeNOCTypesQuery;
 + (NSString *)companyNOCTypesQuery;
++ (NSString *)nocCaseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray;
 @end

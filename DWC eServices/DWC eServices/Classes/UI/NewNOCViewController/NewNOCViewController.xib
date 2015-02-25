@@ -117,7 +117,7 @@
                         <action selector="chooseNOCTypeButtonClicked:" destination="-1" eventType="touchUpInside" id="Y5X-PS-cvS"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="tEA-yH-Ny6">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="AED 0" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="tEA-yH-Ny6">
                     <rect key="frame" x="194" y="160" width="165" height="40"/>
                     <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>

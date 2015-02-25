@@ -20,6 +20,8 @@
 #import "Globals.h"
 #import "Account.h"
 #import "EServiceDocument.h"
+#import "SOQLQueries.h"
+#import "WebForm.h"
 
 @interface BaseServicesViewController ()
 
@@ -62,6 +64,22 @@
 
 - (BOOL)hasAttachments {
     return [self.currentServiceAdministration hasDocuments];
+}
+
+- (NSString *)getCaseReviewQuery {
+    NSString *returnQuery;
+    
+    switch (self.relatedServiceType) {
+        case RelatedServiceTypeNewNOC:
+            returnQuery = [SOQLQueries nocCaseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields];
+            break;
+            
+        default:
+            returnQuery = @"";
+            break;
+    }
+    
+    return returnQuery;
 }
 
 - (void)cancelServiceButtonClicked {
@@ -123,7 +141,7 @@
     [self.cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.cancelButton setBackgroundImage:[UIImage imageNamed:@"Black Button Background"] forState:UIControlStateNormal];
     [self.cancelButton.titleLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
-    [self.cancelButton addTarget:self action:@selector(cancelServiceButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.cancelButton addTarget:self action:@selector(cancelServiceButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     
     self.nextButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.nextButton setTitle:NSLocalizedString(@"next", @"") forState:UIControlStateNormal];
@@ -213,8 +231,8 @@
             insertedCaseId = [dict objectForKey:@"id"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self createServiceRecord:insertedCaseId];
             [self hideLoadingDialog];
+            [self createServiceRecord:insertedCaseId];
         });
     };
     
@@ -227,6 +245,10 @@
         
     };
     [self showLoadingDialog];
+    
+    NSMutableDictionary *mutableCaseFields = [NSMutableDictionary dictionaryWithDictionary:self.serviceFields];
+    [mutableCaseFields setObject:self.currentServiceAdministration.Id forKey:@"Service_Requested__c"];
+    [mutableCaseFields setObject:self.currentWebForm.Id forKey:@"Visual_Force_Generator__c"];
     
     if(insertedCaseId != nil && ![insertedCaseId  isEqual: @""])
         [[SFRestAPI sharedInstance] performUpdateWithObjectType:@"Case"
@@ -246,10 +268,9 @@
         if (dict != nil)
             insertedServiceId = [dict objectForKey:@"id"];
         
-        [self updateCaseObject:caseId ServiceId:insertedServiceId];
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideLoadingDialog];
+            [self updateCaseObject:caseId ServiceId:insertedServiceId];
         });
     };
     
@@ -264,15 +285,19 @@
     
     [self showLoadingDialog];
     
+    NSMutableDictionary *mutableServiceFields = [NSMutableDictionary dictionaryWithDictionary:self.serviceFields];
+    [mutableServiceFields setObject:insertedCaseId forKey:@"Request__c"];
+    [mutableServiceFields setObject:self.currentWebForm.Id forKey:@"Web_Form__c"];
+    
     if (insertedServiceId != nil && ![insertedServiceId isEqualToString:@""])
         [[SFRestAPI sharedInstance] performUpdateWithObjectType:self.serviceObject
                                                        objectId:insertedServiceId
-                                                         fields:self.serviceFields
+                                                         fields:mutableServiceFields
                                                       failBlock:errorBlock
                                                   completeBlock:successBlock];
     else
         [[SFRestAPI sharedInstance] performCreateWithObjectType:self.serviceObject
-                                                         fields:self.serviceFields
+                                                         fields:mutableServiceFields
                                                       failBlock:errorBlock
                                                   completeBlock:successBlock];
 }
@@ -352,14 +377,15 @@
     //UIImage *resizedImage = [HelperClass imageWithImage:image ScaledToSize:CGSizeMake(480, 640)];
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
+        
+        [failedImagedArray addObject:document];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self uploadDidReturn];
         });
     };
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        [failedImagedArray addObject:document];
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self uploadDidReturn];
         });
@@ -397,6 +423,73 @@
             [self showReviewFlowPage];
         }
     }
+}
+
+- (void)callPayAndSubmitWebservice {
+    
+    // Manually set up request object
+    SFRestRequest *payAndSubmitRequest = [[SFRestRequest alloc] init];
+    payAndSubmitRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobilePayAndSubmitWebService"];
+    payAndSubmitRequest.method = SFRestMethodPOST;
+    payAndSubmitRequest.path = @"/services/apexrest/MobilePayAndSubmitWebService";
+    payAndSubmitRequest.queryParams = [NSDictionary dictionaryWithObject:insertedCaseId forKey:@"caseId"];
+    
+    [self showLoadingDialog];
+    [[SFRestAPI sharedInstance] send:payAndSubmitRequest delegate:self];
+}
+
+#pragma mark - SFRestAPIDelegate
+
+- (void)request:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
+    NSError *error;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
+    NSLog(@"request:didLoadResponse: %@", dict);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self hideLoadingDialog];
+        
+        UIAlertController *alertController =
+        [UIAlertController alertControllerWithTitle:NSLocalizedString(@"ThanksAlertTitle", @"")
+                                            message:NSLocalizedString(@"ApplicationSubmittedAlertMessage", @"")
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok", @"")
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction *action) {
+                                                              [self.navigationController popViewControllerAnimated:YES];
+                                                          }];
+        
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    });
+}
+
+- (void)request:(SFRestRequest*)request didFailLoadWithError:(NSError*)error {
+    NSLog(@"request:didFailLoadWithError: %@", error);
+    //add your failed error handling here
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self hideLoadingDialog];
+    });
+#warning Handle error
+}
+
+- (void)requestDidCancelLoad:(SFRestRequest *)request {
+    NSLog(@"requestDidCancelLoad: %@", request);
+    //add your failed error handling here
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self hideLoadingDialog];
+    });
+#warning Handle error
+}
+
+- (void)requestDidTimeout:(SFRestRequest *)request {
+    NSLog(@"requestDidTimeout: %@", request);
+    //add your failed error handling here
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self hideLoadingDialog];
+    });
+#warning Handle error
 }
 
 /*

@@ -15,7 +15,6 @@
 @interface ServicesDynamicFormViewController : UIViewController
 {
     UIView *servicesContentView;
-    WebForm *currentWebForm;
 }
 
 @property (weak, nonatomic) BaseServicesViewController *baseServicesViewController;

@@ -12,6 +12,43 @@
 
 @implementation FormField
 
+- (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue {
+    id formField = [self initFormField:formFieldId
+                                  Name:Name
+                           APIRequired:NO
+                          BooleanValue:NO
+                         CurrencyValue:nil
+                         DateTimeValue:nil
+                             DateValue:nil
+                            EmailValue:nil
+                                Hidden:NO
+                          IsCalculated:NO
+                           IsParameter:NO
+                               IsQuery:NO
+                                 Label:nil
+                           NumberValue:nil
+                                 Order:nil
+                          PercentValue:nil
+                            PhoneValue:nil
+                         PicklistValue:nil
+                       PicklistEntries:nil
+                              Required:NO
+                     TextAreaLongValue:nil
+                         TextAreaValue:nil
+                             TextValue:nil
+                                  Type:Type
+                              UrlValue:nil
+                               WebForm:nil
+                                 Width:nil
+                     IsMobileAvailable:YES
+                           MobileLabel:MobileLabel
+                           MobileOrder:nil];
+    
+    formFieldValue = FieldValue;
+    
+    return formField;
+}
+
 - (id)initFormField:(NSString*)formFieldId Name:(NSString*)Name APIRequired:(BOOL)APIRequired BooleanValue:(BOOL)BooleanValue CurrencyValue:(NSNumber*)CurrencyValue DateTimeValue:(NSString*)DateTimeValue DateValue:(NSString*)DateValue EmailValue:(NSString*)EmailValue Hidden:(BOOL)Hidden IsCalculated:(BOOL)IsCalculated IsParameter:(BOOL)IsParameter IsQuery:(BOOL)IsQuery Label:(NSString*)Label NumberValue:(NSNumber*)NumberValue Order:(NSNumber*)Order PercentValue:(NSNumber*)PercentValue PhoneValue:(NSString*)PhoneValue PicklistValue:(NSString*)PicklistValue PicklistEntries:(NSString*)PicklistEntries Required:(BOOL)Required TextAreaLongValue:(NSString*)TextAreaLongValue TextAreaValue:(NSString*)TextAreaValue TextValue:(NSString*)TextValue Type:(NSString*)Type UrlValue:(NSString*)UrlValue WebForm:(NSString*)WebForm Width:(NSNumber*)Width IsMobileAvailable:(BOOL)IsMobileAvailable MobileLabel:(NSString*)MobileLabel MobileOrder:(NSNumber*)MobileOrder {
     
     if (!(self = [super init])) {
@@ -20,6 +57,7 @@
     
     self.Id = formFieldId;
     self.name = Name;
+    self.nameNoSpace = [Name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     self.apiRequired = APIRequired;
     self.booleanValue = BooleanValue;
     self.currencyValue = CurrencyValue;
@@ -89,8 +127,41 @@
     copy.isMobileAvailable = _isMobileAvailable;
     copy.mobileLabel = _mobileLabel;
     copy.mobileOrder = _mobileOrder;
-    
+    copy.nameNoSpace = _nameNoSpace;
+
     return copy;
+}
+
+
+- (UILabel *)getReviewFieldNameLabel {
+    if (!reviewFieldNameLabel) {
+        reviewFieldNameLabel = [UILabel new];
+        
+        BOOL isCustomText = [self.type isEqualToString:@"CUSTOMTEXT"];
+        
+        NSString *textFormat = isCustomText ? @"%@" : @"%@:";
+        [reviewFieldNameLabel setText:[NSString stringWithFormat:textFormat, self.mobileLabel]];
+        
+        UIColor *textColor = isCustomText ? [UIColor colorWithRed:0.25 green:0.31 blue:0.35 alpha:1] : [UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1];
+        [reviewFieldNameLabel setTextColor:textColor];
+        
+        float textSize = isCustomText ? 14 : 10;
+        [reviewFieldNameLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:textSize]];
+        
+        reviewFieldNameLabel.textAlignment = isCustomText ? NSTextAlignmentCenter: NSTextAlignmentRight;
+    }
+    return reviewFieldNameLabel;
+}
+
+- (UILabel *)getReviewFieldValueLabel {
+    if (!reviewFieldValueLabel) {
+        reviewFieldValueLabel = [UILabel new];
+        [reviewFieldValueLabel setText:formFieldValue];
+        [reviewFieldValueLabel setTextColor:[UIColor colorWithRed:0.08 green:0.08 blue:0.08 alpha:1]];
+        [reviewFieldValueLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:10.0f]];
+        reviewFieldValueLabel.textAlignment = NSTextAlignmentLeft;
+    }
+    return reviewFieldValueLabel;
 }
 
 - (UILabel*)getLabelView {

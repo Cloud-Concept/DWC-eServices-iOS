@@ -56,8 +56,8 @@
     
     NSMutableDictionary *newFields = [NSMutableDictionary dictionaryWithDictionary:self.baseServicesViewController.serviceFields];
     
-    for (FormField *formField in currentWebForm.formFields) {
-        if(!formField.isCalculated)
+    for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
+        if(!formField.isCalculated && ! [formField.type isEqualToString:@"CUSTOMTEXT"])
             [newFields setValue:[formField getFormFieldValue] forKey:formField.name];
     }
     
@@ -80,20 +80,21 @@
         NSArray *records = [dict objectForKey:@"records"];
         
         for (NSDictionary *dict in records) {
-            currentWebForm = [[WebForm alloc] initWebForm:[dict objectForKey:@"Id"]
-                                                     Name:[dict objectForKey:@"Name"]
-                                              Description:[dict objectForKey:@"Description__c"]
-                                                    Title:[dict objectForKey:@"Title__c"]
-                                       IsNotesAttachments:[[dict objectForKey:@"isNotesAttachments__c"] boolValue]
-                                              ObjectLabel:[dict objectForKey:@"Object_Label__c"]
-                                               ObjectName:[dict objectForKey:@"Object_Name__c"]];
+            self.baseServicesViewController.currentWebForm = [[WebForm alloc] initWebForm:[dict objectForKey:@"Id"]
+                                                                                     Name:[dict objectForKey:@"Name"]
+                                                                              Description:[dict objectForKey:@"Description__c"]
+                                                                                    Title:[dict objectForKey:@"Title__c"]
+                                                                       IsNotesAttachments:[[dict objectForKey:@"isNotesAttachments__c"] boolValue]
+                                                                              ObjectLabel:[dict objectForKey:@"Object_Label__c"]
+                                                                               ObjectName:[dict objectForKey:@"Object_Name__c"]];
             NSMutableArray *fieldsArray = [[NSMutableArray alloc] init];
             
             NSDictionary *fieldsJSONArray = [[dict objectForKey:@"R00N70000002DiOrEAK__r"] objectForKey:@"records"];
             for (NSDictionary *fieldsDict in fieldsJSONArray) {
+                /*
                 if([[fieldsDict objectForKey:@"Type__c"] isEqualToString:@"CUSTOMTEXT"])
                     continue;
-                
+                */
                 [fieldsArray addObject:[[FormField alloc] initFormField:[fieldsDict objectForKey:@"Id"]
                                                                    Name:[fieldsDict objectForKey:@"Name"]
                                                             APIRequired:[[fieldsDict objectForKey:@"APIRequired__c"] boolValue]
@@ -126,7 +127,7 @@
                                                             MobileOrder:[fieldsDict objectForKey:@"Mobile_Order__c"]]];
             }
             
-            currentWebForm.formFields = [NSArray arrayWithArray:fieldsArray];
+            self.baseServicesViewController.currentWebForm.formFields = [NSArray arrayWithArray:fieldsArray];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.baseServicesViewController hideLoadingDialog];
@@ -162,7 +163,7 @@
         
         NSDictionary *visaObject = [records objectAtIndex:0];
         
-        for (FormField *formField in currentWebForm.formFields) {
+        for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
             if(!formField.isQuery)
                 continue;
             
@@ -185,7 +186,7 @@
     NSMutableString *selectQuery = [NSMutableString stringWithString:@"SELECT Id"];
     
     BOOL queryFields = NO;
-    for (FormField *formField in currentWebForm.formFields) {
+    for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
         if (formField.isParameter) {
             [formField setFormFieldValue:[self.baseServicesViewController.parameters objectForKey:formField.textValue]];
         }
@@ -213,7 +214,7 @@
 
 - (void)displayWebForm {
     [self initServiceFieldsContentView];
-    [servicesContentView drawFormFields:currentWebForm
+    [servicesContentView drawFormFields:self.baseServicesViewController.currentWebForm
                            cancelButton:self.baseServicesViewController.cancelButton
                              nextButton:self.baseServicesViewController.nextButton];
 }
@@ -255,7 +256,7 @@
 
 - (BOOL)validateInput {
     BOOL returnValue = YES;
-    for (FormField *formField in currentWebForm.formFields) {
+    for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
         if(formField.required && [[formField getFormFieldValue] isEqualToString:@""])
             returnValue = NO;
     }

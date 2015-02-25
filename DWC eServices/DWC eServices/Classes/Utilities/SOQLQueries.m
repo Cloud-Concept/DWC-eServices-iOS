@@ -9,6 +9,7 @@
 #import "SOQLQueries.h"
 #import "Globals.h"
 #import "Account.h"
+#import "FormField.h"
 
 @implementation SOQLQueries
 
@@ -24,6 +25,8 @@ static NSString *nocTypesQuery = @"SELECT ID, Name, Service_Identifier__c, Amoun
 
 static NSString *employeeNOCTypesFilter = @"AND NOC_Type__c = 'Employee'";
 static NSString *companyNOCTypesFilter = @"AND NOC_Type__c = 'Company'";
+
+static NSString *nocCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, NOC__r.Document_Name__c, NOC__r.NOC_Language__c, NOC__r.isCourierRequired__c, (SELECT ID, Amount__c FROM Invoices__r)";
 
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
@@ -43,6 +46,27 @@ static NSString *companyNOCTypesFilter = @"AND NOC_Type__c = 'Company'";
 
 + (NSString *)companyNOCTypesQuery {
     return [NSString stringWithFormat:nocTypesQuery, companyNOCTypesFilter];
+}
+
++ (NSString *)nocCaseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray {
+    NSMutableString *queryString = [NSMutableString stringWithString:nocCaseReviewQuery];
+    
+    for (FormField *field in formFieldsArray) {
+        
+        if ([field.type isEqualToString:@"CUSTOMTEXT"])
+            continue;
+        
+        NSString *fieldName = [NSString stringWithFormat:@", NOC__r.%@", field.name];
+        
+        if (![queryString containsString:fieldName]) {
+            [queryString appendString:fieldName];
+        }
+        
+    }
+    
+    [queryString appendFormat:@" FROM Case WHERE Id = '%@'", caseId];
+    
+    return queryString;
 }
 
 @end

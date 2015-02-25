@@ -151,4 +151,9 @@
     
 }
 
++ (NSString *)formatBoolToString:(BOOL)booleanValue {
+    NSString *localizedStringName = booleanValue ? @"yes" : @"no";
+    
+    return NSLocalizedString(localizedStringName, @"");
+}
 @end

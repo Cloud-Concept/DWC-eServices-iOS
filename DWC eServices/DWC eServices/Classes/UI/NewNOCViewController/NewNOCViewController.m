@@ -288,10 +288,6 @@
     
     self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
                                                   [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]] ,@"isCourierRequired__c",
-                                                  /*
-                                                  corporateCourierRate, @"Courier_Corporate_Fee__c",
-                                                  retailCourierRate, @"Courier_Retail_Fee__c",
-                                                  */
                                                   eService.Id, @"Service_Requested__c",
                                                   self.baseServicesViewController.currentVisaObject.visaHolder.Id, @"Employee_Ref__c",
                                                   [Globals currentAccount].Id, @"AccountId",
