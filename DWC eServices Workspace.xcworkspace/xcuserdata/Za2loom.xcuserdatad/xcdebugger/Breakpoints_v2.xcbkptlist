@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/BaseFrontRevealViewController/BaseFrontRevealViewController.m"
-            timestampString = "444487828.255151"
+            timestampString = "446989296.295621"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "-initTabBar"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
-            timestampString = "446371247.55221"
+            timestampString = "446989373.119985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-loadCompanyInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -904,6 +904,86 @@
             startingLineNumber = "95"
             endingLineNumber = "95"
             landmarkName = "-getCaseDetails"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/BaseFrontRevealViewController/BaseFrontRevealViewController.m"
+            timestampString = "446989296.295621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "-tabBar:didSelectItem:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/BaseFrontRevealViewController/BaseFrontRevealViewController.m"
+            timestampString = "446989296.295621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-openHomePage"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/SWRevealViewController/SWRevealViewController.m"
+            timestampString = "446987812.691488"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1812"
+            endingLineNumber = "1812"
+            landmarkName = "-perform"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/SWRevealViewController/SWRevealViewController.m"
+            timestampString = "446987823.387586"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1662"
+            endingLineNumber = "1662"
+            landmarkName = "-loadStoryboardControllers"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/BaseFrontRevealViewController/BaseFrontRevealViewController.m"
+            timestampString = "446989296.295621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-openHomePage"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

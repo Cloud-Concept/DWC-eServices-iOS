@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BaseFrontRevealViewController : UIViewController
+@interface BaseFrontRevealViewController : UIViewController <UITabBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITabBar *bottomTabBar;
 @property (nonatomic) BOOL showSlidingMenu;

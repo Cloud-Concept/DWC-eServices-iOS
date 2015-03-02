@@ -19,6 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.showSlidingMenu = YES;
+    self.revealViewController.navigationController.navigationBarHidden = YES;
+    //self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,25 +69,49 @@
     
     UITabBarItem *requestItem = [[UITabBarItem alloc] initWithTitle:@"REQUEST"
                                                               image:[UIImage imageNamed:@"TabBar Request Icon"]
-                                                                tag:1];
+                                                                tag:2];
     
     UITabBarItem *servicesItem = [[UITabBarItem alloc] initWithTitle:@"SERVICES"
                                                                image:[UIImage imageNamed:@"TabBar Services Icon"]
-                                                                 tag:1];
+                                                                 tag:3];
     
     UITabBarItem *reportsItem = [[UITabBarItem alloc] initWithTitle:@"REPORTS"
                                                               image:[UIImage imageNamed:@"TabBar Reports Icon"]
-                                                                tag:1];
+                                                                tag:4];
     
     UITabBarItem *dashboardItem = [[UITabBarItem alloc] initWithTitle:@"DASHBOARD"
                                                                 image:[UIImage imageNamed:@"TabBar Dashboard Icon"]
-                                                                  tag:1];
+                                                                  tag:5];
     
     NSArray *tabBarItem = @[homeItem, requestItem, servicesItem, reportsItem, dashboardItem];
     
     [self.bottomTabBar setItems:tabBarItem animated:YES];
+    self.bottomTabBar.delegate = self;
 }
 
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    switch (item.tag) {
+        case 1:
+            
+            [self openHomePage];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)openHomePage {
+    /*
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *vc =[storybord instantiateInitialViewController];
+    
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    
+    window.rootViewController = vc;
+    */
+    [self.revealViewController.navigationController popViewControllerAnimated:YES];
+}
 /*
  #pragma mark - Navigation
  
