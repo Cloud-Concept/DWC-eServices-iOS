@@ -37,7 +37,8 @@
     NSMutableOrderedSet *authoritiesMutableOrderedSet = [NSMutableOrderedSet new];
     NSMutableDictionary *authorityLanguagesMutableDictionary = [NSMutableDictionary new];
     for (NSDictionary *obj in ServiceDocumentsArray) {
-        if ([[obj objectForKey:@"Document_Type__c"] isEqualToString:@"Upload"]) {
+        NSString *currentDocumentType = [HelperClass stringCheckNull:[obj objectForKey:@"Document_Type__c"]];
+        if ([currentDocumentType isEqualToString:@"Upload"]) {
             
             EServiceDocument *newDocument = [[EServiceDocument alloc] initEServiceDocument:[obj objectForKey:@"Id"]
                                                                                       Name:[obj objectForKey:@"Name"]
@@ -47,7 +48,7 @@
                                                                               DocumentType:[obj objectForKey:@"Document_Type__c"]];
             [documentsMutableArray addObject:newDocument];
         }
-        else {
+        else if ([currentDocumentType isEqualToString:@"Download"]) {
             NSString *authority = [obj objectForKey:@"Authority__c"];
             [authoritiesMutableOrderedSet addObject:authority];
             

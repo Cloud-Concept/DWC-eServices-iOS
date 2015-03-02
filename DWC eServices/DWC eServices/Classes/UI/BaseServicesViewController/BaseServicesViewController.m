@@ -74,7 +74,9 @@
         case RelatedServiceTypeNewNOC:
             returnQuery = [SOQLQueries nocCaseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields];
             break;
-            
+        case RelatedServiceTypeNewCard:
+            returnQuery = [SOQLQueries cardCaseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields];
+            break;
         default:
             returnQuery = @"";
             break;

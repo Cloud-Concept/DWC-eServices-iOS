@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol DatePickerViewControllerDelegate <NSObject>
--(void)datePickerValueChanged:(NSDate*)newValue;
-@end
+#import "WYPopoverController.h"
 
 typedef enum : NSUInteger {
     Date,
@@ -18,16 +15,21 @@ typedef enum : NSUInteger {
     Time,
 } DatePickerType;
 
-@interface DatePickerViewController : UIViewController
+@interface DatePickerViewController : UIViewController <WYPopoverControllerDelegate>
+{
+    WYPopoverController *popoverController;
+}
 
 @property (nonatomic) DatePickerType DatePickerType;
 @property (strong, nonatomic) NSDate *minimumDate;
 @property (strong, nonatomic) NSDate *maximumDate;
 @property (strong, nonatomic) NSDate *defaultDate;
 
-@property (weak) id<DatePickerViewControllerDelegate> delegate;
+@property (nonatomic, copy) void (^valuePicked)(NSDate *, DatePickerViewController *);
+
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
-- (IBAction)datePickerValueChanged:(id)sender;
+- (void)showPopoverFromView:(UIView*)sender;
+- (void)dismissPopover:(BOOL)animated;
 
 @end

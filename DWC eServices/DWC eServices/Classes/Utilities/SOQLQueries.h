@@ -17,4 +17,5 @@
 + (NSString *)companyNOCTypesQuery;
 + (NSString *)nocCaseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray;
 + (NSString *)cardTypeQueryForDuration:(NSString *)duration CardType:(NSString *)cardType;
++ (NSString *)cardCaseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray;
 @end

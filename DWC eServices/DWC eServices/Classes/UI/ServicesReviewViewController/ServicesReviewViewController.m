@@ -91,10 +91,21 @@
                 }
             }
             
-            NSDictionary *serviceDict;
-            if (![[dict objectForKey:@"NOC__r"] isKindOfClass:[NSNull class]])
-                serviceDict = [dict objectForKey:@"NOC__r"];
+            NSString *parentLookup;
+            switch (self.baseServicesViewController.relatedServiceType) {
+                case RelatedServiceTypeNewNOC:
+                    parentLookup = @"NOC__r";
+                    break;
+                case RelatedServiceTypeNewCard:
+                    parentLookup = @"Card_Management__r";
+                    break;
+                default:
+                    parentLookup = @"";
+                    break;
+            }
             
+            NSDictionary *serviceDict = [dict objectForKey:parentLookup];
+
             isCourierRequired = [[serviceDict objectForKey:@"isCourierRequired__c"] boolValue];
             
             formFieldsArray = [[NSMutableArray alloc] initWithArray:self.baseServicesViewController.currentWebForm.formFields

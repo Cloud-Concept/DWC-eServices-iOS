@@ -20,9 +20,6 @@
                     <date key="date" timeIntervalSinceReferenceDate="441183949.60288501">
                         <!--2014-12-25 07:05:49 +0000-->
                     </date>
-                    <connections>
-                        <action selector="datePickerValueChanged:" destination="-1" eventType="valueChanged" id="VEq-mM-ND5"/>
-                    </connections>
                 </datePicker>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

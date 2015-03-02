@@ -266,17 +266,19 @@
     
     DatePickerViewController *datePickerVC = [DatePickerViewController new];
     datePickerVC.DatePickerType = Date;
-    datePickerVC.delegate = self;
     
     if (![formFieldValue isEqualToString:@""])
         datePickerVC.defaultDate = [SFDateUtil SOQLDateTimeStringToDate:formFieldValue];
     
     datePickerVC.preferredContentSize = datePickerVC.view.bounds.size;
     
-    popoverController = [[UIPopoverController alloc] initWithContentViewController:datePickerVC];
-    popoverController.delegate = self;
+    datePickerVC.valuePicked = ^(NSDate *value, DatePickerViewController *picklist) {
+        formFieldValue = [SFDateUtil toSOQLDateTimeString:value isDateTime:NO];
+        [((UIButton*)fieldView) setTitle:[HelperClass formatDateToString:value] forState:UIControlStateNormal];
+        [picklist dismissPopover:YES];
+    };
     
-    [popoverController presentPopoverFromRect:senderButton.frame inView:senderButton.superview permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [datePickerVC showPopoverFromView:senderButton];
 }
 
 - (NSString*)getFormFieldValue {
@@ -298,11 +300,6 @@
             [((UITextField*)fieldView) setText:formFieldValue];
         }
     }
-}
-
-#pragma DatePickerViewControllerDelegate
--(void)datePickerValueChanged:(NSDate*)newValue {
-    formFieldValue = [SFDateUtil toSOQLDateTimeString:newValue isDateTime:NO];
 }
 
 #pragma UIPopoverControllerDelegate

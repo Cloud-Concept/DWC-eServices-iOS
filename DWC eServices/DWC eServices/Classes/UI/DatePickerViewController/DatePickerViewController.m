@@ -53,7 +53,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)datePickerValueChanged:(id)sender {
-    [self.delegate datePickerValueChanged:self.datePicker.date];
+- (void)showPopoverFromView:(UIView*)sender {
+    self.preferredContentSize = self.view.frame.size;
+    
+    popoverController = [[WYPopoverController alloc] initWithContentViewController:self];
+    popoverController.delegate = self;
+    //self.preferredContentSize = CGSizeMake(320, self.valuesArray.count * 44);
+    
+    [popoverController presentPopoverFromRect:sender.bounds inView:sender permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES];
 }
+
+- (void)dismissPopover:(BOOL)animated {
+    [popoverController dismissPopoverAnimated:animated];
+}
+
+#pragma mark - WYPopoverControllerDelegate
+- (void)popoverControllerDidDismissPopover:(WYPopoverController *)popoverController {
+    if (!self.valuePicked)
+        return;
+    
+    self.valuePicked(self.datePicker.date, self);
+}
+
 @end

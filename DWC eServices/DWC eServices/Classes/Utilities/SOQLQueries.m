@@ -29,6 +29,9 @@ static NSString *cardTypesFilter = @"AND Duration__c = '%@' AND Record_Type_Pick
 
 static NSString *nocCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, NOC__r.Document_Name__c, NOC__r.NOC_Language__c, NOC__r.isCourierRequired__c, (SELECT ID, Amount__c FROM Invoices__r)";
 
+
+static NSString *cardCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, Card_Management__r.Duration__c, Card_Management__r.Card_Type__c, (SELECT ID, Amount__c FROM Invoices__r)";
+
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
 }
@@ -75,4 +78,25 @@ static NSString *nocCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, 
     return queryString;
 }
 
++ (NSString *)cardCaseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray {
+    NSMutableString *queryString = [NSMutableString stringWithString:cardCaseReviewQuery];
+    
+    for (FormField *field in formFieldsArray) {
+        
+        if ([field.type isEqualToString:@"CUSTOMTEXT"])
+            continue;
+        
+        NSString *fieldName = [NSString stringWithFormat:@", Card_Management__r.%@", field.name];
+        
+        if (![queryString containsString:fieldName]) {
+            [queryString appendString:fieldName];
+        }
+        
+    }
+    
+    [queryString appendFormat:@" FROM Case WHERE Id = '%@'", caseId];
+    
+    return queryString;
+
+}
 @end

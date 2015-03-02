@@ -230,10 +230,8 @@
     NSString *selectedDuration = [durationArray objectAtIndex:selectedDurationIndexPath.row];
     
     self.baseServicesViewController.serviceFields = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                     [Globals currentAccount].Id, @"Current_Sponsor__c",
-                                                     @"Application Received", @"Application_Status__c",
+                                                     [Globals currentAccount].Id, @"Account__c",
                                                      selectedDuration, @"Duration__c",
-                                                     selectedService.serviceIdentifier, @"Document_Name__c",
                                                      recordTypeId, @"RecordTypeId",
                                                      /*caseId, @"Request__c",*/
                                                      nil];
