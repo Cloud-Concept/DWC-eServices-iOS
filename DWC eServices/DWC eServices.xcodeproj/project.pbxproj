@@ -41,6 +41,8 @@
 		130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130C30001A78DE0200C95600 /* EmployeeTableViewCell.xib */; };
 		130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C30091A78E1FE00C95600 /* EmployeeListViewController.m */; };
 		130C300D1A78E7BF00C95600 /* DWCEmployee.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C300C1A78E7BF00C95600 /* DWCEmployee.m */; };
+		131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131048C01A9EFDB0006A400B /* NewCardViewController.m */; };
+		131048C31A9EFDB0006A400B /* NewCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131048C11A9EFDB0006A400B /* NewCardViewController.xib */; };
 		131819401A91CAB200CAA4D6 /* BaseServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1318193F1A91CAB200CAA4D6 /* BaseServicesViewController.m */; };
 		131819441A91D65900CAA4D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 131819421A91D65900CAA4D6 /* InfoPlist.strings */; };
 		131819471A91D6C100CAA4D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 131819451A91D6C100CAA4D6 /* Localizable.strings */; };
@@ -164,6 +166,9 @@
 		130C30091A78E1FE00C95600 /* EmployeeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeListViewController.m; sourceTree = "<group>"; };
 		130C300B1A78E7BF00C95600 /* DWCEmployee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCEmployee.h; sourceTree = "<group>"; };
 		130C300C1A78E7BF00C95600 /* DWCEmployee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCEmployee.m; sourceTree = "<group>"; };
+		131048BF1A9EFDB0006A400B /* NewCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCardViewController.h; sourceTree = "<group>"; };
+		131048C01A9EFDB0006A400B /* NewCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCardViewController.m; sourceTree = "<group>"; };
+		131048C11A9EFDB0006A400B /* NewCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCardViewController.xib; sourceTree = "<group>"; };
 		1318193E1A91CAB200CAA4D6 /* BaseServicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseServicesViewController.h; sourceTree = "<group>"; };
 		1318193F1A91CAB200CAA4D6 /* BaseServicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseServicesViewController.m; sourceTree = "<group>"; };
 		131819431A91D65900CAA4D6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -456,6 +461,7 @@
 				136377BB1A767C2C00282F72 /* FVCustomAlertView */,
 				1307BAC91A6F83A4004E6325 /* HomePageViewController */,
 				1307BACA1A6F83A4004E6325 /* InitialViewController */,
+				131048BE1A9EFCD9006A400B /* NewCardViewController */,
 				1394EA101A88B5C000ECED05 /* NewNOCViewController */,
 				1324D8961A89E98B003AA356 /* PickerTableViewController */,
 				13EE67951A7E555600255174 /* RecordMainViewController */,
@@ -594,6 +600,16 @@
 				130C30001A78DE0200C95600 /* EmployeeTableViewCell.xib */,
 			);
 			path = EmployeeTableViewCell;
+			sourceTree = "<group>";
+		};
+		131048BE1A9EFCD9006A400B /* NewCardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				131048BF1A9EFDB0006A400B /* NewCardViewController.h */,
+				131048C01A9EFDB0006A400B /* NewCardViewController.m */,
+				131048C11A9EFDB0006A400B /* NewCardViewController.xib */,
+			);
+			path = NewCardViewController;
 			sourceTree = "<group>";
 		};
 		1318193D1A91CA9C00CAA4D6 /* BaseServicesViewController */ = {
@@ -1274,6 +1290,7 @@
 				1307BAE61A6F938B004E6325 /* Corisande-Regular.ttf in Resources */,
 				1307BAE81A6F938B004E6325 /* SalesforceSDKResources.bundle in Resources */,
 				1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */,
+				131048C31A9EFDB0006A400B /* NewCardViewController.xib in Resources */,
 				1307BAE51A6F938B004E6325 /* Corisande-Light.ttf in Resources */,
 				13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */,
 				131819471A91D6C100CAA4D6 /* Localizable.strings in Resources */,
@@ -1334,6 +1351,7 @@
 				13481AF01A823A5B00093331 /* RelatedService.m in Sources */,
 				131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */,
 				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
+				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,

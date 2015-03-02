@@ -1,0 +1,65 @@
+{
+  "images" : [
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "fill",
+          "width" : 1,
+          "height" : 1
+        },
+        "capInsets" : {
+          "bottom" : 18,
+          "top" : 8,
+          "right" : 23,
+          "left" : 4
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "Dropdown Small Button.png",
+      "scale" : "1x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "fill",
+          "width" : 1,
+          "height" : 1
+        },
+        "capInsets" : {
+          "bottom" : 34,
+          "top" : 18,
+          "right" : 45,
+          "left" : 6
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "Dropdown Small Button@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "fill",
+          "width" : 1,
+          "height" : 1
+        },
+        "capInsets" : {
+          "bottom" : 52,
+          "top" : 28,
+          "right" : 68,
+          "left" : 8
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "Dropdown Small Button@3x.png",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

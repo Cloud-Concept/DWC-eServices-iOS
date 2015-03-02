@@ -13,6 +13,11 @@
 @implementation EServiceAdministration
 
 - (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject NewEditVFGenerator:(NSString*)NewEditVFGenerator ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray {
+    return [self initEServiceAdministration:ServiceId Name:Name ServiceIdentifier:ServiceIdentifier Amount:Amount RelatedToObject:RelatedToObject NewEditVFGenerator:NewEditVFGenerator CancelVFGenerator:@"" RenewVFGenerator:@"" ReplaceVFGenerator:@"" RecordTypePicklist:@"" ServiceDocumentsArray:ServiceDocumentsArray];
+}
+
+
+- (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject NewEditVFGenerator:(NSString*)NewEditVFGenerator CancelVFGenerator:(NSString *)CancelVFGenerator RenewVFGenerator:(NSString *)RenewVFGenerator ReplaceVFGenerator:(NSString *) ReplaceVFGenerator RecordTypePicklist:(NSString *)RecordTypePicklist ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray {
     
     if(!(self = [super init]))
         return nil;
@@ -23,6 +28,10 @@
     self.amount = [HelperClass numberCheckNull:Amount];
     self.relatedToObject = [HelperClass stringCheckNull:RelatedToObject];
     self.editNewVFGenerator = [HelperClass stringCheckNull:NewEditVFGenerator];
+    self.cancelVFGenerator = [HelperClass stringCheckNull:CancelVFGenerator];
+    self.renewVFGenerator = [HelperClass stringCheckNull:RenewVFGenerator];
+    self.replaceVFGenerator = [HelperClass stringCheckNull:ReplaceVFGenerator];
+    self.recordTypePicklist = [HelperClass stringCheckNull:RecordTypePicklist];
     
     NSMutableArray *documentsMutableArray = [NSMutableArray new];
     NSMutableOrderedSet *authoritiesMutableOrderedSet = [NSMutableOrderedSet new];

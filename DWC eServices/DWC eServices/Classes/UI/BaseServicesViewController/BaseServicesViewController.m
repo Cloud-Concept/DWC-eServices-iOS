@@ -10,6 +10,7 @@
 #import "FVCustomAlertView.h"
 #import "EServiceAdministration.h"
 #import "NewNOCViewController.h"
+#import "NewCardViewController.h"
 #import "ServicesDynamicFormViewController.h"
 #import "ServicesUploadViewController.h"
 #import "ServicesReviewViewController.h"
@@ -166,7 +167,7 @@
             [self showNOCServiceFlow];
             break;
         case RelatedServiceTypeNewCard:
-            
+            [self showCardServiceFlow];
             break;
         case RelatedServiceTypeRenewCard:
             
@@ -200,6 +201,13 @@
     [self addChildViewController:newNOCViewController];
     [newNOCViewController didMoveToParentViewController:self];
     [viewControllersStack pushObject:newNOCViewController];
+}
+
+- (void)showCardServiceFlow {
+    NewCardViewController *newCardViewController = [NewCardViewController new];
+    newCardViewController.baseServicesViewController = self;
+    [self addChildViewController:newCardViewController toView:self.serviceFlowView];
+    [viewControllersStack pushObject:newCardViewController];
 }
 
 - (void)showFieldsFlowPage {
@@ -246,7 +254,7 @@
     };
     [self showLoadingDialog];
     
-    NSMutableDictionary *mutableCaseFields = [NSMutableDictionary dictionaryWithDictionary:self.serviceFields];
+    NSMutableDictionary *mutableCaseFields = [NSMutableDictionary dictionaryWithDictionary:self.caseFields];
     [mutableCaseFields setObject:self.currentServiceAdministration.Id forKey:@"Service_Requested__c"];
     [mutableCaseFields setObject:self.currentWebForm.Id forKey:@"Visual_Force_Generator__c"];
     

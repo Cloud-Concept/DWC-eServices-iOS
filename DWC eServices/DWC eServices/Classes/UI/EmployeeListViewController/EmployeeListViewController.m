@@ -25,6 +25,7 @@
 #import "TableViewSection.h"
 #import "TableViewSectionField.h"
 #import "RelatedService.h"
+#import "BaseServicesViewController.h"
 
 @interface EmployeeListViewController ()
 
@@ -52,6 +53,29 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)addNewButtonClicked:(id)sender {
+    RelatedServiceType relatedServiceType;
+    switch (self.currentDWCEmployee.Type) {
+        case PermanentEmployee:
+        case VisitVisaEmployee:
+            break;
+        case ContractorEmployee:
+            relatedServiceType = RelatedServiceTypeNewCard;
+            break;
+        default:
+            break;
+    }
+    [self openNewServiceFlow:relatedServiceType];
+}
+
+- (void)openNewServiceFlow:(RelatedServiceType)relatedServiceType {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = relatedServiceType;
+    //baseServicesVC.currentVisaObject = self.visaObject;
+    [self.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
 - (void)loadVisaEmployees {

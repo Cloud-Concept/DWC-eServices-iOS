@@ -25,6 +25,8 @@
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
         </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
             <string>CorisandeRegular</string>
@@ -718,10 +720,22 @@
                                     <tabBarItem systemItem="more" id="ERf-n5-GGT"/>
                                 </items>
                             </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6F-qQ-TFu">
+                                <rect key="frame" x="194" y="72" width="165" height="28"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Add New" backgroundImage="Add Small Button">
+                                    <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNewButtonClicked:" destination="14r-ba-Dog" eventType="touchUpInside" id="qbP-Kt-D02"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Uq2-Dh-PBD">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
                                 <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="nrA-da-yQc">
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="wj0-CW-Cw1">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -732,6 +746,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v0w-un-UOc" id="sju-Jf-etQ">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -739,16 +754,32 @@
                                     <outlet property="delegate" destination="14r-ba-Dog" id="Fid-O5-nLi"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLW-8X-C6c">
+                                <rect key="frame" x="16" y="72" width="165" height="28"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Filter" backgroundImage="Dropdown Small Button">
+                                    <color key="titleColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Uq2-Dh-PBD" firstAttribute="leading" secondItem="jCv-EY-Std" secondAttribute="leading" id="35L-Ii-LET"/>
-                            <constraint firstItem="Uq2-Dh-PBD" firstAttribute="top" secondItem="PHN-kr-5EF" secondAttribute="bottom" id="9vn-R6-Fcw"/>
-                            <constraint firstItem="Uq2-Dh-PBD" firstAttribute="trailing" secondItem="jCv-EY-Std" secondAttribute="trailing" id="QI1-PY-O1m"/>
-                            <constraint firstItem="Uq2-Dh-PBD" firstAttribute="leading" secondItem="c1j-7L-QaJ" secondAttribute="leading" id="YSR-Ch-Kt3"/>
-                            <constraint firstItem="jCv-EY-Std" firstAttribute="top" secondItem="Uq2-Dh-PBD" secondAttribute="bottom" id="Yut-iF-7sq"/>
-                            <constraint firstItem="tH7-nY-tvb" firstAttribute="top" secondItem="jCv-EY-Std" secondAttribute="bottom" id="gBN-4r-GkT"/>
-                            <constraint firstAttribute="trailing" secondItem="Uq2-Dh-PBD" secondAttribute="trailing" id="qcl-cg-rMt"/>
+                            <constraint firstItem="s6F-qQ-TFu" firstAttribute="bottom" secondItem="cLW-8X-C6c" secondAttribute="bottom" id="6hC-TO-OEo"/>
+                            <constraint firstItem="s6F-qQ-TFu" firstAttribute="width" secondItem="cLW-8X-C6c" secondAttribute="width" id="7JT-Ms-xAc"/>
+                            <constraint firstItem="cLW-8X-C6c" firstAttribute="top" secondItem="PHN-kr-5EF" secondAttribute="bottom" constant="8" id="9IP-di-T6e"/>
+                            <constraint firstItem="jCv-EY-Std" firstAttribute="top" secondItem="Uq2-Dh-PBD" secondAttribute="bottom" id="BDY-lP-TAV"/>
+                            <constraint firstItem="s6F-qQ-TFu" firstAttribute="top" secondItem="cLW-8X-C6c" secondAttribute="top" id="DBp-dH-QWL"/>
+                            <constraint firstItem="cLW-8X-C6c" firstAttribute="leading" secondItem="c1j-7L-QaJ" secondAttribute="leading" constant="16" id="Exb-qL-rty"/>
+                            <constraint firstAttribute="trailing" secondItem="Uq2-Dh-PBD" secondAttribute="trailing" id="K2N-EU-kyg"/>
+                            <constraint firstItem="Uq2-Dh-PBD" firstAttribute="top" secondItem="cLW-8X-C6c" secondAttribute="bottom" constant="8" id="SOW-yn-FD3"/>
+                            <constraint firstItem="jCv-EY-Std" firstAttribute="leading" secondItem="c1j-7L-QaJ" secondAttribute="leading" id="V6F-PL-g5I"/>
+                            <constraint firstItem="Uq2-Dh-PBD" firstAttribute="leading" secondItem="c1j-7L-QaJ" secondAttribute="leading" id="V7Y-6L-0hq"/>
+                            <constraint firstItem="tH7-nY-tvb" firstAttribute="top" secondItem="jCv-EY-Std" secondAttribute="bottom" id="dMu-Pl-EaE"/>
+                            <constraint firstItem="s6F-qQ-TFu" firstAttribute="leading" secondItem="cLW-8X-C6c" secondAttribute="trailing" constant="13" id="heG-if-gft"/>
+                            <constraint firstAttribute="trailing" secondItem="jCv-EY-Std" secondAttribute="trailing" id="q7F-tY-GXI"/>
+                            <constraint firstAttribute="trailing" secondItem="s6F-qQ-TFu" secondAttribute="trailing" constant="16" id="zom-Bm-8Z0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cKh-7K-TW5"/>
@@ -769,7 +800,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2152.5" y="1168.5"/>
+            <point key="canvasLocation" x="2194.5" y="1168.5"/>
         </scene>
         <!--Record Main View Controller-->
         <scene sceneID="wMB-iG-hK0">
@@ -891,7 +922,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add Small Button" width="30" height="28"/>
         <image name="Default Person Image" width="75" height="75"/>
+        <image name="Dropdown Small Button" width="28" height="27"/>
         <image name="Home Company Info Icon" width="15" height="31"/>
         <image name="Home Dashboard Icon" width="30" height="30"/>
         <image name="Home Employees Icon" width="31" height="31"/>

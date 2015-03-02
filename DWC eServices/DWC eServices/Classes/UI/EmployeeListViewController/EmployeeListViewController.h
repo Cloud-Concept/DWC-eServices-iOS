@@ -18,4 +18,5 @@
 @property (nonatomic, strong) DWCEmployee *currentDWCEmployee;
 @property (weak, nonatomic) IBOutlet UITableView *employeesTableView;
 
+- (IBAction)addNewButtonClicked:(id)sender;
 @end

@@ -50,6 +50,7 @@
 "chooseAuthorityButton" = "Choose Authority";
 "chooseLanguageButton" = "Choose Language";
 "PayAndSubmitButton" = "Pay/Submit";
+"chooseDurationButton" = "Duration";
 
 "RequestNumberLabel" = "Request Number";
 "RequestStatusLabel" = "Request Status";
