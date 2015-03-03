@@ -230,11 +230,14 @@
     NSString *selectedDuration = [durationArray objectAtIndex:selectedDurationIndexPath.row];
     
     self.baseServicesViewController.serviceFields = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                     [Globals currentAccount].Id, @"Account__c",
-                                                     selectedDuration, @"Duration__c",
                                                      recordTypeId, @"RecordTypeId",
-                                                     /*caseId, @"Request__c",*/
                                                      nil];
+    
+    self.baseServicesViewController.parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                  [Globals currentAccount].name, @"actName",
+                                                  [Globals currentAccount].Id, @"accountID",
+                                                  selectedDuration, @"Dur",
+                                                  nil];
     
     [self.baseServicesViewController nextButtonClicked:ServiceFlowInitialPage];
 }

@@ -156,7 +156,7 @@
 
 - (void)showLoadingDialog {
     if(![FVCustomAlertView isShowingAlert])
-        [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:@"Loading..." withBlur:YES];
+        [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
 }
 
 - (void)hideLoadingDialog {

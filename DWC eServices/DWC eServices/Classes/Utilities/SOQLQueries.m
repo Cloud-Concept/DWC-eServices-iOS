@@ -29,8 +29,9 @@ static NSString *cardTypesFilter = @"AND Duration__c = '%@' AND Record_Type_Pick
 
 static NSString *nocCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, NOC__r.Document_Name__c, NOC__r.NOC_Language__c, NOC__r.isCourierRequired__c, (SELECT ID, Amount__c FROM Invoices__r)";
 
-
 static NSString *cardCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, Card_Management__r.Duration__c, Card_Management__r.Card_Type__c, (SELECT ID, Amount__c FROM Invoices__r)";
+
+static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Web_Form__c, CreatedDate, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType FROM Case WHERE AccountId = '%@'";
 
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
@@ -98,5 +99,9 @@ static NSString *cardCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status,
     
     return queryString;
 
+}
+
++ (NSString *)myRequestsQuery {
+    return [NSString stringWithFormat:myRequestsQuery, [Globals currentAccount].Id];
 }
 @end

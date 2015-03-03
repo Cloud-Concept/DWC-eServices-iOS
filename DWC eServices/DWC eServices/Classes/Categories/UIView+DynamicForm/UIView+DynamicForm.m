@@ -18,13 +18,14 @@
     NSMutableDictionary *viewsDictionary = [NSMutableDictionary new];
     
     for (FormField *field in webForm.formFields) {
+        
+        if (field.hidden || [field.type isEqualToString:@"CUSTOMTEXT"] || [field.type isEqualToString:@"REFERENCE"])
+            continue;
+        
         [viewsDictionary setObject:[field getFieldView] forKey:field.nameNoSpace];
         [viewsDictionary setObject:[field getLabelView] forKey:[NSString stringWithFormat:@"%@_label", field.nameNoSpace]];
         [field getFieldView].translatesAutoresizingMaskIntoConstraints = NO;
         [field getLabelView].translatesAutoresizingMaskIntoConstraints = NO;
-        
-        if (field.hidden || [field.type isEqualToString:@"CUSTOMTEXT"])
-            continue;
         
         [self addSubview:[field getFieldView]];
         [self addSubview:[field getLabelView]];
@@ -56,7 +57,7 @@
         FormField *currentField = [webForm.formFields objectAtIndex:index];
         FormField *previousField = nil;
         
-        if (currentField.hidden || [currentField.type isEqualToString:@"CUSTOMTEXT"])
+        if (currentField.hidden || [currentField.type isEqualToString:@"CUSTOMTEXT"] || [currentField.type isEqualToString:@"REFERENCE"])
             continue;
         
         NSString *heightRule = [NSString stringWithFormat:@"V:[%@(fieldHeight)]", currentField.nameNoSpace];
@@ -94,7 +95,7 @@
         for (NSInteger i = index - 1; i >=0 ; i--) {
             FormField *tempField = [webForm.formFields objectAtIndex:i];
             
-            if (![tempField.type isEqualToString:@"CUSTOMTEXT"]) {
+            if (![tempField.type isEqualToString:@"CUSTOMTEXT"] && ![tempField.type isEqualToString:@"REFERENCE"] && !tempField.hidden) {
                 previousField = tempField;
                 break;
             }
@@ -372,6 +373,10 @@
     NSMutableDictionary *viewsDictionary = [NSMutableDictionary new];
     
     for (FormField *field in formFieldsMutableArray) {
+        
+        if (field.hidden || [field.type isEqualToString:@"REFERENCE"])
+            continue;
+        
         [viewsDictionary setObject:[field getReviewFieldValueLabel] forKey:field.nameNoSpace];
         [viewsDictionary setObject:[field getReviewFieldNameLabel] forKey:[NSString stringWithFormat:@"%@_label", field.nameNoSpace]];
         [field getReviewFieldValueLabel].translatesAutoresizingMaskIntoConstraints = NO;
@@ -448,9 +453,20 @@
         if (![currentField.type isEqualToString:@"CUSTOMTEXT"])
             [self addConstraints:label_constraint_H];
         
+        
+        for (NSInteger i = index - 1; i >=0 ; i--) {
+            FormField *tempField = [formFieldsMutableArray objectAtIndex:i];
+            
+            if (![tempField.type isEqualToString:@"REFERENCE"] && !tempField.hidden) {
+                previousField = tempField;
+                break;
+            }
+        }
+        
+        /*
         if(index != 0)
             previousField = [formFieldsMutableArray objectAtIndex:index - 1];
-        
+        */
         NSString *horizontalRule = [NSString stringWithFormat:@"H:|-leftMargin-[%@]-[%@]-rightMargin-|", labelName, currentField.nameNoSpace];
         NSArray *constraint_POS_H = [NSLayoutConstraint constraintsWithVisualFormat:horizontalRule
                                                                                   options:0
