@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
+    RelatedServiceTypeViewMyRequest = 0,
     RelatedServiceTypeNewNOC = 1,
     RelatedServiceTypeNewCard = 2,
     RelatedServiceTypeRenewCard = 4,

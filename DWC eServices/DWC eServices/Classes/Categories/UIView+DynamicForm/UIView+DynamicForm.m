@@ -385,15 +385,17 @@
         [self addSubview:[field getReviewFieldNameLabel]];
     }
     
-    [viewsDictionary setObject:cancelButton forKey:@"cancelButton"];
-    [viewsDictionary setObject:nextButton forKey:@"nextButton"];
+    if (cancelButton) {
+        [viewsDictionary setObject:cancelButton forKey:@"cancelButton"];
+        cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:cancelButton];
+    }
     
-    cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
-    nextButton.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self addSubview:cancelButton];
-    [self addSubview:nextButton];
-    
+    if (nextButton) {
+        [viewsDictionary setObject:nextButton forKey:@"nextButton"];
+        nextButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:nextButton];
+    }
     
     NSNumber *fieldWidth = [NSNumber numberWithFloat:((self.frame.size.width - (2 * 30) - 16) / 2.0)];
     
@@ -511,69 +513,84 @@
         [self addConstraints:constraint_Label_POS_V];
     }
     
-    NSString *cancelHeightRule = [NSString stringWithFormat:@"V:[%@(buttonHeight)]", @"cancelButton"];
-    NSArray *cancel_constraint_V = [NSLayoutConstraint constraintsWithVisualFormat:cancelHeightRule
-                                                                           options:0
-                                                                           metrics:metrics
-                                                                             views:viewsDictionary];
+    if (cancelButton) {
+        NSString *cancelHeightRule = [NSString stringWithFormat:@"V:[%@(buttonHeight)]", @"cancelButton"];
+        NSArray *cancel_constraint_V = [NSLayoutConstraint constraintsWithVisualFormat:cancelHeightRule
+                                                                               options:0
+                                                                               metrics:metrics
+                                                                                 views:viewsDictionary];
+        [self addConstraints:cancel_constraint_V];
+    }
+    if (nextButton) {
+        NSString *nextHeightRule = [NSString stringWithFormat:@"V:[%@(buttonHeight)]", @"nextButton"];
+        NSArray *next_constraint_V = [NSLayoutConstraint constraintsWithVisualFormat:nextHeightRule
+                                                                             options:0
+                                                                             metrics:metrics
+                                                                               views:viewsDictionary];
+        [self addConstraints:next_constraint_V];
+    }
+    NSString *horizontalRule = nil;
+    if (cancelButton)
+        horizontalRule = [NSString stringWithFormat:@"H:|-leftMargin-[%@]-buttonsSpacing-[%@]-rightMargin-|", @"cancelButton", @"nextButton"];
+    else if (nextButton)
+            horizontalRule = [NSString stringWithFormat:@"H:|-leftMargin-[%@]-rightMargin-|", @"nextButton"];
     
-    NSString *nextHeightRule = [NSString stringWithFormat:@"V:[%@(buttonHeight)]", @"nextButton"];
-    NSArray *next_constraint_V = [NSLayoutConstraint constraintsWithVisualFormat:nextHeightRule
-                                                                         options:0
-                                                                         metrics:metrics
-                                                                           views:viewsDictionary];
-    
-    [self addConstraints:cancel_constraint_V];
-    [self addConstraints:next_constraint_V];
-    
-    NSString *horizontalRule = [NSString stringWithFormat:@"H:|-leftMargin-[%@]-buttonsSpacing-[%@]-rightMargin-|", @"cancelButton", @"nextButton"];
-    NSArray *constraint_POS_H = [NSLayoutConstraint constraintsWithVisualFormat:horizontalRule
-                                                                        options:0
-                                                                        metrics:metrics
-                                                                          views:viewsDictionary];
-    [self addConstraints:constraint_POS_H];
+    if (horizontalRule) {
+        NSArray *constraint_POS_H = [NSLayoutConstraint constraintsWithVisualFormat:horizontalRule
+                                                                            options:0
+                                                                            metrics:metrics
+                                                                              views:viewsDictionary];
+        [self addConstraints:constraint_POS_H];
+    }
     
     FormField *previousField;
     if (formFieldsMutableArray.count > 0) {
         previousField = [formFieldsMutableArray objectAtIndex:formFieldsMutableArray.count - 1];
     }
     
-    NSString *verticalRule = @"";
-    if (previousField)
-        verticalRule = [NSString stringWithFormat:@"V:[%@]-buttonsTopMargin-[%@]-bottomMargin-|", previousField.nameNoSpace, @"cancelButton"];
-    else
-        verticalRule = [NSString stringWithFormat:@"V:|-buttonsTopMargin-[%@]-bottomMargin-|", @"cancelButton"];
+    NSString *verticalRule = nil;
     
-    NSArray *constraint_POS_V = [NSLayoutConstraint constraintsWithVisualFormat:verticalRule
+    if (nextButton) {
+        if (previousField) {
+            verticalRule = [NSString stringWithFormat:@"V:[%@]-buttonsTopMargin-[%@]-bottomMargin-|", previousField.nameNoSpace, @"nextButton"];
+        }
+        else {
+            verticalRule = [NSString stringWithFormat:@"V:|-buttonsTopMargin-[%@]-bottomMargin-|", @"nextButton"];
+        }
+    }
+    
+    if (verticalRule) {
+        NSArray *constraint_POS_V = [NSLayoutConstraint constraintsWithVisualFormat:verticalRule
                                                                         options:0
                                                                         metrics:metrics
                                                                           views:viewsDictionary];
-    [self addConstraints:constraint_POS_V];
+        [self addConstraints:constraint_POS_V];
+    }
     
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:cancelButton
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nextButton
-                                                     attribute:NSLayoutAttributeWidth
-                                                    multiplier:1
-                                                      constant:0.0]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:cancelButton
-                                                     attribute:NSLayoutAttributeTopMargin
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nextButton
-                                                     attribute:NSLayoutAttributeTopMargin
-                                                    multiplier:1
-                                                      constant:0.0]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:cancelButton
-                                                     attribute:NSLayoutAttributeBottomMargin
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nextButton
-                                                     attribute:NSLayoutAttributeBottomMargin
-                                                    multiplier:1
-                                                      constant:0.0]];
-    
+    if (cancelButton) {
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:cancelButton
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nextButton
+                                                         attribute:NSLayoutAttributeWidth
+                                                        multiplier:1
+                                                          constant:0.0]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:cancelButton
+                                                         attribute:NSLayoutAttributeTopMargin
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nextButton
+                                                         attribute:NSLayoutAttributeTopMargin
+                                                        multiplier:1
+                                                          constant:0.0]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:cancelButton
+                                                         attribute:NSLayoutAttributeBottomMargin
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nextButton
+                                                         attribute:NSLayoutAttributeBottomMargin
+                                                        multiplier:1
+                                                          constant:0.0]];
+    }
 }
 @end

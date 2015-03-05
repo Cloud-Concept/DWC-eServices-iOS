@@ -215,7 +215,6 @@
     
     self.baseServicesViewController.currentWebformId = selectedService.editNewVFGenerator;
     self.baseServicesViewController.currentServiceAdministration = selectedService;
-    self.baseServicesViewController.serviceObject = @"Card_Management__c";
     
     self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
                                                   selectedService.Id, @"Service_Requested__c",

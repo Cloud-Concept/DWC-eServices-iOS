@@ -14,6 +14,8 @@
 #import "Request.h"
 #import "RecordType.h"
 #import "HelperClass.h"
+#import "RelatedService.h"
+#import "BaseServicesViewController.h"
 
 @interface MyRequestListViewController ()
 
@@ -88,6 +90,15 @@
     [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
 }
 
+- (void)openViewMyRequestFlow:(Request *)request {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = RelatedServiceTypeViewMyRequest;
+    baseServicesVC.currentWebformId = request.webFormId;
+    [baseServicesVC initializeCaseId:request.Id];
+    [self.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -124,7 +135,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Request *currentRequest = [dataRows objectAtIndex:indexPath.row];
     
+    [self openViewMyRequestFlow:currentRequest];
 }
 
 /*

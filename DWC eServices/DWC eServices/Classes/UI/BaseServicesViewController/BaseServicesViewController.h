@@ -43,7 +43,6 @@ typedef enum {
 @property (strong, nonatomic) NSDictionary *caseFields;
 @property (strong, nonatomic) NSDictionary *serviceFields;
 @property (strong, nonatomic) NSDictionary *parameters;
-@property (strong, nonatomic) NSString *serviceObject;
 @property (strong, nonatomic) NSString *currentWebformId;
 
 @property (strong, nonatomic) UIButton *cancelButton;
@@ -60,5 +59,6 @@ typedef enum {
 - (void)nextButtonClicked:(ServiceFlowPageType)serviceFlowPageType;
 - (void)callPayAndSubmitWebservice;
 - (NSString *)getCaseReviewQuery;
-
+- (void)getWebFormWithReturnBlock:(void (^)(BOOL))returnBlock;
+- (void)initializeCaseId:(NSString *)caseId;
 @end

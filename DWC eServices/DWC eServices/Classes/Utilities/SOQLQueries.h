@@ -15,8 +15,7 @@
 + (NSString *)contractorsQuery;
 + (NSString *)employeeNOCTypesQuery;
 + (NSString *)companyNOCTypesQuery;
-+ (NSString *)nocCaseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray;
++ (NSString *)caseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray RelatedObject:(NSString *)RelatedObject;
 + (NSString *)cardTypeQueryForDuration:(NSString *)duration CardType:(NSString *)cardType;
-+ (NSString *)cardCaseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray;
 + (NSString *)myRequestsQuery;
 @end

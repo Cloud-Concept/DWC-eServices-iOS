@@ -23,6 +23,7 @@
 #import "EServiceDocument.h"
 #import "SOQLQueries.h"
 #import "WebForm.h"
+#import "FormField.h"
 
 @interface BaseServicesViewController ()
 
@@ -51,11 +52,19 @@
         self.backAction();
     }
     
-    if (viewControllersStack.count == 1)
-        [self cancelServiceButtonClicked];
+    if (viewControllersStack.count <= 1) {
+        if (self.relatedServiceType == RelatedServiceTypeViewMyRequest)
+            [self popServicesViewController];
+        else
+            [self cancelServiceButtonClicked];
+    }
     else
         [self popChildViewController];
     
+}
+
+- (void)initializeCaseId:(NSString *)caseId {
+    insertedCaseId = caseId;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,10 +81,9 @@
     
     switch (self.relatedServiceType) {
         case RelatedServiceTypeNewNOC:
-            returnQuery = [SOQLQueries nocCaseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields];
-            break;
         case RelatedServiceTypeNewCard:
-            returnQuery = [SOQLQueries cardCaseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields];
+        case RelatedServiceTypeViewMyRequest:
+            returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:self.currentWebForm.objectName];
             break;
         default:
             returnQuery = @"";
@@ -189,9 +197,21 @@
         case RelatedServiceTypeCancelVisa:
             
             break;
+        case RelatedServiceTypeViewMyRequest:
+            [self showViewMyRequestFlow];
+            break;
         default:
             break;
     }
+}
+
+- (void)showViewMyRequestFlow {
+    void (^returnBlock)(BOOL didSucceed) = ^(BOOL didSucceed) {
+        if (didSucceed) {
+            [self showReviewFlowPage];
+        }
+    };
+    [self getWebFormWithReturnBlock:returnBlock];
 }
 
 - (void)showNOCServiceFlow {
@@ -300,13 +320,13 @@
     [mutableServiceFields setObject:self.currentWebForm.Id forKey:@"Web_Form__c"];
     
     if (insertedServiceId != nil && ![insertedServiceId isEqualToString:@""])
-        [[SFRestAPI sharedInstance] performUpdateWithObjectType:self.serviceObject
+        [[SFRestAPI sharedInstance] performUpdateWithObjectType:self.currentWebForm.objectName
                                                        objectId:insertedServiceId
                                                          fields:mutableServiceFields
                                                       failBlock:errorBlock
                                                   completeBlock:successBlock];
     else
-        [[SFRestAPI sharedInstance] performCreateWithObjectType:self.serviceObject
+        [[SFRestAPI sharedInstance] performCreateWithObjectType:self.currentWebForm.objectName
                                                          fields:mutableServiceFields
                                                       failBlock:errorBlock
                                                   completeBlock:successBlock];
@@ -315,7 +335,7 @@
 - (void)updateCaseObject:(NSString*)caseId ServiceId:(NSString*)ServiceId {
     
     NSDictionary *fields = [NSDictionary dictionaryWithObjectsAndKeys:
-                            ServiceId, self.serviceObject,
+                            ServiceId, self.currentWebForm.objectName,
                             nil];
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
@@ -356,7 +376,7 @@
                                 doc.name, @"Name",
                                 doc.Id, @"eServices_Document__c",
                                 [Globals currentAccount].Id, @"Company__c",
-                                insertedServiceId, self.serviceObject,
+                                insertedServiceId, self.currentWebForm.objectName,
                                 nil];
         
         void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
@@ -446,6 +466,96 @@
     
     [self showLoadingDialog];
     [[SFRestAPI sharedInstance] send:payAndSubmitRequest delegate:self];
+}
+
+- (void)getWebFormWithReturnBlock:(void (^)(BOOL))returnBlock {
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        NSArray *records = [dict objectForKey:@"records"];
+        
+        for (NSDictionary *dict in records) {
+            self.currentWebForm = [[WebForm alloc] initWebForm:[dict objectForKey:@"Id"]
+                                                          Name:[dict objectForKey:@"Name"]
+                                                   Description:[dict objectForKey:@"Description__c"]
+                                                         Title:[dict objectForKey:@"Title__c"]
+                                            IsNotesAttachments:[[dict objectForKey:@"isNotesAttachments__c"] boolValue]
+                                                   ObjectLabel:[dict objectForKey:@"Object_Label__c"]
+                                                    ObjectName:[dict objectForKey:@"Object_Name__c"]];
+            NSMutableArray *fieldsArray = [[NSMutableArray alloc] init];
+            
+            NSDictionary *fieldsJSONArray = [NSDictionary new];
+            if (![[dict objectForKey:@"R00N70000002DiOrEAK__r"] isKindOfClass:[NSNull class]])
+                fieldsJSONArray = [[dict objectForKey:@"R00N70000002DiOrEAK__r"] objectForKey:@"records"];
+            
+            for (NSDictionary *fieldsDict in fieldsJSONArray) {
+                /*
+                 if([[fieldsDict objectForKey:@"Type__c"] isEqualToString:@"CUSTOMTEXT"])
+                 continue;
+                 */
+                [fieldsArray addObject:[[FormField alloc] initFormField:[fieldsDict objectForKey:@"Id"]
+                                                                   Name:[fieldsDict objectForKey:@"Name"]
+                                                            APIRequired:[[fieldsDict objectForKey:@"APIRequired__c"] boolValue]
+                                                           BooleanValue:[[fieldsDict objectForKey:@"Boolean_Value__c"] boolValue]
+                                                          CurrencyValue:[fieldsDict objectForKey:@"Currency_Value__c"]
+                                                          DateTimeValue:[fieldsDict objectForKey:@"DateTime_Value__c"]
+                                                              DateValue:[fieldsDict objectForKey:@"Date_Value__c"]
+                                                             EmailValue:[fieldsDict objectForKey:@"Email_Value__c"]
+                                                                 Hidden:[[fieldsDict objectForKey:@"Hidden__c"] boolValue]
+                                                           IsCalculated:[[fieldsDict objectForKey:@"isCalculated__c"] boolValue]
+                                                            IsParameter:[[fieldsDict objectForKey:@"isParameter__c"] boolValue]
+                                                                IsQuery:[[fieldsDict objectForKey:@"isQuery__c"] boolValue]
+                                                                  Label:[fieldsDict objectForKey:@"Label__c"]
+                                                            NumberValue:[fieldsDict objectForKey:@"Number_Value__c"]
+                                                                  Order:[fieldsDict objectForKey:@"Order__c"]
+                                                           PercentValue:[fieldsDict objectForKey:@"Percent_Value__c"]
+                                                             PhoneValue:[fieldsDict objectForKey:@"Phone_Value__c"]
+                                                          PicklistValue:[fieldsDict objectForKey:@"Picklist_Value__c"]
+                                                        PicklistEntries:[fieldsDict objectForKey:@"PicklistEntries__c"]
+                                                               Required:[[fieldsDict objectForKey:@"Required__c"] boolValue]
+                                                      TextAreaLongValue:[fieldsDict objectForKey:@"Text_Area_Long_Value__c"]
+                                                          TextAreaValue:[fieldsDict objectForKey:@"Text_Area_Value__c"]
+                                                              TextValue:[fieldsDict objectForKey:@"Text_Value__c"]
+                                                                   Type:[fieldsDict objectForKey:@"Type__c"]
+                                                               UrlValue:[fieldsDict objectForKey:@"URL_Value__c"]
+                                                                WebForm:[fieldsDict objectForKey:@"Web_Form__c"]
+                                                                  Width:[fieldsDict objectForKey:@"Width__c"]
+                                                      IsMobileAvailable:[[fieldsDict objectForKey:@"isMobileAvailable__c"] boolValue]
+                                                            MobileLabel:[fieldsDict objectForKey:@"Mobile_Label__c"]
+                                                            MobileOrder:[fieldsDict objectForKey:@"Mobile_Order__c"]]];
+            }
+            
+            self.currentWebForm.formFields = [NSArray arrayWithArray:fieldsArray];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self hideLoadingDialog];
+                
+                if (returnBlock) {
+                    returnBlock(YES);
+                }
+                //[self getFormFieldsValues];
+            });
+        }
+    };
+    
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+#warning handle error here
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideLoadingDialog];
+            
+            if (returnBlock) {
+                returnBlock(NO);
+            }
+        });
+    };
+    
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, Description__c, Title__c, isNotesAttachments__c, Object_Label__c, Object_Name__c, (SELECT Id, Name, APIRequired__c, Boolean_Value__c, Currency_Value__c, DateTime_Value__c, Date_Value__c, Email_Value__c , Hidden__c, isCalculated__c, isParameter__c, isQuery__c, Label__c, Number_Value__c, Order__c, Percent_Value__c, Phone_Value__c, Picklist_Value__c, PicklistEntries__c, Required__c, Text_Area_Long_Value__c, Text_Area_Value__c, Text_Value__c, Type__c, URL_Value__c, Web_Form__c, Width__c, isMobileAvailable__c, Mobile_Label__c, Mobile_Order__c  FROM R00N70000002DiOrEAK WHERE isMobileAvailable__c = true ORDER BY Mobile_Order__c) FROM Web_Form__c WHERE ID = '%@'", self.currentWebformId];
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
+    
+    [self showLoadingDialog];
+    
 }
 
 #pragma mark - SFRestAPIDelegate

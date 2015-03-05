@@ -284,7 +284,6 @@
     EServiceAdministration *eService = [nocTypesArray objectAtIndex:selectedNOCTypeIndexPath.row];
     self.baseServicesViewController.currentWebformId = eService.editNewVFGenerator;
     self.baseServicesViewController.currentServiceAdministration = eService;
-    self.baseServicesViewController.serviceObject = @"NOC__c";
     
     self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
                                                   [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]] ,@"isCourierRequired__c",

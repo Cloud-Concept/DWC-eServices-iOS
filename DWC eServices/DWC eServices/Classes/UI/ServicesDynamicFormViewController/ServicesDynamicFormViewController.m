@@ -29,7 +29,13 @@
     // Do any additional setup after loading the view.
     [self.baseServicesViewController initializeButtonsWithNextAction:@selector(nextButtonClicked:) target:self];
     
-    [self getWebForm];
+    void (^returnBlock)(BOOL didSucceed) = ^(BOOL didSucceed) {
+        if (didSucceed) {
+            [self getFormFieldsValues];
+        }
+    };
+    
+    [self.baseServicesViewController getWebFormWithReturnBlock:returnBlock];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,85 +78,6 @@
     }
     
     [self.baseServicesViewController nextButtonClicked:ServiceFlowFieldsPage];
-}
-
-- (void)getWebForm {
-    
-    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        NSArray *records = [dict objectForKey:@"records"];
-        
-        for (NSDictionary *dict in records) {
-            self.baseServicesViewController.currentWebForm = [[WebForm alloc] initWebForm:[dict objectForKey:@"Id"]
-                                                                                     Name:[dict objectForKey:@"Name"]
-                                                                              Description:[dict objectForKey:@"Description__c"]
-                                                                                    Title:[dict objectForKey:@"Title__c"]
-                                                                       IsNotesAttachments:[[dict objectForKey:@"isNotesAttachments__c"] boolValue]
-                                                                              ObjectLabel:[dict objectForKey:@"Object_Label__c"]
-                                                                               ObjectName:[dict objectForKey:@"Object_Name__c"]];
-            NSMutableArray *fieldsArray = [[NSMutableArray alloc] init];
-            
-            NSDictionary *fieldsJSONArray = [[dict objectForKey:@"R00N70000002DiOrEAK__r"] objectForKey:@"records"];
-            for (NSDictionary *fieldsDict in fieldsJSONArray) {
-                /*
-                if([[fieldsDict objectForKey:@"Type__c"] isEqualToString:@"CUSTOMTEXT"])
-                    continue;
-                */
-                [fieldsArray addObject:[[FormField alloc] initFormField:[fieldsDict objectForKey:@"Id"]
-                                                                   Name:[fieldsDict objectForKey:@"Name"]
-                                                            APIRequired:[[fieldsDict objectForKey:@"APIRequired__c"] boolValue]
-                                                           BooleanValue:[[fieldsDict objectForKey:@"Boolean_Value__c"] boolValue]
-                                                          CurrencyValue:[fieldsDict objectForKey:@"Currency_Value__c"]
-                                                          DateTimeValue:[fieldsDict objectForKey:@"DateTime_Value__c"]
-                                                              DateValue:[fieldsDict objectForKey:@"Date_Value__c"]
-                                                             EmailValue:[fieldsDict objectForKey:@"Email_Value__c"]
-                                                                 Hidden:[[fieldsDict objectForKey:@"Hidden__c"] boolValue]
-                                                           IsCalculated:[[fieldsDict objectForKey:@"isCalculated__c"] boolValue]
-                                                            IsParameter:[[fieldsDict objectForKey:@"isParameter__c"] boolValue]
-                                                                IsQuery:[[fieldsDict objectForKey:@"isQuery__c"] boolValue]
-                                                                  Label:[fieldsDict objectForKey:@"Label__c"]
-                                                            NumberValue:[fieldsDict objectForKey:@"Number_Value__c"]
-                                                                  Order:[fieldsDict objectForKey:@"Order__c"]
-                                                           PercentValue:[fieldsDict objectForKey:@"Percent_Value__c"]
-                                                             PhoneValue:[fieldsDict objectForKey:@"Phone_Value__c"]
-                                                          PicklistValue:[fieldsDict objectForKey:@"Picklist_Value__c"]
-                                                        PicklistEntries:[fieldsDict objectForKey:@"PicklistEntries__c"]
-                                                               Required:[[fieldsDict objectForKey:@"Required__c"] boolValue]
-                                                      TextAreaLongValue:[fieldsDict objectForKey:@"Text_Area_Long_Value__c"]
-                                                          TextAreaValue:[fieldsDict objectForKey:@"Text_Area_Value__c"]
-                                                              TextValue:[fieldsDict objectForKey:@"Text_Value__c"]
-                                                                   Type:[fieldsDict objectForKey:@"Type__c"]
-                                                               UrlValue:[fieldsDict objectForKey:@"URL_Value__c"]
-                                                                WebForm:[fieldsDict objectForKey:@"Web_Form__c"]
-                                                                  Width:[fieldsDict objectForKey:@"Width__c"]
-                                                      IsMobileAvailable:[[fieldsDict objectForKey:@"isMobileAvailable__c"] boolValue]
-                                                            MobileLabel:[fieldsDict objectForKey:@"Mobile_Label__c"]
-                                                            MobileOrder:[fieldsDict objectForKey:@"Mobile_Order__c"]]];
-            }
-            
-            self.baseServicesViewController.currentWebForm.formFields = [NSArray arrayWithArray:fieldsArray];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.baseServicesViewController hideLoadingDialog];
-                [self getFormFieldsValues];
-            });
-        }
-    };
-    
-    void (^errorBlock) (NSError*) = ^(NSError *e) {
-#warning handle error here
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.baseServicesViewController hideLoadingDialog];
-        });
-    };
-    
-    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, Description__c, Title__c, isNotesAttachments__c, Object_Label__c, Object_Name__c, (SELECT Id, Name, APIRequired__c, Boolean_Value__c, Currency_Value__c, DateTime_Value__c, Date_Value__c, Email_Value__c , Hidden__c, isCalculated__c, isParameter__c, isQuery__c, Label__c, Number_Value__c, Order__c, Percent_Value__c, Phone_Value__c, Picklist_Value__c, PicklistEntries__c, Required__c, Text_Area_Long_Value__c, Text_Area_Value__c, Text_Value__c, Type__c, URL_Value__c, Web_Form__c, Width__c, isMobileAvailable__c, Mobile_Label__c, Mobile_Order__c  FROM R00N70000002DiOrEAK WHERE isMobileAvailable__c = true ORDER BY Mobile_Order__c) FROM Web_Form__c WHERE ID = '%@'", self.baseServicesViewController.currentWebformId];
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
-    
-    [self.baseServicesViewController showLoadingDialog];
-    
 }
 
 - (void)getFormFieldsValues {

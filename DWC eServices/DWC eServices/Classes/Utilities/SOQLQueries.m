@@ -27,11 +27,11 @@ static NSString *employeeNOCTypesFilter = @"AND Related_to_Object__c = 'NOC' AND
 static NSString *companyNOCTypesFilter = @"AND Related_to_Object__c = 'NOC' AND RecordType.DeveloperName = 'Auto_Generated_Invoice' AND NOC_Type__c = 'Company'";
 static NSString *cardTypesFilter = @"AND Duration__c = '%@' AND Record_Type_Picklist__c = '%@'";
 
-static NSString *nocCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, NOC__r.Document_Name__c, NOC__r.NOC_Language__c, NOC__r.isCourierRequired__c, (SELECT ID, Amount__c FROM Invoices__r)";
+static NSString *caseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, NOC__r.isCourierRequired__c, (SELECT ID, Amount__c FROM Invoices__r)";
 
 static NSString *cardCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, Card_Management__r.Duration__c, Card_Management__r.Card_Type__c, (SELECT ID, Amount__c FROM Invoices__r)";
 
-static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Web_Form__c, CreatedDate, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType FROM Case WHERE AccountId = '%@'";
+static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Web_Form__c, CreatedDate, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType FROM Case WHERE AccountId = '%@' AND Web_Form__c != ''";
 
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
@@ -58,15 +58,19 @@ static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Web_Form__c,
     return [NSString stringWithFormat:serviceTypesQuery, filter];
 }
 
-+ (NSString *)nocCaseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray {
-    NSMutableString *queryString = [NSMutableString stringWithString:nocCaseReviewQuery];
++ (NSString *)caseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray RelatedObject:(NSString *)RelatedObject {
+    
+    NSMutableString *queryString = [NSMutableString stringWithString:caseReviewQuery];
+    
+    
+    NSString *relationName = [RelatedObject stringByReplacingOccurrencesOfString:@"__c" withString:@"__r"];
     
     for (FormField *field in formFieldsArray) {
         
         if ([field.type isEqualToString:@"CUSTOMTEXT"])
             continue;
         
-        NSString *fieldName = [NSString stringWithFormat:@", NOC__r.%@", field.name];
+        NSString *fieldName = [NSString stringWithFormat:@", %@.%@", relationName, field.name];
         
         if (![queryString containsString:fieldName]) {
             [queryString appendString:fieldName];
@@ -77,28 +81,6 @@ static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Web_Form__c,
     [queryString appendFormat:@" FROM Case WHERE Id = '%@'", caseId];
     
     return queryString;
-}
-
-+ (NSString *)cardCaseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray {
-    NSMutableString *queryString = [NSMutableString stringWithString:cardCaseReviewQuery];
-    
-    for (FormField *field in formFieldsArray) {
-        
-        if ([field.type isEqualToString:@"CUSTOMTEXT"])
-            continue;
-        
-        NSString *fieldName = [NSString stringWithFormat:@", Card_Management__r.%@", field.name];
-        
-        if (![queryString containsString:fieldName]) {
-            [queryString appendString:fieldName];
-        }
-        
-    }
-    
-    [queryString appendFormat:@" FROM Case WHERE Id = '%@'", caseId];
-    
-    return queryString;
-
 }
 
 + (NSString *)myRequestsQuery {

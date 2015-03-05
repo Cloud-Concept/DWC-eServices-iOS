@@ -31,8 +31,8 @@
 #import "SFLogger.h"
 
 // Fill these in when creating a new Connected Application on Force.com
-static NSString * const RemoteAccessConsumerKey = @"3MVG9Iu66FKeHhINkB1l7xt7kR8czFcCTUhgoA8Ol2Ltf1eYHOU4SqQRSEitYFDUpqRWcoQ2.dBv_a1Dyu5xa";
-static NSString * const OAuthRedirectURI        = @"testsfdc:///mobilesdk/detect/oauth/done";
+static NSString * const RemoteAccessConsumerKey = @"3MVG9Gmy2zmPB01pXLIoc2_JncxlaR4fBK8B03DEaxjtbAlOzUN.rdOQhLoIrZwW3CB5.mLHgl0rJseRxr63A";
+static NSString * const OAuthRedirectURI        = @"dwcmobile://auth/success";
 
 // Update the plist SFDCOAuthLoginHost
 static NSString * const LoginHostUrl            = @"bpark-dwc.cs7.force.com/portal";

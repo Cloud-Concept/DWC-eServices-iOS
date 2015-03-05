@@ -91,18 +91,7 @@
                 }
             }
             
-            NSString *parentLookup;
-            switch (self.baseServicesViewController.relatedServiceType) {
-                case RelatedServiceTypeNewNOC:
-                    parentLookup = @"NOC__r";
-                    break;
-                case RelatedServiceTypeNewCard:
-                    parentLookup = @"Card_Management__r";
-                    break;
-                default:
-                    parentLookup = @"";
-                    break;
-            }
+            NSString *parentLookup = [self.baseServicesViewController.currentWebForm.objectName stringByReplacingOccurrencesOfString:@"__c" withString:@"__r"];
             
             NSDictionary *serviceDict = [dict objectForKey:parentLookup];
 
@@ -150,6 +139,17 @@
     [self initServiceFieldsContentView];
     NSDate *createdDate = [SFDateUtil SOQLDateTimeStringToDate:requestCreatedDate];
     
+    UIButton *nextButton = self.baseServicesViewController.nextButton;
+    UIButton *cancelButton = self.baseServicesViewController.cancelButton;
+    
+    if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeViewMyRequest) {
+        cancelButton = nil;
+        
+        if (![requestStatus isEqualToString:@"Draft"]) {
+            nextButton = nil;
+        }
+    }
+    
     [servicesContentView drawReviewForm:requestNumber
                           requestStatus:requestStatus
                             requestType:requestType
@@ -157,8 +157,8 @@
                             totalAmount:totalAmount
                       isCourierRequired:isCourierRequired
                         formFieldsArray:formFieldsArray
-                           cancelButton:self.baseServicesViewController.cancelButton
-                             nextButton:self.baseServicesViewController.nextButton];
+                           cancelButton:cancelButton
+                             nextButton:nextButton];
 }
 
 - (void)initServiceFieldsContentView {
