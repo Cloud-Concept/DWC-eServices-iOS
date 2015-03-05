@@ -13,6 +13,7 @@
 #import "Globals.h"
 #import "Account.h"
 #import "FVCustomAlertView.h"
+#import "SWRevealViewController.h"
 
 @interface HomePageViewController ()
 
@@ -115,14 +116,26 @@
     [HelperClass setupButtonWithTextUnderImage:button];
 }
 
-/*
+//*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    SWRevealViewController *destinationVC = [segue destinationViewController];
+    
+    NSString *segueIdentifier = segue.identifier;
+    NSString *initialSegueID;
+    
+    if ([segueIdentifier isEqualToString:@"MyRequestsSlidingMenuSegue"])
+        initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_myRequests"];
+    else if ([segueIdentifier isEqualToString:@"EmployeesSlidingMenuSegue"])
+        initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_employees"];
+    
+    destinationVC.initialSegueIdentifier = initialSegueID;
+    
 }
-*/
+//*/
 
 @end

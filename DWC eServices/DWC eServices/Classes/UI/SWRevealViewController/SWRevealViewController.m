@@ -1667,7 +1667,10 @@ const int FrontViewPositionNone = 0xff;
         
         @try
         {
-            [self performSegueWithIdentifier:SWSegueFrontIdentifier sender:nil];
+            if (!self.initialSegueIdentifier)
+                self.initialSegueIdentifier = SWSegueFrontIdentifier;
+            
+            [self performSegueWithIdentifier:self.initialSegueIdentifier sender:nil];
         }
         @catch(NSException *exception) {}
         
@@ -1815,7 +1818,7 @@ NSString * const SWSegueRightIdentifier = @"sw_right";
     SWRevealViewController *rvc = self.sourceViewController;
     UIViewController *dvc = self.destinationViewController;
     
-    if ( [identifier isEqualToString:SWSegueFrontIdentifier] )
+    if ( [identifier containsString:SWSegueFrontIdentifier] )
         operation = SWRevealControllerOperationReplaceFrontController;
     
     else if ( [identifier isEqualToString:SWSegueRearIdentifier] )

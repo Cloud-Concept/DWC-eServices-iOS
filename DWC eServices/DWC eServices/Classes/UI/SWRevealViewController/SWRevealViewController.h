@@ -309,6 +309,9 @@ typedef NS_ENUM(NSInteger, SWRevealToggleAnimationType)
 // Delegate
 @property (nonatomic,weak) id<SWRevealViewControllerDelegate> delegate;
 
+
+@property (nonatomic) NSString *initialSegueIdentifier;
+
 @end
 
 

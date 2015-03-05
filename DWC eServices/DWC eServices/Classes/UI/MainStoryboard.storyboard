@@ -176,7 +176,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="9Yx-mK-EUe" kind="push" id="V9O-ai-WbC"/>
+                                            <segue destination="9Yx-mK-EUe" kind="push" identifier="EmployeesSlidingMenuSegue" id="V9O-ai-WbC"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -206,6 +206,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="9Yx-mK-EUe" kind="push" identifier="MyRequestsSlidingMenuSegue" id="zny-VT-mg9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JE-ua-Xp0">
                                         <rect key="frame" x="92" y="0.0" width="86" height="89"/>
@@ -437,7 +440,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="ioJ-hN-MJV" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="75u-kz-X73"/>
-                        <segue destination="nqg-iG-M4U" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="2kn-8S-W3V"/>
+                        <segue destination="nqg-iG-M4U" kind="custom" identifier="sw_front_employees" customClass="SWRevealViewControllerSegueSetController" id="2kn-8S-W3V"/>
+                        <segue destination="Dhg-Kf-bTW" kind="custom" identifier="sw_front_myRequests" customClass="SWRevealViewControllerSegueSetController" id="7qA-mG-EzH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2v-bh-BDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -631,7 +635,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWh-8y-iUV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="1169"/>
+            <point key="canvasLocation" x="606" y="1164"/>
         </scene>
         <!--Employee Type View Controller-->
         <scene sceneID="jCj-cP-r2K">
@@ -703,7 +707,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xjc-Rq-oSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644.5" y="1168.5"/>
+            <point key="canvasLocation" x="1612.5" y="354.5"/>
         </scene>
         <!--Employee List View Controller-->
         <scene sceneID="4PU-oB-tQV">
@@ -805,7 +809,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2194.5" y="1168.5"/>
+            <point key="canvasLocation" x="2162.5" y="354.5"/>
         </scene>
         <!--Record Main View Controller-->
         <scene sceneID="wMB-iG-hK0">
@@ -872,7 +876,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDK-Dl-Oiz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2640.5" y="1168.5"/>
+            <point key="canvasLocation" x="2608.5" y="354.5"/>
         </scene>
         <!--Base Services View Controller-->
         <scene sceneID="ndV-Lg-TXx">
@@ -906,7 +910,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g5L-2W-hXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142.5" y="1168.5"/>
+            <point key="canvasLocation" x="3110.5" y="354.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KHg-LT-MaD">
@@ -923,12 +927,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tak-cT-3NK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1153.5" y="1168.5"/>
+            <point key="canvasLocation" x="1119.5" y="355.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kbU-mw-NJ6">
             <objects>
-                <navigationController id="Dhg-Kf-bTW" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="My Requests Page" id="Dhg-Kf-bTW" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hLN-Bl-8Jr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -940,7 +944,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zqb-jb-o7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146.5" y="1991.5"/>
+            <point key="canvasLocation" x="1119.5" y="1163.5"/>
         </scene>
         <!--My Request List View Controller-->
         <scene sceneID="cdw-gs-eRb">
@@ -1011,7 +1015,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RnT-NC-mG5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1637.5" y="1991.5"/>
+            <point key="canvasLocation" x="1610.5" y="1163.5"/>
         </scene>
     </scenes>
     <resources>
@@ -1043,6 +1047,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="7qA-mG-EzH"/>
+        <segue reference="zny-VT-mg9"/>
         <segue reference="2kn-8S-W3V"/>
     </inferredMetricsTieBreakers>
 </document>

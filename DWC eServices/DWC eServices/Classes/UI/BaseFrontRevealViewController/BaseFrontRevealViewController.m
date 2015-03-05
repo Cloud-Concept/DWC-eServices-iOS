@@ -92,26 +92,25 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
     switch (item.tag) {
         case 1:
-            
             [self openHomePage];
             break;
-            
+        case 2:
+            [self openMyRequestsPage];
         default:
             break;
     }
 }
 
 - (void)openHomePage {
-    /*
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    UIViewController *vc =[storybord instantiateInitialViewController];
-    
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    
-    window.rootViewController = vc;
-    */
     [self.revealViewController.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)openMyRequestsPage {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *myRequestVC = [storybord instantiateViewControllerWithIdentifier:@"My Requests Page"];
+    [self.revealViewController setFrontViewController:myRequestVC animated:YES];
+}
+
 /*
  #pragma mark - Navigation
  

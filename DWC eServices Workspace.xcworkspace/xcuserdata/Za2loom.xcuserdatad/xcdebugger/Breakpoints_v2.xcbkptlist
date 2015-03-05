@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/BaseFrontRevealViewController/BaseFrontRevealViewController.m"
-            timestampString = "446989296.295621"
+            timestampString = "447253960.773763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
-            timestampString = "446989373.119985"
+            timestampString = "447253534.505238"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-loadCompanyInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -804,7 +804,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/BaseFrontRevealViewController/BaseFrontRevealViewController.m"
-            timestampString = "446989296.295621"
+            timestampString = "447253960.773763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -819,28 +819,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DWC eServices/DWC eServices/Classes/UI/BaseFrontRevealViewController/BaseFrontRevealViewController.m"
-            timestampString = "447081703.02287"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-openHomePage"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/SWRevealViewController/SWRevealViewController.m"
-            timestampString = "446987812.691488"
+            timestampString = "447254508.207585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1812"
-            endingLineNumber = "1812"
+            startingLineNumber = "1815"
+            endingLineNumber = "1815"
             landmarkName = "-perform"
             landmarkType = "5">
          </BreakpointContent>
@@ -858,22 +842,6 @@
             startingLineNumber = "1662"
             endingLineNumber = "1662"
             landmarkName = "-loadStoryboardControllers"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DWC eServices/DWC eServices/Classes/UI/BaseFrontRevealViewController/BaseFrontRevealViewController.m"
-            timestampString = "447081703.02287"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "-openHomePage"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
