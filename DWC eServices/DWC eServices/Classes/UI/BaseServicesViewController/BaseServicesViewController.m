@@ -48,7 +48,7 @@
 
 - (void)backButtonPressed {
     
-    if (self.backAction) {
+    if (self.backAction && self.relatedServiceType != RelatedServiceTypeViewMyRequest) {
         self.backAction();
     }
     
@@ -576,7 +576,9 @@
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok", @"")
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction *action) {
-                                                              [self.navigationController popViewControllerAnimated:YES];
+                                                              if (self.relatedServiceType == RelatedServiceTypeViewMyRequest)
+                                                                  self.backAction();
+                                                              [self popServicesViewController];
                                                           }];
         
         [alertController addAction:okAction];

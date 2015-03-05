@@ -95,6 +95,9 @@
     BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
     baseServicesVC.relatedServiceType = RelatedServiceTypeViewMyRequest;
     baseServicesVC.currentWebformId = request.webFormId;
+    baseServicesVC.backAction = ^(void) {
+        [self loadMyRequests];
+    };
     [baseServicesVC initializeCaseId:request.Id];
     [self.navigationController pushViewController:baseServicesVC animated:YES];
 }
