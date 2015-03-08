@@ -59,3 +59,10 @@
 "RequestTotalAmountLabel" = "Service Price";
 "RequestIsCourierRequiredLabel" = "Courier Required";
 "RequestInfoLabel" = "Request Information";
+
+"DWCCompanyInfoCompanyAndLicense" = "Company and License Info";
+"DWCCompanyInfoLeasingInfo" = "Leasing Info";
+"DWCCompanyInfoShareholders" = "Shareholders";
+"DWCCompanyInfoDirectors" = "Directors";
+"DWCCompanyInfoGeneralManagers" = "General Managers";
+"DWCCompanyInfoLegalRepresentative" = "Legal Representative";

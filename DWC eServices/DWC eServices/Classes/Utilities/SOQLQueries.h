@@ -18,4 +18,9 @@
 + (NSString *)caseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray RelatedObject:(NSString *)RelatedObject;
 + (NSString *)cardTypeQueryForDuration:(NSString *)duration CardType:(NSString *)cardType;
 + (NSString *)myRequestsQuery;
++ (NSString *)companyShareholdersQuery;
++ (NSString *)companyManagersQuery;
++ (NSString *)companyDirectorsQuery;
++ (NSString *)companyLegalRepresentativesQuery;
+
 @end

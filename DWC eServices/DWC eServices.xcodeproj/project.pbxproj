@@ -64,6 +64,11 @@
 		132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */; };
 		132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */; };
 		132F0D081A948FCC003FFC24 /* ServicesReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132F0D071A948FCC003FFC24 /* ServicesReviewViewController.m */; };
+		13315AC61AAC24DB009E1819 /* CompanyInfoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315AC51AAC24DB009E1819 /* CompanyInfoTypeViewController.m */; };
+		13315AC91AAC3845009E1819 /* DWCCompanyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315AC81AAC3845009E1819 /* DWCCompanyInfo.m */; };
+		13315ACC1AAC5ADB009E1819 /* ShareOwnership.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315ACB1AAC5ADB009E1819 /* ShareOwnership.m */; };
+		13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315ACF1AAC663D009E1819 /* CompanyInfoListViewController.m */; };
+		13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */; };
 		13411AFB1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 13411AFA1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m */; };
 		13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13481AE41A82257100093331 /* RecordRelatedViewController.m */; };
 		13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13481AE51A82257100093331 /* RecordRelatedViewController.xib */; };
@@ -208,6 +213,16 @@
 		132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFrontRevealViewController.m; sourceTree = "<group>"; };
 		132F0D061A948FCC003FFC24 /* ServicesReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesReviewViewController.h; sourceTree = "<group>"; };
 		132F0D071A948FCC003FFC24 /* ServicesReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesReviewViewController.m; sourceTree = "<group>"; };
+		13315AC41AAC24DB009E1819 /* CompanyInfoTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyInfoTypeViewController.h; sourceTree = "<group>"; };
+		13315AC51AAC24DB009E1819 /* CompanyInfoTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoTypeViewController.m; sourceTree = "<group>"; };
+		13315AC71AAC3845009E1819 /* DWCCompanyInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCCompanyInfo.h; sourceTree = "<group>"; };
+		13315AC81AAC3845009E1819 /* DWCCompanyInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCCompanyInfo.m; sourceTree = "<group>"; };
+		13315ACA1AAC5ADB009E1819 /* ShareOwnership.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareOwnership.h; sourceTree = "<group>"; };
+		13315ACB1AAC5ADB009E1819 /* ShareOwnership.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOwnership.m; sourceTree = "<group>"; };
+		13315ACE1AAC663D009E1819 /* CompanyInfoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyInfoListViewController.h; sourceTree = "<group>"; };
+		13315ACF1AAC663D009E1819 /* CompanyInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoListViewController.m; sourceTree = "<group>"; };
+		13315AD21AAC7056009E1819 /* CompanyInfoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyInfoListTableViewCell.h; sourceTree = "<group>"; };
+		13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoListTableViewCell.m; sourceTree = "<group>"; };
 		13411AF91A931E8E009AC2F5 /* ServiceDocumentHelperClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDocumentHelperClass.h; sourceTree = "<group>"; };
 		13411AFA1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDocumentHelperClass.m; sourceTree = "<group>"; };
 		13481AE31A82257100093331 /* RecordRelatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordRelatedViewController.h; path = "DWC eServices/Classes/UI/RecordMainViewController/RecordRelatedViewController/RecordRelatedViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -466,6 +481,8 @@
 			children = (
 				132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */,
 				1318193D1A91CA9C00CAA4D6 /* BaseServicesViewController */,
+				13315ACD1AAC662A009E1819 /* CompanyInfoListViewController */,
+				13315AC31AAC24CB009E1819 /* CompanyInfoTypeViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				130C2FFB1A78DDE600C95600 /* EmployeeListViewController */,
 				132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */,
@@ -555,6 +572,8 @@
 				13081AE81A76559D00B33509 /* CardManagement.m */,
 				13081AE91A76559D00B33509 /* Country.h */,
 				13081AEA1A76559D00B33509 /* Country.m */,
+				13315AC71AAC3845009E1819 /* DWCCompanyInfo.h */,
+				13315AC81AAC3845009E1819 /* DWCCompanyInfo.m */,
 				130C300B1A78E7BF00C95600 /* DWCEmployee.h */,
 				130C300C1A78E7BF00C95600 /* DWCEmployee.m */,
 				13081AEB1A76559D00B33509 /* EServiceAdministration.h */,
@@ -571,6 +590,8 @@
 				13481AEF1A823A5B00093331 /* RelatedService.m */,
 				130E09651AA5B84400E6ED59 /* Request.h */,
 				130E09661AA5B84400E6ED59 /* Request.m */,
+				13315ACA1AAC5ADB009E1819 /* ShareOwnership.h */,
+				13315ACB1AAC5ADB009E1819 /* ShareOwnership.m */,
 				13F877BC1A97290500245B05 /* Stack.h */,
 				13F877BD1A97290500245B05 /* Stack.m */,
 				131CA86C1A80C93400A79B12 /* TableViewSection.h */,
@@ -749,6 +770,34 @@
 				130523E71A99F96800EF2268 /* ServicesReviewViewController.xib */,
 			);
 			path = ServicesReviewViewController;
+			sourceTree = "<group>";
+		};
+		13315AC31AAC24CB009E1819 /* CompanyInfoTypeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13315AC41AAC24DB009E1819 /* CompanyInfoTypeViewController.h */,
+				13315AC51AAC24DB009E1819 /* CompanyInfoTypeViewController.m */,
+			);
+			path = CompanyInfoTypeViewController;
+			sourceTree = "<group>";
+		};
+		13315ACD1AAC662A009E1819 /* CompanyInfoListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13315AD11AAC700A009E1819 /* CompanyInfoListTableViewCell */,
+				13315ACE1AAC663D009E1819 /* CompanyInfoListViewController.h */,
+				13315ACF1AAC663D009E1819 /* CompanyInfoListViewController.m */,
+			);
+			path = CompanyInfoListViewController;
+			sourceTree = "<group>";
+		};
+		13315AD11AAC700A009E1819 /* CompanyInfoListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				13315AD21AAC7056009E1819 /* CompanyInfoListTableViewCell.h */,
+				13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */,
+			);
+			path = CompanyInfoListTableViewCell;
 			sourceTree = "<group>";
 		};
 		136377BB1A767C2C00282F72 /* FVCustomAlertView */ = {
@@ -1360,6 +1409,7 @@
 				13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */,
 				13081AF71A76559D00B33509 /* Account.m in Sources */,
 				130C30011A78DE0200C95600 /* EmployeeTableViewCell.m in Sources */,
+				13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */,
 				1302913C1A76C88D000E119C /* SWRevealViewController.m in Sources */,
 				1318194B1A91FCB900CAA4D6 /* ServicesUploadViewController.m in Sources */,
 				130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */,
@@ -1369,6 +1419,7 @@
 				131CA86E1A80C93400A79B12 /* TableViewSection.m in Sources */,
 				130E096C1AA5C42800E6ED59 /* MyRequestTableViewCell.m in Sources */,
 				131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */,
+				13315AC91AAC3845009E1819 /* DWCCompanyInfo.m in Sources */,
 				1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */,
 				131CA87E1A80F91500A79B12 /* RecordDetailTableViewCell.m in Sources */,
 				13411AFB1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m in Sources */,
@@ -1382,6 +1433,7 @@
 				139E6B611A7A432500D1D451 /* SOQLQueries.m in Sources */,
 				130523E61A99C56D00EF2268 /* UIViewController+ChildViewController.m in Sources */,
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
+				13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */,
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,
 				131F96CD1AA48D8400786B15 /* MyRequestListViewController.m in Sources */,
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
@@ -1389,6 +1441,7 @@
 				13481AF01A823A5B00093331 /* RelatedService.m in Sources */,
 				131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */,
 				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
+				13315AC61AAC24DB009E1819 /* CompanyInfoTypeViewController.m in Sources */,
 				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
@@ -1404,6 +1457,7 @@
 				139E6B5E1A7A3CED00D1D451 /* Occupation.m in Sources */,
 				13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */,
 				13081B041A7655BD00B33509 /* DatePickerViewController.m in Sources */,
+				13315ACC1AAC5ADB009E1819 /* ShareOwnership.m in Sources */,
 				13063A891A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m in Sources */,
 				139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */,
 				13063A8D1A8B74AC00A1DEA2 /* UIView+DynamicForm.m in Sources */,

@@ -132,6 +132,8 @@
         initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_myRequests"];
     else if ([segueIdentifier isEqualToString:@"EmployeesSlidingMenuSegue"])
         initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_employees"];
+    else if ([segueIdentifier isEqualToString:@"CompanyInfoSlidingMenuSegue"])
+        initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_company_info"];
     
     destinationVC.initialSegueIdentifier = initialSegueID;
     

@@ -41,6 +41,16 @@
     return self;
 }
 
+- (id)initAccount:(NSString*)AccountId Name:(NSString*)Name {
+    return [self initAccount:AccountId
+                        Name:Name
+              AccountBalance:nil
+                 BillingCity:@""
+          BillingCountryCode:@""
+        LicenseNumberFormula:@""
+    LicenseExpiryDateFormula:@""];
+}
+
 - (id)initAccount:(NSString*)AccountId Name:(NSString*)Name AccountBalance:(NSNumber*)AccountBalance BillingCity:(NSString*)BillingCity BillingCountryCode:(NSString*)BillingCountryCode LicenseNumberFormula:(NSString*)LicenseNumberFormula LicenseExpiryDateFormula:(NSString*)LicenseExpiryDateFormula {
     
     if (!(self = [super init]))

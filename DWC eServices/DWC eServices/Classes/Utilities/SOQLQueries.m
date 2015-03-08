@@ -33,6 +33,14 @@ static NSString *cardCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status,
 
 static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Web_Form__c, CreatedDate, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType FROM Case WHERE AccountId = '%@' AND Web_Form__c != ''";
 
+static NSString *companyShareholdersQuery = @"SELECT Id, No_of_Shares__c, Ownership_of_Share__c, Shareholder__r.Id, Shareholder__r.Name, Shareholder_Status__c, Ownership_End_Date__c, Ownership_Start_Date__c FROM Share_Ownership__c WHERE Company__c = '%@'";
+
+static NSString *companyManagersQuery = @"SELECT Id, Manager__r.Id, Manager__r.Name, Manager_Status__c, Manager_Start_Date__c, Manager_End_Date__c FROM Management_Member__c WHERE Company__c = '%@'";
+
+static NSString *companyDirectorsQuery = @"SELECT Id, Roles__c, Director_Status__c, Directorship_End_Date__c, Directorship_Start_Date__c, Director__r.Id, Director__r.Name FROM Directorship__c WHERE Company__c = '%@'";
+
+static NSString *companyLegalRepresentativesQuery = @"SELECT Id, Legal_Representative__r.Id, Legal_Representative__r.Name, Status__c, Legal_Representative_End_Date__c, Legal_Representative_Start_Date__c FROM Legal_Representative__c WHERE Company__c = '%@'";
+
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
 }
@@ -86,4 +94,21 @@ static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Web_Form__c,
 + (NSString *)myRequestsQuery {
     return [NSString stringWithFormat:myRequestsQuery, [Globals currentAccount].Id];
 }
+
++ (NSString *)companyShareholdersQuery {
+    return [NSString stringWithFormat:companyShareholdersQuery, [Globals currentAccount].Id];
+}
+
++ (NSString *)companyManagersQuery {
+    return [NSString stringWithFormat:companyManagersQuery, [Globals currentAccount].Id];
+}
+
++ (NSString *)companyDirectorsQuery {
+    return [NSString stringWithFormat:companyDirectorsQuery, [Globals currentAccount].Id];
+}
+
++ (NSString *)companyLegalRepresentativesQuery {
+    return [NSString stringWithFormat:companyLegalRepresentativesQuery, [Globals currentAccount].Id];
+}
+
 @end
