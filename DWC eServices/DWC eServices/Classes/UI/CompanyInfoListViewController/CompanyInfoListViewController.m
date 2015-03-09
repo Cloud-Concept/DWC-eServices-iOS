@@ -14,6 +14,7 @@
 #import "Account.h"
 #import "ShareOwnership.h"
 #import "ManagementMember.h"
+#import "Directorship.h"
 #import "HelperClass.h"
 
 @interface CompanyInfoListViewController ()
@@ -32,6 +33,9 @@
             break;
         case DWCCompanyInfoGeneralManagers:
             [self loadCompanyManagers];
+            break;
+        case DWCCompanyInfoDirectors:
+            [self loadCompanyDirectors];
             break;
         default:
             break;
@@ -132,6 +136,49 @@
                                    completeBlock:successBlock];
 }
 
+- (void)loadCompanyDirectors {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        NSArray *records = [dict objectForKey:@"records"];
+        
+        dataRows = [NSMutableArray new];
+        
+        for (NSDictionary *recordDict in records) {
+            NSDictionary *directorDict = [recordDict objectForKey:@"Director__r"];
+            Account *director;
+            if (![directorDict isKindOfClass:[NSNull class]]) {
+                director = [[Account alloc] initAccount:[directorDict objectForKey:@"Id"]
+                                                   Name:[directorDict objectForKey:@"Name"]];
+            }
+            
+            [dataRows addObject:[[Directorship alloc] initDirectorship:[recordDict objectForKey:@"Id"]
+                                                                 Roles:[recordDict objectForKey:@"Roles__c"]
+                                                        DirectorStatus:[recordDict objectForKey:@"Director_Status__c"]
+                                                 DirectorshipStartDate:[recordDict objectForKey:@"Directorship_Start_Date__c"]
+                                                   DirectorshipEndDate:[recordDict objectForKey:@"Directorship_End_Date__c"]
+                                                              Director:director]];
+            
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self.tableView reloadData];
+        });
+    };
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDWCCompanyInfo.SOQLQuery
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
+}
+
 - (UITableViewCell *)cellShareholdersForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
     
@@ -151,6 +198,19 @@
     
     cell.nameLabel.text = currentManagementMember.manager.name;
     cell.roleValueLabel.text = currentManagementMember.role;
+    cell.shareOwnershipValueLabel.hidden = YES;
+    cell.shareOwnershipLabel.hidden = YES;
+    
+    return cell;
+}
+
+- (UITableViewCell *)cellDirectorsForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
+    CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
+    
+    Directorship *currentDirectorship = [dataRows objectAtIndex:indexPath.row];
+    
+    cell.nameLabel.text = currentDirectorship.director.name;
+    cell.roleValueLabel.text = currentDirectorship.roles;
     cell.shareOwnershipValueLabel.hidden = YES;
     cell.shareOwnershipLabel.hidden = YES;
     
@@ -179,6 +239,9 @@
             break;
         case DWCCompanyInfoGeneralManagers:
             cell = [self cellManagersForRowAtIndexPath:indexPath tableView:tableView];
+        case DWCCompanyInfoDirectors:
+            cell = [self cellDirectorsForRowAtIndexPath:indexPath tableView:tableView];
+            break;
         default:
             break;
     }

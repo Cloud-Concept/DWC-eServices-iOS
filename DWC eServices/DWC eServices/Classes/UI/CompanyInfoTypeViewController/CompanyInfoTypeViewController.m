@@ -23,25 +23,33 @@
     
     dwcCompanyInfoTypesArray = [NSMutableArray new];
     
-    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc] initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoCompanyAndLicense", @"")
-                                                                DWCCompanyInfoType:DWCCompanyInfoCompanyAndLicense]];
+    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
+                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoCompanyAndLicense", @"")
+                                         DWCCompanyInfoType:DWCCompanyInfoCompanyAndLicense]];
     
-    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc] initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLeasingInfo", @"")
-                                                                DWCCompanyInfoType:DWCCompanyInfoLeasingInfo]];
+    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
+                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLeasingInfo", @"")
+                                         DWCCompanyInfoType:DWCCompanyInfoLeasingInfo]];
     
-    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc] initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoShareholders", @"")
-                                                                DWCCompanyInfoType:DWCCompanyInfoShareholders
-                                                                             Query:[SOQLQueries companyShareholdersQuery]]];
+    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
+                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoShareholders", @"")
+                                         DWCCompanyInfoType:DWCCompanyInfoShareholders
+                                         Query:[SOQLQueries companyShareholdersQuery]]];
     
-    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc] initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoDirectors", @"")
-                                                                DWCCompanyInfoType:DWCCompanyInfoDirectors]];
+    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
+                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoDirectors", @"")
+                                         DWCCompanyInfoType:DWCCompanyInfoDirectors
+                                         Query:[SOQLQueries companyDirectorsQuery]]];
     
-    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc] initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoGeneralManagers", @"")
-                                                                DWCCompanyInfoType:DWCCompanyInfoGeneralManagers
-                                                                             Query:[SOQLQueries companyManagersQuery]]];
+    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
+                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoGeneralManagers", @"")
+                                         DWCCompanyInfoType:DWCCompanyInfoGeneralManagers
+                                         Query:[SOQLQueries companyManagersQuery]]];
     
-    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc] initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLegalRepresentative", @"")
-                                                                DWCCompanyInfoType:DWCCompanyInfoLegalRepresentative]];
+    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
+                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLegalRepresentative", @"")
+                                         DWCCompanyInfoType:DWCCompanyInfoLegalRepresentative
+                                         Query:[SOQLQueries companyLegalRepresentativesQuery]]];
     
 }
 

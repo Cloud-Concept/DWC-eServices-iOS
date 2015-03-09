@@ -74,6 +74,7 @@
 		13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13481AE51A82257100093331 /* RecordRelatedViewController.xib */; };
 		13481AF01A823A5B00093331 /* RelatedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 13481AEF1A823A5B00093331 /* RelatedService.m */; };
 		1353CBD61AAD7ECB00E57FAC /* ManagementMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 1353CBD51AAD7ECB00E57FAC /* ManagementMember.m */; };
+		1353CBD91AAD92B700E57FAC /* Directorship.m in Sources */ = {isa = PBXBuildFile; fileRef = 1353CBD81AAD92B700E57FAC /* Directorship.m */; };
 		136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136377BE1A767C2C00282F72 /* FVCustomAlertView.m */; };
 		1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA121A88B6E700ECED05 /* NewNOCViewController.m */; };
 		1394EA1F1A88D31F00ECED05 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1C1A88D31F00ECED05 /* WYPopoverController.m */; };
@@ -233,6 +234,8 @@
 		13481AEF1A823A5B00093331 /* RelatedService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelatedService.m; sourceTree = "<group>"; };
 		1353CBD41AAD7ECB00E57FAC /* ManagementMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagementMember.h; sourceTree = "<group>"; };
 		1353CBD51AAD7ECB00E57FAC /* ManagementMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagementMember.m; sourceTree = "<group>"; };
+		1353CBD71AAD92B700E57FAC /* Directorship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Directorship.h; sourceTree = "<group>"; };
+		1353CBD81AAD92B700E57FAC /* Directorship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Directorship.m; sourceTree = "<group>"; };
 		1356A9501A70D78600CF217A /* Corisande-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Bold-Italic.ttf"; sourceTree = "<group>"; };
 		136377BD1A767C2C00282F72 /* FVCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVCustomAlertView.h; sourceTree = "<group>"; };
 		136377BE1A767C2C00282F72 /* FVCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVCustomAlertView.m; sourceTree = "<group>"; };
@@ -607,6 +610,8 @@
 				13081AF61A76559D00B33509 /* WebForm.m */,
 				1353CBD41AAD7ECB00E57FAC /* ManagementMember.h */,
 				1353CBD51AAD7ECB00E57FAC /* ManagementMember.m */,
+				1353CBD71AAD92B700E57FAC /* Directorship.h */,
+				1353CBD81AAD92B700E57FAC /* Directorship.m */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -1448,6 +1453,7 @@
 				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
 				13315AC61AAC24DB009E1819 /* CompanyInfoTypeViewController.m in Sources */,
 				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
+				1353CBD91AAD92B700E57FAC /* Directorship.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,

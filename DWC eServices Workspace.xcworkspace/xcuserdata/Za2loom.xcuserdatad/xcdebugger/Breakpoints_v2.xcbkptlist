@@ -1026,11 +1026,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/CompanyInfoTypeViewController/CompanyInfoTypeViewController.m"
-            timestampString = "447580599.044589"
+            timestampString = "447584411.972376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1042,11 +1042,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/CompanyInfoTypeViewController/CompanyInfoTypeViewController.m"
-            timestampString = "447580599.044589"
+            timestampString = "447584411.972376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "-shouldPerformSegueWithIdentifier:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1058,11 +1058,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/CompanyInfoTypeViewController/CompanyInfoTypeViewController.m"
-            timestampString = "447580599.044589"
+            timestampString = "447584411.972376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1074,11 +1074,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/CompanyInfoTypeViewController/CompanyInfoTypeViewController.m"
-            timestampString = "447580599.044589"
+            timestampString = "447584411.972376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "-shouldPerformSegueWithIdentifier:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1090,11 +1090,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/CompanyInfoListViewController/CompanyInfoListViewController.m"
-            timestampString = "447580599.044589"
+            timestampString = "447584411.972376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "-loadCompanyShareholders"
             landmarkType = "5">
          </BreakpointContent>
@@ -1106,11 +1106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/CompanyInfoTypeViewController/CompanyInfoTypeViewController.m"
-            timestampString = "447580599.044589"
+            timestampString = "447584411.972376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
