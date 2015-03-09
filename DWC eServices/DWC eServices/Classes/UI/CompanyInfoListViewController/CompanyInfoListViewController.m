@@ -15,6 +15,7 @@
 #import "ShareOwnership.h"
 #import "ManagementMember.h"
 #import "Directorship.h"
+#import "LegalRepresentative.h"
 #import "HelperClass.h"
 
 @interface CompanyInfoListViewController ()
@@ -36,6 +37,9 @@
             break;
         case DWCCompanyInfoDirectors:
             [self loadCompanyDirectors];
+            break;
+        case DWCCompanyInfoLegalRepresentative:
+            [self loadCompanyLegalRepresentatives];
             break;
         default:
             break;
@@ -179,6 +183,49 @@
                                    completeBlock:successBlock];
 }
 
+- (void)loadCompanyLegalRepresentatives {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        NSArray *records = [dict objectForKey:@"records"];
+        
+        dataRows = [NSMutableArray new];
+        for (NSDictionary *recordDict in records) {
+            NSDictionary *legalRepresentativeDict = [recordDict objectForKey:@"Legal_Representative__r"];
+            Account *legalRepresentative;
+            if (![legalRepresentativeDict isKindOfClass:[NSNull class]]) {
+                legalRepresentative = [[Account alloc] initAccount:[legalRepresentativeDict objectForKey:@"Id"]
+                                                              Name:[legalRepresentativeDict objectForKey:@"Name"]];
+            }
+            
+            [dataRows addObject:[[LegalRepresentative alloc]
+                                 initLegalRepresentative:[recordDict objectForKey:@"Id"]
+                                 Role:[recordDict objectForKey:@"Role__c"]
+                                 Status:[recordDict objectForKey:@"Status__c"]
+                                 LegalRepresentativeStartDate:[recordDict objectForKey:@"Legal_Representative_Start_Date__c"]
+                                 LegalRepresentativeEndDate:[recordDict objectForKey:@"Legal_Representative_End_Date__c"]
+                                 LegalRepresentative:legalRepresentative]];
+            
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self.tableView reloadData];
+        });
+    };
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDWCCompanyInfo.SOQLQuery
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
+}
+
 - (UITableViewCell *)cellShareholdersForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
     
@@ -217,6 +264,19 @@
     return cell;
 }
 
+- (UITableViewCell *)cellLegalRepresentativeForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
+    CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
+    
+    LegalRepresentative *currentLegalRepresentative = [dataRows objectAtIndex:indexPath.row];
+    
+    cell.nameLabel.text = currentLegalRepresentative.legalRepresentative.name;
+    cell.roleValueLabel.text = currentLegalRepresentative.role;
+    cell.shareOwnershipValueLabel.hidden = YES;
+    cell.shareOwnershipLabel.hidden = YES;
+    
+    return cell;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -241,6 +301,9 @@
             cell = [self cellManagersForRowAtIndexPath:indexPath tableView:tableView];
         case DWCCompanyInfoDirectors:
             cell = [self cellDirectorsForRowAtIndexPath:indexPath tableView:tableView];
+            break;
+        case DWCCompanyInfoLegalRepresentative:
+            cell = [self cellLegalRepresentativeForRowAtIndexPath:indexPath tableView:tableView];
             break;
         default:
             break;

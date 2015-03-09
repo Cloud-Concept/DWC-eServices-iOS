@@ -1090,11 +1090,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/CompanyInfoListViewController/CompanyInfoListViewController.m"
-            timestampString = "447584411.972376"
+            timestampString = "447590030.479333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "-loadCompanyShareholders"
             landmarkType = "5">
          </BreakpointContent>

@@ -39,7 +39,7 @@ static NSString *companyManagersQuery = @"SELECT Id, Manager__r.Id, Manager__r.N
 
 static NSString *companyDirectorsQuery = @"SELECT Id, Roles__c, Director_Status__c, Directorship_End_Date__c, Directorship_Start_Date__c, Director__r.Id, Director__r.Name FROM Directorship__c WHERE Company__c = '%@'";
 
-static NSString *companyLegalRepresentativesQuery = @"SELECT Id, Legal_Representative__r.Id, Legal_Representative__r.Name, Status__c, Legal_Representative_End_Date__c, Legal_Representative_Start_Date__c FROM Legal_Representative__c WHERE Company__c = '%@'";
+static NSString *companyLegalRepresentativesQuery = @"SELECT Id, Legal_Representative__r.Id, Legal_Representative__r.Name, Status__c, Role__c, Legal_Representative_End_Date__c, Legal_Representative_Start_Date__c FROM Legal_Representative__c WHERE Company__c = '%@'";
 
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
