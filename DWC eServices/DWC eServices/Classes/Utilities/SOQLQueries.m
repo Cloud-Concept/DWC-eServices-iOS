@@ -35,7 +35,7 @@ static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Web_Form__c,
 
 static NSString *companyShareholdersQuery = @"SELECT Id, No_of_Shares__c, Ownership_of_Share__c, Shareholder__r.Id, Shareholder__r.Name, Shareholder_Status__c, Ownership_End_Date__c, Ownership_Start_Date__c FROM Share_Ownership__c WHERE Company__c = '%@'";
 
-static NSString *companyManagersQuery = @"SELECT Id, Manager__r.Id, Manager__r.Name, Manager_Status__c, Manager_Start_Date__c, Manager_End_Date__c FROM Management_Member__c WHERE Company__c = '%@'";
+static NSString *companyManagersQuery = @"SELECT Id, Manager__r.Id, Manager__r.Name, Manager_Status__c, Manager_Start_Date__c, Manager_End_Date__c, Role__c, Status__c FROM Management_Member__c WHERE Company__c = '%@'";
 
 static NSString *companyDirectorsQuery = @"SELECT Id, Roles__c, Director_Status__c, Directorship_End_Date__c, Directorship_Start_Date__c, Director__r.Id, Director__r.Name FROM Directorship__c WHERE Company__c = '%@'";
 

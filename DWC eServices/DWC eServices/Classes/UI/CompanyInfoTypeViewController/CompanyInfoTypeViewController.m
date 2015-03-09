@@ -37,7 +37,8 @@
                                                                 DWCCompanyInfoType:DWCCompanyInfoDirectors]];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc] initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoGeneralManagers", @"")
-                                                                DWCCompanyInfoType:DWCCompanyInfoGeneralManagers]];
+                                                                DWCCompanyInfoType:DWCCompanyInfoGeneralManagers
+                                                                             Query:[SOQLQueries companyManagersQuery]]];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc] initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLegalRepresentative", @"")
                                                                 DWCCompanyInfoType:DWCCompanyInfoLegalRepresentative]];
