@@ -44,6 +44,7 @@
 		130E09671AA5B84400E6ED59 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 130E09661AA5B84400E6ED59 /* Request.m */; };
 		130E096C1AA5C42800E6ED59 /* MyRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 130E096A1AA5C42800E6ED59 /* MyRequestTableViewCell.m */; };
 		130E096D1AA5C42800E6ED59 /* MyRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130E096B1AA5C42800E6ED59 /* MyRequestTableViewCell.xib */; };
+		130F7DD21AAEE76300380628 /* License.m in Sources */ = {isa = PBXBuildFile; fileRef = 130F7DD11AAEE76300380628 /* License.m */; };
 		131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131048C01A9EFDB0006A400B /* NewCardViewController.m */; };
 		131048C31A9EFDB0006A400B /* NewCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131048C11A9EFDB0006A400B /* NewCardViewController.xib */; };
 		131819401A91CAB200CAA4D6 /* BaseServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1318193F1A91CAB200CAA4D6 /* BaseServicesViewController.m */; };
@@ -183,6 +184,8 @@
 		130E09691AA5C42800E6ED59 /* MyRequestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestTableViewCell.h; sourceTree = "<group>"; };
 		130E096A1AA5C42800E6ED59 /* MyRequestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequestTableViewCell.m; sourceTree = "<group>"; };
 		130E096B1AA5C42800E6ED59 /* MyRequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRequestTableViewCell.xib; sourceTree = "<group>"; };
+		130F7DD01AAEE76300380628 /* License.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = License.h; sourceTree = "<group>"; };
+		130F7DD11AAEE76300380628 /* License.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = License.m; sourceTree = "<group>"; };
 		131048BF1A9EFDB0006A400B /* NewCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCardViewController.h; sourceTree = "<group>"; };
 		131048C01A9EFDB0006A400B /* NewCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCardViewController.m; sourceTree = "<group>"; };
 		131048C11A9EFDB0006A400B /* NewCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCardViewController.xib; sourceTree = "<group>"; };
@@ -595,6 +598,8 @@
 				13081AF01A76559D00B33509 /* FormField.m */,
 				1353CBDA1AAD9B5300E57FAC /* LegalRepresentative.h */,
 				1353CBDB1AAD9B5300E57FAC /* LegalRepresentative.m */,
+				130F7DD01AAEE76300380628 /* License.h */,
+				130F7DD11AAEE76300380628 /* License.m */,
 				1353CBD41AAD7ECB00E57FAC /* ManagementMember.h */,
 				1353CBD51AAD7ECB00E57FAC /* ManagementMember.m */,
 				139E6B5C1A7A3CED00D1D451 /* Occupation.h */,
@@ -1460,6 +1465,7 @@
 				13315AC61AAC24DB009E1819 /* CompanyInfoTypeViewController.m in Sources */,
 				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
 				1353CBD91AAD92B700E57FAC /* Directorship.m in Sources */,
+				130F7DD21AAEE76300380628 /* License.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,

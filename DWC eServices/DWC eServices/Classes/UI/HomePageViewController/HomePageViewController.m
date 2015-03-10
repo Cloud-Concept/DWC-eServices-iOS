@@ -14,6 +14,8 @@
 #import "Account.h"
 #import "FVCustomAlertView.h"
 #import "SWRevealViewController.h"
+#import "License.h"
+#import "RecordType.h"
 
 @interface HomePageViewController ()
 
@@ -67,13 +69,49 @@
         
         
         NSDictionary *accountDict = [[dict objectForKey:@"Contact"] objectForKey:@"Account"];
-        Account *account = [[Account alloc] initAccount:[accountDict objectForKey:@"Id" ]
-                                                   Name:[accountDict objectForKey:@"Name" ]
-                                         AccountBalance:[accountDict objectForKey:@"Account_Balance__c" ]
-                                            BillingCity:[accountDict objectForKey:@"BillingCity" ]
-                                     BillingCountryCode:[accountDict objectForKey:@"BillingCountryCode" ]
-                                   LicenseNumberFormula:[accountDict objectForKey:@"License_Number_Formula__c" ]
-                               LicenseExpiryDateFormula:[accountDict objectForKey:@"License_Expiry_Date_Formula__c" ]];
+        
+        NSDictionary *licenseDict = [accountDict objectForKey:@"Current_License_Number__r"];
+        License *license;
+        if (![licenseDict isKindOfClass:[NSNull class]]) {
+            NSDictionary *licenseRecordTypeDict = [licenseDict objectForKey:@"RecordType"];
+            RecordType *licenseRecordType = [[RecordType alloc]
+                                             initRecordType:[licenseRecordTypeDict objectForKey:@"Id"]
+                                             Name:[licenseRecordTypeDict objectForKey:@"Name"]
+                                             DeveloperName:[licenseRecordTypeDict objectForKey:@"DeveloperName"]
+                                             IsActive:YES
+                                             ObjectType:[licenseRecordTypeDict objectForKey:@"SobjectType"]];
+            
+            license = [[License alloc] initLicense:[licenseDict objectForKey:@"Id"]
+                                    CommercialName:[licenseDict objectForKey:@"Commercial_Name__c"]
+                              CommercialNameArabic:[licenseDict objectForKey:@"Commercial_Name_Arabic__c"]
+                                LicenseNumberValue:[licenseDict objectForKey:@"License_Number_Value__c"]
+                                    ValidityStatus:[licenseDict objectForKey:@"Validity_Status__c"]
+                                  LicenseIssueDate:[licenseDict objectForKey:@"License_Issue_Date__c"]
+                                 LicenseExpiryDate:[licenseDict objectForKey:@"License_Expiry_Date__c"]
+                                 LicenseRecordType:licenseRecordType];
+        }
+        
+        Account *account = [[Account alloc] initAccount:[accountDict objectForKey:@"Id"]
+                                                   Name:[accountDict objectForKey:@"Name"]
+                                         AccountBalance:[accountDict objectForKey:@"Account_Balance__c"]
+                                   LicenseNumberFormula:[accountDict objectForKey:@"License_Number_Formula__c"]
+                               LicenseExpiryDateFormula:[accountDict objectForKey:@"License_Expiry_Date_Formula__c"]
+                                CompanyRegistrationDate:[accountDict objectForKey:@"Company_Registration_Date__c"]
+                                              LegalForm:[accountDict objectForKey:@"Legal_Form__c"]
+                                RegistrationNumberValue:[accountDict objectForKey:@"Registration_Number_Value__c"]
+                                                  Phone:[accountDict objectForKey:@"Phone"]
+                                                    Fax:[accountDict objectForKey:@"Fax"]
+                                                  Email:[accountDict objectForKey:@"Email__c"]
+                                                 Mobile:[accountDict objectForKey:@"Mobile__c"]
+                                               ProEmail:[accountDict objectForKey:@"PRO_Email__c"]
+                                        ProMobileNumber:[accountDict objectForKey:@"PRO_Mobile_Number__c"]
+                                          BillingStreet:[accountDict objectForKey:@"BillingStreet"]
+                                      BillingPostalCode:[accountDict objectForKey:@"BillingPostalCode"]
+                                         BillingCountry:[accountDict objectForKey:@"BillingCountry"]
+                                           BillingState:[accountDict objectForKey:@"BillingState"]
+                                            BillingCity:[accountDict objectForKey:@"BillingCity"]
+                                     BillingCountryCode:[accountDict objectForKey:@"BillingCountryCode"]
+                                   CurrentLicenseNumber:license];
         
         [Globals setCurrentAccount:account];
         
@@ -90,7 +128,7 @@
     SFUserAccountManager *accountManager = [SFUserAccountManager sharedInstance];
     
     
-    NSArray *fields = @[@"ContactId, Contact.Name", @"Contact.Account.Id", @"Contact.Account.Account_Balance__c", @"Contact.Account.Name", @"Contact.Account.License_Number_Formula__c", @"Contact.Account.BillingCity", @"Contact.Account.BillingCountryCode", @"Contact.Account.License_Expiry_Date_Formula__c"];
+    NSArray *fields = @[@"ContactId, Contact.Name", @"Contact.Account.Id", @"Contact.Account.Account_Balance__c", @"Contact.Account.Name", @"Contact.Account.License_Number_Formula__c", @"Contact.Account.BillingCity", @"Contact.Account.BillingCountryCode", @"Contact.Account.License_Expiry_Date_Formula__c", @"Contact.Account.Company_Registration_Date__c", @"Contact.Account.Legal_Form__c", @"Contact.Account.Registration_Number_Value__c", @"Contact.Account.Phone", @"Contact.Account.Fax", @"Contact.Account.Email__c", @"Contact.Account.Mobile__c", @"Contact.Account.PRO_Email__c", @"Contact.Account.PRO_Mobile_Number__c", @"Contact.Account.BillingStreet", @"Contact.Account.BillingPostalCode", @"Contact.Account.BillingCountry", @"Contact.Account.BillingState", @"Contact.Account.Current_License_Number__r.Id", @"Contact.Account.Current_License_Number__r.License_Issue_Date__c", @"Contact.Account.Current_License_Number__r.License_Expiry_Date__c", @"Contact.Account.Current_License_Number__r.Commercial_Name__c", @"Contact.Account.Current_License_Number__r.Commercial_Name_Arabic__c", @"Contact.Account.Current_License_Number__r.License_Number_Value__c", @"Contact.Account.Current_License_Number__r.Validity_Status__c", @"Contact.Account.Current_License_Number__r.RecordType.Id", @"Contact.Account.Current_License_Number__r.RecordType.Name", @"Contact.Account.Current_License_Number__r.RecordType.DeveloperName", @"Contact.Account.Current_License_Number__r.RecordType.SObjectType"];
     
     [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
     
