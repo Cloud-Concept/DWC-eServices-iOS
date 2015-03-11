@@ -39,26 +39,46 @@
 }
 
 - (NSAttributedString *)getAttributedNotificationMessage {
-    UIColor *color;
+    UIColor *statusColor;
     
     if ([self.caseStatus isEqualToString:@"Completed"])
-        color = [UIColor colorWithRed:0.215 green:0.749 blue:0.427 alpha:1];
+        statusColor = [UIColor colorWithRed:0.215 green:0.749 blue:0.427 alpha:1];
     else if ([self.caseStatus isEqualToString:@"Draft"])
-        color = [UIColor colorWithRed:0.4 green:0.631 blue:0.792 alpha:1];
+        statusColor = [UIColor colorWithRed:0.4 green:0.631 blue:0.792 alpha:1];
     else if ([self.caseStatus isEqualToString:@"Application Rejected"])
-        color = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
+        statusColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
     else
-        color = [UIColor colorWithRed:0.749 green:0.741 blue:0.215 alpha:1];
+        statusColor = [UIColor colorWithRed:0.749 green:0.741 blue:0.215 alpha:1];
     
-    NSDictionary * attributes = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
-    NSAttributedString *statusAttributedString = [[NSAttributedString alloc] initWithString:self.caseStatus attributes:attributes];
+    UIFont *statusFont = [UIFont fontWithName:@"CorisandeRegular" size:12.0f];
+    NSDictionary *statusAttributes = [NSDictionary dictionaryWithObjects:@[statusColor, statusFont]
+                                                                 forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]];
+    
+    NSAttributedString *statusAttributedString = [[NSAttributedString alloc] initWithString:self.caseStatus
+                                                                                 attributes:statusAttributes];
+    
+    UIColor *notificationNumberColor = [UIColor colorWithRed:0.443 green:0.443 blue:0.443 alpha:1];
+    UIFont *notificationNumberFont = [UIFont fontWithName:@"CorisandeRegular" size:12.0f];
+    NSDictionary *notificationNumberAttributes = [NSDictionary dictionaryWithObjects:@[notificationNumberColor, notificationNumberFont]
+                                                                       forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]];
+    
+    NSAttributedString *notificationNumberAttributedString = [[NSAttributedString alloc] initWithString:self.request.caseNumber
+                                                                                 attributes:notificationNumberAttributes];
+    
+    UIColor *notificationColor = [UIColor colorWithRed:0.462 green:0.501 blue:0.525 alpha:1];
+    UIFont *notificationFont = [UIFont fontWithName:@"CorisandeLight" size:12.0f];
+    NSDictionary *notificationAttributes = [NSDictionary dictionaryWithObjects:@[notificationColor, notificationFont]
+                                                                 forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]];
+    NSAttributedString *notificationAttributedString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" Status changed from %@ to ", self.priorValue] attributes:notificationAttributes];
     
     
-    NSString *notificationMsg = [NSString stringWithFormat:@"(%@) Status changed from %@ to ", self.request.Id, self.priorValue];
-    NSMutableAttributedString *returnString = [[NSMutableAttributedString alloc] initWithString:notificationMsg];
+    
+    NSMutableAttributedString *returnString = [[NSMutableAttributedString alloc] initWithAttributedString:notificationNumberAttributedString];
+    
+    [returnString appendAttributedString:notificationAttributedString];
     [returnString appendAttributedString:statusAttributedString];
     
-    return returnString;
+    return [[NSAttributedString alloc] initWithAttributedString:returnString];
 }
 
 @end

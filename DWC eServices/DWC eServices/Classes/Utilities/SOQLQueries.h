@@ -23,5 +23,6 @@
 + (NSString *)companyDirectorsQuery;
 + (NSString *)companyLegalRepresentativesQuery;
 + (NSString *)licenseActivityQueryForLicenseId:(NSString *)LicenseId;
++ (NSString *)notificationsQuery;
 
 @end
