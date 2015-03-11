@@ -16,6 +16,10 @@
 #import "SWRevealViewController.h"
 #import "License.h"
 #import "RecordType.h"
+#import "SFAuthenticationManager.h"
+#import "BusinessActivity.h"
+#import "LicenseActivity.h"
+#import "SOQLQueries.h"
 
 @interface HomePageViewController ()
 
@@ -58,6 +62,7 @@
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             
             [alert show];
@@ -119,6 +124,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self refreshLabels];
+            [self loadLicenseInfo];
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
         });
         
@@ -139,6 +145,66 @@
                                                 completeBlock:successBlock];
 }
 
+- (void)loadLicenseInfo {
+        void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            
+            [alert show];
+        });
+        
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        
+        
+        NSMutableArray *licenseActivityMutableArray = [NSMutableArray new];
+        
+        for (NSDictionary *licenseActivityDict in [dict objectForKey:@"records"]) {
+            
+            
+            NSDictionary *originalBusinessActivityDict = [licenseActivityDict objectForKey:@"Original_Business_Activity__r"];
+            
+            BusinessActivity *businessActivity;
+            if (![originalBusinessActivityDict isKindOfClass:[NSNull class]]) {
+                businessActivity = [[BusinessActivity alloc]
+                                    initBusinessActivity:[originalBusinessActivityDict objectForKey:@"Id"]
+                                    Name:[originalBusinessActivityDict objectForKey:@"Name"]
+                                    BusinessActivityName:[originalBusinessActivityDict objectForKey:@"Business_Activity_Name__c"]
+                                    BusinessActivityNameArabic:[originalBusinessActivityDict objectForKey:@"Business_Activity_Name_Arabic__c"]
+                                    BusinessActivityDescription:[originalBusinessActivityDict objectForKey:@"Business_Activity_Description__c"]
+                                    LicenseType:[originalBusinessActivityDict objectForKey:@"License_Type__c"]
+                                    Status:[originalBusinessActivityDict objectForKey:@"Status__c"]];
+            }
+
+            [licenseActivityMutableArray addObject:[[LicenseActivity alloc]
+                                                    initLicenseActivity:[licenseActivityDict objectForKey:@"Id"]
+                                                    Name:[licenseActivityDict objectForKey:@"Name"]
+                                                    Status:[licenseActivityDict objectForKey:@"Status__c"]
+                                                    StartDate:[licenseActivityDict objectForKey:@"Start_Date__c"]
+                                                    EndDate:[licenseActivityDict objectForKey:@"End_Date__c"]
+                                                    OriginalBusinessActivity:businessActivity]];
+        }
+        
+        [Globals currentAccount].currentLicenseNumber.licenseActivityArray = [NSArray arrayWithArray:licenseActivityMutableArray];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self refreshLabels];
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+        
+    };
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    [[SFRestAPI sharedInstance]
+     performSOQLQuery:[SOQLQueries licenseActivityQueryForLicenseId:[Globals currentAccount].currentLicenseNumber.Id]
+     failBlock:errorBlock
+     completeBlock:successBlock];
+    
+}
+
 - (void)refreshLabels {
     [self.companyNameValueLabel setText:[Globals currentAccount].name];
     [self.licenseNumberValueLabel setText:[Globals currentAccount].licenseNumberFormula];
@@ -152,6 +218,26 @@
 - (void)setupHomeButton:(UIButton*)button TitleKey:(NSString*)titleKey {
     [button setTitle:NSLocalizedString(titleKey, @"") forState:UIControlStateNormal];
     [HelperClass setupButtonWithTextUnderImage:button];
+}
+
+- (IBAction)logoutButtonClicked:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"LogoutAlertTitle", @"")
+                                                                   message:NSLocalizedString(@"LogoutAlertMessage", @"")
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"yes", @"")
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          [[SFAuthenticationManager sharedManager] logout];
+                                                      }];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"no", @"")
+                                                        style:UIAlertActionStyleCancel
+                                                      handler:nil];
+    
+    [alert addAction:yesAction];
+    [alert addAction:noAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 //*

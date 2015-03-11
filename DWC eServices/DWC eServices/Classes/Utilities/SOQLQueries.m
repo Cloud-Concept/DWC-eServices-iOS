@@ -41,6 +41,8 @@ static NSString *companyDirectorsQuery = @"SELECT Id, Roles__c, Director_Status_
 
 static NSString *companyLegalRepresentativesQuery = @"SELECT Id, Legal_Representative__r.Id, Legal_Representative__r.Name, Status__c, Role__c, Legal_Representative_End_Date__c, Legal_Representative_Start_Date__c FROM Legal_Representative__c WHERE Company__c = '%@'";
 
+static NSString *licenseActivityQuery = @"SELECT Id, Name, Status__c, Start_Date__c, End_Date__c, Original_Business_Activity__r.Id, Original_Business_Activity__r.Name, Original_Business_Activity__r.License_Type__c, Original_Business_Activity__r.Business_Activity_Name__c, Original_Business_Activity__r.Business_Activity_Name_Arabic__c, Original_Business_Activity__r.Business_Activity_Description__c, Original_Business_Activity__r.Status__c FROM License_Activity__c WHERE License__c = '%@'";
+
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
 }
@@ -111,4 +113,7 @@ static NSString *companyLegalRepresentativesQuery = @"SELECT Id, Legal_Represent
     return [NSString stringWithFormat:companyLegalRepresentativesQuery, [Globals currentAccount].Id];
 }
 
++ (NSString *)licenseActivityQueryForLicenseId:(NSString *)LicenseId {
+    return [NSString stringWithFormat:licenseActivityQuery, LicenseId];
+}
 @end

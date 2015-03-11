@@ -45,6 +45,8 @@
 		130E096C1AA5C42800E6ED59 /* MyRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 130E096A1AA5C42800E6ED59 /* MyRequestTableViewCell.m */; };
 		130E096D1AA5C42800E6ED59 /* MyRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130E096B1AA5C42800E6ED59 /* MyRequestTableViewCell.xib */; };
 		130F7DD21AAEE76300380628 /* License.m in Sources */ = {isa = PBXBuildFile; fileRef = 130F7DD11AAEE76300380628 /* License.m */; };
+		130F7DD51AAF2B9000380628 /* LicenseActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 130F7DD41AAF2B9000380628 /* LicenseActivity.m */; };
+		130F7DD81AAF2C6800380628 /* BusinessActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 130F7DD71AAF2C6800380628 /* BusinessActivity.m */; };
 		131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131048C01A9EFDB0006A400B /* NewCardViewController.m */; };
 		131048C31A9EFDB0006A400B /* NewCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131048C11A9EFDB0006A400B /* NewCardViewController.xib */; };
 		131819401A91CAB200CAA4D6 /* BaseServicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1318193F1A91CAB200CAA4D6 /* BaseServicesViewController.m */; };
@@ -186,6 +188,10 @@
 		130E096B1AA5C42800E6ED59 /* MyRequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRequestTableViewCell.xib; sourceTree = "<group>"; };
 		130F7DD01AAEE76300380628 /* License.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = License.h; sourceTree = "<group>"; };
 		130F7DD11AAEE76300380628 /* License.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = License.m; sourceTree = "<group>"; };
+		130F7DD31AAF2B9000380628 /* LicenseActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseActivity.h; sourceTree = "<group>"; };
+		130F7DD41AAF2B9000380628 /* LicenseActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseActivity.m; sourceTree = "<group>"; };
+		130F7DD61AAF2C6800380628 /* BusinessActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessActivity.h; sourceTree = "<group>"; };
+		130F7DD71AAF2C6800380628 /* BusinessActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessActivity.m; sourceTree = "<group>"; };
 		131048BF1A9EFDB0006A400B /* NewCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCardViewController.h; sourceTree = "<group>"; };
 		131048C01A9EFDB0006A400B /* NewCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCardViewController.m; sourceTree = "<group>"; };
 		131048C11A9EFDB0006A400B /* NewCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCardViewController.xib; sourceTree = "<group>"; };
@@ -580,6 +586,8 @@
 			children = (
 				13081AE51A76559D00B33509 /* Account.h */,
 				13081AE61A76559D00B33509 /* Account.m */,
+				130F7DD61AAF2C6800380628 /* BusinessActivity.h */,
+				130F7DD71AAF2C6800380628 /* BusinessActivity.m */,
 				13081AE71A76559D00B33509 /* CardManagement.h */,
 				13081AE81A76559D00B33509 /* CardManagement.m */,
 				13081AE91A76559D00B33509 /* Country.h */,
@@ -600,6 +608,8 @@
 				1353CBDB1AAD9B5300E57FAC /* LegalRepresentative.m */,
 				130F7DD01AAEE76300380628 /* License.h */,
 				130F7DD11AAEE76300380628 /* License.m */,
+				130F7DD31AAF2B9000380628 /* LicenseActivity.h */,
+				130F7DD41AAF2B9000380628 /* LicenseActivity.m */,
 				1353CBD41AAD7ECB00E57FAC /* ManagementMember.h */,
 				1353CBD51AAD7ECB00E57FAC /* ManagementMember.m */,
 				139E6B5C1A7A3CED00D1D451 /* Occupation.h */,
@@ -1431,6 +1441,8 @@
 				130C30011A78DE0200C95600 /* EmployeeTableViewCell.m in Sources */,
 				13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */,
 				1302913C1A76C88D000E119C /* SWRevealViewController.m in Sources */,
+				130F7DD51AAF2B9000380628 /* LicenseActivity.m in Sources */,
+				130F7DD81AAF2C6800380628 /* BusinessActivity.m in Sources */,
 				1318194B1A91FCB900CAA4D6 /* ServicesUploadViewController.m in Sources */,
 				130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */,
 				13081AE31A7625C400B33509 /* Globals.m in Sources */,

@@ -10,6 +10,15 @@
 #import "DWCCompanyInfo.h"
 #import "CompanyInfoListViewController.h"
 #import "SOQLQueries.h"
+#import "RecordMainViewController.h"
+#import "Globals.h"
+#import "Account.h"
+#import "TableViewSection.h"
+#import "TableViewSectionField.h"
+#import "HelperClass.h"
+#import "License.h"
+#import "LicenseActivity.h"
+#import "BusinessActivity.h"
 
 @interface CompanyInfoTypeViewController ()
 
@@ -24,8 +33,12 @@
     dwcCompanyInfoTypesArray = [NSMutableArray new];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
-                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoCompanyAndLicense", @"")
-                                         DWCCompanyInfoType:DWCCompanyInfoCompanyAndLicense]];
+                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoCompany", @"")
+                                         DWCCompanyInfoType:DWCCompanyInfoCompany]];
+    
+    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
+                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLicenseInfo", @"")
+                                         DWCCompanyInfoType:DWCCompanyInfoLicenseInfo]];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLeasingInfo", @"")
@@ -58,6 +71,75 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)configureRecordMainViewController:(RecordMainViewController *)recordVC ForCompany:(Account *)account {
+    recordVC.NameValue = account.name;
+    
+    NSMutableArray *sectionsArray = [NSMutableArray new];
+    NSMutableArray *fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"AccountName", @"")
+                                                                         FieldValue:account.name]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"RegistrationDate", @"")
+                                                                         FieldValue:[HelperClass formatDateToString:account.companyRegistrationDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"LegalForm", @"")
+                                                                         FieldValue:account.legalForm]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"RegistrationNumber", @"")
+                                                                         FieldValue:account.registrationNumberValue]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:NSLocalizedString(@"RegistrationInformation", @"") Fields:fieldsArray]];
+    
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"Phone", @"")
+                                                                        FieldValue:account.phone]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"Fax", @"")
+                                                                         FieldValue:account.fax]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"Email", @"")
+                                                                         FieldValue:account.email]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"Mobile", @"")
+                                                                         FieldValue:account.mobile]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"PROEmail", @"")
+                                                                         FieldValue:account.proEmail]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"PROMobile", @"")
+                                                                         FieldValue:account.proMobileNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"BillingAddress", @"")
+                                                                         FieldValue:[account billingAddress]]];
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:NSLocalizedString(@"ContactInformation", @"") Fields:fieldsArray]];
+    
+    recordVC.DetailsSectionsArray = sectionsArray;
+    recordVC.RelatedServicesMask = 0;
+}
+
+- (void)configureRecordMainViewController:(RecordMainViewController *)recordVC ForLicense:(License *)license Company:(Account *)account{
+    recordVC.NameValue = account.name;
+    
+    NSMutableArray *sectionsArray = [NSMutableArray new];
+    NSMutableArray *fieldsArray = [NSMutableArray new];
+
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"CommercialName", @"")
+                                                                         FieldValue:license.commercialName]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"LicenseNumber", @"")
+                                                                         FieldValue:license.licenseNumberValue]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"IssueDate", @"")
+                                                                         FieldValue:[HelperClass formatDateToString:license.licenseIssueDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:NSLocalizedString(@"ExpiryDate", @"")
+                                                                         FieldValue:[HelperClass formatDateToString:license.licenseExpiryDate]]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:NSLocalizedString(@"LicenseInformation", @"") Fields:fieldsArray]];
+    
+    fieldsArray = [NSMutableArray new];
+    for (LicenseActivity *licActivity in license.licenseActivityArray) {
+        [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:licActivity.originalBusinessActivity.name
+                                                                             FieldValue:licActivity.originalBusinessActivity.businessActivityName]];
+    }
+    
+    if (fieldsArray.count > 0) {
+        [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:NSLocalizedString(@"ActivityInformation", @"") Fields:fieldsArray]];
+    }
+    
+    recordVC.DetailsSectionsArray = sectionsArray;
+    recordVC.RelatedServicesMask = 0;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -83,10 +165,28 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    /*EmployeeListViewController *employeeListVC = [EmployeeListViewController new];
-     employeeListVC.currentDWCEmployee = [dwcEmployeesTypesArray objectAtIndex:indexPath.row];
-     
-     [self.navigationController pushViewController:employeeListVC animated:YES];*/
+    
+    DWCCompanyInfo *currentDWCCompanyInfo = [dwcCompanyInfoTypesArray objectAtIndex:indexPath.row];
+    
+    if (currentDWCCompanyInfo.Type != DWCCompanyInfoCompany && currentDWCCompanyInfo.Type != DWCCompanyInfoLicenseInfo)
+        return;
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    
+    
+    switch (currentDWCCompanyInfo.Type) {
+        case DWCCompanyInfoCompany:
+            [self configureRecordMainViewController:recordMainVC ForCompany:[Globals currentAccount]];
+            break;
+            case DWCCompanyInfoLicenseInfo:
+            [self configureRecordMainViewController:recordMainVC ForLicense:[Globals currentAccount].currentLicenseNumber Company:[Globals currentAccount]];
+            break;
+        default:
+            break;
+    }
+    
+    [self.navigationController pushViewController:recordMainVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -112,10 +212,12 @@
     
     BOOL shouldPerformSegue = YES;
     
-    NSIndexPath *index = [self.tableView indexPathForSelectedRow];
-    if (index.row == 0) {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    DWCCompanyInfo *currentDWCCompanyInfo = [dwcCompanyInfoTypesArray objectAtIndex:indexPath.row];
+    
+    if (currentDWCCompanyInfo.Type == DWCCompanyInfoCompany || currentDWCCompanyInfo.Type == DWCCompanyInfoLicenseInfo)
         shouldPerformSegue = NO;
-    }
     
     return shouldPerformSegue;
 }

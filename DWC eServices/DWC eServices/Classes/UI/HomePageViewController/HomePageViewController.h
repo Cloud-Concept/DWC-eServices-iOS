@@ -26,4 +26,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *licenseExpiryDateValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *currentBalanceValueLabel;
 
+- (IBAction)logoutButtonClicked:(id)sender;
 @end

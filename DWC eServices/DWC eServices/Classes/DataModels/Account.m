@@ -129,4 +129,10 @@
     
     return self;
 }
+
+- (NSString *)billingAddress {
+    //{!acc.BillingStreet} {!acc.BillingPostalCode} {!acc.BillingCountry} {!acc.BillingState} {!acc.BillingCity}
+    return [NSString stringWithFormat:@"%@ %@ %@ %@ %@", self.billingStreet, self.billingPostalCode, self.billingCountry, self.billingState, self.billingCity];
+}
+
 @end

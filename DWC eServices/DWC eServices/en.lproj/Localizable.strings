@@ -20,7 +20,9 @@
 "DeleteAlertTitle" = "Delete";
 "DocumentSourceAlertTitle" = "Document Source";
 "ThanksAlertTitle" = "Thank you.";
+"LogoutAlertTitle" = "Logout";
 
+"LogoutAlertMessage" = "Are you sure you want to logout?";
 "ErrorAlertMessage" = "An error occurred";
 "CancelServiceAlertMessage" = "Are you sure you want to cancel this service?";
 "RequiredFieldsAlertMessage" = "Please fill all required fields.";
@@ -60,9 +62,31 @@
 "RequestIsCourierRequiredLabel" = "Courier Required";
 "RequestInfoLabel" = "Request Information";
 
-"DWCCompanyInfoCompanyAndLicense" = "Company and License Info";
+"DWCCompanyInfoCompany" = "Company Info";
+"DWCCompanyInfoLicenseInfo" = "License Info";
 "DWCCompanyInfoLeasingInfo" = "Leasing Info";
 "DWCCompanyInfoShareholders" = "Shareholders";
 "DWCCompanyInfoDirectors" = "Directors";
 "DWCCompanyInfoGeneralManagers" = "General Managers";
 "DWCCompanyInfoLegalRepresentative" = "Legal Representative";
+
+"AccountName" = "Account Name";
+"RegistrationDate" = "Registration Date";
+"LegalForm" = "Legal Form";
+"RegistrationNumber" = "Registration Number";
+"RegistrationInformation" = "Registration Information";
+"Phone" = "Phone";
+"Fax" = "Fax";
+"Email" = "Email";
+"Mobile" = "Mobile";
+"PROEmail" = "PRO Email";
+"PROMobile" = "PRO Mobile";
+"BillingAddress" = "Billing Address";
+"ContactInformation" = "Contact Information";
+"CommercialName" = "Commercial Name";
+"LicenseNumber" = "License Number";
+"IssueDate" = "Issue Date";
+"ExpiryDate" = "Expiry Date";
+"LicenseInformation" = "License Information";
+"ActivityInformation" = "Activity Information";
+
