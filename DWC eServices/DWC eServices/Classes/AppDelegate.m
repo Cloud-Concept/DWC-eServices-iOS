@@ -102,8 +102,7 @@ static NSString * const LoginHostUrl            = @"bpark-dwc.cs7.force.com/port
     // if you want to receive push notifications from Salesforce, you will also need to
     // implement the application:didRegisterForRemoteNotificationsWithDeviceToken: method (below).
     //
-    //[[SFPushNotificationManager sharedInstance] registerForRemoteNotifications];
-    //
+    [[SFPushNotificationManager sharedInstance] registerForRemoteNotifications];
     
     [[SalesforceSDKManager sharedManager] launch];
     return YES;
@@ -114,16 +113,32 @@ static NSString * const LoginHostUrl            = @"bpark-dwc.cs7.force.com/port
     //
     // Uncomment the code below to register your device token with the push notification manager
     //
-    //[[SFPushNotificationManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-    //if ([SFAccountManager sharedInstance].credentials.accessToken != nil) {
-    //    [[SFPushNotificationManager sharedInstance] registerForSalesforceNotifications];
-    //}
-    //
+    [[SFPushNotificationManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    if ([SFUserAccountManager sharedInstance].currentUser.credentials.accessToken != nil) {
+        [[SFPushNotificationManager sharedInstance] registerForSalesforceNotifications];
+    }
+    
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     // Respond to any push notification registration errors here.
+    NSLog(@"Failed to get token, error: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    if (application.applicationState == UIApplicationStateActive ) {
+        UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+        localNotification.userInfo = userInfo;
+        localNotification.soundName = UILocalNotificationDefaultSoundName;
+        
+        NSString *message = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
+        localNotification.alertBody = message;
+        
+        localNotification.fireDate = [NSDate date];
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+    }
 }
 
 #pragma mark - Private methods
