@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class NotificationManagement;
+
 @interface NotificationTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
+
+- (void)refreshCellForNotification:(NotificationManagement *)notification;
+
 @end

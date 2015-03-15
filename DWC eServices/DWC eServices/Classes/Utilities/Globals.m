@@ -13,8 +13,9 @@
 
 static NSString *contactId = @"";
 static Account *currentAccount = nil;
+static NSNumber *notificationsCount;
 
-+ (NSString*) contactId {
++ (NSString *) contactId {
     return contactId;
 }
 
@@ -22,12 +23,21 @@ static Account *currentAccount = nil;
     contactId = value;
 }
 
-+ (Account*) currentAccount {
++ (Account *) currentAccount {
     return currentAccount;
 }
 
 + (void) setCurrentAccount:(Account*)value {
     currentAccount = value;
+}
+
++ (void)setNotificationsCount:(NSNumber *)value {
+    notificationsCount = value;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = [notificationsCount integerValue];
+}
+
++ (NSNumber *)notificationsCount {
+    return notificationsCount;
 }
 
 @end

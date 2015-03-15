@@ -45,6 +45,8 @@ static NSString *licenseActivityQuery = @"SELECT Id, Name, Status__c, Start_Date
 
 static NSString *notificationsQuery = @"SELECT ID, Name, isFeedbackAllowed__c, Case_Process_Name__c, Case_Status__c, isMessageRead__c, Is_Push_Notification_Allowed__c, Notification_Message__c, Prior_Value__c, Read_Date_and_Time__c, Compiled_Message__c, Case__r.Id, Case__r.CaseNumber, Case__r.Case_Rating_Score__c, Case__r.Web_Form__c, Case__r.Status, Case__r.CreatedDate FROM Notification_Management__c WHERE Case__r.AccountId = '%@' AND Is_Push_Notification_Allowed__c = TRUE ORDER BY CreatedDate DESC";
 
+static NSString *notificationsCountQuery = @"SELECT COUNT(ID) FROM Notification_Management__c WHERE Case__r.AccountId = '%@' AND Is_Push_Notification_Allowed__c = TRUE AND isMessageRead__c = FALSE";
+
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
 }
@@ -121,6 +123,10 @@ static NSString *notificationsQuery = @"SELECT ID, Name, isFeedbackAllowed__c, C
 
 + (NSString *)notificationsQuery {
     return [NSString stringWithFormat:notificationsQuery, [Globals currentAccount].Id];
+}
+
++ (NSString *)notificationsCountQuery {
+    return [NSString stringWithFormat:notificationsCountQuery, [Globals currentAccount].Id];
 }
 
 @end

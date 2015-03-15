@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
-            timestampString = "447750221.073183"
+            timestampString = "448105316.605406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-loadCompanyInfo"
             landmarkType = "5">
          </BreakpointContent>
@@ -1138,11 +1138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/AppDelegate.m"
-            timestampString = "447848715.478159"
+            timestampString = "447853656.523371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1150,16 +1150,78 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DWC eServices/DWC eServices/Classes/AppDelegate.m"
-            timestampString = "447852500.843932"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
+            timestampString = "448105316.605406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "-loadNotificationsCount"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__48-[HomePageViewController loadNotificationsCount]_block_invoke_3"
+                  moduleName = "DWCeServices"
+                  urlString = "file:///Users/Za2loom/Development/CloudConcept/iOS/DWC-eServices-iOS/DWC%20eServices/DWC%20eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
+                  timestampString = "448105550.170293"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__48-[HomePageViewController loadNotificationsCount]_block_invoke_4"
+                  moduleName = "DWCeServices"
+                  urlString = "file:///Users/Za2loom/Development/CloudConcept/iOS/DWC-eServices-iOS/DWC%20eServices/DWC%20eServices/Classes/UI/HomePageViewController/HomePageViewController.m"
+                  timestampString = "448105550.170505"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/Utilities/Globals.m"
+            timestampString = "448105455.276809"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "+setNotificationsCount:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/NotificationListViewCotnroller/NotificationListViewController.m"
+            timestampString = "448109310.413313"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "-setNotificationAsRead:AtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -51,11 +51,20 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = NO;
     [super viewWillAppear:animated];
-}
+    
+    //Show Notification Count in Homepage
+    [self setNotificationNumberBadge];
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setNotificationNumberBadge {
+    [UIApplication sharedApplication].applicationIconBadgeNumber = [[Globals notificationsCount] integerValue];
+    [HelperClass setupButtonWithBadgeOnImage:self.notificationButton
+                                       Value:[UIApplication sharedApplication].applicationIconBadgeNumber];
 }
 
 - (void)loadCompanyInfo {
@@ -191,6 +200,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self refreshLabels];
+            [self loadNotificationsCount];
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
         });
         
@@ -203,6 +213,35 @@
      failBlock:errorBlock
      completeBlock:successBlock];
     
+}
+
+- (void)loadNotificationsCount {
+    
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
+        });
+        
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            
+            for (NSDictionary *record in [dict objectForKey:@"records"]) {
+                NSNumber *notificationsCount = [record objectForKey:@"expr0"];
+                [Globals setNotificationsCount:notificationsCount];
+                [self setNotificationNumberBadge];
+            }
+        });
+    };
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    [[SFRestAPI sharedInstance]
+     performSOQLQuery:[SOQLQueries notificationsCountQuery]
+     failBlock:errorBlock
+     completeBlock:successBlock];
 }
 
 - (void)refreshLabels {

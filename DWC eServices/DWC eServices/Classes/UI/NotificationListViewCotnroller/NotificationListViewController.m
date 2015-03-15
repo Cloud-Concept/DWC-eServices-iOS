@@ -16,6 +16,9 @@
 #import "NotificationTableViewCell.h"
 #import "BaseServicesViewController.h"
 #import "Request.h"
+#import "SFDateUtil.h"
+#import "Globals.h"
+#import "HelperClass.h"
 
 @interface NotificationListViewController ()
 
@@ -45,6 +48,7 @@
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         
         NSMutableArray *notificationMutableArray = [NSMutableArray new];
+        NSInteger notificationsCount = 0;
         
         for (NSDictionary *notificationDict in [dict objectForKey:@"records"]) {
             NSDictionary *requestDict = [notificationDict objectForKey:@"Case__r"];
@@ -59,21 +63,28 @@
                                               CaseRecordType:nil];
             }
             
-            [notificationMutableArray addObject:[[NotificationManagement alloc]
-                                                 initNotificationManager:[notificationDict objectForKey:@"Id"]
-                                                 Name:[notificationDict objectForKey:@"Name"]
-                                                 CaseStatus:[notificationDict objectForKey:@"Case_Status__c"]
-                                                 CompiledMessage:[notificationDict objectForKey:@"Compiled_Message__c"]
-                                                 NotificationMessage:[notificationDict objectForKey:@"Notification_Message__c"]
-                                                 PriorValue:[notificationDict objectForKey:@"Prior_Value__c"]
-                                                 ReadDateTime:[notificationDict objectForKey:@"Read_Date_and_Time__c"]
-                                                 IsFeedbackAllowed:[[notificationDict objectForKey:@"isFeedbackAllowed__c"] boolValue]
-                                                 IsMessageRead:[[notificationDict objectForKey:@"isMessageRead__c"] boolValue]
-                                                 IsPushNotificationAllowed:[[notificationDict objectForKey:@"Is_Push_Notification_Allowed__c"] boolValue]
-                                                 NotificationRequest:request]];
+            NotificationManagement *notification = [[NotificationManagement alloc]
+                                                    initNotificationManager:[notificationDict objectForKey:@"Id"]
+                                                    Name:[notificationDict objectForKey:@"Name"]
+                                                    CaseStatus:[notificationDict objectForKey:@"Case_Status__c"]
+                                                    CompiledMessage:[notificationDict objectForKey:@"Compiled_Message__c"]
+                                                    NotificationMessage:[notificationDict objectForKey:@"Notification_Message__c"]
+                                                    PriorValue:[notificationDict objectForKey:@"Prior_Value__c"]
+                                                    ReadDateTime:[notificationDict objectForKey:@"Read_Date_and_Time__c"]
+                                                    IsFeedbackAllowed:[[notificationDict objectForKey:@"isFeedbackAllowed__c"] boolValue]
+                                                    IsMessageRead:[[notificationDict objectForKey:@"isMessageRead__c"] boolValue]
+                                                    IsPushNotificationAllowed:[[notificationDict objectForKey:@"Is_Push_Notification_Allowed__c"] boolValue]
+                                                    NotificationRequest:request];
+            
+            if (!notification.isMessageRead) {
+                notificationsCount++;
+            }
+            
+            [notificationMutableArray addObject:notification];
         }
         
         notificationsArray = [NSArray arrayWithArray:notificationMutableArray];
+        [Globals setNotificationsCount:[NSNumber numberWithInteger:notificationsCount]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
@@ -98,6 +109,48 @@
     [self.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
+- (void)setNotificationAsRead:(NotificationManagement *)notification AtIndexPath:(NSIndexPath *)indexPath {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+#warning Handle Error
+        });
+        
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            notification.isMessageRead = YES;
+            
+            [Globals setNotificationsCount:[NSNumber numberWithInteger:[[Globals notificationsCount] integerValue] - 1]];
+            
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            
+            [self openViewMyRequestFlow:notification.request];
+        });
+        
+    };
+    
+    NSMutableDictionary *fields = [NSMutableDictionary new];
+    [fields setObject:[NSNumber numberWithBool:YES] forKey:@"isMessageRead__c"];
+    
+    NSString *dateString = [SFDateUtil toSOQLDateTimeString:[NSDate date] isDateTime:true];
+    
+    dateString = [dateString stringByReplacingOccurrencesOfString:@" am" withString:@""];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@" pm" withString:@""];
+    
+    [fields setObject:dateString forKey:@"Read_Date_and_Time__c"];
+    
+    [[SFRestAPI sharedInstance] performUpdateWithObjectType:@"Notification_Management__c"
+                                                   objectId:notification.Id
+                                                     fields:fields
+                                                  failBlock:errorBlock
+                                              completeBlock:successBlock];
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -116,7 +169,7 @@
     // Configure the cell...
     NotificationManagement *currentNotification = [notificationsArray objectAtIndex:indexPath.row];
     
-    [cell.notificationLabel setAttributedText:[currentNotification getAttributedNotificationMessage]];
+    [cell refreshCellForNotification:currentNotification];
     
     return cell;
 }
@@ -124,7 +177,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NotificationManagement *currentNotification = [notificationsArray objectAtIndex:indexPath.row];
     
-    [self openViewMyRequestFlow:currentNotification.request];
+    if (currentNotification.isMessageRead)
+        [self openViewMyRequestFlow:currentNotification.request];
+    else
+        [self setNotificationAsRead:currentNotification AtIndexPath:indexPath];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -145,8 +201,3 @@
 */
 
 @end
-
-
-//SELECT ID,isFeedbackAllowed__c, Case__r.Case_Rating_Score__c, Case__c, Case__r.AccountId, Case__r.CaseNumber, Case_Process_Name__c, Case_Status__c, isMessageRead__c, Is_Push_Notification_Allowed__c, Notification_Message__c, Prior_Value__c, Read_Date_and_Time__c FROM Notification_Management__c WHERE Case__r.AccountId = '%@' AND Is_Push_Notification_Allowed__c = TRUE ORDER BY CreatedDate DESC
-
-

@@ -12,9 +12,10 @@
 
 @interface Globals : NSObject
 
-+ (NSString*) contactId;
-+ (void) setContactId:(NSString*)value;
-+ (Account*) currentAccount;
-+ (void) setCurrentAccount:(Account*)value;
-
++ (NSString *) contactId;
++ (void) setContactId:(NSString *)value;
++ (Account *) currentAccount;
++ (void) setCurrentAccount:(Account *)value;
++ (void)setNotificationsCount:(NSNumber *)value;
++ (NSNumber *)notificationsCount;
 @end

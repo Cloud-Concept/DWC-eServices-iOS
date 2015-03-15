@@ -7,6 +7,7 @@
 //
 
 #import "NotificationTableViewCell.h"
+#import "NotificationManagement.h"
 
 @implementation NotificationTableViewCell
 
@@ -18,6 +19,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)refreshCellForNotification:(NotificationManagement *)notification {
+    [self.notificationLabel setAttributedText:[notification getAttributedNotificationMessage]];
+    
+    self.backgroundColor = notification.isMessageRead ? [UIColor clearColor] : [UIColor colorWithRed:0.968 green:0.933 blue:0.545 alpha:1];
 }
 
 @end
