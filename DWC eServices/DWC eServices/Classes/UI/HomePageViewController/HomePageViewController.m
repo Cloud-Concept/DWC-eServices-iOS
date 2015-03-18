@@ -64,7 +64,7 @@
 - (void)setNotificationNumberBadge {
     [UIApplication sharedApplication].applicationIconBadgeNumber = [[Globals notificationsCount] integerValue];
     [HelperClass setupButtonWithBadgeOnImage:self.notificationButton
-                                       Value:[UIApplication sharedApplication].applicationIconBadgeNumber];
+                                       Value:[[Globals notificationsCount] integerValue]];
 }
 
 - (void)loadCompanyInfo {
@@ -132,9 +132,9 @@
         [Globals setContactId:[dict objectForKey:@"ContactId"]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
             [self refreshLabels];
             [self loadLicenseInfo];
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
         });
         
     };
@@ -199,9 +199,9 @@
         [Globals currentAccount].currentLicenseNumber.licenseActivityArray = [NSArray arrayWithArray:licenseActivityMutableArray];
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
             [self refreshLabels];
             [self loadNotificationsCount];
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
         });
         
     };

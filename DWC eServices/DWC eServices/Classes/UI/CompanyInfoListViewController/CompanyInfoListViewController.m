@@ -11,11 +11,13 @@
 #import "DWCCompanyInfo.h"
 #import "FVCustomAlertView.h"
 #import "SFRestAPI+Blocks.h"
+#import "Globals.h"
 #import "Account.h"
 #import "ShareOwnership.h"
 #import "ManagementMember.h"
 #import "Directorship.h"
 #import "LegalRepresentative.h"
+#import "TenancyContract.h"
 #import "HelperClass.h"
 
 @interface CompanyInfoListViewController ()
@@ -40,6 +42,9 @@
             break;
         case DWCCompanyInfoLegalRepresentative:
             [self loadCompanyLegalRepresentatives];
+            break;
+        case DWCCompanyInfoLeasingInfo:
+            [self loadTenancyContracts];
             break;
         default:
             break;
@@ -226,6 +231,65 @@
                                    completeBlock:successBlock];
 }
 
+- (void)loadTenancyContracts {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        NSArray *records = [dict objectForKey:@"records"];
+        
+        dataRows = [NSMutableArray new];
+        for (NSDictionary *recordDict in records) {
+            [dataRows addObject:[[TenancyContract alloc] initTenanctContract:[recordDict objectForKey:@"Id"]
+                                                                        Name:[recordDict objectForKey:@"Name"]
+                                                                ContractType:[recordDict objectForKey:@"Contract_Type__c"]
+                                                                      Status:[recordDict objectForKey:@"Status__c"]
+                                                       ContractDurationMonth:[recordDict objectForKey:@"Contract_Duration_Year_Month__c"]
+                                                               ActivatedDate:[recordDict objectForKey:@"Activated_Date__c"]
+                                                               RentStartDate:[recordDict objectForKey:@"Rent_Start_date__c"]
+                                                           ContractStartDate:[recordDict objectForKey:@"Contract_Start_Date__c"]
+                                                          ContractExpiryDate:[recordDict objectForKey:@"Contract_Expiry_Date__c"]
+                                                              TotalRentPrice:[recordDict objectForKey:@"Total_Rent_Price__c"]
+                                                        ContractDurationYear:[recordDict objectForKey:@"Contract_Duration__c"]
+                                                                IsBCContract:[[recordDict objectForKey:@"IS_BC_Contract__c"] boolValue]]];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self.tableView reloadData];
+        });
+    };
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    SFRestRequest *payAndSubmitRequest = [[SFRestRequest alloc] init];
+    payAndSubmitRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileTenantContractsWebService"];
+    payAndSubmitRequest.method = SFRestMethodGET;
+    payAndSubmitRequest.path = @"/services/apexrest/MobileTenantContractsWebService";
+    payAndSubmitRequest.queryParams = [NSDictionary dictionaryWithObject:[Globals currentAccount].Id forKey:@"AccountId"];
+    
+    [[SFRestAPI sharedInstance] send:payAndSubmitRequest delegate:self];
+}
+
+- (UITableViewCell *)cellContractsForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
+    CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
+    
+    TenancyContract *currentTenancyContract = [dataRows objectAtIndex:indexPath.row];
+    
+    cell.nameLabel.text = currentTenancyContract.name;
+    cell.roleLabel.text = NSLocalizedString(@"ExpiryLabel", @"");
+    cell.roleValueLabel.text = [HelperClass formatDateToString:currentTenancyContract.contractExpiryDate];
+    
+    cell.shareOwnershipValueLabel.hidden = YES;
+    cell.shareOwnershipLabel.hidden = YES;
+    
+    return cell;
+}
+
 - (UITableViewCell *)cellShareholdersForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
     
@@ -305,6 +369,9 @@
         case DWCCompanyInfoLegalRepresentative:
             cell = [self cellLegalRepresentativeForRowAtIndexPath:indexPath tableView:tableView];
             break;
+        case DWCCompanyInfoLeasingInfo:
+            cell = [self cellContractsForRowAtIndexPath:indexPath tableView:tableView];
+            break;
         default:
             break;
     }
@@ -322,6 +389,63 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
+}
+
+#pragma mark - SFRestAPIDelegate
+
+- (void)request:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
+    NSError *error;
+    NSArray *resultsArray = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
+    NSLog(@"request:didLoadResponse: %@", resultsArray);
+    
+    dataRows = [NSMutableArray new];
+    for (NSDictionary *recordDict in resultsArray) {
+        [dataRows addObject:[[TenancyContract alloc] initTenanctContract:[recordDict objectForKey:@"Id"]
+                                                                    Name:[recordDict objectForKey:@"Name"]
+                                                            ContractType:[recordDict objectForKey:@"Contract_Type__c"]
+                                                                  Status:[recordDict objectForKey:@"Status__c"]
+                                                   ContractDurationMonth:[recordDict objectForKey:@"Contract_Duration_Year_Month__c"]
+                                                           ActivatedDate:[recordDict objectForKey:@"Activated_Date__c"]
+                                                           RentStartDate:[recordDict objectForKey:@"Rent_Start_date__c"]
+                                                       ContractStartDate:[recordDict objectForKey:@"Contract_Start_Date__c"]
+                                                      ContractExpiryDate:[recordDict objectForKey:@"Contract_Expiry_Date__c"]
+                                                          TotalRentPrice:[recordDict objectForKey:@"Total_Rent_Price__c"]
+                                                    ContractDurationYear:[recordDict objectForKey:@"Contract_Duration__c"]
+                                                            IsBCContract:[[recordDict objectForKey:@"IS_BC_Contract__c"] boolValue]]];
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        
+        [self.tableView reloadData];
+    });
+}
+
+- (void)request:(SFRestRequest*)request didFailLoadWithError:(NSError*)error {
+    NSLog(@"request:didFailLoadWithError: %@", error);
+    //add your failed error handling here
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+    });
+#warning Handle error
+}
+
+- (void)requestDidCancelLoad:(SFRestRequest *)request {
+    NSLog(@"requestDidCancelLoad: %@", request);
+    //add your failed error handling here
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+    });
+#warning Handle error
+}
+
+- (void)requestDidTimeout:(SFRestRequest *)request {
+    NSLog(@"requestDidTimeout: %@", request);
+    //add your failed error handling here
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+    });
+#warning Handle error
 }
 
 /*

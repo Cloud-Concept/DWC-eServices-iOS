@@ -25,4 +25,5 @@
 + (NSString *)licenseActivityQueryForLicenseId:(NSString *)LicenseId;
 + (NSString *)notificationsQuery;
 + (NSString *)notificationsCountQuery;
++ (NSString *)contractsQuery;
 @end

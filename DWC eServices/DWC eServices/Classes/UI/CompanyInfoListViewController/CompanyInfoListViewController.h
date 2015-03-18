@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
+#import "SFRestAPI.h"
 
 @class DWCCompanyInfo;
 
-@interface CompanyInfoListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CompanyInfoListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, SFRestDelegate>
 {
     NSMutableArray *dataRows;
 }

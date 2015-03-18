@@ -42,7 +42,8 @@
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLeasingInfo", @"")
-                                         DWCCompanyInfoType:DWCCompanyInfoLeasingInfo]];
+                                         DWCCompanyInfoType:DWCCompanyInfoLeasingInfo
+                                         Query:[SOQLQueries contractsQuery]]];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoShareholders", @"")

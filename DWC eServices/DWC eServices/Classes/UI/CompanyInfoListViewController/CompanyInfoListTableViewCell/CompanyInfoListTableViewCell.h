@@ -10,6 +10,7 @@
 
 @interface CompanyInfoListTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *roleValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shareOwnershipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shareOwnershipValueLabel;

@@ -47,6 +47,8 @@ static NSString *notificationsQuery = @"SELECT ID, Name, isFeedbackAllowed__c, C
 
 static NSString *notificationsCountQuery = @"SELECT COUNT(ID) FROM Notification_Management__c WHERE Case__r.AccountId = '%@' AND Is_Push_Notification_Allowed__c = TRUE AND isMessageRead__c = FALSE";
 
+static NSString *contractsQuery = @"SELECT Id, Name, Contract_Type__c, Activated_Date__c, Total_Rent_Price__c, Contract_Duration__c, IS_BC_Contract__c, Rent_Start_date__c, Contract_Duration_Year_Month__c, Contract_Start_Date__c, Contract_Expiry_Date__c, Status__c FROM Contract_DWC__c WHERE Status__c = 'Active' AND Tenant__c = '%@'";
+
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
 }
@@ -127,6 +129,10 @@ static NSString *notificationsCountQuery = @"SELECT COUNT(ID) FROM Notification_
 
 + (NSString *)notificationsCountQuery {
     return [NSString stringWithFormat:notificationsCountQuery, [Globals currentAccount].Id];
+}
+
++ (NSString *)contractsQuery {
+    return [NSString stringWithFormat:contractsQuery, [Globals currentAccount].Id];
 }
 
 @end

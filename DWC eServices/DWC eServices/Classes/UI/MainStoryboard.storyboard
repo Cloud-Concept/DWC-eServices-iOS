@@ -904,6 +904,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="nameLabel" destination="weS-Bp-HMA" id="MtV-9W-uww"/>
+                                            <outlet property="roleLabel" destination="Xgy-99-Oj3" id="Htw-eV-dcb"/>
                                             <outlet property="roleValueLabel" destination="KJ4-Lb-TuD" id="tHF-LK-zbI"/>
                                             <outlet property="shareOwnershipLabel" destination="KIU-so-bEt" id="pyf-yl-2ua"/>
                                             <outlet property="shareOwnershipValueLabel" destination="B8T-g8-YPp" id="X14-qF-hHQ"/>
