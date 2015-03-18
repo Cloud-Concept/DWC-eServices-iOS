@@ -11,6 +11,7 @@
 #import "DWCCompanyInfo.h"
 #import "FVCustomAlertView.h"
 #import "SFRestAPI+Blocks.h"
+#import "RecordMainViewController.h"
 #import "Globals.h"
 #import "Account.h"
 #import "ShareOwnership.h"
@@ -19,6 +20,9 @@
 #import "LegalRepresentative.h"
 #import "TenancyContract.h"
 #import "HelperClass.h"
+#import "Passport.h"
+#import "TableViewSectionField.h"
+#import "TableViewSection.h"
 
 @interface CompanyInfoListViewController ()
 
@@ -73,8 +77,21 @@
             NSDictionary *shareholderDict = [recordDict objectForKey:@"Shareholder__r"];
             Account *shareholder;
             if (![shareholderDict isKindOfClass:[NSNull class]]) {
+                NSDictionary *passportDict = [shareholderDict objectForKey:@"Current_Passport__r"];
+                Passport *passport;
+                if (![passportDict isKindOfClass:[NSNull class]]) {
+                    passport = [[Passport alloc] initPassport:[passportDict objectForKey:@"Id"]
+                                               PassportNumber:[passportDict objectForKey:@"Name"]
+                                                 PassportType:[passportDict objectForKey:@"Passport_Type__c"]
+                                         PassportPlaceOfIssue:[passportDict objectForKey:@"Passport_Place_of_Issue__c"]
+                                            PassportIssueDate:[passportDict objectForKey:@"Passport_Issue_Date__c"]
+                                           PassportExpiryDate:[passportDict objectForKey:@"Passport_Expiry_Date__c"]];
+                }
+                
                 shareholder = [[Account alloc] initAccount:[shareholderDict objectForKey:@"Id"]
-                                                       Name:[shareholderDict objectForKey:@"Name"]];
+                                                      Name:[shareholderDict objectForKey:@"Name"]
+                                               Nationality:[shareholderDict objectForKey:@"Nationality__c"]
+                                           AccountPassport:passport];
             }
             
             [dataRows addObject:[[ShareOwnership alloc] initShareOwnership:[recordDict objectForKey:@"Id"]
@@ -341,6 +358,60 @@
     return cell;
 }
 
+- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForShareholder:(ShareOwnership *)shareOwnership {
+    
+    recordVC.NameValue = shareOwnership.shareholder.name;
+    //recordVC.PhotoId = ;
+    NSMutableArray *sectionsArray = [NSMutableArray new];
+    
+    NSMutableArray *fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ShareholderName", @"")
+                            FieldValue:shareOwnership.shareholder.name]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ShareholderNationality", @"")
+                            FieldValue:shareOwnership.shareholder.nationality]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ShareholderPassportNumber", @"")
+                            FieldValue:shareOwnership.shareholder.currentPassport.passportNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ShareholderPassportExpiry", @"")
+                            FieldValue:[HelperClass formatDateToString:shareOwnership.shareholder.currentPassport.passportExpiryDate]]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"ShareholderPersonalInformation", @"")
+                              Fields:fieldsArray]];
+    
+    
+    NSString *ownershipPercent = [NSString stringWithFormat:@"%@ %%",[HelperClass formatNumberToString:shareOwnership.ownershipOfShare FormatStyle:NSNumberFormatterDecimalStyle MaximumFractionDigits:2]];
+    
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ShareholderOwnership", @"")
+                            FieldValue:ownershipPercent]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ShareholderNoOfShare", @"")
+                            FieldValue:[HelperClass formatNumberToString:shareOwnership.noOfShares
+                                                             FormatStyle:NSNumberFormatterDecimalStyle
+                                                   MaximumFractionDigits:2]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ShareholderStartDate", @"")
+                            FieldValue:[HelperClass formatDateToString:shareOwnership.ownershipStartDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ShareholderEndDate", @"")
+                            FieldValue:[HelperClass formatDateToString:shareOwnership.ownershipEndDate]]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"ShareholderInformation", @"")
+                              Fields:fieldsArray]];
+    
+    recordVC.DetailsSectionsArray = sectionsArray;
+    
+    NSUInteger servicesMask = 0;
+    
+    recordVC.RelatedServicesMask = servicesMask;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -380,10 +451,26 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    /*EmployeeListViewController *employeeListVC = [EmployeeListViewController new];
-     employeeListVC.currentDWCEmployee = [dwcEmployeesTypesArray objectAtIndex:indexPath.row];
-     
-     [self.navigationController pushViewController:employeeListVC animated:YES];*/
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    
+    switch (self.currentDWCCompanyInfo.Type) {
+        case DWCCompanyInfoShareholders:
+            [self configureRecordMainViewController:recordMainVC ForShareholder:[dataRows objectAtIndex:indexPath.row]];
+            break;
+        case DWCCompanyInfoGeneralManagers:
+            break;
+        case DWCCompanyInfoDirectors:
+            break;
+        case DWCCompanyInfoLegalRepresentative:
+            break;
+        case DWCCompanyInfoLeasingInfo:
+            break;
+        default:
+            break;
+    }
+    
+    [self.navigationController pushViewController:recordMainVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

@@ -1073,22 +1073,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DWC eServices/DWC eServices/Classes/UI/CompanyInfoListViewController/CompanyInfoListViewController.m"
-            timestampString = "448359190.059327"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-loadCompanyShareholders"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/CompanyInfoTypeViewController/CompanyInfoTypeViewController.m"
             timestampString = "448283235.829104"
             startingColumnNumber = "9223372036854775807"
@@ -1264,11 +1248,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DWC eServices/DWC eServices/Classes/UI/CompanyInfoListViewController/CompanyInfoListViewController.m"
-            timestampString = "448360445.652711"
+            timestampString = "448371879.016331"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
+            startingLineNumber = "487"
+            endingLineNumber = "487"
             landmarkName = "-request:didLoadResponse:"
             landmarkType = "5">
          </BreakpointContent>

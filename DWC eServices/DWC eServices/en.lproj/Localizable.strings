@@ -90,4 +90,15 @@
 "LicenseInformation" = "License Information";
 "ActivityInformation" = "Activity Information";
 
+"ShareholderName" = "Name";
+"ShareholderNationality" = "Nationality";
+"ShareholderPassportNumber" = "Passport Number";
+"ShareholderPassportExpiry" = "Passport Expiry";
+"ShareholderOwnership" = "Ownership (%)";
+"ShareholderNoOfShare" = "No. of Share";
+"ShareholderStartDate" = "Start Date";
+"ShareholderEndDate" = "End Date";
+"ShareholderPersonalInformation" = "Personal Information";
+"ShareholderInformation" = "Shareholder Information";
+
 "ExpiryLabel" = "Expiry:";

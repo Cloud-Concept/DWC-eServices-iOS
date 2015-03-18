@@ -70,6 +70,32 @@
     LicenseExpiryDateFormula:@""];
 }
 
+- (id)initAccount:(NSString*)AccountId Name:(NSString*)Name Nationality:(NSString *)Nationality AccountPassport:(Passport *)AccountPassport {
+    return [self initAccount:AccountId
+                        Name:Name
+              AccountBalance:nil
+        LicenseNumberFormula:@""
+    LicenseExpiryDateFormula:@""
+     CompanyRegistrationDate:@""
+                   LegalForm:@""
+     RegistrationNumberValue:@""
+                       Phone:@""
+                         Fax:@""
+                       Email:@""
+                      Mobile:@""
+                    ProEmail:@""
+             ProMobileNumber:@""
+               BillingStreet:@""
+           BillingPostalCode:@""
+              BillingCountry:@""
+                BillingState:@""
+                 BillingCity:@""
+          BillingCountryCode:@""
+                 Nationality:Nationality
+        CurrentLicenseNumber:nil
+             AccountPassport:AccountPassport];
+}
+
 - (id)initAccount:(NSString*)AccountId Name:(NSString*)Name AccountBalance:(NSNumber*)AccountBalance BillingCity:(NSString*)BillingCity BillingCountryCode:(NSString*)BillingCountryCode LicenseNumberFormula:(NSString*)LicenseNumberFormula LicenseExpiryDateFormula:(NSString*)LicenseExpiryDateFormula {
     
     return [self initAccount:AccountId
@@ -96,6 +122,33 @@
 }
 
 - (id)initAccount:(NSString*)AccountId Name:(NSString*)Name AccountBalance:(NSNumber*)AccountBalance LicenseNumberFormula:(NSString*)LicenseNumberFormula LicenseExpiryDateFormula:(NSString*)LicenseExpiryDateFormula CompanyRegistrationDate:(NSString *)CompanyRegistrationDate LegalForm:(NSString *)LegalForm RegistrationNumberValue:(NSString *)RegistrationNumberValue Phone:(NSString *)Phone Fax:(NSString *)Fax Email:(NSString *)Email Mobile:(NSString *)Mobile ProEmail:(NSString *)ProEmail ProMobileNumber:(NSString *)ProMobileNumber BillingStreet:(NSString *)BillingStreet BillingPostalCode:(NSString *)BillingPostalCode BillingCountry:(NSString *)BillingCountry BillingState:(NSString *)BillingState BillingCity:(NSString*)BillingCity BillingCountryCode:(NSString*)BillingCountryCode CurrentLicenseNumber:(License *)CurrentLicenseNumber{
+    
+    return [self initAccount:AccountId
+                        Name:Name
+              AccountBalance:AccountBalance
+        LicenseNumberFormula:LicenseNumberFormula
+    LicenseExpiryDateFormula:LicenseExpiryDateFormula
+     CompanyRegistrationDate:CompanyRegistrationDate
+                   LegalForm:LegalForm
+     RegistrationNumberValue:RegistrationNumberValue
+                       Phone:Phone
+                         Fax:Fax
+                       Email:Email
+                      Mobile:Mobile
+                    ProEmail:ProEmail
+             ProMobileNumber:ProMobileNumber
+               BillingStreet:BillingStreet
+           BillingPostalCode:BillingPostalCode
+              BillingCountry:BillingCountry
+                BillingState:BillingState
+                 BillingCity:BillingCity
+          BillingCountryCode:BillingCountryCode
+                 Nationality:@""
+        CurrentLicenseNumber:CurrentLicenseNumber
+             AccountPassport:nil];
+}
+
+- (id)initAccount:(NSString*)AccountId Name:(NSString*)Name AccountBalance:(NSNumber*)AccountBalance LicenseNumberFormula:(NSString*)LicenseNumberFormula LicenseExpiryDateFormula:(NSString*)LicenseExpiryDateFormula CompanyRegistrationDate:(NSString *)CompanyRegistrationDate LegalForm:(NSString *)LegalForm RegistrationNumberValue:(NSString *)RegistrationNumberValue Phone:(NSString *)Phone Fax:(NSString *)Fax Email:(NSString *)Email Mobile:(NSString *)Mobile ProEmail:(NSString *)ProEmail ProMobileNumber:(NSString *)ProMobileNumber BillingStreet:(NSString *)BillingStreet BillingPostalCode:(NSString *)BillingPostalCode BillingCountry:(NSString *)BillingCountry BillingState:(NSString *)BillingState BillingCity:(NSString*)BillingCity BillingCountryCode:(NSString*)BillingCountryCode Nationality:(NSString *)Nationality CurrentLicenseNumber:(License *)CurrentLicenseNumber AccountPassport:(Passport *)AccountPassport {
     
     if (!(self = [super init]))
         return nil;
@@ -125,7 +178,9 @@
     self.billingState = [HelperClass stringCheckNull:BillingState];
     self.billingCity = [HelperClass stringCheckNull:BillingCity];
     self.billingCountryCode = [HelperClass stringCheckNull:BillingCountryCode];
+    self.nationality = [HelperClass stringCheckNull:Nationality];
     self.currentLicenseNumber = CurrentLicenseNumber;
+    self.currentPassport = AccountPassport;
     
     return self;
 }

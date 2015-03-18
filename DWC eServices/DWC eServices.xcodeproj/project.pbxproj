@@ -86,6 +86,7 @@
 		1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA121A88B6E700ECED05 /* NewNOCViewController.m */; };
 		1394EA1F1A88D31F00ECED05 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1C1A88D31F00ECED05 /* WYPopoverController.m */; };
 		1394EA201A88D31F00ECED05 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1E1A88D31F00ECED05 /* WYStoryboardPopoverSegue.m */; };
+		139658141AB9797B0091C451 /* Passport.m in Sources */ = {isa = PBXBuildFile; fileRef = 139658131AB9797B0091C451 /* Passport.m */; };
 		139E6B591A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B581A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m */; };
 		139E6B5B1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139E6B5A1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib */; };
 		139E6B5E1A7A3CED00D1D451 /* Occupation.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B5D1A7A3CED00D1D451 /* Occupation.m */; };
@@ -267,6 +268,8 @@
 		1394EA1C1A88D31F00ECED05 /* WYPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYPopoverController.m; sourceTree = "<group>"; };
 		1394EA1D1A88D31F00ECED05 /* WYStoryboardPopoverSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYStoryboardPopoverSegue.h; sourceTree = "<group>"; };
 		1394EA1E1A88D31F00ECED05 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
+		139658121AB9797B0091C451 /* Passport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Passport.h; sourceTree = "<group>"; };
+		139658131AB9797B0091C451 /* Passport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Passport.m; sourceTree = "<group>"; };
 		139E6B571A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeListTableViewHeaderFooterView.h; sourceTree = "<group>"; };
 		139E6B581A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeListTableViewHeaderFooterView.m; sourceTree = "<group>"; };
 		139E6B5A1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmployeeListTableViewHeaderFooterView.xib; sourceTree = "<group>"; };
@@ -629,6 +632,8 @@
 				13743EC91AB02E4F00D0B873 /* NotificationManagement.m */,
 				139E6B5C1A7A3CED00D1D451 /* Occupation.h */,
 				139E6B5D1A7A3CED00D1D451 /* Occupation.m */,
+				139658121AB9797B0091C451 /* Passport.h */,
+				139658131AB9797B0091C451 /* Passport.m */,
 				13081AF11A76559D00B33509 /* RecordType.h */,
 				13081AF21A76559D00B33509 /* RecordType.m */,
 				13481AEE1A823A5B00093331 /* RelatedService.h */,
@@ -1527,6 +1532,7 @@
 				131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */,
 				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
 				13315AC61AAC24DB009E1819 /* CompanyInfoTypeViewController.m in Sources */,
+				139658141AB9797B0091C451 /* Passport.m in Sources */,
 				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
 				1353CBD91AAD92B700E57FAC /* Directorship.m in Sources */,
 				130F7DD21AAEE76300380628 /* License.m in Sources */,

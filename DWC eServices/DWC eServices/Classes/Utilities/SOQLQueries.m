@@ -33,7 +33,7 @@ static NSString *cardCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status,
 
 static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Web_Form__c, CreatedDate, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType FROM Case WHERE AccountId = '%@' AND Web_Form__c != ''";
 
-static NSString *companyShareholdersQuery = @"SELECT Id, No_of_Shares__c, Ownership_of_Share__c, Shareholder__r.Id, Shareholder__r.Name, Shareholder_Status__c, Ownership_End_Date__c, Ownership_Start_Date__c FROM Share_Ownership__c WHERE Company__c = '%@'";
+static NSString *companyShareholdersQuery = @"SELECT Id, No_of_Shares__c, Ownership_of_Share__c, Shareholder__r.Id, Shareholder__r.Name, Shareholder__r.Nationality__c, Shareholder__r.Current_Passport__r.Id, Shareholder__r.Current_Passport__r.Name, Shareholder__r.Current_Passport__r.Passport_Expiry_Date__c, Shareholder__r.Current_Passport__r.Passport_Issue_Date__c, Shareholder__r.Current_Passport__r.Passport_Type__c, Shareholder__r.Current_Passport__r.Passport_Place_of_Issue__c, Shareholder_Status__c, Ownership_End_Date__c, Ownership_Start_Date__c FROM Share_Ownership__c WHERE Company__c = '%@'";
 
 static NSString *companyManagersQuery = @"SELECT Id, Manager__r.Id, Manager__r.Name, Manager_Status__c, Manager_Start_Date__c, Manager_End_Date__c, Role__c, Status__c FROM Management_Member__c WHERE Company__c = '%@'";
 
