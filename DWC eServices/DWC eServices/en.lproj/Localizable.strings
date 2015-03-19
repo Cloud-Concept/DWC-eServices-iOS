@@ -101,4 +101,14 @@
 "ShareholderPersonalInformation" = "Personal Information";
 "ShareholderInformation" = "Shareholder Information";
 
+"ManagerName" = "Name";
+"ManagerNationality" = "Nationality";
+"ManagerPassportNumber" = "Passport Number";
+"ManagerPassportExpiry" = "Passport Expiry";
+"ManagerRole" = "Role";
+"ManagerStartDate" = "Start Date";
+"ManagerEndDate" = "End Date";
+"ManagerPersonalInformation" = "Personal Information";
+"ManagerInformation" = "Manager Information";
+
 "ExpiryLabel" = "Expiry:";

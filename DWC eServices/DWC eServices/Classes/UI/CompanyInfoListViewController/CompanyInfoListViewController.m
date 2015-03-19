@@ -135,8 +135,21 @@
             NSDictionary *managerDict = [recordDict objectForKey:@"Manager__r"];
             Account *manager;
             if (![managerDict isKindOfClass:[NSNull class]]) {
+                NSDictionary *passportDict = [managerDict objectForKey:@"Current_Passport__r"];
+                Passport *passport;
+                if (![passportDict isKindOfClass:[NSNull class]]) {
+                    passport = [[Passport alloc] initPassport:[passportDict objectForKey:@"Id"]
+                                               PassportNumber:[passportDict objectForKey:@"Name"]
+                                                 PassportType:[passportDict objectForKey:@"Passport_Type__c"]
+                                         PassportPlaceOfIssue:[passportDict objectForKey:@"Passport_Place_of_Issue__c"]
+                                            PassportIssueDate:[passportDict objectForKey:@"Passport_Issue_Date__c"]
+                                           PassportExpiryDate:[passportDict objectForKey:@"Passport_Expiry_Date__c"]];
+                }
+                
                 manager = [[Account alloc] initAccount:[managerDict objectForKey:@"Id"]
-                                                      Name:[managerDict objectForKey:@"Name"]];
+                                                  Name:[managerDict objectForKey:@"Name"]
+                                           Nationality:[managerDict objectForKey:@"Nationality__c"]
+                                       AccountPassport:passport];
             }
             
             [dataRows addObject:[[ManagementMember alloc] initManagementMember:[recordDict objectForKey:@"Id"]
@@ -359,7 +372,6 @@
 }
 
 - (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForShareholder:(ShareOwnership *)shareOwnership {
-    
     recordVC.NameValue = shareOwnership.shareholder.name;
     //recordVC.PhotoId = ;
     NSMutableArray *sectionsArray = [NSMutableArray new];
@@ -412,6 +424,52 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
+- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForManager:(ManagementMember *)managementMember {
+    
+    recordVC.NameValue = managementMember.manager.name;
+    //recordVC.PhotoId = ;
+    NSMutableArray *sectionsArray = [NSMutableArray new];
+    
+    NSMutableArray *fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ManagerName", @"")
+                            FieldValue:managementMember.manager.name]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ManagerNationality", @"")
+                            FieldValue:managementMember.manager.nationality]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ManagerPassportNumber", @"")
+                            FieldValue:managementMember.manager.currentPassport.passportNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ManagerPassportExpiry", @"")
+                            FieldValue:[HelperClass formatDateToString:managementMember.manager.currentPassport.passportExpiryDate]]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"ManagerPersonalInformation", @"")
+                              Fields:fieldsArray]];
+    
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ManagerRole", @"")
+                            FieldValue:managementMember.role]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ManagerStartDate", @"")
+                            FieldValue:[HelperClass formatDateToString:managementMember.managerStartDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"ManagerEndDate", @"")
+                            FieldValue:[HelperClass formatDateToString:managementMember.managerEndDate]]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"ManagerInformation", @"")
+                              Fields:fieldsArray]];
+    
+    recordVC.DetailsSectionsArray = sectionsArray;
+    
+    NSUInteger servicesMask = 0;
+    
+    recordVC.RelatedServicesMask = servicesMask;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -434,6 +492,7 @@
             break;
         case DWCCompanyInfoGeneralManagers:
             cell = [self cellManagersForRowAtIndexPath:indexPath tableView:tableView];
+            break;
         case DWCCompanyInfoDirectors:
             cell = [self cellDirectorsForRowAtIndexPath:indexPath tableView:tableView];
             break;
@@ -459,6 +518,7 @@
             [self configureRecordMainViewController:recordMainVC ForShareholder:[dataRows objectAtIndex:indexPath.row]];
             break;
         case DWCCompanyInfoGeneralManagers:
+            [self configureRecordMainViewController:recordMainVC ForManager:[dataRows objectAtIndex:indexPath.row]];
             break;
         case DWCCompanyInfoDirectors:
             break;
