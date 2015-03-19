@@ -111,4 +111,14 @@
 "ManagerPersonalInformation" = "Personal Information";
 "ManagerInformation" = "Manager Information";
 
+"DirectorName" = "Name";
+"DirectorNationality" = "Nationality";
+"DirectorPassportNumber" = "Passport Number";
+"DirectorPassportExpiry" = "Passport Expiry";
+"DirectorRole" = "Role";
+"DirectorStartDate" = "Start Date";
+"DirectorEndDate" = "End Date";
+"DirectorPersonalInformation" = "Personal Information";
+"DirectorInformation" = "Director Information";
+
 "ExpiryLabel" = "Expiry:";

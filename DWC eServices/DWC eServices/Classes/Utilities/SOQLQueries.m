@@ -37,7 +37,7 @@ static NSString *companyShareholdersQuery = @"SELECT Id, No_of_Shares__c, Owners
 
 static NSString *companyManagersQuery = @"SELECT Id, Manager__r.Id, Manager__r.Name, Manager_Status__c, Manager__r.Nationality__c, Manager__r.Current_Passport__r.Id, Manager__r.Current_Passport__r.Name, Manager__r.Current_Passport__r.Passport_Expiry_Date__c, Manager__r.Current_Passport__r.Passport_Issue_Date__c, Manager__r.Current_Passport__r.Passport_Type__c, Manager__r.Current_Passport__r.Passport_Place_of_Issue__c, Manager_Start_Date__c, Manager_End_Date__c, Role__c, Status__c FROM Management_Member__c WHERE Company__c = '%@'";
 
-static NSString *companyDirectorsQuery = @"SELECT Id, Roles__c, Director_Status__c, Directorship_End_Date__c, Directorship_Start_Date__c, Director__r.Id, Director__r.Name FROM Directorship__c WHERE Company__c = '%@'";
+static NSString *companyDirectorsQuery = @"SELECT Id, Roles__c, Director_Status__c, Directorship_End_Date__c, Directorship_Start_Date__c, Director__r.Id, Director__r.Name, Director__r.Nationality__c, Director__r.Current_Passport__r.Id, Director__r.Current_Passport__r.Name, Director__r.Current_Passport__r.Passport_Expiry_Date__c, Director__r.Current_Passport__r.Passport_Issue_Date__c, Director__r.Current_Passport__r.Passport_Type__c, Director__r.Current_Passport__r.Passport_Place_of_Issue__c FROM Directorship__c WHERE Company__c = '%@'";
 
 static NSString *companyLegalRepresentativesQuery = @"SELECT Id, Legal_Representative__r.Id, Legal_Representative__r.Name, Status__c, Role__c, Legal_Representative_End_Date__c, Legal_Representative_Start_Date__c FROM Legal_Representative__c WHERE Company__c = '%@'";
 

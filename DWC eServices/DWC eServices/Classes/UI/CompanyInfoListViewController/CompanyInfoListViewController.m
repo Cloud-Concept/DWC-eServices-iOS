@@ -192,8 +192,21 @@
             NSDictionary *directorDict = [recordDict objectForKey:@"Director__r"];
             Account *director;
             if (![directorDict isKindOfClass:[NSNull class]]) {
+                NSDictionary *passportDict = [directorDict objectForKey:@"Current_Passport__r"];
+                Passport *passport;
+                if (![passportDict isKindOfClass:[NSNull class]]) {
+                    passport = [[Passport alloc] initPassport:[passportDict objectForKey:@"Id"]
+                                               PassportNumber:[passportDict objectForKey:@"Name"]
+                                                 PassportType:[passportDict objectForKey:@"Passport_Type__c"]
+                                         PassportPlaceOfIssue:[passportDict objectForKey:@"Passport_Place_of_Issue__c"]
+                                            PassportIssueDate:[passportDict objectForKey:@"Passport_Issue_Date__c"]
+                                           PassportExpiryDate:[passportDict objectForKey:@"Passport_Expiry_Date__c"]];
+                }
+                
                 director = [[Account alloc] initAccount:[directorDict objectForKey:@"Id"]
-                                                   Name:[directorDict objectForKey:@"Name"]];
+                                                   Name:[directorDict objectForKey:@"Name"]
+                                            Nationality:[directorDict objectForKey:@"Nationality__c"]
+                                        AccountPassport:passport];
             }
             
             [dataRows addObject:[[Directorship alloc] initDirectorship:[recordDict objectForKey:@"Id"]
@@ -470,6 +483,52 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
+- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForDirector:(Directorship *)directorship {
+    
+    recordVC.NameValue = directorship.director.name;
+    //recordVC.PhotoId = ;
+    NSMutableArray *sectionsArray = [NSMutableArray new];
+    
+    NSMutableArray *fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"DirectorName", @"")
+                            FieldValue:directorship.director.name]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"DirectorNationality", @"")
+                            FieldValue:directorship.director.nationality]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"DirectorPassportNumber", @"")
+                            FieldValue:directorship.director.currentPassport.passportNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"DirectorPassportExpiry", @"")
+                            FieldValue:[HelperClass formatDateToString:directorship.director.currentPassport.passportExpiryDate]]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"DirectorPersonalInformation", @"")
+                              Fields:fieldsArray]];
+    
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"DirectorRole", @"")
+                            FieldValue:directorship.roles]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"DirectorStartDate", @"")
+                            FieldValue:[HelperClass formatDateToString:directorship.directorshipStartDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"DirectorEndDate", @"")
+                            FieldValue:[HelperClass formatDateToString:directorship.directorshipEndDate]]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"DirectorInformation", @"")
+                              Fields:fieldsArray]];
+    
+    recordVC.DetailsSectionsArray = sectionsArray;
+    
+    NSUInteger servicesMask = 0;
+    
+    recordVC.RelatedServicesMask = servicesMask;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -521,6 +580,7 @@
             [self configureRecordMainViewController:recordMainVC ForManager:[dataRows objectAtIndex:indexPath.row]];
             break;
         case DWCCompanyInfoDirectors:
+            [self configureRecordMainViewController:recordMainVC ForDirector:[dataRows objectAtIndex:indexPath.row]];
             break;
         case DWCCompanyInfoLegalRepresentative:
             break;
