@@ -121,4 +121,15 @@
 "DirectorPersonalInformation" = "Personal Information";
 "DirectorInformation" = "Director Information";
 
+"LegalRepresentativeName" = "Name";
+"LegalRepresentativeNationality" = "Nationality";
+"LegalRepresentativePassportNumber" = "Passport Number";
+"LegalRepresentativePassportExpiry" = "Passport Expiry";
+"LegalRepresentativeRole" = "Role";
+"LegalRepresentativeStartDate" = "Start Date";
+"LegalRepresentativeEndDate" = "End Date";
+"LegalRepresentativePersonalInformation" = "Personal Information";
+"LegalRepresentativeInformation" = "Legal Representative Information";
+
+
 "ExpiryLabel" = "Expiry:";

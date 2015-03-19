@@ -247,8 +247,21 @@
             NSDictionary *legalRepresentativeDict = [recordDict objectForKey:@"Legal_Representative__r"];
             Account *legalRepresentative;
             if (![legalRepresentativeDict isKindOfClass:[NSNull class]]) {
+                NSDictionary *passportDict = [legalRepresentativeDict objectForKey:@"Current_Passport__r"];
+                Passport *passport;
+                if (![passportDict isKindOfClass:[NSNull class]]) {
+                    passport = [[Passport alloc] initPassport:[passportDict objectForKey:@"Id"]
+                                               PassportNumber:[passportDict objectForKey:@"Name"]
+                                                 PassportType:[passportDict objectForKey:@"Passport_Type__c"]
+                                         PassportPlaceOfIssue:[passportDict objectForKey:@"Passport_Place_of_Issue__c"]
+                                            PassportIssueDate:[passportDict objectForKey:@"Passport_Issue_Date__c"]
+                                           PassportExpiryDate:[passportDict objectForKey:@"Passport_Expiry_Date__c"]];
+                }
+                
                 legalRepresentative = [[Account alloc] initAccount:[legalRepresentativeDict objectForKey:@"Id"]
-                                                              Name:[legalRepresentativeDict objectForKey:@"Name"]];
+                                                              Name:[legalRepresentativeDict objectForKey:@"Name"]
+                                                       Nationality:[legalRepresentativeDict objectForKey:@"Nationality__c"]
+                                                   AccountPassport:passport];
             }
             
             [dataRows addObject:[[LegalRepresentative alloc]
@@ -529,6 +542,52 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
+- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForLegalRepresentative:(LegalRepresentative *)legalRepresentative {
+    
+    recordVC.NameValue = legalRepresentative.legalRepresentative.name;
+    //recordVC.PhotoId = ;
+    NSMutableArray *sectionsArray = [NSMutableArray new];
+    
+    NSMutableArray *fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"LegalRepresentativeName", @"")
+                            FieldValue:legalRepresentative.legalRepresentative.name]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"LegalRepresentativeNationality", @"")
+                            FieldValue:legalRepresentative.legalRepresentative.nationality]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"LegalRepresentativePassportNumber", @"")
+                            FieldValue:legalRepresentative.legalRepresentative.currentPassport.passportNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"LegalRepresentativePassportExpiry", @"")
+                            FieldValue:[HelperClass formatDateToString:legalRepresentative.legalRepresentative.currentPassport.passportExpiryDate]]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"LegalRepresentativePersonalInformation", @"")
+                              Fields:fieldsArray]];
+    
+    fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"LegalRepresentativeRole", @"")
+                            FieldValue:legalRepresentative.role]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"LegalRepresentativeStartDate", @"")
+                            FieldValue:[HelperClass formatDateToString:legalRepresentative.legalRepresentativeStartDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"LegalRepresentativeEndDate", @"")
+                            FieldValue:[HelperClass formatDateToString:legalRepresentative.legalRepresentativeEndDate]]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"LegalRepresentativeInformation", @"")
+                              Fields:fieldsArray]];
+    
+    recordVC.DetailsSectionsArray = sectionsArray;
+    
+    NSUInteger servicesMask = 0;
+    
+    recordVC.RelatedServicesMask = servicesMask;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -565,7 +624,7 @@
             break;
     }
     return cell;
-
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -583,6 +642,7 @@
             [self configureRecordMainViewController:recordMainVC ForDirector:[dataRows objectAtIndex:indexPath.row]];
             break;
         case DWCCompanyInfoLegalRepresentative:
+            [self configureRecordMainViewController:recordMainVC ForLegalRepresentative:[dataRows objectAtIndex:indexPath.row]];
             break;
         case DWCCompanyInfoLeasingInfo:
             break;
@@ -656,13 +716,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
