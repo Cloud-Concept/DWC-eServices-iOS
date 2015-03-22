@@ -25,8 +25,10 @@
 @property (strong, nonatomic) NSData *attachment;
 @property (nonatomic) BOOL attachmentUploaded;
 
+- (id)initEServiceDocument:(NSDictionary *)eServiceDocumentDict;
+/*
 - (id)initEServiceDocument:(NSString *)ServiceId Name:(NSString *)Name Type:(NSString *)Type Language:(NSString *)Language Authority:(NSString*)Authority DocumentType:(NSString *)DocumentType;
-
+*/
 - (UIButton *)getDocumentButton:(UIViewController *)parentViewController;
 - (void)deleteDocumentAndButton;
 - (void)deleteDocument;

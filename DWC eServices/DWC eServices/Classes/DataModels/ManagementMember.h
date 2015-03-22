@@ -20,6 +20,8 @@
 @property (nonatomic, strong) NSDate *managerEndDate;
 @property (nonatomic, strong) Account *manager;
 
+- (id)initManagementMember:(NSDictionary *)managementMemberDict;
+/*
 - (id)initManagementMember:(NSString *)MemberId ManagerStatus:(NSString *)ManagerStatus Role:(NSString *)Role Status:(NSString *)Status ManagerStartDate:(NSString *)ManagerStartDate ManagerEndDate:(NSString *)ManagerEndDate Manager:(Account *)Manager;
-
+*/
 @end

@@ -96,85 +96,8 @@
         dataRows = [NSMutableArray new];
         
         for (NSDictionary *dict in records) {
-            NSDictionary *visaHolderDictionary = [dict objectForKey:@"Visa_Holder__r"];
-            Account *visaHolder = [Account new];
-            if(![visaHolderDictionary isKindOfClass:[NSNull class]])
-                visaHolder = [[Account alloc] initAccount:[dict objectForKey:@"Visa_Holder__c"]
-                                                     Name:[visaHolderDictionary objectForKey:@"Name"]
-                                              BillingCity:[visaHolderDictionary objectForKey:@"BillingCity"]
-                                       BillingCountryCode:[visaHolderDictionary objectForKey:@"BillingCountryCode"]];
             
-            NSDictionary *sponsoringCompanyDict = [dict objectForKey:@"Sponsoring_Company__r"];
-            Account *sponsoringCompany = [Account new];
-            if([sponsoringCompanyDict isKindOfClass:[NSNull class]])
-                sponsoringCompany = [[Account alloc] initAccount:[dict objectForKey:@"Sponsoring_Company__c"]
-                                                            Name:[sponsoringCompanyDict objectForKey:@"Name"]
-                                                     BillingCity:@""
-                                              BillingCountryCode:@""];
-            
-            NSDictionary *countryOfBirthDict = [dict objectForKey:@"Country_of_Birth__r"];
-            Country *countryOfBirth = [Country new];
-            if(![countryOfBirthDict isKindOfClass:[NSNull class]])
-                countryOfBirth = [[Country alloc] initCountry:[countryOfBirthDict objectForKey:@"Id"]
-                                                         Name:[countryOfBirthDict objectForKey:@"Name"]
-                                            AramexCountryCode:@""
-                                            CountryNameArabic:@""
-                                                     DNRDName:@""
-                                                     FromCode:@""
-                                                     IsActive:YES
-                                              NationalityName:@""
-                                        NationalityNameArabic:@""];
-            
-            NSDictionary *currentNationalityDict = [dict objectForKey:@"Current_Nationality__r"];
-            Country *currentNationality = [Country new];
-            if(![currentNationalityDict isKindOfClass:[NSNull class]])
-            currentNationality = [[Country alloc] initCountry:[currentNationalityDict objectForKey:@"Id"]
-                                                                  Name:[currentNationalityDict objectForKey:@"Name"]
-                                                     AramexCountryCode:@""
-                                                     CountryNameArabic:@""
-                                                              DNRDName:@""
-                                                              FromCode:@""
-                                                              IsActive:YES
-                                                       NationalityName:@""
-                                                 NationalityNameArabic:@""];
-            
-            NSDictionary *jobTitleAtImmigrationDict = [dict objectForKey:@"Job_Title_at_Immigration__r"];
-            Occupation *jobTitleAtImmigration = [Occupation new];
-            if(![jobTitleAtImmigrationDict isKindOfClass:[NSNull class]])
-            jobTitleAtImmigration = [[Occupation alloc] initOccupation:[jobTitleAtImmigrationDict objectForKey:@"Id"]
-                                                                    OccupationName:[jobTitleAtImmigrationDict objectForKey:@"Name"]
-                                                                        ArabicName:@""
-                                                                          DNRDName:@""
-                                                                          FormCode:@""
-                                                                          IsActive:YES];
-            
-            [dataRows addObject:[[Visa alloc] initVisa:[dict objectForKey:@"Id"]
-                                                  Name:[dict objectForKey:@"Name"]
-                                            EmployeeId:[dict objectForKey:@"Employee_ID__c"]
-                                         PersonalPhoto:[dict objectForKey:@"Personal_Photo__c"]
-                                            Salutation:[dict objectForKey:@"Salutation__c"]
-                                      SalutationArabic:[dict objectForKey:@"Salutation_Arabic__c"]
-                                     ApplicantFullName:[dict objectForKey:@"Applicant_Full_Name__c"]
-                              ApplicantFirstNameArabic:[dict objectForKey:@"Applicant_First_Name_Arabic__c"]
-                             ApplicantMiddleNameArabic:[dict objectForKey:@"Applicant_Middle_Name_Arabic__c"]
-                               ApplicantLastNameArabic:[dict objectForKey:@"Applicant_Last_Name_Arabic__c"]
-                                        ApplicantEmail:[dict objectForKey:@"Applicant_Email__c"]
-                                 ApplicantMobileNumber:[dict objectForKey:@"Applicant_Mobile_Number__c"]
-                                       ApplicantGender:[dict objectForKey:@"Applicant_Gender__c"]
-                                       PassportCountry:[dict objectForKey:@"Passport_Country__c"]
-                                        PassportNumber:[dict objectForKey:@"Passport_Number__c"]
-                                        PassportExpiry:[dict objectForKey:@"Passport_Expiry__c"]
-                                              Religion:[dict objectForKey:@"Religion__c"]
-                                              VisaType:[dict objectForKey:@"Visa_Type__c"]
-                                        ValidityStatus:[dict objectForKey:@"Visa_Validity_Status__c"]
-                                            ExpiryDate:[dict objectForKey:@"Visa_Expiry_Date__c"]
-                                           DateOfBirth:[dict objectForKey:@"Date_of_Birth__c"]
-                                     SponsoringCompany:sponsoringCompany
-                                            VisaHolder:visaHolder
-                                        CountryOfBirth:countryOfBirth
-                                    CurrentNationality:currentNationality
-                                 JobTitleAtImmigration:jobTitleAtImmigration]];
-            
+            [dataRows addObject:[[Visa alloc] initVisa:dict]];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -208,46 +131,7 @@
         dataRows = [NSMutableArray new];
         
         for (NSDictionary *recordDict in records) {
-            NSDictionary *nationalityDict = [recordDict objectForKey:@"Nationality__r"];
-            Country *nationality = [Country new];
-            if (![nationalityDict isKindOfClass:[NSNull class]]) {
-                nationality = [[Country alloc] initCountry:[nationalityDict objectForKey:@"Id"]
-                                                      Name:[nationalityDict objectForKey:@"Name"]
-                                         AramexCountryCode:@""
-                                         CountryNameArabic:@""
-                                                  DNRDName:@""
-                                                  FromCode:@""
-                                                  IsActive:YES
-                                           NationalityName:@""
-                                     NationalityNameArabic:@""];
-            }
-            
-            NSDictionary *recordTypeDict = [recordDict objectForKey:@"RecordType"];
-            RecordType *recordType = [RecordType new];
-            if (![recordTypeDict isKindOfClass:[NSNull class]]) {
-                recordType = [[RecordType alloc] initRecordType:[recordTypeDict objectForKey:@"Id"]
-                                                           Name:[recordTypeDict objectForKey:@"Name"]
-                                                  DeveloperName:[recordTypeDict objectForKey:@"DeveloperName"]
-                                                       IsActive:YES
-                                                     ObjectType:@""];
-            }
-            
-            [dataRows addObject:[[CardManagement alloc] initCardManagement:[recordDict objectForKey:@"Id"]
-                                                                      Name:[recordDict objectForKey:@"Name"]
-                                                             PersonalPhoto:[recordDict objectForKey:@"Personal_Photo__c"]
-                                                                CardNumber:[recordDict objectForKey:@"Card_Number__c"]
-                                                                    Status:[recordDict objectForKey:@"Status__c"]
-                                                                   Sponsor:[recordDict objectForKey:@"Sponsor__c"]
-                                                                  CardType:[recordDict objectForKey:@"Card_Type__c"]
-                                                                Salutation:[recordDict objectForKey:@"Salutation__c"]
-                                                                  FullName:[recordDict objectForKey:@"Full_Name__c"]
-                                                               Designation:[recordDict objectForKey:@"Designation__c"]
-                                                                  Duration:[recordDict objectForKey:@"Duration__c"]
-                                                            CardExpiryDate:[recordDict objectForKey:@"Card_Expiry_Date__c"]
-                                                             CardIssueDate:[recordDict objectForKey:@"Card_Issue_Date__c"]
-                                                            PassportNumber:[recordDict objectForKey:@"Passport_Number__c"]
-                                                                RecordType:recordType
-                                                               Nationality:nationality]];
+            [dataRows addObject:[[CardManagement alloc] initCardManagement:recordDict]];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];

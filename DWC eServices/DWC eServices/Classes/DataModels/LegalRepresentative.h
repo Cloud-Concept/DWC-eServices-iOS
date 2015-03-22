@@ -19,6 +19,8 @@
 @property (nonatomic, strong) NSDate *legalRepresentativeEndDate;
 @property (nonatomic, strong) Account *legalRepresentative;
 
+- (id)initLegalRepresentative:(NSDictionary *)legalRepresentativeDict;
+/*
 - (id)initLegalRepresentative:(NSString *)legalId Role:(NSString *)Role Status:(NSString *)Status LegalRepresentativeStartDate:(NSString *)LegalRepresentativeStartDate LegalRepresentativeEndDate:(NSString *)LegalRepresentativeEndDate LegalRepresentative:(Account *)LegalRepresentative;
-
+*/
 @end

@@ -74,33 +74,9 @@
         dataRows = [NSMutableArray new];
         
         for (NSDictionary *recordDict in records) {
-            NSDictionary *shareholderDict = [recordDict objectForKey:@"Shareholder__r"];
-            Account *shareholder;
-            if (![shareholderDict isKindOfClass:[NSNull class]]) {
-                NSDictionary *passportDict = [shareholderDict objectForKey:@"Current_Passport__r"];
-                Passport *passport;
-                if (![passportDict isKindOfClass:[NSNull class]]) {
-                    passport = [[Passport alloc] initPassport:[passportDict objectForKey:@"Id"]
-                                               PassportNumber:[passportDict objectForKey:@"Name"]
-                                                 PassportType:[passportDict objectForKey:@"Passport_Type__c"]
-                                         PassportPlaceOfIssue:[passportDict objectForKey:@"Passport_Place_of_Issue__c"]
-                                            PassportIssueDate:[passportDict objectForKey:@"Passport_Issue_Date__c"]
-                                           PassportExpiryDate:[passportDict objectForKey:@"Passport_Expiry_Date__c"]];
-                }
-                
-                shareholder = [[Account alloc] initAccount:[shareholderDict objectForKey:@"Id"]
-                                                      Name:[shareholderDict objectForKey:@"Name"]
-                                               Nationality:[shareholderDict objectForKey:@"Nationality__c"]
-                                           AccountPassport:passport];
-            }
             
-            [dataRows addObject:[[ShareOwnership alloc] initShareOwnership:[recordDict objectForKey:@"Id"]
-                                                                NoOfShares:(NSNumber*)[recordDict objectForKey:@"No_of_Shares__c"]
-                                                          OwnershipOfShare:(NSNumber*)[recordDict objectForKey:@"Ownership_of_Share__c"]
-                                                         ShareholderStatus:[recordDict objectForKey:@"Shareholder_Status__c"]
-                                                        OwnershipStartDate:[recordDict objectForKey:@"Ownership_Start_Date__c"]
-                                                          OwnershipEndDate:[recordDict objectForKey:@"Ownership_End_Date__c"]
-                                                               Shareholder:shareholder]];
+            
+            [dataRows addObject:[[ShareOwnership alloc] initShareOwnership:recordDict]];
             
         }
         
@@ -132,33 +108,7 @@
         dataRows = [NSMutableArray new];
         
         for (NSDictionary *recordDict in records) {
-            NSDictionary *managerDict = [recordDict objectForKey:@"Manager__r"];
-            Account *manager;
-            if (![managerDict isKindOfClass:[NSNull class]]) {
-                NSDictionary *passportDict = [managerDict objectForKey:@"Current_Passport__r"];
-                Passport *passport;
-                if (![passportDict isKindOfClass:[NSNull class]]) {
-                    passport = [[Passport alloc] initPassport:[passportDict objectForKey:@"Id"]
-                                               PassportNumber:[passportDict objectForKey:@"Name"]
-                                                 PassportType:[passportDict objectForKey:@"Passport_Type__c"]
-                                         PassportPlaceOfIssue:[passportDict objectForKey:@"Passport_Place_of_Issue__c"]
-                                            PassportIssueDate:[passportDict objectForKey:@"Passport_Issue_Date__c"]
-                                           PassportExpiryDate:[passportDict objectForKey:@"Passport_Expiry_Date__c"]];
-                }
-                
-                manager = [[Account alloc] initAccount:[managerDict objectForKey:@"Id"]
-                                                  Name:[managerDict objectForKey:@"Name"]
-                                           Nationality:[managerDict objectForKey:@"Nationality__c"]
-                                       AccountPassport:passport];
-            }
-            
-            [dataRows addObject:[[ManagementMember alloc] initManagementMember:[recordDict objectForKey:@"Id"]
-                                                                 ManagerStatus:[recordDict objectForKey:@"Manager_Status__c"]
-                                                                          Role:[recordDict objectForKey:@"Role__c"]
-                                                                        Status:[recordDict objectForKey:@"Status__c"]
-                                                              ManagerStartDate:[recordDict objectForKey:@"Manager_Start_Date__c"]
-                                                                ManagerEndDate:[recordDict objectForKey:@"Manager_End_Date__c"]
-                                                                       Manager:manager]];
+            [dataRows addObject:[[ManagementMember alloc] initManagementMember:recordDict]];
             
         }
         
@@ -189,32 +139,7 @@
         dataRows = [NSMutableArray new];
         
         for (NSDictionary *recordDict in records) {
-            NSDictionary *directorDict = [recordDict objectForKey:@"Director__r"];
-            Account *director;
-            if (![directorDict isKindOfClass:[NSNull class]]) {
-                NSDictionary *passportDict = [directorDict objectForKey:@"Current_Passport__r"];
-                Passport *passport;
-                if (![passportDict isKindOfClass:[NSNull class]]) {
-                    passport = [[Passport alloc] initPassport:[passportDict objectForKey:@"Id"]
-                                               PassportNumber:[passportDict objectForKey:@"Name"]
-                                                 PassportType:[passportDict objectForKey:@"Passport_Type__c"]
-                                         PassportPlaceOfIssue:[passportDict objectForKey:@"Passport_Place_of_Issue__c"]
-                                            PassportIssueDate:[passportDict objectForKey:@"Passport_Issue_Date__c"]
-                                           PassportExpiryDate:[passportDict objectForKey:@"Passport_Expiry_Date__c"]];
-                }
-                
-                director = [[Account alloc] initAccount:[directorDict objectForKey:@"Id"]
-                                                   Name:[directorDict objectForKey:@"Name"]
-                                            Nationality:[directorDict objectForKey:@"Nationality__c"]
-                                        AccountPassport:passport];
-            }
-            
-            [dataRows addObject:[[Directorship alloc] initDirectorship:[recordDict objectForKey:@"Id"]
-                                                                 Roles:[recordDict objectForKey:@"Roles__c"]
-                                                        DirectorStatus:[recordDict objectForKey:@"Director_Status__c"]
-                                                 DirectorshipStartDate:[recordDict objectForKey:@"Directorship_Start_Date__c"]
-                                                   DirectorshipEndDate:[recordDict objectForKey:@"Directorship_End_Date__c"]
-                                                              Director:director]];
+            [dataRows addObject:[[Directorship alloc] initDirectorship:recordDict]];
             
         }
         
@@ -244,33 +169,8 @@
         
         dataRows = [NSMutableArray new];
         for (NSDictionary *recordDict in records) {
-            NSDictionary *legalRepresentativeDict = [recordDict objectForKey:@"Legal_Representative__r"];
-            Account *legalRepresentative;
-            if (![legalRepresentativeDict isKindOfClass:[NSNull class]]) {
-                NSDictionary *passportDict = [legalRepresentativeDict objectForKey:@"Current_Passport__r"];
-                Passport *passport;
-                if (![passportDict isKindOfClass:[NSNull class]]) {
-                    passport = [[Passport alloc] initPassport:[passportDict objectForKey:@"Id"]
-                                               PassportNumber:[passportDict objectForKey:@"Name"]
-                                                 PassportType:[passportDict objectForKey:@"Passport_Type__c"]
-                                         PassportPlaceOfIssue:[passportDict objectForKey:@"Passport_Place_of_Issue__c"]
-                                            PassportIssueDate:[passportDict objectForKey:@"Passport_Issue_Date__c"]
-                                           PassportExpiryDate:[passportDict objectForKey:@"Passport_Expiry_Date__c"]];
-                }
-                
-                legalRepresentative = [[Account alloc] initAccount:[legalRepresentativeDict objectForKey:@"Id"]
-                                                              Name:[legalRepresentativeDict objectForKey:@"Name"]
-                                                       Nationality:[legalRepresentativeDict objectForKey:@"Nationality__c"]
-                                                   AccountPassport:passport];
-            }
             
-            [dataRows addObject:[[LegalRepresentative alloc]
-                                 initLegalRepresentative:[recordDict objectForKey:@"Id"]
-                                 Role:[recordDict objectForKey:@"Role__c"]
-                                 Status:[recordDict objectForKey:@"Status__c"]
-                                 LegalRepresentativeStartDate:[recordDict objectForKey:@"Legal_Representative_Start_Date__c"]
-                                 LegalRepresentativeEndDate:[recordDict objectForKey:@"Legal_Representative_End_Date__c"]
-                                 LegalRepresentative:legalRepresentative]];
+            [dataRows addObject:[[LegalRepresentative alloc] initLegalRepresentative:recordDict]];
             
         }
         
@@ -300,18 +200,7 @@
         
         dataRows = [NSMutableArray new];
         for (NSDictionary *recordDict in records) {
-            [dataRows addObject:[[TenancyContract alloc] initTenanctContract:[recordDict objectForKey:@"Id"]
-                                                                        Name:[recordDict objectForKey:@"Name"]
-                                                                ContractType:[recordDict objectForKey:@"Contract_Type__c"]
-                                                                      Status:[recordDict objectForKey:@"Status__c"]
-                                                       ContractDurationMonth:[recordDict objectForKey:@"Contract_Duration_Year_Month__c"]
-                                                               ActivatedDate:[recordDict objectForKey:@"Activated_Date__c"]
-                                                               RentStartDate:[recordDict objectForKey:@"Rent_Start_date__c"]
-                                                           ContractStartDate:[recordDict objectForKey:@"Contract_Start_Date__c"]
-                                                          ContractExpiryDate:[recordDict objectForKey:@"Contract_Expiry_Date__c"]
-                                                              TotalRentPrice:[recordDict objectForKey:@"Total_Rent_Price__c"]
-                                                        ContractDurationYear:[recordDict objectForKey:@"Contract_Duration__c"]
-                                                                IsBCContract:[[recordDict objectForKey:@"IS_BC_Contract__c"] boolValue]]];
+            [dataRows addObject:[[TenancyContract alloc] initTenancyContract:recordDict]];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -667,18 +556,7 @@
     
     dataRows = [NSMutableArray new];
     for (NSDictionary *recordDict in resultsArray) {
-        [dataRows addObject:[[TenancyContract alloc] initTenanctContract:[recordDict objectForKey:@"Id"]
-                                                                    Name:[recordDict objectForKey:@"Name"]
-                                                            ContractType:[recordDict objectForKey:@"Contract_Type__c"]
-                                                                  Status:[recordDict objectForKey:@"Status__c"]
-                                                   ContractDurationMonth:[recordDict objectForKey:@"Contract_Duration_Year_Month__c"]
-                                                           ActivatedDate:[recordDict objectForKey:@"Activated_Date__c"]
-                                                           RentStartDate:[recordDict objectForKey:@"Rent_Start_date__c"]
-                                                       ContractStartDate:[recordDict objectForKey:@"Contract_Start_Date__c"]
-                                                      ContractExpiryDate:[recordDict objectForKey:@"Contract_Expiry_Date__c"]
-                                                          TotalRentPrice:[recordDict objectForKey:@"Total_Rent_Price__c"]
-                                                    ContractDurationYear:[recordDict objectForKey:@"Contract_Duration__c"]
-                                                            IsBCContract:[[recordDict objectForKey:@"IS_BC_Contract__c"] boolValue]]];
+        [dataRows addObject:[[TenancyContract alloc] initTenancyContract:recordDict]];
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{

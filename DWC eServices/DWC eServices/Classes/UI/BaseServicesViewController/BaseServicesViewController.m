@@ -474,13 +474,8 @@
         NSArray *records = [dict objectForKey:@"records"];
         
         for (NSDictionary *dict in records) {
-            self.currentWebForm = [[WebForm alloc] initWebForm:[dict objectForKey:@"Id"]
-                                                          Name:[dict objectForKey:@"Name"]
-                                                   Description:[dict objectForKey:@"Description__c"]
-                                                         Title:[dict objectForKey:@"Title__c"]
-                                            IsNotesAttachments:[[dict objectForKey:@"isNotesAttachments__c"] boolValue]
-                                                   ObjectLabel:[dict objectForKey:@"Object_Label__c"]
-                                                    ObjectName:[dict objectForKey:@"Object_Name__c"]];
+            self.currentWebForm = [[WebForm alloc] initWebForm:dict];
+            
             NSMutableArray *fieldsArray = [[NSMutableArray alloc] init];
             
             NSDictionary *fieldsJSONArray = [NSDictionary new];
@@ -492,36 +487,7 @@
                  if([[fieldsDict objectForKey:@"Type__c"] isEqualToString:@"CUSTOMTEXT"])
                  continue;
                  */
-                [fieldsArray addObject:[[FormField alloc] initFormField:[fieldsDict objectForKey:@"Id"]
-                                                                   Name:[fieldsDict objectForKey:@"Name"]
-                                                            APIRequired:[[fieldsDict objectForKey:@"APIRequired__c"] boolValue]
-                                                           BooleanValue:[[fieldsDict objectForKey:@"Boolean_Value__c"] boolValue]
-                                                          CurrencyValue:[fieldsDict objectForKey:@"Currency_Value__c"]
-                                                          DateTimeValue:[fieldsDict objectForKey:@"DateTime_Value__c"]
-                                                              DateValue:[fieldsDict objectForKey:@"Date_Value__c"]
-                                                             EmailValue:[fieldsDict objectForKey:@"Email_Value__c"]
-                                                                 Hidden:[[fieldsDict objectForKey:@"Hidden__c"] boolValue]
-                                                           IsCalculated:[[fieldsDict objectForKey:@"isCalculated__c"] boolValue]
-                                                            IsParameter:[[fieldsDict objectForKey:@"isParameter__c"] boolValue]
-                                                                IsQuery:[[fieldsDict objectForKey:@"isQuery__c"] boolValue]
-                                                                  Label:[fieldsDict objectForKey:@"Label__c"]
-                                                            NumberValue:[fieldsDict objectForKey:@"Number_Value__c"]
-                                                                  Order:[fieldsDict objectForKey:@"Order__c"]
-                                                           PercentValue:[fieldsDict objectForKey:@"Percent_Value__c"]
-                                                             PhoneValue:[fieldsDict objectForKey:@"Phone_Value__c"]
-                                                          PicklistValue:[fieldsDict objectForKey:@"Picklist_Value__c"]
-                                                        PicklistEntries:[fieldsDict objectForKey:@"PicklistEntries__c"]
-                                                               Required:[[fieldsDict objectForKey:@"Required__c"] boolValue]
-                                                      TextAreaLongValue:[fieldsDict objectForKey:@"Text_Area_Long_Value__c"]
-                                                          TextAreaValue:[fieldsDict objectForKey:@"Text_Area_Value__c"]
-                                                              TextValue:[fieldsDict objectForKey:@"Text_Value__c"]
-                                                                   Type:[fieldsDict objectForKey:@"Type__c"]
-                                                               UrlValue:[fieldsDict objectForKey:@"URL_Value__c"]
-                                                                WebForm:[fieldsDict objectForKey:@"Web_Form__c"]
-                                                                  Width:[fieldsDict objectForKey:@"Width__c"]
-                                                      IsMobileAvailable:[[fieldsDict objectForKey:@"isMobileAvailable__c"] boolValue]
-                                                            MobileLabel:[fieldsDict objectForKey:@"Mobile_Label__c"]
-                                                            MobileOrder:[fieldsDict objectForKey:@"Mobile_Order__c"]]];
+                [fieldsArray addObject:[[FormField alloc] initFormField:fieldsDict]];
             }
             
             self.currentWebForm.formFields = [NSArray arrayWithArray:fieldsArray];

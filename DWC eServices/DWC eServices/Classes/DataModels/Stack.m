@@ -56,7 +56,7 @@
     return nil;
 }
 
--(BOOL)isEmpty{
+- (BOOL)isEmpty{
     return stackMutableArray.count == 0;
 }
 

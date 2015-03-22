@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSString *licenseType; //License_Type__c
 @property (nonatomic, strong) NSString *status; //Status__c
 
+- (id)initBusinessActivity:(NSDictionary *)businessActivityDict;
+/*
 - (id)initBusinessActivity:(NSString *)BusinessActivityId Name:(NSString *)Name BusinessActivityName:(NSString *)BusinessActivityName BusinessActivityNameArabic:(NSString *)BusinessActivityNameArabic BusinessActivityDescription:(NSString *)BusinessActivityDescription LicenseType:(NSString *)LicenseType Status:(NSString *)Status;
-
+*/
 @end

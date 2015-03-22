@@ -159,17 +159,7 @@
             if(![[recordDict objectForKey:@"eServices_Document_Checklists__r"] isKindOfClass:[NSNull class]])
                 documentRecordsArray = [[recordDict objectForKey:@"eServices_Document_Checklists__r"] objectForKey:@"records"];
             
-            selectedService = [[EServiceAdministration alloc] initEServiceAdministration:[recordDict objectForKey:@"Id"]
-                                                                                         Name:[recordDict objectForKey:@"Name"]
-                                                                            ServiceIdentifier:[recordDict objectForKey:@"Service_Identifier__c"]
-                                                                                       Amount:[recordDict objectForKey:@"Amount__c"]
-                                                                              RelatedToObject:[recordDict objectForKey:@"Related_to_Object__c"]
-                                                                           NewEditVFGenerator:[recordDict objectForKey:@"New_Edit_VF_Generator__c"]
-                                                                            CancelVFGenerator:[recordDict objectForKey:@"Cancel_VF_Generator__c"]
-                                                                             RenewVFGenerator:[recordDict objectForKey:@"Renewal_VF_Generator__c"]
-                                                                           ReplaceVFGenerator:[recordDict objectForKey:@"Replace_VF_Generator__c"]
-                                                                           RecordTypePicklist:[recordDict objectForKey:@"Record_Type_Picklist__c"]
-                                                                        ServiceDocumentsArray:documentRecordsArray];
+            selectedService = [[EServiceAdministration alloc] initEServiceAdministration:recordDict];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{

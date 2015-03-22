@@ -12,6 +12,27 @@
 
 @implementation Passport
 
+- (id)initPassport:(NSDictionary *)passportDict {
+    if (!(self = [super init]))
+        return nil;
+    
+    if ([passportDict isKindOfClass:[NSNull class]] || passportDict == nil)
+        return nil;
+    
+    self.Id = [HelperClass stringCheckNull:[passportDict objectForKey:@"Id"]];
+    self.passportNumber = [HelperClass stringCheckNull:[passportDict objectForKey:@"Name"]];
+    self.passportType = [HelperClass stringCheckNull:[passportDict objectForKey:@"Passport_Type__c"]];
+    self.passportPlaceOfIssue = [HelperClass stringCheckNull:[passportDict objectForKey:@"Passport_Place_of_Issue__c"]];
+    
+    if (![[passportDict objectForKey:@"Passport_Issue_Date__c"] isKindOfClass:[NSNull class]])
+        self.passportIssueDate = [SFDateUtil SOQLDateTimeStringToDate:[passportDict objectForKey:@"Passport_Issue_Date__c"]];
+    
+    if (![[passportDict objectForKey:@"Passport_Expiry_Date__c"] isKindOfClass:[NSNull class]])
+        self.passportExpiryDate = [SFDateUtil SOQLDateTimeStringToDate:[passportDict objectForKey:@"Passport_Expiry_Date__c"]];
+    
+    return self;
+}
+
 - (id)initPassport:(NSString *)PassportId PassportNumber:(NSString *)PassportNumber PassportType:(NSString *)PassportType PassportPlaceOfIssue:(NSString *)PassportPlaceOfIssue PassportIssueDate:(NSString *)PassportIssueDate PassportExpiryDate:(NSString *)PassportExpiryDate {
     if (!(self = [super init]))
         return nil;

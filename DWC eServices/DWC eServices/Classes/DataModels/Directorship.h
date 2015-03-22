@@ -19,6 +19,8 @@
 @property (nonatomic, strong) NSDate *directorshipEndDate;
 @property (nonatomic, strong) Account *director;
 
+- (id)initDirectorship:(NSDictionary *)directorshipDict;
+/*
 - (id)initDirectorship:(NSString *)DirectorId Roles:(NSString *)Roles DirectorStatus:(NSString *)DirectorStatus DirectorshipStartDate:(NSString *)DirectorshipStartDate DirectorshipEndDate:(NSString *)DirectorshipEndDate Director:(Account *)Director;
-
+*/
 @end

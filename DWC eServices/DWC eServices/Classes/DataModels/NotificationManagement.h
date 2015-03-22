@@ -26,8 +26,10 @@
 
 @property (nonatomic, strong) Request *request;
 
+- (id)initNotificationManager:(NSDictionary *)notificationManagerDict;
+/*
 - (id)initNotificationManager:(NSString *)NotificationId Name:(NSString *)Name CaseStatus:(NSString *)CaseStatus CompiledMessage:(NSString *)CompiledMessage NotificationMessage:(NSString *)NotificationMessage PriorValue:(NSString *)PriorValue ReadDateTime:(NSString *)ReadDateTime IsFeedbackAllowed:(BOOL)IsFeedbackAllowed IsMessageRead:(BOOL)IsMessageRead IsPushNotificationAllowed:(BOOL)IsPushNotificationAllowed NotificationRequest:(Request *)NotificationRequest;
-
+*/
 
 - (NSAttributedString *)getAttributedNotificationMessage;
 

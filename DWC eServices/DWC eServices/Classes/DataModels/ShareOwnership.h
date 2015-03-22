@@ -12,8 +12,6 @@
 
 @interface ShareOwnership : NSObject
 
-//No_of_Shares__c, Ownership_of_Share__c, Shareholder__r.Id, Shareholder__r.Name, Shareholder_Status__c, Ownership_End_Date__c, Ownership_Start_Date__c
-
 @property (nonatomic, strong) NSString *Id;
 @property (nonatomic, strong) NSNumber *noOfShares;
 @property (nonatomic, strong) NSNumber *ownershipOfShare;
@@ -22,6 +20,8 @@
 @property (nonatomic, strong) NSDate *ownershipEndDate;
 @property (nonatomic, strong) Account *shareholder;
 
+- (id)initShareOwnership:(NSDictionary *)shareOwnershipDict;
+/*
 - (id)initShareOwnership:(NSString *)ShareId NoOfShares:(NSNumber *)NoOfShares OwnershipOfShare:(NSNumber *)OwnershipOfShare ShareholderStatus:(NSString *)ShareholderStatus OwnershipStartDate:(NSString *)OwnershipStartDate OwnershipEndDate:(NSString *)OwnershipEndDate Shareholder:(Account *)Shareholder;
-
+*/
 @end

@@ -12,6 +12,42 @@
 
 @implementation TenancyContract
 
+- (id)initTenancyContract:(NSDictionary *)tenancyContractDict {
+    if (!(self = [super init]))
+        return nil;
+    
+    if ([tenancyContractDict isKindOfClass:[NSNull class]] || tenancyContractDict == nil)
+        return nil;
+    
+    self.Id = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Id"]];
+    self.name = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Name"]];
+    self.contractType = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Contract_Type__c"]];
+    self.status = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Status__c"]];
+    self.contractDurationMonth = [HelperClass stringCheckNull:
+                                  [tenancyContractDict objectForKey:@"Contract_Duration_Year_Month__c"]];
+    
+    if (![[tenancyContractDict objectForKey:@"Activated_Date__c"] isKindOfClass:[NSNull class]])
+        self.activatedDate = [SFDateUtil SOQLDateTimeStringToDate:[tenancyContractDict objectForKey:@"Activated_Date__c"]];
+    
+    if (![[tenancyContractDict objectForKey:@"Rent_Start_Date__c"] isKindOfClass:[NSNull class]])
+        self.rentStartDate = [SFDateUtil SOQLDateTimeStringToDate:[tenancyContractDict objectForKey:@"Rent_Start_Date__c"]];
+    
+    if (![[tenancyContractDict objectForKey:@"Contract_Start_Date__c"] isKindOfClass:[NSNull class]])
+        self.contractStartDate = [SFDateUtil SOQLDateTimeStringToDate:
+                                  [tenancyContractDict objectForKey:@"Contract_Start_Date__c"]];
+    
+    if (![[tenancyContractDict objectForKey:@"Contract_Expiry_Date__c"] isKindOfClass:[NSNull class]])
+        self.contractExpiryDate = [SFDateUtil SOQLDateTimeStringToDate:
+                                   [tenancyContractDict objectForKey:@"Contract_Expiry_Date__c"]];
+    
+    self.totalRentPrice = [HelperClass numberCheckNull:[tenancyContractDict objectForKey:@""]];
+    self.contractDurationYear = [HelperClass numberCheckNull:[tenancyContractDict objectForKey:@""]];
+    
+    self.isBCContract = [[tenancyContractDict objectForKey:@"IS_BC_Contract__c"] boolValue];
+    
+    return self;
+}
+
 - (id)initTenanctContract:(NSString *)TenancyContractId Name:(NSString *)Name ContractType:(NSString *)ContractType Status:(NSString *)Status ContractDurationMonth:(NSString *)ContractDurationMonth ActivatedDate:(NSString *)ActivatedDate RentStartDate:(NSString *)RentStartDate ContractStartDate:(NSString *)ContractStartDate ContractExpiryDate:(NSString *)ContractExpiryDate TotalRentPrice:(NSNumber *)TotalRentPrice ContractDurationYear:(NSNumber *)ContractDurationYear IsBCContract:(BOOL)IsBCContract {
     if (!(self = [super init]))
         return nil;

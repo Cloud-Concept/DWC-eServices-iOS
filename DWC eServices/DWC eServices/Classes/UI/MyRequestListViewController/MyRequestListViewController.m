@@ -41,20 +41,8 @@
         
         NSMutableArray *mutableResults = [NSMutableArray new];
         for (NSDictionary *recordDict in records) {
-            NSDictionary *recordTypeDict = [recordDict objectForKey:@"RecordType"];
             
-            RecordType *caseRecordType = [[RecordType alloc] initRecordType:[recordTypeDict objectForKey:@"Id"]
-                                                                       Name:[recordTypeDict objectForKey:@"Name"]
-                                                              DeveloperName:[recordTypeDict objectForKey:@"DeveloperName"]
-                                                                   IsActive:YES
-                                                                 ObjectType:[recordTypeDict objectForKey:@"SobjectType"]];
-            
-            [mutableResults addObject:[[Request alloc] initRequestWithId:[recordDict objectForKey:@"Id"]
-                                                                  Number:[recordDict objectForKey:@"CaseNumber"]
-                                                                  Status:[recordDict objectForKey:@"Status"]
-                                                               WebFormId:[recordDict objectForKey:@"Web_Form__c"]
-                                                             CreatedDate:[recordDict objectForKey:@"CreatedDate"]
-                                                          CaseRecordType:caseRecordType]];
+            [mutableResults addObject:[[Request alloc] initRequest:recordDict]];
         }
         
         dataRows = [NSArray arrayWithArray:mutableResults];

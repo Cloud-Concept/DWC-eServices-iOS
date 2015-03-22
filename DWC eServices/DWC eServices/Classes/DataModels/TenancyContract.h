@@ -23,7 +23,9 @@
 @property (nonatomic, strong) NSDate *contractExpiryDate;
 @property (nonatomic) BOOL isBCContract;
 
+- (id)initTenancyContract:(NSDictionary *)tenancyContractDict;
+/*
 - (id)initTenanctContract:(NSString *)TenancyContractId Name:(NSString *)Name ContractType:(NSString *)ContractType Status:(NSString *)Status ContractDurationMonth:(NSString *)ContractDurationMonth ActivatedDate:(NSString *)ActivatedDate RentStartDate:(NSString *)RentStartDate ContractStartDate:(NSString *)ContractStartDate ContractExpiryDate:(NSString *)ContractExpiryDate TotalRentPrice:(NSNumber *)TotalRentPrice ContractDurationYear:(NSNumber *)ContractDurationYear IsBCContract:(BOOL)IsBCContract;
-
+*/
 
 @end

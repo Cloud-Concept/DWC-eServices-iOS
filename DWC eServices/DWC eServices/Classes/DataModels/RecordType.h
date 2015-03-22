@@ -16,6 +16,8 @@
 @property (nonatomic) BOOL isActive;
 @property (nonatomic, strong) NSString *objectType;
 
+- (id)initRecordType:(NSDictionary *)recordTypeDict;
+/*
 - (id)initRecordType:(NSString*)RecordTypeId Name:(NSString*)Name DeveloperName:(NSString*)DeveloperName IsActive:(BOOL)IsActive ObjectType:(NSString*)ObjectType;
-
+*/
 @end

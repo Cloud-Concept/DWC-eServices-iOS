@@ -19,7 +19,10 @@
 @property (strong, nonatomic) NSString *objectName;
 @property (strong, nonatomic) NSArray *formFields;
 
-- (id)initWebForm:(NSString*)WebFormID Name:(NSString*)Name Description:(NSString*)Description Title:(NSString*)Title IsNotesAttachments:(BOOL)IsNotesAttachments ObjectLabel:(NSString*)ObjectLabel ObjectName:(NSString*)ObjectName;
 
+- (id)initWebForm:(NSDictionary *)webFormDict;
+/*
+- (id)initWebForm:(NSString*)WebFormID Name:(NSString*)Name Description:(NSString*)Description Title:(NSString*)Title IsNotesAttachments:(BOOL)IsNotesAttachments ObjectLabel:(NSString*)ObjectLabel ObjectName:(NSString*)ObjectName;
+*/
 - (WebForm*)copyDeep;
 @end

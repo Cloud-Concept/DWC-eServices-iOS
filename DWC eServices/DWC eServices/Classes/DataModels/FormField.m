@@ -93,6 +93,57 @@
     return self;
 }
 
+- (id)initFormField:(NSDictionary *)formFieldDict {
+    if (!(self = [super init])) {
+        return nil;
+    }
+    
+    if ([formFieldDict isKindOfClass:[NSNull class]] || formFieldDict == nil)
+        return nil;
+    
+    self.Id = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Id"]];
+    self.name = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Name"]];
+    self.nameNoSpace = [self.name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    self.emailValue = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Email_Value__c"]];
+    self.label = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Label__c"]];
+    self.phoneValue = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Phone_Value__c"]];
+    self.picklistValue = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Picklist_Value__c"]];
+    self.picklistEntries = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"PicklistEntries__c"]];
+    self.textAreaLongValue = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Text_Area_Long_Value__c"]];
+    self.textAreaValue = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Text_Area_Value__c"]];
+    self.textValue = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Text_Value__c"]];
+    self.type = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Type__c"]];
+    self.urlValue = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"URL_Value__c"]];
+    self.webForm = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Web_Form__c"]];
+    self.mobileLabel = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Mobile_Label__c"]];
+    
+    self.apiRequired = [[formFieldDict objectForKey:@"APIRequired__c"] boolValue];
+    self.booleanValue = [[formFieldDict objectForKey:@"Boolean_Value__c"] boolValue];
+    self.hidden = [[formFieldDict objectForKey:@"Hidden__c"] boolValue];
+    self.isCalculated = [[formFieldDict objectForKey:@"isCalculated__c"] boolValue];
+    self.isParameter = [[formFieldDict objectForKey:@"isParameter__c"] boolValue];
+    self.isQuery = [[formFieldDict objectForKey:@"isQuery__c"] boolValue];
+    self.required = [[formFieldDict objectForKey:@"Required__c"] boolValue];
+    self.isMobileAvailable = [[formFieldDict objectForKey:@"isMobileAvailable__c"] boolValue];
+    
+    self.currencyValue = [HelperClass numberCheckNull:[formFieldDict objectForKey:@"Currency_Value__c"]];
+    self.numberValue = [HelperClass numberCheckNull:[formFieldDict objectForKey:@"Number_Value__c"]];
+    self.order = [HelperClass numberCheckNull:[formFieldDict objectForKey:@"Order__c"]];
+    self.mobileOrder = [HelperClass numberCheckNull:[formFieldDict objectForKey:@"Mobile_Order__c"]];
+    self.percentValue = [HelperClass numberCheckNull:[formFieldDict objectForKey:@"Percent_Value__c"]];
+    self.width = [HelperClass numberCheckNull:[formFieldDict objectForKey:@"Width__c"]];
+    
+    if (![[formFieldDict objectForKey:@"DateTime_Value__c"] isKindOfClass:[NSNull class]])
+        self.dateTimeValue = [SFDateUtil SOQLDateTimeStringToDate:[formFieldDict objectForKey:@"DateTime_Value__c"]];
+    
+    if (![[formFieldDict objectForKey:@"Date_Value__c"] isKindOfClass:[NSNull class]])
+        self.dateValue = [SFDateUtil SOQLDateTimeStringToDate:[formFieldDict objectForKey:@"Date_Value__c"]];
+    
+    fieldView = nil;
+    formFieldValue = @"";
+    
+    return self;
+}
 
 - (id)copyWithZone:(NSZone *)zone
 {

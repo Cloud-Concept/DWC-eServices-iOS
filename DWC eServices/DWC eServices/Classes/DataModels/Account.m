@@ -9,6 +9,8 @@
 #import "Account.h"
 #import "SFDateUtil.h"
 #import "HelperClass.h"
+#import "Passport.h"
+#import "License.h"
 
 @implementation Account
 
@@ -181,6 +183,50 @@
     self.nationality = [HelperClass stringCheckNull:Nationality];
     self.currentLicenseNumber = CurrentLicenseNumber;
     self.currentPassport = AccountPassport;
+    
+    return self;
+}
+
+- (id)initAccount:(NSDictionary *)accountDict {
+    if (!(self = [super init]))
+        return nil;
+    
+    if ([accountDict isKindOfClass:[NSNull class]] || accountDict == nil)
+        return nil;
+    
+    self.Id = [HelperClass stringCheckNull:[accountDict objectForKey:@"Id"]];
+    self.name = [HelperClass stringCheckNull:[accountDict objectForKey:@"Name"]];
+    self.accountBalance = [HelperClass numberCheckNull:[accountDict objectForKey:@"Account_Balance__c"]];
+    self.licenseNumberFormula = [HelperClass stringCheckNull:[accountDict objectForKey:@"License_Number_Formula__c"]];
+    
+    if (![[accountDict objectForKey:@"License_Expiry_Date_Formula__c"] isKindOfClass:[NSNull class]])
+        self.licenseExpiryDateFormula = [SFDateUtil SOQLDateTimeStringToDate:
+                                         [accountDict objectForKey:@"License_Expiry_Date_Formula__c"]];
+    
+    if (![[accountDict objectForKey:@"Company_Registration_Date__c"] isKindOfClass:[NSNull class]])
+        self.companyRegistrationDate = [SFDateUtil SOQLDateTimeStringToDate:
+                                        [accountDict objectForKey:@"Company_Registration_Date__c"]];
+    
+    self.legalForm = [HelperClass stringCheckNull:[accountDict objectForKey:@"Legal_Form__c"]];
+    self.registrationNumberValue  = [HelperClass stringCheckNull:[accountDict objectForKey:@"Registration_Number_Value__c"]];
+    self.phone = [HelperClass stringCheckNull:[accountDict objectForKey:@"Phone"]];
+    self.fax = [HelperClass stringCheckNull:[accountDict objectForKey:@"Fax"]];
+    self.email = [HelperClass stringCheckNull:[accountDict objectForKey:@"Email__c"]];
+    self.mobile = [HelperClass stringCheckNull:[accountDict objectForKey:@"Mobile__c"]];
+    self.proEmail = [HelperClass stringCheckNull:[accountDict objectForKey:@"PRO_Email__c"]];
+    self.proMobileNumber  = [HelperClass stringCheckNull:[accountDict objectForKey:@"PRO_Mobile_Number__c"]];
+    self.billingStreet  = [HelperClass stringCheckNull:[accountDict objectForKey:@"BillingStreet"]];
+    self.billingPostalCode  = [HelperClass stringCheckNull:[accountDict objectForKey:@"BillingPostalCode"]];
+    self.billingCountry = [HelperClass stringCheckNull:[accountDict objectForKey:@"BillingCountry"]];
+    self.billingState = [HelperClass stringCheckNull:[accountDict objectForKey:@"BillingState"]];
+    self.billingCity = [HelperClass stringCheckNull:[accountDict objectForKey:@"BillingCity"]];
+    self.billingCountryCode = [HelperClass stringCheckNull:[accountDict objectForKey:@"BillingCountryCode"]];
+    self.nationality = [HelperClass stringCheckNull:[accountDict objectForKey:@"Nationality__c"]];
+    self.companyLogo = [HelperClass stringCheckNull:[accountDict objectForKey:@"Company_Logo__c"]];
+    
+    self.currentLicenseNumber = [[License alloc] initLicense:
+                                 [accountDict objectForKey:@"Current_License_Number__r"]];
+    self.currentPassport = [[Passport alloc] initPassport:[accountDict objectForKey:@"Current_Passport__r"]];;
     
     return self;
 }

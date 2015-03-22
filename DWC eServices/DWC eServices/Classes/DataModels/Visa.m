@@ -9,8 +9,57 @@
 #import "Visa.h"
 #import "SFDateUtil.h"
 #import "HelperClass.h"
+#import "Account.h"
+#import "Country.h"
+#import "Occupation.h"
 
 @implementation Visa
+
+- (id)initVisa:(NSDictionary *)visaDict {
+    if (!(self = [super init]))
+        return nil;
+    
+    if ([visaDict isKindOfClass:[NSNull class]] || visaDict == nil)
+        return nil;
+    
+    self.Id = [HelperClass stringCheckNull:[visaDict objectForKey:@"Id"]];
+    self.name = [HelperClass stringCheckNull:[visaDict objectForKey:@"Name"]];
+    self.personalPhotoId = [HelperClass stringCheckNull:[visaDict objectForKey:@"Personal_Photo__c"]];
+    self.salutation = [HelperClass stringCheckNull:[visaDict objectForKey:@"Salutation__c"]];
+    self.salutationArabic = [HelperClass stringCheckNull:[visaDict objectForKey:@"Salutation_Arabic__c"]];
+    self.applicantFullName = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_Full_Name__c"]];
+    self.applicantFirstNameArabic = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_First_Name_Arabic__c"]];
+    self.applicantMiddleNameArabic = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_Middle_Name_Arabic__c"]];
+    self.applicantLastNameArabic = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_Last_Name_Arabic__c"]];
+    self.applicantEmail = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_Email__c"]];
+    self.applicantMobileNumber = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_Mobile_Number__c"]];
+    self.applicantGender = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_Gender__c"]];
+    self.passportCountry = [HelperClass stringCheckNull:[visaDict objectForKey:@"Passport_Country__c"]];
+    self.passportNumber = [HelperClass stringCheckNull:[visaDict objectForKey:@"Passport_Number__c"]];
+    self.religion = [HelperClass stringCheckNull:[visaDict objectForKey:@"Religion__c"]];
+    self.visaType = [HelperClass stringCheckNull:[visaDict objectForKey:@"Visa_Type__c"]];
+    self.validityStatus = [HelperClass stringCheckNull:[visaDict objectForKey:@"Visa_Validity_Status__c"]];
+    self.employeeID = [HelperClass stringCheckNull:[visaDict objectForKey:@"Employee_ID__c"]];
+    self.accompaniedBy = [HelperClass stringCheckNull:[visaDict objectForKey:@"Accompanied_By__c"]];
+    self.visitVisaDuration = [HelperClass stringCheckNull:[visaDict objectForKey:@"Visit_Visa_Duration__c"]];
+    
+    if (![[visaDict objectForKey:@"Passport_Expiry__c"] isKindOfClass:[NSNull class]])
+        self.passportExpiry = [SFDateUtil SOQLDateTimeStringToDate:[visaDict objectForKey:@"Passport_Expiry__c"]];
+    
+    if (![[visaDict objectForKey:@"Visa_Expiry_Date__c"] isKindOfClass:[NSNull class]])
+        self.expiryDate = [SFDateUtil SOQLDateTimeStringToDate:[visaDict objectForKey:@"Visa_Expiry_Date__c"]];
+    
+    if (![[visaDict objectForKey:@"Date_of_Birth__c"] isKindOfClass:[NSNull class]])
+        self.dateOfBirth = [SFDateUtil SOQLDateTimeStringToDate:[visaDict objectForKey:@"Date_of_Birth__c"]];
+    
+    self.sponsoringCompany = [[Account alloc] initAccount:[visaDict objectForKey:@"Sponsoring_Company__r"]];
+    self.visaHolder = [[Account alloc] initAccount:[visaDict objectForKey:@"Visa_Holder__r"]];
+    self.countryOfBirth = [[Country alloc] initCountry:[visaDict objectForKey:@"Country_of_Birth__r"]];
+    self.currentNationality = [[Country alloc] initCountry:[visaDict objectForKey:@"Current_Nationality__r"]];
+    self.jobTitleAtImmigration = [[Occupation alloc] initOccupation:[visaDict objectForKey:@"Job_Title_at_Immigration__r"]];
+    
+    return self;
+}
 
 - (id)initVisa:(NSString*)VisaId Name:(NSString*)Name ValidityStatus:(NSString*)ValidityStatus ExpiryDate:(NSString*)ExpiryDate PassportCountry:(NSString*)PassportCountry PassportNumber:(NSString*)PassportNumber SponsoringCompany:(Account*)SponsoringCompany VisaHolder:(Account*)VisaHolder {
     if (!(self = [super init]))

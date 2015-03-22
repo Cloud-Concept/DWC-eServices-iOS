@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSDate *passportIssueDate;
 @property (nonatomic, strong) NSDate *passportExpiryDate;
 
+- (id)initPassport:(NSDictionary *)passportDict;
+/*
 - (id)initPassport:(NSString *)PassportId PassportNumber:(NSString *)PassportNumber PassportType:(NSString *)PassportType PassportPlaceOfIssue:(NSString *)PassportPlaceOfIssue PassportIssueDate:(NSString *)PassportIssueDate PassportExpiryDate:(NSString *)PassportExpiryDate;
-
+*/
 @end

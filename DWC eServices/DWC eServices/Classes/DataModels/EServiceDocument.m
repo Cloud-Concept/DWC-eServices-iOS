@@ -12,6 +12,26 @@
 
 @implementation EServiceDocument
 
+- (id)initEServiceDocument:(NSDictionary *)eServiceDocumentDict {
+    if (!(self = [super init]))
+        return nil;
+    
+    if ([eServiceDocumentDict isKindOfClass:[NSNull class]] || eServiceDocumentDict == nil)
+        return nil;
+    
+    self.Id = [HelperClass stringCheckNull:[eServiceDocumentDict objectForKey:@"Id"]];
+    self.name = [HelperClass stringCheckNull:[eServiceDocumentDict objectForKey:@"Name"]];
+    
+    self.nameNoSpace = [self.name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    
+    self.type = [HelperClass stringCheckNull:[eServiceDocumentDict objectForKey:@"Type__c"]];
+    self.language = [HelperClass stringCheckNull:[eServiceDocumentDict objectForKey:@"Language__c"]];
+    self.authority = [HelperClass stringCheckNull:[eServiceDocumentDict objectForKey:@"Authority__c"]];
+    self.documentType = [HelperClass stringCheckNull:[eServiceDocumentDict objectForKey:@"Document_Type__c"]];
+    
+    return self;
+}
+
 - (id)initEServiceDocument:(NSString*)ServiceId Name:(NSString*)Name Type:(NSString*)Type Language:(NSString*)Language Authority:(NSString*)Authority DocumentType:(NSString*)DocumentType {
     if (!(self = [super init]))
         return nil;

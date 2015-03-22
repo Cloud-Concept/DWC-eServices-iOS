@@ -189,17 +189,7 @@
         nocTypesArray = [[NSMutableArray alloc] init];
         
         for (NSDictionary *dict in records) {
-            NSArray *documentRecordsArray = [NSArray new];
-            if(![[dict objectForKey:@"eServices_Document_Checklists__r"] isKindOfClass:[NSNull class]])
-                documentRecordsArray = [[dict objectForKey:@"eServices_Document_Checklists__r"] objectForKey:@"records"];
-            
-            [nocTypesArray addObject:[[EServiceAdministration alloc] initEServiceAdministration:[dict objectForKey:@"Id"]
-                                                                                           Name:[dict objectForKey:@"Name"]
-                                                                              ServiceIdentifier:[dict objectForKey:@"Service_Identifier__c"]
-                                                                                         Amount:[dict objectForKey:@"Amount__c"]
-                                                                                RelatedToObject:[dict objectForKey:@"Related_to_Object__c"]
-                                                                             NewEditVFGenerator:[dict objectForKey:@"New_Edit_VF_Generator__c"]
-                                                                          ServiceDocumentsArray:documentRecordsArray]];
+            [nocTypesArray addObject:[[EServiceAdministration alloc] initEServiceAdministration:dict]];
         }
         
         loadingNOCTypes = NO;

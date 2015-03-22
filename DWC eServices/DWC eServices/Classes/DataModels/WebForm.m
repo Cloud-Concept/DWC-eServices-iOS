@@ -7,10 +7,30 @@
 //
 
 #import "WebForm.h"
+#import "HelperClass.h"
 #import "FormField.h"
 #import "SFRestAPI+Blocks.h"
 
 @implementation WebForm
+
+- (id)initWebForm:(NSDictionary *)webFormDict {
+    if (!(self = [super init])) {
+        return nil;
+    }
+    
+    if ([webFormDict isKindOfClass:[NSNull class]] || webFormDict == nil)
+        return nil;
+    
+    self.Id = [HelperClass stringCheckNull:[webFormDict objectForKey:@"Id"]];
+    self.name = [HelperClass stringCheckNull:[webFormDict objectForKey:@"Name"]];
+    self.formDescription = [HelperClass stringCheckNull:[webFormDict objectForKey:@"Description__c"]];
+    self.title = [HelperClass stringCheckNull:[webFormDict objectForKey:@"Title__c"]];
+    self.isNotesAttachments = [[HelperClass stringCheckNull:[webFormDict objectForKey:@"isNotesAttachments__c"]] boolValue];
+    self.objectLabel = [HelperClass stringCheckNull:[webFormDict objectForKey:@"Object_Label__c"]];
+    self.objectName = [HelperClass stringCheckNull:[webFormDict objectForKey:@"Object_Name__c"]];
+    
+    return self;
+}
 
 - (id)initWebForm:(NSString*)WebFormID Name:(NSString*)Name Description:(NSString*)Description Title:(NSString*)Title IsNotesAttachments:(BOOL)IsNotesAttachments ObjectLabel:(NSString*)ObjectLabel ObjectName:(NSString*)ObjectName {
     

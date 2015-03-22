@@ -22,6 +22,8 @@
 @property (nonatomic, strong) RecordType *recordType;
 @property (nonatomic, strong) NSArray *licenseActivityArray;
 
+- (id)initLicense:(NSDictionary *)licenseDict;
+/*
 - (id)initLicense:(NSString *)LicenseId CommercialName:(NSString *)CommercialName CommercialNameArabic:(NSString *)CommercialNameArabic LicenseNumberValue:(NSString *)LicenseNumberValue ValidityStatus:(NSString *)ValidityStatus LicenseIssueDate:(NSString *)LicenseIssueDate LicenseExpiryDate:(NSString *)LicenseExpiryDate LicenseRecordType:(RecordType *)LicenseRecordType;
-
+*/
 @end

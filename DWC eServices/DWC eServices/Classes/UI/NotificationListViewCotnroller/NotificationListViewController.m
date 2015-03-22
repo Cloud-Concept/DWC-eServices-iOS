@@ -51,30 +51,8 @@
         NSInteger notificationsCount = 0;
         
         for (NSDictionary *notificationDict in [dict objectForKey:@"records"]) {
-            NSDictionary *requestDict = [notificationDict objectForKey:@"Case__r"];
-            Request *request;
-            if (![requestDict isKindOfClass:[NSNull class]]) {
-                request = [[Request alloc] initRequestWithId:[requestDict objectForKey:@"Id"]
-                                                      Number:[requestDict objectForKey:@"CaseNumber"]
-                                                      Status:[requestDict objectForKey:@"Status"]
-                                                   WebFormId:[requestDict objectForKey:@"Web_Form__c"]
-                                                 RatingScore:[requestDict objectForKey:@"Case_Rating_Score__c"]
-                                                 CreatedDate:[requestDict objectForKey:@"CreatedDate"]
-                                              CaseRecordType:nil];
-            }
-            
             NotificationManagement *notification = [[NotificationManagement alloc]
-                                                    initNotificationManager:[notificationDict objectForKey:@"Id"]
-                                                    Name:[notificationDict objectForKey:@"Name"]
-                                                    CaseStatus:[notificationDict objectForKey:@"Case_Status__c"]
-                                                    CompiledMessage:[notificationDict objectForKey:@"Compiled_Message__c"]
-                                                    NotificationMessage:[notificationDict objectForKey:@"Notification_Message__c"]
-                                                    PriorValue:[notificationDict objectForKey:@"Prior_Value__c"]
-                                                    ReadDateTime:[notificationDict objectForKey:@"Read_Date_and_Time__c"]
-                                                    IsFeedbackAllowed:[[notificationDict objectForKey:@"isFeedbackAllowed__c"] boolValue]
-                                                    IsMessageRead:[[notificationDict objectForKey:@"isMessageRead__c"] boolValue]
-                                                    IsPushNotificationAllowed:[[notificationDict objectForKey:@"Is_Push_Notification_Allowed__c"] boolValue]
-                                                    NotificationRequest:request];
+                                                    initNotificationManager:notificationDict];
             
             if (!notification.isMessageRead) {
                 notificationsCount++;

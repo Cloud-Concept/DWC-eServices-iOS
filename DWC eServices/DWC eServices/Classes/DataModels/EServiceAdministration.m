@@ -12,6 +12,62 @@
 
 @implementation EServiceAdministration
 
+- (id)initEServiceAdministration:(NSDictionary *)eServiceAdministrationDict {
+    if(!(self = [super init]))
+        return nil;
+    
+    if ([eServiceAdministrationDict isKindOfClass:[NSNull class]] || eServiceAdministrationDict == nil)
+        return nil;
+    
+    self.Id = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Id"]];
+    self.name = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Name"]];
+    self.serviceIdentifier = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Service_Identifier__c"]];
+    self.amount = [HelperClass numberCheckNull:[eServiceAdministrationDict objectForKey:@"Amount__c"]];
+    self.relatedToObject = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Related_to_Object__c"]];
+    self.editNewVFGenerator = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"New_Edit_VF_Generator__c"]];
+    self.cancelVFGenerator = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Cancel_VF_Generator__c"]];
+    self.renewVFGenerator = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Renewal_VF_Generator__c"]];
+    self.replaceVFGenerator = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Replace_VF_Generator__c"]];
+    self.recordTypePicklist = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Record_Type_Picklist__c"]];
+    
+    NSArray *serviceDocumentsArray = [NSArray new];
+    NSMutableArray *documentsMutableArray = [NSMutableArray new];
+    NSMutableOrderedSet *authoritiesMutableOrderedSet = [NSMutableOrderedSet new];
+    NSMutableDictionary *authorityLanguagesMutableDictionary = [NSMutableDictionary new];
+    if(![[eServiceAdministrationDict objectForKey:@"eServices_Document_Checklists__r"] isKindOfClass:[NSNull class]])
+        serviceDocumentsArray = [[eServiceAdministrationDict
+                                 objectForKey:@"eServices_Document_Checklists__r"] objectForKey:@"records"];
+    
+    for (NSDictionary *obj in serviceDocumentsArray) {
+        NSString *currentDocumentType = [HelperClass stringCheckNull:[obj objectForKey:@"Document_Type__c"]];
+        if ([currentDocumentType isEqualToString:@"Upload"]) {
+            EServiceDocument *newDocument = [[EServiceDocument alloc] initEServiceDocument:obj];
+            
+            [documentsMutableArray addObject:newDocument];
+        }
+        else if ([currentDocumentType isEqualToString:@"Download"]) {
+            NSString *authority = [obj objectForKey:@"Authority__c"];
+            [authoritiesMutableOrderedSet addObject:authority];
+            
+            NSMutableOrderedSet *languagesMutableOrderedSet;
+            if ([authorityLanguagesMutableDictionary valueForKey:authority]) {
+                languagesMutableOrderedSet = [authorityLanguagesMutableDictionary valueForKey:authority];
+            }
+            else {
+                languagesMutableOrderedSet = [NSMutableOrderedSet new];
+            }
+            [languagesMutableOrderedSet addObject:[obj objectForKey:@"Language__c"]];
+            [authorityLanguagesMutableDictionary setValue:languagesMutableOrderedSet forKey:authority];
+        }
+    }
+    
+    self.serviceDocumentsArray = [NSArray arrayWithArray:documentsMutableArray];
+    self.authoritiesOrderedSet = [NSOrderedSet orderedSetWithOrderedSet:authoritiesMutableOrderedSet];
+    self.authorityLanguagesDictionary = [NSDictionary dictionaryWithDictionary:authorityLanguagesMutableDictionary];
+    
+    return self;
+}
+
 - (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject NewEditVFGenerator:(NSString*)NewEditVFGenerator ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray {
     return [self initEServiceAdministration:ServiceId Name:Name ServiceIdentifier:ServiceIdentifier Amount:Amount RelatedToObject:RelatedToObject NewEditVFGenerator:NewEditVFGenerator CancelVFGenerator:@"" RenewVFGenerator:@"" ReplaceVFGenerator:@"" RecordTypePicklist:@"" ServiceDocumentsArray:ServiceDocumentsArray];
 }
@@ -40,12 +96,7 @@
         NSString *currentDocumentType = [HelperClass stringCheckNull:[obj objectForKey:@"Document_Type__c"]];
         if ([currentDocumentType isEqualToString:@"Upload"]) {
             
-            EServiceDocument *newDocument = [[EServiceDocument alloc] initEServiceDocument:[obj objectForKey:@"Id"]
-                                                                                      Name:[obj objectForKey:@"Name"]
-                                                                                      Type:[obj objectForKey:@"Type__c"]
-                                                                                  Language:[obj objectForKey:@"Language__c"]
-                                                                                 Authority:[obj objectForKey:@"Authority__c"]
-                                                                              DocumentType:[obj objectForKey:@"Document_Type__c"]];
+            EServiceDocument *newDocument = [[EServiceDocument alloc] initEServiceDocument:obj];
             [documentsMutableArray addObject:newDocument];
         }
         else if ([currentDocumentType isEqualToString:@"Download"]) {

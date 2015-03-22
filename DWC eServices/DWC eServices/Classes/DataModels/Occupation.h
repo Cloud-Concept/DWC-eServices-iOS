@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSString *eFormCode;
 @property (nonatomic) BOOL isActive;
 
+- (id)initOccupation:(NSDictionary *)occupationDict;
+/*
 - (id)initOccupation:(NSString*)OccupationId OccupationName:(NSString*)OccupationName ArabicName:(NSString*)ArabicName DNRDName:(NSString*)DNRDName FormCode:(NSString*)FormCode IsActive:(BOOL)IsActive;
-
+*/
 @end

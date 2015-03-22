@@ -13,6 +13,32 @@
 
 @implementation NotificationManagement
 
+- (id)initNotificationManager:(NSDictionary *)notificationManagerDict {
+    if (!(self = [super init]))
+        return nil;
+    
+    if ([notificationManagerDict isKindOfClass:[NSNull class]] || notificationManagerDict == nil)
+        return nil;
+    
+    self.Id = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Id"]];
+    self.name = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Name"]];
+    self.caseStatus = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Case_Status__c"]];
+    self.compiledMessage = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Compiled_Message__c"]];
+    self.notificationMessage = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Notification_Message__c"]];
+    self.priorValue = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Prior_Value__c"]];
+    
+    self.isFeedbackAllowed = [[notificationManagerDict objectForKey:@"isFeedbackAllowed__c"] boolValue];
+    self.isMessageRead = [[notificationManagerDict objectForKey:@"isMessageRead__c"] boolValue];
+    self.isPushNotificationAllowed = [[notificationManagerDict objectForKey:@"Is_Push_Notification_Allowed__c"] boolValue];
+    
+    if (![[notificationManagerDict objectForKey:@"Read_Date_and_Time__c"] isKindOfClass:[NSNull class]])
+        self.readDateTime = [SFDateUtil SOQLDateTimeStringToDate:[notificationManagerDict objectForKey:@"Read_Date_and_Time__c"]];
+    
+    self.request = [[Request alloc] initRequest:[notificationManagerDict objectForKey:@"Case__r"]];
+    
+    return self;
+}
+
 - (id)initNotificationManager:(NSString *)NotificationId Name:(NSString *)Name CaseStatus:(NSString *)CaseStatus CompiledMessage:(NSString *)CompiledMessage NotificationMessage:(NSString *)NotificationMessage PriorValue:(NSString *)PriorValue ReadDateTime:(NSString *)ReadDateTime IsFeedbackAllowed:(BOOL)IsFeedbackAllowed IsMessageRead:(BOOL)IsMessageRead IsPushNotificationAllowed:(BOOL)IsPushNotificationAllowed NotificationRequest:(Request *)NotificationRequest {
     
     if (!(self = [super init]))

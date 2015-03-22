@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSString *nationalityNameArabic;
 
 
+- (id)initCountry:(NSDictionary *)countryDict;
+/*
 - (id)initCountry:(NSString*)Id Name:(NSString*)Name AramexCountryCode:(NSString*)AramexCountryCode CountryNameArabic:(NSString*)CountryNameArabic DNRDName:(NSString*)DNRDName FromCode:(NSString*)FormCode IsActive:(BOOL)IsActive NationalityName:(NSString*)NationalityName NationalityNameArabic:(NSString*)NationalityNameArabic;
-
+*/
 @end

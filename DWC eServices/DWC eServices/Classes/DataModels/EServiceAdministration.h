@@ -24,10 +24,12 @@
 @property (strong, nonatomic) NSOrderedSet *authoritiesOrderedSet;
 @property (strong, nonatomic) NSDictionary *authorityLanguagesDictionary;
 
+- (id)initEServiceAdministration:(NSDictionary *)eServiceAdministrationDict;
+/*
 - (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject NewEditVFGenerator:(NSString*)NewEditVFGenerator ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray;
 
 - (id)initEServiceAdministration:(NSString*)ServiceId Name:(NSString*)Name ServiceIdentifier:(NSString*)ServiceIdentifier Amount:(NSNumber*)Amount RelatedToObject:(NSString*)RelatedToObject NewEditVFGenerator:(NSString*)NewEditVFGenerator CancelVFGenerator:(NSString *)CancelVFGenerator RenewVFGenerator:(NSString *)RenewVFGenerator ReplaceVFGenerator:(NSString *) ReplaceVFGenerator RecordTypePicklist:(NSString *)RecordTypePicklist ServiceDocumentsArray:(NSArray*)ServiceDocumentsArray;
-
+*/
 - (BOOL)hasDocuments;
 
 @end

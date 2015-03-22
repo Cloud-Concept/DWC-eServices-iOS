@@ -20,9 +20,10 @@
 @property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic, strong) RecordType *caseRecordType;
 
-
+- (id)initRequest:(NSDictionary *)requestDict;
+/*
 - (id)initRequestWithId:(NSString *)caseId Number:(NSString *)Number Status:(NSString *)Status WebFormId:(NSString *)WebFormId CreatedDate:(NSString *)CreatedDate CaseRecordType:(RecordType *)CaseRecordType;
 
 - (id)initRequestWithId:(NSString *)caseId Number:(NSString *)Number Status:(NSString *)Status WebFormId:(NSString *)WebFormId RatingScore:(NSNumber *)RatingScore CreatedDate:(NSString *)CreatedDate CaseRecordType:(RecordType *)CaseRecordType;
-
+*/
 @end

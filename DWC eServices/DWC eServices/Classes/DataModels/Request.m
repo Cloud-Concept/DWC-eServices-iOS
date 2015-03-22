@@ -9,8 +9,27 @@
 #import "Request.h"
 #import "HelperClass.h"
 #import "SFDateUtil.h"
+#import "RecordType.h"
 
 @implementation Request
+
+- (id)initRequest:(NSDictionary *)requestDict {
+    if (!(self = [super init]))
+        return nil;
+    
+    if ([requestDict isKindOfClass:[NSNull class]] || requestDict == nil)
+        return nil;
+    
+    self.Id = [HelperClass stringCheckNull:[requestDict objectForKey:@"Id"]];
+    self.caseNumber = [HelperClass stringCheckNull:[requestDict objectForKey:@"CaseNumber"]];
+    self.status = [HelperClass stringCheckNull:[requestDict objectForKey:@"Status"]];
+    self.webFormId = [HelperClass stringCheckNull:[requestDict objectForKey:@"Web_Form__c"]];
+    self.caseRatingScore = [HelperClass numberCheckNull:[requestDict objectForKey:@"Case_Rating_Score__c"]];
+    self.createdDate = [SFDateUtil SOQLDateTimeStringToDate:[requestDict objectForKey:@"CreatedDate"]];
+    self.caseRecordType = [[RecordType alloc] initRecordType:[requestDict objectForKey:@"RecordType"]];
+    
+    return self;
+}
 
 - (id)initRequestWithId:(NSString *)caseId Number:(NSString *)Number Status:(NSString *)Status WebFormId:(NSString *)WebFormId CreatedDate:(NSString *)CreatedDate CaseRecordType:(RecordType *)CaseRecordType {
     return [self initRequestWithId:caseId
