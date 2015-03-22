@@ -26,4 +26,6 @@
 + (NSString *)notificationsQuery;
 + (NSString *)notificationsCountQuery;
 + (NSString *)contractsQuery;
++ (NSString *)dwcDocumentsQuery;
++ (NSString *)customerDocumentsQuery;
 @end

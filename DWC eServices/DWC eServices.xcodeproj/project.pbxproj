@@ -94,6 +94,8 @@
 		139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B691A7A6F2600D1D451 /* UIImageView+SFAttachment.m */; };
 		139E6B6E1A7A6F2600D1D451 /* UIView+MGBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B6C1A7A6F2600D1D451 /* UIView+MGBadgeView.m */; };
 		139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */; };
+		13CFE72E1ABECF13009E47EC /* EServicesDocumentChecklist.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE72D1ABECF13009E47EC /* EServicesDocumentChecklist.m */; };
+		13CFE7311ABEDF3A009E47EC /* CompanyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE7301ABEDF3A009E47EC /* CompanyDocument.m */; };
 		13D97BB51A8766E800DD71FF /* UIImageView+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */; };
 		13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */; };
 		13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67971A7E556F00255174 /* RecordMainViewController.m */; };
@@ -283,6 +285,10 @@
 		139E6B6C1A7A6F2600D1D451 /* UIView+MGBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MGBadgeView.m"; sourceTree = "<group>"; };
 		139E6B701A7A6FC200D1D451 /* UIView+RoundCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RoundCorner.h"; sourceTree = "<group>"; };
 		139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RoundCorner.m"; sourceTree = "<group>"; };
+		13CFE72C1ABECF13009E47EC /* EServicesDocumentChecklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EServicesDocumentChecklist.h; sourceTree = "<group>"; };
+		13CFE72D1ABECF13009E47EC /* EServicesDocumentChecklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EServicesDocumentChecklist.m; sourceTree = "<group>"; };
+		13CFE72F1ABEDF3A009E47EC /* CompanyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyDocument.h; sourceTree = "<group>"; };
+		13CFE7301ABEDF3A009E47EC /* CompanyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyDocument.m; sourceTree = "<group>"; };
 		13D97BB31A8766E800DD71FF /* UIImageView+MaskImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MaskImage.h"; sourceTree = "<group>"; };
 		13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MaskImage.m"; sourceTree = "<group>"; };
 		13EE67921A7E50A500255174 /* RKSwipeBetweenViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKSwipeBetweenViewControllers.h; sourceTree = "<group>"; };
@@ -606,6 +612,8 @@
 				130F7DD71AAF2C6800380628 /* BusinessActivity.m */,
 				13081AE71A76559D00B33509 /* CardManagement.h */,
 				13081AE81A76559D00B33509 /* CardManagement.m */,
+				13CFE72F1ABEDF3A009E47EC /* CompanyDocument.h */,
+				13CFE7301ABEDF3A009E47EC /* CompanyDocument.m */,
 				13081AE91A76559D00B33509 /* Country.h */,
 				13081AEA1A76559D00B33509 /* Country.m */,
 				1353CBD71AAD92B700E57FAC /* Directorship.h */,
@@ -618,6 +626,8 @@
 				13081AEC1A76559D00B33509 /* EServiceAdministration.m */,
 				13081AED1A76559D00B33509 /* EServiceDocument.h */,
 				13081AEE1A76559D00B33509 /* EServiceDocument.m */,
+				13CFE72C1ABECF13009E47EC /* EServicesDocumentChecklist.h */,
+				13CFE72D1ABECF13009E47EC /* EServicesDocumentChecklist.m */,
 				13081AEF1A76559D00B33509 /* FormField.h */,
 				13081AF01A76559D00B33509 /* FormField.m */,
 				1353CBDA1AAD9B5300E57FAC /* LegalRepresentative.h */,
@@ -1515,6 +1525,7 @@
 				137610D71AB82E3B0084D878 /* TenancyContract.m in Sources */,
 				1394EA1F1A88D31F00ECED05 /* WYPopoverController.m in Sources */,
 				130E09671AA5B84400E6ED59 /* Request.m in Sources */,
+				13CFE7311ABEDF3A009E47EC /* CompanyDocument.m in Sources */,
 				139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */,
 				13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */,
 				13081AFE1A76559D00B33509 /* Visa.m in Sources */,
@@ -1531,6 +1542,7 @@
 				13F5A5A71AB0B64A00D92591 /* NotificationTableViewCell.m in Sources */,
 				131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */,
 				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
+				13CFE72E1ABECF13009E47EC /* EServicesDocumentChecklist.m in Sources */,
 				13315AC61AAC24DB009E1819 /* CompanyInfoTypeViewController.m in Sources */,
 				139658141AB9797B0091C451 /* Passport.m in Sources */,
 				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
