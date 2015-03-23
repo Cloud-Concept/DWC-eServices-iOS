@@ -15,6 +15,9 @@
 #import "CustomerDocumentTableViewCell.h"
 #import "DWCDocumentTableViewCell.h"
 #import "HelperClass.h"
+#import "VisualforceWebviewViewController.h"
+#import "Globals.h"
+#import "Account.h"
 
 @interface CompanyDocumentTypeListViewController ()
 
@@ -151,6 +154,14 @@
                                               completeBlock:successBlock];
 }
 
+- (void)openVisualforcePage:(NSString *)url {
+    VisualforceWebviewViewController *vfWebviewVC = [VisualforceWebviewViewController new];
+    
+    vfWebviewVC.returnURL = url;
+    
+    [self.navigationController pushViewController:vfWebviewVC animated:YES];
+}
+
 - (UITableViewCell *)cellDWCCompanyDocumentForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     DWCDocumentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DWC Document Cell" forIndexPath:indexPath];
     
@@ -190,22 +201,24 @@
                                                          handler:nil];
     
     UIAlertAction *editAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentEditAction", @"")
-                                                            style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction *action) {
-                                                              
-                                                          }];
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction *action) {
+                                                           
+                                                       }];
     
     UIAlertAction *previewAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentPreviewAction", @"")
                                                             style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction *action) {
+                                                              NSString *url = [NSString stringWithFormat:@"servlet/servlet.FileDownload?file=%@", companyDocument.attachmentId];
                                                               
+                                                              [self openVisualforcePage:url];
                                                           }];
     
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentDeleteAction", @"")
-                                                            style:UIAlertActionStyleDestructive
-                                                          handler:^(UIAlertAction *action) {
-                                                              [self confirmDeleteCustomerDocument:companyDocument];
-                                                          }];
+                                                           style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction *action) {
+                                                             [self confirmDeleteCustomerDocument:companyDocument];
+                                                         }];
     
     [actionSheet addAction:editAction];
     
@@ -221,9 +234,6 @@
 }
 
 - (void)dwcDocumentaccessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    //Available_for_Preview__c
-    //Original_can_be_Requested__c
-    
     EServicesDocumentChecklist *eServicesDocumentChecklist = [dataRows objectAtIndex:indexPath.row];
     
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"DocumentAction", @"")
@@ -239,6 +249,9 @@
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction *action) {
                                                                   
+                                                                  NSString *url = [NSString stringWithFormat:@"/apex/%@%@", eServicesDocumentChecklist.templateNameLink, [Globals currentAccount].Id];
+                                                                  
+                                                                  [self openVisualforcePage:url];
                                                               }];
         
         [actionSheet addAction:previewAction];
@@ -307,13 +320,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

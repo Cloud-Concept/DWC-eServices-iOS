@@ -75,6 +75,8 @@
 		133E34CC1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34CB1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m */; };
 		133E34D11ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D01ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m */; };
 		133E34D41ABFFFCC002C3748 /* DWCDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D31ABFFFCC002C3748 /* DWCDocumentTableViewCell.m */; };
+		133E34D91AC02CF6002C3748 /* VisualforceWebviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D71AC02CF6002C3748 /* VisualforceWebviewViewController.m */; };
+		133E34DA1AC02CF6002C3748 /* VisualforceWebviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133E34D81AC02CF6002C3748 /* VisualforceWebviewViewController.xib */; };
 		13411AFB1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 13411AFA1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m */; };
 		13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13481AE41A82257100093331 /* RecordRelatedViewController.m */; };
 		13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13481AE51A82257100093331 /* RecordRelatedViewController.xib */; };
@@ -253,6 +255,9 @@
 		133E34D01ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerDocumentTableViewCell.m; sourceTree = "<group>"; };
 		133E34D21ABFFFCC002C3748 /* DWCDocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCDocumentTableViewCell.h; sourceTree = "<group>"; };
 		133E34D31ABFFFCC002C3748 /* DWCDocumentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCDocumentTableViewCell.m; sourceTree = "<group>"; };
+		133E34D61AC02CF6002C3748 /* VisualforceWebviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualforceWebviewViewController.h; sourceTree = "<group>"; };
+		133E34D71AC02CF6002C3748 /* VisualforceWebviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisualforceWebviewViewController.m; sourceTree = "<group>"; };
+		133E34D81AC02CF6002C3748 /* VisualforceWebviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisualforceWebviewViewController.xib; sourceTree = "<group>"; };
 		13411AF91A931E8E009AC2F5 /* ServiceDocumentHelperClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDocumentHelperClass.h; sourceTree = "<group>"; };
 		13411AFA1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDocumentHelperClass.m; sourceTree = "<group>"; };
 		13481AE31A82257100093331 /* RecordRelatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordRelatedViewController.h; path = "DWC eServices/Classes/UI/RecordMainViewController/RecordRelatedViewController/RecordRelatedViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -557,6 +562,7 @@
 				131819481A91FC8B00CAA4D6 /* ServicesUploadViewController */,
 				132CCFAD1A779C5F007A40AE /* SidebarTableViewController */,
 				130291391A76C88D000E119C /* SWRevealViewController */,
+				133E34D51AC02CDE002C3748 /* VisualforceWebviewViewController */,
 				1394EA1A1A88D31E00ECED05 /* WYPopoverController */,
 				1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */,
 			);
@@ -908,6 +914,16 @@
 				133E34D31ABFFFCC002C3748 /* DWCDocumentTableViewCell.m */,
 			);
 			path = DWCDocumentTableViewCell;
+			sourceTree = "<group>";
+		};
+		133E34D51AC02CDE002C3748 /* VisualforceWebviewViewController */ = {
+			isa = PBXGroup;
+			children = (
+				133E34D61AC02CF6002C3748 /* VisualforceWebviewViewController.h */,
+				133E34D71AC02CF6002C3748 /* VisualforceWebviewViewController.m */,
+				133E34D81AC02CF6002C3748 /* VisualforceWebviewViewController.xib */,
+			);
+			path = VisualforceWebviewViewController;
 			sourceTree = "<group>";
 		};
 		136377BB1A767C2C00282F72 /* FVCustomAlertView */ = {
@@ -1534,6 +1550,7 @@
 				131819441A91D65900CAA4D6 /* InfoPlist.strings in Resources */,
 				130E096D1AA5C42800E6ED59 /* MyRequestTableViewCell.xib in Resources */,
 				130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */,
+				133E34DA1AC02CF6002C3748 /* VisualforceWebviewViewController.xib in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
 				1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */,
 				1328E7D91A95C7DF00475E90 /* NewNOCViewController.xib in Resources */,
@@ -1610,6 +1627,7 @@
 				133E34CC1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
+				133E34D91AC02CF6002C3748 /* VisualforceWebviewViewController.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,
 				13081AF91A76559D00B33509 /* Country.m in Sources */,
 				139E6B6E1A7A6F2600D1D451 /* UIView+MGBadgeView.m in Sources */,
