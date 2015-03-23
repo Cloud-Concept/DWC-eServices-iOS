@@ -72,6 +72,9 @@
 		13315ACC1AAC5ADB009E1819 /* ShareOwnership.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315ACB1AAC5ADB009E1819 /* ShareOwnership.m */; };
 		13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315ACF1AAC663D009E1819 /* CompanyInfoListViewController.m */; };
 		13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */; };
+		133E34CC1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34CB1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m */; };
+		133E34D11ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D01ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m */; };
+		133E34D41ABFFFCC002C3748 /* DWCDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D31ABFFFCC002C3748 /* DWCDocumentTableViewCell.m */; };
 		13411AFB1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 13411AFA1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m */; };
 		13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13481AE41A82257100093331 /* RecordRelatedViewController.m */; };
 		13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13481AE51A82257100093331 /* RecordRelatedViewController.xib */; };
@@ -96,6 +99,8 @@
 		139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */; };
 		13CFE72E1ABECF13009E47EC /* EServicesDocumentChecklist.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE72D1ABECF13009E47EC /* EServicesDocumentChecklist.m */; };
 		13CFE7311ABEDF3A009E47EC /* CompanyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE7301ABEDF3A009E47EC /* CompanyDocument.m */; };
+		13CFE7351ABEEF05009E47EC /* CompanyDocumentTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE7341ABEEF05009E47EC /* CompanyDocumentTypeViewController.m */; };
+		13CFE7381ABEF1D6009E47EC /* DWCCompanyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE7371ABEF1D6009E47EC /* DWCCompanyDocument.m */; };
 		13D97BB51A8766E800DD71FF /* UIImageView+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */; };
 		13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */; };
 		13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67971A7E556F00255174 /* RecordMainViewController.m */; };
@@ -242,6 +247,12 @@
 		13315ACF1AAC663D009E1819 /* CompanyInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoListViewController.m; sourceTree = "<group>"; };
 		13315AD21AAC7056009E1819 /* CompanyInfoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyInfoListTableViewCell.h; sourceTree = "<group>"; };
 		13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoListTableViewCell.m; sourceTree = "<group>"; };
+		133E34CA1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyDocumentTypeListViewController.h; sourceTree = "<group>"; };
+		133E34CB1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyDocumentTypeListViewController.m; sourceTree = "<group>"; };
+		133E34CF1ABFFFB7002C3748 /* CustomerDocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerDocumentTableViewCell.h; sourceTree = "<group>"; };
+		133E34D01ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerDocumentTableViewCell.m; sourceTree = "<group>"; };
+		133E34D21ABFFFCC002C3748 /* DWCDocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCDocumentTableViewCell.h; sourceTree = "<group>"; };
+		133E34D31ABFFFCC002C3748 /* DWCDocumentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCDocumentTableViewCell.m; sourceTree = "<group>"; };
 		13411AF91A931E8E009AC2F5 /* ServiceDocumentHelperClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDocumentHelperClass.h; sourceTree = "<group>"; };
 		13411AFA1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDocumentHelperClass.m; sourceTree = "<group>"; };
 		13481AE31A82257100093331 /* RecordRelatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordRelatedViewController.h; path = "DWC eServices/Classes/UI/RecordMainViewController/RecordRelatedViewController/RecordRelatedViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -289,6 +300,10 @@
 		13CFE72D1ABECF13009E47EC /* EServicesDocumentChecklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EServicesDocumentChecklist.m; sourceTree = "<group>"; };
 		13CFE72F1ABEDF3A009E47EC /* CompanyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyDocument.h; sourceTree = "<group>"; };
 		13CFE7301ABEDF3A009E47EC /* CompanyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyDocument.m; sourceTree = "<group>"; };
+		13CFE7331ABEEF05009E47EC /* CompanyDocumentTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyDocumentTypeViewController.h; sourceTree = "<group>"; };
+		13CFE7341ABEEF05009E47EC /* CompanyDocumentTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyDocumentTypeViewController.m; sourceTree = "<group>"; };
+		13CFE7361ABEF1D6009E47EC /* DWCCompanyDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCCompanyDocument.h; sourceTree = "<group>"; };
+		13CFE7371ABEF1D6009E47EC /* DWCCompanyDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCCompanyDocument.m; sourceTree = "<group>"; };
 		13D97BB31A8766E800DD71FF /* UIImageView+MaskImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MaskImage.h"; sourceTree = "<group>"; };
 		13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MaskImage.m"; sourceTree = "<group>"; };
 		13EE67921A7E50A500255174 /* RKSwipeBetweenViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKSwipeBetweenViewControllers.h; sourceTree = "<group>"; };
@@ -520,6 +535,8 @@
 			children = (
 				132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */,
 				1318193D1A91CA9C00CAA4D6 /* BaseServicesViewController */,
+				133E34C91ABFFA37002C3748 /* CompanyDocumentTypeListViewController */,
+				13CFE7321ABEEEF6009E47EC /* CompanyDocumentTypeViewController */,
 				13315ACD1AAC662A009E1819 /* CompanyInfoListViewController */,
 				13315AC31AAC24CB009E1819 /* CompanyInfoTypeViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
@@ -618,6 +635,8 @@
 				13081AEA1A76559D00B33509 /* Country.m */,
 				1353CBD71AAD92B700E57FAC /* Directorship.h */,
 				1353CBD81AAD92B700E57FAC /* Directorship.m */,
+				13CFE7361ABEF1D6009E47EC /* DWCCompanyDocument.h */,
+				13CFE7371ABEF1D6009E47EC /* DWCCompanyDocument.m */,
 				13315AC71AAC3845009E1819 /* DWCCompanyInfo.h */,
 				13315AC81AAC3845009E1819 /* DWCCompanyInfo.m */,
 				130C300B1A78E7BF00C95600 /* DWCEmployee.h */,
@@ -862,6 +881,35 @@
 			path = CompanyInfoListTableViewCell;
 			sourceTree = "<group>";
 		};
+		133E34C91ABFFA37002C3748 /* CompanyDocumentTypeListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				133E34CD1ABFFF9F002C3748 /* CustomerDocumentTableViewCell */,
+				133E34CE1ABFFF9F002C3748 /* DWCDocumentTableViewCell */,
+				133E34CA1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.h */,
+				133E34CB1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m */,
+			);
+			path = CompanyDocumentTypeListViewController;
+			sourceTree = "<group>";
+		};
+		133E34CD1ABFFF9F002C3748 /* CustomerDocumentTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				133E34CF1ABFFFB7002C3748 /* CustomerDocumentTableViewCell.h */,
+				133E34D01ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m */,
+			);
+			path = CustomerDocumentTableViewCell;
+			sourceTree = "<group>";
+		};
+		133E34CE1ABFFF9F002C3748 /* DWCDocumentTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				133E34D21ABFFFCC002C3748 /* DWCDocumentTableViewCell.h */,
+				133E34D31ABFFFCC002C3748 /* DWCDocumentTableViewCell.m */,
+			);
+			path = DWCDocumentTableViewCell;
+			sourceTree = "<group>";
+		};
 		136377BB1A767C2C00282F72 /* FVCustomAlertView */ = {
 			isa = PBXGroup;
 			children = (
@@ -951,6 +999,15 @@
 				139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */,
 			);
 			path = "UIView+RoundCorner";
+			sourceTree = "<group>";
+		};
+		13CFE7321ABEEEF6009E47EC /* CompanyDocumentTypeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13CFE7331ABEEF05009E47EC /* CompanyDocumentTypeViewController.h */,
+				13CFE7341ABEEF05009E47EC /* CompanyDocumentTypeViewController.m */,
+			);
+			path = CompanyDocumentTypeViewController;
 			sourceTree = "<group>";
 		};
 		13D97BB21A8766A600DD71FF /* UIImageView+MaskImage */ = {
@@ -1516,6 +1573,8 @@
 				1353CBDC1AAD9B5300E57FAC /* LegalRepresentative.m in Sources */,
 				130E096C1AA5C42800E6ED59 /* MyRequestTableViewCell.m in Sources */,
 				131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */,
+				13CFE7381ABEF1D6009E47EC /* DWCCompanyDocument.m in Sources */,
+				133E34D41ABFFFCC002C3748 /* DWCDocumentTableViewCell.m in Sources */,
 				13315AC91AAC3845009E1819 /* DWCCompanyInfo.m in Sources */,
 				1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */,
 				131CA87E1A80F91500A79B12 /* RecordDetailTableViewCell.m in Sources */,
@@ -1548,6 +1607,7 @@
 				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
 				1353CBD91AAD92B700E57FAC /* Directorship.m in Sources */,
 				130F7DD21AAEE76300380628 /* License.m in Sources */,
+				133E34CC1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,
@@ -1559,6 +1619,7 @@
 				13743ECA1AB02E4F00D0B873 /* NotificationManagement.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
 				130C300D1A78E7BF00C95600 /* DWCEmployee.m in Sources */,
+				13CFE7351ABEEF05009E47EC /* CompanyDocumentTypeViewController.m in Sources */,
 				131819401A91CAB200CAA4D6 /* BaseServicesViewController.m in Sources */,
 				139E6B5E1A7A3CED00D1D451 /* Occupation.m in Sources */,
 				13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */,
@@ -1566,6 +1627,7 @@
 				13315ACC1AAC5ADB009E1819 /* ShareOwnership.m in Sources */,
 				13063A891A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m in Sources */,
 				139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */,
+				133E34D11ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m in Sources */,
 				13063A8D1A8B74AC00A1DEA2 /* UIView+DynamicForm.m in Sources */,
 				1394EA201A88D31F00ECED05 /* WYStoryboardPopoverSegue.m in Sources */,
 				1353CBD61AAD7ECB00E57FAC /* ManagementMember.m in Sources */,

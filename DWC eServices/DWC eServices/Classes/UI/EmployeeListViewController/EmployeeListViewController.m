@@ -37,6 +37,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.showSlidingMenu = NO;
+    
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
         case VisitVisaEmployee:

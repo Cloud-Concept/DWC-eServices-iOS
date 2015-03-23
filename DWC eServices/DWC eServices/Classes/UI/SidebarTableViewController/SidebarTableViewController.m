@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    menuItems = @[@"User Cell", @"Dashboard Cell", @"My Request Cell", @"Employees Cell", @"Services Cell", @"Company Info Cell", @"Reports Cell", @"Need Help Cell", @"Logout Cell"];
+    menuItems = @[@"User Cell", @"Dashboard Cell", @"My Request Cell", @"Employees Cell", @"Services Cell", @"Company Info Cell", @"Company Documents Cell", @"Need Help Cell", @"Logout Cell"];
 }
 
 - (void)didReceiveMemoryWarning {

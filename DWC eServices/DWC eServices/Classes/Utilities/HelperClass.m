@@ -36,10 +36,10 @@
 }
 
 + (NSNumber*)numberCheckNull:(NSNumber*)numberValue {
-    if(![numberValue isKindOfClass:[NSNull class]])
+    if(![numberValue isKindOfClass:[NSNull class]] && numberValue)
         return numberValue;
     else
-        return 0;
+        return [NSNumber numberWithInt:0];
 }
 
 + (void)setupButtonWithTextLeftToImage:(UIButton*)button {

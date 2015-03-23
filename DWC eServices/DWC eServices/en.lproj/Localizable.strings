@@ -131,5 +131,14 @@
 "LegalRepresentativePersonalInformation" = "Personal Information";
 "LegalRepresentativeInformation" = "Legal Representative Information";
 
+"DWCCompanyDocumentTypeDWCDocument" = "DWC Documents";
+"DWCCompanyDocumentTypeCustomerDocument" = "Customer Documents";
 
 "ExpiryLabel" = "Expiry:";
+
+"DocumentAction" = "Document Action";
+"DocumentPreviewAction" = "Preview";
+"DocumentRequestOriginalAction" = "Request Original";
+"DocumentEditAction" = "Edit";
+"DocumentDeleteAction" = "Delete";
+

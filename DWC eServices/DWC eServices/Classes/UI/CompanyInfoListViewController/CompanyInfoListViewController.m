@@ -34,6 +34,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.showSlidingMenu = NO;
+    
     switch (self.currentDWCCompanyInfo.Type) {
         case DWCCompanyInfoShareholders:
             [self loadCompanyShareholders];
