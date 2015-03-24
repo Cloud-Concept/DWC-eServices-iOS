@@ -88,6 +88,7 @@
     BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
     baseServicesVC.relatedServiceType = RelatedServiceTypeNewNOC;
     baseServicesVC.currentVisaObject = self.visaObject;
+    baseServicesVC.createServiceRecord = YES;
     [self.navigationController pushViewController:baseServicesVC animated:YES];
 }
 

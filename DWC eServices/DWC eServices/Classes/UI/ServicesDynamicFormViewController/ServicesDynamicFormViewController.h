@@ -15,6 +15,7 @@
 @interface ServicesDynamicFormViewController : UIViewController
 {
     UIView *servicesContentView;
+    CGPoint scrollViewOffset;
 }
 
 @property (weak, nonatomic) BaseServicesViewController *baseServicesViewController;

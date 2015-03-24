@@ -262,7 +262,7 @@
     
     Account *currentAccount = [Globals currentAccount];
     
-    aramexRequest.path = [NSString stringWithFormat:@"/services/apexrest/MobileAramexRateWebService?city=%@&country=%@", currentAccount.billingCity, currentAccount.billingCountryCode];
+    aramexRequest.path = [NSString stringWithFormat:@"/services/apexrest/MobileAramexRateWebService?city=%@&country=%@", currentAccount.billingCity, currentAccount.billingCountry];
     
     loadingCourierCharges = YES;
     [self showLoadingDialog];
@@ -276,7 +276,7 @@
     self.baseServicesViewController.currentServiceAdministration = eService;
     
     self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                  [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]] ,@"isCourierRequired__c",
+                                                  /*[NSNumber numberWithBool:[self.courierRequiredSwitch isOn]] ,@"isCourierRequired__c",*/
                                                   eService.Id, @"Service_Requested__c",
                                                   self.baseServicesViewController.currentVisaObject.visaHolder.Id, @"Employee_Ref__c",
                                                   [Globals currentAccount].Id, @"AccountId",

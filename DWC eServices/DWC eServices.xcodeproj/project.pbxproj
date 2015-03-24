@@ -41,6 +41,7 @@
 		130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130C30001A78DE0200C95600 /* EmployeeTableViewCell.xib */; };
 		130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C30091A78E1FE00C95600 /* EmployeeListViewController.m */; };
 		130C300D1A78E7BF00C95600 /* DWCEmployee.m in Sources */ = {isa = PBXBuildFile; fileRef = 130C300C1A78E7BF00C95600 /* DWCEmployee.m */; };
+		130CFAB11AC1E620006D7CA0 /* Invoice.m in Sources */ = {isa = PBXBuildFile; fileRef = 130CFAB01AC1E620006D7CA0 /* Invoice.m */; };
 		130E09671AA5B84400E6ED59 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 130E09661AA5B84400E6ED59 /* Request.m */; };
 		130E096C1AA5C42800E6ED59 /* MyRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 130E096A1AA5C42800E6ED59 /* MyRequestTableViewCell.m */; };
 		130E096D1AA5C42800E6ED59 /* MyRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130E096B1AA5C42800E6ED59 /* MyRequestTableViewCell.xib */; };
@@ -195,6 +196,8 @@
 		130C30091A78E1FE00C95600 /* EmployeeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeListViewController.m; sourceTree = "<group>"; };
 		130C300B1A78E7BF00C95600 /* DWCEmployee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCEmployee.h; sourceTree = "<group>"; };
 		130C300C1A78E7BF00C95600 /* DWCEmployee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCEmployee.m; sourceTree = "<group>"; };
+		130CFAAF1AC1E620006D7CA0 /* Invoice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Invoice.h; sourceTree = "<group>"; };
+		130CFAB01AC1E620006D7CA0 /* Invoice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Invoice.m; sourceTree = "<group>"; };
 		130E09651AA5B84400E6ED59 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		130E09661AA5B84400E6ED59 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
 		130E09691AA5C42800E6ED59 /* MyRequestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestTableViewCell.h; sourceTree = "<group>"; };
@@ -655,6 +658,8 @@
 				13CFE72D1ABECF13009E47EC /* EServicesDocumentChecklist.m */,
 				13081AEF1A76559D00B33509 /* FormField.h */,
 				13081AF01A76559D00B33509 /* FormField.m */,
+				130CFAAF1AC1E620006D7CA0 /* Invoice.h */,
+				130CFAB01AC1E620006D7CA0 /* Invoice.m */,
 				1353CBDA1AAD9B5300E57FAC /* LegalRepresentative.h */,
 				1353CBDB1AAD9B5300E57FAC /* LegalRepresentative.m */,
 				130F7DD01AAEE76300380628 /* License.h */,
@@ -1591,6 +1596,7 @@
 				130E096C1AA5C42800E6ED59 /* MyRequestTableViewCell.m in Sources */,
 				131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */,
 				13CFE7381ABEF1D6009E47EC /* DWCCompanyDocument.m in Sources */,
+				130CFAB11AC1E620006D7CA0 /* Invoice.m in Sources */,
 				133E34D41ABFFFCC002C3748 /* DWCDocumentTableViewCell.m in Sources */,
 				13315AC91AAC3845009E1819 /* DWCCompanyInfo.m in Sources */,
 				1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */,

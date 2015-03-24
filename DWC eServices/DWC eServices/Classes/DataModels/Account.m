@@ -197,6 +197,7 @@
     self.Id = [HelperClass stringCheckNull:[accountDict objectForKey:@"Id"]];
     self.name = [HelperClass stringCheckNull:[accountDict objectForKey:@"Name"]];
     self.accountBalance = [HelperClass numberCheckNull:[accountDict objectForKey:@"Account_Balance__c"]];
+    self.portalBalance = [HelperClass numberCheckNull:[accountDict objectForKey:@"Portal_Balance__c"]];;
     self.licenseNumberFormula = [HelperClass stringCheckNull:[accountDict objectForKey:@"License_Number_Formula__c"]];
     
     if (![[accountDict objectForKey:@"License_Expiry_Date_Formula__c"] isKindOfClass:[NSNull class]])

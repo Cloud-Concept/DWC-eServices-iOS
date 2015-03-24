@@ -29,7 +29,7 @@
 }
 
 + (NSString*)stringCheckNull:(NSString*)stringValue {
-    if(![stringValue isKindOfClass:[NSNull class]])
+    if(![stringValue isKindOfClass:[NSNull class]] && stringValue)
         return stringValue;
     else
         return @"";

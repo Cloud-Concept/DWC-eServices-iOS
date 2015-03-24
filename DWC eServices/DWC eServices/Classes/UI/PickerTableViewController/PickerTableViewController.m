@@ -29,7 +29,8 @@
     
     popoverController = [[WYPopoverController alloc] initWithContentViewController:self];
     popoverController.delegate = self;
-    self.preferredContentSize = CGSizeMake(320, self.valuesArray.count * 44);
+    CGFloat height = self.valuesArray.count > 0 ? self.valuesArray.count * 44: 44;
+    self.preferredContentSize = CGSizeMake(320, height);
     
     [popoverController presentPopoverFromRect:sender.bounds inView:sender permittedArrowDirections:WYPopoverArrowDirectionAny animated:YES];
 }

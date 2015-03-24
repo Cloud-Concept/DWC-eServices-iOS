@@ -15,6 +15,7 @@
 #import "UIView+DynamicForm.h"
 #import "BaseServicesViewController.h"
 #import "SFDateUtil.h"
+#import "Invoice.h"
 
 @interface ServicesReviewViewController ()
 
@@ -83,11 +84,18 @@
             isCourierRequired = [[dict objectForKey:@"isCourierRequired__c"] boolValue];
             
             
-            NSArray *invoicesArray = [dict objectForKey:@"Invoices__r"];
+            NSDictionary *invoicesArray = [dict objectForKey:@"Invoices__r"];
             if(![invoicesArray isKindOfClass:[NSNull class]]) {
-                for (NSDictionary *invoiceDict in invoicesArray) {
-                    NSNumber *currentAmount = [invoiceDict objectForKey:@"Amount__c"];
-                    totalAmount = [NSNumber numberWithFloat:([totalAmount floatValue] + [currentAmount floatValue])];
+                for (NSDictionary *invoiceDict in [invoicesArray objectForKey:@"records"]) {
+                    Invoice *invoice = [[Invoice alloc] initInvoice:invoiceDict];
+                    totalAmount = [NSNumber numberWithFloat:([totalAmount floatValue] + [invoice.amount floatValue])];
+                }
+            }
+            invoicesArray = [dict objectForKey:@"Invoices1__r"];
+            if(![invoicesArray isKindOfClass:[NSNull class]]) {
+                for (NSDictionary *invoiceDict in [invoicesArray objectForKey:@"records"]) {
+                    Invoice *invoice = [[Invoice alloc] initInvoice:invoiceDict];
+                    totalAmount = [NSNumber numberWithFloat:([totalAmount floatValue] + [invoice.amount floatValue])];
                 }
             }
             

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *billingCity;
 @property (nonatomic, strong) NSString *billingCountryCode;
 @property (nonatomic, strong) NSNumber *accountBalance;
+@property (nonatomic, strong) NSNumber *portalBalance;
 @property (nonatomic, strong) NSString *licenseNumberFormula;
 @property (nonatomic, strong) NSDate *licenseExpiryDateFormula;
 
