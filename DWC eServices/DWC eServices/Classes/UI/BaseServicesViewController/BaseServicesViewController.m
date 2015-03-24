@@ -83,6 +83,7 @@
         case RelatedServiceTypeNewNOC:
         case RelatedServiceTypeNewCard:
         case RelatedServiceTypeViewMyRequest:
+        case RelatedServiceTypeRegistrationDocuments:
             returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:self.currentWebForm.objectName];
             break;
         default:
@@ -200,6 +201,9 @@
         case RelatedServiceTypeViewMyRequest:
             [self showViewMyRequestFlow];
             break;
+        case RelatedServiceTypeRegistrationDocuments:
+            [self showRegistrationDocumentsFlow];
+            break;
         default:
             break;
     }
@@ -212,6 +216,10 @@
         }
     };
     [self getWebFormWithReturnBlock:returnBlock];
+}
+
+- (void)showRegistrationDocumentsFlow {
+    [self showFieldsFlowPage];
 }
 
 - (void)showNOCServiceFlow {
@@ -262,7 +270,11 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideLoadingDialog];
-            [self createServiceRecord:insertedCaseId];
+            if (self.createServiceRecord)
+                [self createServiceRecord:insertedCaseId];
+            else {
+                [self callGenerateInvoiceWebService];
+            }
         });
     };
     
@@ -468,6 +480,19 @@
     [[SFRestAPI sharedInstance] send:payAndSubmitRequest delegate:self];
 }
 
+- (void)callGenerateInvoiceWebService {
+    
+    // Manually set up request object
+    SFRestRequest *payAndSubmitRequest = [[SFRestRequest alloc] init];
+    payAndSubmitRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileGenerateInvoiceWebService"];
+    payAndSubmitRequest.method = SFRestMethodPOST;
+    payAndSubmitRequest.path = @"/services/apexrest/MobileGenerateInvoiceWebService";
+    payAndSubmitRequest.queryParams = [NSDictionary dictionaryWithObject:insertedCaseId forKey:@"caseId"];
+    
+    [self showLoadingDialog];
+    [[SFRestAPI sharedInstance] send:payAndSubmitRequest delegate:self];
+}
+
 - (void)getWebFormWithReturnBlock:(void (^)(BOOL))returnBlock {
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
@@ -524,6 +549,34 @@
     
 }
 
+- (void)handlePayAndSubmitWebserviceReturn {
+    [self hideLoadingDialog];
+    
+    UIAlertController *alertController =
+    [UIAlertController alertControllerWithTitle:NSLocalizedString(@"ThanksAlertTitle", @"")
+                                        message:NSLocalizedString(@"ApplicationSubmittedAlertMessage", @"")
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok", @"")
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {
+                                                         if (self.relatedServiceType == RelatedServiceTypeViewMyRequest)
+                                                             self.backAction();
+                                                         [self popServicesViewController];
+                                                     }];
+    
+    [alertController addAction:okAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)handleGenerateInvoiceWebServiceReturn {
+    if ([self hasAttachments])
+        [self showAttachmentsFlowPage];
+    else
+        [self showReviewFlowPage];
+}
+
 #pragma mark - SFRestAPIDelegate
 
 - (void)request:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
@@ -532,24 +585,11 @@
     NSLog(@"request:didLoadResponse: %@", dict);
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self hideLoadingDialog];
+        if ([request.path containsString:@"MobilePayAndSubmitWebService"])
+            [self handlePayAndSubmitWebserviceReturn];
+        else if ([request.path containsString:@"MobileGenerateInvoiceWebService"])
+            [self handleGenerateInvoiceWebServiceReturn];
         
-        UIAlertController *alertController =
-        [UIAlertController alertControllerWithTitle:NSLocalizedString(@"ThanksAlertTitle", @"")
-                                            message:NSLocalizedString(@"ApplicationSubmittedAlertMessage", @"")
-                                     preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok", @"")
-                                                            style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction *action) {
-                                                              if (self.relatedServiceType == RelatedServiceTypeViewMyRequest)
-                                                                  self.backAction();
-                                                              [self popServicesViewController];
-                                                          }];
-        
-        [alertController addAction:okAction];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
     });
 }
 

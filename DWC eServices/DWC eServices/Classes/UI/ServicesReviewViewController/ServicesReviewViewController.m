@@ -80,7 +80,7 @@
             requestStatus =[HelperClass stringCheckNull:[dict objectForKey:@"Status"]];
             requestType = [HelperClass stringCheckNull:[dict objectForKey:@"Type"]];
             requestCreatedDate = [HelperClass stringCheckNull:[dict objectForKey:@"CreatedDate"]];
-            
+            isCourierRequired = [[dict objectForKey:@"isCourierRequired__c"] boolValue];
             
             
             NSArray *invoicesArray = [dict objectForKey:@"Invoices__r"];
@@ -93,9 +93,14 @@
             
             NSString *parentLookup = [self.baseServicesViewController.currentWebForm.objectName stringByReplacingOccurrencesOfString:@"__c" withString:@"__r"];
             
-            NSDictionary *serviceDict = [dict objectForKey:parentLookup];
+            NSDictionary *serviceDict;
+            
+            if ([self.baseServicesViewController.currentWebForm.objectName isEqualToString:@"Case"])
+                serviceDict = dict;
+            else
+                serviceDict = [dict objectForKey:parentLookup];
 
-            isCourierRequired = [[serviceDict objectForKey:@"isCourierRequired__c"] boolValue];
+            
             
             formFieldsArray = [[NSMutableArray alloc] initWithArray:self.baseServicesViewController.currentWebForm.formFields
                                                           copyItems:YES];

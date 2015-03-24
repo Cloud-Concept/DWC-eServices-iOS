@@ -27,7 +27,7 @@ static NSString *employeeNOCTypesFilter = @"AND Related_to_Object__c = 'NOC' AND
 static NSString *companyNOCTypesFilter = @"AND Related_to_Object__c = 'NOC' AND RecordType.DeveloperName = 'Auto_Generated_Invoice' AND NOC_Type__c = 'Company'";
 static NSString *cardTypesFilter = @"AND Duration__c = '%@' AND Record_Type_Picklist__c = '%@'";
 
-static NSString *caseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, NOC__r.isCourierRequired__c, (SELECT ID, Amount__c FROM Invoices__r)";
+static NSString *caseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, isCourierRequired__c, (SELECT ID, Amount__c FROM Invoices__r)";
 
 static NSString *cardCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, Card_Management__r.Duration__c, Card_Management__r.Card_Type__c, (SELECT ID, Amount__c FROM Invoices__r)";
 
@@ -90,7 +90,12 @@ static NSString *customerDocumentsQuery = @"SELECT Id, Name, Customer_Document__
         if ([field.type isEqualToString:@"CUSTOMTEXT"])
             continue;
         
-        NSString *fieldName = [NSString stringWithFormat:@", %@.%@", relationName, field.name];
+        NSString *fieldName;
+        
+        if ([RelatedObject isEqualToString:@"Case"])
+            fieldName = [NSString stringWithFormat:@", %@", field.name];
+        else
+            fieldName = [NSString stringWithFormat:@", %@.%@", relationName, field.name];
         
         if (![queryString containsString:fieldName]) {
             [queryString appendString:fieldName];

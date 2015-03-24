@@ -62,13 +62,23 @@
     
     NSMutableDictionary *newFields = [NSMutableDictionary dictionaryWithDictionary:self.baseServicesViewController.serviceFields];
     
+    if ([self.baseServicesViewController.currentWebForm.objectName isEqualToString:@"Case"])
+        newFields = [NSMutableDictionary dictionaryWithDictionary:self.baseServicesViewController.caseFields];
+    else
+        newFields = [NSMutableDictionary dictionaryWithDictionary:self.baseServicesViewController.serviceFields];
+    
     for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
         if(!formField.isCalculated && ! [formField.type isEqualToString:@"CUSTOMTEXT"])
             [newFields setValue:[formField getFormFieldValue] forKey:formField.name];
     }
     
-    self.baseServicesViewController.serviceFields = [NSDictionary dictionaryWithDictionary:newFields];
-    self.baseServicesViewController.caseFields = self.baseServicesViewController.caseFields;
+    if ([self.baseServicesViewController.currentWebForm.objectName isEqualToString:@"Case"]) {
+        self.baseServicesViewController.serviceFields = self.baseServicesViewController.serviceFields;
+        self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithDictionary:newFields];
+    } else {
+        self.baseServicesViewController.serviceFields = [NSDictionary dictionaryWithDictionary:newFields];
+        self.baseServicesViewController.caseFields = self.baseServicesViewController.caseFields;
+    }
     ServiceFlowPageType serviceFlowPage;
     if ([self.baseServicesViewController.currentServiceAdministration hasDocuments]) {
         serviceFlowPage = ServiceFlowAttachmentsPage;

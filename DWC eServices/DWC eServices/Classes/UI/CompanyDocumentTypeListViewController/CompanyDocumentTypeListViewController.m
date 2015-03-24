@@ -18,6 +18,9 @@
 #import "VisualforceWebviewViewController.h"
 #import "Globals.h"
 #import "Account.h"
+#import "BaseServicesViewController.h"
+#import "EServiceAdministration.h"
+#import "RecordType.h"
 
 @interface CompanyDocumentTypeListViewController ()
 
@@ -162,6 +165,68 @@
     [self.navigationController pushViewController:vfWebviewVC animated:YES];
 }
 
+- (void)requestForOriginalRecordType:(EServicesDocumentChecklist *)eServicesDocumentChecklist {
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        
+        NSArray *recordTypesArray = [dict objectForKey:@"records"];
+        RecordType *caseRecordType;
+        for (NSDictionary *obj in recordTypesArray) {
+            
+            caseRecordType = [[RecordType alloc] initRecordType:obj];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self requestForOriginalDocument:eServicesDocumentChecklist recordType:caseRecordType];
+        });
+    };
+    
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning handle error here
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+    };
+    
+    NSString *selectQuery = @"SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE SobjectType = 'Case' AND DeveloperName = 'Registration_Request'";
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
+    
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+}
+
+- (void)requestForOriginalDocument:(EServicesDocumentChecklist *)eServicesDocumentChecklist recordType:(RecordType *)recordType {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    
+    baseServicesVC.currentWebformId = eServicesDocumentChecklist.eServiceAdministration.editNewVFGenerator;
+    baseServicesVC.currentServiceAdministration = eServicesDocumentChecklist.eServiceAdministration;
+    baseServicesVC.relatedServiceType = RelatedServiceTypeRegistrationDocuments;
+    baseServicesVC.createServiceRecord = NO;
+    
+    baseServicesVC.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 eServicesDocumentChecklist.eServiceAdministration.Id, @"Service_Requested__c",
+                                 eServicesDocumentChecklist.eServiceAdministration.editNewVFGenerator, @"Visual_Force_Generator__c",
+                                 [Globals currentAccount].Id, @"AccountId",
+                                 recordType.Id, @"RecordTypeId",
+                                 @"Draft", @"Status",
+                                 @"Registration Services", @"Type",
+                                 @"Mobile", @"Origin",
+                                 nil];
+    
+    baseServicesVC.parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 [Globals currentAccount].Id, @"accountID",
+                                 [Globals currentAccount].name, @"actName",
+                                 nil];
+    
+    //[baseServicesVC nextButtonClicked:ServiceFlowInitialPage];
+    
+    [self.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
 - (UITableViewCell *)cellDWCCompanyDocumentForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
     DWCDocumentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DWC Document Cell" forIndexPath:indexPath];
     
@@ -261,7 +326,7 @@
         UIAlertAction *originalAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentRequestOriginalAction", @"")
                                                                  style:UIAlertActionStyleDefault
                                                                handler:^(UIAlertAction *action) {
-                                                                   
+                                                                   [self requestForOriginalRecordType:eServicesDocumentChecklist];
                                                                }];
         
         [actionSheet addAction:originalAction];

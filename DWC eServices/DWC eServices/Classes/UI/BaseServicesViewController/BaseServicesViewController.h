@@ -45,6 +45,8 @@ typedef enum {
 @property (strong, nonatomic) NSDictionary *parameters;
 @property (strong, nonatomic) NSString *currentWebformId;
 
+@property (nonatomic) BOOL createServiceRecord;
+
 @property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) UIButton *nextButton;
 
