@@ -16,6 +16,7 @@
 #import "Visa.h"
 #import "SOQLQueries.h"
 #import "BaseServicesViewController.h"
+#import "NSString+SFPathAdditions.h"
 
 @interface NewNOCViewController ()
 
@@ -261,8 +262,8 @@
     aramexRequest.method = SFRestMethodGET;
     
     Account *currentAccount = [Globals currentAccount];
-    
-    aramexRequest.path = [NSString stringWithFormat:@"/services/apexrest/MobileAramexRateWebService?city=%@&country=%@", currentAccount.billingCity, currentAccount.billingCountry];
+
+    aramexRequest.path = [NSString stringWithFormat:@"/services/apexrest/MobileAramexRateWebService?city=%@&country=%@", currentAccount.billingCity, [currentAccount.billingCountry encodeToPercentEscapeString]];
     
     loadingCourierCharges = YES;
     [self showLoadingDialog];
@@ -327,8 +328,8 @@
     loadingCourierCharges = NO;
     courierChargesLoaded = YES;
     
-    retailCourierRate =  [dict objectForKey:@"retailAmount"];
-    corporateCourierRate = [dict objectForKey:@"amount"];
+    retailCourierRate =  [HelperClass stringCheckNull:[dict objectForKey:@"retailAmount"]];
+    corporateCourierRate = [HelperClass stringCheckNull:[dict objectForKey:@"amount"]];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self hideLoadingDialog];
