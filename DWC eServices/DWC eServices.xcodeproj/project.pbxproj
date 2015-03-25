@@ -59,6 +59,8 @@
 		131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA8781A80E45200A79B12 /* RecordDetailsTableViewController.m */; };
 		131CA87E1A80F91500A79B12 /* RecordDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA87C1A80F91500A79B12 /* RecordDetailTableViewCell.m */; };
 		131CA87F1A80F91500A79B12 /* RecordDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */; };
+		131ECF331AC29BB500EDA9EB /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 131ECF321AC29BB500EDA9EB /* EDStarRating.m */; };
+		131ECF361AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131ECF351AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m */; };
 		131F96CD1AA48D8400786B15 /* MyRequestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131F96CC1AA48D8400786B15 /* MyRequestListViewController.m */; };
 		1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1324D8981A89E9AB003AA356 /* PickerTableViewController.m */; };
 		1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */; };
@@ -227,6 +229,10 @@
 		131CA87B1A80F91500A79B12 /* RecordDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailTableViewCell.h; sourceTree = "<group>"; };
 		131CA87C1A80F91500A79B12 /* RecordDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailTableViewCell.m; sourceTree = "<group>"; };
 		131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordDetailTableViewCell.xib; sourceTree = "<group>"; };
+		131ECF311AC29BB500EDA9EB /* EDStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDStarRating.h; sourceTree = "<group>"; };
+		131ECF321AC29BB500EDA9EB /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDStarRating.m; sourceTree = "<group>"; };
+		131ECF341AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationFeedbackTableViewCell.h; sourceTree = "<group>"; };
+		131ECF351AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationFeedbackTableViewCell.m; sourceTree = "<group>"; };
 		131F96CB1AA48D8400786B15 /* MyRequestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestListViewController.h; sourceTree = "<group>"; };
 		131F96CC1AA48D8400786B15 /* MyRequestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequestListViewController.m; sourceTree = "<group>"; };
 		1324D8971A89E9AB003AA356 /* PickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerTableViewController.h; sourceTree = "<group>"; };
@@ -548,6 +554,7 @@
 				13315ACD1AAC662A009E1819 /* CompanyInfoListViewController */,
 				13315AC31AAC24CB009E1819 /* CompanyInfoTypeViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
+				131ECF301AC29BB500EDA9EB /* EDStarRating */,
 				130C2FFB1A78DDE600C95600 /* EmployeeListViewController */,
 				132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */,
 				136377BB1A767C2C00282F72 /* FVCustomAlertView */,
@@ -785,6 +792,15 @@
 				131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */,
 			);
 			path = RecordDetailTableViewCell;
+			sourceTree = "<group>";
+		};
+		131ECF301AC29BB500EDA9EB /* EDStarRating */ = {
+			isa = PBXGroup;
+			children = (
+				131ECF311AC29BB500EDA9EB /* EDStarRating.h */,
+				131ECF321AC29BB500EDA9EB /* EDStarRating.m */,
+			);
+			path = EDStarRating;
 			sourceTree = "<group>";
 		};
 		131F96CA1AA48D7200786B15 /* MyRequestListViewController */ = {
@@ -1072,6 +1088,8 @@
 		13F5A5A41AB0B5D800D92591 /* NotificationFeedbackTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				131ECF341AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.h */,
+				131ECF351AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m */,
 			);
 			path = NotificationFeedbackTableViewCell;
 			sourceTree = "<group>";
@@ -1588,6 +1606,7 @@
 				130F7DD81AAF2C6800380628 /* BusinessActivity.m in Sources */,
 				1318194B1A91FCB900CAA4D6 /* ServicesUploadViewController.m in Sources */,
 				130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */,
+				131ECF361AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m in Sources */,
 				13081AE31A7625C400B33509 /* Globals.m in Sources */,
 				139E6B591A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m in Sources */,
 				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
@@ -1654,6 +1673,7 @@
 				133E34D11ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m in Sources */,
 				13063A8D1A8B74AC00A1DEA2 /* UIView+DynamicForm.m in Sources */,
 				1394EA201A88D31F00ECED05 /* WYStoryboardPopoverSegue.m in Sources */,
+				131ECF331AC29BB500EDA9EB /* EDStarRating.m in Sources */,
 				1353CBD61AAD7ECB00E57FAC /* ManagementMember.m in Sources */,
 				132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */,
 				13081AFF1A76559D00B33509 /* WebForm.m in Sources */,

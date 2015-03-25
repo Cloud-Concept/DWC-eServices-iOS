@@ -12,6 +12,8 @@
 
 @interface NotificationTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) NotificationManagement *currentNotification;
+
 @property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
 
 - (void)refreshCellForNotification:(NotificationManagement *)notification;

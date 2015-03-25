@@ -22,6 +22,7 @@
 }
 
 - (void)refreshCellForNotification:(NotificationManagement *)notification {
+    self.currentNotification = notification;
     [self.notificationLabel setAttributedText:[notification getAttributedNotificationMessage]];
     
     self.backgroundColor = notification.isMessageRead ? [UIColor clearColor] : [UIColor colorWithRed:0.968 green:0.933 blue:0.545 alpha:1];

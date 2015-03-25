@@ -142,11 +142,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Notification Cell" forIndexPath:indexPath];
-    
-    // Configure the cell...
     NotificationManagement *currentNotification = [notificationsArray objectAtIndex:indexPath.row];
     
+    NSString *cellIdentifier = currentNotification.isFeedbackAllowed ? @"Notification Feedback Cell" : @"Notification Cell";
+    
+    NotificationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
     [cell refreshCellForNotification:currentNotification];
     
     return cell;
@@ -161,6 +163,13 @@
         [self setNotificationAsRead:currentNotification AtIndexPath:indexPath];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NotificationManagement *currentNotification = [notificationsArray objectAtIndex:indexPath.row];
+    
+    return currentNotification.isFeedbackAllowed? 104.0 : 64;;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
