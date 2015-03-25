@@ -33,7 +33,7 @@
     self.notificationRating.returnBlock = ^(float rating )
     {
         NSLog(@"ReturnBlock: Star rating changed to %.1f", rating);
-#warning Call method to update rating score.
+        
         [self updateRequestRatingScore:[NSNumber numberWithFloat:rating]];
     };
 }
