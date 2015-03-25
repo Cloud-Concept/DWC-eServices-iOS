@@ -516,16 +516,16 @@
             }
             
             self.currentWebForm.formFields = [NSArray arrayWithArray:fieldsArray];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self hideLoadingDialog];
-                
-                if (returnBlock) {
-                    returnBlock(YES);
-                }
-                //[self getFormFieldsValues];
-            });
         }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideLoadingDialog];
+            
+            if (returnBlock) {
+                returnBlock(YES);
+            }
+            //[self getFormFieldsValues];
+        });
     };
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
