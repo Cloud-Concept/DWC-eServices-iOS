@@ -12,7 +12,11 @@
 
 @implementation FormField
 
-- (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue {
+- (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue{
+    return [self initFormField:formFieldId Name:Name Type:Type MobileLabel:MobileLabel FieldValue:FieldValue IsParameter:NO];
+}
+
+- (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue IsParameter:(BOOL)IsParameter {
     id formField = [self initFormField:formFieldId
                                   Name:Name
                            APIRequired:NO
@@ -23,7 +27,7 @@
                             EmailValue:nil
                                 Hidden:NO
                           IsCalculated:NO
-                           IsParameter:NO
+                           IsParameter:IsParameter
                                IsQuery:NO
                                  Label:nil
                            NumberValue:nil
@@ -243,7 +247,8 @@
             [((UIButton*)fieldView) setBackgroundImage:[UIImage imageNamed:backgroundImage]
                                               forState:UIControlStateNormal];
             
-            [((UIButton*)fieldView) setContentEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 44)];
+            if (isEnabled)
+                [((UIButton*)fieldView) setContentEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 44)];
             
             if(![formFieldValue isEqualToString:@""])
                 [((UIButton*)fieldView) setTitle:formFieldValue forState:UIControlStateNormal];

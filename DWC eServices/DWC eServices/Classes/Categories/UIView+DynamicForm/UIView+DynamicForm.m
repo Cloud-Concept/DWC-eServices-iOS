@@ -13,11 +13,14 @@
 #import "HelperClass.h"
 
 @implementation UIView (DynamicForm)
+- (void)drawWebform:(WebForm *)webForm cancelButton:(UIButton *)cancelButton nextButton:(UIButton *)nextButton {
+    [self drawFormFields:webForm.formFields cancelButton:cancelButton nextButton:nextButton];
+}
 
-- (void)drawFormFields:(WebForm *)webForm cancelButton:(UIButton *)cancelButton nextButton:(UIButton *)nextButton {
+- (void)drawFormFields:(NSArray *)formFields cancelButton:(UIButton *)cancelButton nextButton:(UIButton *)nextButton {
     NSMutableDictionary *viewsDictionary = [NSMutableDictionary new];
     
-    for (FormField *field in webForm.formFields) {
+    for (FormField *field in formFields) {
         
         if (field.hidden || [field.type isEqualToString:@"CUSTOMTEXT"] || [field.type isEqualToString:@"REFERENCE"])
             continue;
@@ -52,9 +55,9 @@
                               @"buttonsTopMargin": @40
                               };
     
-    for (NSInteger index = 0; index < [webForm.formFields count]; index++) {
+    for (NSInteger index = 0; index < [formFields count]; index++) {
         
-        FormField *currentField = [webForm.formFields objectAtIndex:index];
+        FormField *currentField = [formFields objectAtIndex:index];
         FormField *previousField = nil;
         
         if (currentField.hidden || [currentField.type isEqualToString:@"CUSTOMTEXT"] || [currentField.type isEqualToString:@"REFERENCE"])
@@ -93,7 +96,7 @@
         //[self addConstraints:label_constraint_H];
         
         for (NSInteger i = index - 1; i >=0 ; i--) {
-            FormField *tempField = [webForm.formFields objectAtIndex:i];
+            FormField *tempField = [formFields objectAtIndex:i];
             
             if (![tempField.type isEqualToString:@"CUSTOMTEXT"] && ![tempField.type isEqualToString:@"REFERENCE"] && !tempField.hidden) {
                 previousField = tempField;
@@ -128,7 +131,7 @@
         
         [verticalLabelRule appendFormat:@"[%@]", labelName];
         
-        if (index == webForm.formFields.count - 1 && (!cancelButton && !nextButton)) {
+        if (index == formFields.count - 1 && (!cancelButton && !nextButton)) {
             [verticalRule appendString:@"-|"];
         }
         NSArray *constraint_POS_V = [NSLayoutConstraint constraintsWithVisualFormat:verticalRule
@@ -170,8 +173,8 @@
     [self addConstraints:constraint_POS_H];
     
     FormField *previousField;
-    if (webForm.formFields.count > 0) {
-        previousField = [webForm.formFields objectAtIndex:webForm.formFields.count - 1];
+    if (formFields.count > 0) {
+        previousField = [formFields objectAtIndex:formFields.count - 1];
     }
     
     NSString *verticalRule = @"";

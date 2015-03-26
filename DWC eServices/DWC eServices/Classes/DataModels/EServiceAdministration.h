@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSString *Id;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *serviceIdentifier;
+@property (strong, nonatomic) NSString *displayName;
 @property (strong, nonatomic) NSNumber *amount;
 @property (strong, nonatomic) NSString *relatedToObject;
 @property (strong, nonatomic) NSString *editNewVFGenerator;
@@ -23,6 +24,9 @@
 @property (strong, nonatomic) NSArray *serviceDocumentsArray;
 @property (strong, nonatomic) NSOrderedSet *authoritiesOrderedSet;
 @property (strong, nonatomic) NSDictionary *authorityLanguagesDictionary;
+@property (strong, nonatomic) EServiceAdministration *knowledgeFeeService;
+
+@property (nonatomic) BOOL requireKnowledgeFee;
 
 - (id)initEServiceAdministration:(NSDictionary *)eServiceAdministrationDict;
 /*

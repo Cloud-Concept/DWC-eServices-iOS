@@ -30,7 +30,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [self.view layoutIfNeeded];
 }
 
@@ -76,6 +76,11 @@
                                                                                 Label:@"Cancel Visa"
                                                                                  Icon:@"Cancel Visa Icon"
                                                                                  Mask:RelatedServiceTypeCancelVisa]];
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Renew_Contract"
+                                                                                Label:@"Renew Contract"
+                                                                                 Icon:@"Cancel Visa Icon"
+                                                                                 Mask:RelatedServiceTypeContractRenewal]];
     
     relatedServicesArray = relatedServicesMutableArray;
 }
@@ -247,6 +252,8 @@
         case RelatedServiceTypeCancelVisa:
             [self.delegate relatedServiceCancelVisaButtonClicked];
             break;
+        case RelatedServiceTypeContractRenewal:
+            [self.delegate relatedServiceContractRenewalButtonClicked];
         default:
             break;
     }

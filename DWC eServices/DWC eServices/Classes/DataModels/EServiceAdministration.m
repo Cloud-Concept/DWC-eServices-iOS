@@ -21,6 +21,7 @@
     
     self.Id = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Id"]];
     self.name = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Name"]];
+    self.displayName = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Display_Name__c"]];
     self.serviceIdentifier = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Service_Identifier__c"]];
     self.amount = [HelperClass numberCheckNull:[eServiceAdministrationDict objectForKey:@"Amount__c"]];
     self.relatedToObject = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Related_to_Object__c"]];
@@ -29,6 +30,7 @@
     self.renewVFGenerator = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Renewal_VF_Generator__c"]];
     self.replaceVFGenerator = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Replace_VF_Generator__c"]];
     self.recordTypePicklist = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Record_Type_Picklist__c"]];
+    self.requireKnowledgeFee = [[eServiceAdministrationDict objectForKey:@"Require_Knowledge_Fee__c"] boolValue];
     
     NSArray *serviceDocumentsArray = [NSArray new];
     NSMutableArray *documentsMutableArray = [NSMutableArray new];
@@ -64,6 +66,8 @@
     self.serviceDocumentsArray = [NSArray arrayWithArray:documentsMutableArray];
     self.authoritiesOrderedSet = [NSOrderedSet orderedSetWithOrderedSet:authoritiesMutableOrderedSet];
     self.authorityLanguagesDictionary = [NSDictionary dictionaryWithDictionary:authorityLanguagesMutableDictionary];
+    
+    self.knowledgeFeeService = [[EServiceAdministration alloc] initEServiceAdministration:[eServiceAdministrationDict objectForKey:@"Knowledge_Fee__r"]];
     
     return self;
 }

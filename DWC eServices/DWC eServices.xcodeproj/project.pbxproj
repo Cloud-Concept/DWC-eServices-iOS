@@ -13,9 +13,14 @@
 		130523E81A99F96800EF2268 /* ServicesReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130523E71A99F96800EF2268 /* ServicesReviewViewController.xib */; };
 		13063A891A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13063A881A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m */; };
 		13063A8D1A8B74AC00A1DEA2 /* UIView+DynamicForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 13063A8C1A8B74AC00A1DEA2 /* UIView+DynamicForm.m */; };
+		13073B8E1AC3E63800F25EC6 /* ContractRenewalEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13073B8D1AC3E63800F25EC6 /* ContractRenewalEditViewController.m */; };
+		13073B911AC3E76200F25EC6 /* ContractRenewalReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13073B901AC3E76200F25EC6 /* ContractRenewalReviewViewController.m */; };
+		13073B941AC415C200F25EC6 /* ContractLineItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 13073B931AC415C200F25EC6 /* ContractLineItem.m */; };
+		13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 13073B961AC4169F00F25EC6 /* InventoryUnit.m */; };
+		13073B9A1AC4176500F25EC6 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 13073B991AC4176500F25EC6 /* Product.m */; };
+		13073B9C1AC432AA00F25EC6 /* ContractRenewalEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13073B9B1AC432AA00F25EC6 /* ContractRenewalEditViewController.xib */; };
 		1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BACC1A6F83A4004E6325 /* InitialViewController.m */; };
 		1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1307BACD1A6F83A4004E6325 /* InitialViewController.xib */; };
-		1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */; };
 		1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1307BAD81A6F8FEE004E6325 /* HomePageViewController.m */; };
 		1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADC1A6F938B004E6325 /* Californian-Bold.ttf */; };
 		1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1307BADD1A6F938B004E6325 /* Corisande-Bold.ttf */; };
@@ -61,6 +66,8 @@
 		131CA87F1A80F91500A79B12 /* RecordDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */; };
 		131ECF331AC29BB500EDA9EB /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 131ECF321AC29BB500EDA9EB /* EDStarRating.m */; };
 		131ECF361AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131ECF351AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m */; };
+		131ECF3F1AC2D2F700EDA9EB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131ECF3E1AC2D2F700EDA9EB /* MainStoryboard.storyboard */; };
+		131ECF411AC2D43800EDA9EB /* ContractRenewalStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131ECF401AC2D43800EDA9EB /* ContractRenewalStoryboard.storyboard */; };
 		131F96CD1AA48D8400786B15 /* MyRequestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131F96CC1AA48D8400786B15 /* MyRequestListViewController.m */; };
 		1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1324D8981A89E9AB003AA356 /* PickerTableViewController.m */; };
 		1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */; };
@@ -153,10 +160,20 @@
 		13063A881A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesDynamicFormViewController.m; sourceTree = "<group>"; };
 		13063A8B1A8B74AC00A1DEA2 /* UIView+DynamicForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DynamicForm.h"; sourceTree = "<group>"; };
 		13063A8C1A8B74AC00A1DEA2 /* UIView+DynamicForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DynamicForm.m"; sourceTree = "<group>"; };
+		13073B8C1AC3E63800F25EC6 /* ContractRenewalEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractRenewalEditViewController.h; sourceTree = "<group>"; };
+		13073B8D1AC3E63800F25EC6 /* ContractRenewalEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractRenewalEditViewController.m; sourceTree = "<group>"; };
+		13073B8F1AC3E76200F25EC6 /* ContractRenewalReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractRenewalReviewViewController.h; sourceTree = "<group>"; };
+		13073B901AC3E76200F25EC6 /* ContractRenewalReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractRenewalReviewViewController.m; sourceTree = "<group>"; };
+		13073B921AC415C200F25EC6 /* ContractLineItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractLineItem.h; sourceTree = "<group>"; };
+		13073B931AC415C200F25EC6 /* ContractLineItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractLineItem.m; sourceTree = "<group>"; };
+		13073B951AC4169F00F25EC6 /* InventoryUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryUnit.h; sourceTree = "<group>"; };
+		13073B961AC4169F00F25EC6 /* InventoryUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryUnit.m; sourceTree = "<group>"; };
+		13073B981AC4176500F25EC6 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		13073B991AC4176500F25EC6 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		13073B9B1AC432AA00F25EC6 /* ContractRenewalEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContractRenewalEditViewController.xib; sourceTree = "<group>"; };
 		1307BACB1A6F83A4004E6325 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
 		1307BACC1A6F83A4004E6325 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
 		1307BACD1A6F83A4004E6325 /* InitialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
-		1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1307BAD71A6F8FEE004E6325 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		1307BAD81A6F8FEE004E6325 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		1307BADC1A6F938B004E6325 /* Californian-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Californian-Bold.ttf"; sourceTree = "<group>"; };
@@ -233,6 +250,8 @@
 		131ECF321AC29BB500EDA9EB /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDStarRating.m; sourceTree = "<group>"; };
 		131ECF341AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationFeedbackTableViewCell.h; sourceTree = "<group>"; };
 		131ECF351AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationFeedbackTableViewCell.m; sourceTree = "<group>"; };
+		131ECF3E1AC2D2F700EDA9EB /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		131ECF401AC2D43800EDA9EB /* ContractRenewalStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ContractRenewalStoryboard.storyboard; sourceTree = "<group>"; };
 		131F96CB1AA48D8400786B15 /* MyRequestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestListViewController.h; sourceTree = "<group>"; };
 		131F96CC1AA48D8400786B15 /* MyRequestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequestListViewController.m; sourceTree = "<group>"; };
 		1324D8971A89E9AB003AA356 /* PickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerTableViewController.h; sourceTree = "<group>"; };
@@ -544,6 +563,25 @@
 			path = "UIView+DynamicForm";
 			sourceTree = "<group>";
 		};
+		13073B8A1AC3E61500F25EC6 /* ContractRenewalEditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13073B8C1AC3E63800F25EC6 /* ContractRenewalEditViewController.h */,
+				13073B8D1AC3E63800F25EC6 /* ContractRenewalEditViewController.m */,
+				13073B9B1AC432AA00F25EC6 /* ContractRenewalEditViewController.xib */,
+			);
+			path = ContractRenewalEditViewController;
+			sourceTree = "<group>";
+		};
+		13073B8B1AC3E61500F25EC6 /* ContractRenewalReviewViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13073B8F1AC3E76200F25EC6 /* ContractRenewalReviewViewController.h */,
+				13073B901AC3E76200F25EC6 /* ContractRenewalReviewViewController.m */,
+			);
+			path = ContractRenewalReviewViewController;
+			sourceTree = "<group>";
+		};
 		1307BAC81A6F83A4004E6325 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +591,8 @@
 				13CFE7321ABEEEF6009E47EC /* CompanyDocumentTypeViewController */,
 				13315ACD1AAC662A009E1819 /* CompanyInfoListViewController */,
 				13315AC31AAC24CB009E1819 /* CompanyInfoTypeViewController */,
+				13073B8A1AC3E61500F25EC6 /* ContractRenewalEditViewController */,
+				13073B8B1AC3E61500F25EC6 /* ContractRenewalReviewViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				131ECF301AC29BB500EDA9EB /* EDStarRating */,
 				130C2FFB1A78DDE600C95600 /* EmployeeListViewController */,
@@ -574,7 +614,6 @@
 				130291391A76C88D000E119C /* SWRevealViewController */,
 				133E34D51AC02CDE002C3748 /* VisualforceWebviewViewController */,
 				1394EA1A1A88D31E00ECED05 /* WYPopoverController */,
-				1307BAD51A6F8895004E6325 /* MainStoryboard.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -647,6 +686,8 @@
 				13081AE81A76559D00B33509 /* CardManagement.m */,
 				13CFE72F1ABEDF3A009E47EC /* CompanyDocument.h */,
 				13CFE7301ABEDF3A009E47EC /* CompanyDocument.m */,
+				13073B921AC415C200F25EC6 /* ContractLineItem.h */,
+				13073B931AC415C200F25EC6 /* ContractLineItem.m */,
 				13081AE91A76559D00B33509 /* Country.h */,
 				13081AEA1A76559D00B33509 /* Country.m */,
 				1353CBD71AAD92B700E57FAC /* Directorship.h */,
@@ -665,6 +706,8 @@
 				13CFE72D1ABECF13009E47EC /* EServicesDocumentChecklist.m */,
 				13081AEF1A76559D00B33509 /* FormField.h */,
 				13081AF01A76559D00B33509 /* FormField.m */,
+				13073B951AC4169F00F25EC6 /* InventoryUnit.h */,
+				13073B961AC4169F00F25EC6 /* InventoryUnit.m */,
 				130CFAAF1AC1E620006D7CA0 /* Invoice.h */,
 				130CFAB01AC1E620006D7CA0 /* Invoice.m */,
 				1353CBDA1AAD9B5300E57FAC /* LegalRepresentative.h */,
@@ -681,6 +724,8 @@
 				139E6B5D1A7A3CED00D1D451 /* Occupation.m */,
 				139658121AB9797B0091C451 /* Passport.h */,
 				139658131AB9797B0091C451 /* Passport.m */,
+				13073B981AC4176500F25EC6 /* Product.h */,
+				13073B991AC4176500F25EC6 /* Product.m */,
 				13081AF11A76559D00B33509 /* RecordType.h */,
 				13081AF21A76559D00B33509 /* RecordType.m */,
 				13481AEE1A823A5B00093331 /* RelatedService.h */,
@@ -801,6 +846,15 @@
 				131ECF321AC29BB500EDA9EB /* EDStarRating.m */,
 			);
 			path = EDStarRating;
+			sourceTree = "<group>";
+		};
+		131ECF3D1AC2D2F700EDA9EB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				131ECF3E1AC2D2F700EDA9EB /* MainStoryboard.storyboard */,
+				131ECF401AC2D43800EDA9EB /* ContractRenewalStoryboard.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		131F96CA1AA48D7200786B15 /* MyRequestListViewController */ = {
@@ -1243,6 +1297,7 @@
 		824A9DDF1724E16400C9BD79 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				131ECF3D1AC2D2F700EDA9EB /* Storyboards */,
 				131819411A91D65900CAA4D6 /* en.lproj */,
 				824A9DE01724E16400C9BD79 /* DWCeServices-Info.plist */,
 				824A9DE41724E16400C9BD79 /* main.m */,
@@ -1560,6 +1615,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13073B9C1AC432AA00F25EC6 /* ContractRenewalEditViewController.xib in Resources */,
 				1307BAE61A6F938B004E6325 /* Corisande-Regular.ttf in Resources */,
 				1307BAE81A6F938B004E6325 /* SalesforceSDKResources.bundle in Resources */,
 				1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */,
@@ -1570,12 +1626,12 @@
 				824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */,
 				1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */,
 				1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */,
+				131ECF3F1AC2D2F700EDA9EB /* MainStoryboard.storyboard in Resources */,
 				131819441A91D65900CAA4D6 /* InfoPlist.strings in Resources */,
 				130E096D1AA5C42800E6ED59 /* MyRequestTableViewCell.xib in Resources */,
 				130C30021A78DE0200C95600 /* EmployeeTableViewCell.xib in Resources */,
 				133E34DA1AC02CF6002C3748 /* VisualforceWebviewViewController.xib in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
-				1307BAD61A6F8895004E6325 /* MainStoryboard.storyboard in Resources */,
 				1328E7D91A95C7DF00475E90 /* NewNOCViewController.xib in Resources */,
 				130523DE1A99C05500EF2268 /* ServicesUploadViewController.xib in Resources */,
 				1328E7DB1A96042600475E90 /* ServicesDynamicFormViewController.xib in Resources */,
@@ -1584,6 +1640,7 @@
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
 				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
 				130523E81A99F96800EF2268 /* ServicesReviewViewController.xib in Resources */,
+				131ECF411AC2D43800EDA9EB /* ContractRenewalStoryboard.storyboard in Resources */,
 				13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */,
 				139E6B5B1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,
@@ -1603,6 +1660,7 @@
 				13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */,
 				1302913C1A76C88D000E119C /* SWRevealViewController.m in Sources */,
 				130F7DD51AAF2B9000380628 /* LicenseActivity.m in Sources */,
+				13073B9A1AC4176500F25EC6 /* Product.m in Sources */,
 				130F7DD81AAF2C6800380628 /* BusinessActivity.m in Sources */,
 				1318194B1A91FCB900CAA4D6 /* ServicesUploadViewController.m in Sources */,
 				130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */,
@@ -1628,11 +1686,14 @@
 				130E09671AA5B84400E6ED59 /* Request.m in Sources */,
 				13CFE7311ABEDF3A009E47EC /* CompanyDocument.m in Sources */,
 				139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */,
+				13073B941AC415C200F25EC6 /* ContractLineItem.m in Sources */,
 				13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */,
 				13081AFE1A76559D00B33509 /* Visa.m in Sources */,
 				139E6B611A7A432500D1D451 /* SOQLQueries.m in Sources */,
+				13073B8E1AC3E63800F25EC6 /* ContractRenewalEditViewController.m in Sources */,
 				130523E61A99C56D00EF2268 /* UIViewController+ChildViewController.m in Sources */,
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
+				13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */,
 				13743ECE1AB04D4400D0B873 /* NotificationListViewController.m in Sources */,
 				13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */,
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,
@@ -1641,6 +1702,7 @@
 				13081AFA1A76559D00B33509 /* EServiceAdministration.m in Sources */,
 				13481AF01A823A5B00093331 /* RelatedService.m in Sources */,
 				13F5A5A71AB0B64A00D92591 /* NotificationTableViewCell.m in Sources */,
+				13073B911AC3E76200F25EC6 /* ContractRenewalReviewViewController.m in Sources */,
 				131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */,
 				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
 				13CFE72E1ABECF13009E47EC /* EServicesDocumentChecklist.m in Sources */,

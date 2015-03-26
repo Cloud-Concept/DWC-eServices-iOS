@@ -19,6 +19,7 @@ typedef enum {
     RelatedServiceTypeRenewVisa = 64,
     RelatedServiceTypeCancelVisa = 128,
     RelatedServiceTypeRegistrationDocuments = 256,
+    RelatedServiceTypeContractRenewal = 512,
 }RelatedServiceType;
 
 @interface RelatedService : NSObject

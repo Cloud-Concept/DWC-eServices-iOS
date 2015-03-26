@@ -18,6 +18,7 @@
 - (void)relatedServiceNewVisaButtonClicked;
 - (void)relatedServiceRenewVisaButtonClicked;
 - (void)relatedServiceCancelVisaButtonClicked;
+- (void)relatedServiceContractRenewalButtonClicked;
 
 @end
 

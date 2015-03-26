@@ -35,11 +35,13 @@
         }
     };
     
-    [self.baseServicesViewController getWebFormWithReturnBlock:returnBlock];
+    if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeContractRenewal)
+        [self displayWebForm];
+    else
+        [self.baseServicesViewController getWebFormWithReturnBlock:returnBlock];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     // Register for the events
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardDidShow:) name: UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardDidHide:) name: UIKeyboardDidHideNotification object:nil];
@@ -51,8 +53,7 @@
     [self.view addGestureRecognizer:tap];
 }
 
-- (void) viewWillDisappear:(BOOL)animated
-{
+- (void) viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -169,9 +170,9 @@
 
 - (void)displayWebForm {
     [self initServiceFieldsContentView];
-    [servicesContentView drawFormFields:self.baseServicesViewController.currentWebForm
-                           cancelButton:self.baseServicesViewController.cancelButton
-                             nextButton:self.baseServicesViewController.nextButton];
+    [servicesContentView drawWebform:self.baseServicesViewController.currentWebForm
+                        cancelButton:self.baseServicesViewController.cancelButton
+                          nextButton:self.baseServicesViewController.nextButton];
 }
 
 - (void)initServiceFieldsContentView {

@@ -15,6 +15,7 @@
 @class Visa;
 @class Stack;
 @class WebForm;
+@class TenancyContract;
 
 typedef enum {
     ServiceFlowInitialPage,
@@ -38,6 +39,7 @@ typedef enum {
 @property (nonatomic) RelatedServiceType relatedServiceType;
 @property (strong, nonatomic) Visa *currentVisaObject;
 @property (strong, nonatomic) WebForm *currentWebForm;
+@property (strong, nonatomic) TenancyContract *currentContract;
 
 @property (strong, nonatomic) EServiceAdministration *currentServiceAdministration;
 @property (strong, nonatomic) NSDictionary *caseFields;

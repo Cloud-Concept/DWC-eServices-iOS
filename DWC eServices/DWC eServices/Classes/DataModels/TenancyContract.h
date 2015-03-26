@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *contractType;
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *contractDurationMonth;
+@property (nonatomic, strong) NSString *contractNumber;
 @property (nonatomic, strong) NSNumber *totalRentPrice;
 @property (nonatomic, strong) NSNumber *contractDurationYear;
 @property (nonatomic, strong) NSDate *activatedDate;

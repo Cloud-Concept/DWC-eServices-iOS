@@ -24,6 +24,7 @@
 #import "SOQLQueries.h"
 #import "WebForm.h"
 #import "FormField.h"
+#import "ContractRenewalEditViewController.h"
 
 @interface BaseServicesViewController ()
 
@@ -204,6 +205,8 @@
         case RelatedServiceTypeRegistrationDocuments:
             [self showRegistrationDocumentsFlow];
             break;
+        case RelatedServiceTypeContractRenewal:
+            [self showContractRenewalFlow];
         default:
             break;
     }
@@ -220,6 +223,13 @@
 
 - (void)showRegistrationDocumentsFlow {
     [self showFieldsFlowPage];
+}
+
+- (void)showContractRenewalFlow {
+    ContractRenewalEditViewController *contractRenewalEditVC = [ContractRenewalEditViewController new];
+    contractRenewalEditVC.baseServicesViewController = self;
+    [self addChildViewController:contractRenewalEditVC toView:self.serviceFlowView];
+    [viewControllersStack pushObject:contractRenewalEditVC];
 }
 
 - (void)showNOCServiceFlow {

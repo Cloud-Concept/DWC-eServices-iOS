@@ -14,6 +14,7 @@
 #import "RecordRelatedViewController.h"
 #import "BaseServicesViewController.h"
 #import "NewNOCViewController.h"
+#import "ContractRenewalEditViewController.h"
 
 @interface RecordMainViewController ()
 
@@ -118,6 +119,15 @@
 
 - (void)relatedServiceCancelVisaButtonClicked {
     
+}
+
+- (void)relatedServiceContractRenewalButtonClicked {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = RelatedServiceTypeContractRenewal;
+    baseServicesVC.currentContract = self.contractObject;
+    baseServicesVC.createServiceRecord = YES;
+    [self.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
 @end

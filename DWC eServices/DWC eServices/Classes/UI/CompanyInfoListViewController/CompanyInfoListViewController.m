@@ -23,6 +23,7 @@
 #import "Passport.h"
 #import "TableViewSectionField.h"
 #import "TableViewSection.h"
+#import "RelatedService.h"
 
 @interface CompanyInfoListViewController ()
 
@@ -189,37 +190,16 @@
                                    completeBlock:successBlock];
 }
 
-- (void)loadTenancyContracts {
-    void (^errorBlock) (NSError*) = ^(NSError *e) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-        });
-    };
-    
-    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        NSArray *records = [dict objectForKey:@"records"];
-        
-        dataRows = [NSMutableArray new];
-        for (NSDictionary *recordDict in records) {
-            [dataRows addObject:[[TenancyContract alloc] initTenancyContract:recordDict]];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            [self.tableView reloadData];
-        });
-    };
-    
+- (void)loadTenancyContracts {    
     [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
     
-    SFRestRequest *payAndSubmitRequest = [[SFRestRequest alloc] init];
-    payAndSubmitRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileTenantContractsWebService"];
-    payAndSubmitRequest.method = SFRestMethodGET;
-    payAndSubmitRequest.path = @"/services/apexrest/MobileTenantContractsWebService";
-    payAndSubmitRequest.queryParams = [NSDictionary dictionaryWithObject:[Globals currentAccount].Id forKey:@"AccountId"];
+    SFRestRequest *tenantContractsRequest = [[SFRestRequest alloc] init];
+    tenantContractsRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileTenantContractsWebService"];
+    tenantContractsRequest.method = SFRestMethodGET;
+    tenantContractsRequest.path = @"/services/apexrest/MobileTenantContractsWebService";
+    tenantContractsRequest.queryParams = [NSDictionary dictionaryWithObject:[Globals currentAccount].Id forKey:@"AccountId"];
     
-    [[SFRestAPI sharedInstance] send:payAndSubmitRequest delegate:self];
+    [[SFRestAPI sharedInstance] send:tenantContractsRequest delegate:self];
 }
 
 - (UITableViewCell *)cellContractsForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
@@ -479,6 +459,21 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
+- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForLeasingInfo:(TenancyContract *)tenancyContract {
+    
+    recordVC.NameValue = tenancyContract.name;
+
+    NSMutableArray *sectionsArray = [NSMutableArray new];
+    recordVC.DetailsSectionsArray = sectionsArray;
+    
+    NSUInteger servicesMask = 0;
+    servicesMask |= RelatedServiceTypeContractRenewal;
+    
+    recordVC.RelatedServicesMask = servicesMask;
+    
+    recordVC.contractObject = tenancyContract;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -536,6 +531,7 @@
             [self configureRecordMainViewController:recordMainVC ForLegalRepresentative:[dataRows objectAtIndex:indexPath.row]];
             break;
         case DWCCompanyInfoLeasingInfo:
+            [self configureRecordMainViewController:recordMainVC ForLeasingInfo:[dataRows objectAtIndex:indexPath.row]];
             break;
         default:
             break;

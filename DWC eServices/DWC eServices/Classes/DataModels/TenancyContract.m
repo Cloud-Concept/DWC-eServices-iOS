@@ -25,6 +25,7 @@
     self.status = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Status__c"]];
     self.contractDurationMonth = [HelperClass stringCheckNull:
                                   [tenancyContractDict objectForKey:@"Contract_Duration_Year_Month__c"]];
+    self.contractNumber = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Contract_Number__c"]];
     
     if (![[tenancyContractDict objectForKey:@"Activated_Date__c"] isKindOfClass:[NSNull class]])
         self.activatedDate = [SFDateUtil SOQLDateTimeStringToDate:[tenancyContractDict objectForKey:@"Activated_Date__c"]];
@@ -40,8 +41,8 @@
         self.contractExpiryDate = [SFDateUtil SOQLDateTimeStringToDate:
                                    [tenancyContractDict objectForKey:@"Contract_Expiry_Date__c"]];
     
-    self.totalRentPrice = [HelperClass numberCheckNull:[tenancyContractDict objectForKey:@""]];
-    self.contractDurationYear = [HelperClass numberCheckNull:[tenancyContractDict objectForKey:@""]];
+    self.totalRentPrice = [HelperClass numberCheckNull:[tenancyContractDict objectForKey:@"Total_Rent_Price__c"]];
+    self.contractDurationYear = [HelperClass numberCheckNull:[tenancyContractDict objectForKey:@"Contract_Duration__c"]];
     
     self.isBCContract = [[tenancyContractDict objectForKey:@"IS_BC_Contract__c"] boolValue];
     

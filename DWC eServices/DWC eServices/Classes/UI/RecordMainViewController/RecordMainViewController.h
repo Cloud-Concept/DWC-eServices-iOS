@@ -11,6 +11,7 @@
 #import "RecordRelatedViewController.h"
 
 @class Visa;
+@class TenancyContract;
 
 @interface RecordMainViewController : BaseFrontRevealViewController <RecordRelatedViewControllerDelegate>
 
@@ -18,6 +19,8 @@
 @property (strong, nonatomic) NSString *PhotoId;
 @property (strong, nonatomic) NSArray *DetailsSectionsArray;
 @property (strong, nonatomic) Visa *visaObject;
+@property (strong, nonatomic) TenancyContract *contractObject;
+
 @property (nonatomic) NSUInteger RelatedServicesMask;
 
 @property (weak, nonatomic) IBOutlet UIView *paginationView;
