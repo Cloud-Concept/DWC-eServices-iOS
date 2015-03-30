@@ -126,7 +126,7 @@
     BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
     baseServicesVC.relatedServiceType = RelatedServiceTypeContractRenewal;
     baseServicesVC.currentContract = self.contractObject;
-    baseServicesVC.createServiceRecord = YES;
+    baseServicesVC.createServiceRecord = NO;
     [self.navigationController pushViewController:baseServicesVC animated:YES];
 }
 

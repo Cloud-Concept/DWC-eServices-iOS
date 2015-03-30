@@ -12,11 +12,13 @@
 
 @class EServiceAdministration;
 @class BaseServicesViewController;
+@class RecordType;
 
 @interface ContractRenewalEditViewController : UIViewController <SFRestDelegate>
 {
     NSString *selectedProduct;
     EServiceAdministration *selectedEServiceAdministrator;
+    RecordType *caseRecordType;
     
     BOOL courierChargesLoaded;
     

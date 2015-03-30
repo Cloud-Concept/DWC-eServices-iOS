@@ -142,3 +142,13 @@
 "DocumentEditAction" = "Edit";
 "DocumentDeleteAction" = "Delete";
 
+"ContractInformation" = "Contract Information";
+"ContractNo" = "Contract Number";
+"ContractType" = "Contract Type";
+"ContractStartDate" = "Contract Start Date";
+"ContractExpiryDate" = "Contract End Date";
+"RentStartDate" = "Rent Start Date";
+"ActivationDate" = "Activated Date";
+"ContractDuration" = "Contract Duration";
+"TotalPrice" = "Total Price";
+

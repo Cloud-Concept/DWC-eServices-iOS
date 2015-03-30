@@ -14,7 +14,6 @@
 		13063A891A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13063A881A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m */; };
 		13063A8D1A8B74AC00A1DEA2 /* UIView+DynamicForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 13063A8C1A8B74AC00A1DEA2 /* UIView+DynamicForm.m */; };
 		13073B8E1AC3E63800F25EC6 /* ContractRenewalEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13073B8D1AC3E63800F25EC6 /* ContractRenewalEditViewController.m */; };
-		13073B911AC3E76200F25EC6 /* ContractRenewalReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13073B901AC3E76200F25EC6 /* ContractRenewalReviewViewController.m */; };
 		13073B941AC415C200F25EC6 /* ContractLineItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 13073B931AC415C200F25EC6 /* ContractLineItem.m */; };
 		13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 13073B961AC4169F00F25EC6 /* InventoryUnit.m */; };
 		13073B9A1AC4176500F25EC6 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 13073B991AC4176500F25EC6 /* Product.m */; };
@@ -82,6 +81,7 @@
 		13315ACC1AAC5ADB009E1819 /* ShareOwnership.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315ACB1AAC5ADB009E1819 /* ShareOwnership.m */; };
 		13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315ACF1AAC663D009E1819 /* CompanyInfoListViewController.m */; };
 		13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */; };
+		1331D21F1AC7E2D600B4AAD5 /* Quote.m in Sources */ = {isa = PBXBuildFile; fileRef = 1331D21E1AC7E2D600B4AAD5 /* Quote.m */; };
 		133E34CC1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34CB1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m */; };
 		133E34D11ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D01ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m */; };
 		133E34D41ABFFFCC002C3748 /* DWCDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D31ABFFFCC002C3748 /* DWCDocumentTableViewCell.m */; };
@@ -162,8 +162,6 @@
 		13063A8C1A8B74AC00A1DEA2 /* UIView+DynamicForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DynamicForm.m"; sourceTree = "<group>"; };
 		13073B8C1AC3E63800F25EC6 /* ContractRenewalEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractRenewalEditViewController.h; sourceTree = "<group>"; };
 		13073B8D1AC3E63800F25EC6 /* ContractRenewalEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractRenewalEditViewController.m; sourceTree = "<group>"; };
-		13073B8F1AC3E76200F25EC6 /* ContractRenewalReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractRenewalReviewViewController.h; sourceTree = "<group>"; };
-		13073B901AC3E76200F25EC6 /* ContractRenewalReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractRenewalReviewViewController.m; sourceTree = "<group>"; };
 		13073B921AC415C200F25EC6 /* ContractLineItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContractLineItem.h; sourceTree = "<group>"; };
 		13073B931AC415C200F25EC6 /* ContractLineItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContractLineItem.m; sourceTree = "<group>"; };
 		13073B951AC4169F00F25EC6 /* InventoryUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryUnit.h; sourceTree = "<group>"; };
@@ -277,6 +275,8 @@
 		13315ACF1AAC663D009E1819 /* CompanyInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoListViewController.m; sourceTree = "<group>"; };
 		13315AD21AAC7056009E1819 /* CompanyInfoListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyInfoListTableViewCell.h; sourceTree = "<group>"; };
 		13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoListTableViewCell.m; sourceTree = "<group>"; };
+		1331D21D1AC7E2D600B4AAD5 /* Quote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quote.h; sourceTree = "<group>"; };
+		1331D21E1AC7E2D600B4AAD5 /* Quote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quote.m; sourceTree = "<group>"; };
 		133E34CA1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyDocumentTypeListViewController.h; sourceTree = "<group>"; };
 		133E34CB1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyDocumentTypeListViewController.m; sourceTree = "<group>"; };
 		133E34CF1ABFFFB7002C3748 /* CustomerDocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerDocumentTableViewCell.h; sourceTree = "<group>"; };
@@ -573,15 +573,6 @@
 			path = ContractRenewalEditViewController;
 			sourceTree = "<group>";
 		};
-		13073B8B1AC3E61500F25EC6 /* ContractRenewalReviewViewController */ = {
-			isa = PBXGroup;
-			children = (
-				13073B8F1AC3E76200F25EC6 /* ContractRenewalReviewViewController.h */,
-				13073B901AC3E76200F25EC6 /* ContractRenewalReviewViewController.m */,
-			);
-			path = ContractRenewalReviewViewController;
-			sourceTree = "<group>";
-		};
 		1307BAC81A6F83A4004E6325 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,7 +583,6 @@
 				13315ACD1AAC662A009E1819 /* CompanyInfoListViewController */,
 				13315AC31AAC24CB009E1819 /* CompanyInfoTypeViewController */,
 				13073B8A1AC3E61500F25EC6 /* ContractRenewalEditViewController */,
-				13073B8B1AC3E61500F25EC6 /* ContractRenewalReviewViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				131ECF301AC29BB500EDA9EB /* EDStarRating */,
 				130C2FFB1A78DDE600C95600 /* EmployeeListViewController */,
@@ -726,6 +716,8 @@
 				139658131AB9797B0091C451 /* Passport.m */,
 				13073B981AC4176500F25EC6 /* Product.h */,
 				13073B991AC4176500F25EC6 /* Product.m */,
+				1331D21D1AC7E2D600B4AAD5 /* Quote.h */,
+				1331D21E1AC7E2D600B4AAD5 /* Quote.m */,
 				13081AF11A76559D00B33509 /* RecordType.h */,
 				13081AF21A76559D00B33509 /* RecordType.m */,
 				13481AEE1A823A5B00093331 /* RelatedService.h */,
@@ -1662,6 +1654,7 @@
 				130F7DD51AAF2B9000380628 /* LicenseActivity.m in Sources */,
 				13073B9A1AC4176500F25EC6 /* Product.m in Sources */,
 				130F7DD81AAF2C6800380628 /* BusinessActivity.m in Sources */,
+				1331D21F1AC7E2D600B4AAD5 /* Quote.m in Sources */,
 				1318194B1A91FCB900CAA4D6 /* ServicesUploadViewController.m in Sources */,
 				130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */,
 				131ECF361AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m in Sources */,
@@ -1702,7 +1695,6 @@
 				13081AFA1A76559D00B33509 /* EServiceAdministration.m in Sources */,
 				13481AF01A823A5B00093331 /* RelatedService.m in Sources */,
 				13F5A5A71AB0B64A00D92591 /* NotificationTableViewCell.m in Sources */,
-				13073B911AC3E76200F25EC6 /* ContractRenewalReviewViewController.m in Sources */,
 				131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */,
 				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
 				13CFE72E1ABECF13009E47EC /* EServicesDocumentChecklist.m in Sources */,
@@ -1860,8 +1852,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dc959a97-ea11-4202-9153-9ac257f89e12";
-				TARGETED_DEVICE_FAMILY = 1;
+				PROVISIONING_PROFILE = "5e6dd463-17ec-4baa-ad31-a0fd61421764";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1903,8 +1895,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dc959a97-ea11-4202-9153-9ac257f89e12";
-				TARGETED_DEVICE_FAMILY = 1;
+				PROVISIONING_PROFILE = "5e6dd463-17ec-4baa-ad31-a0fd61421764";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

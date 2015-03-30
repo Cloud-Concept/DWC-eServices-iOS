@@ -9,6 +9,7 @@
 #import "TenancyContract.h"
 #import "HelperClass.h"
 #import "SFDateUtil.h"
+#import "Quote.h"
 
 @implementation TenancyContract
 
@@ -45,6 +46,8 @@
     self.contractDurationYear = [HelperClass numberCheckNull:[tenancyContractDict objectForKey:@"Contract_Duration__c"]];
     
     self.isBCContract = [[tenancyContractDict objectForKey:@"IS_BC_Contract__c"] boolValue];
+    
+    self.quote = [[Quote alloc] initQuote:[tenancyContractDict objectForKey:@"Quote__r"]];
     
     return self;
 }

@@ -81,28 +81,34 @@ static NSString *renewContractServiceAdminQuery = @"SELECT Id, Name, Service_Ide
 }
 
 + (NSString *)caseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray RelatedObject:(NSString *)RelatedObject {
+    return [self caseReviewQuery:caseId Fields:formFieldsArray RelatedObject:RelatedObject AddRelatedFields:YES];
+}
+
++ (NSString *)caseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray RelatedObject:(NSString *)RelatedObject AddRelatedFields:(BOOL)AddRelatedFields {
     
     NSMutableString *queryString = [NSMutableString stringWithString:caseReviewQuery];
     
     
     NSString *relationName = [RelatedObject stringByReplacingOccurrencesOfString:@"__c" withString:@"__r"];
     
-    for (FormField *field in formFieldsArray) {
-        
-        if ([field.type isEqualToString:@"CUSTOMTEXT"])
-            continue;
-        
-        NSString *fieldName;
-        
-        if ([RelatedObject isEqualToString:@"Case"])
-            fieldName = [NSString stringWithFormat:@", %@", field.name];
-        else
-            fieldName = [NSString stringWithFormat:@", %@.%@", relationName, field.name];
-        
-        if (![queryString containsString:fieldName]) {
-            [queryString appendString:fieldName];
+    if (AddRelatedFields) {
+        for (FormField *field in formFieldsArray) {
+            
+            if ([field.type isEqualToString:@"CUSTOMTEXT"])
+                continue;
+            
+            NSString *fieldName;
+            
+            if ([RelatedObject isEqualToString:@"Case"])
+                fieldName = [NSString stringWithFormat:@", %@", field.name];
+            else
+                fieldName = [NSString stringWithFormat:@", %@.%@", relationName, field.name];
+            
+            if (![queryString containsString:fieldName]) {
+                [queryString appendString:fieldName];
+            }
+            
         }
-        
     }
     
     [queryString appendFormat:@" FROM Case WHERE Id = '%@'", caseId];

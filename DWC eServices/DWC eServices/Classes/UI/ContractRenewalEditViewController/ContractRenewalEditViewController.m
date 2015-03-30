@@ -22,6 +22,7 @@
 #import "NSString+SFPathAdditions.h"
 #import "FormField.h"
 #import "WebForm.h"
+#import "RecordType.h"
 
 @interface ContractRenewalEditViewController ()
 
@@ -69,9 +70,11 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self refreshValues];
+            
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
             
-            [self refreshValues];
+            [self loadCaseRecordType];
         });
     };
     
@@ -117,21 +120,32 @@
     //Prepare FormFields
     NSMutableArray *formFieldsMutableArray = [NSMutableArray new];
     
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"ContractNo" Type:@"STRING" MobileLabel:NSLocalizedString(@"ContractNo", @"") FieldValue:self.baseServicesViewController.currentContract.contractNumber IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"ContractType" Type:@"STRING" MobileLabel:NSLocalizedString(@"ContractType", @"") FieldValue:self.baseServicesViewController.currentContract.contractType IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"ContractStartDate" Type:@"DATE" MobileLabel:NSLocalizedString(@"ContractStartDate", @"") FieldValue:[HelperClass formatDateToString:self.baseServicesViewController.currentContract.contractStartDate] IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"ContractExpiryDate" Type:@"DATE" MobileLabel:NSLocalizedString(@"ContractExpiryDate", @"") FieldValue:[HelperClass formatDateToString:self.baseServicesViewController.currentContract.contractExpiryDate] IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"RentStartDate" Type:@"DATE" MobileLabel:NSLocalizedString(@"RentStartDate", @"") FieldValue:[HelperClass formatDateToString:self.baseServicesViewController.currentContract.rentStartDate] IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"ActivationDate" Type:@"DATE" MobileLabel:NSLocalizedString(@"ActivationDate", @"") FieldValue:[HelperClass formatDateToString:self.baseServicesViewController.currentContract.activatedDate] IsParameter:YES]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"ContractInformation" Type:@"CUSTOMTEXT" MobileLabel:NSLocalizedString(@"ContractInformation", @"") FieldValue:@"" IsParameter:NO]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Contract_Number__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"ContractNo", @"") FieldValue:self.baseServicesViewController.currentContract.contractNumber IsParameter:YES]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Contract_Type__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"ContractType", @"") FieldValue:self.baseServicesViewController.currentContract.contractType IsParameter:YES]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Contract_Start_Date__c" Type:@"DATE" MobileLabel:NSLocalizedString(@"ContractStartDate", @"") FieldValue:[HelperClass formatDateToString:self.baseServicesViewController.currentContract.contractStartDate] IsParameter:YES]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Contract_Expiry_Date__c" Type:@"DATE" MobileLabel:NSLocalizedString(@"ContractExpiryDate", @"") FieldValue:[HelperClass formatDateToString:self.baseServicesViewController.currentContract.contractExpiryDate] IsParameter:YES]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Rent_Start_Date__c" Type:@"DATE" MobileLabel:NSLocalizedString(@"RentStartDate", @"") FieldValue:[HelperClass formatDateToString:self.baseServicesViewController.currentContract.rentStartDate] IsParameter:YES]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Activated_Date__c" Type:@"DATE" MobileLabel:NSLocalizedString(@"ActivationDate", @"") FieldValue:[HelperClass formatDateToString:self.baseServicesViewController.currentContract.activatedDate] IsParameter:YES]];
     
     NSString *contractDurationString = [HelperClass formatNumberToString:self.baseServicesViewController.currentContract.contractDurationYear FormatStyle:NSNumberFormatterNoStyle MaximumFractionDigits:0];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"ContractDuration" Type:@"STRING" MobileLabel:NSLocalizedString(@"ContractDuration", @"") FieldValue:[NSString stringWithFormat:@"%@ (Year/s)", contractDurationString] IsParameter:YES]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Contract_Duration__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"ContractDuration", @"") FieldValue:[NSString stringWithFormat:@"%@ (Year/s)", contractDurationString] IsParameter:YES]];
     
     NSString *totalPriceString = [HelperClass formatNumberToString:self.baseServicesViewController.currentContract.totalRentPrice FormatStyle:NSNumberFormatterDecimalStyle MaximumFractionDigits:2];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"TotalPrice" Type:@"STRING" MobileLabel:NSLocalizedString(@"TotalPrice", @"") FieldValue:[NSString stringWithFormat:@"AED %@", totalPriceString] IsParameter:YES]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Total_Price__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"TotalPrice", @"") FieldValue:[NSString stringWithFormat:@"AED %@", totalPriceString] IsParameter:YES]];
     
     self.baseServicesViewController.currentWebForm = [WebForm new];
     self.baseServicesViewController.currentWebForm.formFields = [NSArray arrayWithArray:formFieldsMutableArray];
+    self.baseServicesViewController.currentServiceAdministration = selectedEServiceAdministrator;
+    
+    self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                  [Globals currentAccount].Id, @"AccountId",
+                                                  caseRecordType.Id, @"RecordTypeId",
+                                                  @"Draft", @"Status",
+                                                  @"Leasing Services", @"Type",
+                                                  @"Mobile", @"Origin",
+                                                  nil];
+    
     [self.baseServicesViewController nextButtonClicked:ServiceFlowInitialPage];
 }
 
@@ -206,6 +220,35 @@
         [self setCourierValuesToFields];
         [self courierFieldsSetHidden:NO];
     });
+}
+
+- (void)loadCaseRecordType {
+    //caseRecordTypeId
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        
+        for (NSDictionary *obj in [dict objectForKey:@"records"]) {
+            caseRecordType = [[RecordType alloc] initRecordType:obj];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+    };
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    NSString *selectQuery = @"SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE SObjectType = 'Case' AND DeveloperName = 'Leasing_Request'";
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
 }
 
 #pragma mark - SFRestAPIDelegate

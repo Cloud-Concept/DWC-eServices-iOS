@@ -25,6 +25,9 @@
 #import "WebForm.h"
 #import "FormField.h"
 #import "ContractRenewalEditViewController.h"
+#import "TenancyContract.h"
+#import "Quote.h"
+#import "SFJsonUtils.h"
 
 @interface BaseServicesViewController ()
 
@@ -86,6 +89,9 @@
         case RelatedServiceTypeViewMyRequest:
         case RelatedServiceTypeRegistrationDocuments:
             returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:self.currentWebForm.objectName];
+            break;
+        case RelatedServiceTypeContractRenewal:
+            returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:@"Tenancy_Contract__c" AddRelatedFields:NO];
             break;
         default:
             returnQuery = @"";
@@ -283,7 +289,10 @@
             if (self.createServiceRecord)
                 [self createServiceRecord:insertedCaseId];
             else {
-                [self callGenerateInvoiceWebService];
+                if (self.relatedServiceType == RelatedServiceTypeContractRenewal)
+                    [self callRenewContractWebService];
+                else
+                    [self callGenerateInvoiceWebService];
             }
         });
     };
@@ -299,8 +308,11 @@
     [self showLoadingDialog];
     
     NSMutableDictionary *mutableCaseFields = [NSMutableDictionary dictionaryWithDictionary:self.caseFields];
-    [mutableCaseFields setObject:self.currentServiceAdministration.Id forKey:@"Service_Requested__c"];
-    [mutableCaseFields setObject:self.currentWebForm.Id forKey:@"Visual_Force_Generator__c"];
+    if (self.currentServiceAdministration && self.currentServiceAdministration.Id)
+        [mutableCaseFields setObject:self.currentServiceAdministration.Id forKey:@"Service_Requested__c"];
+    
+    if (self.currentWebForm && self.currentWebForm.Id)
+        [mutableCaseFields setObject:self.currentWebForm.Id forKey:@"Visual_Force_Generator__c"];
     
     if(insertedCaseId != nil && ![insertedCaseId  isEqual: @""])
         [[SFRestAPI sharedInstance] performUpdateWithObjectType:@"Case"
@@ -503,6 +515,25 @@
     [[SFRestAPI sharedInstance] send:payAndSubmitRequest delegate:self];
 }
 
+- (void)callRenewContractWebService {
+    // Manually set up request object
+    SFRestRequest *renewContractRequest = [[SFRestRequest alloc] init];
+    renewContractRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileRenewContractWebService"];
+    renewContractRequest.method = SFRestMethodPOST;
+    renewContractRequest.path = @"/services/apexrest/MobileRenewContractWebService";
+    
+    NSDictionary *wrapperDict = [NSDictionary dictionaryWithObjects:@[insertedCaseId, self.currentContract.quote.Id, self.currentContract.Id, self.currentContract.Id] forKeys:@[@"caseId", @"quoteId", @"oldContractId", @"newContractId"]];
+    
+    NSDictionary *bodyDict = [NSDictionary dictionaryWithObject:wrapperDict forKey:@"wrapper"];
+    
+    //NSString *requestBody = [NSString stringWithFormat: @"{\"body\":{ \"caseId\":\"%@\",\"quoteId\":\"%@\",\"oldContractId\":\"%@\",\"newContractId\":\"%@\"}}", insertedCaseId, self.currentContract.quote.Id, self.currentContract.Id, @""];
+    
+    renewContractRequest.queryParams = bodyDict;
+    
+    [self showLoadingDialog];
+    [[SFRestAPI sharedInstance] send:renewContractRequest delegate:self];
+}
+
 - (void)getWebFormWithReturnBlock:(void (^)(BOOL))returnBlock {
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
@@ -559,7 +590,7 @@
     
 }
 
-- (void)handlePayAndSubmitWebserviceReturn {
+- (void)handlePayAndSubmitWebserviceReturn:(id)jsonResponse {
     [self hideLoadingDialog];
     
     UIAlertController *alertController =
@@ -580,11 +611,25 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)handleGenerateInvoiceWebServiceReturn {
+- (void)handleGenerateInvoiceWebServiceReturn:(id)jsonResponse {
     if ([self hasAttachments])
         [self showAttachmentsFlowPage];
     else
         [self showReviewFlowPage];
+}
+
+- (void)handleRenewContractWebServiceReturn:(id)jsonResponse {
+    NSError *error;
+    NSString *returnValue = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
+    NSLog(@"request:didLoadResponse: %@", returnValue);
+    
+    if ([returnValue isEqualToString:@"Error"]) {
+        [self hideLoadingDialog];
+#warning Handle Error
+    }
+    else {
+        [self showReviewFlowPage];
+    }
 }
 
 #pragma mark - SFRestAPIDelegate
@@ -596,9 +641,11 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if ([request.path containsString:@"MobilePayAndSubmitWebService"])
-            [self handlePayAndSubmitWebserviceReturn];
+            [self handlePayAndSubmitWebserviceReturn:jsonResponse];
         else if ([request.path containsString:@"MobileGenerateInvoiceWebService"])
-            [self handleGenerateInvoiceWebServiceReturn];
+            [self handleGenerateInvoiceWebServiceReturn:jsonResponse];
+        else if ([request.path containsString:@"MobileRenewContractWebService"])
+            [self handleRenewContractWebServiceReturn:jsonResponse];
         
     });
 }

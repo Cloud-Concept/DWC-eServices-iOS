@@ -183,6 +183,7 @@
     copy.mobileLabel = _mobileLabel;
     copy.mobileOrder = _mobileOrder;
     copy.nameNoSpace = _nameNoSpace;
+    [copy setFormFieldValue:formFieldValue];
 
     return copy;
 }

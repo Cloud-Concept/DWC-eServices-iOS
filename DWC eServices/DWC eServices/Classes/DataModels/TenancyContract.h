@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Quote;
+
 @interface TenancyContract : NSObject
 
 @property (nonatomic, strong) NSString *Id;
@@ -23,6 +25,8 @@
 @property (nonatomic, strong) NSDate *contractStartDate;
 @property (nonatomic, strong) NSDate *contractExpiryDate;
 @property (nonatomic) BOOL isBCContract;
+
+@property (nonatomic, strong) Quote *quote;
 
 - (id)initTenancyContract:(NSDictionary *)tenancyContractDict;
 /*
