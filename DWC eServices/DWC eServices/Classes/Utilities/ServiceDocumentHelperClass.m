@@ -68,7 +68,7 @@
     [viewController presentViewController:alert animated:YES completion:nil];
 }
 
-+ (void)documentSourceActionSheet:(EServiceDocument *)document ViewController:(UIViewController *)viewController {
++ (void)documentSourceActionSheet:(EServiceDocument *)document ViewController:(UIViewController *)viewController Sender:(id)sender {
     UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"DocumentSourceAlertTitle", @"")
                                                                          message:NSLocalizedString(@"DocumentSourceAlertMessage", @"")
                                                                   preferredStyle:UIAlertControllerStyleActionSheet];
@@ -88,6 +88,9 @@
     
     [actionSheet addAction:cancelAction];
     [actionSheet addAction:imagePickerAction];
+    
+    actionSheet.popoverPresentationController.sourceView = sender;
+    actionSheet.popoverPresentationController.sourceRect = ((UIView *)sender).bounds;
     
     [viewController presentViewController:actionSheet animated:YES completion:nil];
 }

@@ -118,7 +118,7 @@
 
 - (void)initializeCardTypesDictionary {
     cardTypesDescriptionsArray = @[@"FM Contractor Pass", @"Contractor Pass", @"Work Permit Pass", @"Access Card", @"Replacement of Lost Employment Card"];
-    cardTypesValuesArray = @[@"FM_Contractor_Card", @"Contractor_Card", @"Work_Permit_Card", @"Access_Card", @"Employment_Card"];
+    cardTypesValuesArray = @[@"FM_Contractor_Pass", @"Contractor_Pass", @"Work_Permit_Pass", @"Access_Card", @"Employment_Card"];
 }
 
 - (void)getCardRecordType {

@@ -113,10 +113,11 @@
             formFieldsArray = [[NSMutableArray alloc] initWithArray:self.baseServicesViewController.currentWebForm.formFields
                                                           copyItems:YES];
             
-            if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeContractRenewal)
-                continue;
-            
             for (FormField *field in formFieldsArray) {
+                if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeContractRenewal) {
+                    
+                    continue;
+                }
                 [field setFormFieldValue:[serviceDict objectForKey:field.name]];
                 field.isCalculated = true;
             }

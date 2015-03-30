@@ -50,7 +50,7 @@
 
 - (UIButton *)getDocumentButton:(UIViewController *)parentViewController {
     if (!documentButton) {
-        documentButton = [ServiceDocumentHelperClass getButtonForDocument:self Taregt:self Action:@selector(documentButtonClicked)];
+        documentButton = [ServiceDocumentHelperClass getButtonForDocument:self Taregt:self Action:@selector(documentButtonClicked:)];
         buttonParentViewController = parentViewController;
     }
     
@@ -71,14 +71,15 @@
     [ServiceDocumentHelperClass refreshButton:documentButton forDocument:self];
 }
 
-- (void)documentButtonClicked {
+- (void)documentButtonClicked:(id)sender {
     if (self.attachment) {
         [ServiceDocumentHelperClass confirmDeleteDocument:self
                                            ViewController:buttonParentViewController];
     }
     else {
         [ServiceDocumentHelperClass documentSourceActionSheet:self
-                                               ViewController:buttonParentViewController];
+                                               ViewController:buttonParentViewController
+                                                       Sender:sender];
     }
 }
 

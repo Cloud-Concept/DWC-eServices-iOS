@@ -14,6 +14,6 @@
 
 + (UIButton *)getButtonForDocument:(EServiceDocument *)document Taregt:(id)target Action:(SEL)action;
 + (void)confirmDeleteDocument:(EServiceDocument *)document ViewController:(UIViewController *)viewController;
-+ (void)documentSourceActionSheet:(EServiceDocument *)document ViewController:(UIViewController *)viewController;
++ (void)documentSourceActionSheet:(EServiceDocument *)document ViewController:(UIViewController *)viewController Sender:(id)sender;
 + (void)refreshButton:(UIButton *)button forDocument:(EServiceDocument *)document;
 @end

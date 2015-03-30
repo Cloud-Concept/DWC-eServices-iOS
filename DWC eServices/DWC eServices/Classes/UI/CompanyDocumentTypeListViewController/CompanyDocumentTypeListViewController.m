@@ -251,6 +251,8 @@
     
     cell.documentDateLabel.text = [HelperClass formatDateToString:companyDocument.createdDate];
     
+    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    
     return cell;
 }
 
@@ -294,6 +296,9 @@
         [actionSheet addAction:deleteAction];
     
     [actionSheet addAction:cancelAction];
+        
+    actionSheet.popoverPresentationController.sourceView = [self.tableView cellForRowAtIndexPath:indexPath];
+    actionSheet.popoverPresentationController.sourceRect = [self.tableView cellForRowAtIndexPath:indexPath].bounds;
     
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
@@ -333,6 +338,9 @@
     }
     
     [actionSheet addAction:cancelAction];
+    
+    actionSheet.popoverPresentationController.sourceView = [self.tableView cellForRowAtIndexPath:indexPath];
+    actionSheet.popoverPresentationController.sourceRect = [self.tableView cellForRowAtIndexPath:indexPath].bounds;
     
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
