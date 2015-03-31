@@ -19,6 +19,7 @@
 #import "License.h"
 #import "LicenseActivity.h"
 #import "BusinessActivity.h"
+#import "RelatedService.h"
 
 @interface CompanyInfoTypeViewController ()
 
@@ -138,7 +139,8 @@
     }
     
     recordVC.DetailsSectionsArray = sectionsArray;
-    recordVC.RelatedServicesMask = 0;
+    recordVC.licenseObject = license;
+    recordVC.RelatedServicesMask = RelatedServiceTypeLicenseRenewal;
 }
 
 #pragma mark - Table view data source

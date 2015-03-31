@@ -152,3 +152,9 @@
 "ContractDuration" = "Contract Duration";
 "TotalPrice" = "Total Price";
 
+"LicenseInformation" = "License Information";
+"LicenseIssueDate" = "Issue Date";
+"LicenseExpiryDate" = "Expiry Date";
+"LicenseCommercialName" = "Commercial Name";
+"LicenseCommercialNameArabic" = "Commercial Name - Arabic";
+"LicenseNumberValue" = "License Number";

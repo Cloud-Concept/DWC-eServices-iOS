@@ -114,7 +114,8 @@
                                                           copyItems:YES];
             
             for (FormField *field in formFieldsArray) {
-                if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeContractRenewal) {
+                if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeContractRenewal ||
+                    self.baseServicesViewController.relatedServiceType == RelatedServiceTypeLicenseRenewal) {
                     
                     continue;
                 }

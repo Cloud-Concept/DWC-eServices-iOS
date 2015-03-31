@@ -130,4 +130,13 @@
     [self.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
+- (void)relatedServiceLicenseRenewalButtonClicked {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = RelatedServiceTypeLicenseRenewal;
+    baseServicesVC.currentLicense = self.licenseObject;
+    baseServicesVC.createServiceRecord = NO;
+    [self.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
 @end

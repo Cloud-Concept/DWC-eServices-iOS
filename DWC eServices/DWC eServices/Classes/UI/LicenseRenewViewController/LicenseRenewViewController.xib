@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LicenseRenewViewController">
+            <connections>
+                <outlet property="courierFeesLabel" destination="mG4-Wv-CBo" id="Fdt-lF-pRW"/>
+                <outlet property="courierFeesTextField" destination="2KQ-Si-6vh" id="bz3-6V-svc"/>
+                <outlet property="courierRequiredSwitch" destination="42v-vW-hrc" id="RSU-yc-vL7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="42v-vW-hrc">
+                    <rect key="frame" x="310" y="16" width="51" height="31"/>
+                    <color key="onTintColor" red="0.27450980390000002" green="0.5450980392" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="courierRequiredSwitchValueChanged:" destination="-1" eventType="valueChanged" id="hqV-Bk-P4u"/>
+                    </connections>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Courier Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnS-G9-1Sj">
+                    <rect key="frame" x="16" y="23" width="286" height="18"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Courier Service" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mG4-Wv-CBo">
+                    <rect key="frame" x="16" y="55" width="343" height="18"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mX6-TP-NqV">
+                    <rect key="frame" x="196" y="612" width="163" height="47"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                    <state key="normal" title="Next" backgroundImage="Blue Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="nextButtonClicked:" destination="-1" eventType="touchUpInside" id="BLC-WR-lqD"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32n-ZR-fo4">
+                    <rect key="frame" x="16" y="612" width="163" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="32n-ZR-fo4" secondAttribute="height" multiplier="163:47" id="xti-zt-hYn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                    <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonClicked:" destination="-1" eventType="touchUpInside" id="3Dr-6z-qOe"/>
+                    </connections>
+                </button>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="2KQ-Si-6vh">
+                    <rect key="frame" x="16" y="81" width="343" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="O5B-3u-6xa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mX6-TP-NqV" firstAttribute="width" secondItem="32n-ZR-fo4" secondAttribute="width" id="5Yu-Gy-grZ"/>
+                <constraint firstAttribute="trailing" secondItem="mG4-Wv-CBo" secondAttribute="trailing" constant="16" id="6MD-88-XFh"/>
+                <constraint firstItem="dnS-G9-1Sj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="23" id="6s6-x4-9er"/>
+                <constraint firstItem="42v-vW-hrc" firstAttribute="leading" secondItem="dnS-G9-1Sj" secondAttribute="trailing" constant="8" id="GEd-F6-gmD"/>
+                <constraint firstItem="2KQ-Si-6vh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="IeT-aj-mXd"/>
+                <constraint firstItem="2KQ-Si-6vh" firstAttribute="top" secondItem="mG4-Wv-CBo" secondAttribute="bottom" constant="8" id="J2B-q8-VSA"/>
+                <constraint firstItem="mX6-TP-NqV" firstAttribute="height" secondItem="32n-ZR-fo4" secondAttribute="height" id="KFm-oP-pPY"/>
+                <constraint firstItem="dnS-G9-1Sj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="NKV-fO-FFK"/>
+                <constraint firstAttribute="bottom" secondItem="32n-ZR-fo4" secondAttribute="bottom" constant="8" id="OWB-gj-EEQ"/>
+                <constraint firstItem="32n-ZR-fo4" firstAttribute="width" secondItem="32n-ZR-fo4" secondAttribute="height" multiplier="163:47" id="SHz-8V-ehV"/>
+                <constraint firstItem="mX6-TP-NqV" firstAttribute="leading" secondItem="32n-ZR-fo4" secondAttribute="trailing" constant="17" id="VrO-co-abc"/>
+                <constraint firstItem="42v-vW-hrc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="16" id="XJr-Wo-Z4C"/>
+                <constraint firstItem="mG4-Wv-CBo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="XTN-ta-yEG"/>
+                <constraint firstAttribute="bottom" secondItem="mX6-TP-NqV" secondAttribute="bottom" constant="8" id="ZIC-3P-FhA"/>
+                <constraint firstAttribute="trailing" secondItem="2KQ-Si-6vh" secondAttribute="trailing" constant="16" id="dQS-bX-QEO"/>
+                <constraint firstItem="mX6-TP-NqV" firstAttribute="leading" secondItem="32n-ZR-fo4" secondAttribute="trailing" constant="17" id="gcq-Ik-ic4"/>
+                <constraint firstItem="32n-ZR-fo4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="kpr-o2-eYJ"/>
+                <constraint firstItem="mG4-Wv-CBo" firstAttribute="top" secondItem="42v-vW-hrc" secondAttribute="bottom" constant="8" id="pVb-Nc-KlQ"/>
+                <constraint firstAttribute="trailing" secondItem="42v-vW-hrc" secondAttribute="trailing" constant="16" id="qOf-rA-jfx"/>
+                <constraint firstAttribute="trailing" secondItem="mX6-TP-NqV" secondAttribute="trailing" constant="16" id="y2a-ev-La8"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Black Button Background" width="5" height="5"/>
+        <image name="Blue Button Background" width="7" height="38"/>
+        <image name="Textfield Background" width="7" height="39"/>
+    </resources>
+</document>

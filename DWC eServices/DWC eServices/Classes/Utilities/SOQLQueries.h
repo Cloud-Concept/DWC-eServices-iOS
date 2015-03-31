@@ -30,4 +30,5 @@
 + (NSString *)dwcDocumentsQuery;
 + (NSString *)customerDocumentsQuery;
 + (NSString *)renewContractServiceAdminQuery:(NSString *)serviceIdentifier;
++ (NSString *)renewLicenseServiceAdminQuery;
 @end

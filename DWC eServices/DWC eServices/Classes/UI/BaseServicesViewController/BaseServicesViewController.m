@@ -27,7 +27,8 @@
 #import "ContractRenewalEditViewController.h"
 #import "TenancyContract.h"
 #import "Quote.h"
-#import "SFJsonUtils.h"
+#import "LicenseRenewViewController.h"
+#import "License.h"
 
 @interface BaseServicesViewController ()
 
@@ -92,6 +93,9 @@
             break;
         case RelatedServiceTypeContractRenewal:
             returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:@"Tenancy_Contract__c" AddRelatedFields:NO];
+            break;
+        case RelatedServiceTypeLicenseRenewal:
+            returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:@"License__c" AddRelatedFields:NO];
             break;
         default:
             returnQuery = @"";
@@ -213,6 +217,9 @@
             break;
         case RelatedServiceTypeContractRenewal:
             [self showContractRenewalFlow];
+        case RelatedServiceTypeLicenseRenewal:
+            [self showLicenseRenewalFlow];
+            break;
         default:
             break;
     }
@@ -236,6 +243,13 @@
     contractRenewalEditVC.baseServicesViewController = self;
     [self addChildViewController:contractRenewalEditVC toView:self.serviceFlowView];
     [viewControllersStack pushObject:contractRenewalEditVC];
+}
+
+- (void)showLicenseRenewalFlow {
+    LicenseRenewViewController *licenseRenewalVC = [LicenseRenewViewController new];
+    licenseRenewalVC.baseServicesViewController = self;
+    [self addChildViewController:licenseRenewalVC toView:self.serviceFlowView];
+    [viewControllersStack pushObject:licenseRenewalVC];
 }
 
 - (void)showNOCServiceFlow {
@@ -291,6 +305,8 @@
             else {
                 if (self.relatedServiceType == RelatedServiceTypeContractRenewal)
                     [self callRenewContractWebService];
+                else if (self.relatedServiceType == RelatedServiceTypeLicenseRenewal)
+                    [self callRenewLicensetWebService];
                 else
                     [self callGenerateInvoiceWebService];
             }
@@ -410,6 +426,7 @@
                                 doc.name, @"Name",
                                 doc.Id, @"eServices_Document__c",
                                 [Globals currentAccount].Id, @"Company__c",
+                                insertedCaseId, @"Request__c",
                                 insertedServiceId, self.currentWebForm.objectName,
                                 nil];
         
@@ -526,12 +543,27 @@
     
     NSDictionary *bodyDict = [NSDictionary dictionaryWithObject:wrapperDict forKey:@"wrapper"];
     
-    //NSString *requestBody = [NSString stringWithFormat: @"{\"body\":{ \"caseId\":\"%@\",\"quoteId\":\"%@\",\"oldContractId\":\"%@\",\"newContractId\":\"%@\"}}", insertedCaseId, self.currentContract.quote.Id, self.currentContract.Id, @""];
-    
     renewContractRequest.queryParams = bodyDict;
     
     [self showLoadingDialog];
     [[SFRestAPI sharedInstance] send:renewContractRequest delegate:self];
+}
+
+- (void)callRenewLicensetWebService {
+    // Manually set up request object
+    SFRestRequest *renewLicenseRequest = [[SFRestRequest alloc] init];
+    renewLicenseRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileRenewLicensetWebService"];
+    renewLicenseRequest.method = SFRestMethodPOST;
+    renewLicenseRequest.path = @"/services/apexrest/MobileRenewLicensetWebService";
+    
+    NSDictionary *wrapperDict = [NSDictionary dictionaryWithObjects:@[insertedCaseId, self.currentLicense.Id] forKeys:@[@"caseId", @"licenseId"]];
+    
+    NSDictionary *bodyDict = [NSDictionary dictionaryWithObject:wrapperDict forKey:@"wrapper"];
+    
+    renewLicenseRequest.queryParams = bodyDict;
+    
+    [self showLoadingDialog];
+    [[SFRestAPI sharedInstance] send:renewLicenseRequest delegate:self];
 }
 
 - (void)getWebFormWithReturnBlock:(void (^)(BOOL))returnBlock {
@@ -619,16 +651,33 @@
 }
 
 - (void)handleRenewContractWebServiceReturn:(id)jsonResponse {
-    NSError *error;
-    NSString *returnValue = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
+    NSString *returnValue = [[NSString alloc] initWithData:jsonResponse encoding:NSUTF8StringEncoding];
     NSLog(@"request:didLoadResponse: %@", returnValue);
+    [self hideLoadingDialog];
     
-    if ([returnValue isEqualToString:@"Error"]) {
-        [self hideLoadingDialog];
+    if ([returnValue containsString:@"Error"]) {
 #warning Handle Error
     }
     else {
         [self showReviewFlowPage];
+    }
+}
+
+- (void)handleRenewLicenseWebServiceReturn:(id)jsonResponse {
+    NSString *returnValue = [[NSString alloc] initWithData:jsonResponse encoding:NSUTF8StringEncoding];
+    NSLog(@"request:didLoadResponse: %@", returnValue);
+    [self hideLoadingDialog];
+    
+    if ([returnValue containsString:@"Error"]) {
+#warning Handle Error
+    }
+    else {
+        insertedServiceId = [returnValue substringFromIndex:[returnValue rangeOfString:@":"].location + 1];
+        insertedServiceId = [insertedServiceId stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        if ([self hasAttachments])
+            [self showAttachmentsFlowPage];
+        else
+            [self showReviewFlowPage];
     }
 }
 
@@ -646,6 +695,8 @@
             [self handleGenerateInvoiceWebServiceReturn:jsonResponse];
         else if ([request.path containsString:@"MobileRenewContractWebService"])
             [self handleRenewContractWebServiceReturn:jsonResponse];
+        else if ([request.path containsString:@"MobileRenewLicensetWebService"])
+            [self handleRenewLicenseWebServiceReturn:jsonResponse];
         
     });
 }

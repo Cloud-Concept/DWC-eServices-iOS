@@ -82,6 +82,11 @@
                                                                                  Icon:@"Cancel Visa Icon"
                                                                                  Mask:RelatedServiceTypeContractRenewal]];
     
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Renew_License"
+                                                                                Label:@"Renew License"
+                                                                                 Icon:@"Cancel Visa Icon"
+                                                                                 Mask:RelatedServiceTypeLicenseRenewal]];
+    
     relatedServicesArray = relatedServicesMutableArray;
 }
 
@@ -254,6 +259,9 @@
             break;
         case RelatedServiceTypeContractRenewal:
             [self.delegate relatedServiceContractRenewalButtonClicked];
+        case RelatedServiceTypeLicenseRenewal:
+            [self.delegate relatedServiceLicenseRenewalButtonClicked];
+            break;
         default:
             break;
     }

@@ -55,6 +55,8 @@ static NSString *customerDocumentsQuery = @"SELECT Id, Name, Customer_Document__
 
 static NSString *renewContractServiceAdminQuery = @"SELECT Id, Name, Service_Identifier__c, Amount__c, Display_Name__c, Require_Knowledge_Fee__c, Knowledge_Fee__r.Id, Knowledge_Fee__r.Name, Knowledge_Fee__r.Amount__c FROM Receipt_Template__c WHERE Service_Identifier__c = '%@'";
 
+static NSString *renewLicenseServiceAdminQuery = @"SELECT ID, Name, Service_Identifier__c, Amount__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r WHERE Document_Required_for_Branch_or_LLC__c != '%@' AND Document_Type__c = 'Upload') FROM Receipt_Template__c WHERE Is_Active__c = true AND Service_Identifier__c = 'Annual License Renewal'";
+
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
 }
@@ -162,6 +164,16 @@ static NSString *renewContractServiceAdminQuery = @"SELECT Id, Name, Service_Ide
 
 + (NSString *)renewContractServiceAdminQuery:(NSString *)serviceIdentifier {
     return [NSString stringWithFormat:renewContractServiceAdminQuery, serviceIdentifier];
+}
+
++ (NSString *)renewLicenseServiceAdminQuery {
+    NSString *queryDocumentFilter = @"";
+    if ([[Globals currentAccount].legalForm isEqualToString:@"DWC-LLC"])
+        queryDocumentFilter = @"Branch";
+    else if ([[Globals currentAccount].legalForm isEqualToString:@"DWC-Branch"])
+        queryDocumentFilter = @"LLC";
+    
+    return [NSString stringWithFormat:renewLicenseServiceAdminQuery, queryDocumentFilter];
 }
 
 @end
