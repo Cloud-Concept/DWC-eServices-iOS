@@ -173,8 +173,13 @@
     [self addConstraints:constraint_POS_H];
     
     FormField *previousField;
-    if (formFields.count > 0) {
-        previousField = [formFields objectAtIndex:formFields.count - 1];
+    for (NSInteger i = formFields.count - 1; i >= 0 ; i--) {
+        FormField *tempField = [formFields objectAtIndex:i];
+        
+        if (![tempField.type isEqualToString:@"CUSTOMTEXT"] && ![tempField.type isEqualToString:@"REFERENCE"] && !tempField.hidden) {
+            previousField = tempField;
+            break;
+        }
     }
     
     NSString *verticalRule = @"";
@@ -547,8 +552,13 @@
     }
     
     FormField *previousField;
-    if (formFieldsMutableArray.count > 0) {
-        previousField = [formFieldsMutableArray objectAtIndex:formFieldsMutableArray.count - 1];
+    for (NSInteger i = formFieldsMutableArray.count - 1; i >=0 ; i--) {
+        FormField *tempField = [formFieldsMutableArray objectAtIndex:i];
+        
+        if (![tempField.type isEqualToString:@"REFERENCE"] && !tempField.hidden) {
+            previousField = tempField;
+            break;
+        }
     }
     
     NSString *verticalRule = nil;
