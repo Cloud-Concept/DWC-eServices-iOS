@@ -23,8 +23,8 @@ static NSString *contractorsQuery = @"SELECT Id, Name, Personal_Photo__c, Card_N
 
 static NSString *serviceTypesQuery = @"SELECT ID, Name, Service_Identifier__c, Amount__c, Related_to_Object__c, New_Edit_VF_Generator__c, Renewal_VF_Generator__c, Replace_VF_Generator__c, Cancel_VF_Generator__c, Record_Type_Picklist__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Is_Active__c = true %@ ORDER BY Service_Identifier__c";
 
-static NSString *employeeNOCTypesFilter = @"AND Related_to_Object__c = 'NOC' AND RecordType.DeveloperName = 'Service_Request' AND NOC_Type__c = 'Employee'";
-static NSString *companyNOCTypesFilter = @"AND Related_to_Object__c = 'NOC' AND RecordType.DeveloperName = 'Service_Request' AND NOC_Type__c = 'Company'";
+static NSString *employeeNOCTypesFilter = @"AND Related_to_Object__c = 'NOC' AND RecordType.DeveloperName = 'Service_Request' AND NOC_Type__c = 'Employee' AND isAvailableOnPortal__c = true AND New_Edit_VF_Generator__c != null";
+static NSString *companyNOCTypesFilter = @"AND Related_to_Object__c = 'NOC' AND RecordType.DeveloperName = 'Service_Request' AND NOC_Type__c = 'Company' AND isAvailableOnPortal__c = true AND New_Edit_VF_Generator__c != null";
 static NSString *cardTypesFilter = @"AND Duration__c = '%@' AND Record_Type_Picklist__c = '%@'";
 
 static NSString *caseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, isCourierRequired__c, (SELECT ID, Name, Status__c, Amount__c FROM Invoices__r), (SELECT ID, Name, Status__c, Amount__c FROM Invoices1__r)";
