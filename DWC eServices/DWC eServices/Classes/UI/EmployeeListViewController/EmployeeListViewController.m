@@ -43,13 +43,18 @@
         case PermanentEmployee:
         case VisitVisaEmployee:
             [self loadVisaEmployees];
+            hideNewButton = YES;
             break;
         case ContractorEmployee:
             [self loadContactorEmployees];
+            hideNewButton = NO;
             break;
         default:
             break;
     }
+    if (hideNewButton)
+        [self.addNewButton removeFromSuperview];
+    //[self.addNewButton setHidden:hideNewButton];
 }
 
 - (void)didReceiveMemoryWarning {

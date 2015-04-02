@@ -66,7 +66,6 @@
 		131ECF331AC29BB500EDA9EB /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 131ECF321AC29BB500EDA9EB /* EDStarRating.m */; };
 		131ECF361AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131ECF351AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m */; };
 		131ECF3F1AC2D2F700EDA9EB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131ECF3E1AC2D2F700EDA9EB /* MainStoryboard.storyboard */; };
-		131ECF411AC2D43800EDA9EB /* ContractRenewalStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131ECF401AC2D43800EDA9EB /* ContractRenewalStoryboard.storyboard */; };
 		131F96CD1AA48D8400786B15 /* MyRequestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131F96CC1AA48D8400786B15 /* MyRequestListViewController.m */; };
 		1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1324D8981A89E9AB003AA356 /* PickerTableViewController.m */; };
 		1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */; };
@@ -251,7 +250,6 @@
 		131ECF341AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationFeedbackTableViewCell.h; sourceTree = "<group>"; };
 		131ECF351AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationFeedbackTableViewCell.m; sourceTree = "<group>"; };
 		131ECF3E1AC2D2F700EDA9EB /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
-		131ECF401AC2D43800EDA9EB /* ContractRenewalStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ContractRenewalStoryboard.storyboard; sourceTree = "<group>"; };
 		131F96CB1AA48D8400786B15 /* MyRequestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRequestListViewController.h; sourceTree = "<group>"; };
 		131F96CC1AA48D8400786B15 /* MyRequestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRequestListViewController.m; sourceTree = "<group>"; };
 		1324D8971A89E9AB003AA356 /* PickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerTableViewController.h; sourceTree = "<group>"; };
@@ -850,7 +848,6 @@
 			isa = PBXGroup;
 			children = (
 				131ECF3E1AC2D2F700EDA9EB /* MainStoryboard.storyboard */,
-				131ECF401AC2D43800EDA9EB /* ContractRenewalStoryboard.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1649,7 +1646,6 @@
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
 				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
 				130523E81A99F96800EF2268 /* ServicesReviewViewController.xib in Resources */,
-				131ECF411AC2D43800EDA9EB /* ContractRenewalStoryboard.storyboard in Resources */,
 				13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */,
 				139E6B5B1A7A183200D1D451 /* EmployeeListTableViewHeaderFooterView.xib in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,

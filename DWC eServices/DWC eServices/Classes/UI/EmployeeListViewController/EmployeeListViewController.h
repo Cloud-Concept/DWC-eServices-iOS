@@ -14,9 +14,13 @@
 @interface EmployeeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate>
 {
     NSMutableArray *dataRows;
+    
+    BOOL hideNewButton;
 }
 @property (nonatomic, strong) DWCEmployee *currentDWCEmployee;
+
 @property (weak, nonatomic) IBOutlet UITableView *employeesTableView;
+@property (weak, nonatomic) IBOutlet UIButton *addNewButton;
 
 - (IBAction)addNewButtonClicked:(id)sender;
 @end
