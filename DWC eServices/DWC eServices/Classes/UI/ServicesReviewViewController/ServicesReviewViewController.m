@@ -119,7 +119,7 @@
                     
                     continue;
                 }
-                [field setFormFieldValue:[serviceDict objectForKey:field.name]];
+                [field setFormFieldValue:[HelperClass getRelationshipValue:serviceDict Key:field.name]];
                 field.isCalculated = true;
             }
         }

@@ -364,10 +364,9 @@
         if ([self.type isEqualToString:@"PICKLIST"]) {
             [((UIButton*)fieldView) setTitle:formFieldValue forState:UIControlStateNormal];
         }
-        else if ([self.type isEqualToString:@"STRING"]) {
-            [((UITextField*)fieldView) setText:formFieldValue];
-        }
-        else if ([self.type isEqualToString:@"CUSTOMTEXT"]) {
+        else if ([self.type isEqualToString:@"STRING"] ||
+                 [self.type isEqualToString:@"DOUBLE"] ||
+                 [self.type isEqualToString:@"CUSTOMTEXT"]) {
             [((UITextField*)fieldView) setText:formFieldValue];
         }
     }

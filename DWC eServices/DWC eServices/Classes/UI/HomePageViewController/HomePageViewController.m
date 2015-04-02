@@ -46,7 +46,7 @@
     
     [HelperClass setupButtonWithBadgeOnImage:self.notificationButton Value:0];
     
-    [self loadCompanyInfo];
+    [self loadCompanyInfo:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -55,7 +55,8 @@
     
     //Show Notification Count in Homepage
     [self setNotificationNumberBadge];
-    }
+    [self loadCompanyInfo:NO];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -68,7 +69,7 @@
                                        Value:[[Globals notificationsCount] integerValue]];
 }
 
-- (void)loadCompanyInfo {
+- (void)loadCompanyInfo:(BOOL)loadLicenseInfo {
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -94,7 +95,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
             [self refreshLabels];
-            [self loadLicenseInfo];
+            if (loadLicenseInfo)
+                [self loadLicenseInfo];
         });
         
     };
@@ -115,7 +117,7 @@
 }
 
 - (void)loadLicenseInfo {
-        void (^errorBlock) (NSError*) = ^(NSError *e) {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
 #warning Handle Error
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
@@ -210,8 +212,8 @@
                                                       }];
     
     UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"no", @"")
-                                                        style:UIAlertActionStyleCancel
-                                                      handler:nil];
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:nil];
     
     [alert addAction:yesAction];
     [alert addAction:noAction];

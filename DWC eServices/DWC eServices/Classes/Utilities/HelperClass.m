@@ -147,7 +147,7 @@
         return [HelperClass getRelationshipValue:newDictionary Key:newKey];
     }
     else
-        return [dictionary objectForKey:key];
+        return [NSString stringWithFormat:@"%@", [dictionary objectForKey:key] ];
     
 }
 
