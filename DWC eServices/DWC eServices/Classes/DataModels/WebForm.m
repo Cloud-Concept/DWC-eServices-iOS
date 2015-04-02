@@ -29,6 +29,31 @@
     self.objectLabel = [HelperClass stringCheckNull:[webFormDict objectForKey:@"Object_Label__c"]];
     self.objectName = [HelperClass stringCheckNull:[webFormDict objectForKey:@"Object_Name__c"]];
     
+    NSMutableArray *fieldsArray = [[NSMutableArray alloc] init];
+    NSDictionary *fieldsDictionary = [webFormDict objectForKey:@"R00N70000002DiOrEAK__r"];
+    
+    if (![fieldsDictionary isKindOfClass:[NSNull class]]) {
+        for (NSDictionary *fieldsDict in [fieldsDictionary objectForKey:@"records"]) {
+            [fieldsArray addObject:[[FormField alloc] initFormField:fieldsDict]];
+        }
+    }
+    
+    self.formFields = [NSArray arrayWithArray:fieldsArray];
+    
+    for (FormField *currentFormField in self.formFields) {
+        if (!currentFormField.isDependentPicklist)
+            continue;
+        
+        for (FormField *parentFormField in self.formFields) {
+            if (![parentFormField.name isEqualToString:currentFormField.controllingField])
+                continue;
+            
+            currentFormField.controllingFormField = parentFormField;
+            [parentFormField addChildPicklistFormField:currentFormField];
+            break;
+        }
+    }
+    
     return self;
 }
 
@@ -49,7 +74,7 @@
     return self;
 }
 
-- (WebForm*)copyDeep {
+- (WebForm *)copyDeep {
     WebForm *webForm = [[WebForm alloc] initWebForm:self.Id
                                                Name:self.name
                                         Description:self.description

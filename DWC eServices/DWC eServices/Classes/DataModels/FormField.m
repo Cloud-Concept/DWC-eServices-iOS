@@ -120,6 +120,7 @@
     self.urlValue = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"URL_Value__c"]];
     self.webForm = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Web_Form__c"]];
     self.mobileLabel = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Mobile_Label__c"]];
+    self.controllingField = [HelperClass stringCheckNull:[formFieldDict objectForKey:@"Controlling_Field__c"]];
     
     self.apiRequired = [[formFieldDict objectForKey:@"APIRequired__c"] boolValue];
     self.booleanValue = [[formFieldDict objectForKey:@"Boolean_Value__c"] boolValue];
@@ -129,6 +130,7 @@
     self.isQuery = [[formFieldDict objectForKey:@"isQuery__c"] boolValue];
     self.required = [[formFieldDict objectForKey:@"Required__c"] boolValue];
     self.isMobileAvailable = [[formFieldDict objectForKey:@"isMobileAvailable__c"] boolValue];
+    self.isDependentPicklist = [[formFieldDict objectForKey:@"isDependentPicklist__c"] boolValue];
     
     self.currencyValue = [HelperClass numberCheckNull:[formFieldDict objectForKey:@"Currency_Value__c"]];
     self.numberValue = [HelperClass numberCheckNull:[formFieldDict objectForKey:@"Number_Value__c"]];
@@ -149,8 +151,7 @@
     return self;
 }
 
-- (id)copyWithZone:(NSZone *)zone
-{
+- (id)copyWithZone:(NSZone *)zone {
     FormField *copy = [[[self class] allocWithZone:zone] init];
     copy.Id = _Id;
     copy.name = _name;
@@ -183,11 +184,13 @@
     copy.mobileLabel = _mobileLabel;
     copy.mobileOrder = _mobileOrder;
     copy.nameNoSpace = _nameNoSpace;
+    copy.isDependentPicklist = _isDependentPicklist;
+    copy.controllingField = _controllingField;
+    copy.picklistValuesDictionary = _picklistValuesDictionary;
     [copy setFormFieldValue:formFieldValue];
 
     return copy;
 }
-
 
 - (UILabel *)getReviewFieldNameLabel {
     if (!reviewFieldNameLabel) {
@@ -301,7 +304,14 @@
 
 - (void)openPickList {
     
-    NSArray *stringArray = [self.picklistEntries componentsSeparatedByString:@","];
+    NSArray *stringArray = [NSArray new];
+    
+    if (self.isDependentPicklist) {
+        stringArray = [self.picklistValuesDictionary objectForKey:[self.controllingFormField getFormFieldValue]];
+    }
+    else {
+        stringArray = [self.picklistValuesDictionary objectForKey:self.name];
+    }
 
     UIButton *senderButton = (UIButton*)fieldView;
     
@@ -313,6 +323,10 @@
         formFieldValue = value;
         [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
         [picklist dismissPopover:YES];
+        
+        for (FormField *childFormField in childrenPicklistFormFieldsArray) {
+            [childFormField parentPicklistChanged];
+        }
     };
     
     [pickerTableVC showPopoverFromView:senderButton];
@@ -357,6 +371,16 @@
             [((UITextField*)fieldView) setText:formFieldValue];
         }
     }
+}
+
+- (void)addChildPicklistFormField:(FormField *)childFormField {
+    [childrenPicklistFormFieldsArray addObject:childFormField];
+}
+
+- (void)parentPicklistChanged {
+    selectedPicklistIndexPath = nil;
+    formFieldValue = nil;
+    [((UIButton*)fieldView) setTitle:self.mobileLabel forState:UIControlStateNormal];
 }
 
 #pragma UIPopoverControllerDelegate

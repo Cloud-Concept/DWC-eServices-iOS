@@ -180,7 +180,8 @@
 }
 
 - (void)hideLoadingDialog {
-    [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+    if (formFieldPicklistCalls == 0)
+        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
 }
 
 - (void)showServiceFlow {
@@ -566,6 +567,17 @@
     [[SFRestAPI sharedInstance] send:renewLicenseRequest delegate:self];
 }
 
+- (void)callPickListValuesWebService:(FormField *)formField {
+    
+    SFRestRequest *pickListValuesRequest = [[SFRestRequest alloc] init];
+    pickListValuesRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobilePickListValuesWebService"];
+    pickListValuesRequest.method = SFRestMethodGET;
+    pickListValuesRequest.path = @"/services/apexrest/MobilePickListValuesWebService";
+    pickListValuesRequest.queryParams = [NSDictionary dictionaryWithObject:formField.Id forKey:@"fieldId"];
+    
+    [[SFRestAPI sharedInstance] send:pickListValuesRequest delegate:self];
+}
+
 - (void)getWebFormWithReturnBlock:(void (^)(BOOL))returnBlock {
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
@@ -573,22 +585,6 @@
         
         for (NSDictionary *dict in records) {
             self.currentWebForm = [[WebForm alloc] initWebForm:dict];
-            
-            NSMutableArray *fieldsArray = [[NSMutableArray alloc] init];
-            
-            NSDictionary *fieldsJSONArray = [NSDictionary new];
-            if (![[dict objectForKey:@"R00N70000002DiOrEAK__r"] isKindOfClass:[NSNull class]])
-                fieldsJSONArray = [[dict objectForKey:@"R00N70000002DiOrEAK__r"] objectForKey:@"records"];
-            
-            for (NSDictionary *fieldsDict in fieldsJSONArray) {
-                /*
-                 if([[fieldsDict objectForKey:@"Type__c"] isEqualToString:@"CUSTOMTEXT"])
-                 continue;
-                 */
-                [fieldsArray addObject:[[FormField alloc] initFormField:fieldsDict]];
-            }
-            
-            self.currentWebForm.formFields = [NSArray arrayWithArray:fieldsArray];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -598,6 +594,13 @@
                 returnBlock(YES);
             }
             //[self getFormFieldsValues];
+            formFieldPicklistCalls = 0;
+            for (FormField *formField in self.currentWebForm.formFields) {
+                if ([formField.type isEqualToString:@"PICKLIST"]) {
+                    [self callPickListValuesWebService:formField];
+                    formFieldPicklistCalls++;
+                }
+            }
         });
     };
     
@@ -612,7 +615,7 @@
         });
     };
     
-    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, Description__c, Title__c, isNotesAttachments__c, Object_Label__c, Object_Name__c, (SELECT Id, Name, APIRequired__c, Boolean_Value__c, Currency_Value__c, DateTime_Value__c, Date_Value__c, Email_Value__c , Hidden__c, isCalculated__c, isParameter__c, isQuery__c, Label__c, Number_Value__c, Order__c, Percent_Value__c, Phone_Value__c, Picklist_Value__c, PicklistEntries__c, Required__c, Text_Area_Long_Value__c, Text_Area_Value__c, Text_Value__c, Type__c, URL_Value__c, Web_Form__c, Width__c, isMobileAvailable__c, Mobile_Label__c, Mobile_Order__c  FROM R00N70000002DiOrEAK WHERE isMobileAvailable__c = true ORDER BY Mobile_Order__c) FROM Web_Form__c WHERE ID = '%@'", self.currentWebformId];
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, Description__c, Title__c, isNotesAttachments__c, Object_Label__c, Object_Name__c, (SELECT Id, Name, APIRequired__c, Boolean_Value__c, Currency_Value__c, DateTime_Value__c, Date_Value__c, Email_Value__c , Hidden__c, isCalculated__c, isParameter__c, isQuery__c, Label__c, Number_Value__c, Order__c, Percent_Value__c, Phone_Value__c, Picklist_Value__c, PicklistEntries__c, Required__c, Text_Area_Long_Value__c, Text_Area_Value__c, Text_Value__c, Type__c, URL_Value__c, Web_Form__c, Width__c, isMobileAvailable__c, Mobile_Label__c, Mobile_Order__c, isDependentPicklist__c, Controlling_Field__c FROM R00N70000002DiOrEAK WHERE isMobileAvailable__c = true ORDER BY Mobile_Order__c) FROM Web_Form__c WHERE ID = '%@'", self.currentWebformId];
     
     [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
                                        failBlock:errorBlock
@@ -681,6 +684,23 @@
     }
 }
 
+- (void)handlePickListValuesWebServiceReturn:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
+    NSError *error;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
+    NSLog(@"request:didLoadResponse: %@", dict);
+    
+    [self hideLoadingDialog];
+    
+    NSString *fieldId = [request.queryParams objectForKey:@"fieldId"];
+    
+    for (FormField *currentFormField in self.currentWebForm.formFields) {
+        if (![currentFormField.Id isEqualToString:fieldId])
+            continue;
+        
+        currentFormField.picklistValuesDictionary = dict;
+    }
+}
+
 #pragma mark - SFRestAPIDelegate
 
 - (void)request:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
@@ -697,13 +717,21 @@
             [self handleRenewContractWebServiceReturn:jsonResponse];
         else if ([request.path containsString:@"MobileRenewLicensetWebService"])
             [self handleRenewLicenseWebServiceReturn:jsonResponse];
-        
+        else if ([request.path containsString:@"MobilePickListValuesWebService"]) {
+            formFieldPicklistCalls--;
+            [self handlePickListValuesWebServiceReturn:request didLoadResponse:jsonResponse];
+        }
     });
 }
 
 - (void)request:(SFRestRequest*)request didFailLoadWithError:(NSError*)error {
     NSLog(@"request:didFailLoadWithError: %@", error);
     //add your failed error handling here
+    
+    if ([request.path containsString:@"MobilePickListValuesWebService"]) {
+        formFieldPicklistCalls--;
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self hideLoadingDialog];
     });
@@ -713,6 +741,11 @@
 - (void)requestDidCancelLoad:(SFRestRequest *)request {
     NSLog(@"requestDidCancelLoad: %@", request);
     //add your failed error handling here
+    
+    if ([request.path containsString:@"MobilePickListValuesWebService"]) {
+        formFieldPicklistCalls--;
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self hideLoadingDialog];
     });
@@ -722,6 +755,11 @@
 - (void)requestDidTimeout:(SFRestRequest *)request {
     NSLog(@"requestDidTimeout: %@", request);
     //add your failed error handling here
+    
+    if ([request.path containsString:@"MobilePickListValuesWebService"]) {
+        formFieldPicklistCalls--;
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self hideLoadingDialog];
     });

@@ -35,6 +35,8 @@ typedef enum {
     NSInteger totalAttachmentsToUpload;
     NSInteger attachmentsReturned;
     NSMutableArray *failedImagedArray;
+    
+    NSInteger formFieldPicklistCalls;
 }
 
 @property (nonatomic) RelatedServiceType relatedServiceType;

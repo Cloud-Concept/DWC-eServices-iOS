@@ -22,6 +22,8 @@
     UILabel *reviewFieldNameLabel;
     
     NSIndexPath *selectedPicklistIndexPath;
+    
+    NSMutableArray *childrenPicklistFormFieldsArray;
 }
 
 @property (strong, nonatomic) NSString *Id;
@@ -55,7 +57,11 @@
 @property (strong, nonatomic) NSString *mobileLabel;
 @property (strong, nonatomic) NSNumber *mobileOrder;
 @property (strong, nonatomic) NSString *nameNoSpace;
+@property (strong, nonatomic) NSString *controllingField;
+@property (nonatomic) BOOL isDependentPicklist;
 
+@property (strong, nonatomic) NSDictionary *picklistValuesDictionary;
+@property (strong, nonatomic) FormField *controllingFormField;
 
 - (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue;
 - (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue IsParameter:(BOOL)IsParameter;
@@ -65,10 +71,11 @@
 - (id)initFormField:(NSDictionary *)formFieldDict;
 
 - (UIView*)getFieldView;
-- (UILabel*)getLabelView;
-- (NSString*)getFormFieldValue;
-- (void)setFormFieldValue:(NSString*)value;
+- (UILabel *)getLabelView;
+- (NSString *)getFormFieldValue;
+- (void)setFormFieldValue:(NSString *)value;
 - (UILabel *)getReviewFieldNameLabel;
 - (UILabel *)getReviewFieldValueLabel;
-
+- (void)addChildPicklistFormField:(FormField *)childFormField;
+- (void)parentPicklistChanged;
 @end
