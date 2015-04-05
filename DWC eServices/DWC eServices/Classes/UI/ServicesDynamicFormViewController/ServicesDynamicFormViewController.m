@@ -87,8 +87,12 @@
         newFields = [NSMutableDictionary dictionaryWithDictionary:self.baseServicesViewController.serviceFields];
     
     for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
-        if(!formField.isCalculated && ![formField.type isEqualToString:@"CUSTOMTEXT"])
-            [newFields setValue:[formField getFormFieldValue] forKey:formField.name];
+        if(!formField.isCalculated && ![formField.type isEqualToString:@"CUSTOMTEXT"]) {
+            if ([formField.type isEqualToString:@"BOOLEAN"])
+                [newFields setValue:[NSNumber numberWithBool:[[formField getFormFieldValue] boolValue]] forKey:formField.name];
+            else
+                [newFields setValue:[formField getFormFieldValue] forKey:formField.name];
+        }
     }
     
     if ([self.baseServicesViewController.currentWebForm.objectName isEqualToString:@"Case"]) {

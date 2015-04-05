@@ -216,6 +216,10 @@
     if (!reviewFieldValueLabel) {
         reviewFieldValueLabel = [UILabel new];
         [reviewFieldValueLabel setText:formFieldValue];
+        
+        if ([self.type isEqualToString:@"BOOLEAN"])
+            [reviewFieldValueLabel setText:[HelperClass formatBoolToString:[formFieldValue boolValue]]];
+        
         [reviewFieldValueLabel setTextColor:[UIColor colorWithRed:0.08 green:0.08 blue:0.08 alpha:1]];
         [reviewFieldValueLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:10.0f]];
         reviewFieldValueLabel.textAlignment = NSTextAlignmentLeft;
@@ -291,11 +295,24 @@
             [((UITextField*)fieldView) setText:formFieldValue];
             [((UITextField*)fieldView) setEnabled:NO];
         }
+        else if ([self.type isEqualToString:@"BOOLEAN"]) {
+            fieldView = [UISwitch new];
+            [((UISwitch *)fieldView) setOnTintColor:[UIColor colorWithRed:0.274 green:0.545 blue:0.733 alpha:1]];
+            [((UISwitch *)fieldView) setOn:[formFieldValue boolValue]];
+            [((UISwitch *)fieldView) setEnabled:isEnabled];
+            [((UISwitch *)fieldView) addTarget:self
+                                        action:@selector(switchValueChanged:)
+                              forControlEvents:UIControlEventValueChanged];
+        }
         
         [fieldView setUserInteractionEnabled:isEnabled];
     }
     
     return fieldView;
+}
+
+- (void)switchValueChanged:(UISwitch *)switchSender {
+    formFieldValue = switchSender.isOn ? @"1" : @"0";
 }
 
 - (void)textFieldEditingChanged:(UITextField *)textField{
@@ -368,6 +385,9 @@
                  [self.type isEqualToString:@"DOUBLE"] ||
                  [self.type isEqualToString:@"CUSTOMTEXT"]) {
             [((UITextField*)fieldView) setText:formFieldValue];
+        }
+        else if ([self.type isEqualToString:@"BOOLEAN"]) {
+            [((UISwitch *)fieldView) setOn:[formFieldValue isEqualToString:@"1"]];
         }
     }
 }

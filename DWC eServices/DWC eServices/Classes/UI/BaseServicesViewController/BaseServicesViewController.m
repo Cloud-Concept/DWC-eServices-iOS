@@ -468,6 +468,7 @@
     };
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        document.attachmentUploaded = YES;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self uploadDidReturn];
         });
