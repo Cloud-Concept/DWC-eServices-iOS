@@ -1567,9 +1567,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		824A9DD41724E16400C9BD79 /* DWCeServices */ = {
+		824A9DD41724E16400C9BD79 /* DWC eServices */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 824A9DFB1724E16400C9BD79 /* Build configuration list for PBXNativeTarget "DWCeServices" */;
+			buildConfigurationList = 824A9DFB1724E16400C9BD79 /* Build configuration list for PBXNativeTarget "DWC eServices" */;
 			buildPhases = (
 				824A9DD11724E16400C9BD79 /* Sources */,
 				824A9DD21724E16400C9BD79 /* Frameworks */,
@@ -1579,7 +1579,7 @@
 			);
 			dependencies = (
 			);
-			name = DWCeServices;
+			name = "DWC eServices";
 			productName = DWCeServices;
 			productReference = 824A9DD51724E16400C9BD79 /* DWCeServices.app */;
 			productType = "com.apple.product-type.application";
@@ -1610,7 +1610,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				824A9DD41724E16400C9BD79 /* DWCeServices */,
+				824A9DD41724E16400C9BD79 /* DWC eServices */,
 			);
 		};
 /* End PBXProject section */
@@ -1928,7 +1928,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		824A9DFB1724E16400C9BD79 /* Build configuration list for PBXNativeTarget "DWCeServices" */ = {
+		824A9DFB1724E16400C9BD79 /* Build configuration list for PBXNativeTarget "DWC eServices" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				824A9DFC1724E16400C9BD79 /* Debug */,
