@@ -374,8 +374,7 @@
 }
 
 - (void)setFormFieldValue:(NSString*)value {
-    if (![value isKindOfClass:[NSNull class]])
-        formFieldValue = value;
+    formFieldValue = [HelperClass stringCheckNull:value];
     
     if (fieldView != nil) {
         if ([self.type isEqualToString:@"PICKLIST"]) {
