@@ -26,6 +26,7 @@
 #import "TableViewSectionField.h"
 #import "RelatedService.h"
 #import "BaseServicesViewController.h"
+#import "PickerTableViewController.h"
 
 @interface EmployeeListViewController ()
 
@@ -52,9 +53,11 @@
         default:
             break;
     }
+    
+    [self initializeFilterStringArray];
+    
     if (hideNewButton)
         [self.addNewButton removeFromSuperview];
-    //[self.addNewButton setHidden:hideNewButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +78,48 @@
             break;
     }
     [self openNewServiceFlow:relatedServiceType];
+}
+
+- (IBAction)filterButtonClicked:(id)sender {
+    PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.valuesArray = filterStringArray;
+    pickerTableVC.selectedIndexPath = selectedFilterIndexPath;
+    pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
+        selectedFilterIndexPath = indexPath;
+        selectedFiler = value;
+        [self refreshFilterButton];
+        [picklist dismissPopover:YES];
+        [self refreshEmployeesTable];
+    };
+    
+    [pickerTableVC showPopoverFromView:sender];
+}
+
+- (void)initializeFilterStringArray {
+    switch (self.currentDWCEmployee.Type) {
+        case PermanentEmployee:
+            filterStringArray = [NSArray arrayWithObjects:@"All", @"Issued", @"Expired", @"Cancelled", @"Under Process", @"Under Renewal", nil];
+            selectedFiler = @"Issued";
+            selectedFilterIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+            break;
+        case VisitVisaEmployee:
+            filterStringArray = [NSArray arrayWithObjects:@"All", @"Issued", @"Expired", @"Cancelled", @"Under Process", nil];
+            selectedFiler = @"Issued";
+            selectedFilterIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+            break;
+        case ContractorEmployee:
+            filterStringArray = [NSArray arrayWithObjects:@"All", @"Draft", @"Active", @"Expired", nil];
+            selectedFiler = @"Active";
+            selectedFilterIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+            break;
+        default:
+            break;
+    }
+    [self refreshFilterButton];
+}
+
+- (void)refreshFilterButton {
+    [self.filterButton setTitle:selectedFiler forState:UIControlStateNormal];
 }
 
 - (void)openNewServiceFlow:(RelatedServiceType)relatedServiceType {
@@ -110,7 +155,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            [self.employeesTableView reloadData];
+            [self refreshEmployeesTable];
         });
     };
     
@@ -143,7 +188,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-                [self.employeesTableView reloadData];
+                [self refreshEmployeesTable];
             });
         }
     };
@@ -164,7 +209,7 @@
         cell = [topLevelObjects objectAtIndex:0];
     }
     
-    Visa *currentVisa = [dataRows objectAtIndex:indexPath.row];
+    Visa *currentVisa = [filteredEmployeesArray objectAtIndex:indexPath.row];
     
     cell.employeeNameLabel.text = currentVisa.applicantFullName;
     
@@ -198,7 +243,7 @@
         cell = [topLevelObjects objectAtIndex:0];
     }
     
-    CardManagement *currentCard = [dataRows objectAtIndex:indexPath.row];
+    CardManagement *currentCard = [filteredEmployeesArray objectAtIndex:indexPath.row];
     
     cell.employeeNameLabel.text = currentCard.fullName;
     cell.rowOneLabel.text = @"Type";
@@ -360,6 +405,34 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
+- (void)refreshEmployeesTable {
+    NSPredicate *predicate;
+    
+    
+        
+    
+    switch (self.currentDWCEmployee.Type) {
+        case PermanentEmployee:
+        case VisitVisaEmployee:
+            predicate = [NSPredicate predicateWithFormat:@"validityStatus contains[c] %@", selectedFiler];
+            hideNewButton = YES;
+            break;
+        case ContractorEmployee:
+            predicate = [NSPredicate predicateWithFormat:@"status contains[c] %@", selectedFiler];
+            hideNewButton = NO;
+            break;
+        default:
+            break;
+    }
+    
+    filteredEmployeesArray = [NSMutableArray arrayWithArray:[dataRows filteredArrayUsingPredicate:predicate]];
+    
+    if ([selectedFiler isEqualToString:@"All"])
+        filteredEmployeesArray = [NSMutableArray arrayWithArray:dataRows];
+    
+    [self.employeesTableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -369,7 +442,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return dataRows.count;
+    return filteredEmployeesArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -398,16 +471,17 @@
     
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    NSObject *selectedItem = [filteredEmployeesArray objectAtIndex:indexPath.row];
     
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
-            [self configureRecordMainViewController:recordMainVC ForPermanentEmployee:[dataRows objectAtIndex:indexPath.row]];
+            [self configureRecordMainViewController:recordMainVC ForPermanentEmployee:(Visa *)selectedItem];
             break;
         case VisitVisaEmployee:
-            [self configureRecordMainViewController:recordMainVC ForVisitVisa:[dataRows objectAtIndex:indexPath.row]];
+            [self configureRecordMainViewController:recordMainVC ForVisitVisa:(Visa *)selectedItem];
             break;
         case ContractorEmployee:
-            [self configureRecordMainViewController:recordMainVC ForContractor:[dataRows objectAtIndex:indexPath.row]];
+            [self configureRecordMainViewController:recordMainVC ForContractor:(CardManagement *)selectedItem];
             break;
         default:
             break;

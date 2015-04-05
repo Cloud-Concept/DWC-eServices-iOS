@@ -1124,6 +1124,9 @@
                                     <color key="titleColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="filterButtonClicked:" destination="14r-ba-Dog" eventType="touchUpInside" id="WrZ-Q2-58a"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1151,6 +1154,7 @@
                         <outlet property="addNewButton" destination="s6F-qQ-TFu" id="9dz-hC-6xg"/>
                         <outlet property="bottomTabBar" destination="jCv-EY-Std" id="6Jl-pG-CN0"/>
                         <outlet property="employeesTableView" destination="Uq2-Dh-PBD" id="yFg-gr-cH0"/>
+                        <outlet property="filterButton" destination="cLW-8X-C6c" id="nNa-nj-PDL"/>
                         <outlet property="searchDisplayController" destination="PV9-71-4TY" id="bto-cf-c2e"/>
                     </connections>
                 </viewController>
