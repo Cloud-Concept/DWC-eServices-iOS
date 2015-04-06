@@ -53,15 +53,24 @@
     RKSwipeBetweenViewControllers *navigationController =
     [[RKSwipeBetweenViewControllers alloc]initWithRootViewController:pageController];
     
+    NSMutableArray *pagesArray = [NSMutableArray new];
+    NSMutableArray *pagesTitleArray = [NSMutableArray new];
+    
     RecordDetailsTableViewController *recordDetailsVC = [RecordDetailsTableViewController new];
     recordDetailsVC.SectionsArray = self.DetailsSectionsArray;
+    [pagesArray addObject:recordDetailsVC];
+    [pagesTitleArray addObject:NSLocalizedString(@"RecordMainRecordDetialsTitle", @"")];
+    
     RecordRelatedViewController *recordRelatedVC = [RecordRelatedViewController new];
     recordRelatedVC.RelatedServicesMask = self.RelatedServicesMask;
     recordRelatedVC.delegate = self;
+    if (self.RelatedServicesMask != 0 ) {
+        [pagesArray addObject:recordRelatedVC];
+        [pagesTitleArray addObject:NSLocalizedString(@"RecordMainRecordRelatedServicesTitle", @"")];
+    }
     
-    [navigationController.viewControllerArray addObjectsFromArray:@[recordDetailsVC, recordRelatedVC]];
-    navigationController.buttonText = @[@"DETAILS", @"RELATED"];
-    
+    [navigationController.viewControllerArray addObjectsFromArray:pagesArray];
+    navigationController.buttonText = pagesTitleArray;
     
     [self.paginationView addSubview:navigationController.view];
     navigationController.view.frame = self.paginationView.bounds;

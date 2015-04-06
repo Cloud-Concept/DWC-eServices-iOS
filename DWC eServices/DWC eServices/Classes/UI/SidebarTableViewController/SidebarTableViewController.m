@@ -9,6 +9,7 @@
 #import "SidebarTableViewController.h"
 #import "UIImageView+MaskImage.h"
 #import "SFUserAccountManager.h"
+#import "SWRevealViewController.h"
 
 @interface SidebarTableViewController ()
 
@@ -19,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    menuItems = @[@"User Cell", @"Dashboard Cell", @"My Request Cell", @"Employees Cell", @"Services Cell", @"Company Info Cell", @"Company Documents Cell", @"Need Help Cell", @"Logout Cell"];
+    menuItems = @[@"User Cell", @"Home Cell", @"Dashboard Cell", @"My Request Cell", @"Employees Cell", @"Services Cell", @"Company Info Cell", @"Company Documents Cell", @"Need Help Cell", @"Logout Cell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +43,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 1) {
+        [self.revealViewController.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
