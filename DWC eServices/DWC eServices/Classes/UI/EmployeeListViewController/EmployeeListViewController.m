@@ -39,6 +39,7 @@
     // Do any additional setup after loading the view.
     
     self.showSlidingMenu = NO;
+    searchBarText = @"";
     
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
@@ -55,6 +56,8 @@
     }
     
     [self initializeFilterStringArray];
+    
+    [self initializeSearchBar];
     
     if (hideNewButton)
         [self.addNewButton removeFromSuperview];
@@ -86,7 +89,7 @@
     pickerTableVC.selectedIndexPath = selectedFilterIndexPath;
     pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
         selectedFilterIndexPath = indexPath;
-        selectedFiler = value;
+        selectedFilter = value;
         [self refreshFilterButton];
         [picklist dismissPopover:YES];
         [self refreshEmployeesTable];
@@ -99,17 +102,17 @@
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
             filterStringArray = [NSArray arrayWithObjects:@"All", @"Issued", @"Expired", @"Cancelled", @"Under Process", @"Under Renewal", nil];
-            selectedFiler = @"Issued";
+            selectedFilter = @"Issued";
             selectedFilterIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
             break;
         case VisitVisaEmployee:
             filterStringArray = [NSArray arrayWithObjects:@"All", @"Issued", @"Expired", @"Cancelled", @"Under Process", nil];
-            selectedFiler = @"Issued";
+            selectedFilter = @"Issued";
             selectedFilterIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
             break;
         case ContractorEmployee:
             filterStringArray = [NSArray arrayWithObjects:@"All", @"Draft", @"Active", @"Expired", nil];
-            selectedFiler = @"Active";
+            selectedFilter = @"Active";
             selectedFilterIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
             break;
         default:
@@ -118,8 +121,20 @@
     [self refreshFilterButton];
 }
 
+- (void)initializeSearchBar {
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.showsScopeBar = NO;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    self.searchController.searchBar.scopeButtonTitles = @[@""];
+    
+    self.employeesTableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
+}
+
 - (void)refreshFilterButton {
-    [self.filterButton setTitle:selectedFiler forState:UIControlStateNormal];
+    [self.filterButton setTitle:selectedFilter forState:UIControlStateNormal];
 }
 
 - (void)openNewServiceFlow:(RelatedServiceType)relatedServiceType {
@@ -406,31 +421,49 @@
 }
 
 - (void)refreshEmployeesTable {
-    NSPredicate *predicate;
+    NSString *predicateString = [self getPredicateString];
     
+    if ([predicateString isEqualToString:@""]) {
+        filteredEmployeesArray = dataRows;
+    }
+    else {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
+        filteredEmployeesArray = [NSMutableArray arrayWithArray:[dataRows filteredArrayUsingPredicate:predicate]];
+    }
     
-        
+    [self.employeesTableView reloadData];
+}
+
+- (NSString *)getPredicateString {
+    NSMutableString *predicateString = [NSMutableString new];
+    NSString *statusFilter = @"";
+    NSString *nameFilter = @"";
     
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
         case VisitVisaEmployee:
-            predicate = [NSPredicate predicateWithFormat:@"validityStatus contains[c] %@", selectedFiler];
-            hideNewButton = YES;
+            statusFilter = [NSString stringWithFormat:@"validityStatus == '%@'", selectedFilter];
+            nameFilter = [NSString stringWithFormat:@"applicantFullName contains[c] '%@'", searchBarText];
             break;
         case ContractorEmployee:
-            predicate = [NSPredicate predicateWithFormat:@"status contains[c] %@", selectedFiler];
-            hideNewButton = NO;
+            statusFilter = [NSString stringWithFormat:@"status == '%@'", searchBarText];
+            nameFilter = [NSString stringWithFormat:@"fullName contains[c] '%@'", searchBarText];
             break;
         default:
             break;
     }
     
-    filteredEmployeesArray = [NSMutableArray arrayWithArray:[dataRows filteredArrayUsingPredicate:predicate]];
+    if (![selectedFilter isEqualToString:@"All"])
+        predicateString = [NSMutableString stringWithString:statusFilter];
     
-    if ([selectedFiler isEqualToString:@"All"])
-        filteredEmployeesArray = [NSMutableArray arrayWithArray:dataRows];
+    if (![searchBarText isEqualToString:@""]) {
+        if ([predicateString isEqualToString:@""])
+            predicateString = [NSMutableString stringWithString:nameFilter];
+        else
+            predicateString = [NSMutableString stringWithFormat:@"%@ AND %@", predicateString, nameFilter];
+    }
     
-    [self.employeesTableView reloadData];
+    return predicateString;
 }
 
 #pragma mark - Table view data source
@@ -518,5 +551,12 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+#pragma mark - UISearchResultsUpdating delegate
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    searchBarText = searchController.searchBar.text;
+    [self refreshEmployeesTable];
+}
 
 @end

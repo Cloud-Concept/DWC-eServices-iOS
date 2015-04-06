@@ -11,22 +11,26 @@
 
 @class DWCEmployee;
 
-@interface EmployeeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate>
+@interface EmployeeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
 {
     NSMutableArray *dataRows;
     
     BOOL hideNewButton;
     
     NSIndexPath *selectedFilterIndexPath;
-    NSString *selectedFiler;
+    NSString *selectedFilter;
     NSArray *filterStringArray;
     NSMutableArray *filteredEmployeesArray;
+    
+    NSString *searchBarText;
 }
 @property (nonatomic, strong) DWCEmployee *currentDWCEmployee;
 
 @property (weak, nonatomic) IBOutlet UITableView *employeesTableView;
 @property (weak, nonatomic) IBOutlet UIButton *addNewButton;
 @property (weak, nonatomic) IBOutlet UIButton *filterButton;
+
+@property (strong, nonatomic) UISearchController *searchController;
 
 - (IBAction)addNewButtonClicked:(id)sender;
 - (IBAction)filterButtonClicked:(id)sender;
