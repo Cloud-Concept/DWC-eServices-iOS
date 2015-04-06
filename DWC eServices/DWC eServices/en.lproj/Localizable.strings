@@ -144,15 +144,20 @@
 "DocumentEditAction" = "Edit";
 "DocumentDeleteAction" = "Delete";
 
-"ContractInformation" = "Contract Information";
-"ContractNo" = "Contract Number";
-"ContractType" = "Contract Type";
-"ContractStartDate" = "Contract Start Date";
-"ContractExpiryDate" = "Contract End Date";
-"RentStartDate" = "Rent Start Date";
-"ActivationDate" = "Activated Date";
-"ContractDuration" = "Contract Duration";
-"TotalPrice" = "Total Price";
+"TenancyContractInformation" = "Contract Information";
+"TenancyContractName" = "Contract Number";
+"TenancyContractType" = "Contract Type";
+"TenancyContractStartDate" = "Contract Start Date";
+"TenancyContractExpireDate" = "Contract End Date";
+"TenancyContractRentStartDate" = "Rent Start Date";
+"TenancyContractActivatedDate" = "Activated Date";
+"TenancyContractDuration" = "Contract Duration";
+"TenancyContractDurationYear" = "Contract Duration (Years)";
+"TenancyContractDurationMonth" = "Contract Duration (Months)";
+"TenancyContractRentPrice" = "Total Price";
+"TenancyContractLineItemUnitName" = "Unit Name";
+"TenancyContractUpcomingPayments" = "Upcoming Payments";
+"TenancyContractLeasingUnitDetails" = "Leasing Unit Details";
 
 "LicenseInformation" = "License Information";
 "LicenseIssueDate" = "Issue Date";

@@ -10,6 +10,8 @@
 #import "HelperClass.h"
 #import "SFDateUtil.h"
 #import "Quote.h"
+#import "ContractLineItem.h"
+#import "TenancyContractPayment.h"
 
 @implementation TenancyContract
 
@@ -48,6 +50,24 @@
     self.isBCContract = [[tenancyContractDict objectForKey:@"IS_BC_Contract__c"] boolValue];
     
     self.quote = [[Quote alloc] initQuote:[tenancyContractDict objectForKey:@"Quote__r"]];
+    
+    self.contractLineItems = [NSArray new];
+    if (![[tenancyContractDict objectForKey:@"Contract_Line_Items__r"] isKindOfClass:[NSNull class]]) {
+        NSMutableArray *contractLineItemsMutableArray = [NSMutableArray new];
+        for (NSDictionary *contractLineItemDict in [[tenancyContractDict objectForKey:@"Contract_Line_Items__r"] objectForKey:@"records"]) {
+            [contractLineItemsMutableArray addObject:[[ContractLineItem alloc] initContractLineItem:contractLineItemDict]];
+        }
+        self.contractLineItems = [NSArray arrayWithArray:contractLineItemsMutableArray];
+    }
+    
+    self.tenancyContractPayments = [NSArray new];
+    if (![[tenancyContractDict objectForKey:@"Tenancy_Contract_Payments__r"] isKindOfClass:[NSNull class]]) {
+        NSMutableArray *contractPaymentsMutableArray = [NSMutableArray new];
+        for (NSDictionary *contractPaymentDict in [[tenancyContractDict objectForKey:@"Tenancy_Contract_Payments__r"] objectForKey:@"records"]) {
+            [contractPaymentsMutableArray addObject:[[TenancyContractPayment alloc] initTenancyContractPayment:contractPaymentDict]];
+        }
+        self.tenancyContractPayments = [NSArray arrayWithArray:contractPaymentsMutableArray];
+    }
     
     return self;
 }

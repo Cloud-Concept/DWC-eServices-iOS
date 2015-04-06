@@ -24,6 +24,9 @@
 #import "TableViewSectionField.h"
 #import "TableViewSection.h"
 #import "RelatedService.h"
+#import "TenancyContractPayment.h"
+#import "ContractLineItem.h"
+#import "InventoryUnit.h"
 
 @interface CompanyInfoListViewController ()
 
@@ -464,6 +467,70 @@
     recordVC.NameValue = tenancyContract.name;
 
     NSMutableArray *sectionsArray = [NSMutableArray new];
+    
+    NSMutableArray *fieldsArray = [NSMutableArray new];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"TenancyContractName", @"")
+                            FieldValue:tenancyContract.contractNumber]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"TenancyContractType", @"")
+                            FieldValue:tenancyContract.contractType]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"TenancyContractStartDate", @"")
+                            FieldValue:[HelperClass formatDateToString:tenancyContract.contractStartDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"TenancyContractExpireDate", @"")
+                            FieldValue:[HelperClass formatDateToString:tenancyContract.contractExpiryDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"TenancyContractRentStartDate", @"")
+                            FieldValue:[HelperClass formatDateToString:tenancyContract.rentStartDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"TenancyContractActivatedDate", @"")
+                            FieldValue:[HelperClass formatDateToString:tenancyContract.activatedDate]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"TenancyContractDurationYear", @"")
+                            FieldValue:[HelperClass formatNumberToString:tenancyContract.contractDurationYear
+                                                             FormatStyle:NSNumberFormatterNoStyle
+                                                   MaximumFractionDigits:0]]];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"TenancyContractDurationMonth", @"")
+                            FieldValue:tenancyContract.contractDurationMonth]];
+    
+    NSString *priceString = [HelperClass formatNumberToString:tenancyContract.totalRentPrice
+                                                  FormatStyle:NSNumberFormatterDecimalStyle
+                                        MaximumFractionDigits:2];
+    [fieldsArray addObject:[[TableViewSectionField alloc]
+                            initTableViewSectionField:NSLocalizedString(@"TenancyContractRentPrice", @"")
+                            FieldValue:[NSString stringWithFormat:@"AED %@", priceString]]];
+    
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"TenancyContractInformation", @"")
+                              Fields:fieldsArray]];
+    
+    fieldsArray = [NSMutableArray new];
+    for (ContractLineItem *contractLineItem in tenancyContract.contractLineItems) {
+        [fieldsArray addObject:[[TableViewSectionField alloc]
+                                initTableViewSectionField:NSLocalizedString(@"TenancyContractLineItemUnitName", @"")
+                                FieldValue:contractLineItem.inventoryUnit.name]];
+    }
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"TenancyContractLeasingUnitDetails", @"")
+                              Fields:fieldsArray]];
+    
+    fieldsArray = [NSMutableArray new];
+    for (TenancyContractPayment *tenancyContractPayment in tenancyContract.tenancyContractPayments) {
+        NSString *paymentAmountString = [HelperClass formatNumberToString:tenancyContractPayment.paymentAmount
+                                                             FormatStyle:NSNumberFormatterDecimalStyle
+                                                   MaximumFractionDigits:2];
+        NSString *dateString = [HelperClass formatDateToString:tenancyContractPayment.dueDate];
+        [fieldsArray addObject:[[TableViewSectionField alloc]
+                                initTableViewSectionField:tenancyContractPayment.descriptionPayment
+                                FieldValue:[NSString stringWithFormat:@"AED %@ is due on %@", paymentAmountString, dateString]]];
+    }
+    [sectionsArray addObject:[[TableViewSection alloc]
+                              initTableViewSection:NSLocalizedString(@"TenancyContractUpcomingPayments", @"")
+                              Fields:fieldsArray]];
+    
     recordVC.DetailsSectionsArray = sectionsArray;
     
     NSUInteger servicesMask = 0;
