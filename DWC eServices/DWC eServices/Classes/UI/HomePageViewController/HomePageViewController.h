@@ -27,4 +27,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentBalanceValueLabel;
 
 - (IBAction)logoutButtonClicked:(id)sender;
+- (IBAction)dashboardButtonClicked:(id)sender;
+
 @end

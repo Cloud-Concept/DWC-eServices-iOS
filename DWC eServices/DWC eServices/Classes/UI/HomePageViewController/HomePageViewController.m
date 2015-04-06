@@ -21,6 +21,7 @@
 #import "LicenseActivity.h"
 #import "SOQLQueries.h"
 #import "UIImageView+SFAttachment.h"
+#import "VisualforceWebviewViewController.h"
 
 @interface HomePageViewController ()
 
@@ -218,6 +219,14 @@
     [alert addAction:yesAction];
     [alert addAction:noAction];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (IBAction)dashboardButtonClicked:(id)sender {
+    VisualforceWebviewViewController *vfWebviewVC = [VisualforceWebviewViewController new];
+    vfWebviewVC.returnURL = [NSString stringWithFormat:@"/apex/DWCPortal_DashboardMobile?accountId=%@",
+                             [Globals currentAccount].Id];
+    
+    [self.navigationController pushViewController:vfWebviewVC animated:YES];
 }
 
 //*
