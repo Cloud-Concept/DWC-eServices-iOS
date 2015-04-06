@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *caseNumber;
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *webFormId;
+@property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSNumber *caseRatingScore;
 @property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic, strong) RecordType *caseRecordType;

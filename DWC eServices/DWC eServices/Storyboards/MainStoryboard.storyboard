@@ -36,6 +36,8 @@
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
         </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
             <string>CorisandeRegular</string>
@@ -1312,7 +1314,7 @@
                                 </items>
                             </tabBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="WWP-xu-KRR">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="107" width="375" height="511"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="My Request Cell" textLabel="z5w-gn-obr" detailTextLabel="l5G-eL-MMQ" style="IBUITableViewCellStyleSubtitle" id="C75-AA-RF6">
@@ -1341,16 +1343,50 @@
                                     <outlet property="delegate" destination="QAD-wG-nwz" id="2P4-fN-etl"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOe-Q6-cn8">
+                                <rect key="frame" x="194" y="72" width="165" height="27"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Filter" backgroundImage="Dropdown Small Button">
+                                    <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="filterButtonClicked:" destination="14r-ba-Dog" eventType="touchUpInside" id="ovs-ml-IU1"/>
+                                    <action selector="serviceFilterButtonClicked:" destination="QAD-wG-nwz" eventType="touchUpInside" id="0Vd-of-f01"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BVN-3e-SaU">
+                                <rect key="frame" x="16" y="72" width="165" height="27"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="13"/>
+                                <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Filter" backgroundImage="Dropdown Small Button">
+                                    <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="filterButtonClicked:" destination="14r-ba-Dog" eventType="touchUpInside" id="ElE-id-TO4"/>
+                                    <action selector="statusFilterButtonClicked:" destination="QAD-wG-nwz" eventType="touchUpInside" id="5bF-jl-x80"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="WWP-xu-KRR" secondAttribute="trailing" id="EE7-Ks-BUs"/>
-                            <constraint firstAttribute="trailing" secondItem="gWo-ai-SZk" secondAttribute="trailing" id="G0c-fr-EwQ"/>
-                            <constraint firstItem="gWo-ai-SZk" firstAttribute="leading" secondItem="6AP-UO-4by" secondAttribute="leading" id="JjH-YB-5HW"/>
-                            <constraint firstItem="WWP-xu-KRR" firstAttribute="top" secondItem="rzc-wB-qSj" secondAttribute="bottom" id="N38-2a-LEX"/>
-                            <constraint firstItem="00P-AM-qz5" firstAttribute="top" secondItem="gWo-ai-SZk" secondAttribute="bottom" id="SSB-NG-gkQ"/>
-                            <constraint firstItem="gWo-ai-SZk" firstAttribute="top" secondItem="WWP-xu-KRR" secondAttribute="bottom" id="cng-Xy-MUH"/>
-                            <constraint firstItem="WWP-xu-KRR" firstAttribute="leading" secondItem="6AP-UO-4by" secondAttribute="leading" id="e9m-nG-nxD"/>
+                            <constraint firstItem="BVN-3e-SaU" firstAttribute="top" secondItem="rzc-wB-qSj" secondAttribute="bottom" constant="8" id="0TV-D0-YTw"/>
+                            <constraint firstItem="WWP-xu-KRR" firstAttribute="top" secondItem="BVN-3e-SaU" secondAttribute="bottom" constant="8" id="0ba-Ov-i7w"/>
+                            <constraint firstItem="vOe-Q6-cn8" firstAttribute="top" secondItem="rzc-wB-qSj" secondAttribute="bottom" constant="8" id="1hf-Ze-HtF"/>
+                            <constraint firstItem="vOe-Q6-cn8" firstAttribute="height" secondItem="BVN-3e-SaU" secondAttribute="height" id="5L6-ad-I81"/>
+                            <constraint firstAttribute="trailing" secondItem="WWP-xu-KRR" secondAttribute="trailing" id="7Mf-Lg-CXQ"/>
+                            <constraint firstItem="00P-AM-qz5" firstAttribute="top" secondItem="gWo-ai-SZk" secondAttribute="bottom" id="8kV-Fu-GVq"/>
+                            <constraint firstItem="WWP-xu-KRR" firstAttribute="top" secondItem="vOe-Q6-cn8" secondAttribute="bottom" constant="8" id="A09-PA-DHN"/>
+                            <constraint firstItem="WWP-xu-KRR" firstAttribute="leading" secondItem="6AP-UO-4by" secondAttribute="leading" id="EJE-aq-HRX"/>
+                            <constraint firstItem="vOe-Q6-cn8" firstAttribute="width" secondItem="BVN-3e-SaU" secondAttribute="width" id="FpO-40-D2Z"/>
+                            <constraint firstItem="vOe-Q6-cn8" firstAttribute="leading" secondItem="BVN-3e-SaU" secondAttribute="trailing" constant="13" id="TAX-g4-205"/>
+                            <constraint firstItem="gWo-ai-SZk" firstAttribute="leading" secondItem="6AP-UO-4by" secondAttribute="leading" id="VsY-4B-XV2"/>
+                            <constraint firstAttribute="trailing" secondItem="vOe-Q6-cn8" secondAttribute="trailing" constant="16" id="Y1C-Fc-Hfp"/>
+                            <constraint firstItem="gWo-ai-SZk" firstAttribute="top" secondItem="WWP-xu-KRR" secondAttribute="bottom" id="ngO-83-XxV"/>
+                            <constraint firstAttribute="trailing" secondItem="gWo-ai-SZk" secondAttribute="trailing" id="nzc-LX-Ca2"/>
+                            <constraint firstItem="BVN-3e-SaU" firstAttribute="leading" secondItem="6AP-UO-4by" secondAttribute="leading" constant="16" id="oVk-di-lII"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dYG-sC-ESt"/>
@@ -1358,6 +1394,8 @@
                     <connections>
                         <outlet property="bottomTabBar" destination="gWo-ai-SZk" id="swm-P7-fjO"/>
                         <outlet property="requestsTableView" destination="WWP-xu-KRR" id="O6P-sW-K4B"/>
+                        <outlet property="serviceFilterButton" destination="vOe-Q6-cn8" id="Pt8-qY-hse"/>
+                        <outlet property="statusFilterButton" destination="BVN-3e-SaU" id="naa-xg-6dQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RnT-NC-mG5" userLabel="First Responder" sceneMemberID="firstResponder"/>

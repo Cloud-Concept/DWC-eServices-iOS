@@ -16,6 +16,7 @@
 #import "HelperClass.h"
 #import "RelatedService.h"
 #import "BaseServicesViewController.h"
+#import "PickerTableViewController.h"
 
 @interface MyRequestListViewController ()
 
@@ -26,12 +27,123 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self initializeFiltersArrays];
+    [self refreshStatusFilterButton];
+    [self refreshServiceFilterButton];
+    [self initializeSearchBar];
+    
     [self loadMyRequests];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)statusFilterButtonClicked:(id)sender {
+    PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.valuesArray = statusFilterStringArray;
+    pickerTableVC.selectedIndexPath = selectedStatusFilterIndexPath;
+    pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
+        selectedStatusFilterIndexPath = indexPath;
+        selectedStatusFilter = value;
+        [self refreshStatusFilterButton];
+        [picklist dismissPopover:YES];
+        [self refreshRequestsTable];
+    };
+    
+    [pickerTableVC showPopoverFromView:sender];
+}
+
+- (IBAction)serviceFilterButtonClicked:(id)sender {
+    PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.valuesArray = serviceFilterStringArray;
+    pickerTableVC.selectedIndexPath = selectedServiceFilterIndexPath;
+    pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
+        selectedServiceFilterIndexPath = indexPath;
+        selectedServiceFilter = value;
+        [self refreshServiceFilterButton];
+        [picklist dismissPopover:YES];
+        [self refreshRequestsTable];
+    };
+    
+    [pickerTableVC showPopoverFromView:sender];
+}
+
+- (void)initializeSearchBar {
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.showsScopeBar = NO;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    self.searchController.searchBar.scopeButtonTitles = @[@""];
+    
+    self.requestsTableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
+    
+    searchBarText = @"";
+}
+
+- (void)initializeFiltersArrays {
+    statusFilterStringArray = @[@"All", @"Completed", @"In Process", @"Not Submitted"];
+    selectedStatusFilter = @"All";
+    selectedStatusFilterIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    serviceFilterStringArray = @[@"All", @"Visa Services", @"NOC Services", @"License Services", @"Access Card Services", @"Registration Services", @"Leasing Services"];
+    selectedServiceFilter = @"All";
+    selectedServiceFilterIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+}
+
+- (void)refreshStatusFilterButton {
+    [self.statusFilterButton setTitle:selectedStatusFilter forState:UIControlStateNormal];
+}
+
+- (void)refreshServiceFilterButton {
+    [self.serviceFilterButton setTitle:selectedServiceFilter forState:UIControlStateNormal];
+}
+
+- (void)refreshRequestsTable {
+    NSString *predicateString = [self getPredicateString];
+    
+    if ([predicateString isEqualToString:@""]) {
+        filteredRequestsArray = [NSMutableArray arrayWithArray:dataRows];
+    }
+    else {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
+        filteredRequestsArray = [NSMutableArray arrayWithArray:[dataRows filteredArrayUsingPredicate:predicate]];
+    }
+    
+    [self.requestsTableView reloadData];
+}
+
+- (NSString *)getPredicateString {
+    NSMutableString *predicateString = [NSMutableString new];
+    NSString *statusFilterPredicate = @"";
+    NSString *serviceFilterPredicate = @"";
+    
+    if (![selectedStatusFilter isEqualToString:@"All"])
+        statusFilterPredicate = [NSMutableString stringWithFormat:@"status == '%@'", selectedStatusFilter];
+    
+    if (![selectedServiceFilter isEqualToString:@"All"])
+        serviceFilterPredicate = [NSMutableString stringWithFormat:@"type == '%@'", selectedServiceFilter];
+    
+    
+    if (![statusFilterPredicate isEqualToString:@""] && ![serviceFilterPredicate isEqualToString:@""])
+        predicateString = [NSMutableString stringWithFormat:@"%@ AND %@", statusFilterPredicate, serviceFilterPredicate];
+    else if ([statusFilterPredicate isEqualToString:@""] && ![serviceFilterPredicate isEqualToString:@""])
+        predicateString = [NSMutableString stringWithString:serviceFilterPredicate];
+    else if (![statusFilterPredicate isEqualToString:@""] && [serviceFilterPredicate isEqualToString:@""])
+        predicateString = [NSMutableString stringWithString:statusFilterPredicate];
+    
+    if (![searchBarText isEqualToString:@""]) {
+        NSString *nameFilter = [NSString stringWithFormat:@"caseNumber contains[c] '%@'", searchBarText];
+        if ([predicateString isEqualToString:@""])
+            predicateString = [NSMutableString stringWithString:nameFilter];
+        else
+            predicateString = [NSMutableString stringWithFormat:@"%@ AND %@", predicateString, nameFilter];
+    }
+    
+    return predicateString;
 }
 
 - (void)loadMyRequests {
@@ -50,7 +162,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideLoadingDialog];
             
-            [self.requestsTableView reloadData];
+            [self refreshRequestsTable];
         });
     };
     
@@ -99,7 +211,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return dataRows.count;
+    return filteredRequestsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -111,7 +223,7 @@
         cell = [topLevelObjects objectAtIndex:0];
     }
     
-    Request *currentRequest = [dataRows objectAtIndex:indexPath.row];
+    Request *currentRequest = [filteredRequestsArray objectAtIndex:indexPath.row];
     
     cell.requestNumberLabel.text = currentRequest.caseNumber;
     cell.requestStatusLabel.text = currentRequest.status;
@@ -126,7 +238,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Request *currentRequest = [dataRows objectAtIndex:indexPath.row];
+    Request *currentRequest = [filteredRequestsArray objectAtIndex:indexPath.row];
     
     [self openViewMyRequestFlow:currentRequest];
 }
@@ -140,5 +252,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UISearchResultsUpdating delegate
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    searchBarText = searchController.searchBar.text;
+    [self refreshRequestsTable];
+}
 
 @end

@@ -9,10 +9,30 @@
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
 
-@interface MyRequestListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MyRequestListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
 {
     NSArray *dataRows;
+    
+    NSIndexPath *selectedStatusFilterIndexPath;
+    NSString *selectedStatusFilter;
+    NSArray *statusFilterStringArray;
+    
+    NSIndexPath *selectedServiceFilterIndexPath;
+    NSString *selectedServiceFilter;
+    NSArray *serviceFilterStringArray;
+    
+    NSMutableArray *filteredRequestsArray;
+    
+    NSString *searchBarText;
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *requestsTableView;
+@property (weak, nonatomic) IBOutlet UIButton *statusFilterButton;
+@property (weak, nonatomic) IBOutlet UIButton *serviceFilterButton;
+
+@property (strong, nonatomic) UISearchController *searchController;
+
+- (IBAction)statusFilterButtonClicked:(id)sender;
+- (IBAction)serviceFilterButtonClicked:(id)sender;
 
 @end

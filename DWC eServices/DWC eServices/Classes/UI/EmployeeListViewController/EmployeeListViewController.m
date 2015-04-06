@@ -553,8 +553,7 @@
  */
 
 #pragma mark - UISearchResultsUpdating delegate
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
-{
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     searchBarText = searchController.searchBar.text;
     [self refreshEmployeesTable];
 }
