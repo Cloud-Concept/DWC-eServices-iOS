@@ -322,6 +322,7 @@
     
     NSMutableDictionary *serviceFieldsMutableDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                      recordTypeId, @"RecordTypeId",
+                                                     [cardTypesDescriptionsArray objectAtIndex:selectedCardTypeIndexPath.row], @"Card_Type__c",
                                                      nil];
     
     switch (self.baseServicesViewController.relatedServiceType) {
