@@ -31,7 +31,7 @@
                                                            DWCEmployeeType:VisitVisaEmployee
                                                                      Query:[SOQLQueries visitVisaEmployeesQuery]]];
     
-    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Contractors"
+    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Access Card"
                                                            DWCEmployeeType:ContractorEmployee
                                                                      Query:[SOQLQueries contractorsQuery]]];
 }

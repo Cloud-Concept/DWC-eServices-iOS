@@ -29,6 +29,8 @@
 #import "Quote.h"
 #import "LicenseRenewViewController.h"
 #import "License.h"
+#import "SFDateUtil.h"
+#import "CardManagement.h"
 
 @interface BaseServicesViewController ()
 
@@ -303,6 +305,8 @@
                     [self callRenewContractWebService];
                 else if (self.relatedServiceType == RelatedServiceTypeLicenseRenewal)
                     [self callRenewLicensetWebService];
+                else if (self.relatedServiceType == RelatedServiceTypeCancelCard)
+                    [self cancelCardManagement];
                 else
                     [self callGenerateInvoiceWebService];
             }
@@ -501,6 +505,36 @@
             [self showReviewFlowPage];
         }
     }
+}
+
+- (void)cancelCardManagement {
+    NSDictionary *fields = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"Cancelled", @"Status__c",
+                            [SFDateUtil toSOQLDateTimeString:[NSDate new] isDateTime:YES], @"Cancellation_Date__c",
+                            nil];
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideLoadingDialog];
+            [self showReviewFlowPage];
+        });
+    };
+    
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideLoadingDialog];
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
+        });
+    };
+    
+    [self showLoadingDialog];
+    
+    [[SFRestAPI sharedInstance] performUpdateWithObjectType:@"Card_Management__c"
+                                                   objectId:self.currentCardManagement.Id
+                                                     fields:fields
+                                                  failBlock:errorBlock
+                                              completeBlock:successBlock];
 }
 
 - (void)callPayAndSubmitWebservice {

@@ -100,12 +100,12 @@
     [self.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
-- (void)openCardManagementFlow:(RelatedServiceType)serviceType {
+- (void)openCardManagementFlow:(RelatedServiceType)serviceType CreateServiceRecord:(BOOL)CreateServiceRecord {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
     baseServicesVC.relatedServiceType = serviceType;
     baseServicesVC.currentCardManagement = self.cardManagementObject;
-    baseServicesVC.createServiceRecord = YES;
+    baseServicesVC.createServiceRecord = CreateServiceRecord;
     [self.navigationController pushViewController:baseServicesVC animated:YES];
     
 }
@@ -125,15 +125,15 @@
 }
 
 - (void)relatedServiceRenewCardButtonClicked {
-    [self openCardManagementFlow:RelatedServiceTypeRenewCard];
+    [self openCardManagementFlow:RelatedServiceTypeRenewCard CreateServiceRecord:YES];
 }
 
 - (void)relatedServiceCancelCardButtonClicked {
-    [self openCardManagementFlow:RelatedServiceTypeCancelCard];
+    [self openCardManagementFlow:RelatedServiceTypeCancelCard CreateServiceRecord:NO];
 }
 
 - (void)relatedServiceReplaceCardButtonClicked {
-    [self openCardManagementFlow:RelatedServiceTypeReplaceCard];
+    [self openCardManagementFlow:RelatedServiceTypeReplaceCard CreateServiceRecord:YES];
 }
 
 - (void)relatedServiceNewVisaButtonClicked {

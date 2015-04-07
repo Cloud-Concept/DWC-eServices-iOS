@@ -245,12 +245,12 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.baseServicesViewController hideLoadingDialog];
             /*
-            NSString *balanceStr = [HelperClass formatNumberToString:selectedService.amount
-                                                         FormatStyle:NSNumberFormatterDecimalStyle
-                                               MaximumFractionDigits:2];
-            
-            [self.servicePriceTextField setText:[NSString stringWithFormat:@"AED %@", balanceStr]];
-            */
+             NSString *balanceStr = [HelperClass formatNumberToString:selectedService.amount
+             FormatStyle:NSNumberFormatterDecimalStyle
+             MaximumFractionDigits:2];
+             
+             [self.servicePriceTextField setText:[NSString stringWithFormat:@"AED %@", balanceStr]];
+             */
         });
     };
     
@@ -303,7 +303,7 @@
     self.baseServicesViewController.currentWebformId = webFormID;
     self.baseServicesViewController.currentServiceAdministration = selectedService;
     
-    self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSMutableDictionary *caseFieldsMutableDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                   selectedService.Id, @"Service_Requested__c",
                                                   [Globals currentAccount].Id, @"AccountId",
                                                   caseRecordTypeId, @"RecordTypeId",
@@ -311,6 +311,11 @@
                                                   @"Access Card Services", @"Type",
                                                   @"Mobile", @"Origin",
                                                   nil];
+    
+    if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeCancelCard)
+        [caseFieldsMutableDict setObject:self.baseServicesViewController.currentCardManagement.Id forKey:@"Card_Management__c"];
+    
+    self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithDictionary:caseFieldsMutableDict];
     
     NSString *recordTypeId = [cardManagementRecordTypesDictionary objectForKey:selectedService.recordTypePicklist];
     NSString *selectedDuration = [durationArray objectAtIndex:selectedDurationIndexPath.row];
