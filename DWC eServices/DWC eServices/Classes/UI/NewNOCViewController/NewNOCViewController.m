@@ -53,7 +53,7 @@
     UIButton *senderButton = sender;
     
     for(EServiceAdministration *eService in nocTypesArray) {
-        [stringArray addObject:eService.serviceIdentifier];
+        [stringArray addObject:eService.displayName];
     }
     
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
