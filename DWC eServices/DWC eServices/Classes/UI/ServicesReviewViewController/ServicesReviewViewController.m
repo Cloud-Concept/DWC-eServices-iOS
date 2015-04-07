@@ -119,7 +119,12 @@
                     
                     continue;
                 }
-                [field setFormFieldValue:[HelperClass getRelationshipValue:serviceDict Key:field.name]];
+                
+                NSString *relationName = field.name;
+                if ([field.type isEqualToString:@"REFERENCE"])
+                    relationName = [field.name stringByReplacingOccurrencesOfString:@"__c" withString:@"__r.Name"];
+                
+                [field setFormFieldValue:[HelperClass getRelationshipValue:serviceDict Key:relationName]];
                 field.isCalculated = true;
             }
         }

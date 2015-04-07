@@ -60,6 +60,7 @@
 @property (strong, nonatomic) NSString *controllingField;
 @property (nonatomic) BOOL isDependentPicklist;
 
+@property (strong, nonatomic) NSDictionary *picklistNamesDictionary;
 @property (strong, nonatomic) NSDictionary *picklistValuesDictionary;
 @property (strong, nonatomic) FormField *controllingFormField;
 

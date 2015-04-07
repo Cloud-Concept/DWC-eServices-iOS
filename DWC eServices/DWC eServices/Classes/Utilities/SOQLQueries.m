@@ -99,15 +99,19 @@ static NSString *renewLicenseServiceAdminQuery = @"SELECT ID, Name, Display_Name
             if ([field.type isEqualToString:@"CUSTOMTEXT"])
                 continue;
             
-            NSString *fieldName;
+            NSString *fieldToAddToQuery;
+            
+            NSString *fieldName = field.name;
+            if ([field.type isEqualToString:@"REFERENCE"])
+                fieldName = [field.name stringByReplacingOccurrencesOfString:@"__c" withString:@"__r.Name"];
             
             if ([RelatedObject isEqualToString:@"Case"])
-                fieldName = [NSString stringWithFormat:@", %@", field.name];
+                fieldToAddToQuery = [NSString stringWithFormat:@", %@", fieldName];
             else
-                fieldName = [NSString stringWithFormat:@", %@.%@", relationName, field.name];
+                fieldToAddToQuery = [NSString stringWithFormat:@", %@.%@", relationName, fieldName];
             
-            if (![queryString containsString:fieldName]) {
-                [queryString appendString:fieldName];
+            if (![queryString containsString:fieldToAddToQuery]) {
+                [queryString appendString:fieldToAddToQuery];
             }
             
         }

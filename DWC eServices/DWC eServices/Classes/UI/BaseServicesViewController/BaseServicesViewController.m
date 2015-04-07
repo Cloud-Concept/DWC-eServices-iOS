@@ -91,6 +91,7 @@
         case RelatedServiceTypeNewCard:
         case RelatedServiceTypeViewMyRequest:
         case RelatedServiceTypeRegistrationDocuments:
+        case RelatedServiceTypeNewCompanyNOC:
             returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:self.currentWebForm.objectName];
             break;
         case RelatedServiceTypeContractRenewal:
@@ -606,6 +607,7 @@
     pickListValuesRequest.path = @"/services/apexrest/MobilePickListValuesWebService";
     pickListValuesRequest.queryParams = [NSDictionary dictionaryWithObject:formField.Id forKey:@"fieldId"];
     
+    [self showLoadingDialog];
     [[SFRestAPI sharedInstance] send:pickListValuesRequest delegate:self];
 }
 
@@ -631,6 +633,10 @@
                     [self callPickListValuesWebService:formField];
                     formFieldPicklistCalls++;
                 }
+                else if ([formField.type isEqualToString:@"REFERENCE"] && !formField.isParameter) {
+                    formFieldPicklistCalls++;
+                    [self getReferencePicklistValues:formField];
+                }
             }
         });
     };
@@ -654,6 +660,42 @@
     
     [self showLoadingDialog];
     
+}
+
+- (void)getReferencePicklistValues:(FormField *)formField {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        formFieldPicklistCalls--;
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
+            [self hideLoadingDialog];
+        });
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        NSArray *records = [dict objectForKey:@"records"];
+        NSMutableArray *idsMutableArray = [NSMutableArray new];
+        NSMutableArray *namesMutableArray = [NSMutableArray new];
+        
+        for (NSDictionary *recordDict in records) {
+            [idsMutableArray addObject:[recordDict objectForKey:@"Id"]];
+            [namesMutableArray addObject:[recordDict objectForKey:@"Name"]];
+        }
+        
+        formField.picklistNamesDictionary = [NSDictionary dictionaryWithObject:namesMutableArray forKey:formField.name];
+        formField.picklistValuesDictionary = [NSDictionary dictionaryWithObject:idsMutableArray forKey:formField.name];
+        
+        formFieldPicklistCalls--;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideLoadingDialog];
+        });
+    };
+    
+    [self showLoadingDialog];
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:[NSString stringWithFormat:@"SELECT Id, Name FROM %@ ORDER BY Name", formField.textValue]
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
 }
 
 - (void)handlePayAndSubmitWebserviceReturn:(id)jsonResponse {
@@ -728,7 +770,7 @@
         if (![currentFormField.Id isEqualToString:fieldId])
             continue;
         
-        currentFormField.picklistValuesDictionary = dict;
+        currentFormField.picklistNamesDictionary = dict;
     }
 }
 

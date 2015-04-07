@@ -194,7 +194,11 @@
             if(!formField.isCalculated)
                 continue;
             
-            [formField setFormFieldValue:[HelperClass getRelationshipValue:objectReturned Key:formField.name]];
+            NSString *formFieldName = formField.name;
+            if ([formField.type isEqualToString:@"REFERENCE"]) {
+                formFieldName = [formField.name stringByReplacingOccurrencesOfString:@"__c" withString:@"__r.Name"];
+            }
+            [formField setFormFieldValue:[HelperClass getRelationshipValue:objectReturned Key:formFieldName]];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{

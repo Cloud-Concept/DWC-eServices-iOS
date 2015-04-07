@@ -186,7 +186,7 @@
     copy.nameNoSpace = _nameNoSpace;
     copy.isDependentPicklist = _isDependentPicklist;
     copy.controllingField = _controllingField;
-    copy.picklistValuesDictionary = _picklistValuesDictionary;
+    copy.picklistNamesDictionary = _picklistNamesDictionary;
     [copy setFormFieldValue:formFieldValue];
 
     return copy;
@@ -245,6 +245,7 @@
         BOOL isEnabled = !(self.isCalculated || self.isParameter);
         
         if ([self.type isEqualToString:@"PICKLIST"] ||
+            [self.type isEqualToString:@"REFERENCE"] ||
             [self.type isEqualToString:@"DATE"]) {
             fieldView = [UIButton buttonWithType:UIButtonTypeSystem];
             [((UIButton*)fieldView) setTitleColor:[UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1]
@@ -325,10 +326,10 @@
     NSArray *stringArray = [NSArray new];
     
     if (self.isDependentPicklist) {
-        stringArray = [self.picklistValuesDictionary objectForKey:[self.controllingFormField getFormFieldValue]];
+        stringArray = [self.picklistNamesDictionary objectForKey:[self.controllingFormField getFormFieldValue]];
     }
     else {
-        stringArray = [self.picklistValuesDictionary objectForKey:self.name];
+        stringArray = [self.picklistNamesDictionary objectForKey:self.name];
     }
 
     UIButton *senderButton = (UIButton*)fieldView;
@@ -339,6 +340,9 @@
     pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
         selectedPicklistIndexPath = indexPath;
         formFieldValue = value;
+        if ([self.type isEqualToString:@"REFERENCE"])
+            formFieldValue = [[self.picklistValuesDictionary objectForKey:self.name] objectAtIndex:indexPath.row];
+        
         [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
         [picklist dismissPopover:YES];
         

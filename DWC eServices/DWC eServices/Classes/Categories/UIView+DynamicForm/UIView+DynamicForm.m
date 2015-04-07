@@ -22,7 +22,7 @@
     
     for (FormField *field in formFields) {
         
-        if (field.hidden || [field.type isEqualToString:@"CUSTOMTEXT"] || [field.type isEqualToString:@"REFERENCE"])
+        if (field.hidden || [field.type isEqualToString:@"CUSTOMTEXT"])
             continue;
         
         [viewsDictionary setObject:[field getFieldView] forKey:field.nameNoSpace];
@@ -60,7 +60,7 @@
         FormField *currentField = [formFields objectAtIndex:index];
         FormField *previousField = nil;
         
-        if (currentField.hidden || [currentField.type isEqualToString:@"CUSTOMTEXT"] || [currentField.type isEqualToString:@"REFERENCE"])
+        if (currentField.hidden || [currentField.type isEqualToString:@"CUSTOMTEXT"])
             continue;
         
         NSString *heightRule = [NSString stringWithFormat:@"V:[%@(fieldHeight)]", currentField.nameNoSpace];
@@ -98,7 +98,7 @@
         for (NSInteger i = index - 1; i >=0 ; i--) {
             FormField *tempField = [formFields objectAtIndex:i];
             
-            if (![tempField.type isEqualToString:@"CUSTOMTEXT"] && ![tempField.type isEqualToString:@"REFERENCE"] && !tempField.hidden) {
+            if (![tempField.type isEqualToString:@"CUSTOMTEXT"] && !tempField.hidden) {
                 previousField = tempField;
                 break;
             }
@@ -176,7 +176,7 @@
     for (NSInteger i = formFields.count - 1; i >= 0 ; i--) {
         FormField *tempField = [formFields objectAtIndex:i];
         
-        if (![tempField.type isEqualToString:@"CUSTOMTEXT"] && ![tempField.type isEqualToString:@"REFERENCE"] && !tempField.hidden) {
+        if (![tempField.type isEqualToString:@"CUSTOMTEXT"] && !tempField.hidden) {
             previousField = tempField;
             break;
         }
@@ -382,7 +382,7 @@
     
     for (FormField *field in formFieldsMutableArray) {
         
-        if (field.hidden || [field.type isEqualToString:@"REFERENCE"])
+        if (field.hidden)
             continue;
         
         [viewsDictionary setObject:[field getReviewFieldValueLabel] forKey:field.nameNoSpace];
@@ -467,7 +467,7 @@
         for (NSInteger i = index - 1; i >=0 ; i--) {
             FormField *tempField = [formFieldsMutableArray objectAtIndex:i];
             
-            if (![tempField.type isEqualToString:@"REFERENCE"] && !tempField.hidden) {
+            if (!tempField.hidden) {
                 previousField = tempField;
                 break;
             }
@@ -555,7 +555,7 @@
     for (NSInteger i = formFieldsMutableArray.count - 1; i >=0 ; i--) {
         FormField *tempField = [formFieldsMutableArray objectAtIndex:i];
         
-        if (![tempField.type isEqualToString:@"REFERENCE"] && !tempField.hidden) {
+        if (!tempField.hidden) {
             previousField = tempField;
             break;
         }
