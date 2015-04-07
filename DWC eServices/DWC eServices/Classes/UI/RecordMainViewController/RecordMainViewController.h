@@ -13,6 +13,7 @@
 @class Visa;
 @class TenancyContract;
 @class License;
+@class CardManagement;
 
 @interface RecordMainViewController : BaseFrontRevealViewController <RecordRelatedViewControllerDelegate>
 
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) Visa *visaObject;
 @property (strong, nonatomic) TenancyContract *contractObject;
 @property (strong, nonatomic) License *licenseObject;
+@property (strong, nonatomic) CardManagement *cardManagementObject;
 
 @property (nonatomic) NSUInteger RelatedServicesMask;
 

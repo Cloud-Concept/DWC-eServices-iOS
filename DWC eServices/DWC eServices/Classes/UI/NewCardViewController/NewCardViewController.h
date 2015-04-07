@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SFRestAPI.h"
 
-@class  BaseServicesViewController;
+@class BaseServicesViewController;
 @class EServiceAdministration;
 
-@interface NewCardViewController : UIViewController
+@interface NewCardViewController : UIViewController <SFRestDelegate>
 {
     NSString *caseRecordTypeId;
     
@@ -26,6 +27,10 @@
     
     //NSString *selectedCardType;
     //NSString *selectedDuration;
+    NSString *retailCourierRate;
+    NSString *corporateCourierRate;
+    
+    BOOL courierChargesLoaded;
     
     EServiceAdministration *selectedService;
 }
@@ -33,8 +38,15 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *chooseCardTypeButton;
 @property (weak, nonatomic) IBOutlet UIButton *chooseDurationButton;
-@property (weak, nonatomic) IBOutlet UILabel *servicePriceLabel;
-@property (weak, nonatomic) IBOutlet UITextField *servicePriceTextField;
+@property (weak, nonatomic) IBOutlet UILabel *courierRateLabel;
+@property (weak, nonatomic) IBOutlet UITextField *courierRateTextField;
+@property (weak, nonatomic) IBOutlet UILabel *courierRequiredLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *courierRequiredSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *recordToProcessLabel;
+@property (weak, nonatomic) IBOutlet UITextField *recordToProcessTextField;
+
+//@property (weak, nonatomic) IBOutlet UILabel *servicePriceLabel;
+//@property (weak, nonatomic) IBOutlet UITextField *servicePriceTextField;
 
 - (IBAction)chooseCardTypeButtonClicked:(id)sender;
 - (IBAction)chooseDurationButtonClicked:(id)sender;

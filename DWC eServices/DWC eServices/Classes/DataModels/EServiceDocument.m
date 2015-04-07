@@ -23,6 +23,8 @@
     self.name = [HelperClass stringCheckNull:[eServiceDocumentDict objectForKey:@"Name"]];
     
     self.nameNoSpace = [self.name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    self.nameNoSpace = [self.nameNoSpace stringByReplacingOccurrencesOfString:@"(" withString:@"_"];
+    self.nameNoSpace = [self.nameNoSpace stringByReplacingOccurrencesOfString:@")" withString:@"_"];
     
     self.type = [HelperClass stringCheckNull:[eServiceDocumentDict objectForKey:@"Type__c"]];
     self.language = [HelperClass stringCheckNull:[eServiceDocumentDict objectForKey:@"Language__c"]];

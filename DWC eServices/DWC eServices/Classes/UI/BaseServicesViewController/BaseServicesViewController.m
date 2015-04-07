@@ -191,16 +191,10 @@
             [self showNOCServiceFlow];
             break;
         case RelatedServiceTypeNewCard:
-            [self showCardServiceFlow];
-            break;
-        case RelatedServiceTypeRenewCard:
-            
-            break;
-        case RelatedServiceTypeCancelCard:
-            
-            break;
         case RelatedServiceTypeReplaceCard:
-            
+        case RelatedServiceTypeCancelCard:
+        case RelatedServiceTypeRenewCard:
+            [self showCardServiceFlow];
             break;
         case RelatedServiceTypeNewVisa:
             

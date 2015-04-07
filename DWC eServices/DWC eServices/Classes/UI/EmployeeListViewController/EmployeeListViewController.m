@@ -386,6 +386,7 @@
 - (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForContractor:(CardManagement*)card {
     recordVC.NameValue = card.fullName;
     recordVC.PhotoId = card.personalPhoto;
+    recordVC.cardManagementObject = card;
     NSMutableArray *sectionsArray = [NSMutableArray new];
     
     NSMutableArray *fieldsArray = [NSMutableArray new];
@@ -413,12 +414,16 @@
     recordVC.DetailsSectionsArray = sectionsArray;
     
     NSUInteger servicesMask = 0;
-    if ([card.status isEqualToString:@"Active"])
+    if ([card.status isEqualToString:@"Active"]) {
         servicesMask |= RelatedServiceTypeReplaceCard;
-    
-    if ([card.status isEqualToString:@"Active"] || [card.status isEqualToString:@"Expired"]) {
-        servicesMask |= RelatedServiceTypeRenewCard;
         servicesMask |= RelatedServiceTypeCancelCard;
+    }
+    
+    NSTimeInterval daysToExpire = [card.cardExpiryDate timeIntervalSinceNow] / (3600 * 24);
+    
+    if (([card.status isEqualToString:@"Active"] && daysToExpire <= 7) || [card.status isEqualToString:@"Expired"]) {
+        servicesMask |= RelatedServiceTypeRenewCard;
+        
     }
     
     recordVC.RelatedServicesMask = servicesMask;
@@ -450,7 +455,7 @@
             nameFilter = [NSString stringWithFormat:@"applicantFullName contains[c] '%@'", searchBarText];
             break;
         case ContractorEmployee:
-            statusFilter = [NSString stringWithFormat:@"status == '%@'", searchBarText];
+            statusFilter = [NSString stringWithFormat:@"status == '%@'", selectedFilter];
             nameFilter = [NSString stringWithFormat:@"fullName contains[c] '%@'", searchBarText];
             break;
         default:

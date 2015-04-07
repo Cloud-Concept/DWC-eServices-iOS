@@ -268,13 +268,14 @@
                            forControlEvents:UIControlEventTouchUpInside];
         }
         else if ([self.type isEqualToString:@"STRING"] ||
+                 [self.type isEqualToString:@"EMAIL"] ||
                  [self.type isEqualToString:@"DOUBLE"]) {
             
             fieldView = [UITextField new];
             [((UITextField*)fieldView) setBorderStyle:UITextBorderStyleNone];
             [((UITextField*)fieldView) setBackground:[UIImage imageNamed:@"Textfield Background"]];
             
-            UIKeyboardType keyboardType = [self.type isEqualToString:@"STRING"] ? UIKeyboardTypeASCIICapable:UIKeyboardTypeDecimalPad;
+            UIKeyboardType keyboardType = [self.type isEqualToString:@"DOUBLE"] ? UIKeyboardTypeDecimalPad : UIKeyboardTypeASCIICapable;
             [((UITextField*)fieldView) setKeyboardType:keyboardType];
             
             [((UITextField*)fieldView) setPlaceholder:self.mobileLabel];

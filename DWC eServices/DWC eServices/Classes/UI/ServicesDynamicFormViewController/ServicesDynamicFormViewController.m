@@ -18,6 +18,7 @@
 #import "BaseServicesViewController.h"
 #import "Globals.h"
 #import "Account.h"
+#import "CardManagement.h"
 
 @interface ServicesDynamicFormViewController ()
 
@@ -116,6 +117,23 @@
 }
 
 - (void)getFormFieldsValues {
+    NSMutableString *selectVisaAccountQuery = [NSMutableString stringWithString:@"SELECT Id"];
+    NSMutableString *selectObjectQuery = [NSMutableString stringWithString:@"SELECT Id"];
+    
+    BOOL queryFields = NO;
+    for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
+        if (formField.isParameter) {
+            [formField setFormFieldValue:[self.baseServicesViewController.parameters objectForKey:formField.textValue]];
+        }
+        if (![formField.type isEqualToString:@"CUSTOMTEXT"])
+            [selectObjectQuery appendFormat:@", %@", formField.name];
+        
+        if(!formField.isQuery)
+            continue;
+        
+        queryFields = YES;
+        [selectVisaAccountQuery appendFormat:@", %@", formField.textValue];
+    }
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         NSArray *records = [dict objectForKey:@"records"];
@@ -133,6 +151,53 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.baseServicesViewController hideLoadingDialog];
+            [self getObjectValue:selectObjectQuery];
+        });
+    };
+    
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+#warning handle error here
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.baseServicesViewController hideLoadingDialog];
+        });
+    };
+    
+    if (queryFields) {
+        if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewCompanyNOC)
+            [selectVisaAccountQuery appendFormat:@" FROM Account WHERE ID = '%@' LIMIT 1", [Globals currentAccount].Id];
+        else
+            [selectVisaAccountQuery appendFormat:@" FROM Visa__c WHERE ID = '%@' LIMIT 1", self.baseServicesViewController.currentVisaObject.Id];
+        
+        [[SFRestAPI sharedInstance] performSOQLQuery:selectVisaAccountQuery
+                                           failBlock:errorBlock
+                                       completeBlock:successBlock];
+        
+        [self.baseServicesViewController showLoadingDialog];
+    }
+    else {
+        [self getObjectValue:selectObjectQuery];
+    }
+}
+
+- (void)getObjectValue:(NSString *)query {
+    
+    void (^successBlock) (NSDictionary *dict) = ^(NSDictionary *dict) {
+        NSArray *records = [dict objectForKey:@"records"];
+        
+        if(records.count <= 0)
+            return;
+        
+        NSDictionary *objectReturned = [records objectAtIndex:0];
+        
+        for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
+            if(!formField.isCalculated)
+                continue;
+            
+            [formField setFormFieldValue:[HelperClass getRelationshipValue:objectReturned Key:formField.name]];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
             [self displayWebForm];
             [self.baseServicesViewController hideLoadingDialog];
         });
@@ -145,36 +210,24 @@
         });
     };
     
-    NSMutableString *selectQuery = [NSMutableString stringWithString:@"SELECT Id"];
+    NSMutableString *queryMutableString = [NSMutableString stringWithString:query];
     
-    BOOL queryFields = NO;
-    for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
-        if (formField.isParameter) {
-            [formField setFormFieldValue:[self.baseServicesViewController.parameters objectForKey:formField.textValue]];
-        }
-        
-        if(!formField.isQuery)
-            continue;
-        
-        queryFields = YES;
-        [selectQuery appendFormat:@", %@", formField.textValue];
-    }
+    [queryMutableString appendFormat:@" FROM %@ WHERE ID = ", self.baseServicesViewController.currentWebForm.objectName];
     
-    if (queryFields) {
-        if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewCompanyNOC)
-            [selectQuery appendFormat:@" FROM Account WHERE ID = '%@' LIMIT 1", [Globals currentAccount].Id];
-        else
-            [selectQuery appendFormat:@" FROM Visa__c WHERE ID = '%@' LIMIT 1", self.baseServicesViewController.currentVisaObject.Id];
-        
-        [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
-                                           failBlock:errorBlock
-                                       completeBlock:successBlock];
-        
-        [self.baseServicesViewController showLoadingDialog];
+    if([self.baseServicesViewController.currentWebForm.objectName isEqualToString:@"Card_Management__c"] &&
+       self.baseServicesViewController.currentCardManagement) {
+        [queryMutableString appendFormat:@"'%@'", self.baseServicesViewController.currentCardManagement.Id];
     }
     else {
         [self displayWebForm];
+        return;
     }
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:queryMutableString
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
+    
+    [self.baseServicesViewController showLoadingDialog];
 }
 
 - (void)displayWebForm {

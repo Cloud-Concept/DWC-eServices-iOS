@@ -17,6 +17,7 @@
 @class WebForm;
 @class TenancyContract;
 @class License;
+@class CardManagement;
 
 typedef enum {
     ServiceFlowInitialPage,
@@ -44,6 +45,7 @@ typedef enum {
 @property (strong, nonatomic) WebForm *currentWebForm;
 @property (strong, nonatomic) TenancyContract *currentContract;
 @property (strong, nonatomic) License *currentLicense;
+@property (strong, nonatomic) CardManagement *currentCardManagement;
 
 @property (strong, nonatomic) EServiceAdministration *currentServiceAdministration;
 @property (strong, nonatomic) NSDictionary *caseFields;

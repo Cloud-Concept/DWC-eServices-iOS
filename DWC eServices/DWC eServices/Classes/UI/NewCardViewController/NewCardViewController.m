@@ -15,6 +15,8 @@
 #import "HelperClass.h"
 #import "Globals.h"
 #import "Account.h"
+#import "NSString+SFPathAdditions.h"
+#import "CardManagement.h"
 
 @interface NewCardViewController ()
 
@@ -27,6 +29,8 @@
     // Do any additional setup after loading the view from its nib.
     [self initializeCardTypesDictionary];
     [self getCardRecordType];
+    [self resetRecordToProcessFields];
+    [self refreshDisplayedFields];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,7 +38,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)chooseCardTypeButtonClicked:(id)sender {
+- (IBAction)chooseCardTypeButtonClicked:(id)sender {
     UIButton *senderButton = sender;
     
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
@@ -52,34 +56,8 @@
     [pickerTableVC showPopoverFromView:senderButton];
 }
 
-- (void)chooseDurationButtonClicked:(id)sender {
-    durationArray = [NSMutableArray new];
-    
-    NSString *selectedCardType = [cardTypesValuesArray objectAtIndex:selectedCardTypeIndexPath.row];
-    
-    if (![selectedCardType isEqualToString:@""]) {
-        if ([selectedCardType isEqualToString:@"Access_Card"])
-            [durationArray addObject:@"1 Day"];
-        
-        if ([selectedCardType isEqualToString:@"Contractor_Card"])
-            [durationArray addObject:@"1 Week"];
-        
-        [durationArray addObject:@"1 Month"];
-        
-        if ([selectedCardType isEqualToString:@"Contractor_Card"])
-            [durationArray addObject:@"2 Months"];
-        
-        [durationArray addObject:@"3 Months"];
-        
-        if ([selectedCardType isEqualToString:@"Contractor_Card"]) {
-            [durationArray addObject:@"4 Months"];
-            [durationArray addObject:@"5 Months"];
-        }
-        
-        [durationArray addObject:@"6 Months"];
-        [durationArray addObject:@"1 Year"];
-    }
-    
+- (IBAction)chooseDurationButtonClicked:(id)sender {
+    [self initializeDurationArray];
     
     UIButton *senderButton = sender;
     
@@ -97,13 +75,59 @@
     
 }
 
-- (void)nextButtonClicked:(id)sender {
+- (IBAction)courierRequiredSwitchValueChanged:(id)sender {
+    if ([self.courierRequiredSwitch isOn]) {
+        if (courierChargesLoaded) {
+            [self setCourierValuesToFields];
+            [self courierFieldsSetHidden:NO];
+        }
+        else {
+            [self getAramexRates];
+        }
+    }
+    else {
+        [self courierFieldsSetHidden:YES];
+    }
+}
+
+- (IBAction)nextButtonClicked:(id)sender {
     if ([self validateInput])
         [self prepareForNextFlowPage];
 }
 
-- (void)cancelButtonClicked:(id)sender {
+- (IBAction)cancelButtonClicked:(id)sender {
     [self.baseServicesViewController cancelServiceButtonClicked];
+}
+
+- (void)refreshDisplayedFields {
+    switch (self.baseServicesViewController.relatedServiceType) {
+        case RelatedServiceTypeReplaceCard:
+            self.chooseCardTypeButton.enabled = NO;
+            self.chooseDurationButton.hidden = YES;
+            break;
+        case RelatedServiceTypeRenewCard:
+            self.chooseCardTypeButton.enabled = NO;
+            break;
+        case RelatedServiceTypeCancelCard:
+            self.chooseCardTypeButton.enabled = NO;
+            self.chooseDurationButton.hidden = YES;
+            self.courierRequiredLabel.hidden = YES;
+            self.courierRequiredSwitch.hidden = YES;
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)resetRecordToProcessFields {
+    if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewCard) {
+        [self.recordToProcessLabel removeFromSuperview];
+        [self.recordToProcessTextField removeFromSuperview];
+    }
+    else {
+        //self.recordToProcessLabel
+        [self.recordToProcessTextField setText:self.baseServicesViewController.currentCardManagement.cardNumber];
+    }
 }
 
 - (void)resetDurationButtons {
@@ -113,12 +137,68 @@
 }
 
 - (void)resetAmountTextField {
-    [self.servicePriceTextField setText:@"AED 0"];
+    //[self.servicePriceTextField setText:@"AED 0"];
 }
 
 - (void)initializeCardTypesDictionary {
-    cardTypesDescriptionsArray = @[@"FM Contractor Pass", @"Contractor Pass", @"Work Permit Pass", @"Access Card", @"Replacement of Lost Employment Card"];
-    cardTypesValuesArray = @[@"FM_Contractor_Pass", @"Contractor_Pass", @"Work_Permit_Pass", @"Access_Card", @"Employment_Card"];
+    cardTypesDescriptionsArray = @[@"FM Contractor Pass", @"Contractor Pass", @"Access Card"];
+    cardTypesValuesArray = @[@"FM_Contractor_Pass", @"Contractor_Pass", @"Access_Card"];
+    
+    if (self.baseServicesViewController.currentCardManagement) {
+        NSInteger index = 0;
+        for (NSString *cardTypeString in cardTypesDescriptionsArray) {
+            if ([self.baseServicesViewController.currentCardManagement.cardType isEqualToString:cardTypeString])
+                break;
+            
+            index++;
+        }
+        
+        selectedCardTypeIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.chooseCardTypeButton setTitle:[cardTypesDescriptionsArray objectAtIndex:index] forState:UIControlStateNormal];
+        
+        [self initializeDurationArray];
+        
+        index = 0;
+        for (NSString *durationString in durationArray) {
+            if ([self.baseServicesViewController.currentCardManagement.duration isEqualToString:durationString])
+                break;
+            
+            index++;
+        }
+        [self.chooseDurationButton setTitle:[durationArray objectAtIndex:index] forState:UIControlStateNormal];
+        selectedDurationIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        
+        [self getServiceAdministrator];
+    }
+}
+
+- (void)initializeDurationArray {
+    durationArray = [NSMutableArray new];
+    
+    NSString *selectedCardType = [cardTypesValuesArray objectAtIndex:selectedCardTypeIndexPath.row];
+    
+    if (![selectedCardType isEqualToString:@""]) {
+        if ([selectedCardType isEqualToString:@"Access_Card"])
+            [durationArray addObject:@"1 Day"];
+        
+        if ([selectedCardType isEqualToString:@"Contractor_Pass"])
+            [durationArray addObject:@"1 Week"];
+        
+        [durationArray addObject:@"1 Month"];
+        
+        if ([selectedCardType isEqualToString:@"Contractor_Pass"])
+            [durationArray addObject:@"2 Months"];
+        
+        [durationArray addObject:@"3 Months"];
+        
+        if ([selectedCardType isEqualToString:@"Contractor_Pass"]) {
+            [durationArray addObject:@"4 Months"];
+            [durationArray addObject:@"5 Months"];
+        }
+        
+        [durationArray addObject:@"6 Months"];
+        [durationArray addObject:@"1 Year"];
+    }
 }
 
 - (void)getCardRecordType {
@@ -164,13 +244,13 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.baseServicesViewController hideLoadingDialog];
-            
+            /*
             NSString *balanceStr = [HelperClass formatNumberToString:selectedService.amount
                                                          FormatStyle:NSNumberFormatterDecimalStyle
                                                MaximumFractionDigits:2];
             
             [self.servicePriceTextField setText:[NSString stringWithFormat:@"AED %@", balanceStr]];
-            
+            */
         });
     };
     
@@ -203,7 +283,24 @@
 
 - (void)prepareForNextFlowPage {
     
-    self.baseServicesViewController.currentWebformId = selectedService.editNewVFGenerator;
+    NSString *webFormID = @"";
+    
+    switch (self.baseServicesViewController.relatedServiceType) {
+        case RelatedServiceTypeReplaceCard:
+            webFormID = selectedService.replaceVFGenerator;
+            break;
+        case RelatedServiceTypeCancelCard:
+            webFormID = selectedService.cancelVFGenerator;
+            break;
+        case RelatedServiceTypeRenewCard:
+            webFormID = selectedService.renewVFGenerator;
+            break;
+        default:
+            webFormID = selectedService.editNewVFGenerator;
+            break;
+    }
+    
+    self.baseServicesViewController.currentWebformId = webFormID;
     self.baseServicesViewController.currentServiceAdministration = selectedService;
     
     self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -218,9 +315,23 @@
     NSString *recordTypeId = [cardManagementRecordTypesDictionary objectForKey:selectedService.recordTypePicklist];
     NSString *selectedDuration = [durationArray objectAtIndex:selectedDurationIndexPath.row];
     
-    self.baseServicesViewController.serviceFields = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSMutableDictionary *serviceFieldsMutableDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                                      recordTypeId, @"RecordTypeId",
                                                      nil];
+    
+    switch (self.baseServicesViewController.relatedServiceType) {
+        case RelatedServiceTypeRenewCard:
+            [serviceFieldsMutableDict setObject:self.baseServicesViewController.currentCardManagement.Id forKey:@"Renewal_For__c"];
+            break;
+        case RelatedServiceTypeReplaceCard:
+            [serviceFieldsMutableDict setObject:self.baseServicesViewController.currentCardManagement.Id forKey:@"Lost_Card__c"];
+        default:
+            break;
+    }
+    
+    
+    
+    self.baseServicesViewController.serviceFields = [NSDictionary dictionaryWithDictionary:serviceFieldsMutableDict];
     
     self.baseServicesViewController.parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                                   [Globals currentAccount].name, @"actName",
@@ -229,6 +340,39 @@
                                                   nil];
     
     [self.baseServicesViewController nextButtonClicked:ServiceFlowInitialPage];
+}
+
+- (void)showLoadingDialog {
+    [self.baseServicesViewController showLoadingDialog];
+}
+
+- (void)hideLoadingDialog {
+    [self.baseServicesViewController hideLoadingDialog];
+}
+
+- (void)courierFieldsSetHidden:(BOOL)hidden {
+    [self.courierRateLabel setHidden:hidden];
+    [self.courierRateTextField setHidden:hidden];
+}
+
+- (void)setCourierValuesToFields {
+    [self.courierRateTextField setText:[NSString stringWithFormat:@"AED %@", retailCourierRate]];
+}
+
+- (void)getAramexRates {
+    
+    // Manually set up request object
+    SFRestRequest *aramexRequest = [[SFRestRequest alloc] init];
+    aramexRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileAramexRateWebService"];
+    aramexRequest.method = SFRestMethodGET;
+    
+    Account *currentAccount = [Globals currentAccount];
+    
+    aramexRequest.path = [NSString stringWithFormat:@"/services/apexrest/MobileAramexRateWebService?city=%@&country=%@", currentAccount.billingCity, [currentAccount.billingCountry encodeToPercentEscapeString]];
+    
+    [self showLoadingDialog];
+    
+    [[SFRestAPI sharedInstance] send:aramexRequest delegate:self];
 }
 
 /*
@@ -240,5 +384,57 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - SFRestAPIDelegate
+
+- (void)request:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
+    NSError *error;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
+    NSLog(@"request:didLoadResponse: %@", dict);
+    
+    courierChargesLoaded = YES;
+    
+    retailCourierRate =  [HelperClass stringCheckNull:[dict objectForKey:@"retailAmount"]];
+    corporateCourierRate = [HelperClass stringCheckNull:[dict objectForKey:@"amount"]];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self hideLoadingDialog];
+        
+        [self setCourierValuesToFields];
+        [self courierFieldsSetHidden:NO];
+    });
+}
+
+- (void)request:(SFRestRequest*)request didFailLoadWithError:(NSError*)error {
+    NSLog(@"request:didFailLoadWithError: %@", error);
+    
+    //add your failed error handling here
+    dispatch_async(dispatch_get_main_queue(), ^{
+#warning handle error here
+        [self hideLoadingDialog];
+    });
+}
+
+- (void)requestDidCancelLoad:(SFRestRequest *)request {
+    NSLog(@"requestDidCancelLoad: %@", request);
+    
+    //add your failed error handling here
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+#warning handle error here
+        [self hideLoadingDialog];
+    });
+}
+
+- (void)requestDidTimeout:(SFRestRequest *)request {
+    NSLog(@"requestDidTimeout: %@", request);
+    
+    //add your failed error handling here
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+#warning handle error here
+        [self hideLoadingDialog];
+    });
+}
 
 @end

@@ -7,8 +7,11 @@
     <customFonts key="customFonts">
         <mutableArray key="Corisande-Light.ttf">
             <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
         </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
@@ -21,8 +24,11 @@
             <connections>
                 <outlet property="chooseCardTypeButton" destination="hJO-LK-eFK" id="I2s-CL-eeY"/>
                 <outlet property="chooseDurationButton" destination="urj-iF-Awy" id="RO4-Yi-ujj"/>
-                <outlet property="servicePriceLabel" destination="9wQ-dY-S13" id="vqd-3e-8gn"/>
-                <outlet property="servicePriceTextField" destination="5Ic-eO-Zj2" id="Eug-kh-xh4"/>
+                <outlet property="courierRateLabel" destination="VaF-L4-tPq" id="Q1j-1O-XBL"/>
+                <outlet property="courierRateTextField" destination="ugp-Oq-MCb" id="TvN-vM-m75"/>
+                <outlet property="courierRequiredSwitch" destination="DaU-kd-bYf" id="pXv-HC-0Vv"/>
+                <outlet property="recordToProcessLabel" destination="9wQ-dY-S13" id="bVd-bD-UNa"/>
+                <outlet property="recordToProcessTextField" destination="5Ic-eO-Zj2" id="mZA-XE-wC4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -53,7 +59,7 @@
                         <action selector="chooseDurationButtonClicked:" destination="-1" eventType="touchUpInside" id="jin-D3-r5s"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Service Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wQ-dY-S13">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Record To Process" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wQ-dY-S13">
                     <rect key="frame" x="16" y="104" width="170" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="170" id="kW8-dS-Bmk"/>
@@ -63,7 +69,17 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="AED 0" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="5Ic-eO-Zj2">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Courier Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsr-ci-v2v">
+                    <rect key="frame" x="16" y="152" width="170" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="CP9-cw-atX"/>
+                        <constraint firstAttribute="width" constant="170" id="SR4-TX-m37"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="5Ic-eO-Zj2">
                     <rect key="frame" x="194" y="104" width="165" height="40"/>
                     <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -93,32 +109,74 @@
                         <action selector="nextButtonClicked:" destination="-1" eventType="touchUpInside" id="dAH-XX-2vr"/>
                     </connections>
                 </button>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DaU-kd-bYf">
+                    <rect key="frame" x="310" y="156" width="51" height="31"/>
+                    <color key="onTintColor" red="0.27450980390000002" green="0.5450980392" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="courierRequiredSwitchValueChanged:" destination="-1" eventType="valueChanged" id="C0L-0g-PmN"/>
+                    </connections>
+                </switch>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaF-L4-tPq">
+                    <rect key="frame" x="16" y="200" width="170" height="40"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="ugp-Oq-MCb">
+                    <rect key="frame" x="194" y="200" width="165" height="40"/>
+                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="ugp-Oq-MCb" firstAttribute="leading" secondItem="VaF-L4-tPq" secondAttribute="trailing" constant="8" id="00g-O9-huW"/>
                 <constraint firstItem="hJO-LK-eFK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="0f6-pk-bu0"/>
+                <constraint firstItem="VaF-L4-tPq" firstAttribute="top" secondItem="Jsr-ci-v2v" secondAttribute="bottom" constant="8" id="1pR-1A-UOh"/>
+                <constraint firstItem="Jsr-ci-v2v" firstAttribute="top" secondItem="9wQ-dY-S13" secondAttribute="bottom" constant="8" id="2JR-OR-1At"/>
                 <constraint firstItem="hJO-LK-eFK" firstAttribute="trailing" secondItem="urj-iF-Awy" secondAttribute="trailing" id="3ZQ-RV-JMH"/>
+                <constraint firstItem="Jsr-ci-v2v" firstAttribute="leading" secondItem="hJO-LK-eFK" secondAttribute="leading" id="5cT-du-94Z"/>
                 <constraint firstAttribute="trailing" secondItem="hJO-LK-eFK" secondAttribute="trailing" constant="16" id="8Bo-MJ-44d"/>
                 <constraint firstItem="5Ic-eO-Zj2" firstAttribute="leading" secondItem="9wQ-dY-S13" secondAttribute="trailing" constant="8" id="Aj1-G7-q1o"/>
+                <constraint firstItem="ugp-Oq-MCb" firstAttribute="bottom" secondItem="VaF-L4-tPq" secondAttribute="bottom" id="BcA-4H-gA1"/>
+                <constraint firstItem="Jsr-ci-v2v" firstAttribute="width" secondItem="VaF-L4-tPq" secondAttribute="width" id="BdL-ze-oD9"/>
+                <constraint firstAttribute="trailing" secondItem="DaU-kd-bYf" secondAttribute="trailing" constant="16" id="CH5-yx-PqB"/>
+                <constraint firstItem="Jsr-ci-v2v" firstAttribute="trailing" secondItem="VaF-L4-tPq" secondAttribute="trailing" id="ECq-yT-Gxg"/>
                 <constraint firstItem="5Ic-eO-Zj2" firstAttribute="bottom" secondItem="9wQ-dY-S13" secondAttribute="bottom" id="G3D-lv-2M1"/>
+                <constraint firstItem="Jsr-ci-v2v" firstAttribute="leading" secondItem="urj-iF-Awy" secondAttribute="leading" id="Iz6-eU-vGR"/>
                 <constraint firstItem="9wQ-dY-S13" firstAttribute="leading" secondItem="urj-iF-Awy" secondAttribute="leading" id="K7T-jg-nBk"/>
                 <constraint firstItem="hJO-LK-eFK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="M3P-e4-VUt"/>
+                <constraint firstItem="DaU-kd-bYf" firstAttribute="top" secondItem="5Ic-eO-Zj2" secondAttribute="bottom" constant="12" id="Myj-zF-Bxb"/>
                 <constraint firstItem="if4-U2-i5P" firstAttribute="height" secondItem="Oih-8x-7nZ" secondAttribute="height" id="OaW-O4-pc3"/>
                 <constraint firstItem="if4-U2-i5P" firstAttribute="bottom" secondItem="Oih-8x-7nZ" secondAttribute="bottom" id="PTH-8p-FDk"/>
                 <constraint firstItem="if4-U2-i5P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="S2A-bX-hlj"/>
                 <constraint firstItem="if4-U2-i5P" firstAttribute="width" secondItem="Oih-8x-7nZ" secondAttribute="width" id="SL6-BZ-cLL"/>
                 <constraint firstAttribute="trailing" secondItem="Oih-8x-7nZ" secondAttribute="trailing" constant="16" id="Sjm-CK-PLZ"/>
                 <constraint firstItem="9wQ-dY-S13" firstAttribute="top" secondItem="urj-iF-Awy" secondAttribute="bottom" constant="8" id="Vuw-aE-wpB"/>
-                <constraint firstItem="5Ic-eO-Zj2" firstAttribute="trailing" secondItem="urj-iF-Awy" secondAttribute="trailing" id="cRW-Do-c3G"/>
+                <constraint firstItem="DaU-kd-bYf" firstAttribute="top" secondItem="urj-iF-Awy" secondAttribute="bottom" priority="999" constant="12" id="YZY-da-cer"/>
+                <constraint firstItem="Jsr-ci-v2v" firstAttribute="top" secondItem="urj-iF-Awy" secondAttribute="bottom" priority="999" constant="8" id="bAP-aW-YXE"/>
+                <constraint firstItem="9wQ-dY-S13" firstAttribute="leading" secondItem="hJO-LK-eFK" secondAttribute="leading" id="bRO-F6-aMI"/>
                 <constraint firstItem="hJO-LK-eFK" firstAttribute="leading" secondItem="urj-iF-Awy" secondAttribute="leading" id="dCj-eP-SUn"/>
                 <constraint firstItem="urj-iF-Awy" firstAttribute="top" secondItem="hJO-LK-eFK" secondAttribute="bottom" constant="8" id="ecu-MC-Dj1"/>
                 <constraint firstItem="5Ic-eO-Zj2" firstAttribute="top" secondItem="9wQ-dY-S13" secondAttribute="top" id="emt-O8-3Sf"/>
+                <constraint firstItem="DaU-kd-bYf" firstAttribute="top" secondItem="hJO-LK-eFK" secondAttribute="bottom" priority="1" constant="8" id="fS3-rq-A4T"/>
+                <constraint firstItem="5Ic-eO-Zj2" firstAttribute="trailing" secondItem="hJO-LK-eFK" secondAttribute="trailing" id="gav-Y2-trE"/>
+                <constraint firstItem="ugp-Oq-MCb" firstAttribute="top" secondItem="VaF-L4-tPq" secondAttribute="top" id="mGW-yr-FOz"/>
+                <constraint firstItem="Jsr-ci-v2v" firstAttribute="leading" secondItem="VaF-L4-tPq" secondAttribute="leading" id="nyI-AM-urJ"/>
+                <constraint firstItem="Jsr-ci-v2v" firstAttribute="height" secondItem="VaF-L4-tPq" secondAttribute="height" id="t00-vw-kD7"/>
                 <constraint firstItem="if4-U2-i5P" firstAttribute="top" secondItem="Oih-8x-7nZ" secondAttribute="top" id="vIE-mb-UnF"/>
                 <constraint firstAttribute="bottom" secondItem="if4-U2-i5P" secondAttribute="bottom" constant="8" id="w1n-e5-Pbn"/>
                 <constraint firstItem="Oih-8x-7nZ" firstAttribute="leading" secondItem="if4-U2-i5P" secondAttribute="trailing" constant="17" id="xgj-T7-kAn"/>
+                <constraint firstItem="ugp-Oq-MCb" firstAttribute="trailing" secondItem="hJO-LK-eFK" secondAttribute="trailing" id="yOg-qH-5OS"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="K7T-jg-nBk"/>
+                    <exclude reference="Iz6-eU-vGR"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>
