@@ -40,7 +40,12 @@
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"New_NOC"
                                                                                 Label:@"New NOC"
                                                                                  Icon:@"New NOC Icon"
-                                                                                 Mask:RelatedServiceTypeNewNOC]];
+                                                                                 Mask:RelatedServiceTypeNewEmoloyeeNOC]];
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"New_NOC_Company"
+                                                                                Label:@"New NOC"
+                                                                                 Icon:@"New NOC Icon"
+                                                                                 Mask:RelatedServiceTypeNewCompanyNOC]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"New_Card"
                                                                                 Label:@"New Card"
@@ -233,8 +238,11 @@
         return;
     
     switch (sender.tag) {
-        case RelatedServiceTypeNewNOC:
-            [self.delegate relatedServiceNewNOCButtonClicked];
+        case RelatedServiceTypeNewEmoloyeeNOC:
+            [self.delegate relatedServiceNewEmployeeNOCButtonClicked];
+            break;
+        case RelatedServiceTypeNewCompanyNOC:
+            [self.delegate relatedServiceNewCompanyNOCButtonClicked];
             break;
         case RelatedServiceTypeNewCard:
             [self.delegate relatedServiceNewCardButtonClicked];

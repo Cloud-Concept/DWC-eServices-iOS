@@ -107,7 +107,7 @@
     [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:NSLocalizedString(@"ContactInformation", @"") Fields:fieldsArray]];
     
     recordVC.DetailsSectionsArray = sectionsArray;
-    recordVC.RelatedServicesMask = 0;
+    recordVC.RelatedServicesMask = RelatedServiceTypeNewCompanyNOC;
 }
 
 - (void)configureRecordMainViewController:(RecordMainViewController *)recordVC ForLicense:(License *)license Company:(Account *)account{

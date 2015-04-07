@@ -16,6 +16,8 @@
 #import "EServiceAdministration.h"
 #import "ServicesUploadViewController.h"
 #import "BaseServicesViewController.h"
+#import "Globals.h"
+#import "Account.h"
 
 @interface ServicesDynamicFormViewController ()
 
@@ -159,7 +161,10 @@
     }
     
     if (queryFields) {
-        [selectQuery appendFormat:@" FROM Visa__c WHERE ID = '%@' LIMIT 1", self.baseServicesViewController.currentVisaObject.Id];
+        if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewCompanyNOC)
+            [selectQuery appendFormat:@" FROM Account WHERE ID = '%@' LIMIT 1", [Globals currentAccount].Id];
+        else
+            [selectQuery appendFormat:@" FROM Visa__c WHERE ID = '%@' LIMIT 1", self.baseServicesViewController.currentVisaObject.Id];
         
         [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
                                            failBlock:errorBlock

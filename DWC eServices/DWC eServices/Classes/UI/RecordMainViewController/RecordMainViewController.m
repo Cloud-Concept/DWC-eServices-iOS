@@ -91,15 +91,23 @@
 }
 */
 
-#pragma mark - RecordRelatedViewControllerDelegate
-
-- (void)relatedServiceNewNOCButtonClicked {
+- (void)openNewNOCFlow:(RelatedServiceType)serviceType {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
-    baseServicesVC.relatedServiceType = RelatedServiceTypeNewNOC;
+    baseServicesVC.relatedServiceType = serviceType;
     baseServicesVC.currentVisaObject = self.visaObject;
     baseServicesVC.createServiceRecord = YES;
     [self.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
+#pragma mark - RecordRelatedViewControllerDelegate
+
+- (void)relatedServiceNewEmployeeNOCButtonClicked {
+    [self openNewNOCFlow:RelatedServiceTypeNewEmoloyeeNOC];
+}
+
+- (void)relatedServiceNewCompanyNOCButtonClicked {
+    [self openNewNOCFlow:RelatedServiceTypeNewCompanyNOC];
 }
 
 - (void)relatedServiceNewCardButtonClicked {

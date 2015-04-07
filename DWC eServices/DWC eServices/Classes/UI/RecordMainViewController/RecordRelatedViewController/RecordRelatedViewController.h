@@ -10,7 +10,7 @@
 
 @protocol RecordRelatedViewControllerDelegate <NSObject>
 
-- (void)relatedServiceNewNOCButtonClicked;
+- (void)relatedServiceNewEmployeeNOCButtonClicked;
 - (void)relatedServiceNewCardButtonClicked;
 - (void)relatedServiceRenewCardButtonClicked;
 - (void)relatedServiceCancelCardButtonClicked;
@@ -20,6 +20,7 @@
 - (void)relatedServiceCancelVisaButtonClicked;
 - (void)relatedServiceContractRenewalButtonClicked;
 - (void)relatedServiceLicenseRenewalButtonClicked;
+- (void)relatedServiceNewCompanyNOCButtonClicked;
 
 @end
 

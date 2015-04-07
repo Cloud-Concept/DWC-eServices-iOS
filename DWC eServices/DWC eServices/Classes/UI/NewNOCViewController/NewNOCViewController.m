@@ -210,7 +210,9 @@
     loadingNOCTypes = YES;
     [self showLoadingDialog];
     
-    [[SFRestAPI sharedInstance] performSOQLQuery:[SOQLQueries employeeNOCTypesQuery]
+    NSString *query = self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewCompanyNOC ? [SOQLQueries companyNOCTypesQuery] : [SOQLQueries employeeNOCTypesQuery];
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:query
                                        failBlock:errorBlock
                                    completeBlock:successBlock];
 }
@@ -277,25 +279,23 @@
     self.baseServicesViewController.currentServiceAdministration = eService;
     
     self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                  /*[NSNumber numberWithBool:[self.courierRequiredSwitch isOn]] ,@"isCourierRequired__c",*/
                                                   eService.Id, @"Service_Requested__c",
-                                                  self.baseServicesViewController.currentVisaObject.visaHolder.Id, @"Employee_Ref__c",
                                                   [Globals currentAccount].Id, @"AccountId",
                                                   caseRecordTypeId, @"RecordTypeId",
                                                   @"Draft", @"Status",
                                                   @"NOC Services", @"Type",
                                                   @"Mobile", @"Origin",
+                                                  self.baseServicesViewController.currentVisaObject.visaHolder.Id, @"Employee_Ref__c",
                                                   nil];
     
     self.baseServicesViewController.serviceFields = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                     self.baseServicesViewController.currentVisaObject.visaHolder.Id, @"Person__c",
                                                      [Globals currentAccount].Id, @"Current_Sponsor__c",
-                                                     self.baseServicesViewController.currentVisaObject.Id, @"Current_Visa__c",
                                                      @"Application Received", @"Application_Status__c",
                                                      eService.serviceIdentifier, @"Document_Name__c",
                                                      nocRecordTypeId, @"RecordTypeId",
                                                      [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]], @"isCourierRequired__c",
-                                                     /*caseId, @"Request__c",*/
+                                                     self.baseServicesViewController.currentVisaObject.Id, @"Current_Visa__c",
+                                                     self.baseServicesViewController.currentVisaObject.visaHolder.Id, @"Person__c",
                                                      nil];
     
     self.baseServicesViewController.parameters = [NSDictionary dictionaryWithObjectsAndKeys:

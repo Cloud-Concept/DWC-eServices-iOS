@@ -10,7 +10,7 @@
 
 typedef enum {
     RelatedServiceTypeViewMyRequest = 0,
-    RelatedServiceTypeNewNOC = 1,
+    RelatedServiceTypeNewEmoloyeeNOC = 1,
     RelatedServiceTypeNewCard = 2,
     RelatedServiceTypeRenewCard = 4,
     RelatedServiceTypeCancelCard = 8,
@@ -21,6 +21,7 @@ typedef enum {
     RelatedServiceTypeRegistrationDocuments = 256,
     RelatedServiceTypeContractRenewal = 512,
     RelatedServiceTypeLicenseRenewal = 1024,
+    RelatedServiceTypeNewCompanyNOC = 2048,
 }RelatedServiceType;
 
 @interface RelatedService : NSObject

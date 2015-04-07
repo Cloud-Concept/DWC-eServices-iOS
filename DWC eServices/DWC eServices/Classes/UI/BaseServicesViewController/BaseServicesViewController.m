@@ -85,7 +85,7 @@
     NSString *returnQuery;
     
     switch (self.relatedServiceType) {
-        case RelatedServiceTypeNewNOC:
+        case RelatedServiceTypeNewEmoloyeeNOC:
         case RelatedServiceTypeNewCard:
         case RelatedServiceTypeViewMyRequest:
         case RelatedServiceTypeRegistrationDocuments:
@@ -186,7 +186,8 @@
 
 - (void)showServiceFlow {
     switch (self.relatedServiceType) {
-        case RelatedServiceTypeNewNOC:
+        case RelatedServiceTypeNewEmoloyeeNOC:
+        case RelatedServiceTypeNewCompanyNOC:
             [self showNOCServiceFlow];
             break;
         case RelatedServiceTypeNewCard:

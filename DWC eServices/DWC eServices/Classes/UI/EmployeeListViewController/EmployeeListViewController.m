@@ -324,12 +324,14 @@
     
     NSUInteger servicesMask = 0;
     if ([visa.validityStatus isEqualToString:@"Issued"])
-        servicesMask |= RelatedServiceTypeNewNOC;
+        servicesMask |= RelatedServiceTypeNewEmoloyeeNOC;
     
+    /*
     if ([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"]) {
         servicesMask |= RelatedServiceTypeRenewVisa;
         servicesMask |= RelatedServiceTypeCancelVisa;
     }
+    */
     
     recordVC.RelatedServicesMask = servicesMask;
 }
@@ -373,8 +375,10 @@
     
     NSUInteger servicesMask = 0;
     
+    /*
     if ([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"])
         servicesMask |= RelatedServiceTypeCancelVisa;
+    */
     
     recordVC.RelatedServicesMask = servicesMask;
 }
