@@ -267,6 +267,7 @@
             break;
         case RelatedServiceTypeContractRenewal:
             [self.delegate relatedServiceContractRenewalButtonClicked];
+            break;
         case RelatedServiceTypeLicenseRenewal:
             [self.delegate relatedServiceLicenseRenewalButtonClicked];
             break;

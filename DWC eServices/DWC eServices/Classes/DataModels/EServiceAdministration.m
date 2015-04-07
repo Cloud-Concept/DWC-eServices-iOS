@@ -24,6 +24,7 @@
     self.displayName = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Display_Name__c"]];
     self.serviceIdentifier = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Service_Identifier__c"]];
     self.amount = [HelperClass numberCheckNull:[eServiceAdministrationDict objectForKey:@"Amount__c"]];
+    self.totalAmount = [HelperClass numberCheckNull:[eServiceAdministrationDict objectForKey:@"Total_Amount__c"]];
     self.relatedToObject = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Related_to_Object__c"]];
     self.editNewVFGenerator = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"New_Edit_VF_Generator__c"]];
     self.cancelVFGenerator = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Cancel_VF_Generator__c"]];

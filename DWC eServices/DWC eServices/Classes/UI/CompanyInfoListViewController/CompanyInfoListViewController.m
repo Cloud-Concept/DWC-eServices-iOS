@@ -534,7 +534,10 @@
     recordVC.DetailsSectionsArray = sectionsArray;
     
     NSUInteger servicesMask = 0;
-    servicesMask |= RelatedServiceTypeContractRenewal;
+    
+    NSTimeInterval daysToExpire = [tenancyContract.contractExpiryDate timeIntervalSinceNow] / (3600 * 24);
+    if (tenancyContract.isBCContract && daysToExpire <= 60)
+        servicesMask |= RelatedServiceTypeContractRenewal;
     
     recordVC.RelatedServicesMask = servicesMask;
     

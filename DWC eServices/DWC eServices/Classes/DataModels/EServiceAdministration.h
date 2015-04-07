@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *serviceIdentifier;
 @property (strong, nonatomic) NSString *displayName;
 @property (strong, nonatomic) NSNumber *amount;
+@property (strong, nonatomic) NSNumber *totalAmount;
 @property (strong, nonatomic) NSString *relatedToObject;
 @property (strong, nonatomic) NSString *editNewVFGenerator;
 @property (strong, nonatomic) NSString *cancelVFGenerator;

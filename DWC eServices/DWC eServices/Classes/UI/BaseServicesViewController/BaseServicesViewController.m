@@ -215,6 +215,7 @@
             break;
         case RelatedServiceTypeContractRenewal:
             [self showContractRenewalFlow];
+            break;
         case RelatedServiceTypeLicenseRenewal:
             [self showLicenseRenewalFlow];
             break;
