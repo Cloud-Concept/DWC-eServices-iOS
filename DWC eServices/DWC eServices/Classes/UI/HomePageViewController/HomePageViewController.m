@@ -225,7 +225,7 @@
     VisualforceWebviewViewController *vfWebviewVC = [VisualforceWebviewViewController new];
     vfWebviewVC.returnURL = [NSString stringWithFormat:@"/apex/DWCPortal_DashboardMobile?accountId=%@",
                              [Globals currentAccount].Id];
-    
+    vfWebviewVC.showSlidingMenu = YES;
     [self.navigationController pushViewController:vfWebviewVC animated:YES];
 }
 

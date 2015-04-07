@@ -10,6 +10,9 @@
 #import "UIImageView+MaskImage.h"
 #import "SFUserAccountManager.h"
 #import "SWRevealViewController.h"
+#import "VisualforceWebviewViewController.h"
+#import "Globals.h"
+#import "Account.h"
 
 @interface SidebarTableViewController ()
 
@@ -20,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    menuItems = @[@"User Cell", @"Home Cell", @"Dashboard Cell", @"My Request Cell", @"Employees Cell", @"Services Cell", @"Company Info Cell", @"Company Documents Cell", @"Need Help Cell", @"Logout Cell"];
+    menuItems = @[@"User Cell", @"Home Cell", @"Dashboard Cell", @"My Request Cell", @"Employees Cell", /*@"Services Cell",*/ @"Company Info Cell", @"Company Documents Cell", @"Need Help Cell", @"Logout Cell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,8 +49,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1) {
-        [self.revealViewController.navigationController popViewControllerAnimated:YES];
+    switch (indexPath.row) {
+        case 1:
+            [self.revealViewController.navigationController popViewControllerAnimated:YES];
+            break;
+        case 2:
+            //[self showDashboards];
+            break;
+        default:
+            break;
     }
 }
 

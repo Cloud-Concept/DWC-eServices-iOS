@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
+#import "SFRestAPI.h"
 
 @class DWCCompanyDocument;
+@class TenancyContract;
 
-@interface CompanyDocumentTypeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CompanyDocumentTypeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, SFRestDelegate>
 {
     NSMutableArray *dataRows;
+    TenancyContract *activeBCTenancyContract;
 }
 
 @property (nonatomic, strong) DWCCompanyDocument *currentDocumentType;

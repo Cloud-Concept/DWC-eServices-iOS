@@ -21,6 +21,8 @@
 #import "BaseServicesViewController.h"
 #import "EServiceAdministration.h"
 #import "RecordType.h"
+#import "License.h"
+#import "TenancyContract.h"
 
 @interface CompanyDocumentTypeListViewController ()
 
@@ -74,6 +76,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
             [self.tableView reloadData];
+            [self loadTenancyContract];
         });
     };
     
@@ -111,6 +114,18 @@
     [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDocumentType.SOQLQuery
                                        failBlock:errorBlock
                                    completeBlock:successBlock];
+}
+
+- (void)loadTenancyContract {
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    SFRestRequest *tenantContractsRequest = [[SFRestRequest alloc] init];
+    tenantContractsRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileTenantContractsWebService"];
+    tenantContractsRequest.method = SFRestMethodGET;
+    tenantContractsRequest.path = @"/services/apexrest/MobileTenantContractsWebService";
+    tenantContractsRequest.queryParams = [NSDictionary dictionaryWithObject:[Globals currentAccount].Id forKey:@"AccountId"];
+    
+    [[SFRestAPI sharedInstance] send:tenantContractsRequest delegate:self];
 }
 
 - (void)confirmDeleteCustomerDocument:(CompanyDocument *)document {
@@ -161,7 +176,7 @@
     VisualforceWebviewViewController *vfWebviewVC = [VisualforceWebviewViewController new];
     
     vfWebviewVC.returnURL = url;
-    
+    vfWebviewVC.showSlidingMenu = NO;
     [self.navigationController pushViewController:vfWebviewVC animated:YES];
 }
 
@@ -188,7 +203,7 @@
         });
     };
     
-    NSString *selectQuery = @"SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE SobjectType = 'Case' AND DeveloperName = 'Registration_Request'";
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE SobjectType = 'Case' AND DeveloperName = '%@'", eServicesDocumentChecklist.eServiceAdministration.recordTypePicklist];
     
     [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
                                        failBlock:errorBlock
@@ -207,20 +222,32 @@
     baseServicesVC.relatedServiceType = RelatedServiceTypeRegistrationDocuments;
     baseServicesVC.createServiceRecord = NO;
     
+    NSString *caseType = @"Registration Services";
+    if ([recordType.developerName containsString:@"Leasing"])
+        caseType = @"Leasing Services";
+    
     baseServicesVC.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
                                  eServicesDocumentChecklist.eServiceAdministration.Id, @"Service_Requested__c",
                                  eServicesDocumentChecklist.eServiceAdministration.editNewVFGenerator, @"Visual_Force_Generator__c",
                                  [Globals currentAccount].Id, @"AccountId",
                                  recordType.Id, @"RecordTypeId",
                                  @"Draft", @"Status",
-                                 @"Registration Services", @"Type",
+                                 caseType, @"Type",
                                  @"Mobile", @"Origin",
                                  nil];
     
-    baseServicesVC.parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 [Globals currentAccount].Id, @"accountID",
-                                 [Globals currentAccount].name, @"actName",
-                                 nil];
+    NSMutableDictionary *paramtersMutableDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                 [Globals currentAccount].Id, @"accountID",
+                                                 [Globals currentAccount].name, @"actName",
+                                                 [Globals currentAccount].currentLicenseNumber.licenseNumberValue, @"licName",
+                                                 [Globals currentAccount].currentLicenseNumber.Id, @"licID",
+                                                 nil];
+    if (activeBCTenancyContract) {
+        [paramtersMutableDict setObject:activeBCTenancyContract.Id forKey:@"tenID"];
+        [paramtersMutableDict setObject:activeBCTenancyContract.name forKey:@"tenName"];
+    }
+    
+    baseServicesVC.parameters = [NSDictionary dictionaryWithDictionary:paramtersMutableDict];
     
     //[baseServicesVC nextButtonClicked:ServiceFlowInitialPage];
     
@@ -390,6 +417,63 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
+}
+
+#pragma mark - SFRestAPIDelegate
+
+- (void)request:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
+    NSError *error;
+    NSArray *resultsArray = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
+    NSLog(@"request:didLoadResponse: %@", resultsArray);
+    
+    activeBCTenancyContract = nil;
+    for (NSDictionary *recordDict in resultsArray) {
+        TenancyContract *tempTenancyContract = [[TenancyContract alloc] initTenancyContract:recordDict];
+        
+        if (tempTenancyContract.isBCContract)
+            activeBCTenancyContract = tempTenancyContract;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        
+        if (!activeBCTenancyContract) {
+            for (EServicesDocumentChecklist *document in dataRows) {
+                if ([document.eServiceAdministration.recordTypePicklist containsString:@"Leasing_Request"]) {
+                    [dataRows removeObject:document];
+                    break;
+                }
+            }
+            [self.tableView reloadData];
+        }
+    });
+}
+
+- (void)request:(SFRestRequest*)request didFailLoadWithError:(NSError*)error {
+    NSLog(@"request:didFailLoadWithError: %@", error);
+    //add your failed error handling here
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+    });
+#warning Handle error
+}
+
+- (void)requestDidCancelLoad:(SFRestRequest *)request {
+    NSLog(@"requestDidCancelLoad: %@", request);
+    //add your failed error handling here
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+    });
+#warning Handle error
+}
+
+- (void)requestDidTimeout:(SFRestRequest *)request {
+    NSLog(@"requestDidTimeout: %@", request);
+    //add your failed error handling here
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+    });
+#warning Handle error
 }
 
 /*
