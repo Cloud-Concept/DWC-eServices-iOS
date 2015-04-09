@@ -76,6 +76,7 @@
 - (UILabel *)getLabelView;
 - (NSString *)getFormFieldValue;
 - (void)setFormFieldValue:(NSString *)value;
+- (void)setPicklistLabel:(NSString *)value;
 - (UILabel *)getReviewFieldNameLabel;
 - (UILabel *)getReviewFieldValueLabel;
 - (void)addChildPicklistFormField:(FormField *)childFormField;

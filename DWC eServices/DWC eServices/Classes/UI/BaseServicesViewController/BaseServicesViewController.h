@@ -38,6 +38,8 @@ typedef enum {
     NSMutableArray *failedImagedArray;
     
     NSInteger formFieldPicklistCalls;
+    
+    NSString *personalPhotoAttachmentId;
 }
 
 @property (nonatomic) RelatedServiceType relatedServiceType;

@@ -397,6 +397,10 @@
     }
 }
 
+- (void)setPicklistLabel:(NSString *)value {
+    [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
+}
+
 - (void)addChildPicklistFormField:(FormField *)childFormField {
     [childrenPicklistFormFieldsArray addObject:childFormField];
 }

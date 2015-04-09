@@ -125,7 +125,15 @@
         if (formField.isParameter) {
             [formField setFormFieldValue:[self.baseServicesViewController.parameters objectForKey:formField.textValue]];
         }
-        if (![formField.type isEqualToString:@"CUSTOMTEXT"])
+        if ([formField.type isEqualToString:@"CUSTOMTEXT"])
+            continue;
+        
+        if ([formField.type isEqualToString:@"REFERENCE"]) {
+            NSString *idField = [formField.name stringByReplacingOccurrencesOfString:@"__c" withString:@"__r.Id"];
+            NSString *nameField = [formField.name stringByReplacingOccurrencesOfString:@"__c" withString:@"__r.Name"];
+            [selectObjectQuery appendFormat:@", %@, %@", idField, nameField];
+        }
+        else
             [selectObjectQuery appendFormat:@", %@", formField.name];
         
         if(!formField.isQuery)
@@ -194,11 +202,17 @@
             if(!formField.isCalculated)
                 continue;
             
-            NSString *formFieldName = formField.name;
+            
             if ([formField.type isEqualToString:@"REFERENCE"]) {
+                NSString *formFieldName = formField.name;
+                formFieldName = [formField.name stringByReplacingOccurrencesOfString:@"__c" withString:@"__r.Id"];
+                [formField setFormFieldValue:[HelperClass getRelationshipValue:objectReturned Key:formFieldName]];
+                
                 formFieldName = [formField.name stringByReplacingOccurrencesOfString:@"__c" withString:@"__r.Name"];
+                [formField setPicklistLabel:[HelperClass getRelationshipValue:objectReturned Key:formFieldName]];
             }
-            [formField setFormFieldValue:[HelperClass getRelationshipValue:objectReturned Key:formFieldName]];
+            else
+                [formField setFormFieldValue:[HelperClass getRelationshipValue:objectReturned Key:formField.name]];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{

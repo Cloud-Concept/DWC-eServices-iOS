@@ -492,14 +492,15 @@
         [failedImagedArray addObject:document];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self uploadDidReturn];
+            [self uploadDidReturn:document attachmentId:nil];
         });
     };
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         document.attachmentUploaded = YES;
+        NSString *attachmentDocumentId = [dict objectForKey:@"id"];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self uploadDidReturn];
+            [self uploadDidReturn:document attachmentId:attachmentDocumentId];
         });
     };
 
@@ -521,8 +522,12 @@
     
 }
 
-- (void)uploadDidReturn {
+- (void)uploadDidReturn:(EServiceDocument *)document attachmentId:(NSString *)attachmentId {
     attachmentsReturned++;
+    
+    if (attachmentId && [document.name containsString:@"Person Photo"]) {
+        personalPhotoAttachmentId = attachmentId;
+    }
     
     if (attachmentsReturned == totalAttachmentsToUpload) {
         [self hideLoadingDialog];
@@ -532,9 +537,38 @@
                                              Message:NSLocalizedString(@"DocumentsUploadAlertMessage", @"")];
         }
         else {
-            [self showReviewFlowPage];
+            [self updatePersonPhotoId];
         }
     }
+}
+
+- (void)updatePersonPhotoId {
+    NSDictionary *fields = [NSDictionary dictionaryWithObjectsAndKeys:
+                            personalPhotoAttachmentId, @"Personal_photo__c",
+                            nil];
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideLoadingDialog];
+            [self showReviewFlowPage];
+        });
+    };
+    
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideLoadingDialog];
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
+        });
+    };
+    
+    [self showLoadingDialog];
+    
+    [[SFRestAPI sharedInstance] performUpdateWithObjectType:self.currentWebForm.objectName
+                                                   objectId:insertedServiceId
+                                                     fields:fields
+                                                  failBlock:errorBlock
+                                              completeBlock:successBlock];
 }
 
 - (void)cancelCardManagement {

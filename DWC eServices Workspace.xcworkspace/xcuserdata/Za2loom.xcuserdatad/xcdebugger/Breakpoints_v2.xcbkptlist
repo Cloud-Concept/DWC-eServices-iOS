@@ -19,5 +19,129 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/ServicesDynamicFormViewController/ServicesDynamicFormViewController.m"
+            timestampString = "450282740.948797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-getFormFieldsValues"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__56-[ServicesDynamicFormViewController getFormFieldsValues]_block_invoke"
+                  moduleName = "DWC eServices"
+                  urlString = "file:///Users/Za2loom/Development/CloudConcept/iOS/DWC-eServices-iOS/DWC%20eServices/DWC%20eServices/Classes/UI/ServicesDynamicFormViewController/ServicesDynamicFormViewController.m"
+                  timestampString = "450282105.664397"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "1030">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__56-[ServicesDynamicFormViewController getFormFieldsValues]_block_invoke_2"
+                  moduleName = "DWC eServices"
+                  urlString = "file:///Users/Za2loom/Development/CloudConcept/iOS/DWC-eServices-iOS/DWC%20eServices/DWC%20eServices/Classes/UI/ServicesDynamicFormViewController/ServicesDynamicFormViewController.m"
+                  timestampString = "450282105.664647"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/ServicesDynamicFormViewController/ServicesDynamicFormViewController.m"
+            timestampString = "450282740.948797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "-getFormFieldsValues"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/ServicesDynamicFormViewController/ServicesDynamicFormViewController.m"
+            timestampString = "450282740.948797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
+            landmarkName = "-getObjectValue:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/ServicesDynamicFormViewController/ServicesDynamicFormViewController.m"
+            timestampString = "450282899.994414"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "-getObjectValue:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__52-[ServicesDynamicFormViewController getObjectValue:]_block_invoke"
+                  moduleName = "DWC eServices"
+                  urlString = "file:///Users/Za2loom/Development/CloudConcept/iOS/DWC-eServices-iOS/DWC%20eServices/DWC%20eServices/Classes/UI/ServicesDynamicFormViewController/ServicesDynamicFormViewController.m"
+                  timestampString = "450282900.464303"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "218"
+                  endingLineNumber = "218"
+                  offsetFromSymbolStart = "1780">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__52-[ServicesDynamicFormViewController getObjectValue:]_block_invoke_2"
+                  moduleName = "DWC eServices"
+                  urlString = "file:///Users/Za2loom/Development/CloudConcept/iOS/DWC-eServices-iOS/DWC%20eServices/DWC%20eServices/Classes/UI/ServicesDynamicFormViewController/ServicesDynamicFormViewController.m"
+                  timestampString = "450282900.465005"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "218"
+                  endingLineNumber = "218"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
