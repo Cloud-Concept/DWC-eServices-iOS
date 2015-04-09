@@ -469,6 +469,8 @@
 #warning Handle error
         };
         
+        [self showLoadingDialog];
+        
         if (doc.companyDocumentId != nil && ![doc.companyDocumentId isEqualToString:@""] && !doc.attachmentUploaded) {
             [self addAttachment:doc];
         }

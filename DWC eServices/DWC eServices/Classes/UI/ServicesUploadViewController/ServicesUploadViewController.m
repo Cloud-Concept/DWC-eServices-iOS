@@ -47,6 +47,12 @@
         return;
     }
     
+    if (![self validateDocumentsSize]) {
+        [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                         Message:NSLocalizedString(@"DocumentsSizeAlertMessage", @"")];
+        return;
+    }
+    
     [self.baseServicesViewController nextButtonClicked:ServiceFlowAttachmentsPage];
 }
 
@@ -56,6 +62,20 @@
     for (EServiceDocument *document in self.baseServicesViewController.currentServiceAdministration.serviceDocumentsArray) {
         if (!document.attachment)
             isValid = NO;
+    }
+    
+    return isValid;
+}
+
+- (BOOL)validateDocumentsSize {
+    BOOL isValid = YES;
+    
+    for (EServiceDocument *document in self.baseServicesViewController.currentServiceAdministration.serviceDocumentsArray) {
+        float documentSize = document.attachment.length / 1024.0 / 1024.0;
+        
+        if (documentSize > 1) {
+            isValid = NO;
+        }
     }
     
     return isValid;
