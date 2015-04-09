@@ -21,13 +21,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.showSlidingMenu = YES;
+    self.showNotificationIcon = YES;
     self.revealViewController.navigationController.navigationBarHidden = YES;
     //self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (self.showSlidingMenu)
-        [self initNavigationItem];
+    [self initNavigationItem];
     
     [self initTabBar];
 }
@@ -38,21 +38,14 @@
 }
 
 - (void)initNavigationItem {
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
-        UIBarButtonItem *sideMenuBarButton = [[UIBarButtonItem alloc] init];
-        
-        sideMenuBarButton.image = [UIImage imageNamed:@"NavBar Sidemenu Button Icon"];
-        sideMenuBarButton.tintColor = [UIColor whiteColor];
-        
-        [sideMenuBarButton setTarget: self.revealViewController];
-        [sideMenuBarButton setAction: @selector( revealToggle: )];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-        
-        self.navigationItem.leftBarButtonItem = sideMenuBarButton;
-    }
+    if (self.showSlidingMenu)
+        [self initSlidingMenu];
     
+    if (self.showNotificationIcon)
+        [self initNotificationIcon];
+}
+
+- (void)initNotificationIcon {
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     [customButton setImage:[UIImage imageNamed:@"Navigation Bar Notification Icon"] forState:UIControlStateNormal];
     [customButton addTarget:self action:@selector(openNotificationsPage:) forControlEvents:UIControlEventTouchUpInside];
@@ -67,6 +60,23 @@
     //barButton.badgeOriginY = -9;
     
     self.navigationItem.rightBarButtonItem = barButton;
+}
+
+- (void)initSlidingMenu {
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        UIBarButtonItem *sideMenuBarButton = [[UIBarButtonItem alloc] init];
+        
+        sideMenuBarButton.image = [UIImage imageNamed:@"NavBar Sidemenu Button Icon"];
+        sideMenuBarButton.tintColor = [UIColor whiteColor];
+        
+        [sideMenuBarButton setTarget: self.revealViewController];
+        [sideMenuBarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+        
+        self.navigationItem.leftBarButtonItem = sideMenuBarButton;
+    }
 }
 
 - (void) initTabBar {

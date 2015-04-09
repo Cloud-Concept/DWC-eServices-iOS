@@ -44,6 +44,7 @@
     
     // Do any additional setup after loading the view.
     self.showSlidingMenu = NO;
+    self.showNotificationIcon = NO;
     
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"back", @"")

@@ -12,4 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet UITabBar *bottomTabBar;
 @property (nonatomic) BOOL showSlidingMenu;
+@property (nonatomic) BOOL showNotificationIcon;
 @end
