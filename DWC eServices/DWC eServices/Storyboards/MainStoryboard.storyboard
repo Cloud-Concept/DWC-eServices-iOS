@@ -699,7 +699,7 @@
         <!--Navigation Controller-->
         <scene sceneID="gMs-kR-n6f">
             <objects>
-                <navigationController id="ll2-JS-FCZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Notifications Page" id="ll2-JS-FCZ" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AiN-eb-qSN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -716,7 +716,7 @@
         <!--Notification List View Controller-->
         <scene sceneID="DFL-JD-dIz">
             <objects>
-                <viewController id="8uN-ra-4O9" customClass="NotificationListViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="s" id="8uN-ra-4O9" customClass="NotificationListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4nu-9v-WE8"/>
                         <viewControllerLayoutGuide type="bottom" id="rdr-VG-rhr"/>

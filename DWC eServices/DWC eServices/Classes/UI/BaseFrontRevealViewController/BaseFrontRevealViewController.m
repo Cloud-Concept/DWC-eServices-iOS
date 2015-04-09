@@ -8,6 +8,8 @@
 
 #import "BaseFrontRevealViewController.h"
 #import "SWRevealViewController.h"
+#import "BBBadgeBarButtonItem.h"
+#import "Globals.h"
 
 @interface BaseFrontRevealViewController ()
 
@@ -50,6 +52,21 @@
         
         self.navigationItem.leftBarButtonItem = sideMenuBarButton;
     }
+    
+    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [customButton setImage:[UIImage imageNamed:@"Navigation Bar Notification Icon"] forState:UIControlStateNormal];
+    [customButton addTarget:self action:@selector(openNotificationsPage:) forControlEvents:UIControlEventTouchUpInside];
+    
+    BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+    barButton.badgeValue = [NSString stringWithFormat:@"%@", [Globals notificationsCount]];
+    barButton.badgeBGColor = [UIColor colorWithRed:0.2156 green:0.749 blue:0.741 alpha:1];
+    barButton.badgeFont = [UIFont fontWithName:@"CorisandeLight" size:8.0f];
+    barButton.shouldHideBadgeAtZero = YES;
+    
+    //barButton.badgeOriginX = 13;
+    //barButton.badgeOriginY = -9;
+    
+    self.navigationItem.rightBarButtonItem = barButton;
 }
 
 - (void) initTabBar {
@@ -110,6 +127,12 @@
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     UIViewController *myRequestVC = [storybord instantiateViewControllerWithIdentifier:@"My Requests Page"];
     [self.revealViewController setFrontViewController:myRequestVC animated:YES];
+}
+
+- (void)openNotificationsPage:(id)sender {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *notificationsVC = [storybord instantiateViewControllerWithIdentifier:@"Notifications Page"];
+    [self.revealViewController setFrontViewController:notificationsVC animated:YES];
 }
 
 /*
