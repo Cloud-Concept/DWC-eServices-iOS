@@ -152,7 +152,9 @@
             
             index++;
         }
-        
+        if (index >= durationArray.count)
+            index = 0;
+
         selectedCardTypeIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
         [self.chooseCardTypeButton setTitle:[cardTypesDescriptionsArray objectAtIndex:index] forState:UIControlStateNormal];
         
@@ -165,6 +167,10 @@
             
             index++;
         }
+        
+        if (index >= durationArray.count)
+            index = 0;
+        
         [self.chooseDurationButton setTitle:[durationArray objectAtIndex:index] forState:UIControlStateNormal];
         selectedDurationIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
         
