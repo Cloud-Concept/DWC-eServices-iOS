@@ -91,6 +91,8 @@
 		13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13481AE41A82257100093331 /* RecordRelatedViewController.m */; };
 		13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13481AE51A82257100093331 /* RecordRelatedViewController.xib */; };
 		13481AF01A823A5B00093331 /* RelatedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 13481AEF1A823A5B00093331 /* RelatedService.m */; };
+		134B8A1A1AD697F4005CCAD5 /* ServicesThankYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 134B8A181AD697F4005CCAD5 /* ServicesThankYouViewController.m */; };
+		134B8A1B1AD697F4005CCAD5 /* ServicesThankYouViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134B8A191AD697F4005CCAD5 /* ServicesThankYouViewController.xib */; };
 		1353CBD61AAD7ECB00E57FAC /* ManagementMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 1353CBD51AAD7ECB00E57FAC /* ManagementMember.m */; };
 		1353CBD91AAD92B700E57FAC /* Directorship.m in Sources */ = {isa = PBXBuildFile; fileRef = 1353CBD81AAD92B700E57FAC /* Directorship.m */; };
 		1353CBDC1AAD9B5300E57FAC /* LegalRepresentative.m in Sources */ = {isa = PBXBuildFile; fileRef = 1353CBDB1AAD9B5300E57FAC /* LegalRepresentative.m */; };
@@ -296,6 +298,9 @@
 		13481AE51A82257100093331 /* RecordRelatedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordRelatedViewController.xib; path = "DWC eServices/Classes/UI/RecordMainViewController/RecordRelatedViewController/RecordRelatedViewController.xib"; sourceTree = SOURCE_ROOT; };
 		13481AEE1A823A5B00093331 /* RelatedService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelatedService.h; sourceTree = "<group>"; };
 		13481AEF1A823A5B00093331 /* RelatedService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelatedService.m; sourceTree = "<group>"; };
+		134B8A171AD697F4005CCAD5 /* ServicesThankYouViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesThankYouViewController.h; sourceTree = "<group>"; };
+		134B8A181AD697F4005CCAD5 /* ServicesThankYouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesThankYouViewController.m; sourceTree = "<group>"; };
+		134B8A191AD697F4005CCAD5 /* ServicesThankYouViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesThankYouViewController.xib; sourceTree = "<group>"; };
 		1353CBD41AAD7ECB00E57FAC /* ManagementMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagementMember.h; sourceTree = "<group>"; };
 		1353CBD51AAD7ECB00E57FAC /* ManagementMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagementMember.m; sourceTree = "<group>"; };
 		1353CBD71AAD92B700E57FAC /* Directorship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Directorship.h; sourceTree = "<group>"; };
@@ -606,6 +611,7 @@
 				13EE67911A7E50A500255174 /* RKSwipeBetweenViewControllers */,
 				13063A861A8B6C0000A1DEA2 /* ServicesDynamicFormViewController */,
 				132F0D051A948FB2003FFC24 /* ServicesReviewViewController */,
+				134B8A161AD697B6005CCAD5 /* ServicesThankYouViewController */,
 				131819481A91FC8B00CAA4D6 /* ServicesUploadViewController */,
 				132CCFAD1A779C5F007A40AE /* SidebarTableViewController */,
 				130291391A76C88D000E119C /* SWRevealViewController */,
@@ -999,6 +1005,16 @@
 				133E34D81AC02CF6002C3748 /* VisualforceWebviewViewController.xib */,
 			);
 			path = VisualforceWebviewViewController;
+			sourceTree = "<group>";
+		};
+		134B8A161AD697B6005CCAD5 /* ServicesThankYouViewController */ = {
+			isa = PBXGroup;
+			children = (
+				134B8A171AD697F4005CCAD5 /* ServicesThankYouViewController.h */,
+				134B8A181AD697F4005CCAD5 /* ServicesThankYouViewController.m */,
+				134B8A191AD697F4005CCAD5 /* ServicesThankYouViewController.xib */,
+			);
+			path = ServicesThankYouViewController;
 			sourceTree = "<group>";
 		};
 		136377BB1A767C2C00282F72 /* FVCustomAlertView */ = {
@@ -1644,6 +1660,7 @@
 				133E34DA1AC02CF6002C3748 /* VisualforceWebviewViewController.xib in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
 				1328E7D91A95C7DF00475E90 /* NewNOCViewController.xib in Resources */,
+				134B8A1B1AD697F4005CCAD5 /* ServicesThankYouViewController.xib in Resources */,
 				130523DE1A99C05500EF2268 /* ServicesUploadViewController.xib in Resources */,
 				1328E7DB1A96042600475E90 /* ServicesDynamicFormViewController.xib in Resources */,
 				1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */,
@@ -1708,6 +1725,7 @@
 				13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */,
 				13743ECE1AB04D4400D0B873 /* NotificationListViewController.m in Sources */,
 				13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */,
+				134B8A1A1AD697F4005CCAD5 /* ServicesThankYouViewController.m in Sources */,
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,
 				131F96CD1AA48D8400786B15 /* MyRequestListViewController.m in Sources */,
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,

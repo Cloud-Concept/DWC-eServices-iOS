@@ -14,6 +14,7 @@
 #import "ServicesDynamicFormViewController.h"
 #import "ServicesUploadViewController.h"
 #import "ServicesReviewViewController.h"
+#import "ServicesThankYouViewController.h"
 #import "Stack.h"
 #import "UIViewController+ChildViewController.h"
 #import "HelperClass.h"
@@ -68,6 +69,12 @@
     else
         [self popChildViewController];
     
+}
+
+- (void) hideAndDisableRightNavigationItem
+{
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor clearColor]];
+    [self.navigationItem.leftBarButtonItem setEnabled:NO];
 }
 
 - (void)initializeCaseId:(NSString *)caseId {
@@ -296,6 +303,21 @@
     [viewControllersStack pushObject:servicesReviewVC];
 }
 
+- (void)showThankYouFlowPage {
+    [self hideAndDisableRightNavigationItem];
+    
+    ServicesThankYouViewController *servicesThankYouVC = [ServicesThankYouViewController new];
+    servicesThankYouVC.baseServicesViewController = self;
+    [self addChildViewController:servicesThankYouVC toView:self.serviceFlowView];
+    [viewControllersStack pushObject:servicesThankYouVC];
+}
+
+- (void)closeThankYouFlowPage {
+    if (self.relatedServiceType == RelatedServiceTypeViewMyRequest)
+        self.backAction();
+    [self popServicesViewController];
+}
+
 - (void)createCaseRecord {
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         if (dict != nil)
@@ -397,7 +419,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideLoadingDialog];
             
-            if ([self hasAttachments] && !self.relatedServiceType == RelatedServiceTypeReplaceCard)
+            if ([self hasAttachments] && self.relatedServiceType != RelatedServiceTypeReplaceCard)
                 [self showAttachmentsFlowPage];
             else
                 [self showReviewFlowPage];
@@ -704,22 +726,7 @@
 - (void)handlePayAndSubmitWebserviceReturn:(id)jsonResponse {
     [self hideLoadingDialog];
     
-    UIAlertController *alertController =
-    [UIAlertController alertControllerWithTitle:NSLocalizedString(@"ThanksAlertTitle", @"")
-                                        message:NSLocalizedString(@"ApplicationSubmittedAlertMessage", @"")
-                                 preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok", @"")
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction *action) {
-                                                         if (self.relatedServiceType == RelatedServiceTypeViewMyRequest)
-                                                             self.backAction();
-                                                         [self popServicesViewController];
-                                                     }];
-    
-    [alertController addAction:okAction];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
+    [self showThankYouFlowPage];
 }
 
 - (void)handleGenerateInvoiceWebServiceReturn:(id)jsonResponse {

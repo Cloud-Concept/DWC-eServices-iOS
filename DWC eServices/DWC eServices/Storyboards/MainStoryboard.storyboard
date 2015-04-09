@@ -37,7 +37,6 @@
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
-            <string>CorisandeLight</string>
         </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
             <string>CorisandeRegular</string>
@@ -214,36 +213,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bY-3z-8cH">
                                 <rect key="frame" x="191" y="166" width="178" height="232"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R1-9G-NpB">
-                                        <rect key="frame" x="0.0" y="0.0" width="86" height="89"/>
-                                        <color key="backgroundColor" red="0.62352941176470589" green="0.52941176470588236" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="5R1-9G-NpB" secondAttribute="height" multiplier="86:89" id="tja-0f-Qaf"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
-                                        <state key="normal" title="MY REQUEST" image="Home My Request Icon">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="9Yx-mK-EUe" kind="push" identifier="MyRequestsSlidingMenuSegue" id="zny-VT-mg9"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JE-ua-Xp0">
-                                        <rect key="frame" x="92" y="0.0" width="86" height="89"/>
-                                        <color key="backgroundColor" red="0.34509803921568627" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="2JE-ua-Xp0" secondAttribute="height" multiplier="86:89" id="5Lt-r8-y1S"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
-                                        <state key="normal" title="NOTIFICATION" image="Home Notification Icon">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="9Yx-mK-EUe" kind="push" identifier="NotificationSlidingMenuSegue" id="JOe-Dt-jEW"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ser-GU-2ic">
                                         <rect key="frame" x="0.0" y="95" width="178" height="137"/>
                                         <subviews>
@@ -295,19 +264,32 @@
                                             <constraint firstItem="5zr-nc-Wme" firstAttribute="leading" secondItem="Ser-GU-2ic" secondAttribute="leading" constant="8" id="waS-Xd-sq5"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2JE-ua-Xp0">
+                                        <rect key="frame" x="0.0" y="0.0" width="178" height="89"/>
+                                        <color key="backgroundColor" red="0.34509803921568627" green="0.55294117647058827" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="178" id="C1d-ju-fnj"/>
+                                            <constraint firstAttribute="height" constant="89" id="Orm-d6-ArR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
+                                        <state key="normal" title="NOTIFICATION" image="Home Notification Icon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="9Yx-mK-EUe" kind="push" identifier="NotificationSlidingMenuSegue" id="JOe-Dt-jEW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8bY-3z-8cH" secondAttribute="height" multiplier="178:231" id="04l-Ud-DhM"/>
-                                    <constraint firstItem="2JE-ua-Xp0" firstAttribute="leading" secondItem="5R1-9G-NpB" secondAttribute="trailing" constant="6" id="AP4-Lt-Oz7"/>
-                                    <constraint firstItem="5R1-9G-NpB" firstAttribute="top" secondItem="2JE-ua-Xp0" secondAttribute="top" id="LtB-RN-u3F"/>
-                                    <constraint firstItem="Ser-GU-2ic" firstAttribute="leading" secondItem="5R1-9G-NpB" secondAttribute="leading" id="RMR-2l-PmP"/>
-                                    <constraint firstAttribute="trailing" secondItem="2JE-ua-Xp0" secondAttribute="trailing" id="TYf-c3-LD2"/>
-                                    <constraint firstItem="Ser-GU-2ic" firstAttribute="trailing" secondItem="2JE-ua-Xp0" secondAttribute="trailing" id="a6s-Fp-5qx"/>
-                                    <constraint firstItem="5R1-9G-NpB" firstAttribute="leading" secondItem="8bY-3z-8cH" secondAttribute="leading" id="lw1-oJ-9Lb"/>
-                                    <constraint firstItem="Ser-GU-2ic" firstAttribute="top" secondItem="2JE-ua-Xp0" secondAttribute="bottom" constant="6" id="sNd-vG-teS"/>
-                                    <constraint firstItem="5R1-9G-NpB" firstAttribute="top" secondItem="8bY-3z-8cH" secondAttribute="top" id="x5K-pX-tsF"/>
-                                    <constraint firstItem="5R1-9G-NpB" firstAttribute="bottom" secondItem="2JE-ua-Xp0" secondAttribute="bottom" id="xHQ-xg-nrW"/>
+                                    <constraint firstItem="2JE-ua-Xp0" firstAttribute="leading" secondItem="Ser-GU-2ic" secondAttribute="leading" id="5jK-Vh-R2e"/>
+                                    <constraint firstAttribute="trailing" secondItem="2JE-ua-Xp0" secondAttribute="trailing" id="VlC-h7-q79"/>
+                                    <constraint firstItem="2JE-ua-Xp0" firstAttribute="top" secondItem="8bY-3z-8cH" secondAttribute="top" id="bzm-Ce-Qka"/>
+                                    <constraint firstItem="Ser-GU-2ic" firstAttribute="top" secondItem="2JE-ua-Xp0" secondAttribute="bottom" constant="6" id="gtY-tc-mo6"/>
+                                    <constraint firstItem="2JE-ua-Xp0" firstAttribute="leading" secondItem="8bY-3z-8cH" secondAttribute="leading" id="k01-iY-Lja"/>
+                                    <constraint firstItem="2JE-ua-Xp0" firstAttribute="trailing" secondItem="Ser-GU-2ic" secondAttribute="trailing" id="ogG-xI-agh"/>
                                     <constraint firstAttribute="bottom" secondItem="Ser-GU-2ic" secondAttribute="bottom" id="y6a-2K-Dqf"/>
                                 </constraints>
                             </view>
@@ -343,15 +325,18 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxK-JZ-3Vl">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="162"/>
-                                        <color key="backgroundColor" red="0.36862745098039218" green="0.47450980392156861" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.62352941179999999" green="0.52941176469999995" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="OxK-JZ-3Vl" secondAttribute="height" multiplier="22:27" id="3y2-wH-VRq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
-                                        <state key="normal" title="SERVICES" image="Home Services Icon">
+                                        <state key="normal" title="MY REQUEST" image="Home My Request Icon">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="9Yx-mK-EUe" kind="push" identifier="MyRequestsSlidingMenuSegue" id="6te-fT-djm"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoA-2D-G5q">
                                         <rect key="frame" x="138" y="0.0" width="225" height="162"/>
@@ -444,10 +429,9 @@
                         <outlet property="licenseExpiryDateValueLabel" destination="wfL-va-PNC" id="GgF-Ku-rqr"/>
                         <outlet property="licenseNumberValueLabel" destination="kBF-K4-XRE" id="WOM-O1-tyi"/>
                         <outlet property="logoutButton" destination="3ss-iX-Fna" id="AaB-OK-1jK"/>
-                        <outlet property="myRequestButton" destination="5R1-9G-NpB" id="EK1-fB-HX9"/>
+                        <outlet property="myRequestButton" destination="OxK-JZ-3Vl" id="OHt-KZ-5qb"/>
                         <outlet property="needHelpButton" destination="gWd-jd-qrP" id="ASU-VM-iVI"/>
                         <outlet property="notificationButton" destination="2JE-ua-Xp0" id="t1a-qL-xcI"/>
-                        <outlet property="servicesButton" destination="OxK-JZ-3Vl" id="gpg-L0-49R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9Q-6I-jDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1629,7 +1613,6 @@
         <image name="Home Need Help Icon" width="31" height="31"/>
         <image name="Home Notification Icon" width="31" height="31"/>
         <image name="Home Reports Icon" width="28" height="31"/>
-        <image name="Home Services Icon" width="34" height="31"/>
         <image name="Slide Menu Company Info Icon" width="5" height="9"/>
         <image name="Slide Menu Dashboard Icon" width="9" height="9"/>
         <image name="Slide Menu Employee Icon" width="9" height="9"/>
@@ -1647,10 +1630,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LyT-w6-0UF"/>
-        <segue reference="5Mb-bv-DRM"/>
-        <segue reference="4VQ-fx-BXn"/>
-        <segue reference="Uzc-9V-jUW"/>
         <segue reference="UQ7-2u-tlW"/>
+        <segue reference="6te-fT-djm"/>
+        <segue reference="Uzc-9V-jUW"/>
+        <segue reference="4VQ-fx-BXn"/>
+        <segue reference="LyT-w6-0UF"/>
     </inferredMetricsTieBreakers>
 </document>

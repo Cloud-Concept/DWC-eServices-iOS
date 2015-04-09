@@ -26,6 +26,7 @@
                 <outlet property="chooseDurationButton" destination="urj-iF-Awy" id="RO4-Yi-ujj"/>
                 <outlet property="courierRateLabel" destination="VaF-L4-tPq" id="Q1j-1O-XBL"/>
                 <outlet property="courierRateTextField" destination="ugp-Oq-MCb" id="TvN-vM-m75"/>
+                <outlet property="courierRequiredLabel" destination="Jsr-ci-v2v" id="BL7-PN-0VH"/>
                 <outlet property="courierRequiredSwitch" destination="DaU-kd-bYf" id="pXv-HC-0Vv"/>
                 <outlet property="recordToProcessLabel" destination="9wQ-dY-S13" id="bVd-bD-UNa"/>
                 <outlet property="recordToProcessTextField" destination="5Ic-eO-Zj2" id="mZA-XE-wC4"/>

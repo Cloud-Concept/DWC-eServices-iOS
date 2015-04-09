@@ -169,5 +169,7 @@
 "RecordMainRecordDetialsTitle" = "DETAILS";
 "RecordMainRecordRelatedServicesTitle" = "RELATED SERVICES";
 
+"ServiceThankYouMessage" = "Thank you! We can confirm that we have received your submission and your Ref No # %@. We can confirm that we have received the payment of AED %@ (including knowledge fee of AED 10)  Thank you.";
 
+"ServiceThankYouMessageNOCNote" = "You will receive e-copy of your NOC shortly on %@";
 

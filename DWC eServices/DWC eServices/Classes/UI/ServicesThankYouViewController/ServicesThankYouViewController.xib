@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ServicesThankYouViewController">
+            <connections>
+                <outlet property="messageTextView" destination="9C2-16-sR5" id="yyK-fk-BqK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9C2-16-sR5">
+                    <rect key="frame" x="16" y="0.0" width="343" height="604"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <color key="textColor" red="0.1803921568627451" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbf-38-T20">
+                    <rect key="frame" x="106" y="612" width="163" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="CWs-2V-Mai"/>
+                        <constraint firstAttribute="width" constant="163" id="KLy-Z9-mES"/>
+                        <constraint firstAttribute="width" secondItem="Lbf-38-T20" secondAttribute="height" multiplier="163:47" id="UAc-GV-uvP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                    <state key="normal" title="Close" backgroundImage="Blue Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="UAc-GV-uvP"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="closeButtonClicked:" destination="-1" eventType="touchUpInside" id="LNW-uX-63O"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9C2-16-sR5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2fz-Kn-PLF"/>
+                <constraint firstAttribute="trailing" secondItem="9C2-16-sR5" secondAttribute="trailing" id="A5x-Bx-M9W"/>
+                <constraint firstItem="Lbf-38-T20" firstAttribute="top" secondItem="9C2-16-sR5" secondAttribute="bottom" constant="8" id="B4w-sq-Nmh"/>
+                <constraint firstItem="9C2-16-sR5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WCH-pw-pkE"/>
+                <constraint firstAttribute="bottom" secondItem="Lbf-38-T20" secondAttribute="bottom" constant="8" id="aKC-xB-nCm"/>
+                <constraint firstItem="Lbf-38-T20" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="106" id="eEG-md-D0B"/>
+                <constraint firstAttribute="trailing" secondItem="9C2-16-sR5" secondAttribute="trailing" constant="16" id="fCS-cq-D7A"/>
+                <constraint firstItem="9C2-16-sR5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="oi1-6a-eSa"/>
+                <constraint firstAttribute="trailing" secondItem="Lbf-38-T20" secondAttribute="trailing" constant="106" id="ouq-vu-BJs"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="A5x-Bx-M9W"/>
+                    <exclude reference="WCH-pw-pkE"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="Blue Button Background" width="7" height="38"/>
+    </resources>
+</document>

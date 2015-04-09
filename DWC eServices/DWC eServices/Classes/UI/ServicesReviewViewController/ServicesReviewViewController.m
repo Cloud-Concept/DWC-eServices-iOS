@@ -78,6 +78,7 @@
         
         for (NSDictionary *dict in records) {
             requestNumber = [HelperClass stringCheckNull:[dict objectForKey:@"CaseNumber"]];
+            self.baseServicesViewController.createdCaseNumber = requestNumber;
             requestStatus =[HelperClass stringCheckNull:[dict objectForKey:@"Status"]];
             requestType = [HelperClass stringCheckNull:[dict objectForKey:@"Type"]];
             requestCreatedDate = [HelperClass stringCheckNull:[dict objectForKey:@"CreatedDate"]];
@@ -98,6 +99,8 @@
                     totalAmount = [NSNumber numberWithFloat:([totalAmount floatValue] + [invoice.amount floatValue])];
                 }
             }
+            
+            self.baseServicesViewController.createdCaseTotalPrice = totalAmount;
             
             NSString *parentLookup = [self.baseServicesViewController.currentWebForm.objectName stringByReplacingOccurrencesOfString:@"__c" withString:@"__r"];
             
@@ -126,6 +129,9 @@
                 
                 [field setFormFieldValue:[HelperClass getRelationshipValue:serviceDict Key:relationName]];
                 field.isCalculated = true;
+                
+                if ([field.name isEqualToString:@"NOC_Receiver_Email__c"])
+                    self.baseServicesViewController.createdCaseNOCEmailReceiver = [field getFormFieldValue];
             }
         }
         
