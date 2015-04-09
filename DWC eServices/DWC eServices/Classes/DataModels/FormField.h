@@ -59,6 +59,7 @@
 @property (strong, nonatomic) NSString *nameNoSpace;
 @property (strong, nonatomic) NSString *controllingField;
 @property (nonatomic) BOOL isDependentPicklist;
+@property (nonatomic) BOOL shouldBeCloned;
 
 @property (strong, nonatomic) NSDictionary *picklistNamesDictionary;
 @property (strong, nonatomic) NSDictionary *picklistValuesDictionary;

@@ -131,6 +131,7 @@
     self.required = [[formFieldDict objectForKey:@"Required__c"] boolValue];
     self.isMobileAvailable = [[formFieldDict objectForKey:@"isMobileAvailable__c"] boolValue];
     self.isDependentPicklist = [[formFieldDict objectForKey:@"isDependentPicklist__c"] boolValue];
+    self.shouldBeCloned = [[formFieldDict objectForKey:@"should_Be_Cloned__c"] boolValue];
     
     self.currencyValue = [HelperClass numberCheckNull:[formFieldDict objectForKey:@"Currency_Value__c"]];
     self.numberValue = [HelperClass numberCheckNull:[formFieldDict objectForKey:@"Number_Value__c"]];

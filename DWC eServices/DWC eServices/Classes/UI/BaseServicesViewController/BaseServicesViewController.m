@@ -88,10 +88,13 @@
     
     switch (self.relatedServiceType) {
         case RelatedServiceTypeNewEmoloyeeNOC:
+        case RelatedServiceTypeNewCompanyNOC:
         case RelatedServiceTypeNewCard:
+        case RelatedServiceTypeRenewCard:
+        case RelatedServiceTypeReplaceCard:
+        case RelatedServiceTypeCancelCard:
         case RelatedServiceTypeViewMyRequest:
         case RelatedServiceTypeRegistrationDocuments:
-        case RelatedServiceTypeNewCompanyNOC:
             returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:self.currentWebForm.objectName];
             break;
         case RelatedServiceTypeContractRenewal:
@@ -394,7 +397,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideLoadingDialog];
             
-            if ([self hasAttachments])
+            if ([self hasAttachments] && !self.relatedServiceType == RelatedServiceTypeReplaceCard)
                 [self showAttachmentsFlowPage];
             else
                 [self showReviewFlowPage];
@@ -652,7 +655,7 @@
         });
     };
     
-    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, Description__c, Title__c, isNotesAttachments__c, Object_Label__c, Object_Name__c, (SELECT Id, Name, APIRequired__c, Boolean_Value__c, Currency_Value__c, DateTime_Value__c, Date_Value__c, Email_Value__c , Hidden__c, isCalculated__c, isParameter__c, isQuery__c, Label__c, Number_Value__c, Order__c, Percent_Value__c, Phone_Value__c, Picklist_Value__c, PicklistEntries__c, Required__c, Text_Area_Long_Value__c, Text_Area_Value__c, Text_Value__c, Type__c, URL_Value__c, Web_Form__c, Width__c, isMobileAvailable__c, Mobile_Label__c, Mobile_Order__c, isDependentPicklist__c, Controlling_Field__c FROM R00N70000002DiOrEAK WHERE isMobileAvailable__c = true ORDER BY Mobile_Order__c) FROM Web_Form__c WHERE ID = '%@'", self.currentWebformId];
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, Description__c, Title__c, isNotesAttachments__c, Object_Label__c, Object_Name__c, (SELECT Id, Name, APIRequired__c, Boolean_Value__c, Currency_Value__c, DateTime_Value__c, Date_Value__c, Email_Value__c , Hidden__c, isCalculated__c, isParameter__c, isQuery__c, Label__c, Number_Value__c, Order__c, Percent_Value__c, Phone_Value__c, Picklist_Value__c, PicklistEntries__c, Required__c, Text_Area_Long_Value__c, Text_Area_Value__c, Text_Value__c, Type__c, URL_Value__c, Web_Form__c, Width__c, isMobileAvailable__c, Mobile_Label__c, Mobile_Order__c, isDependentPicklist__c, Controlling_Field__c, should_Be_Cloned__c FROM R00N70000002DiOrEAK WHERE isMobileAvailable__c = true ORDER BY Mobile_Order__c) FROM Web_Form__c WHERE ID = '%@'", self.currentWebformId];
     
     [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
                                        failBlock:errorBlock

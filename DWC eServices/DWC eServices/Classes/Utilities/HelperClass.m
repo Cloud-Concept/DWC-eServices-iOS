@@ -146,8 +146,12 @@
         
         return [HelperClass getRelationshipValue:newDictionary Key:newKey];
     }
-    else
-        return [NSString stringWithFormat:@"%@", [HelperClass stringCheckNull:[dictionary objectForKey:key]]];
+    else {
+        if ([dictionary isKindOfClass:[NSNull class]])
+            return @"";
+        else
+            return [NSString stringWithFormat:@"%@", [HelperClass stringCheckNull:[dictionary objectForKey:key]]];
+    }
     
 }
 
