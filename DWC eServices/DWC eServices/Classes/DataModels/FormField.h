@@ -13,6 +13,7 @@
 
 @interface FormField : NSObject <UIPopoverControllerDelegate, NSCopying>
 {
+    NSString *pickListLabelValue;
     NSString *formFieldValue;
     UIView *fieldView;
     UILabel *labelView;

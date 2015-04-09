@@ -263,6 +263,11 @@
             if(![formFieldValue isEqualToString:@""])
                 [((UIButton*)fieldView) setTitle:formFieldValue forState:UIControlStateNormal];
             
+            if ([self.type isEqualToString:@"PICKLIST"] ||
+                [self.type isEqualToString:@"REFERENCE"]) {
+                [((UIButton*)fieldView) setTitle:pickListLabelValue forState:UIControlStateNormal];
+            }
+            
             SEL actionSelector = ([self.type isEqualToString:@"DATE"]) ? @selector(openDatePicker) : @selector(openPickList);
             
             [(UIButton*)fieldView addTarget:self
@@ -341,6 +346,8 @@
     pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
         selectedPicklistIndexPath = indexPath;
         formFieldValue = value;
+        pickListLabelValue = value;
+        
         if ([self.type isEqualToString:@"REFERENCE"])
             formFieldValue = [[self.picklistValuesDictionary objectForKey:self.name] objectAtIndex:indexPath.row];
         
@@ -381,10 +388,11 @@
 
 - (void)setFormFieldValue:(NSString*)value {
     formFieldValue = [HelperClass stringCheckNull:value];
+    pickListLabelValue = formFieldValue;
     
     if (fieldView != nil) {
         if ([self.type isEqualToString:@"PICKLIST"]) {
-            [((UIButton*)fieldView) setTitle:formFieldValue forState:UIControlStateNormal];
+            [((UIButton*)fieldView) setTitle:pickListLabelValue forState:UIControlStateNormal];
         }
         else if ([self.type isEqualToString:@"STRING"] ||
                  [self.type isEqualToString:@"DOUBLE"] ||
@@ -398,7 +406,9 @@
 }
 
 - (void)setPicklistLabel:(NSString *)value {
-    [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
+    pickListLabelValue = value;
+    if (fieldView != nil)
+        [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
 }
 
 - (void)addChildPicklistFormField:(FormField *)childFormField {
