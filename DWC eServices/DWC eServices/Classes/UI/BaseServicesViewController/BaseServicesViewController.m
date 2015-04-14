@@ -604,10 +604,17 @@
 - (void)callPayAndSubmitWebservice {
     
     // Manually set up request object
+    NSString *functionName = @"MobilePayAndSubmitWebService";
+    
+    if (self.relatedServiceType == RelatedServiceTypeContractRenewal ||
+        self.relatedServiceType == RelatedServiceTypeLicenseRenewal) {
+        functionName = @"MobileSubmitAndPayRequestWebService";
+    }
+    
     SFRestRequest *payAndSubmitRequest = [[SFRestRequest alloc] init];
-    payAndSubmitRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobilePayAndSubmitWebService"];
+    payAndSubmitRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/%@", functionName];
     payAndSubmitRequest.method = SFRestMethodPOST;
-    payAndSubmitRequest.path = @"/services/apexrest/MobilePayAndSubmitWebService";
+    payAndSubmitRequest.path = [NSString stringWithFormat:@"/services/apexrest/%@", functionName];
     payAndSubmitRequest.queryParams = [NSDictionary dictionaryWithObject:insertedCaseId forKey:@"caseId"];
     
     [self showLoadingDialog];
@@ -829,7 +836,8 @@
     NSLog(@"request:didLoadResponse: %@", dict);
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        if ([request.path containsString:@"MobilePayAndSubmitWebService"])
+        if ([request.path containsString:@"MobilePayAndSubmitWebService"] ||
+            [request.path containsString:@"MobileSubmitAndPayRequestWebService"])
             [self handlePayAndSubmitWebserviceReturn:jsonResponse];
         else if ([request.path containsString:@"MobileGenerateInvoiceWebService"])
             [self handleGenerateInvoiceWebServiceReturn:jsonResponse];

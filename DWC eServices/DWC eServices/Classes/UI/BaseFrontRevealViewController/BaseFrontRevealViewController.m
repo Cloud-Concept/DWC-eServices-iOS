@@ -114,7 +114,7 @@
     
     [self.bottomTabBar setItems:tabBarItem animated:YES];
     self.bottomTabBar.delegate = self;
-    self.bottomTabBar.hidden = YES;
+    //self.bottomTabBar.hidden = YES;
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
