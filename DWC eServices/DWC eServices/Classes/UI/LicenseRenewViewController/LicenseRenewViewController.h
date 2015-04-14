@@ -25,6 +25,7 @@
 
 @property (weak, nonatomic) BaseServicesViewController *baseServicesViewController;
 
+@property (weak, nonatomic) IBOutlet UITextField *totalAmountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *courierFeesTextField;
 @property (weak, nonatomic) IBOutlet UILabel *courierFeesLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *courierRequiredSwitch;

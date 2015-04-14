@@ -62,6 +62,14 @@
     [self prepareForNextFlowPage];
 }
 
+- (void)displayServicePrice {
+    //selectedEServiceAdministrator.totalAmount
+    NSString *totalAmountString = [HelperClass formatNumberToString:selectedEServiceAdministrator.totalAmount
+                                                        FormatStyle:NSNumberFormatterDecimalStyle
+                                              MaximumFractionDigits:2];
+    self.totalAmountTextField.text = [NSString stringWithFormat:@"AED %@", totalAmountString];
+}
+
 - (void)prepareForNextFlowPage {
     NSMutableArray *formFieldsMutableArray = [NSMutableArray new];
     
@@ -79,7 +87,7 @@
     
     self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
                                                   [Globals currentAccount].Id, @"AccountId",
-                                                  /*[NSNumber numberWithBool:[self.courierRequiredSwitch isOn]], @"Deliver_License_Certificate__c",*/
+                                                  [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]], @"isCourierRequired__c",
                                                   caseRecordType.Id, @"RecordTypeId",
                                                   @"Draft", @"Status",
                                                   @"License Services", @"Type",
@@ -107,7 +115,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            
+            [self displayServicePrice];
             [self loadCaseRecordType];
         });
     };

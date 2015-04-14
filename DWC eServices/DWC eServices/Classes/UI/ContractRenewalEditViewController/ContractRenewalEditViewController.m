@@ -127,7 +127,7 @@
     
     self.baseServicesViewController.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
                                                   [Globals currentAccount].Id, @"AccountId",
-                                                  /*[NSNumber numberWithBool:[self.courierRequiredSwitch isOn]], @"Deliver_Contract__c",*/
+                                                  [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]], @"isCourierRequired__c",
                                                   caseRecordType.Id, @"RecordTypeId",
                                                   @"Draft", @"Status",
                                                   @"Leasing Services", @"Type",

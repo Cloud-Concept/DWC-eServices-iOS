@@ -285,6 +285,7 @@
                                                   @"Draft", @"Status",
                                                   @"NOC Services", @"Type",
                                                   @"Mobile", @"Origin",
+                                                  [NSNumber numberWithBool:[self.courierRequiredSwitch isOn]], @"isCourierRequired__c",
                                                   self.baseServicesViewController.currentVisaObject.visaHolder.Id, @"Employee_Ref__c",
                                                   nil];
     
