@@ -187,7 +187,8 @@
     copy.nameNoSpace = _nameNoSpace;
     copy.isDependentPicklist = _isDependentPicklist;
     copy.controllingField = _controllingField;
-    copy.picklistNamesDictionary = _picklistNamesDictionary;
+    
+    [copy setPicklistNamesDictionary:picklistNamesDictionary PicklistValuesDictionary:picklistValuesDictionary];
     [copy setFormFieldValue:formFieldValue];
 
     return copy;
@@ -332,10 +333,10 @@
     NSArray *stringArray = [NSArray new];
     
     if (self.isDependentPicklist) {
-        stringArray = [self.picklistNamesDictionary objectForKey:[self.controllingFormField getFormFieldValue]];
+        stringArray = [picklistNamesDictionary objectForKey:[self.controllingFormField getFormFieldValue]];
     }
     else {
-        stringArray = [self.picklistNamesDictionary objectForKey:self.name];
+        stringArray = [picklistNamesDictionary objectForKey:self.name];
     }
 
     UIButton *senderButton = (UIButton*)fieldView;
@@ -344,19 +345,10 @@
     pickerTableVC.valuesArray = stringArray;
     pickerTableVC.selectedIndexPath = selectedPicklistIndexPath;
     pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
-        selectedPicklistIndexPath = indexPath;
-        formFieldValue = value;
-        pickListLabelValue = value;
         
-        if ([self.type isEqualToString:@"REFERENCE"])
-            formFieldValue = [[self.picklistValuesDictionary objectForKey:self.name] objectAtIndex:indexPath.row];
+        [self picklistValueSelected:value indexPath:indexPath];
         
-        [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
         [picklist dismissPopover:YES];
-        
-        for (FormField *childFormField in childrenPicklistFormFieldsArray) {
-            [childFormField parentPicklistChanged];
-        }
     };
     
     [pickerTableVC showPopoverFromView:senderButton];
@@ -409,6 +401,44 @@
     pickListLabelValue = value;
     if (fieldView != nil)
         [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
+}
+
+- (void)setPicklistNamesDictionary:(NSDictionary *)namesDict PicklistValuesDictionary:(NSDictionary *)valuesDict {
+    picklistNamesDictionary = namesDict;
+    picklistValuesDictionary = valuesDict;
+    
+    if (formFieldValue && ![formFieldValue isEqualToString:@""])
+        return;
+    
+    if (picklistNamesDictionary && picklistNamesDictionary.count > 0) {
+        NSArray *stringArray = [NSArray new];
+        if (self.isDependentPicklist) {
+            stringArray = [picklistNamesDictionary objectForKey:[self.controllingFormField getFormFieldValue]];
+        }
+        else {
+            stringArray = [picklistNamesDictionary objectForKey:self.name];
+        }
+        
+        if (!stringArray || stringArray.count <= 0)
+            return;
+        
+        [self picklistValueSelected:[stringArray objectAtIndex:0] indexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    }
+}
+
+- (void)picklistValueSelected:(NSString *)value indexPath:(NSIndexPath *)indexPath {
+    selectedPicklistIndexPath = indexPath;
+    formFieldValue = value;
+    pickListLabelValue = value;
+    
+    if ([self.type isEqualToString:@"REFERENCE"])
+        formFieldValue = [[picklistValuesDictionary objectForKey:self.name] objectAtIndex:indexPath.row];
+    
+    [((UIButton*)fieldView) setTitle:value forState:UIControlStateNormal];
+    
+    for (FormField *childFormField in childrenPicklistFormFieldsArray) {
+        [childFormField parentPicklistChanged];
+    }
 }
 
 - (void)addChildPicklistFormField:(FormField *)childFormField {

@@ -25,6 +25,9 @@
     NSIndexPath *selectedPicklistIndexPath;
     
     NSMutableArray *childrenPicklistFormFieldsArray;
+    
+    NSDictionary *picklistNamesDictionary;
+    NSDictionary *picklistValuesDictionary;
 }
 
 @property (strong, nonatomic) NSString *Id;
@@ -62,8 +65,6 @@
 @property (nonatomic) BOOL isDependentPicklist;
 @property (nonatomic) BOOL shouldBeCloned;
 
-@property (strong, nonatomic) NSDictionary *picklistNamesDictionary;
-@property (strong, nonatomic) NSDictionary *picklistValuesDictionary;
 @property (strong, nonatomic) FormField *controllingFormField;
 
 - (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue;
@@ -82,4 +83,5 @@
 - (UILabel *)getReviewFieldValueLabel;
 - (void)addChildPicklistFormField:(FormField *)childFormField;
 - (void)parentPicklistChanged;
+- (void)setPicklistNamesDictionary:(NSDictionary *)namesDict PicklistValuesDictionary:(NSDictionary *)valuesDict;
 @end

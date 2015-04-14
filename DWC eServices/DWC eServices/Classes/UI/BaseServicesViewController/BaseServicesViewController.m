@@ -753,8 +753,10 @@
             [namesMutableArray addObject:[recordDict objectForKey:@"Name"]];
         }
         
-        formField.picklistNamesDictionary = [NSDictionary dictionaryWithObject:namesMutableArray forKey:formField.name];
-        formField.picklistValuesDictionary = [NSDictionary dictionaryWithObject:idsMutableArray forKey:formField.name];
+        NSDictionary *picklistNamesDictionary = [NSDictionary dictionaryWithObject:namesMutableArray forKey:formField.name];
+        NSDictionary *picklistValuesDictionary = [NSDictionary dictionaryWithObject:idsMutableArray forKey:formField.name];
+        
+        [formField setPicklistNamesDictionary:picklistNamesDictionary PicklistValuesDictionary:picklistValuesDictionary];
         
         formFieldPicklistCalls--;
         
@@ -827,7 +829,7 @@
         if (![currentFormField.Id isEqualToString:fieldId])
             continue;
         
-        currentFormField.picklistNamesDictionary = dict;
+        [currentFormField setPicklistNamesDictionary:dict PicklistValuesDictionary:nil];
     }
 }
 
