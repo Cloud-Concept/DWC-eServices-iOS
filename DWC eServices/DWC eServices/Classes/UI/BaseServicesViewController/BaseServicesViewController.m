@@ -624,6 +624,7 @@
 - (void)callGenerateInvoiceWebService {
     
     // Manually set up request object
+    /* This webservice is not used anymore
     SFRestRequest *payAndSubmitRequest = [[SFRestRequest alloc] init];
     payAndSubmitRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileGenerateInvoiceWebService"];
     payAndSubmitRequest.method = SFRestMethodPOST;
@@ -632,6 +633,8 @@
     
     [self showLoadingDialog];
     [[SFRestAPI sharedInstance] send:payAndSubmitRequest delegate:self];
+    */
+    [self handleGenerateInvoiceWebServiceReturn:nil];
 }
 
 - (void)callRenewContractWebService {
