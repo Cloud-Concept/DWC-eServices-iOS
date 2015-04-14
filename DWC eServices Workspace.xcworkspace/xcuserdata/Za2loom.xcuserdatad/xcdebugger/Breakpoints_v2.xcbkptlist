@@ -6,32 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DWC eServices/DWC eServices/Classes/UI/BaseServicesViewController/BaseServicesViewController.m"
-            timestampString = "450459772.926471"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/ContractRenewalEditViewController/ContractRenewalEditViewController.m"
+            timestampString = "450702058.650555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
-            landmarkName = "-createCaseRecord"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DWC eServices/DWC eServices/Classes/UI/BaseServicesViewController/BaseServicesViewController.m"
-            timestampString = "450460587.072399"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
-            landmarkName = "-createCaseRecord"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "-loadProductType"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -42,19 +42,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)loadProductType{
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    SFRestRequest *contractLineItemsRequest = [[SFRestRequest alloc] init];
-    contractLineItemsRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileContractLineItemsWebService"];
-    contractLineItemsRequest.method = SFRestMethodGET;
-    contractLineItemsRequest.path = @"/services/apexrest/MobileContractLineItemsWebService";
-    contractLineItemsRequest.queryParams = [NSDictionary dictionaryWithObject:self.baseServicesViewController.currentContract.Id forKey:@"ContractId"];
-    
-    [[SFRestAPI sharedInstance] send:contractLineItemsRequest delegate:self];
-    
-}
-
 - (void)loadEServiceAdministration:(NSString *)serviceIdentifier {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -175,16 +162,11 @@
     [[SFRestAPI sharedInstance] send:aramexRequest delegate:self];
 }
 
-- (void)handleContractLineItemsWebserviceReturn:(id)jsonResponse {
-    NSError *error;
-    NSArray *resultsArray = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
-    NSLog(@"request:didLoadResponse: %@", resultsArray);
-    
+- (void)loadProductType {
     selectedProduct = @"";
     NSString *selectedServiceIdentifier = @"";
     
-    for (NSDictionary *recordDict in resultsArray) {
-        ContractLineItem *contractLineItem = [[ContractLineItem alloc] initContractLineItem:recordDict];
+    for(ContractLineItem *contractLineItem in self.baseServicesViewController.currentContract.contractLineItems) {
         
         selectedProduct = contractLineItem.inventoryUnit.productType.name;
         if ([selectedProduct isEqualToString:@"Smart Desk"])
@@ -201,10 +183,7 @@
             selectedServiceIdentifier = @"BC-VIRTUAL OFFICE";
     }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-        [self loadEServiceAdministration:selectedServiceIdentifier];
-    });
+    [self loadEServiceAdministration:selectedServiceIdentifier];
 }
 
 - (void)handleAramexWebserviceReturn:(id)jsonResponse {
@@ -255,12 +234,8 @@
 #pragma mark - SFRestAPIDelegate
 
 - (void)request:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
-    
-    if ([request.path containsString:@"MobileContractLineItemsWebService"])
-        [self handleContractLineItemsWebserviceReturn:jsonResponse];
-    else if ([request.path containsString:@"MobileAramexRateWebService"])
+    if ([request.path containsString:@"MobileAramexRateWebService"])
         [self handleAramexWebserviceReturn:jsonResponse];
-    
 }
 
 - (void)request:(SFRestRequest*)request didFailLoadWithError:(NSError*)error {
