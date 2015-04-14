@@ -179,6 +179,8 @@
         }
     }
     
+    BOOL showTotalAmout = self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCancelCard;
+    
     [servicesContentView drawReviewForm:requestNumber
                           requestStatus:requestStatus
                             requestType:requestType
@@ -187,7 +189,8 @@
                       isCourierRequired:isCourierRequired
                         formFieldsArray:formFieldsArray
                            cancelButton:cancelButton
-                             nextButton:nextButton];
+                             nextButton:nextButton
+                         showTotalAmout:showTotalAmout];
 }
 
 - (void)initServiceFieldsContentView {

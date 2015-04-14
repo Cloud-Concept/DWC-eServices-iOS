@@ -364,7 +364,7 @@
                                                       constant:0.0]];
 }
 
-- (void)drawReviewForm:(NSString *)requestNumber requestStatus:(NSString *)requestStatus requestType:(NSString *)requestType requestCreatedDate:(NSString *)requestCreatedDate totalAmount:(NSNumber *)totalAmount isCourierRequired:(BOOL) isCourierRequired formFieldsArray:(NSArray *)formFieldsArray cancelButton:(UIButton *)cancelButton nextButton:(UIButton *)nextButton {
+- (void)drawReviewForm:(NSString *)requestNumber requestStatus:(NSString *)requestStatus requestType:(NSString *)requestType requestCreatedDate:(NSString *)requestCreatedDate totalAmount:(NSNumber *)totalAmount isCourierRequired:(BOOL) isCourierRequired formFieldsArray:(NSArray *)formFieldsArray cancelButton:(UIButton *)cancelButton nextButton:(UIButton *)nextButton showTotalAmout:(BOOL)showTotalAmout{
     
     NSMutableArray *formFieldsMutableArray = [NSMutableArray new];
     
@@ -373,7 +373,8 @@
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"requestStatus" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestStatusLabel", @"") FieldValue:requestStatus]];
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"requestType" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestTypeLabel", @"") FieldValue:requestType]];
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"requestCreatedDate" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestCreatedDateLabel", @"") FieldValue:requestCreatedDate]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"totalAmount" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestTotalAmountLabel", @"") FieldValue:[HelperClass formatNumberToString:totalAmount FormatStyle:NSNumberFormatterDecimalStyle MaximumFractionDigits:2]]];
+    if (showTotalAmout)
+        [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"totalAmount" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestTotalAmountLabel", @"") FieldValue:[HelperClass formatNumberToString:totalAmount FormatStyle:NSNumberFormatterDecimalStyle MaximumFractionDigits:2]]];
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"requestIsCourierRequired" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestIsCourierRequiredLabel", @"") FieldValue:[HelperClass formatBoolToString:isCourierRequired]]];
     
     [formFieldsMutableArray addObjectsFromArray:formFieldsArray];

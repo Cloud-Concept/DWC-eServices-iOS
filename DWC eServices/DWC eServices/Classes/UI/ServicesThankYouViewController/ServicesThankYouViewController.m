@@ -33,7 +33,12 @@
                                                        FormatStyle:NSNumberFormatterDecimalStyle
                                              MaximumFractionDigits:2];
     
-    NSMutableString *message = [NSMutableString stringWithFormat:NSLocalizedString(@"ServiceThankYouMessage", @""), self.baseServicesViewController.createdCaseNumber, totalPriceString];
+    NSMutableString *message = [NSMutableString stringWithFormat:NSLocalizedString(@"ServiceThankYouMessage", @""), self.baseServicesViewController.createdCaseNumber];
+    
+    if (self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCancelCard) {
+        [message appendString:@"\r\n \r\n"];
+        [message appendFormat:NSLocalizedString(@"ServiceThankYouMessagePayment", @""), totalPriceString];
+    }
     
     if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewCompanyNOC ||
         self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewEmoloyeeNOC) {
