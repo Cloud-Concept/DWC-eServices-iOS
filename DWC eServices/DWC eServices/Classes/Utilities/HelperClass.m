@@ -56,7 +56,7 @@
     button.imageEdgeInsets = UIEdgeInsetsMake(0, imageLeft, 0, imageRight);
     
     CGFloat titleLeft = imageRight + 25;
-    CGFloat titleRight = titleLeft + button.titleLabel.frame.size.width;
+    CGFloat titleRight = button.titleLabel.frame.size.width;
     
     button.titleEdgeInsets = UIEdgeInsetsMake(0, titleLeft, 0, titleRight);
 }
