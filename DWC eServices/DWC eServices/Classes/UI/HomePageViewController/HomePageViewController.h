@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UIButton *servicesButton;
 @property (weak, nonatomic) IBOutlet UIButton *companyInfoButton;
+@property (weak, nonatomic) IBOutlet UIButton *quickAccessInfoButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *companyLogoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *companyNameValueLabel;

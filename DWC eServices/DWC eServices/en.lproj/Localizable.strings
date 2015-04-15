@@ -49,6 +49,7 @@
 "homeCompanyDocumentsButton" = "COMPANY DOCUMENTS";
 "homeNeedHelpButton" = "NEED HELP";
 "homeLogoutButton" = "LOGOUT";
+"homeQuickAccessButton" = "QUICK ACCESS";
 
 "uploadDocumentTitle" = "Upload Document";
 

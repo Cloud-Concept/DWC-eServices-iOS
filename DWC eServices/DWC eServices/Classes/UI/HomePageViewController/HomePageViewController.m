@@ -41,8 +41,9 @@
     [self setupHomeButton:self.notificationButton TitleKey:@"homeNotificationButton"];
     [self setupHomeButton:self.companyDocumentsButton TitleKey:@"homeCompanyDocumentsButton"];
     [self setupHomeButton:self.needHelpButton TitleKey:@"homeNeedHelpButton"];
-    [self setupHomeButton:self.logoutButton TitleKey:@"homeLogoutButton"];
-    //[self setupHomeButton:self.servicesButton TitleKey:@"homeServicesButton"];
+    //[self setupHomeButton:self.logoutButton TitleKey:@"homeLogoutButton"];
+    [self setupHomeButton:self.quickAccessInfoButton TitleKey:@"homeQuickAccessButton"];
+    [self setupHomeButton:self.servicesButton TitleKey:@"homeServicesButton"];
     [self setupHomeButton:self.companyInfoButton TitleKey:@"homeCompanyInfoButton"];
     
     [HelperClass setupButtonWithBadgeOnImage:self.notificationButton Value:0];
