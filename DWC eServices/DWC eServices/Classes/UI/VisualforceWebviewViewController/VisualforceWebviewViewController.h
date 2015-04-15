@@ -12,6 +12,7 @@
 @interface VisualforceWebviewViewController : BaseFrontRevealViewController <UIWebViewDelegate>
 
 @property (nonatomic, strong) NSString *returnURL;
+@property (nonatomic, strong) NSString *navBarTitle;
 
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 

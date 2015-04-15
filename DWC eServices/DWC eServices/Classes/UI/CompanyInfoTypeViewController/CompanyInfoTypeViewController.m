@@ -31,38 +31,47 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [super setNavigationBarTitle:NSLocalizedString(@"navBarCompanyInfoTitle", @"")];
+    
     dwcCompanyInfoTypesArray = [NSMutableArray new];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoCompany", @"")
+                                         NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoCompanyTitle", @"")
                                          DWCCompanyInfoType:DWCCompanyInfoCompany]];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLicenseInfo", @"")
+                                         NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoLicenseInfoTitle", @"")
                                          DWCCompanyInfoType:DWCCompanyInfoLicenseInfo]];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLeasingInfo", @"")
+                                         NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoLeasingInfoTitle", @"")
                                          DWCCompanyInfoType:DWCCompanyInfoLeasingInfo
                                          Query:[SOQLQueries contractsQuery]]];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoShareholders", @"")
+                                         NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoShareholdersTitle", @"")
                                          DWCCompanyInfoType:DWCCompanyInfoShareholders
                                          Query:[SOQLQueries companyShareholdersQuery]]];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoDirectors", @"")
+                                         NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoDirectorsTitle", @"")
                                          DWCCompanyInfoType:DWCCompanyInfoDirectors
                                          Query:[SOQLQueries companyDirectorsQuery]]];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoGeneralManagers", @"")
+                                         NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoGeneralManagersTitle", @"")
                                          DWCCompanyInfoType:DWCCompanyInfoGeneralManagers
                                          Query:[SOQLQueries companyManagersQuery]]];
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLegalRepresentative", @"")
+                                         NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoLegalRepresentativeTitle", @"")
                                          DWCCompanyInfoType:DWCCompanyInfoLegalRepresentative
                                          Query:[SOQLQueries companyLegalRepresentativesQuery]]];
     
@@ -177,6 +186,7 @@
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     
+    recordMainVC.NavBarTitle = currentDWCCompanyInfo.NavBarTitle;
     
     switch (currentDWCCompanyInfo.Type) {
         case DWCCompanyInfoCompany:

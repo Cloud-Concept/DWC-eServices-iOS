@@ -199,15 +199,28 @@
 }
 
 - (void)showServiceFlow {
+    NSString *navBarTitle = @"";
+    
     switch (self.relatedServiceType) {
         case RelatedServiceTypeNewEmoloyeeNOC:
         case RelatedServiceTypeNewCompanyNOC:
+            navBarTitle = NSLocalizedString(@"navBarNewNOCTitle", @"");
             [self showNOCServiceFlow];
             break;
         case RelatedServiceTypeNewCard:
+            navBarTitle = NSLocalizedString(@"navBarNewCardTitle", @"");
+            [self showCardServiceFlow];
+            break;
         case RelatedServiceTypeReplaceCard:
+            navBarTitle = NSLocalizedString(@"navBarReplaceCardTitle", @"");
+            [self showCardServiceFlow];
+            break;
         case RelatedServiceTypeCancelCard:
+            navBarTitle = NSLocalizedString(@"navBarCancelCardTitle", @"");
+            [self showCardServiceFlow];
+            break;
         case RelatedServiceTypeRenewCard:
+            navBarTitle = NSLocalizedString(@"navBarRenewCardTitle", @"");
             [self showCardServiceFlow];
             break;
         case RelatedServiceTypeNewVisa:
@@ -220,20 +233,26 @@
             
             break;
         case RelatedServiceTypeViewMyRequest:
+            navBarTitle = NSLocalizedString(@"navBarViewMyRequestTitle", @"");
             [self showViewMyRequestFlow];
             break;
         case RelatedServiceTypeRegistrationDocuments:
+            navBarTitle = NSLocalizedString(@"navBarRegistrationDocumentsTitle", @"");
             [self showRegistrationDocumentsFlow];
             break;
         case RelatedServiceTypeContractRenewal:
+            navBarTitle = NSLocalizedString(@"navBarRenewContractTitle", @"");
             [self showContractRenewalFlow];
             break;
         case RelatedServiceTypeLicenseRenewal:
+            navBarTitle = NSLocalizedString(@"navBarRenewLicenseTitle", @"");
             [self showLicenseRenewalFlow];
             break;
         default:
             break;
     }
+    
+    [super setNavigationBarTitle:navBarTitle];
 }
 
 - (void)showViewMyRequestFlow {

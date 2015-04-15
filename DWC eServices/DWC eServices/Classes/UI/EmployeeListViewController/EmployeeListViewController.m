@@ -38,6 +38,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [super setNavigationBarTitle:self.currentDWCEmployee.NavBarTitle];
+    
     self.showSlidingMenu = NO;
     searchBarText = @"";
     
@@ -514,6 +516,8 @@
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     NSObject *selectedItem = [filteredEmployeesArray objectAtIndex:indexPath.row];
+    
+    recordMainVC.NavBarTitle = self.currentDWCEmployee.NavBarTitle;
     
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:

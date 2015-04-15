@@ -9,15 +9,16 @@
 #import "DWCCompanyInfo.h"
 
 @implementation DWCCompanyInfo
-- (id)initDWCCompanyInfo:(NSString*)infoLabel DWCCompanyInfoType:(DWCCompanyInfoType)companyInfoType {
-    return [self initDWCCompanyInfo:infoLabel DWCCompanyInfoType:companyInfoType Query:@""];
+- (id)initDWCCompanyInfo:(NSString*)infoLabel NavBarTitle:(NSString *)navBarTitle DWCCompanyInfoType:(DWCCompanyInfoType)companyInfoType {
+    return [self initDWCCompanyInfo:infoLabel NavBarTitle:navBarTitle DWCCompanyInfoType:companyInfoType Query:@""];
 }
 
-- (id)initDWCCompanyInfo:(NSString*)infoLabel DWCCompanyInfoType:(DWCCompanyInfoType)companyInfoType Query:(NSString*)query {
+- (id)initDWCCompanyInfo:(NSString*)infoLabel NavBarTitle:(NSString *)navBarTitle DWCCompanyInfoType:(DWCCompanyInfoType)companyInfoType Query:(NSString*)query {
     if (!(self = [super init]))
         return nil;
     
     self.Label = infoLabel;
+    self.NavBarTitle = navBarTitle;
     self.Type = companyInfoType;
     self.SOQLQuery = query;
     

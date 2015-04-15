@@ -12,14 +12,15 @@
 @implementation DWCEmployee
 
 - (id)initDWCEmployee:(NSString*)employeeLabel DWCEmployeeType:(DWCEmployeeType)employeeType {
-    return [self initDWCEmployee:employeeLabel DWCEmployeeType:employeeType Query:@""];
+    return [self initDWCEmployee:employeeLabel NavBarTitle:@"" DWCEmployeeType:employeeType Query:@""];
 }
 
-- (id)initDWCEmployee:(NSString*)employeeLabel DWCEmployeeType:(DWCEmployeeType)employeeType Query:(NSString*)query {
+- (id)initDWCEmployee:(NSString*)employeeLabel NavBarTitle:(NSString *)navBarTitle DWCEmployeeType:(DWCEmployeeType)employeeType Query:(NSString*)query {
     if (!(self = [super init]))
         return nil;
     
     self.Label = employeeLabel;
+    self.NavBarTitle = navBarTitle;
     self.Type = employeeType;
     self.SOQLQuery = query;
     

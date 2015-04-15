@@ -10,11 +10,12 @@
 
 @implementation DWCCompanyDocument
 
-- (id)initDWCCompanyDocument:(NSString*)docLabel DWCCompanyDocumentType:(DWCCompanyDocumentType)companyDocumentType Query:(NSString*)query {
+- (id)initDWCCompanyDocument:(NSString*)docLabel NavBarTitle:(NSString *)navBarTitle DWCCompanyDocumentType:(DWCCompanyDocumentType)companyDocumentType Query:(NSString*)query {
     if (!(self = [super init]))
         return nil;
     
     self.Label = docLabel;
+    self.NavBarTitle = navBarTitle;
     self.Type = companyDocumentType;
     self.SOQLQuery = query;
     

@@ -137,6 +137,10 @@
 "DWCCompanyDocumentTypeDWCDocument" = "DWC Documents";
 "DWCCompanyDocumentTypeCustomerDocument" = "Customer Documents";
 
+"PermanentEmployee" = "Permanent Employee";
+"VisitVisaEmployee" = "Visit Visa";
+"ContractorEmployee" = "Access Card";
+
 "ExpiryLabel" = "Expiry:";
 
 "DocumentAction" = "Document Action";
@@ -173,4 +177,34 @@
 "ServiceThankYouMessage" = "Thank you! We can confirm that we have received your submission and your Ref No # %@.";
 "ServiceThankYouMessagePayment" = "We can confirm that we have received the payment of AED %@ (including knowledge fee of AED 10)  Thank you.";
 "ServiceThankYouMessageNOCNote" = "You will receive e-copy of your NOC shortly on %@";
+
+"navBarDashboardTitle" = "DASHBOARD";
+"navBarMyRequestTitle" = "MY REQUEST";
+"navBarNotificationTitle" = "NOTIFICATION";
+"navBarEmployeesTitle" = "VISAS & CARDS";
+"navBarServicesTitle" = "SERVICES";
+"navBarCompanyInfoTitle" = "COMPANY INFO";
+"navBarCompanyDocumentsTitle" = "COMPANY DOCUMENTS";
+"navBarNeedHelpTitle" = "NEED HELP";
+"navBarNewNOCTitle" = "NEW NOC";
+"navBarNewCardTitle" = "NEW CARD";
+"navBarRenewCardTitle" = "RENEW CARD";
+"navBarReplaceCardTitle" = "REPLACE CARD";
+"navBarCancelCardTitle" = "CANCEL CARD";
+"navBarRenewLicenseTitle" = "RENEW LICENSE";
+"navBarRenewContractTitle" = "RENEW CONTRACT";
+"navBarRegistrationDocumentsTitle" = "REGISTRATION DOCUMENTS";
+"navBarViewMyRequestTitle" = "VIEW REQUEST";
+"navBarDWCCompanyInfoCompanyTitle" = "COMPANY INFO";
+"navBarDWCCompanyInfoLicenseInfoTitle" = "LICENSE INFO";
+"navBarDWCCompanyInfoLeasingInfoTitle" = "LEASING INFO";
+"navBarDWCCompanyInfoShareholdersTitle" = "SHAREHOLDERS";
+"navBarDWCCompanyInfoDirectorsTitle" = "DIRECTORS";
+"navBarDWCCompanyInfoGeneralManagersTitle" = "GENERAL MANAGERS";
+"navBarDWCCompanyInfoLegalRepresentativeTitle" = "LEGAL REPRESENTATIVE";
+"navBarPermanentEmployeeTitle" = "PERMANENT EMPLOYEE";
+"navBarVisitVisaTitle" = "VISIT VISA";
+"navBarContractorTitle" = "ACCESS CARD";
+"navBarDWCCompanyDocumentTypeDWCDocumentTitle" = "DWC DOCUMENTS";
+"navBarDWCCompanyDocumentTypeCustomerDocumentTitle" = "CUSTOMER DOCUMENTS";
 

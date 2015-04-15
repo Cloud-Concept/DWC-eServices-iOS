@@ -20,15 +20,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [super setNavigationBarTitle:NSLocalizedString(@"navBarCompanyDocumentsTitle", @"")];
+    
     companyDocumentsTypesArray = [NSMutableArray new];
     
     [companyDocumentsTypesArray addObject:[[DWCCompanyDocument alloc]
                                            initDWCCompanyDocument:NSLocalizedString(@"DWCCompanyDocumentTypeDWCDocument", @"")
+                                           NavBarTitle:NSLocalizedString(@"navBarDWCCompanyDocumentTypeDWCDocumentTitle", @"")
                                            DWCCompanyDocumentType:DWCCompanyDocumentTypeDWCDocument
                                            Query:[SOQLQueries dwcDocumentsQuery]]];
     
     [companyDocumentsTypesArray addObject:[[DWCCompanyDocument alloc]
                                            initDWCCompanyDocument:NSLocalizedString(@"DWCCompanyDocumentTypeCustomerDocument", @"")
+                                           NavBarTitle:NSLocalizedString(@"navBarDWCCompanyDocumentTypeCustomerDocumentTitle", @"")
                                            DWCCompanyDocumentType:DWCCompanyDocumentTypeCustomerDocument
                                            Query:[SOQLQueries customerDocumentsQuery]]];
     

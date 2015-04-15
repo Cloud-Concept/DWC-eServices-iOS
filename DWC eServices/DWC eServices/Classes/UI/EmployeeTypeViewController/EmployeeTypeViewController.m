@@ -21,17 +21,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setNavigationBarTitle:NSLocalizedString(@"navBarEmployeesTitle", @"")];
+    
     dwcEmployeesTypesArray = [NSMutableArray new];
     
-    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Permanent Employee"
+    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:NSLocalizedString(@"PermanentEmployee", @"")
+                                                               NavBarTitle:NSLocalizedString(@"navBarPermanentEmployeeTitle", @"")
                                                            DWCEmployeeType:PermanentEmployee
                                                                      Query:[SOQLQueries permanentEmployeesQuery]]];
     
-    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Visit Visa"
+    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:NSLocalizedString(@"VisitVisaEmployee", @"")
+                                                               NavBarTitle:NSLocalizedString(@"navBarVisitVisaTitle", @"")
                                                            DWCEmployeeType:VisitVisaEmployee
                                                                      Query:[SOQLQueries visitVisaEmployeesQuery]]];
     
-    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:@"Access Card"
+    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:NSLocalizedString(@"ContractorEmployee", @"")
+                                                               NavBarTitle:NSLocalizedString(@"navBarContractorTitle", @"")
                                                            DWCEmployeeType:ContractorEmployee
                                                                      Query:[SOQLQueries contractorsQuery]]];
 }

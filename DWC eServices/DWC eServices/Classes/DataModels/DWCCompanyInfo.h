@@ -22,10 +22,11 @@ typedef enum {
 
 @property (nonatomic, strong) NSString *Label;
 @property (nonatomic, strong) NSString *SOQLQuery;
+@property (nonatomic, strong) NSString *NavBarTitle;
 @property (nonatomic) DWCCompanyInfoType Type;
 
-- (id)initDWCCompanyInfo:(NSString*)infoLabel DWCCompanyInfoType:(DWCCompanyInfoType)companyInfoType;
-- (id)initDWCCompanyInfo:(NSString*)infoLabel DWCCompanyInfoType:(DWCCompanyInfoType)companyInfoType Query:(NSString*)query;
+- (id)initDWCCompanyInfo:(NSString*)infoLabel NavBarTitle:(NSString *)navBarTitle DWCCompanyInfoType:(DWCCompanyInfoType)companyInfoType;
+- (id)initDWCCompanyInfo:(NSString*)infoLabel NavBarTitle:(NSString *)navBarTitle DWCCompanyInfoType:(DWCCompanyInfoType)companyInfoType Query:(NSString*)query;
 
 
 @end

@@ -38,6 +38,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [super setNavigationBarTitle:self.currentDWCCompanyInfo.NavBarTitle];
+    
     self.showSlidingMenu = NO;
     
     switch (self.currentDWCCompanyInfo.Type) {
@@ -586,6 +588,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    
+    recordMainVC.NavBarTitle = self.currentDWCCompanyInfo.NavBarTitle;
     
     switch (self.currentDWCCompanyInfo.Type) {
         case DWCCompanyInfoShareholders:

@@ -27,6 +27,8 @@
     // Do any additional setup after loading the view.
     self.showSlidingMenu = NO;
     
+    [super setNavigationBarTitle:self.NavBarTitle];
+    
     self.employeeNameLabel.text = self.NameValue;
     
     [self.profilePictureImageView loadImageFromSFAttachment:self.PhotoId

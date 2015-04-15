@@ -29,6 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [super setNavigationBarTitle:NSLocalizedString(@"navBarNotificationTitle", @"")];
+    
     [self loadNotifications];
 }
 

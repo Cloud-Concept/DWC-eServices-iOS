@@ -79,7 +79,7 @@
     }
 }
 
-- (void) initTabBar {
+- (void)initTabBar {
     if (!self.bottomTabBar)
         return;
     
@@ -143,6 +143,10 @@
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     UIViewController *notificationsVC = [storybord instantiateViewControllerWithIdentifier:@"Notifications Page"];
     [self.revealViewController setFrontViewController:notificationsVC animated:YES];
+}
+
+- (void)setNavigationBarTitle:(NSString *)title {
+    [self.navigationItem setTitle:title];
 }
 
 /*

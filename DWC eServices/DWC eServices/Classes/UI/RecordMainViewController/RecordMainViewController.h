@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) NSString *NameValue;
 @property (strong, nonatomic) NSString *PhotoId;
+@property (strong, nonatomic) NSString *NavBarTitle;
 @property (strong, nonatomic) NSArray *DetailsSectionsArray;
 @property (strong, nonatomic) Visa *visaObject;
 @property (strong, nonatomic) TenancyContract *contractObject;

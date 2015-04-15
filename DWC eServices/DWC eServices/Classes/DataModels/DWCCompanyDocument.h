@@ -17,11 +17,12 @@ typedef enum {
 @interface DWCCompanyDocument : NSObject
 
 @property (nonatomic, strong) NSString *Label;
+@property (nonatomic, strong) NSString *NavBarTitle;
 @property (nonatomic, strong) NSString *SOQLQuery;
 @property (nonatomic) DWCCompanyDocumentType Type;
 
 
-- (id)initDWCCompanyDocument:(NSString*)docLabel DWCCompanyDocumentType:(DWCCompanyDocumentType)companyDocumentType Query:(NSString*)query;
+- (id)initDWCCompanyDocument:(NSString*)docLabel NavBarTitle:(NSString *)navBarTitle DWCCompanyDocumentType:(DWCCompanyDocumentType)companyDocumentType Query:(NSString*)query;
 
 
 @end
