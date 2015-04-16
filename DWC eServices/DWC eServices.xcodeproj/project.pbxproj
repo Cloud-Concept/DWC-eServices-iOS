@@ -82,6 +82,12 @@
 		13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315ACF1AAC663D009E1819 /* CompanyInfoListViewController.m */; };
 		13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */; };
 		1331D21F1AC7E2D600B4AAD5 /* Quote.m in Sources */ = {isa = PBXBuildFile; fileRef = 1331D21E1AC7E2D600B4AAD5 /* Quote.m */; };
+		1334F49D1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4901ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m */; };
+		1334F49E1ADE790000297ACE /* DragTableFooterView_ot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4931ADE790000297ACE /* DragTableFooterView_ot.m */; };
+		1334F49F1ADE790000297ACE /* DragTableGestureObserver_ot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4951ADE790000297ACE /* DragTableGestureObserver_ot.m */; };
+		1334F4A01ADE790000297ACE /* DragTableHeaderView_ot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4971ADE790000297ACE /* DragTableHeaderView_ot.m */; };
+		1334F4A11ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4991ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m */; };
+		1334F4A21ADE790000297ACE /* UITableView+DragLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F49C1ADE790000297ACE /* UITableView+DragLoad.m */; };
 		133E34CC1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34CB1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m */; };
 		133E34D11ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D01ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m */; };
 		133E34D41ABFFFCC002C3748 /* DWCDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D31ABFFFCC002C3748 /* DWCDocumentTableViewCell.m */; };
@@ -283,6 +289,19 @@
 		13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoListTableViewCell.m; sourceTree = "<group>"; };
 		1331D21D1AC7E2D600B4AAD5 /* Quote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quote.h; sourceTree = "<group>"; };
 		1331D21E1AC7E2D600B4AAD5 /* Quote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quote.m; sourceTree = "<group>"; };
+		1334F48F1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComOpenThreadOTScreenshotHelperSwizzleHelper.h; sourceTree = "<group>"; };
+		1334F4901ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComOpenThreadOTScreenshotHelperSwizzleHelper.m; sourceTree = "<group>"; };
+		1334F4911ADE790000297ACE /* DragTableDragState_ot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragTableDragState_ot.h; sourceTree = "<group>"; };
+		1334F4921ADE790000297ACE /* DragTableFooterView_ot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragTableFooterView_ot.h; sourceTree = "<group>"; };
+		1334F4931ADE790000297ACE /* DragTableFooterView_ot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragTableFooterView_ot.m; sourceTree = "<group>"; };
+		1334F4941ADE790000297ACE /* DragTableGestureObserver_ot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragTableGestureObserver_ot.h; sourceTree = "<group>"; };
+		1334F4951ADE790000297ACE /* DragTableGestureObserver_ot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragTableGestureObserver_ot.m; sourceTree = "<group>"; };
+		1334F4961ADE790000297ACE /* DragTableHeaderView_ot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragTableHeaderView_ot.h; sourceTree = "<group>"; };
+		1334F4971ADE790000297ACE /* DragTableHeaderView_ot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DragTableHeaderView_ot.m; sourceTree = "<group>"; };
+		1334F4981ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+DragTableSafeAnimation.h"; sourceTree = "<group>"; };
+		1334F4991ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+DragTableSafeAnimation.m"; sourceTree = "<group>"; };
+		1334F49B1ADE790000297ACE /* UITableView+DragLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+DragLoad.h"; sourceTree = "<group>"; };
+		1334F49C1ADE790000297ACE /* UITableView+DragLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DragLoad.m"; sourceTree = "<group>"; };
 		133E34CA1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyDocumentTypeListViewController.h; sourceTree = "<group>"; };
 		133E34CB1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyDocumentTypeListViewController.m; sourceTree = "<group>"; };
 		133E34CF1ABFFFB7002C3748 /* CustomerDocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerDocumentTableViewCell.h; sourceTree = "<group>"; };
@@ -972,6 +991,42 @@
 			path = CompanyInfoListTableViewCell;
 			sourceTree = "<group>";
 		};
+		1334F48D1ADE790000297ACE /* UITableView+DragLoad */ = {
+			isa = PBXGroup;
+			children = (
+				1334F48E1ADE790000297ACE /* Private Class */,
+				1334F49A1ADE790000297ACE /* Public Class */,
+			);
+			path = "UITableView+DragLoad";
+			sourceTree = "<group>";
+		};
+		1334F48E1ADE790000297ACE /* Private Class */ = {
+			isa = PBXGroup;
+			children = (
+				1334F48F1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.h */,
+				1334F4901ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m */,
+				1334F4911ADE790000297ACE /* DragTableDragState_ot.h */,
+				1334F4921ADE790000297ACE /* DragTableFooterView_ot.h */,
+				1334F4931ADE790000297ACE /* DragTableFooterView_ot.m */,
+				1334F4941ADE790000297ACE /* DragTableGestureObserver_ot.h */,
+				1334F4951ADE790000297ACE /* DragTableGestureObserver_ot.m */,
+				1334F4961ADE790000297ACE /* DragTableHeaderView_ot.h */,
+				1334F4971ADE790000297ACE /* DragTableHeaderView_ot.m */,
+				1334F4981ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.h */,
+				1334F4991ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m */,
+			);
+			path = "Private Class";
+			sourceTree = "<group>";
+		};
+		1334F49A1ADE790000297ACE /* Public Class */ = {
+			isa = PBXGroup;
+			children = (
+				1334F49B1ADE790000297ACE /* UITableView+DragLoad.h */,
+				1334F49C1ADE790000297ACE /* UITableView+DragLoad.m */,
+			);
+			path = "Public Class";
+			sourceTree = "<group>";
+		};
 		133E34C91ABFFA37002C3748 /* CompanyDocumentTypeListViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1086,6 +1141,7 @@
 			children = (
 				13D97BB21A8766A600DD71FF /* UIImageView+MaskImage */,
 				139E6B671A7A6F2600D1D451 /* UIImageView+SFAttachment */,
+				1334F48D1ADE790000297ACE /* UITableView+DragLoad */,
 				13063A8A1A8B749E00A1DEA2 /* UIView+DynamicForm */,
 				139E6B6A1A7A6F2600D1D451 /* UIView+MGBadgeView */,
 				139E6B6F1A7A6FB500D1D451 /* UIView+RoundCorner */,
@@ -1709,6 +1765,7 @@
 				13081AE31A7625C400B33509 /* Globals.m in Sources */,
 				139E6B591A7A182500D1D451 /* EmployeeListTableViewHeaderFooterView.m in Sources */,
 				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
+				1334F49D1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m in Sources */,
 				131CA86E1A80C93400A79B12 /* TableViewSection.m in Sources */,
 				134B8A1F1AD6B428005CCAD5 /* BBBadgeBarButtonItem.m in Sources */,
 				1353CBDC1AAD9B5300E57FAC /* LegalRepresentative.m in Sources */,
@@ -1738,6 +1795,7 @@
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
 				13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */,
 				13743ECE1AB04D4400D0B873 /* NotificationListViewController.m in Sources */,
+				1334F49F1ADE790000297ACE /* DragTableGestureObserver_ot.m in Sources */,
 				13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */,
 				134B8A1A1AD697F4005CCAD5 /* ServicesThankYouViewController.m in Sources */,
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,
@@ -1748,6 +1806,7 @@
 				13F5A5A71AB0B64A00D92591 /* NotificationTableViewCell.m in Sources */,
 				131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */,
 				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
+				1334F4A11ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m in Sources */,
 				13CFE72E1ABECF13009E47EC /* EServicesDocumentChecklist.m in Sources */,
 				13315AC61AAC24DB009E1819 /* CompanyInfoTypeViewController.m in Sources */,
 				139658141AB9797B0091C451 /* Passport.m in Sources */,
@@ -1767,10 +1826,12 @@
 				13743ECA1AB02E4F00D0B873 /* NotificationManagement.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
 				130C300D1A78E7BF00C95600 /* DWCEmployee.m in Sources */,
+				1334F4A01ADE790000297ACE /* DragTableHeaderView_ot.m in Sources */,
 				13CFE7351ABEEF05009E47EC /* CompanyDocumentTypeViewController.m in Sources */,
 				131819401A91CAB200CAA4D6 /* BaseServicesViewController.m in Sources */,
 				139E6B5E1A7A3CED00D1D451 /* Occupation.m in Sources */,
 				13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */,
+				1334F49E1ADE790000297ACE /* DragTableFooterView_ot.m in Sources */,
 				13BCE7681AC9585600AF28C6 /* LicenseRenewViewController.m in Sources */,
 				13081B041A7655BD00B33509 /* DatePickerViewController.m in Sources */,
 				13315ACC1AAC5ADB009E1819 /* ShareOwnership.m in Sources */,
@@ -1778,6 +1839,7 @@
 				139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */,
 				133E34D11ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m in Sources */,
 				13063A8D1A8B74AC00A1DEA2 /* UIView+DynamicForm.m in Sources */,
+				1334F4A21ADE790000297ACE /* UITableView+DragLoad.m in Sources */,
 				1394EA201A88D31F00ECED05 /* WYStoryboardPopoverSegue.m in Sources */,
 				131ECF331AC29BB500EDA9EB /* EDStarRating.m in Sources */,
 				1353CBD61AAD7ECB00E57FAC /* ManagementMember.m in Sources */,

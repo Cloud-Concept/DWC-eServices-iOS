@@ -35,7 +35,11 @@
     [self refreshServiceFilterButton];
     [self initializeSearchBar];
     
-    [self loadMyRequests];
+    [self.requestsTableView setDragDelegate:self refreshDatePermanentKey:@""];
+    self.requestsTableView.queryLimit = 15;
+    
+    [self.requestsTableView triggerRefresh];
+    //[self loadMyRequests];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -149,12 +153,15 @@
     return predicateString;
 }
 
-- (void)loadMyRequests {
+- (void)loadMyRequestsRefresh:(BOOL)isRefresh {
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         NSArray *records = [dict objectForKey:@"records"];
         
-        NSMutableArray *mutableResults = [NSMutableArray new];
+        if (isRefresh)
+            dataRows = [NSArray new];
+        
+        NSMutableArray *mutableResults = [NSMutableArray arrayWithArray:dataRows];
         for (NSDictionary *recordDict in records) {
             
             [mutableResults addObject:[[Request alloc] initRequest:recordDict]];
@@ -163,7 +170,10 @@
         dataRows = [NSArray arrayWithArray:mutableResults];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideLoadingDialog];
+            if (isRefresh)
+                [self.requestsTableView finishRefresh];
+            else
+                [self.requestsTableView finishLoadMore];
             
             [self refreshRequestsTable];
         });
@@ -171,17 +181,19 @@
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideLoadingDialog];
-#warning Handle Error
+            if (isRefresh)
+                [self.requestsTableView finishRefresh];
+            else
+                [self.requestsTableView finishLoadMore];
         });
     };
     
-    [self showLoadingDialog];
+    NSString *query = [SOQLQueries myRequestsQueryWithLimit:self.requestsTableView.queryLimit
+                                                     offset:self.requestsTableView.queryOffset];
     
-    NSString *query = [SOQLQueries myRequestsQuery];
-    [[SFRestAPI sharedInstance] performSOQLQuery:query
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
+    restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:query
+                                                     failBlock:errorBlock
+                                                 completeBlock:successBlock];
 }
 
 - (void)showLoadingDialog {
@@ -199,10 +211,20 @@
     baseServicesVC.relatedServiceType = RelatedServiceTypeViewMyRequest;
     baseServicesVC.currentWebformId = request.webFormId;
     baseServicesVC.backAction = ^(void) {
-        [self loadMyRequests];
+        [self tableRefresh];
     };
     [baseServicesVC initializeCaseId:request.Id];
     [self.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
+- (void)tableLoadMore {
+    self.requestsTableView.queryOffset += self.requestsTableView.queryLimit;
+    [self loadMyRequestsRefresh:NO];
+}
+
+- (void)tableRefresh {
+    self.requestsTableView.queryOffset = 0;
+    [self loadMyRequestsRefresh:YES];
 }
 
 #pragma mark - Table view data source
@@ -260,6 +282,23 @@
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     searchBarText = searchController.searchBar.text;
     [self refreshRequestsTable];
+}
+
+#pragma mark - Table view Drag Load
+- (void)dragTableDidTriggerRefresh:(UITableView *)tableView {
+    [self tableRefresh];
+}
+
+- (void)dragTableRefreshCanceled:(UITableView *)tableView {
+    [restRequest cancel];
+}
+
+- (void)dragTableDidTriggerLoadMore:(UITableView *)tableView {
+    [self tableLoadMore];
+}
+
+- (void)dragTableLoadMoreCanceled:(UITableView *)tableView {
+    [restRequest cancel];
 }
 
 @end

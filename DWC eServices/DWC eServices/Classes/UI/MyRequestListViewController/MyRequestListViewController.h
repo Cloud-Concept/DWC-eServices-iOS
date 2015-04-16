@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
+#import "UITableView+DragLoad.h"
 
-@interface MyRequestListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
+@class SFRestRequest;
+
+@interface MyRequestListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, UISearchResultsUpdating>
 {
     NSArray *dataRows;
     
@@ -24,6 +27,8 @@
     NSMutableArray *filteredRequestsArray;
     
     NSString *searchBarText;
+    
+    SFRestRequest *restRequest;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *requestsTableView;

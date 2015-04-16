@@ -32,7 +32,10 @@
     
     [super setNavigationBarTitle:NSLocalizedString(@"navBarNotificationTitle", @"")];
     
-    [self loadNotifications];
+    [self.tableView setDragDelegate:self refreshDatePermanentKey:@""];
+    self.tableView.queryLimit = 15;
+    
+    [self.tableView triggerRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,17 +43,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)loadNotifications {
+- (void)loadNotificationsRefresh:(BOOL)isRefresh {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
 #warning Handle Error
+            if (isRefresh)
+                [self.tableView finishRefresh];
+            else
+                [self.tableView finishLoadMore];
         });
         
     };
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         
-        NSMutableArray *notificationMutableArray = [NSMutableArray new];
+        if (isRefresh)
+            notificationsArray = [NSArray new];
+        
+        NSMutableArray *notificationMutableArray = [NSMutableArray arrayWithArray:notificationsArray];
         NSInteger notificationsCount = 0;
         
         for (NSDictionary *notificationDict in [dict objectForKey:@"records"]) {
@@ -68,17 +78,20 @@
         [Globals setNotificationsCount:[NSNumber numberWithInteger:notificationsCount]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (isRefresh)
+                [self.tableView finishRefresh];
+            else
+                [self.tableView finishLoadMore];
+            
             [self.tableView reloadData];
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
         });
         
     };
     
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:[SOQLQueries notificationsQuery]
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
+    restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:[SOQLQueries notificationsQueryWithLimit:self.tableView.
+                                                                queryLimit offset:self.tableView.queryOffset]
+                                                     failBlock:errorBlock
+                                                 completeBlock:successBlock];
 }
 
 - (void)openViewMyRequestFlow:(Request *)request {
@@ -132,6 +145,16 @@
     [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
 }
 
+- (void)tableLoadMore {
+    self.tableView.queryOffset += self.tableView.queryLimit;
+    [self loadNotificationsRefresh:NO];
+}
+
+- (void)tableRefresh {
+    self.tableView.queryOffset = 0;
+    [self loadNotificationsRefresh:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -178,6 +201,23 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
+}
+
+#pragma mark - Table view Drag Load
+- (void)dragTableDidTriggerRefresh:(UITableView *)tableView {
+    [self tableRefresh];
+}
+
+- (void)dragTableRefreshCanceled:(UITableView *)tableView {
+    [restRequest cancel];
+}
+
+- (void)dragTableDidTriggerLoadMore:(UITableView *)tableView {
+    [self tableLoadMore];
+}
+
+- (void)dragTableLoadMoreCanceled:(UITableView *)tableView {
+    [restRequest cancel];
 }
 
 /*

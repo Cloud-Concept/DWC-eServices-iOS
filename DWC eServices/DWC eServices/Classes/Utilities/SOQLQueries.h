@@ -18,13 +18,13 @@
 + (NSString *)caseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray RelatedObject:(NSString *)RelatedObject;
 + (NSString *)caseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray RelatedObject:(NSString *)RelatedObject AddRelatedFields:(BOOL)AddRelatedFields;
 + (NSString *)cardTypeQueryForDuration:(NSString *)duration CardType:(NSString *)cardType;
-+ (NSString *)myRequestsQuery;
++ (NSString *)myRequestsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset;
 + (NSString *)companyShareholdersQuery;
 + (NSString *)companyManagersQuery;
 + (NSString *)companyDirectorsQuery;
 + (NSString *)companyLegalRepresentativesQuery;
 + (NSString *)licenseActivityQueryForLicenseId:(NSString *)LicenseId;
-+ (NSString *)notificationsQuery;
++ (NSString *)notificationsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset;
 + (NSString *)notificationsCountQuery;
 + (NSString *)contractsQuery;
 + (NSString *)dwcDocumentsQuery;

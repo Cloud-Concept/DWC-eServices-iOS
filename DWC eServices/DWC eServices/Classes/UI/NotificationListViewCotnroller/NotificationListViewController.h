@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
+#import "UITableView+DragLoad.h"
 
-@interface NotificationListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate>
+@class SFRestRequest;
+
+@interface NotificationListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate>
 {
     NSArray *notificationsArray;
+    SFRestRequest *restRequest;
 }
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
