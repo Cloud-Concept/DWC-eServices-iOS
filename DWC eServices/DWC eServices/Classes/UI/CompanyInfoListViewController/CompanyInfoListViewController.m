@@ -9,7 +9,6 @@
 #import "CompanyInfoListViewController.h"
 #import "CompanyInfoListTableViewCell.h"
 #import "DWCCompanyInfo.h"
-#import "FVCustomAlertView.h"
 #import "SFRestAPI+Blocks.h"
 #import "RecordMainViewController.h"
 #import "Globals.h"
@@ -42,25 +41,10 @@
     
     self.showSlidingMenu = NO;
     
-    switch (self.currentDWCCompanyInfo.Type) {
-        case DWCCompanyInfoShareholders:
-            [self loadCompanyShareholders];
-            break;
-        case DWCCompanyInfoGeneralManagers:
-            [self loadCompanyManagers];
-            break;
-        case DWCCompanyInfoDirectors:
-            [self loadCompanyDirectors];
-            break;
-        case DWCCompanyInfoLegalRepresentative:
-            [self loadCompanyLegalRepresentatives];
-            break;
-        case DWCCompanyInfoLeasingInfo:
-            [self loadTenancyContracts];
-            break;
-        default:
-            break;
-    }
+    [self.tableView setDragDelegate:self refreshDatePermanentKey:@""];
+    self.tableView.queryLimit = 15;
+    
+    [self.tableView triggerRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,143 +52,90 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)loadCompanyShareholders {
+- (void)loadRecordsRefresh:(BOOL)isRefresh {
+    switch (self.currentDWCCompanyInfo.Type) {
+        case DWCCompanyInfoShareholders:
+        case DWCCompanyInfoGeneralManagers:
+        case DWCCompanyInfoDirectors:
+        case DWCCompanyInfoLegalRepresentative:
+            [self loadCompanyRefresh:isRefresh];
+            break;
+        case DWCCompanyInfoLeasingInfo:
+            [self loadTenancyContractsRefresh:isRefresh];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)loadCompanyRefresh:(BOOL)isRefresh {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            if (isRefresh)
+                [self.tableView finishRefresh];
+            else
+                [self.tableView finishLoadMore];
         });
     };
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         NSArray *records = [dict objectForKey:@"records"];
         
-        dataRows = [NSMutableArray new];
+        if (isRefresh)
+            dataRows = [NSArray new];
+        
+        NSMutableArray *dataMutableArray = [NSMutableArray arrayWithArray:dataRows];
         
         for (NSDictionary *recordDict in records) {
-            
-            
-            [dataRows addObject:[[ShareOwnership alloc] initShareOwnership:recordDict]];
-            
+            switch (self.currentDWCCompanyInfo.Type) {
+                case DWCCompanyInfoShareholders:
+                    [dataMutableArray addObject:[[ShareOwnership alloc] initShareOwnership:recordDict]];
+                    break;
+                case DWCCompanyInfoGeneralManagers:
+                    [dataMutableArray addObject:[[ManagementMember alloc] initManagementMember:recordDict]];
+                    break;
+                case DWCCompanyInfoDirectors:
+                    [dataMutableArray addObject:[[Directorship alloc] initDirectorship:recordDict]];
+                    break;
+                case DWCCompanyInfoLegalRepresentative:
+                    [dataMutableArray addObject:[[LegalRepresentative alloc] initLegalRepresentative:recordDict]];
+                    break;
+                default:
+                    break;
+            }
         }
         
+        dataRows = [NSArray arrayWithArray:dataMutableArray];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            if (isRefresh)
+                [self.tableView finishRefresh];
+            else
+                [self.tableView finishLoadMore];
+            
             [self.tableView reloadData];
         });
     };
     
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDWCCompanyInfo.SOQLQuery
+    [[SFRestAPI sharedInstance] performSOQLQuery:[NSString stringWithFormat:self.currentDWCCompanyInfo.SOQLQuery,
+                                                  self.tableView.queryLimit, self.tableView.queryOffset]
                                        failBlock:errorBlock
                                    completeBlock:successBlock];
     
 }
 
-- (void)loadCompanyManagers {
-    void (^errorBlock) (NSError*) = ^(NSError *e) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-        });
-    };
+- (void)loadTenancyContractsRefresh:(BOOL)isRefresh {
+    restRequest = [[SFRestRequest alloc] init];
+    restRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileTenantContractsWebService"];
+    restRequest.method = SFRestMethodGET;
+    restRequest.path = @"/services/apexrest/MobileTenantContractsWebService";
     
-    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        NSArray *records = [dict objectForKey:@"records"];
-        
-        dataRows = [NSMutableArray new];
-        
-        for (NSDictionary *recordDict in records) {
-            [dataRows addObject:[[ManagementMember alloc] initManagementMember:recordDict]];
-            
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            [self.tableView reloadData];
-        });
-    };
+    NSDictionary *paramsDict = [NSDictionary dictionaryWithObjects:@[[Globals currentAccount].Id, [NSNumber numberWithInteger:self.tableView.queryLimit], [NSNumber numberWithInteger:self.tableView.queryOffset]]
+                                                            forKeys:@[@"AccountId", @"Limit", @"Offset"]];
     
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    restRequest.queryParams = paramsDict;
     
-    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDWCCompanyInfo.SOQLQuery
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
-}
-
-- (void)loadCompanyDirectors {
-    void (^errorBlock) (NSError*) = ^(NSError *e) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-        });
-    };
-    
-    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        NSArray *records = [dict objectForKey:@"records"];
-        
-        dataRows = [NSMutableArray new];
-        
-        for (NSDictionary *recordDict in records) {
-            [dataRows addObject:[[Directorship alloc] initDirectorship:recordDict]];
-            
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            [self.tableView reloadData];
-        });
-    };
-    
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDWCCompanyInfo.SOQLQuery
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
-}
-
-- (void)loadCompanyLegalRepresentatives {
-    void (^errorBlock) (NSError*) = ^(NSError *e) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-        });
-    };
-    
-    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        NSArray *records = [dict objectForKey:@"records"];
-        
-        dataRows = [NSMutableArray new];
-        for (NSDictionary *recordDict in records) {
-            
-            [dataRows addObject:[[LegalRepresentative alloc] initLegalRepresentative:recordDict]];
-            
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            [self.tableView reloadData];
-        });
-    };
-    
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDWCCompanyInfo.SOQLQuery
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
-}
-
-- (void)loadTenancyContracts {    
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    SFRestRequest *tenantContractsRequest = [[SFRestRequest alloc] init];
-    tenantContractsRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileTenantContractsWebService"];
-    tenantContractsRequest.method = SFRestMethodGET;
-    tenantContractsRequest.path = @"/services/apexrest/MobileTenantContractsWebService";
-    tenantContractsRequest.queryParams = [NSDictionary dictionaryWithObject:[Globals currentAccount].Id forKey:@"AccountId"];
-    
-    [[SFRestAPI sharedInstance] send:tenantContractsRequest delegate:self];
+    [[SFRestAPI sharedInstance] send:restRequest delegate:self];
 }
 
 - (UITableViewCell *)cellContractsForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
@@ -546,6 +477,16 @@
     recordVC.contractObject = tenancyContract;
 }
 
+- (void)tableLoadMore {
+    self.tableView.queryOffset += self.tableView.queryLimit;
+    [self loadRecordsRefresh:NO];
+}
+
+- (void)tableRefresh {
+    self.tableView.queryOffset = 0;
+    [self loadRecordsRefresh:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -626,13 +567,16 @@
     NSArray *resultsArray = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
     NSLog(@"request:didLoadResponse: %@", resultsArray);
     
-    dataRows = [NSMutableArray new];
+    NSMutableArray *dataMutableArray = [NSMutableArray new];
     for (NSDictionary *recordDict in resultsArray) {
-        [dataRows addObject:[[TenancyContract alloc] initTenancyContract:recordDict]];
+        [dataMutableArray addObject:[[TenancyContract alloc] initTenancyContract:recordDict]];
     }
     
+    dataRows = [NSArray arrayWithArray:dataMutableArray];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
-        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        [self.tableView finishRefresh];
+        [self.tableView finishLoadMore];
         
         [self.tableView reloadData];
     });
@@ -642,27 +586,45 @@
     NSLog(@"request:didFailLoadWithError: %@", error);
     //add your failed error handling here
     dispatch_async(dispatch_get_main_queue(), ^{
-        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        [self.tableView finishRefresh];
+        [self.tableView finishLoadMore];
     });
-#warning Handle error
 }
 
 - (void)requestDidCancelLoad:(SFRestRequest *)request {
     NSLog(@"requestDidCancelLoad: %@", request);
     //add your failed error handling here
     dispatch_async(dispatch_get_main_queue(), ^{
-        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        [self.tableView finishRefresh];
+        [self.tableView finishLoadMore];
     });
-#warning Handle error
 }
 
 - (void)requestDidTimeout:(SFRestRequest *)request {
     NSLog(@"requestDidTimeout: %@", request);
     //add your failed error handling here
     dispatch_async(dispatch_get_main_queue(), ^{
-        [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        [self.tableView finishRefresh];
+        [self.tableView finishLoadMore];
     });
-#warning Handle error
+}
+
+
+#pragma mark - Table view Drag Load
+- (void)dragTableDidTriggerRefresh:(UITableView *)tableView {
+    [self tableRefresh];
+}
+
+- (void)dragTableRefreshCanceled:(UITableView *)tableView {
+    [restRequest cancel];
+}
+
+- (void)dragTableDidTriggerLoadMore:(UITableView *)tableView {
+    [self tableLoadMore];
+}
+
+- (void)dragTableLoadMoreCanceled:(UITableView *)tableView {
+    [restRequest cancel];
 }
 
 /*

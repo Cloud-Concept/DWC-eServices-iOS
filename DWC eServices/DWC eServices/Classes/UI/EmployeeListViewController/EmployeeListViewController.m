@@ -8,7 +8,6 @@
 
 #import "EmployeeListViewController.h"
 #import "DWCEmployee.h"
-#import "FVCustomAlertView.h"
 #import "SFRestAPI+Blocks.h"
 #import "Account.h"
 #import "Visa.h"
@@ -43,26 +42,17 @@
     self.showSlidingMenu = NO;
     searchBarText = @"";
     
-    switch (self.currentDWCEmployee.Type) {
-        case PermanentEmployee:
-        case VisitVisaEmployee:
-            [self loadVisaEmployees];
-            hideNewButton = YES;
-            break;
-        case ContractorEmployee:
-            [self loadContactorEmployees];
-            hideNewButton = NO;
-            break;
-        default:
-            break;
-    }
-    
     [self initializeFilterStringArray];
     
     [self initializeSearchBar];
     
     if (hideNewButton)
         [self.addNewButton removeFromSuperview];
+    
+    [self.employeesTableView setDragDelegate:self refreshDatePermanentKey:@""];
+    self.employeesTableView.queryLimit = 15;
+    
+    [self.employeesTableView triggerRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -148,14 +138,13 @@
     [self.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
-- (void)loadVisaEmployees {
+- (void)loadEmployeesRefresh:(BOOL)isRefresh {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-            
-            [alert show];
-            
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            if (isRefresh)
+                [self.employeesTableView finishRefresh];
+            else
+                [self.employeesTableView finishLoadMore];
         });
         
     };
@@ -163,58 +152,41 @@
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         NSArray *records = [dict objectForKey:@"records"];
         
-        dataRows = [NSMutableArray new];
+        if (isRefresh)
+            dataRows = [NSArray new];
         
-        for (NSDictionary *dict in records) {
-            
-            [dataRows addObject:[[Visa alloc] initVisa:dict]];
+        NSMutableArray *employeesMutableArray = [NSMutableArray arrayWithArray:dataRows];
+        
+        for (NSDictionary *recordDict in records) {
+            switch (self.currentDWCEmployee.Type) {
+                case PermanentEmployee:
+                case VisitVisaEmployee:
+                    [employeesMutableArray addObject:[[Visa alloc] initVisa:recordDict]];
+                    break;
+                case ContractorEmployee:
+                    [employeesMutableArray addObject:[[CardManagement alloc] initCardManagement:recordDict]];
+                    break;
+                default:
+                    break;
+            }
         }
         
+        dataRows = [NSArray arrayWithArray:employeesMutableArray];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            if (isRefresh)
+                [self.employeesTableView finishRefresh];
+            else
+                [self.employeesTableView finishLoadMore];
+            
             [self refreshEmployeesTable];
         });
     };
     
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDWCEmployee.SOQLQuery
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
-}
-
-- (void)loadContactorEmployees {
-    void (^errorBlock) (NSError*) = ^(NSError *e) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
-            
-            [alert show];
-            
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-        });
-        
-    };
-    
-    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        NSArray *records = [dict objectForKey:@"records"];
-        
-        dataRows = [NSMutableArray new];
-        
-        for (NSDictionary *recordDict in records) {
-            [dataRows addObject:[[CardManagement alloc] initCardManagement:recordDict]];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-                [self refreshEmployeesTable];
-            });
-        }
-    };
-    
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDWCEmployee.SOQLQuery
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
+    restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:[NSString stringWithFormat:self.currentDWCEmployee.SOQLQuery,
+                                                                self.employeesTableView.queryLimit, self.employeesTableView.queryOffset]
+                                                     failBlock:errorBlock
+                                                 completeBlock:successBlock];
 }
 
 - (UITableViewCell *)cellVisaEmployeesForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView {
@@ -435,7 +407,7 @@
     NSString *predicateString = [self getPredicateString];
     
     if ([predicateString isEqualToString:@""]) {
-        filteredEmployeesArray = dataRows;
+        filteredEmployeesArray = [NSMutableArray arrayWithArray:dataRows];
     }
     else {
         NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateString];
@@ -475,6 +447,16 @@
     }
     
     return predicateString;
+}
+
+- (void)tableLoadMore {
+    self.employeesTableView.queryOffset += self.employeesTableView.queryLimit;
+    [self loadEmployeesRefresh:NO];
+}
+
+- (void)tableRefresh {
+    self.employeesTableView.queryOffset = 0;
+    [self loadEmployeesRefresh:YES];
 }
 
 #pragma mark - Table view data source
@@ -570,5 +552,23 @@
     searchBarText = searchController.searchBar.text;
     [self refreshEmployeesTable];
 }
+
+#pragma mark - Table view Drag Load
+- (void)dragTableDidTriggerRefresh:(UITableView *)tableView {
+    [self tableRefresh];
+}
+
+- (void)dragTableRefreshCanceled:(UITableView *)tableView {
+    [restRequest cancel];
+}
+
+- (void)dragTableDidTriggerLoadMore:(UITableView *)tableView {
+    [self tableLoadMore];
+}
+
+- (void)dragTableLoadMoreCanceled:(UITableView *)tableView {
+    [restRequest cancel];
+}
+
 
 @end

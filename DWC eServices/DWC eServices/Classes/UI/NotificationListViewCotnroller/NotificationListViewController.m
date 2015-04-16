@@ -46,7 +46,6 @@
 - (void)loadNotificationsRefresh:(BOOL)isRefresh {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             if (isRefresh)
                 [self.tableView finishRefresh];
             else
@@ -75,7 +74,7 @@
         }
         
         notificationsArray = [NSArray arrayWithArray:notificationMutableArray];
-        [Globals setNotificationsCount:[NSNumber numberWithInteger:notificationsCount]];
+        //[Globals setNotificationsCount:[NSNumber numberWithInteger:notificationsCount]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (isRefresh)

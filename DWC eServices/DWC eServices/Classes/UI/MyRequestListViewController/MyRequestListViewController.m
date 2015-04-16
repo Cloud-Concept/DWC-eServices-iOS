@@ -10,7 +10,6 @@
 #import "MyRequestTableViewCell.h"
 #import "SFRestAPI+Blocks.h"
 #import "SOQLQueries.h"
-#import "FVCustomAlertView.h"
 #import "Request.h"
 #import "RecordType.h"
 #import "HelperClass.h"
@@ -194,15 +193,6 @@
     restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:query
                                                      failBlock:errorBlock
                                                  completeBlock:successBlock];
-}
-
-- (void)showLoadingDialog {
-    if(![FVCustomAlertView isShowingAlert])
-        [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-}
-
-- (void)hideLoadingDialog {
-    [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
 }
 
 - (void)openViewMyRequestFlow:(Request *)request {

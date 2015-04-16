@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
+#import "UITableView+DragLoad.h"
 
 @class DWCEmployee;
+@class SFRestRequest;
 
-@interface EmployeeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating>
+@interface EmployeeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, UISearchResultsUpdating>
 {
-    NSMutableArray *dataRows;
+    NSArray *dataRows;
     
     BOOL hideNewButton;
     
@@ -23,6 +25,8 @@
     NSMutableArray *filteredEmployeesArray;
     
     NSString *searchBarText;
+    
+    SFRestRequest *restRequest;
 }
 @property (nonatomic, strong) DWCEmployee *currentDWCEmployee;
 
