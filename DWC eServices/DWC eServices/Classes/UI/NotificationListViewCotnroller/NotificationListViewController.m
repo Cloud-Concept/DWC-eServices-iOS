@@ -191,6 +191,10 @@
     NSString *returnValue = [[NSString alloc] initWithData:jsonResponse encoding:NSUTF8StringEncoding];
     NSLog(@"request:didLoadResponse: %@", returnValue);
     
+    [Globals setNotificationsCount:[NSNumber numberWithInteger:0]];
+    
+    [self refreshNotificationsCount];
+    
     [self loadNotificationsRefresh:YES];
 }
 

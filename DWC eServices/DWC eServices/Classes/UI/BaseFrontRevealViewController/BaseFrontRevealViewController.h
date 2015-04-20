@@ -15,5 +15,5 @@
 @property (nonatomic) BOOL showNotificationIcon;
 
 - (void)setNavigationBarTitle:(NSString *)title;
-
+- (void)refreshNotificationsCount;
 @end

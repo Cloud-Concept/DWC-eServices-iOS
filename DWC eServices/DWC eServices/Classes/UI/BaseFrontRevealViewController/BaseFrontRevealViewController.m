@@ -149,6 +149,10 @@
     [self.navigationItem setTitle:title];
 }
 
+- (void)refreshNotificationsCount {
+    if (self.showNotificationIcon)
+        [self initNotificationIcon];
+}
 /*
  #pragma mark - Navigation
  
