@@ -56,6 +56,8 @@
     [super viewWillAppear:animated];
     
     //Show Notification Count in Homepage
+    [self loadNotificationsCount];
+    
     [self setNotificationNumberBadge];
     [self loadCompanyInfo:NO];
 }
@@ -76,6 +78,9 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
 #warning Handle Error
+            loadingCompanyInfo = NO;
+            [self hideLoadingAlertView];
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             
             [alert show];
@@ -95,7 +100,9 @@
         [Globals setContactId:[dict objectForKey:@"ContactId"]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            loadingCompanyInfo = NO;
+            [self hideLoadingAlertView];
+            
             [self refreshLabels];
             if (loadLicenseInfo)
                 [self loadLicenseInfo];
@@ -109,7 +116,8 @@
     
     NSArray *fields = @[@"ContactId, Contact.Name", @"Contact.Account.Id", @"Contact.Account.Account_Balance__c", @"Contact.Account.Portal_Balance__c", @"Contact.Account.Name", @"Contact.Account.License_Number_Formula__c", @"Contact.Account.BillingCity", @"Contact.Account.Company_Registration_Date__c", @"Contact.Account.Legal_Form__c", @"Contact.Account.Registration_Number_Value__c", @"Contact.Account.Phone", @"Contact.Account.Fax", @"Contact.Account.Email__c", @"Contact.Account.Mobile__c", @"Contact.Account.PRO_Email__c", @"Contact.Account.PRO_Mobile_Number__c", @"Contact.Account.BillingStreet", @"Contact.Account.BillingPostalCode", @"Contact.Account.BillingCountry", @"Contact.Account.BillingState", @"Contact.Account.Current_License_Number__r.Id", @"Contact.Account.Current_License_Number__r.License_Issue_Date__c", @"Contact.Account.Current_License_Number__r.License_Expiry_Date__c", @"Contact.Account.Current_License_Number__r.Commercial_Name__c", @"Contact.Account.Current_License_Number__r.Commercial_Name_Arabic__c", @"Contact.Account.Current_License_Number__r.License_Number_Value__c", @"Contact.Account.Current_License_Number__r.Validity_Status__c", @"Contact.Account.Current_License_Number__r.RecordType.Id", @"Contact.Account.Current_License_Number__r.RecordType.Name", @"Contact.Account.Current_License_Number__r.RecordType.DeveloperName", @"Contact.Account.Current_License_Number__r.RecordType.SObjectType", @"Contact.Account.Company_Logo__c"];
     
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    loadingCompanyInfo = YES;
+    [self showLoadingAlertView];
     
     [[SFRestAPI sharedInstance] performRetrieveWithObjectType:@"User"
                                                      objectId:accountManager.currentUser.credentials.userId
@@ -122,6 +130,9 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
 #warning Handle Error
+            loadingLicenseInfo = NO;
+            [self hideLoadingAlertView];
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             
             [alert show];
@@ -141,14 +152,16 @@
         [Globals currentAccount].currentLicenseNumber.licenseActivityArray = [NSArray arrayWithArray:licenseActivityMutableArray];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            //[self refreshLabels];
+            loadingLicenseInfo = NO;
+            [self hideLoadingAlertView];
+            
             [self loadNotificationsCount];
         });
         
     };
     
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    loadingLicenseInfo = YES;
+    [self showLoadingAlertView];
     
     [[SFRestAPI sharedInstance]
      performSOQLQuery:[SOQLQueries licenseActivityQueryForLicenseId:[Globals currentAccount].currentLicenseNumber.Id]
@@ -162,13 +175,16 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
 #warning Handle Error
+            loadingNotificationsCount = NO;
+            [self hideLoadingAlertView];
         });
         
     };
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            loadingNotificationsCount = NO;
+            [self hideLoadingAlertView];
             
             for (NSDictionary *record in [dict objectForKey:@"records"]) {
                 NSNumber *notificationsCount = [record objectForKey:@"expr0"];
@@ -178,7 +194,8 @@
         });
     };
     
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    loadingNotificationsCount = YES;
+    [self showLoadingAlertView];
     
     [[SFRestAPI sharedInstance]
      performSOQLQuery:[SOQLQueries notificationsCountQuery]
@@ -230,6 +247,18 @@
     vfWebviewVC.navBarTitle = NSLocalizedString(@"navBarDashboardTitle", @"");
     vfWebviewVC.VFshowSlidingMenu = YES;
     [self.navigationController pushViewController:vfWebviewVC animated:YES];
+}
+
+- (void)showLoadingAlertView {
+    if (![FVCustomAlertView isShowingAlert])
+        [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+}
+
+- (void)hideLoadingAlertView {
+    if (loadingCompanyInfo || loadingLicenseInfo || loadingNotificationsCount)
+        return;
+    
+    [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
 }
 
 //*

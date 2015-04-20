@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface HomePageViewController : UIViewController
+{
+    BOOL loadingNotificationsCount;
+    BOOL loadingLicenseInfo;
+    BOOL loadingCompanyInfo;
+}
 
 @property (weak, nonatomic) IBOutlet UIButton *dashboardButton;
 @property (weak, nonatomic) IBOutlet UIButton *employeesButton;

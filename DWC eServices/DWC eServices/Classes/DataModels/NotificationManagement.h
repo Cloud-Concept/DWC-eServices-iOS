@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *notificationMessage;
 @property (nonatomic, strong) NSString *priorValue;
 @property (nonatomic, strong) NSDate *readDateTime;
+@property (nonatomic, strong) NSDate *createdDate;
 
 @property (nonatomic) BOOL isFeedbackAllowed;
 @property (nonatomic) BOOL isMessageRead;

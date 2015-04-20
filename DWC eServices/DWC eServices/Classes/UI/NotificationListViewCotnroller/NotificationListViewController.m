@@ -19,6 +19,7 @@
 #import "SFDateUtil.h"
 #import "Globals.h"
 #import "HelperClass.h"
+#import "Account.h"
 
 @interface NotificationListViewController ()
 
@@ -35,6 +36,7 @@
     [self.tableView setDragDelegate:self refreshDatePermanentKey:@""];
     self.tableView.queryLimit = 15;
     
+    shouldMarkAllAsRead = NO;
     [self.tableView triggerRefresh];
 }
 
@@ -150,7 +152,45 @@
 }
 
 - (void)tableRefresh {
-    self.tableView.queryOffset = 0;
+    if (shouldMarkAllAsRead)
+        [self callNotificationsReadWebservice];
+    else {
+        self.tableView.queryOffset = 0;
+        [self loadNotificationsRefresh:YES];
+    }
+    shouldMarkAllAsRead = YES;
+}
+
+- (void)callNotificationsReadWebservice {
+    
+    NotificationManagement *firstItem = nil;
+    
+    if (notificationsArray.count > 0)
+        firstItem = [notificationsArray objectAtIndex:0];
+    
+    // Manually set up request object
+    restRequest = [[SFRestRequest alloc] init];
+    restRequest.endpoint = @"/services/apexrest/MobileNotificationsReadWebService";
+    restRequest.method = SFRestMethodGET;
+    restRequest.path = @"/services/apexrest/MobileNotificationsReadWebService";
+    
+    NSMutableDictionary *paramsDict = [NSMutableDictionary dictionaryWithObjects:@[[Globals currentAccount].Id,
+                                                                                   [NSNumber numberWithInteger:self.tableView.queryLimit]]
+                                                                         forKeys:@[@"AccountId", @"Limit"]];
+    
+    if (firstItem)
+        [paramsDict setObject:[SFDateUtil toSOQLDateTimeString:firstItem.createdDate isDateTime:YES]
+                       forKey:@"CreatedDate"];
+    
+    restRequest.queryParams = paramsDict;
+    
+    [[SFRestAPI sharedInstance] send:restRequest delegate:self];
+}
+
+- (void)handleNotificationsReadWebService:(id)jsonResponse {
+    NSString *returnValue = [[NSString alloc] initWithData:jsonResponse encoding:NSUTF8StringEncoding];
+    NSLog(@"request:didLoadResponse: %@", returnValue);
+    
     [self loadNotificationsRefresh:YES];
 }
 
@@ -217,6 +257,46 @@
 
 - (void)dragTableLoadMoreCanceled:(UITableView *)tableView {
     [restRequest cancel];
+}
+
+#pragma mark - SFRestAPIDelegate
+
+- (void)request:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
+    NSError *error;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
+    NSLog(@"request:didLoadResponse: %@", dict);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([request.path containsString:@"MobileNotificationsReadWebService"])
+            [self handleNotificationsReadWebService:jsonResponse];
+    });
+}
+
+- (void)request:(SFRestRequest*)request didFailLoadWithError:(NSError*)error {
+    NSLog(@"request:didFailLoadWithError: %@", error);
+    //add your failed error handling here
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView finishRefresh];
+    });
+}
+
+- (void)requestDidCancelLoad:(SFRestRequest *)request {
+    NSLog(@"requestDidCancelLoad: %@", request);
+    //add your failed error handling here
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView finishRefresh];
+    });
+}
+
+- (void)requestDidTimeout:(SFRestRequest *)request {
+    NSLog(@"requestDidTimeout: %@", request);
+    //add your failed error handling here
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView finishRefresh];
+    });
 }
 
 /*

@@ -34,6 +34,9 @@
     if (![[notificationManagerDict objectForKey:@"Read_Date_and_Time__c"] isKindOfClass:[NSNull class]])
         self.readDateTime = [SFDateUtil SOQLDateTimeStringToDate:[notificationManagerDict objectForKey:@"Read_Date_and_Time__c"]];
     
+    if (![[notificationManagerDict objectForKey:@"CreatedDate"] isKindOfClass:[NSNull class]])
+        self.createdDate = [SFDateUtil SOQLDateTimeStringToDate:[notificationManagerDict objectForKey:@"CreatedDate"]];
+    
     self.request = [[Request alloc] initRequest:[notificationManagerDict objectForKey:@"Case__r"]];
     
     return self;
