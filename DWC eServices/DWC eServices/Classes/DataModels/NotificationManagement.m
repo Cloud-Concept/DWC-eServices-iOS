@@ -24,6 +24,7 @@
     self.name = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Name"]];
     self.caseStatus = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Case_Status__c"]];
     self.compiledMessage = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Compiled_Message__c"]];
+    self.mobileCompiledMessage = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Mobile_Compiled_Message__c"]];
     self.notificationMessage = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Notification_Message__c"]];
     self.priorValue = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Prior_Value__c"]];
     
@@ -107,7 +108,10 @@
     [returnString appendAttributedString:notificationAttributedString];
     [returnString appendAttributedString:statusAttributedString];
     
-    return [[NSAttributedString alloc] initWithAttributedString:returnString];
+    //return [[NSAttributedString alloc] initWithAttributedString:returnString];
+    
+    return [[NSAttributedString alloc] initWithString:self.mobileCompiledMessage
+                                          attributes:notificationAttributes];
 }
 
 @end
