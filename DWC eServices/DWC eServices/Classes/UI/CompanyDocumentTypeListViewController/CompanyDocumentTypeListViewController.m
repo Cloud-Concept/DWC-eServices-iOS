@@ -36,7 +36,20 @@
     
     self.showSlidingMenu = NO;
     
-    [self loadDocuments];
+    [self.tableView setDragDelegate:self refreshDatePermanentKey:@""];
+    self.tableView.queryLimit = 15;
+    
+    
+    switch (self.currentDocumentType.Type) {
+        case DWCCompanyDocumentTypeCustomerDocument:
+            [self.tableView triggerRefresh];
+            break;
+        case DWCCompanyDocumentTypeDWCDocument:
+            [self loadTenancyContract];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,76 +57,53 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)loadDocuments {
-    switch (self.currentDocumentType.Type) {
-        case DWCCompanyDocumentTypeCustomerDocument:
-            [self loadCustomerCompanyDocuments];
-            break;
-        case DWCCompanyDocumentTypeDWCDocument:
-            [self loadDWCCompanyDocuments];
-            break;
-        default:
-            break;
-    }
-}
-
-- (void)loadDWCCompanyDocuments {
+- (void)loadDocumentsRefresh:(BOOL)isRefresh {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            if (isRefresh)
+                [self.tableView finishRefresh];
+            else
+                [self.tableView finishLoadMore];
         });
     };
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         NSArray *records = [dict objectForKey:@"records"];
         
-        dataRows = [NSMutableArray new];
+        if (isRefresh)
+            dataRows = [NSMutableArray new];
+        
+        NSMutableArray *dataMutableArray = [NSMutableArray arrayWithArray:dataRows];
+        
         for (NSDictionary *recordDict in records) {
-            [dataRows addObject:[[EServicesDocumentChecklist alloc] initEServicesDocumentChecklist:recordDict]];
+            switch (self.currentDocumentType.Type) {
+                case DWCCompanyDocumentTypeCustomerDocument:
+                    [dataMutableArray addObject:[[CompanyDocument alloc] initCompanyDocument:recordDict]];
+                    break;
+                case DWCCompanyDocumentTypeDWCDocument:
+                    [dataMutableArray addObject:[[EServicesDocumentChecklist alloc] initEServicesDocumentChecklist:recordDict]];
+                    break;
+                default:
+                    break;
+            }
         }
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            [self.tableView reloadData];
-            [self loadTenancyContract];
-        });
-    };
-    
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDocumentType.SOQLQuery
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
-}
-
-- (void)loadCustomerCompanyDocuments {
-    void (^errorBlock) (NSError*) = ^(NSError *e) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-        });
-    };
-    
-    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        NSArray *records = [dict objectForKey:@"records"];
-        
-        dataRows = [NSMutableArray new];
-        for (NSDictionary *recordDict in records) {
-            [dataRows addObject:[[CompanyDocument alloc] initCompanyDocument:recordDict]];
-        }
+        dataRows = [NSMutableArray arrayWithArray:dataMutableArray];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            if (isRefresh)
+                [self.tableView finishRefresh];
+            else
+                [self.tableView finishLoadMore];
+            
             [self.tableView reloadData];
         });
     };
     
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:self.currentDocumentType.SOQLQuery
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
+    restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:[NSString stringWithFormat:self.currentDocumentType.SOQLQuery,
+                                                                self.tableView.queryLimit, self.tableView.queryOffset]
+                                                     failBlock:errorBlock
+                                                 completeBlock:successBlock];
 }
 
 - (void)loadTenancyContract {
@@ -160,7 +150,7 @@
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            [self loadDocuments];
+            [self.tableView triggerRefresh];
         });
     };
     
@@ -176,7 +166,7 @@
     VisualforceWebviewViewController *vfWebviewVC = [VisualforceWebviewViewController new];
     
     vfWebviewVC.returnURL = url;
-    vfWebviewVC.showSlidingMenu = NO;
+    vfWebviewVC.VFshowSlidingMenu = NO;
     [self.navigationController pushViewController:vfWebviewVC animated:YES];
 }
 
@@ -372,6 +362,16 @@
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
+- (void)tableLoadMore {
+    self.tableView.queryOffset += self.tableView.queryLimit;
+    [self loadDocumentsRefresh:NO];
+}
+
+- (void)tableRefresh {
+    self.tableView.queryOffset = 0;
+    [self loadDocumentsRefresh:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -437,15 +437,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
         
-        if (!activeBCTenancyContract) {
-            for (EServicesDocumentChecklist *document in dataRows) {
-                if ([document.eServiceAdministration.recordTypePicklist containsString:@"Leasing_Request"]) {
-                    [dataRows removeObject:document];
-                    break;
-                }
-            }
-            [self.tableView reloadData];
-        }
+        [self.tableView triggerRefresh];
     });
 }
 
@@ -474,6 +466,23 @@
         [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
     });
 #warning Handle error
+}
+
+#pragma mark - Table view Drag Load
+- (void)dragTableDidTriggerRefresh:(UITableView *)tableView {
+    [self tableRefresh];
+}
+
+- (void)dragTableRefreshCanceled:(UITableView *)tableView {
+    [restRequest cancel];
+}
+
+- (void)dragTableDidTriggerLoadMore:(UITableView *)tableView {
+    [self tableLoadMore];
+}
+
+- (void)dragTableLoadMoreCanceled:(UITableView *)tableView {
+    [restRequest cancel];
 }
 
 /*

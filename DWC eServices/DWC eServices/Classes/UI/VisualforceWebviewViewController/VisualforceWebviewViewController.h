@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString *returnURL;
 @property (nonatomic, strong) NSString *navBarTitle;
 
+@property (nonatomic, assign) BOOL VFshowSlidingMenu;
+
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 
 @end

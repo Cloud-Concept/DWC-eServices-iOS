@@ -228,7 +228,7 @@
                              [Globals currentAccount].Id];
     
     vfWebviewVC.navBarTitle = NSLocalizedString(@"navBarDashboardTitle", @"");
-    vfWebviewVC.showSlidingMenu = YES;
+    vfWebviewVC.VFshowSlidingMenu = YES;
     [self.navigationController pushViewController:vfWebviewVC animated:YES];
 }
 
