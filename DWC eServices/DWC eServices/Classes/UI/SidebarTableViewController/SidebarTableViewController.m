@@ -13,6 +13,7 @@
 #import "VisualforceWebviewViewController.h"
 #import "Globals.h"
 #import "Account.h"
+#import "HelperClass.h"
 
 @interface SidebarTableViewController ()
 
@@ -49,16 +50,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 1:
-            [self.revealViewController.navigationController popViewControllerAnimated:YES];
-            break;
-        case 2:
-            //[self showDashboards];
-            break;
-        default:
-            break;
-    }
+    if (indexPath.row == 1)
+        [self.revealViewController.navigationController popViewControllerAnimated:YES];
+    else if (indexPath.row == menuItems.count - 1)
+        [HelperClass showLogoutConfirmationDialog:self];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

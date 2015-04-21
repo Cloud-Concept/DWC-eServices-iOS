@@ -8,6 +8,7 @@
 
 #import "HelperClass.h"
 #import "UIView+MGBadgeView.h"
+#import "SFAuthenticationManager.h"
 
 @implementation HelperClass
 
@@ -160,4 +161,25 @@
     
     return NSLocalizedString(localizedStringName, @"");
 }
+
++ (void)showLogoutConfirmationDialog:(UIViewController *)viewController {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"LogoutAlertTitle", @"")
+                                                                   message:NSLocalizedString(@"LogoutAlertMessage", @"")
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"yes", @"")
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction *action) {
+                                                          [[SFAuthenticationManager sharedManager] logout];
+                                                      }];
+    
+    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"no", @"")
+                                                       style:UIAlertActionStyleCancel
+                                                     handler:nil];
+    
+    [alert addAction:yesAction];
+    [alert addAction:noAction];
+    [viewController presentViewController:alert animated:YES completion:nil];
+}
+
 @end

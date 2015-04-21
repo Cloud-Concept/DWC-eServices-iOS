@@ -22,4 +22,5 @@
 + (void)displayAlertDialogWithTitle:(NSString *)title Message:(NSString *)message;
 + (NSString *)getRelationshipValue:(NSDictionary *)dictionary Key:(NSString *)key;
 + (NSString *)formatBoolToString:(BOOL)booleanValue;
++ (void)showLogoutConfirmationDialog:(UIViewController *)viewController;
 @end

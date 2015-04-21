@@ -16,7 +16,6 @@
 #import "SWRevealViewController.h"
 #import "License.h"
 #import "RecordType.h"
-#import "SFAuthenticationManager.h"
 #import "BusinessActivity.h"
 #import "LicenseActivity.h"
 #import "SOQLQueries.h"
@@ -48,7 +47,7 @@
     
     [HelperClass setupButtonWithBadgeOnImage:self.notificationButton Value:0];
     
-    [self loadCompanyInfo:YES];
+    shouldLoadLicenseInfo = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,10 +55,11 @@
     [super viewWillAppear:animated];
     
     //Show Notification Count in Homepage
-    [self loadNotificationsCount];
+    //[self loadNotificationsCount];
     
     [self setNotificationNumberBadge];
-    [self loadCompanyInfo:NO];
+    [self loadCompanyInfoWithLicenseInfo:shouldLoadLicenseInfo andNotificationCount:YES];
+    shouldLoadLicenseInfo = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,7 +73,7 @@
                                        Value:[[Globals notificationsCount] integerValue]];
 }
 
-- (void)loadCompanyInfo:(BOOL)loadLicenseInfo {
+- (void)loadCompanyInfoWithLicenseInfo:(BOOL)shouldLoadLicenseInfo andNotificationCount:(BOOL)shouldLoadNotificationCount {
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -104,7 +104,11 @@
             [self hideLoadingAlertView];
             
             [self refreshLabels];
-            if (loadLicenseInfo)
+            
+            if (shouldLoadNotificationCount)
+                [self loadNotificationsCount];
+            
+            if (shouldLoadLicenseInfo)
                 [self loadLicenseInfo];
         });
         
@@ -154,8 +158,6 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             loadingLicenseInfo = NO;
             [self hideLoadingAlertView];
-            
-            [self loadNotificationsCount];
         });
         
     };
@@ -220,23 +222,7 @@
 }
 
 - (IBAction)logoutButtonClicked:(id)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"LogoutAlertTitle", @"")
-                                                                   message:NSLocalizedString(@"LogoutAlertMessage", @"")
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *yesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"yes", @"")
-                                                        style:UIAlertActionStyleDefault
-                                                      handler:^(UIAlertAction *action) {
-                                                          [[SFAuthenticationManager sharedManager] logout];
-                                                      }];
-    
-    UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"no", @"")
-                                                       style:UIAlertActionStyleCancel
-                                                     handler:nil];
-    
-    [alert addAction:yesAction];
-    [alert addAction:noAction];
-    [self presentViewController:alert animated:YES completion:nil];
+    [HelperClass showLogoutConfirmationDialog:self];
 }
 
 - (IBAction)dashboardButtonClicked:(id)sender {

@@ -13,6 +13,8 @@
     BOOL loadingNotificationsCount;
     BOOL loadingLicenseInfo;
     BOOL loadingCompanyInfo;
+    
+    BOOL shouldLoadLicenseInfo;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *dashboardButton;
