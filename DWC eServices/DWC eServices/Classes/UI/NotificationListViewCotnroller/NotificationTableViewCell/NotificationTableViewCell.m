@@ -25,7 +25,19 @@
     self.currentNotification = notification;
     [self.notificationLabel setAttributedText:[notification getAttributedNotificationMessage]];
     
-    self.backgroundColor = notification.isMessageRead ? [UIColor clearColor] : [UIColor colorWithRed:0.968 green:0.933 blue:0.545 alpha:1];
+    self.backgroundColor = notification.isMessageRead ? [UIColor clearColor] : [UIColor colorWithRed:0.337 green:0.466 blue:0.592 alpha:0.2];
+    
+    NSString *iconName = nil;
+    
+    if ([notification.caseProcessName isEqualToString:@"NOC Services"])
+        iconName = @"Notification NOC Icon";
+    else if ([notification.caseProcessName isEqualToString:@"Visa Services"])
+        iconName = @"Notification Visa Icon";
+    else if ([notification.caseProcessName isEqualToString:@"Access Card Services"])
+        iconName = @"Notification Card Icon";
+    
+    if (iconName)
+        self.notificationIcon.image = [UIImage imageNamed:iconName];
 }
 
 @end

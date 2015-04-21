@@ -23,6 +23,7 @@
     self.Id = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Id"]];
     self.name = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Name"]];
     self.caseStatus = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Case_Status__c"]];
+    self.caseProcessName = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Case_Process_Name__c"]];
     self.compiledMessage = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Compiled_Message__c"]];
     self.mobileCompiledMessage = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Mobile_Compiled_Message__c"]];
     self.notificationMessage = [HelperClass stringCheckNull:[notificationManagerDict objectForKey:@"Notification_Message__c"]];

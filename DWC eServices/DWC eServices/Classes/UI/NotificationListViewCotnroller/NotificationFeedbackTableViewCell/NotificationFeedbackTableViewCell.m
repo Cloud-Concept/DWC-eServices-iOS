@@ -18,10 +18,10 @@
 - (void)awakeFromNib {
     // Initialization code
     
-    self.notificationRating.starImage = [[UIImage imageNamed:@"star-template"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    self.notificationRating.starHighlightedImage = [[UIImage imageNamed:@"star-highlighted-template"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.notificationRating.starImage = [UIImage imageNamed:@"Rating Star"];
+    self.notificationRating.starHighlightedImage = [UIImage imageNamed:@"Rating Star Highlighted"];
     self.notificationRating.maxRating = 5.0;
-    self.notificationRating.horizontalMargin = 50;
+    self.notificationRating.horizontalMargin = 25;
     self.notificationRating.editable = YES;
     self.notificationRating.rating = 0;
     

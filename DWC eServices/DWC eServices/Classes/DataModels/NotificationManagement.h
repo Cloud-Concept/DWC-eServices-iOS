@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *Id;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *caseStatus;
+@property (nonatomic, strong) NSString *caseProcessName;
 @property (nonatomic, strong) NSString *compiledMessage;
 @property (nonatomic, strong) NSString *mobileCompiledMessage;
 @property (nonatomic, strong) NSString *notificationMessage;
