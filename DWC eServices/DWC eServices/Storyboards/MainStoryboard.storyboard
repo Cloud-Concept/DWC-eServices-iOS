@@ -181,7 +181,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="dashboardButtonClicked:" destination="l6l-zZ-r53" eventType="touchUpInside" id="ila-B8-49z"/>
+                                            <segue destination="9Yx-mK-EUe" kind="push" identifier="DashboardSlidingMenuSegue" id="61K-II-D4e"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fp8-oh-eg1">
@@ -476,6 +476,7 @@
                         <segue destination="vvG-Xy-cGz" kind="custom" identifier="sw_front_company_info" customClass="SWRevealViewControllerSegueSetController" id="Jb9-YF-d8A"/>
                         <segue destination="ll2-JS-FCZ" kind="custom" identifier="sw_front_notification" customClass="SWRevealViewControllerSegueSetController" id="KLi-8y-tdx"/>
                         <segue destination="ASx-pj-9eg" kind="custom" identifier="sw_front_companyDocs" customClass="SWRevealViewControllerSegueSetController" id="bLm-dC-Q62"/>
+                        <segue destination="Cd5-46-KxL" kind="custom" identifier="sw_front_dashboard" customClass="SWRevealViewControllerSegueSetController" id="5D3-hu-lXy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2v-bh-BDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -546,6 +547,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="Cd5-46-KxL" kind="custom" identifier="" customClass="SWRevealViewControllerSeguePushController" id="pcT-uc-HUH"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="My Request Cell" id="R92-iS-gir">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -1532,6 +1536,70 @@
             </objects>
             <point key="canvasLocation" x="1612.5" y="1935.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oQT-Iy-K6d">
+            <objects>
+                <navigationController storyboardIdentifier="Dashboard Page" id="Cd5-46-KxL" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Aba-Pi-vzn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7a3-7v-whk" kind="relationship" relationship="rootViewController" id="OBB-8T-oUm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2uq-ol-ChC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119.5" y="2690.5"/>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="7Qd-wm-AYp">
+            <objects>
+                <viewController id="7a3-7v-whk" customClass="DashboardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bUy-HZ-tZb"/>
+                        <viewControllerLayoutGuide type="bottom" id="hpw-5u-kyL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I3e-N4-CMa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbO-ni-C6P">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="1rO-Bf-6Zg"/>
+                                    <tabBarItem systemItem="more" id="Fsz-2L-VHH"/>
+                                </items>
+                            </tabBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iOE-rD-eUa">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZbO-ni-C6P" secondAttribute="trailing" id="01o-5u-px2"/>
+                            <constraint firstItem="hpw-5u-kyL" firstAttribute="top" secondItem="ZbO-ni-C6P" secondAttribute="bottom" id="7Lx-3A-kqd"/>
+                            <constraint firstItem="ZbO-ni-C6P" firstAttribute="leading" secondItem="I3e-N4-CMa" secondAttribute="leading" id="DPc-UA-tFq"/>
+                            <constraint firstItem="ZbO-ni-C6P" firstAttribute="top" secondItem="iOE-rD-eUa" secondAttribute="bottom" id="Jov-uv-KSa"/>
+                            <constraint firstItem="iOE-rD-eUa" firstAttribute="top" secondItem="bUy-HZ-tZb" secondAttribute="bottom" id="UBf-Ej-rj1"/>
+                            <constraint firstAttribute="trailing" secondItem="iOE-rD-eUa" secondAttribute="trailing" id="hu5-tQ-8rL"/>
+                            <constraint firstItem="iOE-rD-eUa" firstAttribute="leading" secondItem="I3e-N4-CMa" secondAttribute="leading" id="io8-va-6iL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZA9-Bc-292"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bottomTabBar" destination="ZbO-ni-C6P" id="I5G-Cc-5PF"/>
+                        <outlet property="contentView" destination="iOE-rD-eUa" id="1bJ-Ix-8eF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qa8-EJ-vBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1610.5" y="2690.5"/>
+        </scene>
         <!--Company Document Type List View Controller-->
         <scene sceneID="x1f-So-N57">
             <objects>
@@ -1666,7 +1734,7 @@
         <image name="Slide Menu Company Info Icon" width="9" height="16"/>
         <image name="Slide Menu Dashboard Icon" width="15" height="15"/>
         <image name="Slide Menu Employee Icon" width="16" height="16"/>
-        <image name="Slide Menu Home" width="9" height="9"/>
+        <image name="Slide Menu Home" width="15" height="15"/>
         <image name="Slide Menu Logout Icon" width="19" height="16"/>
         <image name="Slide Menu My Request Icon" width="20" height="12"/>
         <image name="Slide Menu Need Help Icon" width="16" height="14"/>
@@ -1680,10 +1748,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UQ7-2u-tlW"/>
-        <segue reference="jo7-DO-pL5"/>
-        <segue reference="4VQ-fx-BXn"/>
-        <segue reference="LyT-w6-0UF"/>
-        <segue reference="Uzc-9V-jUW"/>
+        <segue reference="5D3-hu-lXy"/>
+        <segue reference="61K-II-D4e"/>
+        <segue reference="2kn-8S-W3V"/>
+        <segue reference="bLm-dC-Q62"/>
+        <segue reference="7qA-mG-EzH"/>
+        <segue reference="Jb9-YF-d8A"/>
     </inferredMetricsTieBreakers>
 </document>

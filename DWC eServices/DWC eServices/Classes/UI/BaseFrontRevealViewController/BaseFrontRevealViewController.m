@@ -23,13 +23,12 @@
     self.showSlidingMenu = YES;
     self.showNotificationIcon = YES;
     self.revealViewController.navigationController.navigationBarHidden = YES;
-    //self.navigationController.navigationBarHidden = YES;
+    
+    [self initTabBar];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self initNavigationItem];
-    
-    [self initTabBar];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,6 +123,10 @@
             break;
         case 2:
             [self openMyRequestsPage];
+            break;
+        case 5:
+            [self openDashBoardPage];
+            break;
         default:
             break;
     }
@@ -136,6 +139,12 @@
 - (void)openMyRequestsPage {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     UIViewController *myRequestVC = [storybord instantiateViewControllerWithIdentifier:@"My Requests Page"];
+    [self.revealViewController setFrontViewController:myRequestVC animated:YES];
+}
+
+- (void)openDashBoardPage {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *myRequestVC = [storybord instantiateViewControllerWithIdentifier:@"Dashboard Page"];
     [self.revealViewController setFrontViewController:myRequestVC animated:YES];
 }
 

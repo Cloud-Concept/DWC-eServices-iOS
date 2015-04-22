@@ -127,6 +127,7 @@
 		13D97BB51A8766E800DD71FF /* UIImageView+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */; };
 		13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */; };
 		13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67971A7E556F00255174 /* RecordMainViewController.m */; };
+		13F39B0A1AE7CCEA003AA84E /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F39B091AE7CCEA003AA84E /* DashboardViewController.m */; };
 		13F5A5A71AB0B64A00D92591 /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F5A5A61AB0B64A00D92591 /* NotificationTableViewCell.m */; };
 		13F877BE1A97290500245B05 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F877BD1A97290500245B05 /* Stack.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
@@ -376,6 +377,8 @@
 		13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKSwipeBetweenViewControllers.m; sourceTree = "<group>"; };
 		13EE67961A7E556F00255174 /* RecordMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordMainViewController.h; sourceTree = "<group>"; };
 		13EE67971A7E556F00255174 /* RecordMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordMainViewController.m; sourceTree = "<group>"; };
+		13F39B081AE7CCEA003AA84E /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		13F39B091AE7CCEA003AA84E /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		13F5A5A51AB0B64A00D92591 /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
 		13F5A5A61AB0B64A00D92591 /* NotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
 		13F877BC1A97290500245B05 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
@@ -617,6 +620,7 @@
 				13315ACD1AAC662A009E1819 /* CompanyInfoListViewController */,
 				13315AC31AAC24CB009E1819 /* CompanyInfoTypeViewController */,
 				13073B8A1AC3E61500F25EC6 /* ContractRenewalEditViewController */,
+				13F39B071AE7CCD0003AA84E /* DashboardViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				131ECF301AC29BB500EDA9EB /* EDStarRating */,
 				130C2FFB1A78DDE600C95600 /* EmployeeListViewController */,
@@ -1225,6 +1229,15 @@
 			path = RecordMainViewController;
 			sourceTree = "<group>";
 		};
+		13F39B071AE7CCD0003AA84E /* DashboardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13F39B081AE7CCEA003AA84E /* DashboardViewController.h */,
+				13F39B091AE7CCEA003AA84E /* DashboardViewController.m */,
+			);
+			path = DashboardViewController;
+			sourceTree = "<group>";
+		};
 		13F5A5A31AB0B5BC00D92591 /* NotificationTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1795,6 +1808,7 @@
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
 				13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */,
 				13743ECE1AB04D4400D0B873 /* NotificationListViewController.m in Sources */,
+				13F39B0A1AE7CCEA003AA84E /* DashboardViewController.m in Sources */,
 				1334F49F1ADE790000297ACE /* DragTableGestureObserver_ot.m in Sources */,
 				13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */,
 				134B8A1A1AD697F4005CCAD5 /* ServicesThankYouViewController.m in Sources */,
