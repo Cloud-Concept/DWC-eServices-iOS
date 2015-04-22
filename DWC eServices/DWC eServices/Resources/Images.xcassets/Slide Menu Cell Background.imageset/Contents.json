@@ -1,0 +1,65 @@
+{
+  "images" : [
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "fill",
+          "width" : 1,
+          "height" : 1
+        },
+        "capInsets" : {
+          "bottom" : 25,
+          "top" : 25,
+          "right" : 94,
+          "left" : 94
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "Slide Menu Cell Background.png",
+      "scale" : "1x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "fill",
+          "width" : 1,
+          "height" : 1
+        },
+        "capInsets" : {
+          "bottom" : 50,
+          "top" : 50,
+          "right" : 188,
+          "left" : 188
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "Slide Menu Cell Background@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "fill",
+          "width" : 1,
+          "height" : 1
+        },
+        "capInsets" : {
+          "bottom" : 76,
+          "top" : 75,
+          "right" : 283,
+          "left" : 282
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "Slide Menu Cell Background@3x.png",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

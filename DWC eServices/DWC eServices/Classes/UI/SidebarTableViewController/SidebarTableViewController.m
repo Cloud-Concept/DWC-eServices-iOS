@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    menuItems = @[@"User Cell", @"Home Cell", @"Dashboard Cell", @"My Request Cell", @"Employees Cell", /*@"Services Cell",*/ @"Company Info Cell", @"Company Documents Cell", @"Need Help Cell", @"Logout Cell"];
+    menuItems = @[@"User Cell", @"Home Cell", @"Dashboard Cell", @"My Request Cell", @"Employees Cell", @"Services Cell", @"Company Info Cell", @"Company Documents Cell", @"Need Help Cell", @"Logout Cell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,6 +71,11 @@
         
         UILabel *nameLabel = (UILabel*)[cell viewWithTag:20];
         nameLabel.text = accountManager.currentUser.fullName;
+    }
+    else {
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"Slide Menu Cell Background"]
+                                                                  stretchableImageWithLeftCapWidth:0.0
+                                                                  topCapHeight:5.0]];
     }
     
     return cell;
