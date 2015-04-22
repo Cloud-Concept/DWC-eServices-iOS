@@ -10,6 +10,7 @@
 #import "HelperClass.h"
 #import "SFDateUtil.h"
 #import "RecordType.h"
+#import "Account.h"
 
 @implementation Request
 
@@ -28,6 +29,7 @@
     self.caseRatingScore = [HelperClass numberCheckNull:[requestDict objectForKey:@"Case_Rating_Score__c"]];
     self.createdDate = [SFDateUtil SOQLDateTimeStringToDate:[requestDict objectForKey:@"CreatedDate"]];
     self.caseRecordType = [[RecordType alloc] initRecordType:[requestDict objectForKey:@"RecordType"]];
+    self.employeeRef = [[Account alloc] initAccount:[requestDict objectForKey:@"Employee_Ref__r"]];
     
     return self;
 }

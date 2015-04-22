@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class RecordType;
+@class Account;
 
 @interface Request : NSObject
 
@@ -20,7 +21,7 @@
 @property (nonatomic, strong) NSNumber *caseRatingScore;
 @property (nonatomic, strong) NSDate *createdDate;
 @property (nonatomic, strong) RecordType *caseRecordType;
-
+@property (nonatomic, strong) Account *employeeRef;
 - (id)initRequest:(NSDictionary *)requestDict;
 /*
 - (id)initRequestWithId:(NSString *)caseId Number:(NSString *)Number Status:(NSString *)Status WebFormId:(NSString *)WebFormId CreatedDate:(NSString *)CreatedDate CaseRecordType:(RecordType *)CaseRecordType;

@@ -239,10 +239,7 @@
     }
     
     Request *currentRequest = [filteredRequestsArray objectAtIndex:indexPath.row];
-    
-    cell.requestNumberLabel.text = currentRequest.caseNumber;
-    cell.requestStatusLabel.text = currentRequest.status;
-    cell.requestDateLabel.text = [HelperClass formatDateToString:currentRequest.createdDate];
+    [cell displayValueForRequest:currentRequest];
     
     return cell;
 }
