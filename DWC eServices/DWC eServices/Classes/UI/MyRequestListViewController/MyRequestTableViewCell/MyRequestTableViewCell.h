@@ -13,10 +13,11 @@
 @interface MyRequestTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *requestIconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *requestNumberLabel;
-@property (weak, nonatomic) IBOutlet UILabel *requestStatusLabel;
-@property (weak, nonatomic) IBOutlet UILabel *requestDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *requestTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *requestNumberValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *requestStatusValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *requestDateValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *requestTypeValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *requestPersonNameValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *requestPersonNameLabel;
 
 - (void)displayValueForRequest:(Request *)currentRequest;

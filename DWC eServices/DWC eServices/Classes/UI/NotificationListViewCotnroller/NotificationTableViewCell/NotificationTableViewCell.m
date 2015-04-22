@@ -36,8 +36,7 @@
     else if ([notification.caseProcessName isEqualToString:@"Access Card Services"])
         iconName = @"Notification Card Icon";
     
-    if (iconName)
-        self.notificationIcon.image = [UIImage imageNamed:iconName];
+    self.notificationIcon.image = [UIImage imageNamed:iconName];
 }
 
 @end

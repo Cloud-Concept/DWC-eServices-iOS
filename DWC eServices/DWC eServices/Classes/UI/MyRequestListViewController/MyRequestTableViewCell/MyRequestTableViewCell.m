@@ -33,15 +33,19 @@
     else if ([currentRequest.type isEqualToString:@"Access Card Services"])
         iconName = @"Notification Card Icon";
     
-    if (iconName)
-        self.requestIconImageView.image = [UIImage imageNamed:iconName];
+    self.requestIconImageView.image = [UIImage imageNamed:iconName];
     
+    self.requestNumberValueLabel.text = currentRequest.caseNumber;
+    self.requestStatusValueLabel.text = currentRequest.status;
+    self.requestDateValueLabel.text = [HelperClass formatDateToString:currentRequest.createdDate];
+    self.requestTypeValueLabel.text = currentRequest.type;
     
-    self.requestNumberLabel.text = currentRequest.caseNumber;
-    self.requestStatusLabel.text = currentRequest.status;
-    self.requestDateLabel.text = [HelperClass formatDateToString:currentRequest.createdDate];
-    self.requestTypeLabel.text = currentRequest.type;
-    self.requestPersonNameLabel.text = currentRequest.employeeRef.name;
+    if (currentRequest.employeeRef)
+        self.requestPersonNameValueLabel.text = currentRequest.employeeRef.name;
+    else {
+        [self.requestPersonNameLabel removeFromSuperview];
+        [self.requestPersonNameValueLabel removeFromSuperview];
+    }
 }
 
 @end
