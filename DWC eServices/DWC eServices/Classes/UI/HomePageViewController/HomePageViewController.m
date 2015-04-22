@@ -48,6 +48,8 @@
     [HelperClass setupButtonWithBadgeOnImage:self.notificationButton Value:0];
     
     shouldLoadLicenseInfo = YES;
+    
+    [self setLogoutNavBarButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -221,7 +223,7 @@
     [HelperClass setupButtonWithTextUnderImage:button];
 }
 
-- (IBAction)logoutButtonClicked:(id)sender {
+- (void)logoutButtonClicked:(id)sender {
     [HelperClass showLogoutConfirmationDialog:self];
 }
 
@@ -245,6 +247,15 @@
         return;
     
     [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+}
+
+- (void)setLogoutNavBarButton {
+    UIBarButtonItem *logoutBarButtonItem = [UIBarButtonItem new];
+    logoutBarButtonItem.image = [UIImage imageNamed:@"Navigation Bar Logout Icon"];
+    logoutBarButtonItem.target = self;
+    logoutBarButtonItem.action = @selector(logoutButtonClicked:);
+    
+    self.navigationItem.rightBarButtonItem = logoutBarButtonItem;
 }
 
 //*
