@@ -364,24 +364,11 @@
                                                       constant:0.0]];
 }
 
-- (void)drawReviewForm:(NSString *)requestNumber requestStatus:(NSString *)requestStatus requestType:(NSString *)requestType requestCreatedDate:(NSString *)requestCreatedDate totalAmount:(NSNumber *)totalAmount isCourierRequired:(BOOL) isCourierRequired formFieldsArray:(NSArray *)formFieldsArray cancelButton:(UIButton *)cancelButton nextButton:(UIButton *)nextButton showTotalAmout:(BOOL)showTotalAmout{
-    
-    NSMutableArray *formFieldsMutableArray = [NSMutableArray new];
-    
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"requestInfoTitle" Type:@"CUSTOMTEXT" MobileLabel:NSLocalizedString(@"RequestInfoLabel", @"") FieldValue:@""]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"requestNumber" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestNumberLabel", @"") FieldValue:requestNumber]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"requestStatus" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestStatusLabel", @"") FieldValue:requestStatus]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"requestType" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestTypeLabel", @"") FieldValue:requestType]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"requestCreatedDate" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestCreatedDateLabel", @"") FieldValue:requestCreatedDate]];
-    if (showTotalAmout)
-        [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"totalAmount" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestTotalAmountLabel", @"") FieldValue:[HelperClass formatNumberToString:totalAmount FormatStyle:NSNumberFormatterDecimalStyle MaximumFractionDigits:2]]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"requestIsCourierRequired" Type:@"STRING" MobileLabel:NSLocalizedString(@"RequestIsCourierRequiredLabel", @"") FieldValue:[HelperClass formatBoolToString:isCourierRequired]]];
-    
-    [formFieldsMutableArray addObjectsFromArray:formFieldsArray];
+- (void)drawReviewFormWithFormFieldsArray:(NSArray *)formFieldsArray cancelButton:(UIButton *)cancelButton nextButton:(UIButton *)nextButton {
     
     NSMutableDictionary *viewsDictionary = [NSMutableDictionary new];
     
-    for (FormField *field in formFieldsMutableArray) {
+    for (FormField *field in formFieldsArray) {
         
         if (field.hidden)
             continue;
@@ -414,16 +401,16 @@
                               @"rightMargin": @30,
                               @"fieldsMargin": @8,
                               @"sectionsMargin": @16,
-                              @"topMargin": @20,
+                              @"topMargin": @8,
                               @"bottomMargin": @20,
                               @"buttonHeight": @47,
                               @"buttonsSpacing": @16,
                               @"buttonsTopMargin": @40
                               };
     
-    for (NSInteger index = 0; index < [formFieldsMutableArray count]; index++) {
+    for (NSInteger index = 0; index < [formFieldsArray count]; index++) {
         
-        FormField *currentField = [formFieldsMutableArray objectAtIndex:index];
+        FormField *currentField = [formFieldsArray objectAtIndex:index];
         FormField *previousField = nil;
         
         if (currentField.hidden)
@@ -466,7 +453,7 @@
         
         
         for (NSInteger i = index - 1; i >=0 ; i--) {
-            FormField *tempField = [formFieldsMutableArray objectAtIndex:i];
+            FormField *tempField = [formFieldsArray objectAtIndex:i];
             
             if (!tempField.hidden) {
                 previousField = tempField;
@@ -503,7 +490,7 @@
         [verticalLabelRule appendFormat:@"[%@]", labelName];
         [verticalFieldRule appendFormat:@"[%@]", currentField.nameNoSpace];
         
-        if (index == formFieldsMutableArray.count - 1 && (!cancelButton && !nextButton)) {
+        if (index == formFieldsArray.count - 1 && (!cancelButton && !nextButton)) {
             [verticalFieldRule appendString:@"-|"];
             [verticalLabelRule appendString:@"-|"];
         }
@@ -553,8 +540,8 @@
     }
     
     FormField *previousField;
-    for (NSInteger i = formFieldsMutableArray.count - 1; i >=0 ; i--) {
-        FormField *tempField = [formFieldsMutableArray objectAtIndex:i];
+    for (NSInteger i = formFieldsArray.count - 1; i >=0 ; i--) {
+        FormField *tempField = [formFieldsArray objectAtIndex:i];
         
         if (!tempField.hidden) {
             previousField = tempField;

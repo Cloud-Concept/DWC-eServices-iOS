@@ -68,6 +68,7 @@
         NSArray *records = [dict objectForKey:@"records"];
         NSLog(@"request:didLoadResponse: #records: %d", records.count);
         
+        NSString *requestPersonName;
         NSString *requestNumber;
         NSString *requestStatus;
         NSString *requestType;
@@ -84,6 +85,9 @@
             requestCreatedDate = [HelperClass stringCheckNull:[dict objectForKey:@"CreatedDate"]];
             isCourierRequired = [[dict objectForKey:@"isCourierRequired__c"] boolValue];
             
+            NSDictionary *employeeRefDict = [dict objectForKey:@"Employee_Ref__r"];
+            if (![employeeRefDict isKindOfClass:[NSNull class]])
+                requestPersonName = [employeeRefDict objectForKey:@"Name"];
             
             NSDictionary *invoicesArray = [dict objectForKey:@"Invoices__r"];
             if(![invoicesArray isKindOfClass:[NSNull class]]) {
@@ -143,6 +147,7 @@
                  requestCreatedDate:requestCreatedDate
                         totalAmount:totalAmount
                   isCourierRequired:isCourierRequired
+                  requestPersonName:requestPersonName
                     formFieldsArray:formFieldsArray];
         });
     };
@@ -164,7 +169,7 @@
                                    completeBlock:successBlock];
 }
 
-- (void)displayReviewForm:(NSString *)requestNumber requestStatus:(NSString *)requestStatus requestType:(NSString *)requestType requestCreatedDate:(NSString *)requestCreatedDate totalAmount:(NSNumber *)totalAmount isCourierRequired:(BOOL) isCourierRequired formFieldsArray:(NSArray *)formFieldsArray {
+- (void)displayReviewForm:(NSString *)requestNumber requestStatus:(NSString *)requestStatus requestType:(NSString *)requestType requestCreatedDate:(NSString *)requestCreatedDate totalAmount:(NSNumber *)totalAmount isCourierRequired:(BOOL) isCourierRequired requestPersonName:(NSString *)requestPersonName formFieldsArray:(NSArray *)formFieldsArray {
     [self initServiceFieldsContentView];
     NSDate *createdDate = [SFDateUtil SOQLDateTimeStringToDate:requestCreatedDate];
     
@@ -179,18 +184,35 @@
         }
     }
     
-    BOOL showTotalAmout = self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCancelCard;
+    [HelperClass setRequestIconForImageView:self.requestIconImageView requestType:requestType];
     
-    [servicesContentView drawReviewForm:requestNumber
-                          requestStatus:requestStatus
-                            requestType:requestType
-                     requestCreatedDate:[HelperClass formatDateToString:createdDate]
-                            totalAmount:totalAmount
-                      isCourierRequired:isCourierRequired
-                        formFieldsArray:formFieldsArray
-                           cancelButton:cancelButton
-                             nextButton:nextButton
-                         showTotalAmout:showTotalAmout];
+    self.requestRefNumberValueLabel.text = requestNumber;
+    self.requestDateValueLabel.text = [HelperClass formatDateToString:createdDate];
+    self.requestStatusValueLabel.text = requestStatus;
+    self.requestTypeValueLabel.text = requestType;
+    
+    //Show/Hide Total Amount
+    if (self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCancelCard) {
+        self.requestTotalAmountValueLabel.text = [HelperClass formatNumberToString:totalAmount
+                                                                       FormatStyle:NSNumberFormatterDecimalStyle
+                                                             MaximumFractionDigits:2];
+    }
+    else {
+        [self.requestTotalAmountValueLabel removeFromSuperview];
+        [self.requestTotalAmountLabel removeFromSuperview];
+    }
+    
+    if (requestPersonName) {
+        self.requestPersonNameValueLabel.text = requestPersonName;
+    }
+    else {
+        [self.requestPersonNameValueLabel removeFromSuperview];
+        [self.requestPersonNameLabel removeFromSuperview];
+    }
+    
+    [servicesContentView drawReviewFormWithFormFieldsArray:formFieldsArray
+                                              cancelButton:cancelButton
+                                                nextButton:nextButton];
 }
 
 - (void)initServiceFieldsContentView {

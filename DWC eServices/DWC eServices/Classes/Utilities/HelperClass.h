@@ -23,4 +23,5 @@
 + (NSString *)getRelationshipValue:(NSDictionary *)dictionary Key:(NSString *)key;
 + (NSString *)formatBoolToString:(BOOL)booleanValue;
 + (void)showLogoutConfirmationDialog:(UIViewController *)viewController;
++ (void)setRequestIconForImageView:(UIImageView *)imageView requestType:(NSString *)requestType;
 @end

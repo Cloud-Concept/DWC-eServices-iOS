@@ -206,8 +206,8 @@
         UIColor *textColor = isCustomText ? [UIColor colorWithRed:0.25 green:0.31 blue:0.35 alpha:1] : [UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1];
         [reviewFieldNameLabel setTextColor:textColor];
         
-        float textSize = isCustomText ? 14 : 10;
-        [reviewFieldNameLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:textSize]];
+        float textSize = isCustomText ? 17 : 10;
+        [reviewFieldNameLabel setFont:[UIFont fontWithName:@"CorisandeBold" size:textSize]];
         
         reviewFieldNameLabel.textAlignment = isCustomText ? NSTextAlignmentCenter: NSTextAlignmentRight;
     }

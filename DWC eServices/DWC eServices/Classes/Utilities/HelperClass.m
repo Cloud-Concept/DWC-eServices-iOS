@@ -182,4 +182,17 @@
     [viewController presentViewController:alert animated:YES completion:nil];
 }
 
++ (void)setRequestIconForImageView:(UIImageView *)imageView requestType:(NSString *)requestType {
+    NSString *iconName = nil;
+    
+    if ([requestType isEqualToString:@"NOC Services"])
+        iconName = @"Notification NOC Icon";
+    else if ([requestType isEqualToString:@"Visa Services"])
+        iconName = @"Notification Visa Icon";
+    else if ([requestType isEqualToString:@"Access Card Services"])
+        iconName = @"Notification Card Icon";
+    
+    imageView.image = [UIImage imageNamed:iconName];
+}
+
 @end

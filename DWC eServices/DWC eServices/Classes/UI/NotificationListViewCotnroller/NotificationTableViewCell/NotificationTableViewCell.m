@@ -8,6 +8,7 @@
 
 #import "NotificationTableViewCell.h"
 #import "NotificationManagement.h"
+#import "HelperClass.h"
 
 @implementation NotificationTableViewCell
 
@@ -27,16 +28,7 @@
     
     self.backgroundColor = notification.isMessageRead ? [UIColor clearColor] : [UIColor colorWithRed:0.337 green:0.466 blue:0.592 alpha:0.2];
     
-    NSString *iconName = nil;
-    
-    if ([notification.caseProcessName isEqualToString:@"NOC Services"])
-        iconName = @"Notification NOC Icon";
-    else if ([notification.caseProcessName isEqualToString:@"Visa Services"])
-        iconName = @"Notification Visa Icon";
-    else if ([notification.caseProcessName isEqualToString:@"Access Card Services"])
-        iconName = @"Notification Card Icon";
-    
-    self.notificationIcon.image = [UIImage imageNamed:iconName];
+    [HelperClass setRequestIconForImageView:self.notificationIcon requestType:notification.caseProcessName];
 }
 
 @end

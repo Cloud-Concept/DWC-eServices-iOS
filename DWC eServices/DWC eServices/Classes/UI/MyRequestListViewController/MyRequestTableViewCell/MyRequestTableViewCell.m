@@ -24,16 +24,7 @@
 }
 
 - (void)displayValueForRequest:(Request *)currentRequest {
-    NSString *iconName = nil;
-    
-    if ([currentRequest.type isEqualToString:@"NOC Services"])
-        iconName = @"Notification NOC Icon";
-    else if ([currentRequest.type isEqualToString:@"Visa Services"])
-        iconName = @"Notification Visa Icon";
-    else if ([currentRequest.type isEqualToString:@"Access Card Services"])
-        iconName = @"Notification Card Icon";
-    
-    self.requestIconImageView.image = [UIImage imageNamed:iconName];
+    [HelperClass setRequestIconForImageView:self.requestIconImageView requestType:currentRequest.type];
     
     self.requestNumberValueLabel.text = currentRequest.caseNumber;
     self.requestStatusValueLabel.text = currentRequest.status;
