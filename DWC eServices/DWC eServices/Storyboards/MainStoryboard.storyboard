@@ -1726,6 +1726,7 @@
                                             <outlet property="paymentIconImageView" destination="COF-jZ-d41" id="aLf-03-fm4"/>
                                             <outlet property="paymentStatusValueLabel" destination="lgI-wi-Ki0" id="P4E-x8-typ"/>
                                             <outlet property="paymentTransactionNumberValueLabel" destination="4XZ-IN-uQO" id="1zo-2h-brh"/>
+                                            <outlet property="verticalSpaceStatusBalance" destination="qqI-pi-FsH" id="WMB-96-h2T"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

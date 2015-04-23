@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *paymentBalanceValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *paymentBalanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *paymentStatusValueLabel;
-
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *verticalSpaceStatusBalance;
 
 - (void)displayValueForPayment:(FreeZonePayment *)currentPayment;
 

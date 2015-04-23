@@ -27,16 +27,26 @@
     self.paymentDateValueLabel.text = [HelperClass formatDateToString:currentPayment.transactionDate];
     self.paymentStatusValueLabel.text = currentPayment.status;
     
-    if (currentPayment.freeZonePaymentType == FreeZonePaymentTypeCredit && [currentPayment.status isEqualToString:@"Verified"]) {
+    if (currentPayment.freeZonePaymentType == FreeZonePaymentTypeCredit/* && [currentPayment.status isEqualToString:@"Verified"]*/) {
         NSString *balanceStr = [HelperClass formatNumberToString:currentPayment.closingBalance
                                                      FormatStyle:NSNumberFormatterDecimalStyle
                                            MaximumFractionDigits:2];
         
         self.paymentBalanceValueLabel.text = [NSString stringWithFormat:@"AED %@", balanceStr];
+        
+        self.paymentBalanceValueLabel.hidden = NO;
+        self.paymentBalanceLabel.hidden = NO;
+        
+        //[self.contentView removeConstraint:self.verticalSpaceStatusBalance];
+        if (self.verticalSpaceStatusBalance)
+            [self.contentView addConstraint:self.verticalSpaceStatusBalance];
     }
     else {
-        [self.paymentBalanceValueLabel removeFromSuperview];
-        [self.paymentBalanceLabel removeFromSuperview];
+        self.paymentBalanceValueLabel.hidden = YES;
+        self.paymentBalanceLabel.hidden = YES;
+        
+        if (self.verticalSpaceStatusBalance)
+            [self.contentView removeConstraint:self.verticalSpaceStatusBalance];
     }
     
     NSNumber *creditDebitAmount = [NSNumber numberWithInt:0];
