@@ -241,7 +241,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="viewStatementButtonClicked:" destination="l6l-zZ-r53" eventType="touchUpInside" id="nqm-pC-9oV"/>
+                                                    <segue destination="9Yx-mK-EUe" kind="push" identifier="ViewStatementSlidingMenuSegue" id="G7i-Ua-NTi"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHj-K3-J7K">
@@ -494,6 +494,7 @@
                         <segue destination="ll2-JS-FCZ" kind="custom" identifier="sw_front_notification" customClass="SWRevealViewControllerSegueSetController" id="KLi-8y-tdx"/>
                         <segue destination="ASx-pj-9eg" kind="custom" identifier="sw_front_companyDocs" customClass="SWRevealViewControllerSegueSetController" id="bLm-dC-Q62"/>
                         <segue destination="Cd5-46-KxL" kind="custom" identifier="sw_front_dashboard" customClass="SWRevealViewControllerSegueSetController" id="5D3-hu-lXy"/>
+                        <segue destination="plW-Gu-FKn" kind="custom" identifier="sw_front_view_statement" customClass="SWRevealViewControllerSegueSetController" id="QmI-bY-BIH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2v-bh-BDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1953,11 +1954,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="G7i-Ua-NTi"/>
         <segue reference="5D3-hu-lXy"/>
-        <segue reference="61K-II-D4e"/>
-        <segue reference="2kn-8S-W3V"/>
         <segue reference="bLm-dC-Q62"/>
-        <segue reference="7qA-mG-EzH"/>
         <segue reference="Jb9-YF-d8A"/>
+        <segue reference="7qA-mG-EzH"/>
+        <segue reference="2kn-8S-W3V"/>
     </inferredMetricsTieBreakers>
 </document>

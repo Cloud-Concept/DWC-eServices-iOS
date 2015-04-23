@@ -227,13 +227,6 @@
     [HelperClass showLogoutConfirmationDialog:self];
 }
 
-- (IBAction)viewStatementButtonClicked:(id)sender {
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    UIViewController *viewStatementVC = [storybord instantiateViewControllerWithIdentifier:@"View Statement Page"];
-    
-    [self.navigationController pushViewController:viewStatementVC animated:YES];
-}
-
 - (void)showLoadingAlertView {
     if (![FVCustomAlertView isShowingAlert])
         [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
@@ -279,6 +272,8 @@
         initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_companyDocs"];
     else if ([segueIdentifier isEqualToString:@"DashboardSlidingMenuSegue"])
         initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_dashboard"];
+    else if ([segueIdentifier isEqualToString:@"ViewStatementSlidingMenuSegue"])
+        initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_view_statement"];
     
     destinationVC.initialSegueIdentifier = initialSegueID;
     

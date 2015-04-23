@@ -23,8 +23,6 @@
     // Do any additional setup after loading the view.
     [super setNavigationBarTitle:NSLocalizedString(@"navBarStatementTitle", @"")];
     
-    self.showSlidingMenu = NO;
-    
     [self.tableView setDragDelegate:self refreshDatePermanentKey:@""];
     self.tableView.queryLimit = 15;
     
