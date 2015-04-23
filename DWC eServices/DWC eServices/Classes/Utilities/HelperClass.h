@@ -24,4 +24,6 @@
 + (NSString *)formatBoolToString:(BOOL)booleanValue;
 + (void)showLogoutConfirmationDialog:(UIViewController *)viewController;
 + (void)setRequestIconForImageView:(UIImageView *)imageView requestType:(NSString *)requestType;
++ (void)formatDatesForFilterOperation:(NSString *)operation startDate:(NSDate **)startDate endDate:(NSDate **)endDate;
+
 @end

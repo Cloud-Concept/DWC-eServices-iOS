@@ -16,8 +16,17 @@
 {
     NSArray *paymentsArray;
     SFRestRequest *restRequest;
+    
+    NSArray *filterStringArray;
+    NSIndexPath *selectedFilterIndexPath;
+    NSString *selectedFilter;
 }
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *filterButton;
+
+@property (strong, nonatomic) UISearchController *searchController;
+
+- (IBAction)filterButtonClicked:(id)sender;
 
 @end

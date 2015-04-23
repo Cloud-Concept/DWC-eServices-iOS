@@ -11,6 +11,9 @@
 #import "SFRestAPI+Blocks.h"
 #import "SOQLQueries.h"
 #import "ViewStatementTableViewCell.h"
+#import "HelperClass.h"
+#import "PickerTableViewController.h"
+#import "SFDateUtil.h"
 
 @interface ViewStatementListViewController ()
 
@@ -23,10 +26,14 @@
     // Do any additional setup after loading the view.
     [super setNavigationBarTitle:NSLocalizedString(@"navBarStatementTitle", @"")];
     
+    [self initializeFilterStringArray];
+    
     [self.tableView setDragDelegate:self refreshDatePermanentKey:@""];
     self.tableView.queryLimit = 15;
     
     [self.tableView triggerRefresh];
+    
+    [HelperClass formatDatesForFilterOperation:@"" startDate:nil endDate:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,10 +89,58 @@
         
     };
     
+    NSString *datesFilter = [self constructDateRangeFilter];
+    
     restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:[SOQLQueries freeZonePaymentsQueryWithLimit:self.tableView.
-                                                                queryLimit offset:self.tableView.queryOffset]
+                                                                queryLimit offset:self.tableView.queryOffset datesFilter:datesFilter]
                                                      failBlock:errorBlock
                                                  completeBlock:successBlock];
+}
+
+- (void)refreshFilterButton {
+    [self.filterButton setTitle:selectedFilter forState:UIControlStateNormal];
+}
+
+- (void)initializeFilterStringArray {
+    selectedFilterIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    filterStringArray = @[@"Current Quarter", @"Last Quarter", @"Current Year", @"Last Year", @"All Time"];
+    
+    selectedFilter = [filterStringArray objectAtIndex:selectedFilterIndexPath.row];
+    
+    [self refreshFilterButton];
+}
+
+- (NSString *)constructDateRangeFilter {
+    NSString *queryFilter = @"";
+    
+    if (![selectedFilter isEqualToString:@"All Time"]) {
+        NSDate *startDate = [NSDate date];
+        NSDate *endDate = [NSDate date];
+        
+        [HelperClass formatDatesForFilterOperation:selectedFilter startDate:&startDate endDate:&endDate];
+        
+        NSString *startDateString = [SFDateUtil toSOQLDateTimeString:startDate isDateTime:YES];
+        NSString *endDateString = [SFDateUtil toSOQLDateTimeString:endDate isDateTime:YES];
+        
+        queryFilter = [NSString stringWithFormat:@"CreatedDate >= %@ AND CreatedDate <= %@", startDateString, endDateString];
+    }
+    
+    return queryFilter;
+}
+
+- (IBAction)filterButtonClicked:(id)sender {
+    PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.valuesArray = filterStringArray;
+    pickerTableVC.selectedIndexPath = selectedFilterIndexPath;
+    pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
+        selectedFilterIndexPath = indexPath;
+        selectedFilter = value;
+        [self refreshFilterButton];
+        [picklist dismissPopover:YES];
+        [self.tableView triggerRefresh];
+    };
+    
+    [pickerTableVC showPopoverFromView:sender];
 }
 
 #pragma mark - Table view data source

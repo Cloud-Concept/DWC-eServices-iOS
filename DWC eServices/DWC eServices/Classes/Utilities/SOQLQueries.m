@@ -57,7 +57,7 @@ static NSString *renewContractServiceAdminQuery = @"SELECT Id, Name, Service_Ide
 
 static NSString *renewLicenseServiceAdminQuery = @"SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r WHERE Document_Required_for_Branch_or_LLC__c != '%@' AND Document_Type__c = 'Upload') FROM Receipt_Template__c WHERE Is_Active__c = true AND Service_Identifier__c = 'Annual License Renewal'";
 
-static NSString *freeZonePaymentsQuery = @"SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = '%@' ORDER BY CreatedDate DESC LIMIT %d OFFSET %d";
+static NSString *freeZonePaymentsQuery = @"SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = '%@' %@ ORDER BY CreatedDate DESC LIMIT %d OFFSET %d";
 
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
@@ -182,7 +182,13 @@ static NSString *freeZonePaymentsQuery = @"SELECT Id, Name, CreatedDate, Transac
     return [NSString stringWithFormat:renewLicenseServiceAdminQuery, queryDocumentFilter];
 }
 
-+ (NSString *)freeZonePaymentsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset {
-    return [NSString stringWithFormat:freeZonePaymentsQuery, [Globals currentAccount].Id, limit, offset];
++ (NSString *)freeZonePaymentsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset datesFilter:(NSString *)datesFilter {
+    
+    NSString *queryFilter = @"";
+    
+    if (![datesFilter isEqualToString:@""])
+        queryFilter = [NSString stringWithFormat:@"AND %@", datesFilter];
+    
+    return [NSString stringWithFormat:freeZonePaymentsQuery, [Globals currentAccount].Id, queryFilter, limit, offset];
 }
 @end

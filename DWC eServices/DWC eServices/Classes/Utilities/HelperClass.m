@@ -9,6 +9,7 @@
 #import "HelperClass.h"
 #import "UIView+MGBadgeView.h"
 #import "SFAuthenticationManager.h"
+#import "NSDate+CreateSpecificDate.h"
 
 @implementation HelperClass
 
@@ -193,6 +194,44 @@
         iconName = @"Notification Card Icon";
     
     imageView.image = [UIImage imageNamed:iconName];
+}
+
++ (void)formatDatesForFilterOperation:(NSString *)operation startDate:(NSDate **)startDate endDate:(NSDate **)endDate {
+    NSDate *currentDate = [NSDate date];
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    NSDateComponents* calendarComponents = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay
+                                               fromDate:currentDate];
+    
+    NSDate *quarterStartDate;
+    
+    NSInteger currentMonth = [calendarComponents month];
+    NSInteger currentYear = [calendarComponents year];
+    
+    if (currentMonth >= 1 && currentMonth <= 3)
+        quarterStartDate = [NSDate createNSDateFromDay:1 month:1 year:currentYear hour:0 minute:0 second:0];
+    else if (currentMonth >= 4 && currentMonth <= 6)
+        quarterStartDate = [NSDate createNSDateFromDay:1 month:4 year:currentYear hour:0 minute:0 second:0];
+    else if (currentMonth >= 7 && currentMonth <= 9)
+        quarterStartDate = [NSDate createNSDateFromDay:1 month:7 year:currentYear hour:0 minute:0 second:0];
+    else if (currentMonth >= 10 && currentMonth <= 12)
+        quarterStartDate = [NSDate createNSDateFromDay:1 month:10 year:currentYear hour:0 minute:0 second:0];
+    
+    if ([operation isEqualToString:@"Current Quarter"]) {
+        *startDate = quarterStartDate;
+        *endDate = [NSDate addMonths:3 toDate:quarterStartDate];
+    }
+    else if ([operation isEqualToString:@"Last Quarter"]) {
+        *startDate = [NSDate addMonths:-3 toDate:quarterStartDate];
+        *endDate = quarterStartDate;
+    }
+    else if ([operation isEqualToString:@"Current Year"]) {
+        *startDate = [NSDate createNSDateFromDay:1 month:1 year:currentMonth hour:0 minute:0 second:0];
+        *endDate = [NSDate addYears:1 toDate:*startDate];
+    }
+    else if ([operation isEqualToString:@"Last Year"]) {
+        *endDate = [NSDate createNSDateFromDay:1 month:1 year:currentMonth hour:0 minute:0 second:0];
+        *startDate = [NSDate addYears:-1 toDate:*endDate];
+    }
 }
 
 @end
