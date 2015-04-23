@@ -20,7 +20,7 @@
 #import "LicenseActivity.h"
 #import "SOQLQueries.h"
 #import "UIImageView+SFAttachment.h"
-#import "VisualforceWebviewViewController.h"
+#import "ViewStatementListViewController.h"
 
 @interface HomePageViewController ()
 
@@ -227,14 +227,11 @@
     [HelperClass showLogoutConfirmationDialog:self];
 }
 
-- (IBAction)dashboardButtonClicked:(id)sender {
-    VisualforceWebviewViewController *vfWebviewVC = [VisualforceWebviewViewController new];
-    vfWebviewVC.returnURL = [NSString stringWithFormat:@"/apex/DWCPortal_DashboardMobile?accountId=%@",
-                             [Globals currentAccount].Id];
+- (IBAction)viewStatementButtonClicked:(id)sender {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *viewStatementVC = [storybord instantiateViewControllerWithIdentifier:@"View Statement Page"];
     
-    vfWebviewVC.navBarTitle = NSLocalizedString(@"navBarDashboardTitle", @"");
-    vfWebviewVC.VFshowSlidingMenu = YES;
-    [self.navigationController pushViewController:vfWebviewVC animated:YES];
+    [self.navigationController pushViewController:viewStatementVC animated:YES];
 }
 
 - (void)showLoadingAlertView {

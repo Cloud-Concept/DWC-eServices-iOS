@@ -75,6 +75,7 @@
 		132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */; };
 		132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */; };
 		132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */; };
+		132D38B21AE8D7A300D61A3E /* ViewStatementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D38B11AE8D7A300D61A3E /* ViewStatementTableViewCell.m */; };
 		132F0D081A948FCC003FFC24 /* ServicesReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132F0D071A948FCC003FFC24 /* ServicesReviewViewController.m */; };
 		13315AC61AAC24DB009E1819 /* CompanyInfoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315AC51AAC24DB009E1819 /* CompanyInfoTypeViewController.m */; };
 		13315AC91AAC3845009E1819 /* DWCCompanyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315AC81AAC3845009E1819 /* DWCCompanyInfo.m */; };
@@ -128,6 +129,8 @@
 		13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */; };
 		13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67971A7E556F00255174 /* RecordMainViewController.m */; };
 		13F39B0A1AE7CCEA003AA84E /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F39B091AE7CCEA003AA84E /* DashboardViewController.m */; };
+		13F39B0D1AE7D7D6003AA84E /* FreeZonePayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F39B0C1AE7D7D6003AA84E /* FreeZonePayment.m */; };
+		13F39B111AE7DC6D003AA84E /* ViewStatementListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F39B101AE7DC6D003AA84E /* ViewStatementListViewController.m */; };
 		13F5A5A71AB0B64A00D92591 /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F5A5A61AB0B64A00D92591 /* NotificationTableViewCell.m */; };
 		13F877BE1A97290500245B05 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F877BD1A97290500245B05 /* Stack.m */; };
 		4F3F413517E7CA5C008B3283 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F3F413417E7CA5C008B3283 /* ImageIO.framework */; };
@@ -276,6 +279,8 @@
 		132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
 		132CCFB21A77C529007A40AE /* BaseFrontRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFrontRevealViewController.h; sourceTree = "<group>"; };
 		132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFrontRevealViewController.m; sourceTree = "<group>"; };
+		132D38B01AE8D7A300D61A3E /* ViewStatementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewStatementTableViewCell.h; sourceTree = "<group>"; };
+		132D38B11AE8D7A300D61A3E /* ViewStatementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewStatementTableViewCell.m; sourceTree = "<group>"; };
 		132F0D061A948FCC003FFC24 /* ServicesReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesReviewViewController.h; sourceTree = "<group>"; };
 		132F0D071A948FCC003FFC24 /* ServicesReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesReviewViewController.m; sourceTree = "<group>"; };
 		13315AC41AAC24DB009E1819 /* CompanyInfoTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyInfoTypeViewController.h; sourceTree = "<group>"; };
@@ -379,6 +384,10 @@
 		13EE67971A7E556F00255174 /* RecordMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordMainViewController.m; sourceTree = "<group>"; };
 		13F39B081AE7CCEA003AA84E /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
 		13F39B091AE7CCEA003AA84E /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		13F39B0B1AE7D7D6003AA84E /* FreeZonePayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeZonePayment.h; sourceTree = "<group>"; };
+		13F39B0C1AE7D7D6003AA84E /* FreeZonePayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeZonePayment.m; sourceTree = "<group>"; };
+		13F39B0F1AE7DC6D003AA84E /* ViewStatementListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewStatementListViewController.h; sourceTree = "<group>"; };
+		13F39B101AE7DC6D003AA84E /* ViewStatementListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewStatementListViewController.m; sourceTree = "<group>"; };
 		13F5A5A51AB0B64A00D92591 /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
 		13F5A5A61AB0B64A00D92591 /* NotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
 		13F877BC1A97290500245B05 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
@@ -642,6 +651,7 @@
 				131819481A91FC8B00CAA4D6 /* ServicesUploadViewController */,
 				132CCFAD1A779C5F007A40AE /* SidebarTableViewController */,
 				130291391A76C88D000E119C /* SWRevealViewController */,
+				13F39B0E1AE7DC61003AA84E /* ViewStatementListViewController */,
 				133E34D51AC02CDE002C3748 /* VisualforceWebviewViewController */,
 				1394EA1A1A88D31E00ECED05 /* WYPopoverController */,
 			);
@@ -736,6 +746,8 @@
 				13CFE72D1ABECF13009E47EC /* EServicesDocumentChecklist.m */,
 				13081AEF1A76559D00B33509 /* FormField.h */,
 				13081AF01A76559D00B33509 /* FormField.m */,
+				13F39B0B1AE7D7D6003AA84E /* FreeZonePayment.h */,
+				13F39B0C1AE7D7D6003AA84E /* FreeZonePayment.m */,
 				13073B951AC4169F00F25EC6 /* InventoryUnit.h */,
 				13073B961AC4169F00F25EC6 /* InventoryUnit.m */,
 				130CFAAF1AC1E620006D7CA0 /* Invoice.h */,
@@ -955,6 +967,15 @@
 				132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */,
 			);
 			path = BaseFrontRevealViewController;
+			sourceTree = "<group>";
+		};
+		132D38AF1AE8D78300D61A3E /* ViewStatementTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				132D38B01AE8D7A300D61A3E /* ViewStatementTableViewCell.h */,
+				132D38B11AE8D7A300D61A3E /* ViewStatementTableViewCell.m */,
+			);
+			path = ViewStatementTableViewCell;
 			sourceTree = "<group>";
 		};
 		132F0D051A948FB2003FFC24 /* ServicesReviewViewController */ = {
@@ -1236,6 +1257,16 @@
 				13F39B091AE7CCEA003AA84E /* DashboardViewController.m */,
 			);
 			path = DashboardViewController;
+			sourceTree = "<group>";
+		};
+		13F39B0E1AE7DC61003AA84E /* ViewStatementListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				132D38AF1AE8D78300D61A3E /* ViewStatementTableViewCell */,
+				13F39B0F1AE7DC6D003AA84E /* ViewStatementListViewController.h */,
+				13F39B101AE7DC6D003AA84E /* ViewStatementListViewController.m */,
+			);
+			path = ViewStatementListViewController;
 			sourceTree = "<group>";
 		};
 		13F5A5A31AB0B5BC00D92591 /* NotificationTableViewCell */ = {
@@ -1768,6 +1799,7 @@
 				130C30011A78DE0200C95600 /* EmployeeTableViewCell.m in Sources */,
 				13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */,
 				1302913C1A76C88D000E119C /* SWRevealViewController.m in Sources */,
+				13F39B0D1AE7D7D6003AA84E /* FreeZonePayment.m in Sources */,
 				130F7DD51AAF2B9000380628 /* LicenseActivity.m in Sources */,
 				13073B9A1AC4176500F25EC6 /* Product.m in Sources */,
 				130F7DD81AAF2C6800380628 /* BusinessActivity.m in Sources */,
@@ -1784,6 +1816,7 @@
 				1353CBDC1AAD9B5300E57FAC /* LegalRepresentative.m in Sources */,
 				130E096C1AA5C42800E6ED59 /* MyRequestTableViewCell.m in Sources */,
 				131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */,
+				132D38B21AE8D7A300D61A3E /* ViewStatementTableViewCell.m in Sources */,
 				13CFE7381ABEF1D6009E47EC /* DWCCompanyDocument.m in Sources */,
 				130CFAB11AC1E620006D7CA0 /* Invoice.m in Sources */,
 				133E34D41ABFFFCC002C3748 /* DWCDocumentTableViewCell.m in Sources */,
@@ -1795,6 +1828,7 @@
 				1317E2931AD2B4DC0044EB3C /* TenancyContractPayment.m in Sources */,
 				136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */,
 				137610D71AB82E3B0084D878 /* TenancyContract.m in Sources */,
+				13F39B111AE7DC6D003AA84E /* ViewStatementListViewController.m in Sources */,
 				1394EA1F1A88D31F00ECED05 /* WYPopoverController.m in Sources */,
 				130E09671AA5B84400E6ED59 /* Request.m in Sources */,
 				13CFE7311ABEDF3A009E47EC /* CompanyDocument.m in Sources */,

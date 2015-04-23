@@ -31,4 +31,5 @@
 + (NSString *)customerDocumentsQuery;
 + (NSString *)renewContractServiceAdminQuery:(NSString *)serviceIdentifier;
 + (NSString *)renewLicenseServiceAdminQuery;
++ (NSString *)freeZonePaymentsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset;
 @end
