@@ -72,7 +72,7 @@
 		1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */; };
 		1328E7D91A95C7DF00475E90 /* NewNOCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1328E7D81A95C7DF00475E90 /* NewNOCViewController.xib */; };
 		1328E7DB1A96042600475E90 /* ServicesDynamicFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1328E7DA1A96042600475E90 /* ServicesDynamicFormViewController.xib */; };
-		132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */; };
+		132CCFAC1A779C1A007A40AE /* EmployeeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeContainerViewController.m */; };
 		132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */; };
 		132CCFB41A77C529007A40AE /* BaseFrontRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFB31A77C529007A40AE /* BaseFrontRevealViewController.m */; };
 		132D38B21AE8D7A300D61A3E /* ViewStatementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132D38B11AE8D7A300D61A3E /* ViewStatementTableViewCell.m */; };
@@ -85,6 +85,8 @@
 		13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */; };
 		1331D21F1AC7E2D600B4AAD5 /* Quote.m in Sources */ = {isa = PBXBuildFile; fileRef = 1331D21E1AC7E2D600B4AAD5 /* Quote.m */; };
 		133469AB1AECD72F0029F9B5 /* NSString+HelperAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 133469AA1AECD72F0029F9B5 /* NSString+HelperAdditions.m */; };
+		133469B51AECFB400029F9B5 /* SwipePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133469B31AECFB400029F9B5 /* SwipePageViewController.m */; };
+		133469B61AECFB400029F9B5 /* SwipePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133469B41AECFB400029F9B5 /* SwipePageViewController.xib */; };
 		1334F49D1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4901ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m */; };
 		1334F49E1ADE790000297ACE /* DragTableFooterView_ot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4931ADE790000297ACE /* DragTableFooterView_ot.m */; };
 		1334F49F1ADE790000297ACE /* DragTableGestureObserver_ot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4951ADE790000297ACE /* DragTableGestureObserver_ot.m */; };
@@ -275,8 +277,8 @@
 		1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerTableViewController.xib; sourceTree = "<group>"; };
 		1328E7D81A95C7DF00475E90 /* NewNOCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewNOCViewController.xib; sourceTree = "<group>"; };
 		1328E7DA1A96042600475E90 /* ServicesDynamicFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesDynamicFormViewController.xib; sourceTree = "<group>"; };
-		132CCFAA1A779C1A007A40AE /* EmployeeTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeTypeViewController.h; sourceTree = "<group>"; };
-		132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeTypeViewController.m; sourceTree = "<group>"; };
+		132CCFAA1A779C1A007A40AE /* EmployeeContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeContainerViewController.h; sourceTree = "<group>"; };
+		132CCFAB1A779C1A007A40AE /* EmployeeContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeContainerViewController.m; sourceTree = "<group>"; };
 		132CCFAE1A779C6B007A40AE /* SidebarTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewController.h; sourceTree = "<group>"; };
 		132CCFAF1A779C6B007A40AE /* SidebarTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewController.m; sourceTree = "<group>"; };
 		132CCFB21A77C529007A40AE /* BaseFrontRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFrontRevealViewController.h; sourceTree = "<group>"; };
@@ -301,6 +303,9 @@
 		1331D21E1AC7E2D600B4AAD5 /* Quote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quote.m; sourceTree = "<group>"; };
 		133469A91AECD72F0029F9B5 /* NSString+HelperAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HelperAdditions.h"; sourceTree = "<group>"; };
 		133469AA1AECD72F0029F9B5 /* NSString+HelperAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HelperAdditions.m"; sourceTree = "<group>"; };
+		133469B21AECFB400029F9B5 /* SwipePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipePageViewController.h; sourceTree = "<group>"; };
+		133469B31AECFB400029F9B5 /* SwipePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipePageViewController.m; sourceTree = "<group>"; };
+		133469B41AECFB400029F9B5 /* SwipePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwipePageViewController.xib; sourceTree = "<group>"; };
 		1334F48F1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComOpenThreadOTScreenshotHelperSwizzleHelper.h; sourceTree = "<group>"; };
 		1334F4901ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComOpenThreadOTScreenshotHelperSwizzleHelper.m; sourceTree = "<group>"; };
 		1334F4911ADE790000297ACE /* DragTableDragState_ot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragTableDragState_ot.h; sourceTree = "<group>"; };
@@ -639,7 +644,7 @@
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				131ECF301AC29BB500EDA9EB /* EDStarRating */,
 				130C2FFB1A78DDE600C95600 /* EmployeeListViewController */,
-				132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */,
+				132CCFA91A779C1A007A40AE /* EmployeeContainerViewController */,
 				136377BB1A767C2C00282F72 /* FVCustomAlertView */,
 				1307BAC91A6F83A4004E6325 /* HomePageViewController */,
 				1307BACA1A6F83A4004E6325 /* InitialViewController */,
@@ -656,6 +661,7 @@
 				134B8A161AD697B6005CCAD5 /* ServicesThankYouViewController */,
 				131819481A91FC8B00CAA4D6 /* ServicesUploadViewController */,
 				132CCFAD1A779C5F007A40AE /* SidebarTableViewController */,
+				133469B11AECFB2C0029F9B5 /* SwipePageViewController */,
 				130291391A76C88D000E119C /* SWRevealViewController */,
 				13F39B0E1AE7DC61003AA84E /* ViewStatementListViewController */,
 				133E34D51AC02CDE002C3748 /* VisualforceWebviewViewController */,
@@ -948,13 +954,13 @@
 			path = RecordRelatedViewController;
 			sourceTree = "<group>";
 		};
-		132CCFA91A779C1A007A40AE /* EmployeeTypeViewController */ = {
+		132CCFA91A779C1A007A40AE /* EmployeeContainerViewController */ = {
 			isa = PBXGroup;
 			children = (
-				132CCFAA1A779C1A007A40AE /* EmployeeTypeViewController.h */,
-				132CCFAB1A779C1A007A40AE /* EmployeeTypeViewController.m */,
+				132CCFAA1A779C1A007A40AE /* EmployeeContainerViewController.h */,
+				132CCFAB1A779C1A007A40AE /* EmployeeContainerViewController.m */,
 			);
-			path = EmployeeTypeViewController;
+			path = EmployeeContainerViewController;
 			sourceTree = "<group>";
 		};
 		132CCFAD1A779C5F007A40AE /* SidebarTableViewController */ = {
@@ -1038,6 +1044,16 @@
 				133469AA1AECD72F0029F9B5 /* NSString+HelperAdditions.m */,
 			);
 			path = "NSString+HelperAdditions";
+			sourceTree = "<group>";
+		};
+		133469B11AECFB2C0029F9B5 /* SwipePageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				133469B21AECFB400029F9B5 /* SwipePageViewController.h */,
+				133469B31AECFB400029F9B5 /* SwipePageViewController.m */,
+				133469B41AECFB400029F9B5 /* SwipePageViewController.xib */,
+			);
+			path = SwipePageViewController;
 			sourceTree = "<group>";
 		};
 		1334F48D1ADE790000297ACE /* UITableView+DragLoad */ = {
@@ -1804,6 +1820,7 @@
 				1328E7DB1A96042600475E90 /* ServicesDynamicFormViewController.xib in Resources */,
 				1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */,
 				131CA87F1A80F91500A79B12 /* RecordDetailTableViewCell.xib in Resources */,
+				133469B61AECFB400029F9B5 /* SwipePageViewController.xib in Resources */,
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
 				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
 				130523E81A99F96800EF2268 /* ServicesReviewViewController.xib in Resources */,
@@ -1884,6 +1901,7 @@
 				1334F4A11ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m in Sources */,
 				13CFE72E1ABECF13009E47EC /* EServicesDocumentChecklist.m in Sources */,
 				13315AC61AAC24DB009E1819 /* CompanyInfoTypeViewController.m in Sources */,
+				133469B51AECFB400029F9B5 /* SwipePageViewController.m in Sources */,
 				139658141AB9797B0091C451 /* Passport.m in Sources */,
 				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
 				1353CBD91AAD92B700E57FAC /* Directorship.m in Sources */,
@@ -1898,7 +1916,7 @@
 				139E6B6E1A7A6F2600D1D451 /* UIView+MGBadgeView.m in Sources */,
 				132F0D081A948FCC003FFC24 /* ServicesReviewViewController.m in Sources */,
 				1307BAEC1A6FDAC3004E6325 /* HelperClass.m in Sources */,
-				132CCFAC1A779C1A007A40AE /* EmployeeTypeViewController.m in Sources */,
+				132CCFAC1A779C1A007A40AE /* EmployeeContainerViewController.m in Sources */,
 				13743ECA1AB02E4F00D0B873 /* NotificationManagement.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
 				130C300D1A78E7BF00C95600 /* DWCEmployee.m in Sources */,

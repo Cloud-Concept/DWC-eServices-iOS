@@ -37,7 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [super setNavigationBarTitle:self.currentDWCEmployee.NavBarTitle];
+    //[super setNavigationBarTitle:self.currentDWCEmployee.NavBarTitle];
     
     self.showSlidingMenu = NO;
     searchBarText = @"";
