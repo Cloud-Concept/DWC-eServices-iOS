@@ -91,7 +91,7 @@
 }
 
 - (void)initializeFiltersArrays {
-    statusFilterStringArray = @[@"All", @"Completed", @"In Process", @"Not Submitted"];
+    statusFilterStringArray = @[@"All", @"Completed", @"In Process", @"Ready for collection", @"Not Submitted"];
     selectedStatusFilter = @"All";
     selectedStatusFilterIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     
