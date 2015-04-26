@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -40,30 +40,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Service Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTX-9m-U8S">
-                    <rect key="frame" x="16" y="160" width="170" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="170" id="duK-kr-Uuf"/>
-                        <constraint firstAttribute="height" constant="40" id="eLe-iN-slv"/>
-                        <constraint firstAttribute="height" constant="40" id="h8Z-r6-bJf"/>
-                        <constraint firstAttribute="width" constant="170" id="hOy-Tb-YtB"/>
-                    </constraints>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBF-Lf-F00">
+                    <rect key="frame" x="16" y="16" width="343" height="40"/>
                     <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="h8Z-r6-bJf"/>
-                            <exclude reference="hOy-Tb-YtB"/>
-                        </mask>
-                    </variation>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Courier Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHW-B2-36L">
-                    <rect key="frame" x="16" y="208" width="170" height="31"/>
-                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="44" maxY="0.0"/>
+                    <state key="normal" title="NOC Type" backgroundImage="Dropdown Button">
+                        <color key="titleColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="chooseNOCTypeButtonClicked:" destination="-1" eventType="touchUpInside" id="Y5X-PS-cvS"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lc6-5D-UGE">
                     <rect key="frame" x="16" y="64" width="343" height="40"/>
                     <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
@@ -92,48 +79,36 @@
                         <action selector="chooseLanguageButtonClicked:" destination="-1" eventType="touchUpInside" id="Du9-lk-dHu"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jne-bg-pfz">
-                    <rect key="frame" x="16" y="600" width="163" height="47"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Service Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TTX-9m-U8S">
+                    <rect key="frame" x="16" y="160" width="170" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="jne-bg-pfz" secondAttribute="height" multiplier="163:47" id="QoL-kv-Z8p"/>
+                        <constraint firstAttribute="width" constant="170" id="duK-kr-Uuf"/>
+                        <constraint firstAttribute="height" constant="40" id="eLe-iN-slv"/>
+                        <constraint firstAttribute="height" constant="40" id="h8Z-r6-bJf"/>
+                        <constraint firstAttribute="width" constant="170" id="hOy-Tb-YtB"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
-                    <state key="normal" title="Cancel" backgroundImage="Black Button Background">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="cancelButtonClicked:" destination="-1" eventType="touchUpInside" id="MnZ-uv-Y6Z"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBF-Lf-F00">
-                    <rect key="frame" x="16" y="16" width="343" height="40"/>
                     <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
-                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="44" maxY="0.0"/>
-                    <state key="normal" title="NOC Type" backgroundImage="Dropdown Button">
-                        <color key="titleColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="chooseNOCTypeButtonClicked:" destination="-1" eventType="touchUpInside" id="Y5X-PS-cvS"/>
-                    </connections>
-                </button>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="h8Z-r6-bJf"/>
+                            <exclude reference="hOy-Tb-YtB"/>
+                        </mask>
+                    </variation>
+                </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="AED 0" textAlignment="center" minimumFontSize="17" background="Textfield Background" translatesAutoresizingMaskIntoConstraints="NO" id="tEA-yH-Ny6">
                     <rect key="frame" x="194" y="160" width="165" height="40"/>
                     <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eb-b5-G2F">
-                    <rect key="frame" x="196" y="600" width="163" height="47"/>
-                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
-                    <state key="normal" title="Next" backgroundImage="Blue Button Background">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="nextButtonClicked:" destination="-1" eventType="touchUpInside" id="wzp-6t-zVw"/>
-                    </connections>
-                </button>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bG1-uX-uKt">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Courier Required" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHW-B2-36L">
+                    <rect key="frame" x="16" y="208" width="170" height="31"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bG1-uX-uKt">
                     <rect key="frame" x="310" y="208" width="51" height="31"/>
                     <color key="onTintColor" red="0.27450980390000002" green="0.5450980392" blue="0.73333333329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
@@ -151,6 +126,31 @@
                     <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jne-bg-pfz">
+                    <rect key="frame" x="16" y="600" width="163" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="jne-bg-pfz" secondAttribute="height" multiplier="163:47" id="QoL-kv-Z8p"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                    <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonClicked:" destination="-1" eventType="touchUpInside" id="MnZ-uv-Y6Z"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eb-b5-G2F">
+                    <rect key="frame" x="196" y="600" width="163" height="47"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                    <state key="normal" title="Next" backgroundImage="Blue Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="nextButtonClicked:" destination="-1" eventType="touchUpInside" id="wzp-6t-zVw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
