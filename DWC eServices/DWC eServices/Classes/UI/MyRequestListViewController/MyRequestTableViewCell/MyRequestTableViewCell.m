@@ -31,6 +31,12 @@
     self.requestDateValueLabel.text = [HelperClass formatDateToString:currentRequest.createdDate];
     self.requestTypeValueLabel.text = currentRequest.type;
     
+    NSString *requestedService = currentRequest.subType;
+    if ([currentRequest.subType isEqualToString:@""])
+        requestedService = currentRequest.subTypeFormula;
+    
+    self.requestRequestedServiceValueLabel.text = requestedService;
+    
     if (currentRequest.employeeRef)
         self.requestPersonNameValueLabel.text = currentRequest.employeeRef.name;
     else {

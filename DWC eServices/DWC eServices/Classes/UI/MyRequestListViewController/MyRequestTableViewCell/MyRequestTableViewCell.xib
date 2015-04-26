@@ -12,8 +12,10 @@
             <string>CorisandeBold</string>
             <string>CorisandeBold</string>
             <string>CorisandeBold</string>
+            <string>CorisandeBold</string>
         </mutableArray>
         <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
@@ -34,61 +36,67 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Ref Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddt-OI-dPi">
                         <rect key="frame" x="116" y="10" width="58" height="13"/>
                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S84-N0-tjs">
                         <rect key="frame" x="182" y="10" width="130" height="13"/>
                         <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7I-J6-xEP">
-                        <rect key="frame" x="116" y="31" width="25" height="13"/>
+                        <rect key="frame" x="116" y="27" width="25" height="13"/>
                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05P-iW-vd5">
-                        <rect key="frame" x="152" y="31" width="160" height="13"/>
+                        <rect key="frame" x="152" y="27" width="160" height="13"/>
                         <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFe-3O-Rcl">
-                        <rect key="frame" x="116" y="52" width="64" height="13"/>
+                        <rect key="frame" x="116" y="44" width="64" height="13"/>
                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwC-kD-qyU">
-                        <rect key="frame" x="188" y="52" width="124" height="13"/>
+                        <rect key="frame" x="188" y="44" width="124" height="13"/>
                         <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hM-jk-1dy">
+                        <rect key="frame" x="160" y="61" width="152" height="13"/>
+                        <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdh-Gy-UhU">
-                        <rect key="frame" x="116" y="73" width="64" height="13"/>
+                        <rect key="frame" x="116" y="78" width="64" height="13"/>
                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H11-Ek-hsD">
-                        <rect key="frame" x="188" y="73" width="124" height="13"/>
+                        <rect key="frame" x="188" y="78" width="124" height="13"/>
                         <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Status:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIj-iD-rLC">
-                        <rect key="frame" x="116" y="94" width="69" height="13"/>
+                        <rect key="frame" x="116" y="95" width="69" height="13"/>
                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4C-Yv-kg6">
-                        <rect key="frame" x="193" y="94" width="119" height="13"/>
+                        <rect key="frame" x="193" y="95" width="119" height="13"/>
                         <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="11"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ph2-Ny-CbN">
@@ -97,6 +105,15 @@
                             <constraint firstAttribute="width" secondItem="Ph2-Ny-CbN" secondAttribute="height" multiplier="1:1" id="Uos-5r-F7G"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGV-UC-dBE">
+                        <rect key="frame" x="116" y="61" width="36" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="fWE-4o-nYp"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="11"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="A4C-Yv-kg6" firstAttribute="top" secondItem="pIj-iD-rLC" secondAttribute="top" id="1Kc-Wj-zkG"/>
@@ -107,38 +124,55 @@
                     <constraint firstItem="S84-N0-tjs" firstAttribute="trailing" secondItem="A4C-Yv-kg6" secondAttribute="trailing" id="66R-Cz-QTo"/>
                     <constraint firstItem="Ddt-OI-dPi" firstAttribute="height" secondItem="hFe-3O-Rcl" secondAttribute="height" id="8be-5z-wUv"/>
                     <constraint firstItem="wdh-Gy-UhU" firstAttribute="top" secondItem="H11-Ek-hsD" secondAttribute="top" id="8lP-15-RO4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="pIj-iD-rLC" secondAttribute="bottom" constant="3" id="AX2-qD-iYy"/>
                     <constraint firstItem="Ddt-OI-dPi" firstAttribute="height" secondItem="pIj-iD-rLC" secondAttribute="height" id="BaA-3Y-YIo"/>
                     <constraint firstItem="Ddt-OI-dPi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="CBJ-1V-HLI"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Ph2-Ny-CbN" secondAttribute="bottom" constant="14" id="Hjz-bJ-5AG"/>
-                    <constraint firstItem="wdh-Gy-UhU" firstAttribute="top" secondItem="hFe-3O-Rcl" secondAttribute="bottom" constant="8" id="LOh-ai-P6a"/>
+                    <constraint firstItem="JGV-UC-dBE" firstAttribute="top" secondItem="5hM-jk-1dy" secondAttribute="top" id="N4Z-0V-YkM"/>
                     <constraint firstItem="Ph2-Ny-CbN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="14" id="OHQ-au-Bsv"/>
                     <constraint firstItem="Ddt-OI-dPi" firstAttribute="height" secondItem="B7I-J6-xEP" secondAttribute="height" id="RzR-Ag-lKb"/>
                     <constraint firstItem="S84-N0-tjs" firstAttribute="trailing" secondItem="BwC-kD-qyU" secondAttribute="trailing" id="Wcg-cX-iBE"/>
-                    <constraint firstItem="hFe-3O-Rcl" firstAttribute="top" secondItem="B7I-J6-xEP" secondAttribute="bottom" constant="8" id="XLF-a1-mi6"/>
+                    <constraint firstItem="hFe-3O-Rcl" firstAttribute="top" secondItem="B7I-J6-xEP" secondAttribute="bottom" constant="4" id="XLF-a1-mi6"/>
                     <constraint firstItem="BwC-kD-qyU" firstAttribute="leading" secondItem="hFe-3O-Rcl" secondAttribute="trailing" constant="8" id="YSR-RF-cBx"/>
                     <constraint firstItem="B7I-J6-xEP" firstAttribute="leading" secondItem="Ddt-OI-dPi" secondAttribute="leading" id="Z5Z-6d-EMv"/>
                     <constraint firstItem="wdh-Gy-UhU" firstAttribute="bottom" secondItem="H11-Ek-hsD" secondAttribute="bottom" id="a63-he-6VX"/>
                     <constraint firstItem="H11-Ek-hsD" firstAttribute="leading" secondItem="wdh-Gy-UhU" secondAttribute="trailing" constant="8" id="bzg-lc-5Wl"/>
                     <constraint firstItem="hFe-3O-Rcl" firstAttribute="leading" secondItem="Ph2-Ny-CbN" secondAttribute="trailing" constant="19" id="c9F-td-9Tg"/>
+                    <constraint firstItem="pIj-iD-rLC" firstAttribute="top" secondItem="JGV-UC-dBE" secondAttribute="bottom" priority="250" constant="4" id="cgy-a3-8MW"/>
+                    <constraint firstItem="JGV-UC-dBE" firstAttribute="height" secondItem="Ddt-OI-dPi" secondAttribute="height" id="d2I-Jd-wZI"/>
                     <constraint firstItem="pIj-iD-rLC" firstAttribute="leading" secondItem="Ddt-OI-dPi" secondAttribute="leading" id="dL6-P0-L6n"/>
                     <constraint firstItem="hFe-3O-Rcl" firstAttribute="bottom" secondItem="BwC-kD-qyU" secondAttribute="bottom" id="dRZ-Tg-qra"/>
-                    <constraint firstItem="B7I-J6-xEP" firstAttribute="top" secondItem="Ddt-OI-dPi" secondAttribute="bottom" constant="8" id="dbr-GR-Ka3"/>
+                    <constraint firstItem="B7I-J6-xEP" firstAttribute="top" secondItem="Ddt-OI-dPi" secondAttribute="bottom" constant="4" id="dbr-GR-Ka3"/>
+                    <constraint firstItem="JGV-UC-dBE" firstAttribute="leading" secondItem="Ddt-OI-dPi" secondAttribute="leading" id="eCI-4s-lcr"/>
                     <constraint firstItem="Ph2-Ny-CbN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="eUR-rj-mtK"/>
                     <constraint firstItem="hFe-3O-Rcl" firstAttribute="top" secondItem="BwC-kD-qyU" secondAttribute="top" id="ffb-DW-Jmc"/>
+                    <constraint firstItem="JGV-UC-dBE" firstAttribute="top" secondItem="BwC-kD-qyU" secondAttribute="bottom" constant="4" id="guF-cu-JhB"/>
                     <constraint firstItem="A4C-Yv-kg6" firstAttribute="bottom" secondItem="pIj-iD-rLC" secondAttribute="bottom" id="hId-Ao-fbC"/>
                     <constraint firstItem="05P-iW-vd5" firstAttribute="top" secondItem="B7I-J6-xEP" secondAttribute="top" id="hrx-SH-YKg"/>
                     <constraint firstItem="05P-iW-vd5" firstAttribute="leading" secondItem="B7I-J6-xEP" secondAttribute="trailing" constant="11" id="hz2-El-moY"/>
                     <constraint firstItem="Ddt-OI-dPi" firstAttribute="leading" secondItem="wdh-Gy-UhU" secondAttribute="leading" id="l0J-Vl-Siw"/>
+                    <constraint firstItem="wdh-Gy-UhU" firstAttribute="top" secondItem="JGV-UC-dBE" secondAttribute="bottom" constant="4" id="lHN-w0-s4K"/>
                     <constraint firstItem="pIj-iD-rLC" firstAttribute="top" secondItem="wdh-Gy-UhU" secondAttribute="bottom" constant="8" id="lJ1-Tt-qtV"/>
+                    <constraint firstItem="5hM-jk-1dy" firstAttribute="leading" secondItem="JGV-UC-dBE" secondAttribute="trailing" constant="8" id="mFN-8I-ybf"/>
                     <constraint firstItem="S84-N0-tjs" firstAttribute="bottom" secondItem="Ddt-OI-dPi" secondAttribute="bottom" id="pQN-eh-DU0"/>
                     <constraint firstItem="Ddt-OI-dPi" firstAttribute="height" secondItem="wdh-Gy-UhU" secondAttribute="height" id="pc2-3w-Gqh"/>
                     <constraint firstItem="S84-N0-tjs" firstAttribute="trailing" secondItem="H11-Ek-hsD" secondAttribute="trailing" id="r1n-0n-6nE"/>
-                    <constraint firstItem="pIj-iD-rLC" firstAttribute="top" secondItem="hFe-3O-Rcl" secondAttribute="bottom" priority="999" constant="8" id="tb4-0z-mub"/>
+                    <constraint firstItem="JGV-UC-dBE" firstAttribute="bottom" secondItem="5hM-jk-1dy" secondAttribute="bottom" id="t5m-JI-eec"/>
+                    <constraint firstItem="5hM-jk-1dy" firstAttribute="trailing" secondItem="S84-N0-tjs" secondAttribute="trailing" id="tSb-id-eda"/>
                     <constraint firstItem="hFe-3O-Rcl" firstAttribute="leading" secondItem="Ddt-OI-dPi" secondAttribute="leading" id="uri-ri-Ae3"/>
+                    <constraint firstItem="wdh-Gy-UhU" firstAttribute="top" secondItem="JGV-UC-dBE" secondAttribute="bottom" constant="4" id="wv2-td-hMv"/>
                     <constraint firstItem="A4C-Yv-kg6" firstAttribute="leading" secondItem="pIj-iD-rLC" secondAttribute="trailing" constant="8" id="wzF-ze-6oj"/>
+                    <constraint firstItem="pIj-iD-rLC" firstAttribute="top" secondItem="wdh-Gy-UhU" secondAttribute="bottom" constant="4" id="xE0-QY-SDv"/>
                     <constraint firstAttribute="bottomMargin" secondItem="pIj-iD-rLC" secondAttribute="bottom" constant="4" id="yBC-y2-dwq"/>
                     <constraint firstAttribute="trailing" secondItem="S84-N0-tjs" secondAttribute="trailing" constant="8" id="z3j-Qu-hZj"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="AX2-qD-iYy"/>
+                        <exclude reference="lJ1-Tt-qtV"/>
+                        <exclude reference="yBC-y2-dwq"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
@@ -147,6 +181,7 @@
                 <outlet property="requestNumberValueLabel" destination="S84-N0-tjs" id="HVI-1M-YjJ"/>
                 <outlet property="requestPersonNameLabel" destination="wdh-Gy-UhU" id="MNp-2G-gqL"/>
                 <outlet property="requestPersonNameValueLabel" destination="H11-Ek-hsD" id="4KG-Y5-5pu"/>
+                <outlet property="requestRequestedServiceValueLabel" destination="5hM-jk-1dy" id="kKt-Ij-Q7D"/>
                 <outlet property="requestStatusValueLabel" destination="A4C-Yv-kg6" id="Tr7-0P-PEc"/>
                 <outlet property="requestTypeValueLabel" destination="BwC-kD-qyU" id="lyE-SX-UwM"/>
             </connections>

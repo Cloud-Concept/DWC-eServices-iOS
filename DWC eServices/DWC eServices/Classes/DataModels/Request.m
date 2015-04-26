@@ -25,6 +25,8 @@
     self.caseNumber = [HelperClass stringCheckNull:[requestDict objectForKey:@"CaseNumber"]];
     self.status = [HelperClass stringCheckNull:[requestDict objectForKey:@"Status"]];
     self.type = [HelperClass stringCheckNull:[requestDict objectForKey:@"Type"]];
+    self.subType = [HelperClass stringCheckNull:[requestDict objectForKey:@"Sub_Type__c"]];
+    self.subTypeFormula = [HelperClass stringCheckNull:[requestDict objectForKey:@"Sub_Type_Formula__c"]];
     self.webFormId = [HelperClass stringCheckNull:[requestDict objectForKey:@"Web_Form__c"]];
     self.caseRatingScore = [HelperClass numberCheckNull:[requestDict objectForKey:@"Case_Rating_Score__c"]];
     self.createdDate = [SFDateUtil SOQLDateTimeStringToDate:[requestDict objectForKey:@"CreatedDate"]];

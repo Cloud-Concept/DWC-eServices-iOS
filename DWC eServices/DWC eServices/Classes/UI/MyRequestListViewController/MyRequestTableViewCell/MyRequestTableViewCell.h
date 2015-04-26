@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *requestStatusValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *requestDateValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *requestTypeValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *requestRequestedServiceValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *requestPersonNameValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *requestPersonNameLabel;
 
