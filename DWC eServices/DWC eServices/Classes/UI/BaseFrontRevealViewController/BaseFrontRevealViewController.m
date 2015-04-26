@@ -22,6 +22,7 @@
     // Do any additional setup after loading the view.
     self.showSlidingMenu = YES;
     self.showNotificationIcon = YES;
+    self.showBottomTabBar = YES;
     self.revealViewController.navigationController.navigationBarHidden = YES;
     
     [self initTabBar];
@@ -29,6 +30,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self initNavigationItem];
+    
+    if (!self.showBottomTabBar) {
+        [self.bottomTabBar removeFromSuperview];
+        return;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -20,6 +20,8 @@
 #import "LicenseActivity.h"
 #import "BusinessActivity.h"
 #import "RelatedService.h"
+#import "SwipePageViewController.h"
+#import "UIViewController+ChildViewController.h"
 
 @interface CompanyInfoTypeViewController ()
 
@@ -35,6 +37,7 @@
     
     dwcCompanyInfoTypesArray = [NSMutableArray new];
     
+    /*
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoCompany", @"")
                                          NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoCompanyTitle", @"")
@@ -44,6 +47,7 @@
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLicenseInfo", @"")
                                          NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoLicenseInfoTitle", @"")
                                          DWCCompanyInfoType:DWCCompanyInfoLicenseInfo]];
+    */
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLeasingInfo", @"")
@@ -75,6 +79,34 @@
                                          DWCCompanyInfoType:DWCCompanyInfoLegalRepresentative
                                          Query:[SOQLQueries companyLegalRepresentativesQuery]]];
     
+    NSMutableArray *viewControllersMutableArray = [NSMutableArray new];
+    NSMutableArray *pageLabelMutableArray = [NSMutableArray new];
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    RecordMainViewController *companyInfoMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    companyInfoMainVC.isBottomBarHidden = YES;
+    RecordMainViewController *licenseInfoMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    licenseInfoMainVC.isBottomBarHidden = YES;
+    
+    [self configureRecordMainViewController:companyInfoMainVC ForCompany:[Globals currentAccount]];
+    [self configureRecordMainViewController:licenseInfoMainVC ForLicense:[Globals currentAccount].currentLicenseNumber Company:[Globals currentAccount]];
+
+    [viewControllersMutableArray addObjectsFromArray:@[companyInfoMainVC, licenseInfoMainVC]];
+    [pageLabelMutableArray addObjectsFromArray:@[NSLocalizedString(@"DWCCompanyInfoCompany", @""), NSLocalizedString(@"DWCCompanyInfoLicenseInfo", @"")]];
+    
+    SwipePageViewController *swipePageVC = [SwipePageViewController new];
+    for (DWCCompanyInfo *dwcCompanyInfo in dwcCompanyInfoTypesArray) {
+        UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        CompanyInfoListViewController *companyInfoListVC = [storybord instantiateViewControllerWithIdentifier:@"Company Info List Page"];
+        companyInfoListVC.currentDWCCompanyInfo = dwcCompanyInfo;
+        [viewControllersMutableArray addObject:companyInfoListVC];
+        [pageLabelMutableArray addObject:dwcCompanyInfo.Label];
+    }
+    
+    swipePageVC.viewControllerArray = viewControllersMutableArray;
+    swipePageVC.pageLabelArray = pageLabelMutableArray;
+    
+    [self addChildViewController:swipePageVC toView:self.containerView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -154,27 +186,6 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return dwcCompanyInfoTypesArray.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info Cell" forIndexPath:indexPath];
-    
-    // Configure the cell...
-    DWCCompanyInfo *companyInfoType = [dwcCompanyInfoTypesArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = companyInfoType.Label;
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    return cell;
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -202,37 +213,5 @@
     [self.navigationController pushViewController:recordMainVC animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    // This will create a "invisible" footer
-    return 0.01f;
-}
-
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    UIViewController *destinationVC = [segue destinationViewController];
-    if ([destinationVC isKindOfClass:[CompanyInfoListViewController class]]) {
-        NSIndexPath *selectedIndexPath = [self.tableView indexPathForCell:sender];
-        ((CompanyInfoListViewController*)destinationVC).currentDWCCompanyInfo = [dwcCompanyInfoTypesArray objectAtIndex:selectedIndexPath.row];
-    }
-}
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    
-    BOOL shouldPerformSegue = YES;
-    
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    
-    DWCCompanyInfo *currentDWCCompanyInfo = [dwcCompanyInfoTypesArray objectAtIndex:indexPath.row];
-    
-    if (currentDWCCompanyInfo.Type == DWCCompanyInfoCompany || currentDWCCompanyInfo.Type == DWCCompanyInfoLicenseInfo)
-        shouldPerformSegue = NO;
-    
-    return shouldPerformSegue;
-}
 
 @end

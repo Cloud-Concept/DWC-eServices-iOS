@@ -13,7 +13,7 @@
 
 @class DWCCompanyInfo;
 
-@interface CompanyInfoListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, SFRestDelegate>
+@interface CompanyInfoListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, SFRestDelegate>
 {
     NSArray *dataRows;
     

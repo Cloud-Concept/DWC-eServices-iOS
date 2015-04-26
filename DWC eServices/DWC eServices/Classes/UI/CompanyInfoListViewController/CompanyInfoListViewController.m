@@ -37,9 +37,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [super setNavigationBarTitle:self.currentDWCCompanyInfo.NavBarTitle];
+    //[super setNavigationBarTitle:self.currentDWCCompanyInfo.NavBarTitle];
     
-    self.showSlidingMenu = NO;
+    //self.showSlidingMenu = NO;
     
     [self.tableView setDragDelegate:self refreshDatePermanentKey:@""];
     self.tableView.queryLimit = 15;

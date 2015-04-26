@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITabBar *bottomTabBar;
 @property (nonatomic) BOOL showSlidingMenu;
 @property (nonatomic) BOOL showNotificationIcon;
+@property (nonatomic) BOOL showBottomTabBar;
 
 - (void)setNavigationBarTitle:(NSString *)title;
 - (void)refreshNotificationsCount;

@@ -73,7 +73,6 @@
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
-            <string>CorisandeRegular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -906,51 +905,27 @@
                                     <tabBarItem systemItem="more" id="4gu-y8-er8"/>
                                 </items>
                             </tabBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="N8M-z5-xNh">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lio-fC-eCb">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Company Info Cell" textLabel="yPa-F3-yLl" style="IBUITableViewCellStyleDefault" id="jNl-Q9-gaG">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jNl-Q9-gaG" id="PXO-8L-cWr">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yPa-F3-yLl">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="16"/>
-                                                    <color key="textColor" red="0.46274509800000002" green="0.50196078430000002" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="CDO-yy-wYj" kind="push" id="0kn-hc-9lD"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="T9I-6x-VcP" id="28Z-Uh-8Jm"/>
-                                    <outlet property="delegate" destination="T9I-6x-VcP" id="JhV-8D-h2H"/>
-                                </connections>
-                            </tableView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="lio-fC-eCb" firstAttribute="top" secondItem="njl-kH-Kto" secondAttribute="bottom" id="12F-WR-nlo"/>
+                            <constraint firstItem="lio-fC-eCb" firstAttribute="leading" secondItem="fiD-5O-RfH" secondAttribute="leading" id="1FD-Ss-sci"/>
                             <constraint firstItem="LeT-cd-qei" firstAttribute="top" secondItem="Oza-tx-Hka" secondAttribute="bottom" id="3Gm-Yv-s4Z"/>
-                            <constraint firstItem="Oza-tx-Hka" firstAttribute="top" secondItem="N8M-z5-xNh" secondAttribute="bottom" id="BTT-p8-uw2"/>
-                            <constraint firstItem="N8M-z5-xNh" firstAttribute="leading" secondItem="fiD-5O-RfH" secondAttribute="leading" id="BUy-vd-Dfb"/>
+                            <constraint firstItem="Oza-tx-Hka" firstAttribute="top" secondItem="lio-fC-eCb" secondAttribute="bottom" id="Ba0-vc-uSw"/>
+                            <constraint firstAttribute="trailing" secondItem="lio-fC-eCb" secondAttribute="trailing" id="QyY-1w-Vjd"/>
                             <constraint firstItem="Oza-tx-Hka" firstAttribute="leading" secondItem="fiD-5O-RfH" secondAttribute="leading" id="bPe-1c-nrR"/>
                             <constraint firstAttribute="trailing" secondItem="Oza-tx-Hka" secondAttribute="trailing" id="kJL-Zj-hMG"/>
-                            <constraint firstAttribute="trailing" secondItem="N8M-z5-xNh" secondAttribute="trailing" id="shZ-Dy-Hd9"/>
-                            <constraint firstItem="N8M-z5-xNh" firstAttribute="top" secondItem="njl-kH-Kto" secondAttribute="bottom" id="xlt-SG-JPE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wki-C0-eDF"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bottomTabBar" destination="Oza-tx-Hka" id="vml-kw-2hb"/>
-                        <outlet property="tableView" destination="N8M-z5-xNh" id="ESJ-h5-jgg"/>
+                        <outlet property="containerView" destination="lio-fC-eCb" id="LLt-D6-PDo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkN-jx-MgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -960,7 +935,7 @@
         <!--Company Info List View Controller-->
         <scene sceneID="mkG-ej-Xyo">
             <objects>
-                <viewController id="CDO-yy-wYj" customClass="CompanyInfoListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Company Info List Page" id="CDO-yy-wYj" customClass="CompanyInfoListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r3X-1t-kW8"/>
                         <viewControllerLayoutGuide type="bottom" id="oMS-0A-TuU"/>
@@ -969,16 +944,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vn4-Yc-qJ0">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="kdh-RP-l9Y"/>
-                                    <tabBarItem systemItem="more" id="T6r-SB-ruH"/>
-                                </items>
-                            </tabBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JCe-NA-0Ts">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Company Info List Cell" id="1DE-bU-Sxd" customClass="CompanyInfoListTableViewCell">
@@ -1036,19 +1003,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oMS-0A-TuU" firstAttribute="top" secondItem="vn4-Yc-qJ0" secondAttribute="bottom" id="9sB-PU-XcC"/>
-                            <constraint firstItem="JCe-NA-0Ts" firstAttribute="top" secondItem="r3X-1t-kW8" secondAttribute="bottom" id="KTt-83-kbv"/>
-                            <constraint firstItem="vn4-Yc-qJ0" firstAttribute="top" secondItem="JCe-NA-0Ts" secondAttribute="bottom" id="eCn-qR-g7k"/>
-                            <constraint firstAttribute="trailing" secondItem="vn4-Yc-qJ0" secondAttribute="trailing" id="jDl-jA-3lT"/>
-                            <constraint firstItem="JCe-NA-0Ts" firstAttribute="leading" secondItem="Dax-hH-wdP" secondAttribute="leading" id="tgZ-vd-4Ig"/>
-                            <constraint firstItem="vn4-Yc-qJ0" firstAttribute="leading" secondItem="Dax-hH-wdP" secondAttribute="leading" id="uVi-u0-pIl"/>
-                            <constraint firstAttribute="trailing" secondItem="JCe-NA-0Ts" secondAttribute="trailing" id="zWe-uD-mUB"/>
+                            <constraint firstItem="JCe-NA-0Ts" firstAttribute="top" secondItem="r3X-1t-kW8" secondAttribute="bottom" id="EhV-Er-wGz"/>
+                            <constraint firstItem="JCe-NA-0Ts" firstAttribute="leading" secondItem="Dax-hH-wdP" secondAttribute="leading" id="WfN-fB-REu"/>
+                            <constraint firstAttribute="trailing" secondItem="JCe-NA-0Ts" secondAttribute="trailing" id="hNN-LP-SsB"/>
+                            <constraint firstItem="oMS-0A-TuU" firstAttribute="top" secondItem="JCe-NA-0Ts" secondAttribute="bottom" id="une-ZD-MoZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yXH-Ww-WAD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="bottomTabBar" destination="vn4-Yc-qJ0" id="F6D-Pb-jbz"/>
                         <outlet property="tableView" destination="JCe-NA-0Ts" id="JHj-5b-rjL"/>
                     </connections>
                 </viewController>
@@ -1236,6 +1199,7 @@
                             <constraint firstAttribute="trailing" secondItem="syL-eu-We9" secondAttribute="trailing" id="hO0-pm-33Z"/>
                             <constraint firstAttribute="trailing" secondItem="o2U-qa-QPd" secondAttribute="trailing" id="ker-XE-Z9X"/>
                             <constraint firstItem="syL-eu-We9" firstAttribute="leading" secondItem="SpX-GG-Lr2" secondAttribute="leading" id="lsv-BO-s5X"/>
+                            <constraint firstItem="06r-kB-hdd" firstAttribute="top" secondItem="syL-eu-We9" secondAttribute="bottom" priority="250" id="nX7-xy-hgL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="u4g-eb-Ujt"/>

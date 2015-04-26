@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
 
-@interface CompanyInfoTypeViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CompanyInfoTypeViewController : BaseFrontRevealViewController
 {
     NSMutableArray *dwcCompanyInfoTypesArray;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end

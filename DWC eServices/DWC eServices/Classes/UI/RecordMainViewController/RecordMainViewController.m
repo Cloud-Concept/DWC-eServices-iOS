@@ -26,6 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.showSlidingMenu = NO;
+    self.showBottomTabBar = !self.isBottomBarHidden;
     
     [super setNavigationBarTitle:self.NavBarTitle];
     
