@@ -19,6 +19,7 @@
 #import "Globals.h"
 #import "Account.h"
 #import "CardManagement.h"
+#import "NSString+HelperAdditions.h"
 
 @interface ServicesDynamicFormViewController ()
 
@@ -79,6 +80,12 @@
     if (![self validateInput]) {
         [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
                                          Message:NSLocalizedString(@"RequiredFieldsAlertMessage", @"")];
+        return;
+    }
+    
+    if (![self validateEmailValues]) {
+        [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                         Message:NSLocalizedString(@"InvalidEmailFormatsAlertMessage", @"")];
         return;
     }
     
@@ -294,6 +301,17 @@
     BOOL returnValue = YES;
     for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
         if(formField.required && [[formField getFormFieldValue] isEqualToString:@""])
+            returnValue = NO;
+    }
+    
+    return returnValue;
+}
+
+- (BOOL)validateEmailValues {
+    BOOL returnValue = YES;
+    
+    for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
+        if ([formField.type isEqualToString:@"EMAIL"] && ![[formField getFormFieldValue] isValidEmail])
             returnValue = NO;
     }
     

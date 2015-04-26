@@ -84,6 +84,7 @@
 		13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315ACF1AAC663D009E1819 /* CompanyInfoListViewController.m */; };
 		13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */; };
 		1331D21F1AC7E2D600B4AAD5 /* Quote.m in Sources */ = {isa = PBXBuildFile; fileRef = 1331D21E1AC7E2D600B4AAD5 /* Quote.m */; };
+		133469AB1AECD72F0029F9B5 /* NSString+HelperAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 133469AA1AECD72F0029F9B5 /* NSString+HelperAdditions.m */; };
 		1334F49D1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4901ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m */; };
 		1334F49E1ADE790000297ACE /* DragTableFooterView_ot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4931ADE790000297ACE /* DragTableFooterView_ot.m */; };
 		1334F49F1ADE790000297ACE /* DragTableGestureObserver_ot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4951ADE790000297ACE /* DragTableGestureObserver_ot.m */; };
@@ -298,6 +299,8 @@
 		13315AD31AAC7056009E1819 /* CompanyInfoListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyInfoListTableViewCell.m; sourceTree = "<group>"; };
 		1331D21D1AC7E2D600B4AAD5 /* Quote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quote.h; sourceTree = "<group>"; };
 		1331D21E1AC7E2D600B4AAD5 /* Quote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quote.m; sourceTree = "<group>"; };
+		133469A91AECD72F0029F9B5 /* NSString+HelperAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HelperAdditions.h"; sourceTree = "<group>"; };
+		133469AA1AECD72F0029F9B5 /* NSString+HelperAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HelperAdditions.m"; sourceTree = "<group>"; };
 		1334F48F1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComOpenThreadOTScreenshotHelperSwizzleHelper.h; sourceTree = "<group>"; };
 		1334F4901ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComOpenThreadOTScreenshotHelperSwizzleHelper.m; sourceTree = "<group>"; };
 		1334F4911ADE790000297ACE /* DragTableDragState_ot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragTableDragState_ot.h; sourceTree = "<group>"; };
@@ -1028,6 +1031,15 @@
 			path = CompanyInfoListTableViewCell;
 			sourceTree = "<group>";
 		};
+		133469A81AECD7240029F9B5 /* NSString+HelperAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				133469A91AECD72F0029F9B5 /* NSString+HelperAdditions.h */,
+				133469AA1AECD72F0029F9B5 /* NSString+HelperAdditions.m */,
+			);
+			path = "NSString+HelperAdditions";
+			sourceTree = "<group>";
+		};
 		1334F48D1ADE790000297ACE /* UITableView+DragLoad */ = {
 			isa = PBXGroup;
 			children = (
@@ -1177,6 +1189,7 @@
 			isa = PBXGroup;
 			children = (
 				132D38B31AE925CF00D61A3E /* NSDate+CreateSpecificDate */,
+				133469A81AECD7240029F9B5 /* NSString+HelperAdditions */,
 				13D97BB21A8766A600DD71FF /* UIImageView+MaskImage */,
 				139E6B671A7A6F2600D1D451 /* UIImageView+SFAttachment */,
 				1334F48D1ADE790000297ACE /* UITableView+DragLoad */,
@@ -1816,6 +1829,7 @@
 				130F7DD51AAF2B9000380628 /* LicenseActivity.m in Sources */,
 				13073B9A1AC4176500F25EC6 /* Product.m in Sources */,
 				130F7DD81AAF2C6800380628 /* BusinessActivity.m in Sources */,
+				133469AB1AECD72F0029F9B5 /* NSString+HelperAdditions.m in Sources */,
 				1331D21F1AC7E2D600B4AAD5 /* Quote.m in Sources */,
 				1318194B1A91FCB900CAA4D6 /* ServicesUploadViewController.m in Sources */,
 				130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */,

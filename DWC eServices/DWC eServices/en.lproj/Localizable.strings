@@ -35,6 +35,7 @@
 "PayAndSubmitAlertMessage" = "Are you sure you want to Pay and Submit your request?";
 "ApplicationSubmittedAlertMessage" = "Your application has been successfully submitted.";
 "DocumentsSizeAlertMessage" = "All documents should be less than 1 MB";
+"InvalidEmailFormatsAlertMessage" = "Invalid email format.";
 
 "galleryDocumentSource" = "Gallery";
 

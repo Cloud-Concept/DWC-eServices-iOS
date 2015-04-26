@@ -45,9 +45,7 @@
     [self initializeFilterStringArray];
     
     [self initializeSearchBar];
-    
-    if (hideNewButton)
-        [self.addNewButton removeFromSuperview];
+    [self initializeNewButton];
     
     [self.employeesTableView setDragDelegate:self refreshDatePermanentKey:@""];
     self.employeesTableView.queryLimit = 15;
@@ -123,6 +121,24 @@
     
     self.employeesTableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = YES;
+}
+
+- (void)initializeNewButton {
+    switch (self.currentDWCEmployee.Type) {
+        case PermanentEmployee:
+        case VisitVisaEmployee:
+            hideNewButton = YES;
+            break;
+        case ContractorEmployee:
+            hideNewButton = NO;
+            break;
+        default:
+            hideNewButton = YES;
+            break;
+    }
+    
+    if (hideNewButton)
+        [self.addNewButton removeFromSuperview];
 }
 
 - (void)refreshFilterButton {
