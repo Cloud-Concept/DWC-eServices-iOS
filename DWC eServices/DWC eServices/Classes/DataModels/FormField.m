@@ -232,10 +232,35 @@
 - (UILabel*)getLabelView {
     if (!labelView) {
         labelView = [UILabel new];
-        [labelView setText:self.mobileLabel];
-        [labelView setTextColor:[UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1]];
         
-        [labelView setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
+        NSMutableAttributedString *mutableAttributedString = [NSMutableAttributedString new];
+        
+        UIFont *labelFont = [UIFont fontWithName:@"CorisandeRegular" size:14.0f];
+        UIColor *labelColor = [UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1];
+        NSDictionary *labelAttributes = [NSDictionary dictionaryWithObjects:@[labelColor, labelFont]
+                                                                     forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]];
+        
+        NSAttributedString *labelAttributedString = [[NSAttributedString alloc] initWithString:self.mobileLabel
+                                                                             attributes:labelAttributes];;
+        [mutableAttributedString appendAttributedString:labelAttributedString];
+        
+        if (self.required) {
+            UIColor *asteriskColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
+            NSDictionary *asteriskAttributes = [NSDictionary dictionaryWithObjects:@[asteriskColor, labelFont]
+                                                                           forKeys:@[NSForegroundColorAttributeName, NSFontAttributeName]];
+            
+            NSAttributedString *asteriskAttributedString = [[NSAttributedString alloc] initWithString:@" *"
+                                                                                           attributes:asteriskAttributes];
+            
+            [mutableAttributedString appendAttributedString:asteriskAttributedString];
+        }
+        
+        [labelView setAttributedText:mutableAttributedString];
+        
+        //[labelView setText:self.mobileLabel];
+        //[labelView setTextColor:[UIColor colorWithRed:0.18 green:0.18 blue:0.18 alpha:1]];
+        
+        //[labelView setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
     }
     
     return labelView;
