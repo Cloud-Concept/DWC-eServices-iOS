@@ -59,7 +59,7 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
 #warning Handle Error
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            //[FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
         });
         
     };
@@ -67,14 +67,14 @@
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            //[FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
         });
         
     };
     
     NSDictionary *fieldsDict = [NSDictionary dictionaryWithObject:ratingScore forKey:@"Case_Rating_Score__c"];
     
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    //[FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
     
     [[SFRestAPI sharedInstance] performUpdateWithObjectType:@"Case"
                                                    objectId:self.currentNotification.request.Id

@@ -171,12 +171,14 @@
 
 #pragma mark - SWRevealViewControllerDelegate Protocol
 
-- (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position {
+- (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position {
     if (position == FrontViewPositionRight) {
         UIView *lockingView = [[UIView alloc] initWithFrame:revealController.frontViewController.view.frame];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:revealController action:@selector(revealToggle:)];
         [lockingView addGestureRecognizer:tap];
         [lockingView setTag:1000];
+        lockingView.backgroundColor = [UIColor colorWithRed:0.25 green:0.25 blue:0.25 alpha:0.6];
+        
         [revealController.frontViewController.view addSubview:lockingView];
     }
     else
