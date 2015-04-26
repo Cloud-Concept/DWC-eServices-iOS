@@ -7,7 +7,6 @@
 //
 
 #import "BaseFrontRevealViewController.h"
-#import "SWRevealViewController.h"
 #import "BBBadgeBarButtonItem.h"
 #import "Globals.h"
 
@@ -24,6 +23,7 @@
     self.showNotificationIcon = YES;
     self.showBottomTabBar = YES;
     self.revealViewController.navigationController.navigationBarHidden = YES;
+    self.revealViewController.delegate = self;
     
     [self initTabBar];
 }
@@ -168,14 +168,19 @@
     if (self.showNotificationIcon)
         [self initNotificationIcon];
 }
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+
+#pragma mark - SWRevealViewControllerDelegate Protocol
+
+- (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position {
+    if (position == FrontViewPositionRight) {
+        UIView *lockingView = [[UIView alloc] initWithFrame:revealController.frontViewController.view.frame];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:revealController action:@selector(revealToggle:)];
+        [lockingView addGestureRecognizer:tap];
+        [lockingView setTag:1000];
+        [revealController.frontViewController.view addSubview:lockingView];
+    }
+    else
+        [[revealController.frontViewController.view viewWithTag:1000] removeFromSuperview];
+}
 
 @end
