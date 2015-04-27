@@ -225,11 +225,11 @@
         *endDate = quarterStartDate;
     }
     else if ([operation isEqualToString:@"Current Year"]) {
-        *startDate = [NSDate createNSDateFromDay:1 month:1 year:currentMonth hour:0 minute:0 second:0];
+        *startDate = [NSDate createNSDateFromDay:1 month:1 year:currentYear hour:0 minute:0 second:0];
         *endDate = [NSDate addYears:1 toDate:*startDate];
     }
     else if ([operation isEqualToString:@"Last Year"]) {
-        *endDate = [NSDate createNSDateFromDay:1 month:1 year:currentMonth hour:0 minute:0 second:0];
+        *endDate = [NSDate createNSDateFromDay:1 month:1 year:currentYear hour:0 minute:0 second:0];
         *startDate = [NSDate addYears:-1 toDate:*endDate];
     }
 }
