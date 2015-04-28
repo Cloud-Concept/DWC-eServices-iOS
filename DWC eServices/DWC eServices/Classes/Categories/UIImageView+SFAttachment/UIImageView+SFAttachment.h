@@ -13,6 +13,7 @@
 
 @interface UIImageView (SFAttachment) <SFRestDelegate>
 
+@property (nonatomic, strong) NSString *attachmentId;
 @property (nonatomic, strong) SFRestRequest *attachmentSFRequest;
 
 - (void)loadImageFromSFAttachment:(NSString*)attachmentId placeholderImage:(UIImage*)placeholder;

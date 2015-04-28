@@ -8,21 +8,33 @@
 
 #import "UIImageView+SFAttachment.h"
 #import "SFRestAPI+Blocks.h"
+#import "FTWCache.h"
+#import "NSString+MD5.h"
 #import <objc/runtime.h>
 
-
 static const char *kAttachmentSFRequestKey = "kAttachmentSFRequestKey";
+static const char *kAttachmentId = "kAttachmentId";
 
 @implementation UIImageView (SFAttachment)
 
 @dynamic attachmentSFRequest;
+@dynamic attachmentId;
 
 - (void)loadImageFromSFAttachment:(NSString*)attachmentId placeholderImage:(UIImage*)placeholder {
+    
+    self.attachmentId = attachmentId;
     
     self.image = placeholder;
     
     if (self.attachmentSFRequest)
         [self.attachmentSFRequest cancel];
+    
+    NSString *key = [self.attachmentId MD5Hash];
+    NSData *imageData = [FTWCache objectForKey:key];
+    if (imageData) {
+        [self setImageWithData:imageData];
+        return;
+    }
     
     // Manually set up request object
     if (![attachmentId isKindOfClass:[NSNull class]] && ![attachmentId isEqualToString:@""]) {
@@ -39,10 +51,26 @@ static const char *kAttachmentSFRequestKey = "kAttachmentSFRequestKey";
     objc_setAssociatedObject(self, kAttachmentSFRequestKey, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (void)setAttachmentId:(NSString *)attachmentId {
+    objc_setAssociatedObject(self, kAttachmentId, attachmentId, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (SFRestRequest*)attachmentSFRequest {
     return objc_getAssociatedObject(self, kAttachmentSFRequestKey);
 }
 
+- (NSString *)attachmentId {
+    return objc_getAssociatedObject(self, kAttachmentId);
+}
+
+- (void)setImageWithData:(NSData *)imageData {
+    if (![imageData isKindOfClass:[NSNull class]]) {
+        self.image = [UIImage imageWithData:imageData];
+        
+        NSString *key = [self.attachmentId MD5Hash];
+        [FTWCache setObject:imageData forKey:key];
+    }
+}
 
 #pragma mark - SFRestAPIDelegate
 
@@ -50,8 +78,7 @@ static const char *kAttachmentSFRequestKey = "kAttachmentSFRequestKey";
     NSData *imageData = jsonResponse;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (![imageData isKindOfClass:[NSNull class]])
-            self.image = [UIImage imageWithData:imageData];
+        [self setImageWithData:imageData];
     });
 }
 

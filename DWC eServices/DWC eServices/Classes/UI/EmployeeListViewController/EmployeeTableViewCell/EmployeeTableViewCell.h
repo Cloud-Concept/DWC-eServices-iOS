@@ -7,8 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DWCEmployee.h"
+
+@class Visa;
+@class CardManagement;
+@class EmployeeTableViewCell;
+
+@protocol EmployeeTableViewCellDelegate <NSObject>
+- (void)employeeTableViewCell:(EmployeeTableViewCell *)employeeTableViewCell detailsButtonClickAtIndexPath:(NSIndexPath *)indexPath;
+@end
+
 
 @interface EmployeeTableViewCell : UITableViewCell
+{
+    NSIndexPath *currentIndexPath;
+}
+
+@property (nonatomic) id<EmployeeTableViewCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
 @property (weak, nonatomic) IBOutlet UILabel *employeeNameLabel;
@@ -17,4 +32,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *rowTwoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rowTwoValueLabel;
 
+- (void)refreshCellForVisa:(Visa *)currentVisa employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath;
+- (void)refreshCellForCard:(CardManagement *)currentCard employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath;
+
+-(IBAction)detailsButtonClicked:(id)sender;
 @end

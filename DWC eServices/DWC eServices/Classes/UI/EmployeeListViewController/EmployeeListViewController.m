@@ -11,15 +11,11 @@
 #import "SFRestAPI+Blocks.h"
 #import "Account.h"
 #import "Visa.h"
-#import "EmployeeTableViewCell.h"
-#import "EmployeeTableViewCell.h"
 #import "HelperClass.h"
 #import "Country.h"
 #import "Occupation.h"
 #import "RecordType.h"
 #import "CardManagement.h"
-#import "UIImageView+SFAttachment.h"
-#import "UIView+RoundCorner.h"
 #import "RecordMainViewController.h"
 #import "TableViewSection.h"
 #import "TableViewSectionField.h"
@@ -205,73 +201,6 @@
                                                  completeBlock:successBlock];
 }
 
-- (UITableViewCell *)cellVisaEmployeesForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView {
-    EmployeeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmployeeTableViewCell"];
-    
-    if(!cell) {
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EmployeeTableViewCell" owner:self options:nil];
-        // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
-        cell = [topLevelObjects objectAtIndex:0];
-    }
-    
-    Visa *currentVisa = [filteredEmployeesArray objectAtIndex:indexPath.row];
-    
-    cell.employeeNameLabel.text = currentVisa.applicantFullName;
-    
-    cell.rowOneLabel.text = @"Status";
-    cell.rowOneValueLabel.text = currentVisa.validityStatus;
-    
-    [cell.profilePictureImageView loadImageFromSFAttachment:currentVisa.personalPhotoId
-                                           placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
-    [cell.profilePictureImageView createRoundBorderedWithRadius:3.0 Shadows:NO ClipToBounds:YES];
-    
-    if ([currentVisa.validityStatus isEqualToString:@"Issued"] || [currentVisa.validityStatus isEqualToString:@"Expired"]) {
-        cell.rowTwoValueLabel.text = [HelperClass formatDateToString:currentVisa.expiryDate];
-        cell.rowTwoValueLabel.hidden = NO;
-        cell.rowTwoLabel.text = @"Expiry";
-        cell.rowTwoLabel.hidden = NO;
-    }
-    else {
-        cell.rowTwoLabel.hidden = YES;
-        cell.rowTwoValueLabel.hidden = YES;
-    }
-    
-    return cell;
-}
-
-- (UITableViewCell *)cellContractorEmployeesForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView {
-    EmployeeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmployeeTableViewCell"];
-    
-    if(!cell) {
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"EmployeeTableViewCell" owner:self options:nil];
-        // Grab a pointer to the first object (presumably the custom cell, as that's all the XIB should contain).
-        cell = [topLevelObjects objectAtIndex:0];
-    }
-    
-    CardManagement *currentCard = [filteredEmployeesArray objectAtIndex:indexPath.row];
-    
-    cell.employeeNameLabel.text = currentCard.fullName;
-    cell.rowOneLabel.text = @"Type";
-    cell.rowOneValueLabel.text = currentCard.cardType;
-    
-    [cell.profilePictureImageView loadImageFromSFAttachment:currentCard.personalPhoto
-                                           placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
-    [cell.profilePictureImageView createRoundBorderedWithRadius:3.0 Shadows:NO ClipToBounds:YES];
-    
-    if (currentCard.cardExpiryDate) {
-        cell.rowTwoLabel.hidden = NO;
-        cell.rowTwoLabel.text = @"Expiry";
-        cell.rowTwoValueLabel.hidden = NO;
-        cell.rowTwoValueLabel.text = [HelperClass formatDateToString:currentCard.cardExpiryDate];
-    }
-    else {
-        cell.rowTwoLabel.hidden = YES;
-        cell.rowTwoValueLabel.hidden = YES;
-    }
-    
-    return cell;
-}
-
 - (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForPermanentEmployee:(Visa*)visa {
     recordVC.visaObject = visa;
     recordVC.NameValue = visa.applicantFullName;
@@ -420,6 +349,8 @@
 }
 
 - (void)refreshEmployeesTable {
+    selectedRowIndexPath = nil;
+    
     NSString *predicateString = [self getPredicateString];
     
     if ([predicateString isEqualToString:@""]) {
@@ -488,15 +419,25 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell;
+    NSString *cellIdentifier = @"EmployeeTableViewCell";
+    
+    if (selectedRowIndexPath &&
+        selectedRowIndexPath.row == indexPath.row &&
+        selectedRowIndexPath.section == indexPath.section)
+        cellIdentifier = @"EmployeeExpandedTableViewCell";
+    
+    EmployeeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.delegate = self;
+    
+    NSObject *selectedObject = [filteredEmployeesArray objectAtIndex:indexPath.row];
     
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
         case VisitVisaEmployee:
-            cell = [self cellVisaEmployeesForRowAtIndexPath:indexPath tableView:tableView];
+            [cell refreshCellForVisa:(Visa *)selectedObject employeeType:self.currentDWCEmployee.Type indexPath:indexPath];
             break;
         case ContractorEmployee:
-            cell = [self cellContractorEmployeesForRowAtIndexPath:indexPath tableView:tableView];
+            [cell refreshCellForCard:(CardManagement *)selectedObject employeeType:self.currentDWCEmployee.Type indexPath:indexPath];
             break;
         default:
             break;
@@ -510,7 +451,46 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray* rows = [NSMutableArray arrayWithCapacity:2];
+
+    if (selectedRowIndexPath)
+        [rows addObject:selectedRowIndexPath];
     
+    if (selectedRowIndexPath &&
+        selectedRowIndexPath.row == indexPath.row &&
+        selectedRowIndexPath.section == indexPath.section)
+        selectedRowIndexPath = nil;
+    else {
+        selectedRowIndexPath = indexPath;
+        [rows addObject:indexPath];
+    }
+
+    [tableView beginUpdates];
+    [tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView endUpdates];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (selectedRowIndexPath &&
+        selectedRowIndexPath.row == indexPath.row &&
+        selectedRowIndexPath.section == indexPath.section)
+        return 132;
+    else
+        return 70;
+}
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
+#pragma mark - EmployeeTableViewCell delegate
+- (void)employeeTableViewCell:(EmployeeTableViewCell *)employeeTableViewCell detailsButtonClickAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     NSObject *selectedItem = [filteredEmployeesArray objectAtIndex:indexPath.row];
@@ -533,35 +513,6 @@
     
     [self.navigationController pushViewController:recordMainVC animated:YES];
 }
-
-/*
- - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
- return 30.0f;
- }
- 
- - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger) section {
- //get the section object for the current section
- //SectionObject *section = [_helperDataSource sectionObjectForSection:section];
- 
- NSString *title = @"%@ (%d)";
- 
- return @"Test";
- }
- 
- - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
- 
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 #pragma mark - UISearchResultsUpdating delegate
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {

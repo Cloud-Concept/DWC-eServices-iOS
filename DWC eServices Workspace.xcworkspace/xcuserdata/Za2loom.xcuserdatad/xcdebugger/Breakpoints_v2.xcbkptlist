@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DWC eServices/DWC eServices/Classes/UI/ViewStatementListViewController/ViewStatementListViewController.m"
-            timestampString = "451811206.146479"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/EmployeeListViewController/EmployeeListViewController.m"
+            timestampString = "451901336.983429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "-constructDateRangeFilter"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

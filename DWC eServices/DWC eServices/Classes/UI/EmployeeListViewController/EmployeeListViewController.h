@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "BaseFrontRevealViewController.h"
 #import "UITableView+DragLoad.h"
+#import "EmployeeTableViewCell.h"
 
 @class DWCEmployee;
 @class SFRestRequest;
 
-@interface EmployeeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, UISearchResultsUpdating>
+@interface EmployeeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, UISearchResultsUpdating, EmployeeTableViewCellDelegate>
 {
     NSArray *dataRows;
     
@@ -27,6 +28,8 @@
     NSString *searchBarText;
     
     SFRestRequest *restRequest;
+    
+    NSIndexPath *selectedRowIndexPath;
 }
 @property (nonatomic, strong) DWCEmployee *currentDWCEmployee;
 
