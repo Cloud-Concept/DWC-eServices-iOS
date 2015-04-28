@@ -16,7 +16,7 @@
 #import "Occupation.h"
 #import "RecordType.h"
 #import "CardManagement.h"
-#import "RecordMainViewController.h"
+#import "RecordMainDetailsViewController.h"
 #import "TableViewSection.h"
 #import "TableViewSectionField.h"
 #import "RelatedService.h"
@@ -201,7 +201,7 @@
                                                  completeBlock:successBlock];
 }
 
-- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForPermanentEmployee:(Visa*)visa {
+- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForPermanentEmployee:(Visa*)visa {
     recordVC.visaObject = visa;
     recordVC.NameValue = visa.applicantFullName;
     recordVC.PhotoId = visa.personalPhotoId;
@@ -255,7 +255,7 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
-- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForVisitVisa:(Visa*)visa {
+- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForVisitVisa:(Visa*)visa {
     recordVC.NameValue = visa.applicantFullName;
     recordVC.PhotoId = visa.personalPhotoId;
     NSMutableArray *sectionsArray = [NSMutableArray new];
@@ -302,7 +302,7 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
-- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForContractor:(CardManagement*)card {
+- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForContractor:(CardManagement*)card {
     recordVC.NameValue = card.fullName;
     recordVC.PhotoId = card.personalPhoto;
     recordVC.cardManagementObject = card;
@@ -493,7 +493,7 @@
 #pragma mark - EmployeeTableViewCell delegate
 - (void)employeeTableViewCell:(EmployeeTableViewCell *)employeeTableViewCell detailsButtonClickAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    RecordMainDetailsViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     NSObject *selectedItem = [filteredEmployeesArray objectAtIndex:indexPath.row];
     
     recordMainVC.NavBarTitle = self.currentDWCEmployee.NavBarTitle;

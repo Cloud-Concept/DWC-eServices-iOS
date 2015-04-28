@@ -60,9 +60,7 @@
 		1318194B1A91FCB900CAA4D6 /* ServicesUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1318194A1A91FCB900CAA4D6 /* ServicesUploadViewController.m */; };
 		131CA86E1A80C93400A79B12 /* TableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA86D1A80C93400A79B12 /* TableViewSection.m */; };
 		131CA8711A80C94400A79B12 /* TableViewSectionField.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA8701A80C94400A79B12 /* TableViewSectionField.m */; };
-		131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA8781A80E45200A79B12 /* RecordDetailsTableViewController.m */; };
 		131CA87E1A80F91500A79B12 /* RecordDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131CA87C1A80F91500A79B12 /* RecordDetailTableViewCell.m */; };
-		131CA87F1A80F91500A79B12 /* RecordDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */; };
 		131ECF331AC29BB500EDA9EB /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 131ECF321AC29BB500EDA9EB /* EDStarRating.m */; };
 		131ECF361AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131ECF351AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.m */; };
 		131ECF3F1AC2D2F700EDA9EB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 131ECF3E1AC2D2F700EDA9EB /* MainStoryboard.storyboard */; };
@@ -132,7 +130,7 @@
 		13CFE7381ABEF1D6009E47EC /* DWCCompanyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE7371ABEF1D6009E47EC /* DWCCompanyDocument.m */; };
 		13D97BB51A8766E800DD71FF /* UIImageView+MaskImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */; };
 		13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */; };
-		13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67971A7E556F00255174 /* RecordMainViewController.m */; };
+		13EE67981A7E556F00255174 /* RecordMainDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13EE67971A7E556F00255174 /* RecordMainDetailsViewController.m */; };
 		13F39B0A1AE7CCEA003AA84E /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F39B091AE7CCEA003AA84E /* DashboardViewController.m */; };
 		13F39B0D1AE7D7D6003AA84E /* FreeZonePayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F39B0C1AE7D7D6003AA84E /* FreeZonePayment.m */; };
 		13F39B111AE7DC6D003AA84E /* ViewStatementListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F39B101AE7DC6D003AA84E /* ViewStatementListViewController.m */; };
@@ -260,11 +258,8 @@
 		131CA86D1A80C93400A79B12 /* TableViewSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewSection.m; sourceTree = "<group>"; };
 		131CA86F1A80C94400A79B12 /* TableViewSectionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewSectionField.h; sourceTree = "<group>"; };
 		131CA8701A80C94400A79B12 /* TableViewSectionField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewSectionField.m; sourceTree = "<group>"; };
-		131CA8771A80E45200A79B12 /* RecordDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailsTableViewController.h; sourceTree = "<group>"; };
-		131CA8781A80E45200A79B12 /* RecordDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailsTableViewController.m; sourceTree = "<group>"; };
 		131CA87B1A80F91500A79B12 /* RecordDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailTableViewCell.h; sourceTree = "<group>"; };
 		131CA87C1A80F91500A79B12 /* RecordDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailTableViewCell.m; sourceTree = "<group>"; };
-		131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordDetailTableViewCell.xib; sourceTree = "<group>"; };
 		131ECF311AC29BB500EDA9EB /* EDStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDStarRating.h; sourceTree = "<group>"; };
 		131ECF321AC29BB500EDA9EB /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDStarRating.m; sourceTree = "<group>"; };
 		131ECF341AC29C9E00EDA9EB /* NotificationFeedbackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationFeedbackTableViewCell.h; sourceTree = "<group>"; };
@@ -396,8 +391,8 @@
 		13D97BB41A8766E800DD71FF /* UIImageView+MaskImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MaskImage.m"; sourceTree = "<group>"; };
 		13EE67921A7E50A500255174 /* RKSwipeBetweenViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKSwipeBetweenViewControllers.h; sourceTree = "<group>"; };
 		13EE67931A7E50A500255174 /* RKSwipeBetweenViewControllers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKSwipeBetweenViewControllers.m; sourceTree = "<group>"; };
-		13EE67961A7E556F00255174 /* RecordMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordMainViewController.h; sourceTree = "<group>"; };
-		13EE67971A7E556F00255174 /* RecordMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordMainViewController.m; sourceTree = "<group>"; };
+		13EE67961A7E556F00255174 /* RecordMainDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordMainDetailsViewController.h; sourceTree = "<group>"; };
+		13EE67971A7E556F00255174 /* RecordMainDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordMainDetailsViewController.m; sourceTree = "<group>"; };
 		13F39B081AE7CCEA003AA84E /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
 		13F39B091AE7CCEA003AA84E /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		13F39B0B1AE7D7D6003AA84E /* FreeZonePayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeZonePayment.h; sourceTree = "<group>"; };
@@ -659,7 +654,7 @@
 				1394EA101A88B5C000ECED05 /* NewNOCViewController */,
 				13743ECB1AB04D3700D0B873 /* NotificationListViewCotnroller */,
 				1324D8961A89E98B003AA356 /* PickerTableViewController */,
-				13EE67951A7E555600255174 /* RecordMainViewController */,
+				13EE67951A7E555600255174 /* RecordMainDetailsViewController */,
 				134053BF1AEE605E007A4773 /* RelatedServicesBarScrollView */,
 				13EE67911A7E50A500255174 /* RKSwipeBetweenViewControllers */,
 				13063A861A8B6C0000A1DEA2 /* ServicesDynamicFormViewController */,
@@ -899,7 +894,6 @@
 			children = (
 				131CA87B1A80F91500A79B12 /* RecordDetailTableViewCell.h */,
 				131CA87C1A80F91500A79B12 /* RecordDetailTableViewCell.m */,
-				131CA87D1A80F91500A79B12 /* RecordDetailTableViewCell.xib */,
 			);
 			path = RecordDetailTableViewCell;
 			sourceTree = "<group>";
@@ -939,16 +933,6 @@
 				1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */,
 			);
 			path = PickerTableViewController;
-			sourceTree = "<group>";
-		};
-		132B92C91A7F676300C237B0 /* RecordDetailsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				131CA87A1A80F8FD00A79B12 /* RecordDetailTableViewCell */,
-				131CA8771A80E45200A79B12 /* RecordDetailsTableViewController.h */,
-				131CA8781A80E45200A79B12 /* RecordDetailsTableViewController.m */,
-			);
-			path = RecordDetailsViewController;
 			sourceTree = "<group>";
 		};
 		132B92CA1A7F676300C237B0 /* RecordRelatedViewController */ = {
@@ -1306,15 +1290,15 @@
 			path = RKSwipeBetweenViewControllers;
 			sourceTree = "<group>";
 		};
-		13EE67951A7E555600255174 /* RecordMainViewController */ = {
+		13EE67951A7E555600255174 /* RecordMainDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				132B92C91A7F676300C237B0 /* RecordDetailsViewController */,
+				131CA87A1A80F8FD00A79B12 /* RecordDetailTableViewCell */,
 				132B92CA1A7F676300C237B0 /* RecordRelatedViewController */,
-				13EE67961A7E556F00255174 /* RecordMainViewController.h */,
-				13EE67971A7E556F00255174 /* RecordMainViewController.m */,
+				13EE67961A7E556F00255174 /* RecordMainDetailsViewController.h */,
+				13EE67971A7E556F00255174 /* RecordMainDetailsViewController.m */,
 			);
-			path = RecordMainViewController;
+			path = RecordMainDetailsViewController;
 			sourceTree = "<group>";
 		};
 		13F39B071AE7CCD0003AA84E /* DashboardViewController */ = {
@@ -1843,7 +1827,6 @@
 				130523DE1A99C05500EF2268 /* ServicesUploadViewController.xib in Resources */,
 				1328E7DB1A96042600475E90 /* ServicesDynamicFormViewController.xib in Resources */,
 				1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */,
-				131CA87F1A80F91500A79B12 /* RecordDetailTableViewCell.xib in Resources */,
 				133469B61AECFB400029F9B5 /* SwipePageViewController.xib in Resources */,
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
 				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
@@ -1860,7 +1843,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13EE67981A7E556F00255174 /* RecordMainViewController.m in Sources */,
+				13EE67981A7E556F00255174 /* RecordMainDetailsViewController.m in Sources */,
 				13081AF71A76559D00B33509 /* Account.m in Sources */,
 				130C30011A78DE0200C95600 /* EmployeeTableViewCell.m in Sources */,
 				13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */,
@@ -1881,7 +1864,6 @@
 				134B8A1F1AD6B428005CCAD5 /* BBBadgeBarButtonItem.m in Sources */,
 				1353CBDC1AAD9B5300E57FAC /* LegalRepresentative.m in Sources */,
 				130E096C1AA5C42800E6ED59 /* MyRequestTableViewCell.m in Sources */,
-				131CA8791A80E45200A79B12 /* RecordDetailsTableViewController.m in Sources */,
 				132D38B21AE8D7A300D61A3E /* ViewStatementTableViewCell.m in Sources */,
 				13CFE7381ABEF1D6009E47EC /* DWCCompanyDocument.m in Sources */,
 				130CFAB11AC1E620006D7CA0 /* Invoice.m in Sources */,

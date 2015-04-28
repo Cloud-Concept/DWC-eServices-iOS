@@ -10,7 +10,7 @@
 #import "CompanyInfoListTableViewCell.h"
 #import "DWCCompanyInfo.h"
 #import "SFRestAPI+Blocks.h"
-#import "RecordMainViewController.h"
+#import "RecordMainDetailsViewController.h"
 #import "Globals.h"
 #import "Account.h"
 #import "ShareOwnership.h"
@@ -204,7 +204,7 @@
     return cell;
 }
 
-- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForShareholder:(ShareOwnership *)shareOwnership {
+- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForShareholder:(ShareOwnership *)shareOwnership {
     recordVC.NameValue = shareOwnership.shareholder.name;
     //recordVC.PhotoId = ;
     NSMutableArray *sectionsArray = [NSMutableArray new];
@@ -257,7 +257,7 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
-- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForManager:(ManagementMember *)managementMember {
+- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForManager:(ManagementMember *)managementMember {
     
     recordVC.NameValue = managementMember.manager.name;
     //recordVC.PhotoId = ;
@@ -303,7 +303,7 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
-- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForDirector:(Directorship *)directorship {
+- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForDirector:(Directorship *)directorship {
     
     recordVC.NameValue = directorship.director.name;
     //recordVC.PhotoId = ;
@@ -349,7 +349,7 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
-- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForLegalRepresentative:(LegalRepresentative *)legalRepresentative {
+- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForLegalRepresentative:(LegalRepresentative *)legalRepresentative {
     
     recordVC.NameValue = legalRepresentative.legalRepresentative.name;
     //recordVC.PhotoId = ;
@@ -395,7 +395,7 @@
     recordVC.RelatedServicesMask = servicesMask;
 }
 
-- (void)configureRecordMainViewController:(RecordMainViewController*)recordVC ForLeasingInfo:(TenancyContract *)tenancyContract {
+- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForLeasingInfo:(TenancyContract *)tenancyContract {
     
     recordVC.NameValue = tenancyContract.name;
 
@@ -528,7 +528,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    RecordMainDetailsViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     
     recordMainVC.NavBarTitle = self.currentDWCCompanyInfo.NavBarTitle;
     

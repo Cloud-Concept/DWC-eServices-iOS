@@ -1,25 +1,38 @@
 //
-//  RelatedServicesTabBar.m
+//  RecordRelatedViewController.m
 //  DWC eServices
 //
-//  Created by Mina Zaklama on 4/27/15.
+//  Created by Mina Zaklama on 2/4/15.
 //  Copyright (c) 2015 Cloud Concept. All rights reserved.
 //
 
-#import "RelatedServicesBarScrollView.h"
+#import "RecordRelatedViewController.h"
 #import "RelatedService.h"
 #import "HelperClass.h"
-#import "BaseServicesViewController.h"
+#import "UIView+RoundCorner.h"
 
-@implementation RelatedServicesBarScrollView
+@interface RecordRelatedViewController ()
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+@end
+
+@implementation RecordRelatedViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+
+    [self initRelatedServices];
+    [self displayRelatedServices];
 }
-*/
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.view layoutIfNeeded];
+}
 
 - (void)initRelatedServices {
     NSMutableArray *relatedServicesMutableArray = [NSMutableArray new];
@@ -82,26 +95,15 @@
     relatedServicesArray = relatedServicesMutableArray;
 }
 
-- (void)removeAllSubviews {
-    for (UIView *subView in self.subviews) {
-        [subView removeFromSuperview];
-    }
-}
-
-- (void)displayRelatedServicesForMask:(NSUInteger)relatedServicesMask parentViewController:(UIViewController *)viewController {
-    parentViewController = viewController;
-    
-    self.backgroundColor = [UIColor whiteColor];
-    
-    [self removeAllSubviews];
-    [self initRelatedServices];
+- (void)displayRelatedServices {
+    [self initRelatedServicesContentView];
     
     NSMutableDictionary *viewsDictionary = [NSMutableDictionary new];
     NSMutableArray *displayedServiesArray = [NSMutableArray new];
     
     for (RelatedService *service in relatedServicesArray) {
         
-        if ((relatedServicesMask & service.Mask) != 0) {
+        if ((self.RelatedServicesMask & service.Mask) != 0) {
             [displayedServiesArray addObject:service];
         }
         else {
@@ -115,214 +117,173 @@
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [button setTitle:service.Label forState:UIControlStateNormal];
         [button setImage:[UIImage imageNamed:service.IconName] forState:UIControlStateNormal];
-        [button.titleLabel setFont:[UIFont fontWithName:@"CorisandeLight" size:10.0f]];
-        [button setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
-        
+        [button.titleLabel setFont:[UIFont fontWithName:@"CorisandeLight" size:12.0f]];
+        [button setBackgroundColor:[UIColor colorWithRed:0.87
+                                                   green:0.88
+                                                    blue:0.89
+                                                   alpha:1]];
         [button addTarget:self action:@selector(serviceButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [HelperClass setupButtonWithTextUnderImage:button];
+        [HelperClass setupButtonWithImageAlignedToLeft:button];
         
+        [button createRoundBorderedWithRadius:10
+                                      Shadows:NO
+                                 ClipToBounds:NO];
         button.translatesAutoresizingMaskIntoConstraints = NO;
         
-        [self addSubview:button];
+        [servicesContentView addSubview:button];
     }
     
-    NSDictionary *metrics = @{@"buttonHeight": @64,
-                              @"buttonWidth": @64,
-                              @"leftMargin": @8,
-                              @"rightMargin": @8,
-                              @"topMargin": @0,
-                              @"bottomMargin": @0
+    NSDictionary *metrics = @{@"buttonHeight": @54,
+                              @"buttonWidth": @150,
+                              @"leftMargin": @50,
+                              @"rightMargin": @50,
+                              @"topMargin": @20,
+                              @"bottomMargin": @20
                               };
     
     for (NSInteger index = 0; index < displayedServiesArray.count; index++) {
         RelatedService *currentRelatedService = [displayedServiesArray objectAtIndex:index];
         RelatedService *previousRelatedService = nil;
         
-        
         NSString *heightRule = [NSString stringWithFormat:@"V:[%@(buttonHeight)]", currentRelatedService.Name];
         NSArray *field_constraint_V = [NSLayoutConstraint constraintsWithVisualFormat:heightRule
                                                                               options:0
                                                                               metrics:metrics
                                                                                 views:viewsDictionary];
-        
-        
-        NSString *widthtRule = [NSString stringWithFormat:@"H:[%@(buttonWidth)]", currentRelatedService.Name];
+        /*
+        NSString *widthtRule = [NSString stringWithFormat:@"H:[%@(==buttonWidth)]", currentRelatedService.Name];
         NSArray *field_constraint_H = [NSLayoutConstraint constraintsWithVisualFormat:widthtRule
                                                                               options:0
                                                                               metrics:metrics
                                                                                 views:viewsDictionary];
-         
+        */
         
-        [self addConstraints:field_constraint_V];
-        [self addConstraints:field_constraint_H];
+        [servicesContentView addConstraints:field_constraint_V];
+        //[self.servicesScrollView addConstraints:field_constraint_H];
         
         if(index != 0)
             previousRelatedService = [displayedServiesArray objectAtIndex:index - 1];
         
-        NSString *verticalRule = [NSString stringWithFormat:@"V:|-topMargin-[%@]-bottomMargin-|", currentRelatedService.Name];
-        NSArray *constraint_POS_V = [NSLayoutConstraint constraintsWithVisualFormat:verticalRule
-                                                                            options:0
-                                                                            metrics:metrics
-                                                                              views:viewsDictionary];
-        
-        NSMutableString *horizontalRule = [NSMutableString stringWithString:@"H:"];
-        
-        if (previousRelatedService == nil)
-        {
-            [horizontalRule appendFormat:@"|-leftMargin-"];
-        }
-        else
-        {
-            [horizontalRule appendFormat:@"[%@]-", previousRelatedService.Name];
-        }
-        
-        [horizontalRule appendFormat:@"[%@]", currentRelatedService.Name];
-        
-        if (index == displayedServiesArray.count - 1) {
-            [horizontalRule appendString:@"-rightMargin-|"];
-        }
-        
+        NSString *horizontalRule = [NSString stringWithFormat:@"H:|-leftMargin-[%@]-rightMargin-|", currentRelatedService.Name];
         NSArray *constraint_POS_H = [NSLayoutConstraint constraintsWithVisualFormat:horizontalRule
                                                                             options:0
                                                                             metrics:metrics
                                                                               views:viewsDictionary];
         
-        [self addConstraints:constraint_POS_H];
-        [self addConstraints:constraint_POS_V];
+        NSMutableString *verticalRule = [NSMutableString stringWithString:@"V:"];
+        
+        if (previousRelatedService == nil)
+        {
+            [verticalRule appendFormat:@"|-topMargin-"];
+        }
+        else
+        {
+            [verticalRule appendFormat:@"[%@]-", previousRelatedService.Name];
+        }
+        
+        [verticalRule appendFormat:@"[%@]", currentRelatedService.Name];
+        
+        if (index == displayedServiesArray.count - 1) {
+            [verticalRule appendString:@"-bottomMargin-|"];
+        }
+        
+        NSArray *constraint_POS_V = [NSLayoutConstraint constraintsWithVisualFormat:verticalRule
+                                                                            options:0
+                                                                            metrics:metrics
+                                                                              views:viewsDictionary];
+        
+        [servicesContentView addConstraints:constraint_POS_H];
+        [servicesContentView addConstraints:constraint_POS_V];
     }
+}
+
+- (void)initRelatedServicesContentView {
+    self.servicesScrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    servicesContentView = [UIView new];
+    servicesContentView.backgroundColor = [UIColor clearColor];
+    servicesContentView.frame = self.servicesScrollView.frame;
+    
+    servicesContentView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.servicesScrollView addSubview:servicesContentView];
+    
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(servicesContentView);
+    NSArray *constraint_POS_H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[servicesContentView]|"
+                                                                        options:0
+                                                                        metrics:nil
+                                                                          views:viewsDictionary];
+    [self.servicesScrollView addConstraint:[NSLayoutConstraint
+                                            constraintWithItem:servicesContentView
+                                            attribute:NSLayoutAttributeWidth
+                                            relatedBy:NSLayoutRelationEqual
+                                            toItem:self.servicesScrollView
+                                            attribute:NSLayoutAttributeWidth
+                                            multiplier:1
+                                            constant:0.0]];
+    
+    
+    NSArray *constraint_POS_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[servicesContentView]|"
+                                                                        options:0
+                                                                        metrics:nil
+                                                                          views:viewsDictionary];
+    
+    [self.servicesScrollView addConstraints:constraint_POS_H];
+    [self.servicesScrollView addConstraints:constraint_POS_V];
 }
 
 - (void)serviceButtonClicked:(UIButton*)sender {
     
+    if (!self.delegate)
+        return;
+    
     switch (sender.tag) {
         case RelatedServiceTypeNewEmoloyeeNOC:
-            [self relatedServiceNewEmployeeNOCButtonClicked];
+            [self.delegate relatedServiceNewEmployeeNOCButtonClicked];
             break;
         case RelatedServiceTypeNewCompanyNOC:
-            [self relatedServiceNewCompanyNOCButtonClicked];
+            [self.delegate relatedServiceNewCompanyNOCButtonClicked];
             break;
         case RelatedServiceTypeNewCard:
-            [self relatedServiceNewCardButtonClicked];
+            [self.delegate relatedServiceNewCardButtonClicked];
             break;
         case RelatedServiceTypeRenewCard:
-            [self relatedServiceRenewCardButtonClicked];
+            [self.delegate relatedServiceRenewCardButtonClicked];
             break;
         case RelatedServiceTypeCancelCard:
-            [self relatedServiceCancelCardButtonClicked];
+            [self.delegate relatedServiceCancelCardButtonClicked];
             break;
         case RelatedServiceTypeReplaceCard:
-            [self relatedServiceReplaceCardButtonClicked];
+            [self.delegate relatedServiceReplaceCardButtonClicked];
             break;
         case RelatedServiceTypeNewVisa:
-            [self relatedServiceNewVisaButtonClicked];
+            [self.delegate relatedServiceNewVisaButtonClicked];
             break;
         case RelatedServiceTypeRenewVisa:
-            [self relatedServiceRenewVisaButtonClicked];
+            [self.delegate relatedServiceRenewVisaButtonClicked];
             break;
         case RelatedServiceTypeCancelVisa:
-            [self relatedServiceCancelVisaButtonClicked];
+            [self.delegate relatedServiceCancelVisaButtonClicked];
             break;
         case RelatedServiceTypeContractRenewal:
-            [self relatedServiceContractRenewalButtonClicked];
+            [self.delegate relatedServiceContractRenewalButtonClicked];
             break;
         case RelatedServiceTypeLicenseRenewal:
-            [self relatedServiceLicenseRenewalButtonClicked];
+            [self.delegate relatedServiceLicenseRenewalButtonClicked];
             break;
         default:
             break;
     }
 }
 
-- (void)openNewNOCFlow:(RelatedServiceType)serviceType {
-    if (!parentViewController)
-        return;
-    
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
-    baseServicesVC.relatedServiceType = serviceType;
-    baseServicesVC.currentVisaObject = self.visaObject;
-    baseServicesVC.createServiceRecord = YES;
-    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
-}
+/*
+#pragma mark - Navigation
 
-- (void)openCardManagementFlow:(RelatedServiceType)serviceType CreateServiceRecord:(BOOL)CreateServiceRecord {
-    if (!parentViewController)
-        return;
-    
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
-    baseServicesVC.relatedServiceType = serviceType;
-    baseServicesVC.currentCardManagement = self.cardManagementObject;
-    baseServicesVC.createServiceRecord = CreateServiceRecord;
-    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-
-- (void)openContractRenewalFlow {
-    if (!parentViewController)
-        return;
-    
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
-    baseServicesVC.relatedServiceType = RelatedServiceTypeContractRenewal;
-    baseServicesVC.currentContract = self.contractObject;
-    baseServicesVC.createServiceRecord = NO;
-    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
-}
-
-- (void)openLicenseRenewalFlow {
-    if (!parentViewController)
-        return;
-    
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
-    baseServicesVC.relatedServiceType = RelatedServiceTypeLicenseRenewal;
-    baseServicesVC.currentLicense = self.licenseObject;
-    baseServicesVC.createServiceRecord = NO;
-    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
-}
-
-- (void)relatedServiceNewEmployeeNOCButtonClicked {
-    [self openNewNOCFlow:RelatedServiceTypeNewEmoloyeeNOC];
-}
-
-- (void)relatedServiceNewCompanyNOCButtonClicked {
-    [self openNewNOCFlow:RelatedServiceTypeNewCompanyNOC];
-}
-
-- (void)relatedServiceNewCardButtonClicked {
-    
-}
-
-- (void)relatedServiceRenewCardButtonClicked {
-    [self openCardManagementFlow:RelatedServiceTypeRenewCard CreateServiceRecord:YES];
-}
-
-- (void)relatedServiceCancelCardButtonClicked {
-    [self openCardManagementFlow:RelatedServiceTypeCancelCard CreateServiceRecord:NO];
-}
-
-- (void)relatedServiceReplaceCardButtonClicked {
-    [self openCardManagementFlow:RelatedServiceTypeReplaceCard CreateServiceRecord:YES];
-}
-
-- (void)relatedServiceNewVisaButtonClicked {
-    
-}
-
-- (void)relatedServiceRenewVisaButtonClicked {
-    
-}
-
-- (void)relatedServiceCancelVisaButtonClicked {
-    
-}
-
-- (void)relatedServiceContractRenewalButtonClicked {
-    [self openContractRenewalFlow];
-}
-
-- (void)relatedServiceLicenseRenewalButtonClicked {
-    [self openLicenseRenewalFlow];
-}
+*/
 
 @end

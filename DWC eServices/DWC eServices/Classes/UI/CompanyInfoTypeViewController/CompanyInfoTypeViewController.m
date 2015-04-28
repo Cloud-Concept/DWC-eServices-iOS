@@ -10,7 +10,7 @@
 #import "DWCCompanyInfo.h"
 #import "CompanyInfoListViewController.h"
 #import "SOQLQueries.h"
-#import "RecordMainViewController.h"
+#import "RecordMainDetailsViewController.h"
 #import "Globals.h"
 #import "Account.h"
 #import "TableViewSection.h"
@@ -83,9 +83,9 @@
     NSMutableArray *pageLabelMutableArray = [NSMutableArray new];
     
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    RecordMainViewController *companyInfoMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    RecordMainDetailsViewController *companyInfoMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     companyInfoMainVC.isBottomBarHidden = YES;
-    RecordMainViewController *licenseInfoMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    RecordMainDetailsViewController *licenseInfoMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     licenseInfoMainVC.isBottomBarHidden = YES;
     
     [self configureRecordMainViewController:companyInfoMainVC ForCompany:[Globals currentAccount]];
@@ -114,7 +114,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)configureRecordMainViewController:(RecordMainViewController *)recordVC ForCompany:(Account *)account {
+- (void)configureRecordMainViewController:(RecordMainDetailsViewController *)recordVC ForCompany:(Account *)account {
     recordVC.NameValue = account.name;
     
     NSMutableArray *sectionsArray = [NSMutableArray new];
@@ -151,7 +151,7 @@
     recordVC.RelatedServicesMask = RelatedServiceTypeNewCompanyNOC;
 }
 
-- (void)configureRecordMainViewController:(RecordMainViewController *)recordVC ForLicense:(License *)license Company:(Account *)account{
+- (void)configureRecordMainViewController:(RecordMainDetailsViewController *)recordVC ForLicense:(License *)license Company:(Account *)account{
     recordVC.NameValue = account.name;
     
     NSMutableArray *sectionsArray = [NSMutableArray new];
@@ -195,7 +195,7 @@
         return;
     
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    RecordMainViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
+    RecordMainDetailsViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     
     recordMainVC.NavBarTitle = currentDWCCompanyInfo.NavBarTitle;
     
