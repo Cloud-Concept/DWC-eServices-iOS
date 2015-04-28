@@ -24,6 +24,7 @@
 }
 
 @property (nonatomic) id<EmployeeTableViewCellDelegate> delegate;
+@property (strong, nonatomic) UIViewController *parentViewController;
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
 @property (weak, nonatomic) IBOutlet UILabel *employeeNameLabel;

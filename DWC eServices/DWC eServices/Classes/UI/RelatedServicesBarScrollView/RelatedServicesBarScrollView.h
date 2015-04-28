@@ -8,11 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@class Visa;
+@class TenancyContract;
+@class License;
+@class CardManagement;
+
 @interface RelatedServicesBarScrollView : UIScrollView
 {
     NSArray *relatedServicesArray;
+    UIViewController *parentViewController;
 }
 
-- (void)displayRelatedServicesForMask:(NSUInteger)relatedServicesMask;
+@property (strong, nonatomic) Visa *visaObject;
+@property (strong, nonatomic) TenancyContract *contractObject;
+@property (strong, nonatomic) License *licenseObject;
+@property (strong, nonatomic) CardManagement *cardManagementObject;
+
+- (void)displayRelatedServicesForMask:(NSUInteger)relatedServicesMask parentViewController:(UIViewController *)viewController;
 
 @end

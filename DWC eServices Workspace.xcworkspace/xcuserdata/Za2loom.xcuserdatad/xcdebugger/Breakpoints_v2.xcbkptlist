@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DWC eServices/DWC eServices/Classes/UI/EmployeeListViewController/EmployeeListViewController.m"
-            timestampString = "451901336.983429"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/RelatedServicesBarScrollView/RelatedServicesBarScrollView.m"
+            timestampString = "451905661.913929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "434"
-            endingLineNumber = "434"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-displayRelatedServicesForMask:parentViewController:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

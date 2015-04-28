@@ -52,11 +52,11 @@
     }
     
     [self renderServicesButtons];
-    
-    [self.relatedServicesScrollView layoutIfNeeded];
 }
 
 - (void)refreshPermanentEmployeeServices:(Visa *)visa {
+    self.relatedServicesScrollView.visaObject = visa;
+    
     servicesMask = 0;
     
     if ([visa.validityStatus isEqualToString:@"Issued"])
@@ -71,6 +71,8 @@
 }
 
 - (void)refreshVisitVisaServices:(Visa *)visa {
+    self.relatedServicesScrollView.visaObject = visa;
+    
     servicesMask = 0;
     
     /*
@@ -80,6 +82,8 @@
 }
 
 - (void)refreshContractorServices:(CardManagement *)card {
+    self.relatedServicesScrollView.cardManagementObject = card;
+    
     servicesMask = 0;
     
     if ([card.status isEqualToString:@"Active"]) {
@@ -96,7 +100,8 @@
 }
 
 - (void)renderServicesButtons {
-    [self.relatedServicesScrollView displayRelatedServicesForMask:servicesMask];
+    [self.relatedServicesScrollView displayRelatedServicesForMask:servicesMask parentViewController:self.parentViewController];
+    [self.relatedServicesScrollView layoutIfNeeded];
 }
 
 @end

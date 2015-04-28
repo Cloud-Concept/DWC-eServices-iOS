@@ -9,6 +9,7 @@
 #import "RelatedServicesBarScrollView.h"
 #import "RelatedService.h"
 #import "HelperClass.h"
+#import "BaseServicesViewController.h"
 
 @implementation RelatedServicesBarScrollView
 
@@ -81,7 +82,16 @@
     relatedServicesArray = relatedServicesMutableArray;
 }
 
-- (void)displayRelatedServicesForMask:(NSUInteger)relatedServicesMask {
+- (void)removeAllSubviews {
+    for (UIView *subView in self.subviews) {
+        [subView removeFromSuperview];
+    }
+}
+
+- (void)displayRelatedServicesForMask:(NSUInteger)relatedServicesMask parentViewController:(UIViewController *)viewController {
+    
+    parentViewController = viewController;
+    [self removeAllSubviews];
     [self initRelatedServices];
     
     NSMutableDictionary *viewsDictionary = [NSMutableDictionary new];
@@ -178,6 +188,139 @@
         [self addConstraints:constraint_POS_H];
         [self addConstraints:constraint_POS_V];
     }
+}
+
+- (void)serviceButtonClicked:(UIButton*)sender {
+    
+    switch (sender.tag) {
+        case RelatedServiceTypeNewEmoloyeeNOC:
+            [self relatedServiceNewEmployeeNOCButtonClicked];
+            break;
+        case RelatedServiceTypeNewCompanyNOC:
+            [self relatedServiceNewCompanyNOCButtonClicked];
+            break;
+        case RelatedServiceTypeNewCard:
+            [self relatedServiceNewCardButtonClicked];
+            break;
+        case RelatedServiceTypeRenewCard:
+            [self relatedServiceRenewCardButtonClicked];
+            break;
+        case RelatedServiceTypeCancelCard:
+            [self relatedServiceCancelCardButtonClicked];
+            break;
+        case RelatedServiceTypeReplaceCard:
+            [self relatedServiceReplaceCardButtonClicked];
+            break;
+        case RelatedServiceTypeNewVisa:
+            [self relatedServiceNewVisaButtonClicked];
+            break;
+        case RelatedServiceTypeRenewVisa:
+            [self relatedServiceRenewVisaButtonClicked];
+            break;
+        case RelatedServiceTypeCancelVisa:
+            [self relatedServiceCancelVisaButtonClicked];
+            break;
+        case RelatedServiceTypeContractRenewal:
+            [self relatedServiceContractRenewalButtonClicked];
+            break;
+        case RelatedServiceTypeLicenseRenewal:
+            [self relatedServiceLicenseRenewalButtonClicked];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)openNewNOCFlow:(RelatedServiceType)serviceType {
+    if (!parentViewController)
+        return;
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = serviceType;
+    baseServicesVC.currentVisaObject = self.visaObject;
+    baseServicesVC.createServiceRecord = YES;
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
+- (void)openCardManagementFlow:(RelatedServiceType)serviceType CreateServiceRecord:(BOOL)CreateServiceRecord {
+    if (!parentViewController)
+        return;
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = serviceType;
+    baseServicesVC.currentCardManagement = self.cardManagementObject;
+    baseServicesVC.createServiceRecord = CreateServiceRecord;
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
+- (void)openContractRenewalFlow {
+    if (!parentViewController)
+        return;
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = RelatedServiceTypeContractRenewal;
+    baseServicesVC.currentContract = self.contractObject;
+    baseServicesVC.createServiceRecord = NO;
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
+- (void)openLicenseRenewalFlow {
+    if (!parentViewController)
+        return;
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = RelatedServiceTypeLicenseRenewal;
+    baseServicesVC.currentLicense = self.licenseObject;
+    baseServicesVC.createServiceRecord = NO;
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
+- (void)relatedServiceNewEmployeeNOCButtonClicked {
+    [self openNewNOCFlow:RelatedServiceTypeNewEmoloyeeNOC];
+}
+
+- (void)relatedServiceNewCompanyNOCButtonClicked {
+    [self openNewNOCFlow:RelatedServiceTypeNewCompanyNOC];
+}
+
+- (void)relatedServiceNewCardButtonClicked {
+    
+}
+
+- (void)relatedServiceRenewCardButtonClicked {
+    [self openCardManagementFlow:RelatedServiceTypeRenewCard CreateServiceRecord:YES];
+}
+
+- (void)relatedServiceCancelCardButtonClicked {
+    [self openCardManagementFlow:RelatedServiceTypeCancelCard CreateServiceRecord:NO];
+}
+
+- (void)relatedServiceReplaceCardButtonClicked {
+    [self openCardManagementFlow:RelatedServiceTypeReplaceCard CreateServiceRecord:YES];
+}
+
+- (void)relatedServiceNewVisaButtonClicked {
+    
+}
+
+- (void)relatedServiceRenewVisaButtonClicked {
+    
+}
+
+- (void)relatedServiceCancelVisaButtonClicked {
+    
+}
+
+- (void)relatedServiceContractRenewalButtonClicked {
+    [self openContractRenewalFlow];
+}
+
+- (void)relatedServiceLicenseRenewalButtonClicked {
+    [self openLicenseRenewalFlow];
 }
 
 @end

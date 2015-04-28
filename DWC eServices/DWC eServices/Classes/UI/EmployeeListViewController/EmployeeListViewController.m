@@ -428,6 +428,7 @@
     
     EmployeeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.delegate = self;
+    cell.parentViewController = self;
     
     NSObject *selectedObject = [filteredEmployeesArray objectAtIndex:indexPath.row];
     
