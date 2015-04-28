@@ -32,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *rowOneValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rowTwoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rowTwoValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rowThreeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rowThreeValueLabel;
 
 - (void)refreshCellForVisa:(Visa *)currentVisa employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath;
 - (void)refreshCellForCard:(CardManagement *)currentCard employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath;

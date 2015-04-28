@@ -475,9 +475,9 @@
     if (selectedRowIndexPath &&
         selectedRowIndexPath.row == indexPath.row &&
         selectedRowIndexPath.section == indexPath.section)
-        return 132;
+        return 147;
     else
-        return 70;
+        return 85;
 }
 
 /*

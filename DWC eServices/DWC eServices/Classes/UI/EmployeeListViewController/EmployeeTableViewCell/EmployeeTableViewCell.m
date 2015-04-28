@@ -10,7 +10,8 @@
 #import "Visa.h"
 #import "CardManagement.h"
 #import "UIImageView+SFAttachment.h"
-#import "UIView+RoundCorner.h"
+//#import "UIView+RoundCorner.h"
+#import "UIImageView+MaskImage.h"
 #import "HelperClass.h"
 
 @implementation EmployeeTableViewCell
@@ -28,17 +29,19 @@
 - (void)refreshCellForVisa:(Visa *)currentVisa employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath {
     self.employeeNameLabel.text = currentVisa.applicantFullName;
     
-    self.rowOneLabel.text = @"Status";
+    self.rowOneLabel.text = @"Status:";
     self.rowOneValueLabel.text = currentVisa.validityStatus;
     
     [self.profilePictureImageView loadImageFromSFAttachment:currentVisa.personalPhotoId
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
-    [self.profilePictureImageView createRoundBorderedWithRadius:3.0 Shadows:NO ClipToBounds:YES];
+    [self.profilePictureImageView maskImageToCircle];
+    
+    self.rowThreeValueLabel.text = currentVisa.passportNumber;
     
     if ([currentVisa.validityStatus isEqualToString:@"Issued"] || [currentVisa.validityStatus isEqualToString:@"Expired"]) {
         self.rowTwoValueLabel.text = [HelperClass formatDateToString:currentVisa.expiryDate];
         self.rowTwoValueLabel.hidden = NO;
-        self.rowTwoLabel.text = @"Expiry";
+        self.rowTwoLabel.text = @"Expiry:";
         self.rowTwoLabel.hidden = NO;
     }
     else {
@@ -46,21 +49,24 @@
         self.rowTwoValueLabel.hidden = YES;
     }
     
+    
     currentIndexPath = indexPath;
 }
 
 - (void)refreshCellForCard:(CardManagement *)currentCard employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath {
     self.employeeNameLabel.text = currentCard.fullName;
-    self.rowOneLabel.text = @"Type";
+    self.rowOneLabel.text = @"Type:";
     self.rowOneValueLabel.text = currentCard.cardType;
     
     [self.profilePictureImageView loadImageFromSFAttachment:currentCard.personalPhoto
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
-    [self.profilePictureImageView createRoundBorderedWithRadius:3.0 Shadows:NO ClipToBounds:YES];
+    [self.profilePictureImageView maskImageToCircle];
+    
+    self.rowThreeValueLabel.text = currentCard.passportNumber;
     
     if (currentCard.cardExpiryDate) {
         self.rowTwoLabel.hidden = NO;
-        self.rowTwoLabel.text = @"Expiry";
+        self.rowTwoLabel.text = @"Expiry:";
         self.rowTwoValueLabel.hidden = NO;
         self.rowTwoValueLabel.text = [HelperClass formatDateToString:currentCard.cardExpiryDate];
     }
