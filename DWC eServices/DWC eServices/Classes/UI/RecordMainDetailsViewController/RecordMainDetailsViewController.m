@@ -7,7 +7,7 @@
 //
 
 #import "RecordMainDetailsViewController.h"
-#import "UIView+RoundCorner.h"
+#import "UIImageView+MaskImage.h"
 #import "UIImageView+SFAttachment.h"
 #import "RecordDetailTableViewCell.h"
 #import "TableViewSection.h"
@@ -32,7 +32,7 @@
     
     [self.profilePictureImageView loadImageFromSFAttachment:self.PhotoId
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
-    [self.profilePictureImageView createRoundBorderedWithRadius:3.0 Shadows:NO ClipToBounds:YES];
+    [self.profilePictureImageView maskImageToCircle];
     
     [self setupDetailsView];
 }

@@ -121,18 +121,29 @@
 }
 
 - (void)initializeNewButton {
+    
+    NSString *buttonIconName = @"";
+    
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
+            buttonIconName = @"";
+            hideNewButton = YES;
+            break;
         case VisitVisaEmployee:
+            buttonIconName = @"Related Service New Visa Icon";
             hideNewButton = YES;
             break;
         case ContractorEmployee:
+            buttonIconName = @"Related Service New Card Icon";
             hideNewButton = NO;
             break;
         default:
             hideNewButton = YES;
             break;
     }
+    
+    [self.addNewButton setImage:[UIImage imageNamed:buttonIconName] forState:UIControlStateNormal];
+    self.addNewButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     if (hideNewButton)
         [self.addNewButton removeFromSuperview];
