@@ -29,7 +29,7 @@
     
     SFRestRequest *restRequest;
     
-    NSIndexPath *selectedRowIndexPath;
+    NSIndexPath *expandedRowIndexPath;
 }
 @property (nonatomic, strong) DWCEmployee *currentDWCEmployee;
 

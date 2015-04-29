@@ -23,6 +23,7 @@
     self.Id = [HelperClass stringCheckNull:[directorshipDict objectForKey:@"Id"]];
     self.roles = [HelperClass stringCheckNull:[directorshipDict objectForKey:@"Roles__c"]];
     self.directorStatus = [HelperClass stringCheckNull:[directorshipDict objectForKey:@"Director_Status__c"]];
+    self.personalPhotoId = [HelperClass stringCheckNull:[directorshipDict objectForKey:@"Personal_Photo__c"]];
     
     if (![[directorshipDict objectForKey:@"Directorship_Start_Date__c"] isKindOfClass:[NSNull class]])
         self.directorshipStartDate = [SFDateUtil SOQLDateTimeStringToDate:

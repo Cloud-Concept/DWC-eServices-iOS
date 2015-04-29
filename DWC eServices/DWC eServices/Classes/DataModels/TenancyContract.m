@@ -23,6 +23,7 @@
         return nil;
     
     self.Id = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Id"]];
+    self.personalPhotoId = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Personal_Photo__c"]];
     self.name = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Name"]];
     self.contractType = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Contract_Type__c"]];
     self.status = [HelperClass stringCheckNull:[tenancyContractDict objectForKey:@"Status__c"]];

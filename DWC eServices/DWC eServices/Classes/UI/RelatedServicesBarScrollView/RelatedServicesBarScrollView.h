@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kRelatedServicesScrollViewHeight 80
+
 @class Visa;
 @class TenancyContract;
 @class License;

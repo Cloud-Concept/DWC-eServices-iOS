@@ -22,6 +22,7 @@
 #import "RelatedService.h"
 #import "BaseServicesViewController.h"
 #import "PickerTableViewController.h"
+#import "RelatedServicesBarScrollView.h"
 
 @interface EmployeeListViewController ()
 
@@ -349,7 +350,7 @@
 }
 
 - (void)refreshEmployeesTable {
-    selectedRowIndexPath = nil;
+    expandedRowIndexPath = nil;
     
     NSString *predicateString = [self getPredicateString];
     
@@ -406,6 +407,10 @@
     [self loadEmployeesRefresh:YES];
 }
 
+- (BOOL)isIndexPathExpanded:(NSIndexPath *)indexPath {
+    return expandedRowIndexPath && expandedRowIndexPath.row == indexPath.row && expandedRowIndexPath.section == indexPath.section;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -421,9 +426,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = @"EmployeeTableViewCell";
     
-    if (selectedRowIndexPath &&
-        selectedRowIndexPath.row == indexPath.row &&
-        selectedRowIndexPath.section == indexPath.section)
+    if ([self isIndexPathExpanded:indexPath])
         cellIdentifier = @"EmployeeExpandedTableViewCell";
     
     EmployeeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -454,15 +457,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray* rows = [NSMutableArray arrayWithCapacity:2];
 
-    if (selectedRowIndexPath)
-        [rows addObject:selectedRowIndexPath];
+    if (expandedRowIndexPath)
+        [rows addObject:expandedRowIndexPath];
     
-    if (selectedRowIndexPath &&
-        selectedRowIndexPath.row == indexPath.row &&
-        selectedRowIndexPath.section == indexPath.section)
-        selectedRowIndexPath = nil;
+    if ([self isIndexPathExpanded:indexPath])
+        expandedRowIndexPath = nil;
     else {
-        selectedRowIndexPath = indexPath;
+        expandedRowIndexPath = indexPath;
         [rows addObject:indexPath];
     }
 
@@ -472,12 +473,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (selectedRowIndexPath &&
-        selectedRowIndexPath.row == indexPath.row &&
-        selectedRowIndexPath.section == indexPath.section)
-        return 147;
-    else
-        return 85;
+    CGFloat rowHeight = 85;
+    
+    if ([self isIndexPathExpanded:indexPath])
+        rowHeight += kRelatedServicesScrollViewHeight;
+    
+    return rowHeight;
 }
 
 /*

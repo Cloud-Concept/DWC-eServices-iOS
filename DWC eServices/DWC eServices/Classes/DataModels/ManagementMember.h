@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *managerStatus;
 @property (nonatomic, strong) NSString *role;
 @property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSString *personalPhotoId;
 @property (nonatomic, strong) NSDate *managerStartDate;
 @property (nonatomic, strong) NSDate *managerEndDate;
 @property (nonatomic, strong) Account *manager;

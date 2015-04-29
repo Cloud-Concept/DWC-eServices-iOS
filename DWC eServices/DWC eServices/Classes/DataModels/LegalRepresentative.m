@@ -23,6 +23,7 @@
     self.Id = [HelperClass stringCheckNull:[legalRepresentativeDict objectForKey:@"Id"]];
     self.role = [HelperClass stringCheckNull:[legalRepresentativeDict objectForKey:@"Role__c"]];
     self.status = [HelperClass stringCheckNull:[legalRepresentativeDict objectForKey:@"Status__c"]];
+    self.personalPhotoId = [HelperClass stringCheckNull:[legalRepresentativeDict objectForKey:@"Personal_Photo__c"]];
     
     if (![[legalRepresentativeDict objectForKey:@"Legal_Representative_Start_Date__c"] isKindOfClass:[NSNull class]])
         self.legalRepresentativeStartDate = [SFDateUtil SOQLDateTimeStringToDate:

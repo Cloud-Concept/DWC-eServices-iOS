@@ -10,14 +10,17 @@
 #import "BaseFrontRevealViewController.h"
 #import "SFRestAPI.h"
 #import "UITableView+DragLoad.h"
+#import "CompanyInfoListBaseTableViewCell.h"
 
 @class DWCCompanyInfo;
 
-@interface CompanyInfoListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, SFRestDelegate>
+@interface CompanyInfoListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, SFRestDelegate, CompanyInfoListBaseTableViewCellDelegate>
 {
     NSArray *dataRows;
     
     SFRestRequest *restRequest;
+    
+    NSIndexPath *expandedRowIndexPath;
 }
 
 @property (nonatomic, strong) DWCCompanyInfo *currentDWCCompanyInfo;

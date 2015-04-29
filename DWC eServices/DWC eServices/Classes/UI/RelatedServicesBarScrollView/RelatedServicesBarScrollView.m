@@ -26,57 +26,57 @@
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"New_NOC"
                                                                                 Label:@"New NOC"
-                                                                                 Icon:@"New NOC Icon"
+                                                                                 Icon:@"Related Service Employee NOC Icon"
                                                                                  Mask:RelatedServiceTypeNewEmoloyeeNOC]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"New_NOC_Company"
                                                                                 Label:@"New NOC"
-                                                                                 Icon:@"New NOC Icon"
+                                                                                 Icon:@"Related Service Company NOC Icon"
                                                                                  Mask:RelatedServiceTypeNewCompanyNOC]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"New_Card"
                                                                                 Label:@"New Card"
-                                                                                 Icon:@"Renew Visa Icon"
+                                                                                 Icon:@"Related Service New Card Icon"
                                                                                  Mask:RelatedServiceTypeNewCard]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Renew_Card"
                                                                                 Label:@"Renew Card"
-                                                                                 Icon:@"Renew Visa Icon"
+                                                                                 Icon:@"Related Service Renew Card Icon"
                                                                                  Mask:RelatedServiceTypeRenewCard]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Cancel_Card"
                                                                                 Label:@"Cancel Card"
-                                                                                 Icon:@"Renew Visa Icon"
+                                                                                 Icon:@"Related Service Cancel Card Icon"
                                                                                  Mask:RelatedServiceTypeCancelCard]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Replace_Card"
                                                                                 Label:@"Replace Card"
-                                                                                 Icon:@"Renew Visa Icon"
+                                                                                 Icon:@"Related Service Replace Card Icon Icon"
                                                                                  Mask:RelatedServiceTypeReplaceCard]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"New_Visa"
                                                                                 Label:@"New Visa"
-                                                                                 Icon:@"Renew Visa Icon"
+                                                                                 Icon:@"Related Service New Visa Icon"
                                                                                  Mask:RelatedServiceTypeNewVisa]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Renew_Visa"
                                                                                 Label:@"Renew Visa"
-                                                                                 Icon:@"Renew Visa Icon"
+                                                                                 Icon:@"Related Service Renew Visa Icon"
                                                                                  Mask:RelatedServiceTypeRenewVisa]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Cancel_Visa"
                                                                                 Label:@"Cancel Visa"
-                                                                                 Icon:@"Cancel Visa Icon"
+                                                                                 Icon:@"Related Service Cancel Visa Icon"
                                                                                  Mask:RelatedServiceTypeCancelVisa]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Renew_Contract"
                                                                                 Label:@"Renew Contract"
-                                                                                 Icon:@"Cancel Visa Icon"
+                                                                                 Icon:@"Related Service More Icon"
                                                                                  Mask:RelatedServiceTypeContractRenewal]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Renew_License"
                                                                                 Label:@"Renew License"
-                                                                                 Icon:@"Cancel Visa Icon"
+                                                                                 Icon:@"Related Service More Icon"
                                                                                  Mask:RelatedServiceTypeLicenseRenewal]];
     
     relatedServicesArray = relatedServicesMutableArray;
@@ -126,8 +126,8 @@
         [self addSubview:button];
     }
     
-    NSDictionary *metrics = @{@"buttonHeight": @64,
-                              @"buttonWidth": @64,
+    NSDictionary *metrics = @{@"buttonHeight": @kRelatedServicesScrollViewHeight,
+                              @"buttonWidth": @75,
                               @"leftMargin": @8,
                               @"rightMargin": @8,
                               @"topMargin": @0,

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *Id;
 @property (nonatomic, strong) NSString *roles;
 @property (nonatomic, strong) NSString *directorStatus;
+@property (nonatomic, strong) NSString *personalPhotoId;
 @property (nonatomic, strong) NSDate *directorshipStartDate;
 @property (nonatomic, strong) NSDate *directorshipEndDate;
 @property (nonatomic, strong) Account *director;

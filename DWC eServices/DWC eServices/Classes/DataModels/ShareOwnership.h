@@ -13,6 +13,7 @@
 @interface ShareOwnership : NSObject
 
 @property (nonatomic, strong) NSString *Id;
+@property (nonatomic, strong) NSString *personalPhotoId;
 @property (nonatomic, strong) NSNumber *noOfShares;
 @property (nonatomic, strong) NSNumber *ownershipOfShare;
 @property (nonatomic, strong) NSString *shareholderStatus;

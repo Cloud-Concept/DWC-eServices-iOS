@@ -26,6 +26,8 @@
 #import "TenancyContractPayment.h"
 #import "ContractLineItem.h"
 #import "InventoryUnit.h"
+#import "CompanyInfoListBaseTableViewCell.h"
+#import "RelatedServicesBarScrollView.h"
 
 @interface CompanyInfoListViewController ()
 
@@ -136,72 +138,6 @@
     restRequest.queryParams = paramsDict;
     
     [[SFRestAPI sharedInstance] send:restRequest delegate:self];
-}
-
-- (UITableViewCell *)cellContractsForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
-    
-    TenancyContract *currentTenancyContract = [dataRows objectAtIndex:indexPath.row];
-    
-    cell.nameLabel.text = currentTenancyContract.name;
-    cell.roleLabel.text = NSLocalizedString(@"ExpiryLabel", @"");
-    cell.roleValueLabel.text = [HelperClass formatDateToString:currentTenancyContract.contractExpiryDate];
-    
-    cell.shareOwnershipValueLabel.hidden = YES;
-    cell.shareOwnershipLabel.hidden = YES;
-    
-    return cell;
-}
-
-- (UITableViewCell *)cellShareholdersForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
-    
-    ShareOwnership *currentShareOwnership = [dataRows objectAtIndex:indexPath.row];
-    
-    cell.nameLabel.text = currentShareOwnership.shareholder.name;
-    cell.roleValueLabel.text = @"Shareholder";
-    cell.shareOwnershipValueLabel.text = [NSString stringWithFormat:@"%@ %%",[HelperClass formatNumberToString:currentShareOwnership.ownershipOfShare FormatStyle:NSNumberFormatterDecimalStyle MaximumFractionDigits:2]];
-    
-    return cell;
-}
-
-- (UITableViewCell *)cellManagersForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
-    
-    ManagementMember *currentManagementMember = [dataRows objectAtIndex:indexPath.row];
-    
-    cell.nameLabel.text = currentManagementMember.manager.name;
-    cell.roleValueLabel.text = currentManagementMember.role;
-    cell.shareOwnershipValueLabel.hidden = YES;
-    cell.shareOwnershipLabel.hidden = YES;
-    
-    return cell;
-}
-
-- (UITableViewCell *)cellDirectorsForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
-    
-    Directorship *currentDirectorship = [dataRows objectAtIndex:indexPath.row];
-    
-    cell.nameLabel.text = currentDirectorship.director.name;
-    cell.roleValueLabel.text = currentDirectorship.roles;
-    cell.shareOwnershipValueLabel.hidden = YES;
-    cell.shareOwnershipLabel.hidden = YES;
-    
-    return cell;
-}
-
-- (UITableViewCell *)cellLegalRepresentativeForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    CompanyInfoListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Company Info List Cell" forIndexPath:indexPath];
-    
-    LegalRepresentative *currentLegalRepresentative = [dataRows objectAtIndex:indexPath.row];
-    
-    cell.nameLabel.text = currentLegalRepresentative.legalRepresentative.name;
-    cell.roleValueLabel.text = currentLegalRepresentative.role;
-    cell.shareOwnershipValueLabel.hidden = YES;
-    cell.shareOwnershipLabel.hidden = YES;
-    
-    return cell;
 }
 
 - (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForShareholder:(ShareOwnership *)shareOwnership {
@@ -487,46 +423,12 @@
     [self loadRecordsRefresh:YES];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
+- (BOOL)isIndexPathExpanded:(NSIndexPath *)indexPath {
+    return expandedRowIndexPath && expandedRowIndexPath.row == indexPath.row && expandedRowIndexPath.section == indexPath.section;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return dataRows.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Configure the cell...
-    UITableViewCell *cell;
-    
-    switch (self.currentDWCCompanyInfo.Type) {
-        case DWCCompanyInfoShareholders:
-            cell = [self cellShareholdersForRowAtIndexPath:indexPath tableView:tableView];
-            break;
-        case DWCCompanyInfoGeneralManagers:
-            cell = [self cellManagersForRowAtIndexPath:indexPath tableView:tableView];
-            break;
-        case DWCCompanyInfoDirectors:
-            cell = [self cellDirectorsForRowAtIndexPath:indexPath tableView:tableView];
-            break;
-        case DWCCompanyInfoLegalRepresentative:
-            cell = [self cellLegalRepresentativeForRowAtIndexPath:indexPath tableView:tableView];
-            break;
-        case DWCCompanyInfoLeasingInfo:
-            cell = [self cellContractsForRowAtIndexPath:indexPath tableView:tableView];
-            break;
-        default:
-            break;
-    }
-    return cell;
-    
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+#pragma mark - EmployeeTableViewCell delegate
+- (void)companyTableViewCell:(CompanyInfoListBaseTableViewCell *)companyTableViewCell detailsButtonClickAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     RecordMainDetailsViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     
@@ -553,6 +455,86 @@
     }
     
     [self.navigationController pushViewController:recordMainVC animated:YES];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return dataRows.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableString *cellIdentifier = [NSMutableString new];
+    
+    switch (self.currentDWCCompanyInfo.Type) {
+        case DWCCompanyInfoShareholders:
+            [cellIdentifier appendString:@"CompanyInfoListShareholderCell"];
+            break;
+        case DWCCompanyInfoLeasingInfo:
+            [cellIdentifier appendString:@"CompanyInfoListLeasingCell"];
+            break;
+        case DWCCompanyInfoGeneralManagers:
+        case DWCCompanyInfoDirectors:
+        case DWCCompanyInfoLegalRepresentative:
+            [cellIdentifier appendString:@"CompanyInfoListCell"];
+            break;
+        default:
+            break;
+    }
+    
+    if ([self isIndexPathExpanded:indexPath])
+        [cellIdentifier appendString:@"Expanded"];
+        
+    
+    CompanyInfoListBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    cell.parentViewController = self;
+    cell.delegate = self;
+    
+    [cell refreshCellForObject:[dataRows objectAtIndex:indexPath.row]
+               companyInfoType:self.currentDWCCompanyInfo.Type
+                     indexPath:indexPath];
+    
+    return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray* rows = [NSMutableArray arrayWithCapacity:2];
+    
+    if (expandedRowIndexPath)
+        [rows addObject:expandedRowIndexPath];
+    
+    if ([self isIndexPathExpanded:indexPath])
+        expandedRowIndexPath = nil;
+    else {
+        expandedRowIndexPath = indexPath;
+        [rows addObject:indexPath];
+    }
+    
+    [tableView beginUpdates];
+    [tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView endUpdates];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat rowHeight = 95;
+    
+    if (self.currentDWCCompanyInfo.Type == DWCCompanyInfoShareholders) {
+        rowHeight = 110;
+    }
+    
+    if ([self isIndexPathExpanded:indexPath]) {
+        rowHeight += kRelatedServicesScrollViewHeight;
+    }
+    
+    return rowHeight;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

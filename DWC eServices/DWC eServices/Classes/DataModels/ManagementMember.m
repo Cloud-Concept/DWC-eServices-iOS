@@ -24,6 +24,7 @@
     self.managerStatus = [HelperClass stringCheckNull:[managementMemberDict objectForKey:@"Manager_Status__c"]];
     self.role = [HelperClass stringCheckNull:[managementMemberDict objectForKey:@"Role__c"]];
     self.status = [HelperClass stringCheckNull:[managementMemberDict objectForKey:@"Status__c"]];
+    self.personalPhotoId = [HelperClass stringCheckNull:[managementMemberDict objectForKey:@"Personal_Photo__c"]];
     
     if (![[managementMemberDict objectForKey:@"Manager_Start_Date__c"] isKindOfClass:[NSNull class]])
         self.managerStartDate = [SFDateUtil SOQLDateTimeStringToDate:[managementMemberDict objectForKey:@"Manager_Start_Date__c"]];

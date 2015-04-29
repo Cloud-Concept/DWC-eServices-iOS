@@ -13,6 +13,7 @@
 @interface TenancyContract : NSObject
 
 @property (nonatomic, strong) NSString *Id;
+@property (nonatomic, strong) NSString *personalPhotoId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *contractType;
 @property (nonatomic, strong) NSString *status;

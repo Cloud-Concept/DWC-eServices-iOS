@@ -21,6 +21,7 @@
         return nil;
     
     self.Id = [HelperClass stringCheckNull:[shareOwnershipDict objectForKey:@"Id"]];
+    self.personalPhotoId = [HelperClass stringCheckNull:[shareOwnershipDict objectForKey:@"Personal_Photo__c"]];
     self.noOfShares = [HelperClass numberCheckNull:[shareOwnershipDict objectForKey:@"No_of_Shares__c"]];
     self.ownershipOfShare = [HelperClass numberCheckNull:[shareOwnershipDict objectForKey:@"Ownership_of_Share__c"]];
     self.shareholderStatus = [HelperClass stringCheckNull:[shareOwnershipDict objectForKey:@"Shareholder_Status__c"]];

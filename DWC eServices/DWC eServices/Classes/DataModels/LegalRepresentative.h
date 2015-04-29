@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *Id;
 @property (nonatomic, strong) NSString *role;
 @property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSString *personalPhotoId;
 @property (nonatomic, strong) NSDate *legalRepresentativeStartDate;
 @property (nonatomic, strong) NSDate *legalRepresentativeEndDate;
 @property (nonatomic, strong) Account *legalRepresentative;

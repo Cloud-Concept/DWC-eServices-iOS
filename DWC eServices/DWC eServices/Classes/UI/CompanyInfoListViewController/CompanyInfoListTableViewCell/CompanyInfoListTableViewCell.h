@@ -7,12 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CompanyInfoListBaseTableViewCell.h"
 
-@interface CompanyInfoListTableViewCell : UITableViewCell
+@class Directorship;
+@class ManagementMember;
+@class LegalRepresentative;
+
+@interface CompanyInfoListTableViewCell : CompanyInfoListBaseTableViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *roleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nationalityValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *passportNumberValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *roleValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *shareOwnershipLabel;
-@property (weak, nonatomic) IBOutlet UILabel *shareOwnershipValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startDateValueLabel;
+
+- (void)refreshCellForDirector:(Directorship *)director indexPath:(NSIndexPath *)indexPath;
+- (void)refreshCellForManager:(ManagementMember *)manager indexPath:(NSIndexPath *)indexPath;
+- (void)refreshCellForLegalRepresentative:(LegalRepresentative *)legalRepresentative indexPath:(NSIndexPath *)indexPath;
 
 @end
