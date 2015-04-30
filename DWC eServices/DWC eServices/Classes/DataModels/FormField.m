@@ -9,6 +9,7 @@
 #import "FormField.h"
 #import "HelperClass.h"
 #import "SFDateUtil.h"
+#import "SFUserAccountManager.h"
 
 @implementation FormField
 
@@ -148,6 +149,12 @@
     
     fieldView = nil;
     formFieldValue = @"";
+    
+    if ([self.name isEqualToString:@"NOC_Receiver_Email__c"] ||
+        [self.name isEqualToString:@"eCopy_Receiver_Email__c"]) {
+        SFUserAccountManager *accountManager = [SFUserAccountManager sharedInstance];
+        formFieldValue = accountManager.currentUser.email;
+    }
     
     return self;
 }
