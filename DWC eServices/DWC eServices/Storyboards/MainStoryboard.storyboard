@@ -184,38 +184,38 @@
                                             <constraint firstAttribute="width" secondItem="ODz-Hc-XjO" secondAttribute="height" multiplier="59:37" id="IU2-cX-dPi"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" misplaced="YES" text="Company Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNK-dp-S8v">
-                                        <rect key="frame" x="134" y="19" width="76" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Company Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNK-dp-S8v">
+                                        <rect key="frame" x="134" y="19" width="70" height="12"/>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfT-Fe-NvK">
-                                        <rect key="frame" x="218" y="19" width="137" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="253" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfT-Fe-NvK">
+                                        <rect key="frame" x="212" y="19" width="143" height="12"/>
                                         <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" misplaced="YES" text="License Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41J-4h-ILx">
-                                        <rect key="frame" x="134" y="39" width="76" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="License Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41J-4h-ILx">
+                                        <rect key="frame" x="134" y="39" width="70" height="12"/>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBF-K4-XRE">
-                                        <rect key="frame" x="218" y="39" width="137" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBF-K4-XRE">
+                                        <rect key="frame" x="212" y="39" width="143" height="12"/>
                                         <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="License Expiry:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0a-PD-4Ln">
-                                        <rect key="frame" x="134" y="59" width="76" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="License Expiry:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0a-PD-4Ln">
+                                        <rect key="frame" x="134" y="59" width="62" height="12"/>
                                         <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfL-va-PNC">
-                                        <rect key="frame" x="218" y="59" width="137" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfL-va-PNC">
+                                        <rect key="frame" x="204" y="59" width="151" height="12"/>
                                         <fontDescription key="fontDescription" name="CorisandeBoldItalic" family="CorisandeBold Italic" pointSize="10"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -229,15 +229,13 @@
                                     <constraint firstItem="wfL-va-PNC" firstAttribute="top" secondItem="W0a-PD-4Ln" secondAttribute="top" id="7kz-EO-0le"/>
                                     <constraint firstItem="ODz-Hc-XjO" firstAttribute="leading" secondItem="X9p-Wu-SPe" secondAttribute="leading" constant="8" id="8Sj-Dk-h2B"/>
                                     <constraint firstItem="kNK-dp-S8v" firstAttribute="top" secondItem="ZfT-Fe-NvK" secondAttribute="top" id="8iR-vU-Vtp"/>
-                                    <constraint firstItem="W0a-PD-4Ln" firstAttribute="trailing" secondItem="41J-4h-ILx" secondAttribute="trailing" id="95t-f9-638"/>
                                     <constraint firstAttribute="bottom" secondItem="ODz-Hc-XjO" secondAttribute="bottom" constant="8" id="G9T-eN-AkQ"/>
                                     <constraint firstItem="kBF-K4-XRE" firstAttribute="trailing" secondItem="ZfT-Fe-NvK" secondAttribute="trailing" id="MsU-aH-JMb"/>
+                                    <constraint firstItem="ZfT-Fe-NvK" firstAttribute="leading" secondItem="kNK-dp-S8v" secondAttribute="trailing" constant="8" id="PMc-Nb-sCn"/>
                                     <constraint firstItem="kBF-K4-XRE" firstAttribute="top" secondItem="41J-4h-ILx" secondAttribute="top" id="Pxg-qA-bSL"/>
                                     <constraint firstItem="ODz-Hc-XjO" firstAttribute="top" secondItem="X9p-Wu-SPe" secondAttribute="top" constant="8" id="QFJ-WQ-n90"/>
                                     <constraint firstItem="41J-4h-ILx" firstAttribute="leading" secondItem="kNK-dp-S8v" secondAttribute="leading" id="TSn-hG-5f7"/>
                                     <constraint firstItem="wfL-va-PNC" firstAttribute="bottom" secondItem="W0a-PD-4Ln" secondAttribute="bottom" id="UNR-th-L8L"/>
-                                    <constraint firstItem="41J-4h-ILx" firstAttribute="trailing" secondItem="kNK-dp-S8v" secondAttribute="trailing" id="XAw-3D-kX9"/>
-                                    <constraint firstItem="kBF-K4-XRE" firstAttribute="leading" secondItem="ZfT-Fe-NvK" secondAttribute="leading" id="bYj-Rx-EBs"/>
                                     <constraint firstItem="wfL-va-PNC" firstAttribute="trailing" secondItem="kBF-K4-XRE" secondAttribute="trailing" id="fno-6X-Vwx"/>
                                     <constraint firstItem="41J-4h-ILx" firstAttribute="top" secondItem="kNK-dp-S8v" secondAttribute="bottom" constant="8" id="fr3-ew-cxb"/>
                                     <constraint firstItem="W0a-PD-4Ln" firstAttribute="leading" secondItem="41J-4h-ILx" secondAttribute="leading" id="hWX-NT-zAC"/>
@@ -245,7 +243,7 @@
                                     <constraint firstItem="kBF-K4-XRE" firstAttribute="leading" secondItem="41J-4h-ILx" secondAttribute="trailing" constant="8" id="ja0-LY-m7P"/>
                                     <constraint firstAttribute="trailing" secondItem="kBF-K4-XRE" secondAttribute="trailing" constant="8" id="mNL-0d-25P"/>
                                     <constraint firstItem="W0a-PD-4Ln" firstAttribute="top" secondItem="41J-4h-ILx" secondAttribute="bottom" constant="8" id="sbM-Zh-Ra6"/>
-                                    <constraint firstItem="wfL-va-PNC" firstAttribute="leading" secondItem="kBF-K4-XRE" secondAttribute="leading" id="vp2-0O-XbE"/>
+                                    <constraint firstItem="wfL-va-PNC" firstAttribute="leading" secondItem="W0a-PD-4Ln" secondAttribute="trailing" constant="8" id="xZj-x6-Sb3"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEH-Df-bZ0">
@@ -325,8 +323,8 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="0 AED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOK-5m-Ue0">
-                                                <rect key="frame" x="8" y="31" width="162" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0 AED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOK-5m-Ue0">
+                                                <rect key="frame" x="8" y="32" width="162" height="24"/>
                                                 <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="21"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
