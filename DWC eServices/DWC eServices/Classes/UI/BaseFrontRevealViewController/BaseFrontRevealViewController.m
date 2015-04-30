@@ -9,6 +9,7 @@
 #import "BaseFrontRevealViewController.h"
 #import "BBBadgeBarButtonItem.h"
 #import "Globals.h"
+#import "NSString+SFAdditions.h"
 
 @interface BaseFrontRevealViewController ()
 
@@ -161,6 +162,9 @@
 }
 
 - (void)setNavigationBarTitle:(NSString *)title {
+    
+    title = [title capitalizedString];
+    
     [self.navigationItem setTitle:title];
 }
 
