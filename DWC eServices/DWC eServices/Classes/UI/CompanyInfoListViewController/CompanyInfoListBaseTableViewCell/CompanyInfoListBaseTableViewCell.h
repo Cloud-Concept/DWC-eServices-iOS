@@ -9,21 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "DWCCompanyInfo.h"
 
-@class CompanyInfoListBaseTableViewCell;
-
-@protocol CompanyInfoListBaseTableViewCellDelegate <NSObject>
-- (void)companyTableViewCell:(CompanyInfoListBaseTableViewCell *)companyTableViewCell detailsButtonClickAtIndexPath:(NSIndexPath *)indexPath;
-@end
-
 @interface CompanyInfoListBaseTableViewCell : UITableViewCell
 {
     NSIndexPath *currentIndexPath;
 }
 
-@property (nonatomic) id <CompanyInfoListBaseTableViewCellDelegate> delegate;
 @property (strong, nonatomic) UIViewController *parentViewController;
 
-- (IBAction)detailsButtonClicked:(id)sender;
-- (void)refreshCellForObject:(NSObject *)currentObject companyInfoType:(DWCCompanyInfoType)companyInfoType indexPath:(NSIndexPath *)indexPath;
+- (void)refreshCellForObject:(NSObject *)currentObject companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath;
 
 @end

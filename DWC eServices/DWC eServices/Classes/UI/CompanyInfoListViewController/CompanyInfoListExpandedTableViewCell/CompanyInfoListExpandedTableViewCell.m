@@ -8,6 +8,7 @@
 
 #import "CompanyInfoListExpandedTableViewCell.h"
 #import "RelatedServicesBarScrollView.h"
+#import "RelatedService.h"
 
 @implementation CompanyInfoListExpandedTableViewCell
 
@@ -21,56 +22,69 @@
     // Configure the view for the selected state
 }
 
-- (void)refreshCellForObject:(NSObject *)currentObject companyInfoType:(DWCCompanyInfoType)companyInfoType indexPath:(NSIndexPath *)indexPath {
-    [super refreshCellForObject:currentObject companyInfoType:companyInfoType indexPath:indexPath];
+- (void)refreshCellForObject:(NSObject *)currentObject companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath {
+    [super refreshCellForObject:currentObject companyInfo:companyInfo indexPath:indexPath];
     
-    switch (companyInfoType) {
+    switch (companyInfo.Type) {
         case DWCCompanyInfoDirectors:
-            [self refreshDirectorServices:(Directorship *)currentObject];
+            [self refreshDirectorServices:(Directorship *)currentObject companyInfo:companyInfo];
             break;
         case DWCCompanyInfoGeneralManagers:
-            [self refreshManagerServices:(ManagementMember *)currentObject];
+            [self refreshManagerServices:(ManagementMember *)currentObject companyInfo:companyInfo];
             break;
         case DWCCompanyInfoLegalRepresentative:
-            [self refreshLegalRepresentativeServices:(LegalRepresentative *)currentObject];
+            [self refreshLegalRepresentativeServices:(LegalRepresentative *)currentObject companyInfo:companyInfo];
             break;
         default:
             break;
     }
 }
 
-- (void)refreshCellForDirector:(Directorship *)director companyInfoType:(DWCCompanyInfoType)companyInfoType indexPath:(NSIndexPath *)indexPath {
+- (void)refreshCellForDirector:(Directorship *)director companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath {
     [super refreshCellForDirector:director indexPath:indexPath];
     
-    [self refreshDirectorServices:director];
+    [self refreshDirectorServices:director companyInfo:companyInfo];
 }
 
-- (void)refreshCellForManager:(ManagementMember *)manager companyInfoType:(DWCCompanyInfoType)companyInfoType indexPath:(NSIndexPath *)indexPath {
+- (void)refreshCellForManager:(ManagementMember *)manager companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath {
     [super refreshCellForManager:manager indexPath:indexPath];
     
-    [self refreshManagerServices:manager];
+    [self refreshManagerServices:manager companyInfo:companyInfo];
 }
 
-- (void)refreshCellForLegalRepresentative:(LegalRepresentative *)legalRepresentative companyInfoType:(DWCCompanyInfoType)companyInfoType indexPath:(NSIndexPath *)indexPath {
+- (void)refreshCellForLegalRepresentative:(LegalRepresentative *)legalRepresentative companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath {
     [super refreshCellForLegalRepresentative:legalRepresentative indexPath:indexPath];
     
-    [self refreshLegalRepresentativeServices:legalRepresentative];
+    [self refreshLegalRepresentativeServices:legalRepresentative companyInfo:companyInfo];
 }
 
-- (void)refreshDirectorServices:(Directorship *)director {
-    //self.relatedServicesScrollView
+- (void)refreshDirectorServices:(Directorship *)director companyInfo:(DWCCompanyInfo *)companyInfo{
+    self.relatedServicesScrollView.directorObject = director;
+    self.relatedServicesScrollView.currentDWCCompanyInfo = companyInfo;
     
     servicesMask = 0;
+    servicesMask |= RelatedServiceTypeOpenDetials;
+    
     [self renderServicesButtons];
 }
 
-- (void)refreshManagerServices:(ManagementMember *)manager {
+- (void)refreshManagerServices:(ManagementMember *)manager companyInfo:(DWCCompanyInfo *)companyInfo{
+    self.relatedServicesScrollView.managerObject = manager;
+    self.relatedServicesScrollView.currentDWCCompanyInfo = companyInfo;
+    
     servicesMask = 0;
+    servicesMask |= RelatedServiceTypeOpenDetials;
+    
     [self renderServicesButtons];
 }
 
-- (void)refreshLegalRepresentativeServices:(LegalRepresentative *)legalRepresentative {
+- (void)refreshLegalRepresentativeServices:(LegalRepresentative *)legalRepresentative companyInfo:(DWCCompanyInfo *)companyInfo{
+    self.relatedServicesScrollView.legalRepresentativeObject = legalRepresentative;
+    self.relatedServicesScrollView.currentDWCCompanyInfo = companyInfo;
+    
     servicesMask = 0;
+    servicesMask |= RelatedServiceTypeOpenDetials;
+    
     [self renderServicesButtons];
 }
 

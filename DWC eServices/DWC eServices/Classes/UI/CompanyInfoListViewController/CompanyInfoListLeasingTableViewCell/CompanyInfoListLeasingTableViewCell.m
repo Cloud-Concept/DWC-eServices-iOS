@@ -11,6 +11,8 @@
 #import "UIImageView+MaskImage.h"
 #import "UIImageView+SFAttachment.h"
 #import "HelperClass.h"
+#import "ContractLineItem.h"
+#import "InventoryUnit.h"
 
 @implementation CompanyInfoListLeasingTableViewCell
 
@@ -24,7 +26,7 @@
     // Configure the view for the selected state
 }
 
-- (void)refreshCellForObject:(NSObject *)currentObject companyInfoType:(DWCCompanyInfoType)companyInfoType indexPath:(NSIndexPath *)indexPath {
+- (void)refreshCellForObject:(NSObject *)currentObject companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath {
     
     [self refreshCellForTenancyContract:(TenancyContract *)currentObject indexPath:currentIndexPath];
 }
@@ -37,7 +39,11 @@
     [self.profilePictureImageView maskImageToCircle];
     
     self.nameLabel.text = tenancyContract.name;
-    //self.unitNameValueLabel.text = tenancyContract;
+
+    for (ContractLineItem *contractLineItem in tenancyContract.contractLineItems) {
+        self.unitNameValueLabel.text = contractLineItem.inventoryUnit.name;
+    }
+    
     self.contractTypeValueLabel.text = tenancyContract.contractType;
     self.statusValueLabel.text = tenancyContract.status;
     self.expiryDateValueLabel.text = [HelperClass formatDateToString:tenancyContract.contractExpiryDate];

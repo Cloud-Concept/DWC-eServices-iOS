@@ -8,6 +8,7 @@
 
 #import "CompanyInfoListShareholderExpandedTableViewCell.h"
 #import "RelatedServicesBarScrollView.h"
+#import "RelatedService.h"
 
 @implementation CompanyInfoListShareholderExpandedTableViewCell
 
@@ -21,20 +22,25 @@
     // Configure the view for the selected state
 }
 
-- (void)refreshCellForObject:(NSObject *)currentObject companyInfoType:(DWCCompanyInfoType)companyInfoType indexPath:(NSIndexPath *)indexPath {
-    [super refreshCellForObject:currentObject companyInfoType:companyInfoType indexPath:currentIndexPath];
+- (void)refreshCellForObject:(NSObject *)currentObject companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath {
+    [super refreshCellForObject:currentObject companyInfo:companyInfo indexPath:currentIndexPath];
     
-    [self refreshShareholderServices:(ShareOwnership *)currentObject];
+    [self refreshShareholderServices:(ShareOwnership *)currentObject companyInfo:companyInfo];
 }
 
-- (void)refreshCellForShareholder:(ShareOwnership *)shareholder companyInfoType:(DWCCompanyInfoType)companyInfoType indexPath:(NSIndexPath *)indexPath {
+- (void)refreshCellForShareholder:(ShareOwnership *)shareholder companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath {
     [super refreshCellForShareholder:shareholder indexPath:indexPath];
     
-    [self refreshShareholderServices:shareholder];
+    [self refreshShareholderServices:shareholder companyInfo:companyInfo];
 }
 
-- (void)refreshShareholderServices:(ShareOwnership *)shareholder {
+- (void)refreshShareholderServices:(ShareOwnership *)shareholder companyInfo:(DWCCompanyInfo *)companyInfo {
+    self.relatedServicesScrollView.shareholderObject = shareholder;
+    self.relatedServicesScrollView.currentDWCCompanyInfo = companyInfo;
+    
     servicesMask = 0;
+    
+    servicesMask |= RelatedServiceTypeOpenDetials;
     
     [self renderServicesButtons];
 }

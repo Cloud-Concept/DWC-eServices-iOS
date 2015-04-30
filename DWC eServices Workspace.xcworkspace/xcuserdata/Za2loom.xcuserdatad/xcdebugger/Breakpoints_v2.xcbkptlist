@@ -9,29 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DWC eServices/DWC eServices/Classes/UI/RelatedServicesBarScrollView/RelatedServicesBarScrollView.m"
-            timestampString = "451907903.761637"
+            filePath = "DWC eServices/DWC eServices/Classes/UI/BaseFrontRevealViewController/BaseFrontRevealViewController.m"
+            timestampString = "452091610.303008"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-displayRelatedServicesForMask:parentViewController:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DWC eServices/DWC eServices/Classes/UI/RelatedServicesBarScrollView/RelatedServicesBarScrollView.m"
-            timestampString = "451907938.056552"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "-serviceButtonClicked:"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "-backButtonClicked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

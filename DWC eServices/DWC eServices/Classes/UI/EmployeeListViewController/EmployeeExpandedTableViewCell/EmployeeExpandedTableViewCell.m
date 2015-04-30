@@ -24,38 +24,41 @@
     // Configure the view for the selected state
 }
 
-- (void)refreshCellForVisa:(Visa *)currentVisa employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath {
-    [super refreshCellForVisa:currentVisa employeeType:employeeType indexPath:indexPath];
+- (void)refreshCellForVisa:(Visa *)currentVisa dwcEmployee:(DWCEmployee *)dwcEmployee indexPath:(NSIndexPath *)indexPath {
+    [super refreshCellForVisa:currentVisa dwcEmployee:dwcEmployee indexPath:indexPath];
     
-    [self refreshRelatedServices:currentVisa employeeType:employeeType];
+    [self refreshRelatedServices:currentVisa dwcEmployee:dwcEmployee];
 }
 
-- (void)refreshCellForCard:(CardManagement *)currentCard employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath {
-    [super refreshCellForCard:currentCard employeeType:employeeType indexPath:indexPath];
+- (void)refreshCellForCard:(CardManagement *)currentCard dwcEmployee:(DWCEmployee *)dwcEmployee indexPath:(NSIndexPath *)indexPath {
+    [super refreshCellForCard:currentCard dwcEmployee:dwcEmployee indexPath:indexPath];
 
-    [self refreshRelatedServices:currentCard employeeType:employeeType];
+    [self refreshRelatedServices:currentCard dwcEmployee:dwcEmployee];
 }
 
-- (void)refreshRelatedServices:(NSObject *)currentObject employeeType:(DWCEmployeeType)employeeType {
-    switch (employeeType) {
+- (void)refreshRelatedServices:(NSObject *)currentObject dwcEmployee:(DWCEmployee *)dwcEmployee {
+    switch (dwcEmployee.Type) {
         case PermanentEmployee:
-            [self refreshPermanentEmployeeServices:(Visa *)currentObject];
+            [self refreshPermanentEmployeeServices:(Visa *)currentObject dwcEmployee:dwcEmployee];
             break;
         case VisitVisaEmployee:
-            [self refreshVisitVisaServices:(Visa *)currentObject];
+            [self refreshVisitVisaServices:(Visa *)currentObject dwcEmployee:dwcEmployee];
             break;
         case ContractorEmployee:
-            [self refreshContractorServices:(CardManagement *)currentObject];
+            [self refreshContractorServices:(CardManagement *)currentObject dwcEmployee:dwcEmployee];
             break;
         default:
             break;
     }
     
+    servicesMask |= RelatedServiceTypeOpenDetials;
+    
     [self renderServicesButtons];
 }
 
-- (void)refreshPermanentEmployeeServices:(Visa *)visa {
+- (void)refreshPermanentEmployeeServices:(Visa *)visa dwcEmployee:(DWCEmployee *)dwcEmployee {
     self.relatedServicesScrollView.visaObject = visa;
+    self.relatedServicesScrollView.currentDWCEmployee = dwcEmployee;
     
     servicesMask = 0;
     
@@ -70,8 +73,9 @@
      */
 }
 
-- (void)refreshVisitVisaServices:(Visa *)visa {
+- (void)refreshVisitVisaServices:(Visa *)visa dwcEmployee:(DWCEmployee *)dwcEmployee {
     self.relatedServicesScrollView.visaObject = visa;
+    self.relatedServicesScrollView.currentDWCEmployee = dwcEmployee;
     
     servicesMask = 0;
     
@@ -81,8 +85,9 @@
      */
 }
 
-- (void)refreshContractorServices:(CardManagement *)card {
+- (void)refreshContractorServices:(CardManagement *)card dwcEmployee:(DWCEmployee *)dwcEmployee {
     self.relatedServicesScrollView.cardManagementObject = card;
+    self.relatedServicesScrollView.currentDWCEmployee = dwcEmployee;
     
     servicesMask = 0;
     

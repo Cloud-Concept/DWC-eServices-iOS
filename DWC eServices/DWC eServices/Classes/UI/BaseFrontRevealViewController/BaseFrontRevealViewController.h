@@ -15,6 +15,7 @@
 @property (nonatomic) BOOL showSlidingMenu;
 @property (nonatomic) BOOL showNotificationIcon;
 @property (nonatomic) BOOL showBottomTabBar;
+@property (nonatomic, copy) void (^navigationItemBackAction)(void);
 
 - (void)setNavigationBarTitle:(NSString *)title;
 - (void)refreshNotificationsCount;

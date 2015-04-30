@@ -23,25 +23,28 @@
     // Configure the view for the selected state
 }
 
-- (void)refreshCellForObject:(NSObject *)currentObject companyInfoType:(DWCCompanyInfoType)companyInfoType indexPath:(NSIndexPath *)indexPath {
-    [super refreshCellForObject:currentObject companyInfoType:companyInfoType indexPath:currentIndexPath];
+- (void)refreshCellForObject:(NSObject *)currentObject companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath {
+    [super refreshCellForObject:currentObject companyInfo:companyInfo indexPath:currentIndexPath];
     
-    [self refreshTenancyContractServices:(TenancyContract *)currentObject];
+    [self refreshTenancyContractServices:(TenancyContract *)currentObject companyInfo:companyInfo];
 }
 
-- (void)refreshCellForTenancyContract:(TenancyContract *)tenancyContract indexPath:(NSIndexPath *)indexPath {
+- (void)refreshCellForTenancyContract:(TenancyContract *)tenancyContract companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath {
     [super refreshCellForTenancyContract:tenancyContract indexPath:indexPath];
     
-    [self refreshTenancyContractServices:tenancyContract];
+    [self refreshTenancyContractServices:tenancyContract companyInfo:companyInfo];
 }
 
-- (void)refreshTenancyContractServices:(TenancyContract *)tenancyContract {
+- (void)refreshTenancyContractServices:(TenancyContract *)tenancyContract companyInfo:(DWCCompanyInfo *)companyInfo{
     self.relatedServicesScrollView.contractObject = tenancyContract;
+    self.relatedServicesScrollView.currentDWCCompanyInfo = companyInfo;
     
     servicesMask = 0;
     NSTimeInterval daysToExpire = [tenancyContract.contractExpiryDate timeIntervalSinceNow] / (3600 * 24);
     if (tenancyContract.isBCContract && daysToExpire <= 60)
         servicesMask |= RelatedServiceTypeContractRenewal;
+    
+    servicesMask |= RelatedServiceTypeOpenDetials;
     
     [self renderServicesButtons];
 }

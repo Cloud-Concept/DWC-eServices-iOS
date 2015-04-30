@@ -14,7 +14,7 @@
 @class DWCEmployee;
 @class SFRestRequest;
 
-@interface EmployeeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, UISearchResultsUpdating, EmployeeTableViewCellDelegate>
+@interface EmployeeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, UISearchResultsUpdating>
 {
     NSArray *dataRows;
     

@@ -44,13 +44,13 @@
     
     // Do any additional setup after loading the view.
     self.showSlidingMenu = NO;
-    self.showNotificationIcon = NO;
     
-    self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"back", @"")
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(backButtonPressed)];
+    __typeof(self) __weak weakSelf = self;
+    self.navigationItemBackAction = ^(void) {
+        [weakSelf backButtonPressed];
+    };
+    
+
     viewControllersStack = [[Stack alloc] init];
     [self showServiceFlow];
 }

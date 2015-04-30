@@ -28,9 +28,9 @@
     // Configure the view for the selected state
 }
 
-- (void)refreshCellForObject:(NSObject *)currentObject companyInfoType:(DWCCompanyInfoType)companyInfoType indexPath:(NSIndexPath *)indexPath {
+- (void)refreshCellForObject:(NSObject *)currentObject companyInfo:(DWCCompanyInfo *)companyInfo indexPath:(NSIndexPath *)indexPath {
     
-    switch (companyInfoType) {
+    switch (companyInfo.Type) {
         case DWCCompanyInfoDirectors:
             [self refreshCellForDirector:(Directorship *)currentObject indexPath:currentIndexPath];
             break;

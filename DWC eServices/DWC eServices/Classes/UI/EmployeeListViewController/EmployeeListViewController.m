@@ -7,7 +7,6 @@
 //
 
 #import "EmployeeListViewController.h"
-#import "DWCEmployee.h"
 #import "SFRestAPI+Blocks.h"
 #import "Account.h"
 #import "Visa.h"
@@ -16,10 +15,6 @@
 #import "Occupation.h"
 #import "RecordType.h"
 #import "CardManagement.h"
-#import "RecordMainDetailsViewController.h"
-#import "TableViewSection.h"
-#import "TableViewSectionField.h"
-#import "RelatedService.h"
 #import "BaseServicesViewController.h"
 #import "PickerTableViewController.h"
 #import "RelatedServicesBarScrollView.h"
@@ -213,153 +208,6 @@
                                                  completeBlock:successBlock];
 }
 
-- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForPermanentEmployee:(Visa*)visa {
-    recordVC.visaObject = visa;
-    recordVC.NameValue = visa.applicantFullName;
-    recordVC.PhotoId = visa.personalPhotoId;
-    NSMutableArray *sectionsArray = [NSMutableArray new];
-    
-    NSMutableArray *fieldsArray = [NSMutableArray new];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Employee ID"
-                                                                         FieldValue:visa.employeeID]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Gender"
-                                                                         FieldValue:visa.applicantGender]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Birth Date"
-                                                                         FieldValue:[HelperClass formatDateToString:visa.dateOfBirth]]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Mobile"
-                                                                         FieldValue:visa.applicantMobileNumber]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Email"
-                                                                         FieldValue:visa.applicantEmail]];
-    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Employee Information" Fields:fieldsArray]];
-    
-    
-    fieldsArray = [NSMutableArray new];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Visa Number"
-                                                                         FieldValue:visa.name]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Status"
-                                                                         FieldValue:visa.validityStatus]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Expiry"
-                                                                         FieldValue:[HelperClass formatDateToString:visa.expiryDate]]];
-    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Visa Information" Fields:fieldsArray]];
-    
-    fieldsArray = [NSMutableArray new];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Passport"
-                                                                         FieldValue:visa.passportNumber]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Expriry Date"
-                                                                         FieldValue:[HelperClass formatDateToString:visa.passportExpiry]]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Issue Country"
-                                                                         FieldValue:visa.passportCountry]];
-    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Passport Information" Fields:fieldsArray]];
-    
-    recordVC.DetailsSectionsArray = sectionsArray;
-    
-    NSUInteger servicesMask = 0;
-    if ([visa.validityStatus isEqualToString:@"Issued"])
-        servicesMask |= RelatedServiceTypeNewEmoloyeeNOC;
-    
-    /*
-    if ([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"]) {
-        servicesMask |= RelatedServiceTypeRenewVisa;
-        servicesMask |= RelatedServiceTypeCancelVisa;
-    }
-    */
-    
-    recordVC.RelatedServicesMask = servicesMask;
-}
-
-- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForVisitVisa:(Visa*)visa {
-    recordVC.NameValue = visa.applicantFullName;
-    recordVC.PhotoId = visa.personalPhotoId;
-    NSMutableArray *sectionsArray = [NSMutableArray new];
-    
-    NSMutableArray *fieldsArray = [NSMutableArray new];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Gender"
-                                                                         FieldValue:visa.applicantGender]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Birth Date"
-                                                                         FieldValue:[HelperClass formatDateToString:visa.dateOfBirth]]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Mobile"
-                                                                         FieldValue:visa.applicantMobileNumber]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Email"
-                                                                         FieldValue:visa.applicantEmail]];
-    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Employee Information" Fields:fieldsArray]];
-    
-    
-    fieldsArray = [NSMutableArray new];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Visa Number"
-                                                                         FieldValue:visa.name]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Status"
-                                                                         FieldValue:visa.validityStatus]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Expiry"
-                                                                         FieldValue:[HelperClass formatDateToString:visa.expiryDate]]];
-    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Visa Information" Fields:fieldsArray]];
-    
-    fieldsArray = [NSMutableArray new];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Passport"
-                                                                         FieldValue:visa.passportNumber]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Expriry Date"
-                                                                         FieldValue:[HelperClass formatDateToString:visa.passportExpiry]]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Issue Country"
-                                                                         FieldValue:visa.passportCountry]];
-    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Passport Information" Fields:fieldsArray]];
-    
-    recordVC.DetailsSectionsArray = sectionsArray;
-    
-    NSUInteger servicesMask = 0;
-    
-    /*
-    if ([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"])
-        servicesMask |= RelatedServiceTypeCancelVisa;
-    */
-    
-    recordVC.RelatedServicesMask = servicesMask;
-}
-
-- (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForContractor:(CardManagement*)card {
-    recordVC.NameValue = card.fullName;
-    recordVC.PhotoId = card.personalPhoto;
-    recordVC.cardManagementObject = card;
-    NSMutableArray *sectionsArray = [NSMutableArray new];
-    
-    NSMutableArray *fieldsArray = [NSMutableArray new];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Card Number"
-                                                                         FieldValue:card.cardNumber]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Type"
-                                                                         FieldValue:card.cardType]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Expiry Date"
-                                                                         FieldValue:[HelperClass formatDateToString:card.cardExpiryDate]]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Status"
-                                                                         FieldValue:card.status]];
-    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Card Details" Fields:fieldsArray]];
-    
-    fieldsArray = [NSMutableArray new];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Passport Number"
-                                                                         FieldValue:card.passportNumber]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Nationality"
-                                                                         FieldValue:card.nationality.name]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Designation"
-                                                                         FieldValue:card.designation]];
-    [fieldsArray addObject:[[TableViewSectionField alloc] initTableViewSectionField:@"Sponsor Company"
-                                                                         FieldValue:card.sponsor]];
-    [sectionsArray addObject:[[TableViewSection alloc] initTableViewSection:@"Person Details" Fields:fieldsArray]];
-    
-    recordVC.DetailsSectionsArray = sectionsArray;
-    
-    NSUInteger servicesMask = 0;
-    if ([card.status isEqualToString:@"Active"]) {
-        servicesMask |= RelatedServiceTypeReplaceCard;
-        servicesMask |= RelatedServiceTypeCancelCard;
-    }
-    
-    NSTimeInterval daysToExpire = [card.cardExpiryDate timeIntervalSinceNow] / (3600 * 24);
-    
-    if (([card.status isEqualToString:@"Active"] && daysToExpire <= 7) || [card.status isEqualToString:@"Expired"]) {
-        servicesMask |= RelatedServiceTypeRenewCard;
-        
-    }
-    
-    recordVC.RelatedServicesMask = servicesMask;
-}
-
 - (void)refreshEmployeesTable {
     expandedRowIndexPath = nil;
     
@@ -441,7 +289,6 @@
         cellIdentifier = @"EmployeeExpandedTableViewCell";
     
     EmployeeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.delegate = self;
     cell.parentViewController = self;
     
     NSObject *selectedObject = [filteredEmployeesArray objectAtIndex:indexPath.row];
@@ -449,10 +296,10 @@
     switch (self.currentDWCEmployee.Type) {
         case PermanentEmployee:
         case VisitVisaEmployee:
-            [cell refreshCellForVisa:(Visa *)selectedObject employeeType:self.currentDWCEmployee.Type indexPath:indexPath];
+            [cell refreshCellForVisa:(Visa *)selectedObject dwcEmployee:self.currentDWCEmployee indexPath:indexPath];
             break;
         case ContractorEmployee:
-            [cell refreshCellForCard:(CardManagement *)selectedObject employeeType:self.currentDWCEmployee.Type indexPath:indexPath];
+            [cell refreshCellForCard:(CardManagement *)selectedObject dwcEmployee:self.currentDWCEmployee indexPath:indexPath];
             break;
         default:
             break;
@@ -501,31 +348,6 @@
  // Pass the selected object to the new view controller.
  }
  */
-
-#pragma mark - EmployeeTableViewCell delegate
-- (void)employeeTableViewCell:(EmployeeTableViewCell *)employeeTableViewCell detailsButtonClickAtIndexPath:(NSIndexPath *)indexPath {
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    RecordMainDetailsViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
-    NSObject *selectedItem = [filteredEmployeesArray objectAtIndex:indexPath.row];
-    
-    recordMainVC.NavBarTitle = self.currentDWCEmployee.NavBarTitle;
-    
-    switch (self.currentDWCEmployee.Type) {
-        case PermanentEmployee:
-            [self configureRecordMainViewController:recordMainVC ForPermanentEmployee:(Visa *)selectedItem];
-            break;
-        case VisitVisaEmployee:
-            [self configureRecordMainViewController:recordMainVC ForVisitVisa:(Visa *)selectedItem];
-            break;
-        case ContractorEmployee:
-            [self configureRecordMainViewController:recordMainVC ForContractor:(CardManagement *)selectedItem];
-            break;
-        default:
-            break;
-    }
-    
-    [self.navigationController pushViewController:recordMainVC animated:YES];
-}
 
 #pragma mark - UISearchResultsUpdating delegate
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {

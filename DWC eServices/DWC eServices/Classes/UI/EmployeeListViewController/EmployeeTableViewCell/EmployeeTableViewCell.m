@@ -26,7 +26,7 @@
     // Configure the view for the selected state
 }
 
-- (void)refreshCellForVisa:(Visa *)currentVisa employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath {
+- (void)refreshCellForVisa:(Visa *)currentVisa dwcEmployee:(DWCEmployee *)dwcEmployee indexPath:(NSIndexPath *)indexPath {
     self.employeeNameLabel.text = currentVisa.applicantFullName;
     
     self.rowOneLabel.text = @"Status:";
@@ -41,7 +41,7 @@
     if ([currentVisa.validityStatus isEqualToString:@"Issued"] || [currentVisa.validityStatus isEqualToString:@"Expired"]) {
         self.rowTwoValueLabel.text = [HelperClass formatDateToString:currentVisa.expiryDate];
         self.rowTwoValueLabel.hidden = NO;
-        self.rowTwoLabel.text = @"Expiry:";
+        self.rowTwoLabel.text = @"Visa Expiry:";
         self.rowTwoLabel.hidden = NO;
     }
     else {
@@ -53,7 +53,7 @@
     currentIndexPath = indexPath;
 }
 
-- (void)refreshCellForCard:(CardManagement *)currentCard employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath {
+- (void)refreshCellForCard:(CardManagement *)currentCard dwcEmployee:(DWCEmployee *)dwcEmployee indexPath:(NSIndexPath *)indexPath {
     self.employeeNameLabel.text = currentCard.fullName;
     self.rowOneLabel.text = @"Type:";
     self.rowOneValueLabel.text = currentCard.cardType;
@@ -66,7 +66,7 @@
     
     if (currentCard.cardExpiryDate) {
         self.rowTwoLabel.hidden = NO;
-        self.rowTwoLabel.text = @"Expiry:";
+        self.rowTwoLabel.text = @"Card Expiry:";
         self.rowTwoValueLabel.hidden = NO;
         self.rowTwoValueLabel.text = [HelperClass formatDateToString:currentCard.cardExpiryDate];
     }
@@ -76,12 +76,6 @@
     }
     
     currentIndexPath = indexPath;
-}
-
--(IBAction)detailsButtonClicked:(id)sender {
-    if (self.delegate) {
-        [self.delegate employeeTableViewCell:self detailsButtonClickAtIndexPath:currentIndexPath];
-    }
 }
 
 @end

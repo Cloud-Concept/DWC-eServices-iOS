@@ -11,19 +11,12 @@
 
 @class Visa;
 @class CardManagement;
-@class EmployeeTableViewCell;
-
-@protocol EmployeeTableViewCellDelegate <NSObject>
-- (void)employeeTableViewCell:(EmployeeTableViewCell *)employeeTableViewCell detailsButtonClickAtIndexPath:(NSIndexPath *)indexPath;
-@end
-
 
 @interface EmployeeTableViewCell : UITableViewCell
 {
     NSIndexPath *currentIndexPath;
 }
 
-@property (nonatomic) id<EmployeeTableViewCellDelegate> delegate;
 @property (strong, nonatomic) UIViewController *parentViewController;
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
@@ -35,8 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *rowThreeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rowThreeValueLabel;
 
-- (void)refreshCellForVisa:(Visa *)currentVisa employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath;
-- (void)refreshCellForCard:(CardManagement *)currentCard employeeType:(DWCEmployeeType)employeeType indexPath:(NSIndexPath *)indexPath;
+- (void)refreshCellForVisa:(Visa *)currentVisa dwcEmployee:(DWCEmployee *)dwcEmployee indexPath:(NSIndexPath *)indexPath;
+- (void)refreshCellForCard:(CardManagement *)currentCard dwcEmployee:(DWCEmployee *)dwcEmployee indexPath:(NSIndexPath *)indexPath;
 
--(IBAction)detailsButtonClicked:(id)sender;
 @end

@@ -14,7 +14,7 @@
 
 @class DWCCompanyInfo;
 
-@interface CompanyInfoListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, SFRestDelegate, CompanyInfoListBaseTableViewCellDelegate>
+@interface CompanyInfoListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, SFRestDelegate>
 {
     NSArray *dataRows;
     

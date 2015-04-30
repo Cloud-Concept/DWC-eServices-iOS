@@ -46,9 +46,22 @@
 - (void)initNavigationItem {
     if (self.showSlidingMenu)
         [self initSlidingMenu];
+    else
+        [self initBackButton];
     
     if (self.showNotificationIcon)
         [self initNotificationIcon];
+}
+
+- (void)initBackButton {
+    UIBarButtonItem *sideMenuBarButton = [[UIBarButtonItem alloc] init];
+    sideMenuBarButton.image = [UIImage imageNamed:@"Navigation Bar Back Button Icon"];
+    sideMenuBarButton.tintColor = [UIColor whiteColor];
+    
+    [sideMenuBarButton setTarget: self];
+    [sideMenuBarButton setAction: @selector(backButtonClicked:)];
+    
+    self.navigationItem.leftBarButtonItem = sideMenuBarButton;
 }
 
 - (void)initNotificationIcon {
@@ -121,6 +134,15 @@
     [self.bottomTabBar setItems:tabBarItem animated:YES];
     self.bottomTabBar.delegate = self;
     //self.bottomTabBar.hidden = YES;
+}
+
+- (void)backButtonClicked:(id)sender {
+    if (self.navigationItemBackAction) {
+        self.navigationItemBackAction();
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
