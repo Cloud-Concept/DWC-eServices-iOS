@@ -142,8 +142,8 @@
             break;
     }
     
-    [self.addNewButton setImage:[UIImage imageNamed:buttonIconName] forState:UIControlStateNormal];
     self.addNewButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.addNewButton setImage:[UIImage imageNamed:buttonIconName] forState:UIControlStateNormal];
     
     if (hideNewButton)
         [self.addNewButton removeFromSuperview];
