@@ -25,6 +25,11 @@
             <string>CorisandeBold</string>
             <string>CorisandeBold</string>
             <string>CorisandeBold</string>
+            <string>CorisandeBold</string>
+            <string>CorisandeBold</string>
+            <string>CorisandeBold</string>
+            <string>CorisandeBold</string>
+            <string>CorisandeBold</string>
         </mutableArray>
         <mutableArray key="Corisande-Light.ttf">
             <string>CorisandeLight</string>
@@ -2214,27 +2219,125 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UJ-9p-lDd">
+                                <rect key="frame" x="0.0" y="20" width="375" height="70"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8Q-sd-XbB">
+                                        <rect key="frame" x="0.0" y="34" width="375" height="2"/>
+                                        <color key="backgroundColor" red="0.80000000000000004" green="0.83137254901960789" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="gjK-aF-hZO"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwN-gg-08t">
+                                        <rect key="frame" x="16" y="10" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="j3i-ob-uoD"/>
+                                            <constraint firstAttribute="height" constant="50" id="rex-CM-Edq"/>
+                                            <constraint firstAttribute="width" secondItem="bwN-gg-08t" secondAttribute="height" multiplier="1:1" id="u4Q-R8-dbX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="16"/>
+                                        <state key="normal" title="1" backgroundImage="Services Timeline Bullet Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vA8-vN-06w">
+                                        <rect key="frame" x="89" y="10" width="50" height="50"/>
+                                        <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="16"/>
+                                        <state key="normal" title="2" backgroundImage="Services Timeline Bullet Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rxb-Cj-OSt">
+                                        <rect key="frame" x="162" y="10" width="50" height="50"/>
+                                        <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="16"/>
+                                        <state key="normal" title="3" backgroundImage="Services Timeline Bullet Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iJ-sB-469">
+                                        <rect key="frame" x="235" y="10" width="50" height="50"/>
+                                        <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="16"/>
+                                        <state key="normal" title="4" backgroundImage="Services Timeline Bullet Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oA5-dQ-Xje">
+                                        <rect key="frame" x="309" y="10" width="50" height="50"/>
+                                        <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="16"/>
+                                        <state key="normal" title="5" backgroundImage="Services Timeline Bullet Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.87058823529411766" green="0.90588235294117647" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="2iJ-sB-469" firstAttribute="top" secondItem="bwN-gg-08t" secondAttribute="top" id="1Sr-Iq-hnG"/>
+                                    <constraint firstItem="2iJ-sB-469" firstAttribute="leading" secondItem="Rxb-Cj-OSt" secondAttribute="trailing" constant="23" id="3OJ-Vi-Ee8"/>
+                                    <constraint firstAttribute="bottom" secondItem="bwN-gg-08t" secondAttribute="bottom" constant="10" id="3Pa-sF-qdB"/>
+                                    <constraint firstItem="Rxb-Cj-OSt" firstAttribute="height" secondItem="bwN-gg-08t" secondAttribute="height" id="5Of-Eg-S0r"/>
+                                    <constraint firstItem="Rxb-Cj-OSt" firstAttribute="width" secondItem="bwN-gg-08t" secondAttribute="width" id="CEW-i9-yrJ"/>
+                                    <constraint firstAttribute="centerX" secondItem="D8Q-sd-XbB" secondAttribute="centerX" id="DpV-bY-H0e"/>
+                                    <constraint firstItem="vA8-vN-06w" firstAttribute="bottom" secondItem="bwN-gg-08t" secondAttribute="bottom" id="EBZ-bA-H6E"/>
+                                    <constraint firstItem="vA8-vN-06w" firstAttribute="height" secondItem="bwN-gg-08t" secondAttribute="height" id="HGJ-4I-pxt"/>
+                                    <constraint firstAttribute="trailing" secondItem="D8Q-sd-XbB" secondAttribute="trailing" id="HRA-Mj-uwB"/>
+                                    <constraint firstItem="vA8-vN-06w" firstAttribute="top" secondItem="bwN-gg-08t" secondAttribute="top" id="Hyk-4Z-SLV"/>
+                                    <constraint firstItem="oA5-dQ-Xje" firstAttribute="height" secondItem="bwN-gg-08t" secondAttribute="height" id="Jeu-J2-yy3"/>
+                                    <constraint firstItem="oA5-dQ-Xje" firstAttribute="leading" secondItem="2iJ-sB-469" secondAttribute="trailing" constant="24" id="Kc0-1S-KJP"/>
+                                    <constraint firstItem="2iJ-sB-469" firstAttribute="width" secondItem="bwN-gg-08t" secondAttribute="width" id="LoW-wh-Wfp"/>
+                                    <constraint firstItem="bwN-gg-08t" firstAttribute="top" secondItem="8UJ-9p-lDd" secondAttribute="top" constant="10" id="O2F-GW-wsK"/>
+                                    <constraint firstAttribute="centerY" secondItem="D8Q-sd-XbB" secondAttribute="centerY" id="Q3E-9L-7Nw"/>
+                                    <constraint firstItem="vA8-vN-06w" firstAttribute="leading" secondItem="bwN-gg-08t" secondAttribute="trailing" constant="23" id="Qyc-mq-T50"/>
+                                    <constraint firstItem="Rxb-Cj-OSt" firstAttribute="leading" secondItem="vA8-vN-06w" secondAttribute="trailing" constant="23" id="R2B-WY-x4n"/>
+                                    <constraint firstItem="Rxb-Cj-OSt" firstAttribute="top" secondItem="bwN-gg-08t" secondAttribute="top" id="UGs-DX-CGa"/>
+                                    <constraint firstItem="oA5-dQ-Xje" firstAttribute="bottom" secondItem="bwN-gg-08t" secondAttribute="bottom" id="Ydw-Ba-1ba"/>
+                                    <constraint firstItem="Rxb-Cj-OSt" firstAttribute="bottom" secondItem="bwN-gg-08t" secondAttribute="bottom" id="fe2-mZ-Brc"/>
+                                    <constraint firstItem="oA5-dQ-Xje" firstAttribute="width" secondItem="bwN-gg-08t" secondAttribute="width" id="hMh-kE-gbj"/>
+                                    <constraint firstItem="bwN-gg-08t" firstAttribute="leading" secondItem="8UJ-9p-lDd" secondAttribute="leading" constant="16" id="mZb-gI-h7c"/>
+                                    <constraint firstItem="2iJ-sB-469" firstAttribute="bottom" secondItem="bwN-gg-08t" secondAttribute="bottom" id="pH6-lZ-9Xf"/>
+                                    <constraint firstItem="D8Q-sd-XbB" firstAttribute="leading" secondItem="8UJ-9p-lDd" secondAttribute="leading" id="seA-DW-0Oq"/>
+                                    <constraint firstAttribute="trailing" secondItem="oA5-dQ-Xje" secondAttribute="trailing" constant="16" id="t3e-b6-nro"/>
+                                    <constraint firstItem="oA5-dQ-Xje" firstAttribute="top" secondItem="bwN-gg-08t" secondAttribute="top" id="xUl-h2-Iyc"/>
+                                    <constraint firstItem="vA8-vN-06w" firstAttribute="width" secondItem="bwN-gg-08t" secondAttribute="width" id="xde-kg-LE8"/>
+                                    <constraint firstItem="2iJ-sB-469" firstAttribute="height" secondItem="bwN-gg-08t" secondAttribute="height" id="yd7-dL-Whz"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xrl-iU-npJ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="639"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="577"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.87058823529411766" green="0.90588235294117647" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Xrl-iU-npJ" firstAttribute="top" secondItem="YyQ-OQ-8DA" secondAttribute="bottom" constant="8" id="0FP-dz-1bx"/>
+                            <constraint firstItem="8UJ-9p-lDd" firstAttribute="top" secondItem="YyQ-OQ-8DA" secondAttribute="bottom" id="Fif-eC-zHh"/>
                             <constraint firstItem="srF-oc-Hfu" firstAttribute="top" secondItem="Xrl-iU-npJ" secondAttribute="bottom" id="KzF-Lv-WCU"/>
+                            <constraint firstAttribute="trailing" secondItem="8UJ-9p-lDd" secondAttribute="trailing" id="gKz-Hz-z4G"/>
                             <constraint firstAttribute="trailing" secondItem="Xrl-iU-npJ" secondAttribute="trailing" id="lJh-fH-MpJ"/>
+                            <constraint firstItem="Xrl-iU-npJ" firstAttribute="top" secondItem="YyQ-OQ-8DA" secondAttribute="bottom" priority="250" id="tII-xs-eKc"/>
+                            <constraint firstItem="Xrl-iU-npJ" firstAttribute="top" secondItem="8UJ-9p-lDd" secondAttribute="bottom" id="wqG-sF-BL5"/>
                             <constraint firstItem="Xrl-iU-npJ" firstAttribute="leading" secondItem="uq1-vD-sR4" secondAttribute="leading" id="ycC-QP-bUi"/>
+                            <constraint firstItem="8UJ-9p-lDd" firstAttribute="leading" secondItem="uq1-vD-sR4" secondAttribute="leading" id="zsE-MA-Hzu"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="serviceFlowView" destination="Xrl-iU-npJ" id="fWe-WL-57c"/>
+                        <outlet property="timelineBulletFiveButton" destination="oA5-dQ-Xje" id="6Ek-Cb-Lxc"/>
+                        <outlet property="timelineBulletFourButton" destination="2iJ-sB-469" id="DDI-Xr-40t"/>
+                        <outlet property="timelineBulletOneButton" destination="bwN-gg-08t" id="CbP-3s-QJp"/>
+                        <outlet property="timelineBulletThreeButton" destination="Rxb-Cj-OSt" id="BE9-1D-nT6"/>
+                        <outlet property="timelineBulletTwoButton" destination="vA8-vN-06w" id="Jvm-b6-iT3"/>
+                        <outlet property="timelineView" destination="8UJ-9p-lDd" id="LRH-HY-ksA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g5L-2W-hXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3110.5" y="354.5"/>
+            <point key="canvasLocation" x="3120.5" y="354.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KHg-LT-MaD">
@@ -2866,6 +2969,7 @@
         <image name="Home Notification Icon" width="31" height="31"/>
         <image name="Home Quick Access Icon" width="32" height="26"/>
         <image name="Home Reports Icon" width="34" height="33"/>
+        <image name="Services Timeline Bullet Next" width="26" height="26"/>
         <image name="Slide Menu Company Info Icon" width="9" height="16"/>
         <image name="Slide Menu Dashboard Icon" width="15" height="15"/>
         <image name="Slide Menu Employee Icon" width="16" height="16"/>

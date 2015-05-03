@@ -24,6 +24,7 @@ typedef enum {
     ServiceFlowFieldsPage,
     ServiceFlowAttachmentsPage,
     ServiceFlowReviewPage,
+    ServiceFlowThankYouPage,
 } ServiceFlowPageType;
 
 @interface BaseServicesViewController : BaseFrontRevealViewController <UIAlertViewDelegate, SFRestDelegate>
@@ -40,6 +41,9 @@ typedef enum {
     NSInteger formFieldPicklistCalls;
     
     NSString *personalPhotoAttachmentId;
+    
+    NSArray *timelineButtonsArray;
+    ServiceFlowPageType currentServiceFlowType;
 }
 
 @property (nonatomic) RelatedServiceType relatedServiceType;
@@ -67,6 +71,12 @@ typedef enum {
 @property (nonatomic, copy) void (^backAction)(void);
 
 @property (weak, nonatomic) IBOutlet UIView *serviceFlowView;
+@property (weak, nonatomic) IBOutlet UIView *timelineView;
+@property (weak, nonatomic) IBOutlet UIButton *timelineBulletOneButton;
+@property (weak, nonatomic) IBOutlet UIButton *timelineBulletTwoButton;
+@property (weak, nonatomic) IBOutlet UIButton *timelineBulletThreeButton;
+@property (weak, nonatomic) IBOutlet UIButton *timelineBulletFourButton;
+@property (weak, nonatomic) IBOutlet UIButton *timelineBulletFiveButton;
 
 - (void)initializeButtonsWithNextAction:(SEL)nextAction target:(id)target;
 - (void)showLoadingDialog;

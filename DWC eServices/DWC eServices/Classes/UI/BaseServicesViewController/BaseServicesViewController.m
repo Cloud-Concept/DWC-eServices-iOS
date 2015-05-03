@@ -44,6 +44,7 @@
     
     // Do any additional setup after loading the view.
     self.showSlidingMenu = NO;
+    self.showNotificationIcon = NO;
     
     __typeof(self) __weak weakSelf = self;
     self.navigationItemBackAction = ^(void) {
@@ -53,6 +54,8 @@
 
     viewControllersStack = [[Stack alloc] init];
     [self showServiceFlow];
+    
+    [self initTimeline];
 }
 
 - (void)backButtonPressed {
@@ -76,6 +79,44 @@
 {
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor clearColor]];
     [self.navigationItem.leftBarButtonItem setEnabled:NO];
+}
+
+- (void)initTimeline {
+    
+    if (self.relatedServiceType == RelatedServiceTypeViewMyRequest) {
+        [self.timelineView removeFromSuperview];
+    }
+    
+    timelineButtonsArray = [NSArray arrayWithObjects:self.timelineBulletOneButton, self.timelineBulletTwoButton, self.timelineBulletThreeButton, self.timelineBulletFourButton, self.timelineBulletFiveButton, nil];
+    
+    [self refreshTimeline];
+}
+
+- (void)refreshTimeline {
+    
+    for (NSInteger index = 0; index < timelineButtonsArray.count; index++) {
+        
+        NSString *buttonTitle = @"";
+        NSString *buttonImageName = @"";
+        
+        if (index < currentServiceFlowType) {
+            buttonTitle = @"";
+            buttonImageName = @"Services Timeline Bullet Finished";
+        }
+        else if (index == currentServiceFlowType) {
+            buttonTitle = [NSString stringWithFormat:@"%ld", (long)index + 1];
+            buttonImageName = @"Services Timeline Bullet Current";
+        }
+        else if (index > currentServiceFlowType) {
+            buttonTitle = [NSString stringWithFormat:@"%ld", (long)index + 1];
+            buttonImageName = @"Services Timeline Bullet Next";
+        }
+        
+        UIButton *currentButton = [timelineButtonsArray objectAtIndex:index];
+        [currentButton setTitle:buttonTitle forState:UIControlStateNormal];
+        [currentButton setBackgroundImage:[UIImage imageNamed:buttonImageName] forState:UIControlStateNormal];
+    }
+    
 }
 
 - (void)initializeCaseId:(NSString *)caseId {
@@ -170,6 +211,13 @@
 - (void)popChildViewController {
     UIViewController *currentVC = [viewControllersStack popObject];
     [self removeChildVC:currentVC];
+    
+    currentServiceFlowType--;
+    
+    if (currentServiceFlowType == ServiceFlowAttachmentsPage && ![self hasAttachments])
+        currentServiceFlowType--;
+    
+    [self refreshTimeline];
 }
 
 - (void)initializeButtonsWithNextAction:(SEL)nextAction target:(id)target {
@@ -252,6 +300,8 @@
             break;
     }
     
+    currentServiceFlowType = ServiceFlowInitialPage;
+    
     [super setNavigationBarTitle:navBarTitle];
 }
 
@@ -301,39 +351,54 @@
 }
 
 - (void)showFieldsFlowPage {
+    currentServiceFlowType = ServiceFlowFieldsPage;
+    
     ServicesDynamicFormViewController *servicesDynamicFormVC = [ServicesDynamicFormViewController new];
     servicesDynamicFormVC.baseServicesViewController = self;
     
     [self addChildViewController:servicesDynamicFormVC toView:self.serviceFlowView];
 
     [viewControllersStack pushObject:servicesDynamicFormVC];
+    
+    [self refreshTimeline];
 }
 
 - (void)showAttachmentsFlowPage {
+    currentServiceFlowType = ServiceFlowAttachmentsPage;
+    
     ServicesUploadViewController *servicesUploadVC = [ServicesUploadViewController new];
     servicesUploadVC.baseServicesViewController = self;
     [self addChildViewController:servicesUploadVC toView:self.serviceFlowView];
     [viewControllersStack pushObject:servicesUploadVC];
+    
+    [self refreshTimeline];
 }
 
 - (void)showReviewFlowPage {
+    currentServiceFlowType = ServiceFlowReviewPage;
+    
     ServicesReviewViewController *servicesReviewVC = [ServicesReviewViewController new];
     servicesReviewVC.baseServicesViewController = self;
     [self addChildViewController:servicesReviewVC toView:self.serviceFlowView];
     [viewControllersStack pushObject:servicesReviewVC];
+    
+    [self refreshTimeline];
 }
 
 - (void)showThankYouFlowPage {
     [self hideAndDisableRightNavigationItem];
+    currentServiceFlowType = ServiceFlowThankYouPage;
     
     ServicesThankYouViewController *servicesThankYouVC = [ServicesThankYouViewController new];
     servicesThankYouVC.baseServicesViewController = self;
     [self addChildViewController:servicesThankYouVC toView:self.serviceFlowView];
     [viewControllersStack pushObject:servicesThankYouVC];
+    
+    [self refreshTimeline];
 }
 
 - (void)closeThankYouFlowPage {
-    if (self.relatedServiceType == RelatedServiceTypeViewMyRequest)
+    if (self.relatedServiceType == RelatedServiceTypeViewMyRequest && self.backAction)
         self.backAction();
     [self popServicesViewController];
 }
