@@ -32,15 +32,15 @@
                                                            DWCEmployeeType:PermanentEmployee
                                                                      Query:[SOQLQueries permanentEmployeesQuery]]];
     
-    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:NSLocalizedString(@"VisitVisaEmployee", @"")
-                                                               NavBarTitle:NSLocalizedString(@"navBarVisitVisaTitle", @"")
-                                                           DWCEmployeeType:VisitVisaEmployee
-                                                                     Query:[SOQLQueries visitVisaEmployeesQuery]]];
-    
     [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:NSLocalizedString(@"ContractorEmployee", @"")
                                                                NavBarTitle:NSLocalizedString(@"navBarContractorTitle", @"")
                                                            DWCEmployeeType:ContractorEmployee
                                                                      Query:[SOQLQueries contractorsQuery]]];
+    
+    [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:NSLocalizedString(@"VisitVisaEmployee", @"")
+                                                               NavBarTitle:NSLocalizedString(@"navBarVisitVisaTitle", @"")
+                                                           DWCEmployeeType:VisitVisaEmployee
+                                                                     Query:[SOQLQueries visitVisaEmployeesQuery]]];
     
     NSMutableArray *viewControllersMutableArray = [NSMutableArray new];
     NSMutableArray *pageLabelMutableArray = [NSMutableArray new];

@@ -20,10 +20,13 @@
     TenancyContract *activeBCTenancyContract;
     
     SFRestRequest *restRequest;
+    
+    NSIndexPath *expandedRowIndexPath;
 }
 
 @property (nonatomic, strong) DWCCompanyDocument *currentDocumentType;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+- (void)refreshViewController;
 
 @end

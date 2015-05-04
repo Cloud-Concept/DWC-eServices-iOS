@@ -12,7 +12,7 @@
 #import "Passport.h"
 #import "HelperClass.h"
 #import "UIImageView+SFAttachment.h"
-#import "UIImageView+MaskImage.h"
+#import "UIImageView+Additions.h"
 
 @implementation CompanyInfoListShareholderTableViewCell
 

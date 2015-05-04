@@ -15,14 +15,10 @@
 #import "CustomerDocumentTableViewCell.h"
 #import "DWCDocumentTableViewCell.h"
 #import "HelperClass.h"
-#import "VisualforceWebviewViewController.h"
 #import "Globals.h"
 #import "Account.h"
-#import "BaseServicesViewController.h"
-#import "EServiceAdministration.h"
-#import "RecordType.h"
-#import "License.h"
 #import "TenancyContract.h"
+#import "RelatedServicesBarScrollView.h"
 
 @interface CompanyDocumentTypeListViewController ()
 
@@ -118,248 +114,40 @@
     [[SFRestAPI sharedInstance] send:tenantContractsRequest delegate:self];
 }
 
-- (void)confirmDeleteCustomerDocument:(CompanyDocument *)document {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"DeleteAlertTitle", @"")
-                                                                   message:NSLocalizedString(@"DeleteDocumentAlertMessage", @"")
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentDeleteAction", @"")
-                                                           style:UIAlertActionStyleDestructive
-                                                         handler:^(UIAlertAction *action) {
-                                                             [self deleteCustomerDocument:document];
-                                                         }];
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", @"")
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:nil];
-    
-    [alert addAction:deleteAction];
-    [alert addAction:cancelAction];
-    
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)deleteCustomerDocument:(CompanyDocument *)document {
-    void (^errorBlock) (NSError*) = ^(NSError *e) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-        });
-    };
-    
-    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            [self.tableView triggerRefresh];
-        });
-    };
-    
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-    
-    [[SFRestAPI sharedInstance] performDeleteWithObjectType:@"Company_Documents__c"
-                                                   objectId:document.Id
-                                                  failBlock:errorBlock
-                                              completeBlock:successBlock];
-}
-
-- (void)openVisualforcePage:(NSString *)url {
-    VisualforceWebviewViewController *vfWebviewVC = [VisualforceWebviewViewController new];
-    
-    vfWebviewVC.returnURL = url;
-    vfWebviewVC.VFshowSlidingMenu = NO;
-    [self.navigationController pushViewController:vfWebviewVC animated:YES];
-}
-
-- (void)requestForOriginalRecordType:(EServicesDocumentChecklist *)eServicesDocumentChecklist {
-    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        
-        NSArray *recordTypesArray = [dict objectForKey:@"records"];
-        RecordType *caseRecordType;
-        for (NSDictionary *obj in recordTypesArray) {
-            
-            caseRecordType = [[RecordType alloc] initRecordType:obj];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-            [self requestForOriginalDocument:eServicesDocumentChecklist recordType:caseRecordType];
-        });
-    };
-    
-    void (^errorBlock) (NSError*) = ^(NSError *e) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-#warning handle error here
-            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
-        });
-    };
-    
-    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE SobjectType = 'Case' AND DeveloperName = '%@'", eServicesDocumentChecklist.eServiceAdministration.recordTypePicklist];
-    
-    [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
-                                       failBlock:errorBlock
-                                   completeBlock:successBlock];
-    
-    
-    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
-}
-
-- (void)requestForOriginalDocument:(EServicesDocumentChecklist *)eServicesDocumentChecklist recordType:(RecordType *)recordType {
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
-    
-    baseServicesVC.currentWebformId = eServicesDocumentChecklist.eServiceAdministration.editNewVFGenerator;
-    baseServicesVC.currentServiceAdministration = eServicesDocumentChecklist.eServiceAdministration;
-    baseServicesVC.relatedServiceType = RelatedServiceTypeRegistrationDocuments;
-    baseServicesVC.createServiceRecord = NO;
-    
-    NSString *caseType = @"Registration Services";
-    if ([recordType.developerName containsString:@"Leasing"])
-        caseType = @"Leasing Services";
-    
-    baseServicesVC.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 eServicesDocumentChecklist.eServiceAdministration.Id, @"Service_Requested__c",
-                                 eServicesDocumentChecklist.eServiceAdministration.editNewVFGenerator, @"Visual_Force_Generator__c",
-                                 [Globals currentAccount].Id, @"AccountId",
-                                 recordType.Id, @"RecordTypeId",
-                                 @"Draft", @"Status",
-                                 caseType, @"Type",
-                                 @"Mobile", @"Origin",
-                                 nil];
-    
-    NSMutableDictionary *paramtersMutableDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                 [Globals currentAccount].Id, @"accountID",
-                                                 [Globals currentAccount].name, @"actName",
-                                                 [Globals currentAccount].currentLicenseNumber.licenseNumberValue, @"licName",
-                                                 [Globals currentAccount].currentLicenseNumber.Id, @"licID",
-                                                 nil];
-    if (activeBCTenancyContract) {
-        [paramtersMutableDict setObject:activeBCTenancyContract.Id forKey:@"tenID"];
-        [paramtersMutableDict setObject:activeBCTenancyContract.name forKey:@"tenName"];
-    }
-    
-    baseServicesVC.parameters = [NSDictionary dictionaryWithDictionary:paramtersMutableDict];
-    
-    //[baseServicesVC nextButtonClicked:ServiceFlowInitialPage];
-    
-    [self.navigationController pushViewController:baseServicesVC animated:YES];
-}
-
 - (UITableViewCell *)cellDWCCompanyDocumentForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    DWCDocumentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DWC Document Cell" forIndexPath:indexPath];
+    NSString *cellIdentifier = @"DWC Document Cell";
+    
+    if ([self isIndexPathExpanded:indexPath])
+        cellIdentifier = @"DWC Document Cell Expanded";
+    
+    DWCDocumentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    cell.parentViewController = self;
     
     EServicesDocumentChecklist *eServicesDocumentChecklist = [dataRows objectAtIndex:indexPath.row];
     
-    cell.documentNameLabel.text = eServicesDocumentChecklist.name;
+    [cell refreshCellForEServicesDocumentChecklist:eServicesDocumentChecklist
+                           activeBCTenancyContract:activeBCTenancyContract
+                                         indexPath:indexPath];
     
     return cell;
 }
 
 - (UITableViewCell *)cellCustomerCompanyDocumentForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView *)tableView {
-    CustomerDocumentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Customer Document Cell"
+    NSString *cellIdentifier = @"Customer Document Cell";
+    
+    if ([self isIndexPathExpanded:indexPath])
+        cellIdentifier = @"Customer Document Cell Expanded";
+    
+    CustomerDocumentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
                                                                           forIndexPath:indexPath];
+    cell.parentViewController = self;
     
     CompanyDocument *companyDocument = [dataRows objectAtIndex:indexPath.row];
     
-    cell.documentNameLabel.text = companyDocument.name;
-    if (![companyDocument.version isKindOfClass:[NSNull class]])
-        cell.documentVersionLabel.text = [NSString stringWithFormat:@"V%@", companyDocument.version];
-    else
-        cell.documentVersionLabel.text = @"V0";
-    
-    cell.documentDateLabel.text = [HelperClass formatDateToString:companyDocument.createdDate];
-    
-    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    [cell refreshCellForCompanyDocument:companyDocument indexPath:indexPath];
     
     return cell;
-}
-
-- (void)customerDocumentaccessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    CompanyDocument *companyDocument = [dataRows objectAtIndex:indexPath.row];
-    
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"DocumentAction", @"")
-                                                                         message:@""
-                                                                  preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", @"")
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:nil];
-    
-    UIAlertAction *editAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentEditAction", @"")
-                                                         style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction *action) {
-                                                           
-                                                       }];
-    
-    UIAlertAction *previewAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentPreviewAction", @"")
-                                                            style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction *action) {
-                                                              NSString *url = [NSString stringWithFormat:@"servlet/servlet.FileDownload?file=%@", companyDocument.attachmentId];
-                                                              
-                                                              [self openVisualforcePage:url];
-                                                          }];
-    
-    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentDeleteAction", @"")
-                                                           style:UIAlertActionStyleDestructive
-                                                         handler:^(UIAlertAction *action) {
-                                                             [self confirmDeleteCustomerDocument:companyDocument];
-                                                         }];
-    
-    [actionSheet addAction:editAction];
-    
-    if (![companyDocument.attachmentId isEqualToString:@""])
-        [actionSheet addAction:previewAction];
-    
-    if (companyDocument.customerDocument)
-        [actionSheet addAction:deleteAction];
-    
-    [actionSheet addAction:cancelAction];
-        
-    actionSheet.popoverPresentationController.sourceView = [self.tableView cellForRowAtIndexPath:indexPath];
-    actionSheet.popoverPresentationController.sourceRect = [self.tableView cellForRowAtIndexPath:indexPath].bounds;
-    
-    [self presentViewController:actionSheet animated:YES completion:nil];
-}
-
-- (void)dwcDocumentaccessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    EServicesDocumentChecklist *eServicesDocumentChecklist = [dataRows objectAtIndex:indexPath.row];
-    
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"DocumentAction", @"")
-                                                                         message:@""
-                                                                  preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", @"")
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:nil];
-    
-    if (eServicesDocumentChecklist.availableForPreview) {
-        UIAlertAction *previewAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentPreviewAction", @"")
-                                                                style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction *action) {
-                                                                  
-                                                                  NSString *url = [NSString stringWithFormat:@"/apex/%@%@", eServicesDocumentChecklist.templateNameLink, [Globals currentAccount].Id];
-                                                                  
-                                                                  [self openVisualforcePage:url];
-                                                              }];
-        
-        [actionSheet addAction:previewAction];
-    }
-    
-    if (eServicesDocumentChecklist.originalCanBeRequested) {
-        UIAlertAction *originalAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentRequestOriginalAction", @"")
-                                                                 style:UIAlertActionStyleDefault
-                                                               handler:^(UIAlertAction *action) {
-                                                                   [self requestForOriginalRecordType:eServicesDocumentChecklist];
-                                                               }];
-        
-        [actionSheet addAction:originalAction];
-    }
-    
-    [actionSheet addAction:cancelAction];
-    
-    actionSheet.popoverPresentationController.sourceView = [self.tableView cellForRowAtIndexPath:indexPath];
-    actionSheet.popoverPresentationController.sourceRect = [self.tableView cellForRowAtIndexPath:indexPath].bounds;
-    
-    [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
 - (void)tableLoadMore {
@@ -370,6 +158,14 @@
 - (void)tableRefresh {
     self.tableView.queryOffset = 0;
     [self loadDocumentsRefresh:YES];
+}
+
+- (BOOL)isIndexPathExpanded:(NSIndexPath *)indexPath {
+    return expandedRowIndexPath && expandedRowIndexPath.row == indexPath.row && expandedRowIndexPath.section == indexPath.section;
+}
+
+- (void)refreshViewController {
+    [self tableRefresh];
 }
 
 #pragma mark - Table view data source
@@ -401,22 +197,36 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    switch (self.currentDocumentType.Type) {
-        case DWCCompanyDocumentTypeCustomerDocument:
-            [self customerDocumentaccessoryButtonTappedForRowWithIndexPath:indexPath];
-            break;
-        case DWCCompanyDocumentTypeDWCDocument:
-            [self dwcDocumentaccessoryButtonTappedForRowWithIndexPath:indexPath];
-            break;
-        default:
-            break;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSMutableArray* rows = [NSMutableArray arrayWithCapacity:2];
+    
+    if (expandedRowIndexPath)
+        [rows addObject:expandedRowIndexPath];
+    
+    if ([self isIndexPathExpanded:indexPath])
+        expandedRowIndexPath = nil;
+    else {
+        expandedRowIndexPath = indexPath;
+        [rows addObject:indexPath];
     }
+    
+    [tableView beginUpdates];
+    [tableView reloadRowsAtIndexPaths:rows withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView endUpdates];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat rowHeight = 64;
+    
+    if ([self isIndexPathExpanded:indexPath])
+        rowHeight += kRelatedServicesScrollViewHeight;
+    
+    return rowHeight;
 }
 
 #pragma mark - SFRestAPIDelegate

@@ -11,7 +11,7 @@
 #import "CardManagement.h"
 #import "UIImageView+SFAttachment.h"
 //#import "UIView+RoundCorner.h"
-#import "UIImageView+MaskImage.h"
+#import "UIImageView+Additions.h"
 #import "HelperClass.h"
 
 @implementation EmployeeTableViewCell

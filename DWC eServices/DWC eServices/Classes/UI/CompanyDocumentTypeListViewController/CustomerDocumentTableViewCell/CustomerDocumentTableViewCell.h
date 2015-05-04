@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class CompanyDocument;
+
 @interface CustomerDocumentTableViewCell : UITableViewCell
+{
+    NSIndexPath *currentIndexPath;
+}
+
+@property (strong, nonatomic) UIViewController *parentViewController;
 
 @property (weak, nonatomic) IBOutlet UILabel *documentNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *documentDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *documentVersionLabel;
+
+- (void)refreshCellForCompanyDocument:(CompanyDocument *)currentCompanyDocument indexPath:(NSIndexPath *)indexPath;
+
 @end

@@ -86,7 +86,15 @@
                                                                   [ServiceDocumentHelperClass showImagePickerInViewContoller:viewController forDocument:document];
                                                               }];
     
+    UIAlertAction *openCameraAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cameraDocumentSource", @"")
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction *action) {
+                                                                 NSLog(@"Camera Action");
+                                                                 [ServiceDocumentHelperClass showCameraInViewContoller:viewController forDocument:document];
+                                                             }];
+    
     [actionSheet addAction:cancelAction];
+    [actionSheet addAction:openCameraAction];
     [actionSheet addAction:imagePickerAction];
     
     actionSheet.popoverPresentationController.sourceView = sender;
@@ -97,6 +105,21 @@
 
 + (void)showImagePickerInViewContoller:(UIViewController *)viewController forDocument:(EServiceDocument *)document {
     SEL selector = @selector(showImagePickerForDocument:);
+    
+    if ([viewController respondsToSelector:selector]) {
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[viewController methodSignatureForSelector:selector]];
+        
+        [invocation setSelector:selector];
+        [invocation setTarget:viewController];
+        
+        [invocation setArgument:&(document) atIndex:2];
+        
+        [invocation invoke];
+    }
+}
+
++ (void)showCameraInViewContoller:(UIViewController *)viewController forDocument:(EServiceDocument *)document {
+    SEL selector = @selector(showCameraForDocument:);
     
     if ([viewController respondsToSelector:selector]) {
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[viewController methodSignatureForSelector:selector]];

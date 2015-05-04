@@ -8,7 +8,7 @@
 
 #import "CompanyInfoListLeasingTableViewCell.h"
 #import "TenancyContract.h"
-#import "UIImageView+MaskImage.h"
+#import "UIImageView+Additions.h"
 #import "UIImageView+SFAttachment.h"
 #import "HelperClass.h"
 #import "ContractLineItem.h"

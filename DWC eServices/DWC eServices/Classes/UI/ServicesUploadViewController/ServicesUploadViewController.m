@@ -13,6 +13,7 @@
 #import "HelperClass.h"
 #import "BaseServicesViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "UIImageView+Additions.h"
 
 @interface ServicesUploadViewController ()
 
@@ -141,17 +142,35 @@
     }
 }
 
+- (void)showCameraForDocument:(EServiceDocument *)document {
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        
+        currentUploadingDocument = document;
+        
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.allowsEditing = YES;
+        _newMedia = YES;
+        
+        [self presentViewController:imagePicker animated:YES completion:nil];
+        
+        
+    }
+}
+
 #pragma mark UIImagePickerControllerDelegate
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSString *mediaType = info[UIImagePickerControllerMediaType];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
+        UIImage *resizedImage = [UIImageView imageWithImage:image scaledToSize:CGSizeMake(480, 640)];
         
-        currentUploadingDocument.attachment = UIImagePNGRepresentation(image);
+        currentUploadingDocument.attachment = UIImagePNGRepresentation(resizedImage);
         [currentUploadingDocument refreshButton];
         
         if (_newMedia)
@@ -166,13 +185,19 @@
     }
 }
 
--(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
-{
-#warning Handle Error here
+- (void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Save failed"
+                              message: @"Failed to save image"
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

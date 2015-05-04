@@ -23,5 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *servicesScrollView;
 
 -(void)showImagePickerForDocument:(EServiceDocument *)document;
+-(void)showCameraForDocument:(EServiceDocument *)document;
 
 @end

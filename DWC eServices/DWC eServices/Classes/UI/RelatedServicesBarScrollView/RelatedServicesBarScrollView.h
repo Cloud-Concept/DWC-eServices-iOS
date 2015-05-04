@@ -20,11 +20,15 @@
 @class LegalRepresentative;
 @class DWCCompanyInfo;
 @class DWCEmployee;
+@class EServicesDocumentChecklist;
+@class CompanyDocument;
 
-@interface RelatedServicesBarScrollView : UIScrollView
+@interface RelatedServicesBarScrollView : UIScrollView <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     NSArray *relatedServicesArray;
     UIViewController *parentViewController;
+    
+    BOOL _newMedia;
 }
 
 @property (strong, nonatomic) DWCEmployee *currentDWCEmployee;
@@ -38,6 +42,9 @@
 @property (strong, nonatomic) Directorship *directorObject;
 @property (strong, nonatomic) ManagementMember *managerObject;
 @property (strong, nonatomic) LegalRepresentative *legalRepresentativeObject;
+@property (strong, nonatomic) EServicesDocumentChecklist *eServicesDocumentChecklistObject;
+@property (strong, nonatomic) CompanyDocument *companyDocumentObject;
+@property (strong, nonatomic) TenancyContract *activeBCTenancyContractObject;
 
 - (void)displayRelatedServicesForMask:(NSUInteger)relatedServicesMask parentViewController:(UIViewController *)viewController;
 

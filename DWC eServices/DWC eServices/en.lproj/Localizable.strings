@@ -38,6 +38,7 @@
 "InvalidEmailFormatsAlertMessage" = "Invalid email format.";
 
 "galleryDocumentSource" = "Gallery";
+"cameraDocumentSource" = "Camera";
 
 "homeDashboardButton" = "DASHBOARD";
 "homeMyRequestButton" = "MY REQUEST";

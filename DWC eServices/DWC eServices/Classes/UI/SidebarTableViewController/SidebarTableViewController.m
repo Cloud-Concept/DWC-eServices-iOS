@@ -7,7 +7,7 @@
 //
 
 #import "SidebarTableViewController.h"
-#import "UIImageView+MaskImage.h"
+#import "UIImageView+Additions.h"
 #import "SFUserAccountManager.h"
 #import "SWRevealViewController.h"
 #import "VisualforceWebviewViewController.h"

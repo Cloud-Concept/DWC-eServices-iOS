@@ -7,6 +7,7 @@
 //
 
 #import "DWCDocumentTableViewCell.h"
+#import "EServicesDocumentChecklist.h"
 
 @implementation DWCDocumentTableViewCell
 
@@ -20,4 +21,10 @@
     // Configure the view for the selected state
 }
 
+- (void)refreshCellForEServicesDocumentChecklist:(EServicesDocumentChecklist *)currentEServicesDocumentChecklist activeBCTenancyContract:(TenancyContract *)activeBCTenancyContract indexPath:(NSIndexPath *)indexPath {
+    
+    currentIndexPath = indexPath;
+    
+    self.documentNameLabel.text = currentEServicesDocumentChecklist.name;
+}
 @end

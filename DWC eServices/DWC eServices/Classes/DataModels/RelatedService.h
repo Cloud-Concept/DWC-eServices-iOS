@@ -23,6 +23,10 @@ typedef enum {
     RelatedServiceTypeLicenseRenewal = 1024,
     RelatedServiceTypeNewCompanyNOC = 2048,
     RelatedServiceTypeOpenDetials = 4096,
+    RelatedServiceTypeDocumentTrueCopy = 8192,
+    RelatedServiceTypeDocumentPreview = 16384,
+    RelatedServiceTypeDocumentEdit = 32768,
+    RelatedServiceTypeDocumentDelete = 65536,
 }RelatedServiceType;
 
 @interface RelatedService : NSObject

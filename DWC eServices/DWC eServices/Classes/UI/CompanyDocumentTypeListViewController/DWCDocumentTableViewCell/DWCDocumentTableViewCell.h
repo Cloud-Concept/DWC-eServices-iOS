@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class EServicesDocumentChecklist;
+@class TenancyContract;
+
 @interface DWCDocumentTableViewCell : UITableViewCell
+{
+    NSIndexPath *currentIndexPath;
+}
+
+@property (strong, nonatomic) UIViewController *parentViewController;
 
 @property (weak, nonatomic) IBOutlet UILabel *documentNameLabel;
+
+- (void)refreshCellForEServicesDocumentChecklist:(EServicesDocumentChecklist *)currentEServicesDocumentChecklist activeBCTenancyContract:(TenancyContract *)activeBCTenancyContract indexPath:(NSIndexPath *)indexPath;
 
 @end

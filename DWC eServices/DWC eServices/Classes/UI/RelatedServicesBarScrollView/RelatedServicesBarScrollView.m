@@ -28,6 +28,17 @@
 #import "ContractLineItem.h"
 #import "TenancyContractPayment.h"
 #import "InventoryUnit.h"
+#import "VisualforceWebviewViewController.h"
+#import "RecordType.h"
+#import "FVCustomAlertView.h"
+#import "SFRestAPI+Blocks.h"
+#import "Globals.h"
+#import "EServiceAdministration.h"
+#import "EServicesDocumentChecklist.h"
+#import "License.h"
+#import "CompanyDocument.h"
+#import "UIImageView+Additions.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @implementation RelatedServicesBarScrollView
 
@@ -89,18 +100,39 @@
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Renew_Contract"
                                                                                 Label:@"Renew Contract"
-                                                                                 Icon:@"Related Service More Icon"
+                                                                                 Icon:@"Related Service Renew Contract Icon"
                                                                                  Mask:RelatedServiceTypeContractRenewal]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Renew_License"
                                                                                 Label:@"Renew License"
-                                                                                 Icon:@"Related Service More Icon"
+                                                                                 Icon:@"Related Service Renew License Icon"
                                                                                  Mask:RelatedServiceTypeLicenseRenewal]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Show_Details"
                                                                                 Label:@"Show Details"
-                                                                                 Icon:@"Related Service More Icon"
+                                                                                 Icon:@"Related Service View Details Icon"
                                                                                  Mask:RelatedServiceTypeOpenDetials]];
+    
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Document_True_Copy"
+                                                                                Label:@"True Copy"
+                                                                                 Icon:@"Related Service True Copy Icon"
+                                                                                 Mask:RelatedServiceTypeDocumentTrueCopy]];
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Document_Preview"
+                                                                                Label:@"Preview"
+                                                                                 Icon:@"Related Service Preview Icon"
+                                                                                 Mask:RelatedServiceTypeDocumentPreview]];
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Document_Edit"
+                                                                                Label:@"Edit"
+                                                                                 Icon:@"Related Service Edit Icon"
+                                                                                 Mask:RelatedServiceTypeDocumentEdit]];
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Document_Delete"
+                                                                                Label:@"Delete"
+                                                                                 Icon:@"Related Service Delete Icon"
+                                                                                 Mask:RelatedServiceTypeDocumentDelete]];
     
     relatedServicesArray = relatedServicesMutableArray;
 }
@@ -254,6 +286,18 @@
         case RelatedServiceTypeOpenDetials:
             [self relatedServiceOpenDetialsButtonClicked];
             break;
+        case RelatedServiceTypeDocumentTrueCopy:
+            [self relatedServiceTypeDocumentTrueCopyButtonClicked];
+            break;
+        case RelatedServiceTypeDocumentPreview:
+            [self relatedServiceTypeDocumentPreviewButtonClicked];
+            break;
+        case RelatedServiceTypeDocumentEdit:
+            [self relatedServiceTypeDocumentEditButtonClicked:sender];
+            break;
+        case RelatedServiceTypeDocumentDelete:
+            [self relatedServiceTypeDocumentDeleteButtonClicked];
+            break;
         default:
             break;
     }
@@ -305,6 +349,276 @@
     baseServicesVC.currentLicense = self.licenseObject;
     baseServicesVC.createServiceRecord = NO;
     [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
+- (void)openVisualforcePage:(NSString *)url {
+    VisualforceWebviewViewController *vfWebviewVC = [VisualforceWebviewViewController new];
+    
+    vfWebviewVC.returnURL = url;
+    vfWebviewVC.VFshowSlidingMenu = NO;
+    [parentViewController.navigationController pushViewController:vfWebviewVC animated:YES];
+}
+
+- (void)confirmDeleteCustomerDocument:(CompanyDocument *)document {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"DeleteAlertTitle", @"")
+                                                                   message:NSLocalizedString(@"DeleteDocumentAlertMessage", @"")
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"DocumentDeleteAction", @"")
+                                                           style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction *action) {
+                                                             [self deleteCustomerDocument:document];
+                                                         }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", @"")
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    
+    [alert addAction:deleteAction];
+    [alert addAction:cancelAction];
+    
+    [parentViewController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)deleteCustomerDocument:(CompanyDocument *)document {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self refreshParentViewController];
+        });
+    };
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    [[SFRestAPI sharedInstance] performDeleteWithObjectType:@"Company_Documents__c"
+                                                   objectId:document.Id
+                                                  failBlock:errorBlock
+                                              completeBlock:successBlock];
+}
+
+- (void)requestForOriginalRecordType:(EServicesDocumentChecklist *)eServicesDocumentChecklist {
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        
+        NSArray *recordTypesArray = [dict objectForKey:@"records"];
+        RecordType *caseRecordType;
+        for (NSDictionary *obj in recordTypesArray) {
+            
+            caseRecordType = [[RecordType alloc] initRecordType:obj];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self requestForOriginalDocument:eServicesDocumentChecklist recordType:caseRecordType];
+        });
+    };
+    
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning handle error here
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+    };
+    
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE SobjectType = 'Case' AND DeveloperName = '%@'", self.eServicesDocumentChecklistObject.eServiceAdministration.recordTypePicklist];
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
+    
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+}
+
+- (void)requestForOriginalDocument:(EServicesDocumentChecklist *)eServicesDocumentChecklist recordType:(RecordType *)recordType {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    
+    baseServicesVC.currentWebformId = self.eServicesDocumentChecklistObject.eServiceAdministration.editNewVFGenerator;
+    baseServicesVC.currentServiceAdministration = eServicesDocumentChecklist.eServiceAdministration;
+    baseServicesVC.relatedServiceType = RelatedServiceTypeRegistrationDocuments;
+    baseServicesVC.createServiceRecord = NO;
+    
+    NSString *caseType = @"Registration Services";
+    if ([recordType.developerName containsString:@"Leasing"])
+        caseType = @"Leasing Services";
+    
+    baseServicesVC.caseFields = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 eServicesDocumentChecklist.eServiceAdministration.Id, @"Service_Requested__c",
+                                 eServicesDocumentChecklist.eServiceAdministration.editNewVFGenerator, @"Visual_Force_Generator__c",
+                                 [Globals currentAccount].Id, @"AccountId",
+                                 recordType.Id, @"RecordTypeId",
+                                 @"Draft", @"Status",
+                                 caseType, @"Type",
+                                 @"Mobile", @"Origin",
+                                 nil];
+    
+    NSMutableDictionary *paramtersMutableDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                 [Globals currentAccount].Id, @"accountID",
+                                                 [Globals currentAccount].name, @"actName",
+                                                 [Globals currentAccount].currentLicenseNumber.licenseNumberValue, @"licName",
+                                                 [Globals currentAccount].currentLicenseNumber.Id, @"licID",
+                                                 nil];
+    if (self.activeBCTenancyContractObject) {
+        [paramtersMutableDict setObject:self.activeBCTenancyContractObject.Id forKey:@"tenID"];
+        [paramtersMutableDict setObject:self.activeBCTenancyContractObject.name forKey:@"tenName"];
+    }
+    
+    baseServicesVC.parameters = [NSDictionary dictionaryWithDictionary:paramtersMutableDict];
+    
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
+- (void)documentSourceActionSheet:(id)sender {
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"DocumentSourceAlertTitle", @"")
+                                                                         message:NSLocalizedString(@"DocumentSourceAlertMessage", @"")
+                                                                  preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", @"")
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             NSLog(@"Cancel Action");
+                                                         }];
+    
+    UIAlertAction *imagePickerAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"galleryDocumentSource", @"")
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction *action) {
+                                                                  NSLog(@"Imagepicker Action");
+                                                                  [self showImagePickerInViewContoller];
+                                                              }];
+    
+    UIAlertAction *openCameraAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cameraDocumentSource", @"")
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction *action) {
+                                                                 NSLog(@"Camera Action");
+                                                                 [self showCameraInViewContoller];
+                                                             }];
+    
+    [actionSheet addAction:cancelAction];
+    [actionSheet addAction:openCameraAction];
+    [actionSheet addAction:imagePickerAction];
+    
+    actionSheet.popoverPresentationController.sourceView = sender;
+    actionSheet.popoverPresentationController.sourceRect = ((UIView *)sender).bounds;
+    
+    [parentViewController presentViewController:actionSheet animated:YES completion:nil];
+}
+
+- (void)showImagePickerInViewContoller {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+        
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.allowsEditing = NO;
+        _newMedia = NO;
+        
+        [parentViewController presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+
+- (void)showCameraInViewContoller {
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.allowsEditing = YES;
+        _newMedia = YES;
+        
+        [parentViewController presentViewController:imagePicker animated:YES completion:nil];
+        
+        
+    }
+}
+
+- (void)uploadCompanyDocument:(NSData *)attachment {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"DocumentsUploadAlertMessage", @"")];
+        });
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        NSString *attachmentDocumentId = [dict objectForKey:@"id"];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            
+            [self updateCompanyDocumentAttachementId:attachmentDocumentId];
+        });
+    };
+    
+    NSString *string = [attachment base64EncodedStringWithOptions:0];
+    
+    NSDictionary *fields = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"Image", @"Name",
+                            @"image", @"ContentType",
+                            self.companyDocumentObject.Id, @"ParentId",
+                            string, @"Body",
+                            nil];
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    [[SFRestAPI sharedInstance] performCreateWithObjectType:@"Attachment"
+                                                     fields:fields
+                                                  failBlock:errorBlock
+                                              completeBlock:successBlock];
+}
+
+- (void)updateCompanyDocumentAttachementId:(NSString *)attachmentDocumentId {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"DocumentsUploadAlertMessage", @"")];
+        });
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            
+            [self refreshParentViewController];
+        });
+    };
+    
+    NSDictionary *fields = [NSDictionary dictionaryWithObjectsAndKeys:
+                            attachmentDocumentId, @"Attachment_Id__c",
+                            nil];
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    [[SFRestAPI sharedInstance] performUpdateWithObjectType:@"Company_Documents__c"
+                                                   objectId:self.companyDocumentObject.Id
+                                                     fields:fields
+                                                  failBlock:errorBlock
+                                              completeBlock:successBlock];
+}
+
+- (void)refreshParentViewController {
+    SEL selector = @selector(refreshViewController);
+    
+    if ([parentViewController respondsToSelector:selector]) {
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[parentViewController methodSignatureForSelector:selector]];
+        
+        [invocation setSelector:selector];
+        [invocation setTarget:parentViewController];
+        
+        [invocation invoke];
+    }
 }
 
 - (void)relatedServiceNewEmployeeNOCButtonClicked {
@@ -398,6 +712,31 @@
     }
     
     [parentViewController.navigationController pushViewController:recordMainVC animated:YES];
+}
+
+- (void)relatedServiceTypeDocumentTrueCopyButtonClicked {
+    [self requestForOriginalRecordType:self.eServicesDocumentChecklistObject];
+}
+
+- (void)relatedServiceTypeDocumentPreviewButtonClicked {
+    NSString *url = @"";
+    
+    if (self.eServicesDocumentChecklistObject) {
+        url = [NSString stringWithFormat:@"/apex/%@%@", self.eServicesDocumentChecklistObject.templateNameLink, [Globals currentAccount].Id];
+    }
+    else if (self.companyDocumentObject) {
+        url = [NSString stringWithFormat:@"servlet/servlet.FileDownload?file=%@", self.companyDocumentObject.attachmentId];
+    }
+    
+    [self openVisualforcePage:url];
+}
+
+- (void)relatedServiceTypeDocumentEditButtonClicked:(UIButton *)sender {
+    [self documentSourceActionSheet:sender];
+}
+
+- (void)relatedServiceTypeDocumentDeleteButtonClicked {
+    [self confirmDeleteCustomerDocument:self.companyDocumentObject];
 }
 
 
@@ -821,4 +1160,48 @@
     
     recordVC.contractObject = tenancyContract;
 }
+
+
+#pragma mark UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
+    
+    [parentViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        UIImage *image = info[UIImagePickerControllerOriginalImage];
+        UIImage *resizedImage = [UIImageView imageWithImage:image scaledToSize:CGSizeMake(480, 640)];
+        
+        NSData *attachment = UIImagePNGRepresentation(resizedImage);
+        
+        if (_newMedia)
+            UIImageWriteToSavedPhotosAlbum(image,
+                                           self,
+                                           @selector(image:finishedSavingWithError:contextInfo:),
+                                           nil);
+        
+        float documentSize = attachment.length / 1024.0 / 1024.0;
+        
+        if (documentSize > 1)
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"DocumentsSizeAlertMessage", @"")];
+        else
+            [self uploadCompanyDocument:attachment];
+    }
+    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+        // Code here to support video if enabled
+    }
+}
+
+- (void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    if (error) {
+        [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                         Message:@"Failed to save image"];
+    }
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [parentViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
