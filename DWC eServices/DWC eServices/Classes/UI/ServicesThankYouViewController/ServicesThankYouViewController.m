@@ -9,6 +9,7 @@
 #import "ServicesThankYouViewController.h"
 #import "BaseServicesViewController.h"
 #import "HelperClass.h"
+#import "SWRevealViewController.h"
 
 @interface ServicesThankYouViewController ()
 
@@ -20,6 +21,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self initializeMessage];
+    
+    if (self.isNeedHelp)
+        self.navigationItem.hidesBackButton = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,6 +32,12 @@
 }
 
 - (void)initializeMessage {
+    
+    if (self.isNeedHelp) {
+        NSString *message = [NSString stringWithFormat:NSLocalizedString(@"NeedHelpThankYouMessage", @""), self.needHelpCaseNumber];
+        [self.messageTextView setText:message];
+        return;
+    }
     
     NSString *totalPriceString = [HelperClass formatNumberToString:self.baseServicesViewController.createdCaseTotalPrice
                                                        FormatStyle:NSNumberFormatterDecimalStyle
@@ -50,6 +60,11 @@
 }
 
 - (IBAction)closeButtonClicked:(id)sender {
+    if (self.isNeedHelp) {
+        [self.revealViewController.navigationController popToRootViewControllerAnimated:YES];
+        return;
+    }
+    
     [self.baseServicesViewController closeThankYouFlowPage];
 }
 

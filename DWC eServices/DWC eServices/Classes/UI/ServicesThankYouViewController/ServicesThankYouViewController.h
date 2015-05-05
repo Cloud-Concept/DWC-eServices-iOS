@@ -14,6 +14,9 @@
 
 @property (weak, nonatomic) BaseServicesViewController *baseServicesViewController;
 
+@property (assign, nonatomic) BOOL isNeedHelp;
+@property (strong, nonatomic) NSString *needHelpCaseNumber;
+
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 
 - (IBAction)closeButtonClicked:(id)sender;

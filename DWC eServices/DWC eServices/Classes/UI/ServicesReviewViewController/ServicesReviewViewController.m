@@ -89,6 +89,11 @@
             if (![employeeRefDict isKindOfClass:[NSNull class]])
                 requestPersonName = [employeeRefDict objectForKey:@"Name"];
             
+            NSDictionary *serviceRequestedDict = [dict objectForKey:@"Service_Requested__r"];
+            if(![serviceRequestedDict isKindOfClass:[NSNull class]]) {
+                totalAmount = [serviceRequestedDict objectForKey:@"Total_Amount__c"];
+            }
+            
             NSDictionary *invoicesArray = [dict objectForKey:@"Invoices__r"];
             if(![invoicesArray isKindOfClass:[NSNull class]]) {
                 for (NSDictionary *invoiceDict in [invoicesArray objectForKey:@"records"]) {

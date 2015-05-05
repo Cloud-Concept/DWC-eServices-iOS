@@ -118,6 +118,7 @@
 		137610D71AB82E3B0084D878 /* TenancyContract.m in Sources */ = {isa = PBXBuildFile; fileRef = 137610D61AB82E3B0084D878 /* TenancyContract.m */; };
 		137D5ACD1AF8A21C00E67C72 /* ReportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 137D5ACC1AF8A21C00E67C72 /* ReportsViewController.m */; };
 		137D5AD11AF8A40700E67C72 /* UIButton+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 137D5AD01AF8A40700E67C72 /* UIButton+Additions.m */; };
+		137D5AD51AF8CA7200E67C72 /* NeedHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 137D5AD41AF8CA7100E67C72 /* NeedHelpViewController.m */; };
 		1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA121A88B6E700ECED05 /* NewNOCViewController.m */; };
 		1394EA1F1A88D31F00ECED05 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1C1A88D31F00ECED05 /* WYPopoverController.m */; };
 		1394EA201A88D31F00ECED05 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1E1A88D31F00ECED05 /* WYStoryboardPopoverSegue.m */; };
@@ -378,6 +379,8 @@
 		137D5ACC1AF8A21C00E67C72 /* ReportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportsViewController.m; sourceTree = "<group>"; };
 		137D5ACF1AF8A40700E67C72 /* UIButton+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Additions.h"; sourceTree = "<group>"; };
 		137D5AD01AF8A40700E67C72 /* UIButton+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Additions.m"; sourceTree = "<group>"; };
+		137D5AD31AF8CA7100E67C72 /* NeedHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeedHelpViewController.h; sourceTree = "<group>"; };
+		137D5AD41AF8CA7100E67C72 /* NeedHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeedHelpViewController.m; sourceTree = "<group>"; };
 		1394EA111A88B6E700ECED05 /* NewNOCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNOCViewController.h; sourceTree = "<group>"; };
 		1394EA121A88B6E700ECED05 /* NewNOCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNOCViewController.m; sourceTree = "<group>"; };
 		1394EA1B1A88D31F00ECED05 /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
@@ -680,6 +683,7 @@
 				1307BACA1A6F83A4004E6325 /* InitialViewController */,
 				13BCE7641AC9584100AF28C6 /* LicenseRenewViewController */,
 				131F96CA1AA48D7200786B15 /* MyRequestListViewController */,
+				137D5AD21AF8CA5D00E67C72 /* NeedHelpViewController */,
 				131048BE1A9EFCD9006A400B /* NewCardViewController */,
 				1394EA101A88B5C000ECED05 /* NewNOCViewController */,
 				13743ECB1AB04D3700D0B873 /* NotificationListViewCotnroller */,
@@ -1270,6 +1274,15 @@
 				137D5AD01AF8A40700E67C72 /* UIButton+Additions.m */,
 			);
 			path = "UIButton+Additions";
+			sourceTree = "<group>";
+		};
+		137D5AD21AF8CA5D00E67C72 /* NeedHelpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				137D5AD31AF8CA7100E67C72 /* NeedHelpViewController.h */,
+				137D5AD41AF8CA7100E67C72 /* NeedHelpViewController.m */,
+			);
+			path = NeedHelpViewController;
 			sourceTree = "<group>";
 		};
 		1394EA101A88B5C000ECED05 /* NewNOCViewController */ = {
@@ -2044,6 +2057,7 @@
 				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
 				1334F4A11ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m in Sources */,
 				13CFE72E1ABECF13009E47EC /* EServicesDocumentChecklist.m in Sources */,
+				137D5AD51AF8CA7200E67C72 /* NeedHelpViewController.m in Sources */,
 				134053B51AEE35ED007A4773 /* EmployeeExpandedTableViewCell.m in Sources */,
 				13315AC61AAC24DB009E1819 /* CompanyInfoTypeViewController.m in Sources */,
 				133469B51AECFB400029F9B5 /* SwipePageViewController.m in Sources */,

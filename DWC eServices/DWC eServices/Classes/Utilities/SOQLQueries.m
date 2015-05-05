@@ -27,7 +27,7 @@ static NSString *employeeNOCTypesFilter = @"AND Related_to_Object__c = 'NOC' AND
 static NSString *companyNOCTypesFilter = @"AND Related_to_Object__c = 'NOC' AND RecordType.DeveloperName = 'Service_Request' AND NOC_Type__c = 'Company' AND isAvailableOnPortal__c = true AND New_Edit_VF_Generator__c != null";
 static NSString *cardTypesFilter = @"AND Duration__c = '%@' AND Record_Type_Picklist__c = '%@'";
 
-static NSString *caseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, isCourierRequired__c, Employee_Ref__r.Id, Employee_Ref__r.Name, (SELECT ID, Name, Status__c, Amount__c FROM Invoices__r), (SELECT ID, Name, Status__c, Amount__c FROM Invoices1__r)";
+static NSString *caseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, isCourierRequired__c, Employee_Ref__r.Id, Employee_Ref__r.Name, Service_Requested__r.Total_Amount__c, (SELECT ID, Name, Status__c, Amount__c FROM Invoices__r), (SELECT ID, Name, Status__c, Amount__c FROM Invoices1__r)";
 
 static NSString *cardCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, Card_Management__r.Duration__c, Card_Management__r.Card_Type__c, (SELECT ID, Amount__c FROM Invoices__r)";
 
