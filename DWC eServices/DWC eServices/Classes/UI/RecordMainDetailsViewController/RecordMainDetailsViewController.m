@@ -7,7 +7,7 @@
 //
 
 #import "RecordMainDetailsViewController.h"
-#import "UIImageView+MaskImage.h"
+#import "UIImageView+Additions.h"
 #import "UIImageView+SFAttachment.h"
 #import "RecordDetailTableViewCell.h"
 #import "TableViewSection.h"
@@ -23,8 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.showSlidingMenu = NO;
-    self.showBottomTabBar = !self.isBottomBarHidden;
+    self.hideSlidingMenu = YES;
+    self.hideBottomTabBar = self.isBottomBarHidden;
     
     [super setNavigationBarTitle:self.NavBarTitle];
     

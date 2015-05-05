@@ -20,9 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.showSlidingMenu = YES;
-    self.showNotificationIcon = YES;
-    self.showBottomTabBar = YES;
+    //self.hideSlidingMenu = NO;
+    //self.hideNotificationIcon = NO;
+    //self.hideBottomTabBar = NO;
     self.revealViewController.navigationController.navigationBarHidden = YES;
     self.revealViewController.delegate = self;
     
@@ -32,7 +32,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [self initNavigationItem];
     
-    if (!self.showBottomTabBar) {
+    self.revealViewController.delegate = self;
+    
+    if (self.hideBottomTabBar) {
         [self.bottomTabBar removeFromSuperview];
         return;
     }
@@ -44,12 +46,12 @@
 }
 
 - (void)initNavigationItem {
-    if (self.showSlidingMenu)
+    if (!self.hideSlidingMenu)
         [self initSlidingMenu];
     else
         [self initBackButton];
     
-    if (self.showNotificationIcon)
+    if (!self.hideNotificationIcon)
         [self initNotificationIcon];
 }
 
@@ -117,19 +119,15 @@
                                                               image:[UIImage imageNamed:@"TabBar Request Icon"]
                                                                 tag:2];
     
-    UITabBarItem *servicesItem = [[UITabBarItem alloc] initWithTitle:@"SERVICES"
-                                                               image:[UIImage imageNamed:@"TabBar Services Icon"]
-                                                                 tag:3];
-    
     UITabBarItem *reportsItem = [[UITabBarItem alloc] initWithTitle:@"REPORTS"
                                                               image:[UIImage imageNamed:@"TabBar Reports Icon"]
-                                                                tag:4];
+                                                                tag:3];
     
     UITabBarItem *dashboardItem = [[UITabBarItem alloc] initWithTitle:@"DASHBOARD"
                                                                 image:[UIImage imageNamed:@"TabBar Dashboard Icon"]
-                                                                  tag:5];
+                                                                  tag:4];
     
-    NSArray *tabBarItem = @[homeItem, requestItem, servicesItem, reportsItem, dashboardItem];
+    NSArray *tabBarItem = @[homeItem, requestItem, reportsItem, dashboardItem];
     
     [self.bottomTabBar setItems:tabBarItem animated:YES];
     self.bottomTabBar.delegate = self;
@@ -153,7 +151,10 @@
         case 2:
             [self openMyRequestsPage];
             break;
-        case 5:
+        case 3:
+            [self openReportsPage];
+            break;
+        case 4:
             [self openDashBoardPage];
             break;
         default:
@@ -168,6 +169,12 @@
 - (void)openMyRequestsPage {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     UIViewController *myRequestVC = [storybord instantiateViewControllerWithIdentifier:@"My Requests Page"];
+    [self.revealViewController setFrontViewController:myRequestVC animated:YES];
+}
+
+- (void)openReportsPage {
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *myRequestVC = [storybord instantiateViewControllerWithIdentifier:@"Reports Page"];
     [self.revealViewController setFrontViewController:myRequestVC animated:YES];
 }
 
@@ -191,7 +198,7 @@
 }
 
 - (void)refreshNotificationsCount {
-    if (self.showNotificationIcon)
+    if (!self.hideNotificationIcon)
         [self initNotificationIcon];
 }
 

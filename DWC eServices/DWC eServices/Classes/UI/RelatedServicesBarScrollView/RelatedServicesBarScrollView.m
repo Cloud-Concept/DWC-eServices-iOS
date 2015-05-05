@@ -38,6 +38,7 @@
 #import "License.h"
 #import "CompanyDocument.h"
 #import "UIImageView+Additions.h"
+#import "UIButton+Additions.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @implementation RelatedServicesBarScrollView
@@ -174,7 +175,7 @@
         [button setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
         
         [button addTarget:self action:@selector(serviceButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [HelperClass setupButtonWithTextUnderImage:button];
+        [button setupButtonWithTextUnderImage];
         
         button.translatesAutoresizingMaskIntoConstraints = NO;
         
@@ -355,7 +356,7 @@
     VisualforceWebviewViewController *vfWebviewVC = [VisualforceWebviewViewController new];
     
     vfWebviewVC.returnURL = url;
-    vfWebviewVC.VFshowSlidingMenu = NO;
+    vfWebviewVC.hideSlidingMenu = YES;
     [parentViewController.navigationController pushViewController:vfWebviewVC animated:YES];
 }
 

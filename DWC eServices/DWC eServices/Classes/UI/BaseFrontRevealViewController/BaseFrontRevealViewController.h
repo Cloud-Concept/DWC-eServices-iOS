@@ -12,9 +12,9 @@
 @interface BaseFrontRevealViewController : UIViewController <UITabBarDelegate, SWRevealViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITabBar *bottomTabBar;
-@property (nonatomic) BOOL showSlidingMenu;
-@property (nonatomic) BOOL showNotificationIcon;
-@property (nonatomic) BOOL showBottomTabBar;
+@property (nonatomic) BOOL hideSlidingMenu;
+@property (nonatomic) BOOL hideNotificationIcon;
+@property (nonatomic) BOOL hideBottomTabBar;
 @property (nonatomic, copy) void (^navigationItemBackAction)(void);
 
 - (void)setNavigationBarTitle:(NSString *)title;

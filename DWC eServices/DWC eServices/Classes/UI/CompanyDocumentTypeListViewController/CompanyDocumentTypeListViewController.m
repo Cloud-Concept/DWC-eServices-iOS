@@ -30,8 +30,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.showSlidingMenu = NO;
-    
     [self.tableView setDragDelegate:self refreshDatePermanentKey:@""];
     self.tableView.queryLimit = 15;
     

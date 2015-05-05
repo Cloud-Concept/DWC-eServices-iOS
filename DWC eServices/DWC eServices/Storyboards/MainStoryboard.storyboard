@@ -30,6 +30,8 @@
             <string>CorisandeBold</string>
             <string>CorisandeBold</string>
             <string>CorisandeBold</string>
+            <string>CorisandeBold</string>
+            <string>CorisandeBold</string>
         </mutableArray>
         <mutableArray key="Corisande-Light.ttf">
             <string>CorisandeLight</string>
@@ -127,6 +129,7 @@
             <string>CorisandeLight</string>
         </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
@@ -445,6 +448,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="9Yx-mK-EUe" kind="push" identifier="ReportsSlidingMenuSegue" id="Hfl-xx-z9Z"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoA-2D-G5q">
                                         <rect key="frame" x="138" y="0.0" width="225" height="162"/>
@@ -571,6 +577,7 @@
                         <segue destination="ASx-pj-9eg" kind="custom" identifier="sw_front_companyDocs" customClass="SWRevealViewControllerSegueSetController" id="bLm-dC-Q62"/>
                         <segue destination="Cd5-46-KxL" kind="custom" identifier="sw_front_dashboard" customClass="SWRevealViewControllerSegueSetController" id="5D3-hu-lXy"/>
                         <segue destination="plW-Gu-FKn" kind="custom" identifier="sw_front_view_statement" customClass="SWRevealViewControllerSegueSetController" id="QmI-bY-BIH"/>
+                        <segue destination="a7f-rQ-GHt" kind="custom" identifier="sw_front_reports" customClass="SWRevealViewControllerSegueSetController" id="F4s-lC-Kis"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2v-bh-BDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -713,7 +720,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f8h-vG-jzx" id="2e3-a1-lr6">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Slide Menu Reports Icon" translatesAutoresizingMaskIntoConstraints="NO" id="zRJ-TK-XsB">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Slide Menu Company Docs Icon" translatesAutoresizingMaskIntoConstraints="NO" id="zRJ-TK-XsB">
                                             <rect key="frame" x="8" y="8" width="28" height="28"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Company Documents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dP-e7-aAg">
@@ -727,6 +734,27 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="ASx-pj-9eg" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="LyT-w6-0UF"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Reports Cell" id="UAc-AU-bSg">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UAc-AU-bSg" id="M7D-so-2o3">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Slide Menu Reports Icon" translatesAutoresizingMaskIntoConstraints="NO" id="hA6-1z-WA7">
+                                            <rect key="frame" x="8" y="8" width="28" height="28"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reports" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTv-WG-bDS">
+                                            <rect key="frame" x="44" y="11" width="268" height="21"/>
+                                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="12"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="a7f-rQ-GHt" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="2Rx-1x-bAT"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Services Cell" id="Bah-yo-mdK">
@@ -2381,7 +2409,7 @@
         <!--My Request List View Controller-->
         <scene sceneID="cdw-gs-eRb">
             <objects>
-                <viewController id="QAD-wG-nwz" customClass="MyRequestListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="My Requests Inner Page" id="QAD-wG-nwz" customClass="MyRequestListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rzc-wB-qSj"/>
                         <viewControllerLayoutGuide type="bottom" id="00P-AM-qz5"/>
@@ -2584,10 +2612,101 @@
             </objects>
             <point key="canvasLocation" x="1119.5" y="3456.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="coH-br-BfQ">
+            <objects>
+                <navigationController storyboardIdentifier="Reports Page" id="a7f-rQ-GHt" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="h6g-ys-ZwV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eHf-zS-Szd" kind="relationship" relationship="rootViewController" id="6Du-kn-1MH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xja-cr-m9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119.5" y="4217.5"/>
+        </scene>
+        <!--Reports View Controller-->
+        <scene sceneID="KKE-GA-YlG">
+            <objects>
+                <viewController id="eHf-zS-Szd" customClass="ReportsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NjT-2M-nh9"/>
+                        <viewControllerLayoutGuide type="bottom" id="F8J-d3-SO8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PmT-kK-BDb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aj7-Sd-qQG">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="hJj-CD-09P"/>
+                                    <tabBarItem systemItem="more" id="iP5-Tv-aj9"/>
+                                </items>
+                            </tabBar>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvd-Cv-DeD">
+                                <rect key="frame" x="112" y="72" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Gcp-hx-2fE"/>
+                                    <constraint firstAttribute="height" constant="150" id="xf5-aa-1g6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="16"/>
+                                <state key="normal" title="My Requests" image="Notification Card Icon">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="myRequestButtonClicked:" destination="eHf-zS-Szd" eventType="touchUpInside" id="IqT-qs-Qcl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-Ch-tcU">
+                                <rect key="frame" x="112" y="286" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="0cf-d4-vOK"/>
+                                    <constraint firstAttribute="height" constant="150" id="tNM-eS-Mha"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="16"/>
+                                <state key="normal" title="Statement of Account" image="Notification Visa Icon">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="statementOfAccountButtonClicked:" destination="eHf-zS-Szd" eventType="touchUpInside" id="Od4-Qw-uhn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="F8J-d3-SO8" firstAttribute="top" secondItem="aj7-Sd-qQG" secondAttribute="bottom" id="Gil-Qu-nLL"/>
+                            <constraint firstItem="aj7-Sd-qQG" firstAttribute="leading" secondItem="PmT-kK-BDb" secondAttribute="leading" id="HWL-iO-Oco"/>
+                            <constraint firstAttribute="trailing" secondItem="aj7-Sd-qQG" secondAttribute="trailing" id="atN-xd-nsU"/>
+                            <constraint firstItem="Cvd-Cv-DeD" firstAttribute="top" secondItem="NjT-2M-nh9" secondAttribute="bottom" constant="8" id="o10-tA-emd"/>
+                            <constraint firstAttribute="centerX" secondItem="Cvd-Cv-DeD" secondAttribute="centerX" id="oux-2n-LFE"/>
+                            <constraint firstAttribute="centerX" secondItem="aMc-Ch-tcU" secondAttribute="centerX" id="r2L-ta-RnH"/>
+                            <constraint firstItem="aMc-Ch-tcU" firstAttribute="top" secondItem="Cvd-Cv-DeD" secondAttribute="bottom" constant="64" id="wLh-1Q-9eo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Geu-Yd-2iI"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bottomTabBar" destination="aj7-Sd-qQG" id="Jdp-cy-OHq"/>
+                        <outlet property="myRequestButton" destination="Cvd-Cv-DeD" id="Kn0-Dt-w90"/>
+                        <outlet property="statementOfAccountButton" destination="aMc-Ch-tcU" id="B1f-MA-vIm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dwO-K8-u6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1612.5" y="4217.5"/>
+        </scene>
         <!--View Statement List View Controller-->
         <scene sceneID="A6a-DI-TRy">
             <objects>
-                <viewController storyboardIdentifier="View Statement Page" id="4ZM-uf-Vpp" customClass="ViewStatementListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="View Statement Inner Page" id="4ZM-uf-Vpp" customClass="ViewStatementListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eg0-Z7-GNF"/>
                         <viewControllerLayoutGuide type="bottom" id="yOt-iK-Wd6"/>
@@ -3070,7 +3189,10 @@
         <image name="Home Notification Icon" width="31" height="31"/>
         <image name="Home Quick Access Icon" width="32" height="26"/>
         <image name="Home Reports Icon" width="34" height="33"/>
+        <image name="Notification Card Icon" width="53" height="53"/>
+        <image name="Notification Visa Icon" width="53" height="53"/>
         <image name="Services Timeline Bullet Next" width="26" height="26"/>
+        <image name="Slide Menu Company Docs Icon" width="14" height="16"/>
         <image name="Slide Menu Company Info Icon" width="9" height="16"/>
         <image name="Slide Menu Dashboard Icon" width="15" height="15"/>
         <image name="Slide Menu Employee Icon" width="16" height="16"/>
@@ -3078,7 +3200,7 @@
         <image name="Slide Menu Logout Icon" width="19" height="16"/>
         <image name="Slide Menu My Request Icon" width="20" height="12"/>
         <image name="Slide Menu Need Help Icon" width="16" height="14"/>
-        <image name="Slide Menu Reports Icon" width="14" height="16"/>
+        <image name="Slide Menu Reports Icon" width="16" height="16"/>
         <image name="Slide Menu Services Icon" width="16" height="14"/>
         <image name="TabBar Home Icon" width="18" height="17"/>
     </resources>
@@ -3088,11 +3210,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="G7i-Ua-NTi"/>
-        <segue reference="5D3-hu-lXy"/>
-        <segue reference="bLm-dC-Q62"/>
-        <segue reference="Jb9-YF-d8A"/>
-        <segue reference="7qA-mG-EzH"/>
-        <segue reference="2kn-8S-W3V"/>
+        <segue reference="Hfl-xx-z9Z"/>
+        <segue reference="F4s-lC-Kis"/>
+        <segue reference="4VQ-fx-BXn"/>
+        <segue reference="Uzc-9V-jUW"/>
+        <segue reference="UQ7-2u-tlW"/>
+        <segue reference="LyT-w6-0UF"/>
+        <segue reference="pcT-uc-HUH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -43,8 +43,8 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    self.showSlidingMenu = NO;
-    self.showNotificationIcon = NO;
+    self.hideSlidingMenu = YES;
+    self.hideNotificationIcon = YES;
     
     __typeof(self) __weak weakSelf = self;
     self.navigationItemBackAction = ^(void) {

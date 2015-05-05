@@ -21,6 +21,7 @@
 #import "SOQLQueries.h"
 #import "UIImageView+SFAttachment.h"
 #import "ViewStatementListViewController.h"
+#import "UIButton+Additions.h"
 
 @interface HomePageViewController ()
 
@@ -45,7 +46,7 @@
     [self setupHomeButton:self.reportsButton TitleKey:@"homeReportsButton"];
     [self setupHomeButton:self.companyInfoButton TitleKey:@"homeCompanyInfoButton"];
     
-    [HelperClass setupButtonWithBadgeOnImage:self.notificationButton Value:0];
+    [self.notificationButton setupButtonWithBadgeOnImage:0];
     
     shouldLoadLicenseInfo = YES;
     
@@ -71,8 +72,7 @@
 
 - (void)setNotificationNumberBadge {
     [UIApplication sharedApplication].applicationIconBadgeNumber = [[Globals notificationsCount] integerValue];
-    [HelperClass setupButtonWithBadgeOnImage:self.notificationButton
-                                       Value:[[Globals notificationsCount] integerValue]];
+    [self.notificationButton setupButtonWithBadgeOnImage:[[Globals notificationsCount] integerValue]];
 }
 
 - (void)loadCompanyInfoWithLicenseInfo:(BOOL)shouldLoadLicenseInfo andNotificationCount:(BOOL)shouldLoadNotificationCount {
@@ -220,7 +220,7 @@
 
 - (void)setupHomeButton:(UIButton*)button TitleKey:(NSString*)titleKey {
     [button setTitle:NSLocalizedString(titleKey, @"") forState:UIControlStateNormal];
-    [HelperClass setupButtonWithTextUnderImage:button];
+    [button setupButtonWithTextUnderImage];
 }
 
 - (void)logoutButtonClicked:(id)sender {
@@ -274,6 +274,8 @@
         initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_dashboard"];
     else if ([segueIdentifier isEqualToString:@"ViewStatementSlidingMenuSegue"])
         initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_view_statement"];
+    else if ([segueIdentifier isEqualToString:@"ReportsSlidingMenuSegue"])
+        initialSegueID = [NSString stringWithFormat:@"%@%@", SWSegueFrontIdentifier, @"_reports"];
     
     destinationVC.initialSegueIdentifier = initialSegueID;
     

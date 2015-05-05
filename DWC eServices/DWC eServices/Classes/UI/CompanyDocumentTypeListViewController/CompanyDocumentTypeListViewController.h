@@ -14,7 +14,7 @@
 @class DWCCompanyDocument;
 @class TenancyContract;
 
-@interface CompanyDocumentTypeListViewController : BaseFrontRevealViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, SFRestDelegate>
+@interface CompanyDocumentTypeListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, SFRestDelegate>
 {
     NSMutableArray *dataRows;
     TenancyContract *activeBCTenancyContract;

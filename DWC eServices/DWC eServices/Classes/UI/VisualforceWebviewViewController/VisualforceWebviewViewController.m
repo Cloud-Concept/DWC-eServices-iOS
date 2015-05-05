@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.showSlidingMenu = self.VFshowSlidingMenu;
+    //self.showSlidingMenu = self.VFshowSlidingMenu;
     [super setNavigationBarTitle:self.navBarTitle];
     
     [self loadVisualforcePage];

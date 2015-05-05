@@ -31,7 +31,6 @@
     
     //[super setNavigationBarTitle:self.currentDWCEmployee.NavBarTitle];
     
-    self.showSlidingMenu = NO;
     searchBarText = @"";
     
     [self initializeFilterStringArray];

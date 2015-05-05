@@ -8,8 +8,8 @@
 
 #import "RecordRelatedViewController.h"
 #import "RelatedService.h"
-#import "HelperClass.h"
 #import "UIView+RoundCorner.h"
+#import "UIButton+Additions.h"
 
 @interface RecordRelatedViewController ()
 
@@ -123,7 +123,7 @@
                                                     blue:0.89
                                                    alpha:1]];
         [button addTarget:self action:@selector(serviceButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [HelperClass setupButtonWithImageAlignedToLeft:button];
+        [button setupButtonWithImageAlignedToLeft];
         
         [button createRoundBorderedWithRadius:10
                                       Shadows:NO
