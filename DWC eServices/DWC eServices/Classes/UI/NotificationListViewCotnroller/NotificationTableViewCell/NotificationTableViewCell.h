@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NotificationManagement *currentNotification;
 
 @property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *notificationDateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *notificationIcon;
 
 - (void)refreshCellForNotification:(NotificationManagement *)notification;

@@ -45,13 +45,16 @@
     
     NSMutableString *message = [NSMutableString stringWithFormat:NSLocalizedString(@"ServiceThankYouMessage", @""), self.baseServicesViewController.createdCaseNumber];
     
-    if (self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCancelCard) {
+    if (self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCancelCard &&
+        self.baseServicesViewController.relatedServiceType != RelatedServiceTypeNewCard &&
+        self.baseServicesViewController.relatedServiceType != RelatedServiceTypeRenewCard &&
+        self.baseServicesViewController.relatedServiceType != RelatedServiceTypeReplaceCard) {
         [message appendString:@"\r\n \r\n"];
         [message appendFormat:NSLocalizedString(@"ServiceThankYouMessagePayment", @""), totalPriceString];
     }
     
     if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewCompanyNOC ||
-        self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewEmoloyeeNOC) {
+        self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewEmployeeNOC) {
         [message appendString:@"\r\n \r\n \r\n"];
         [message appendFormat:NSLocalizedString(@"ServiceThankYouMessageNOCNote", @""), self.baseServicesViewController.createdCaseNOCEmailReceiver];
     }

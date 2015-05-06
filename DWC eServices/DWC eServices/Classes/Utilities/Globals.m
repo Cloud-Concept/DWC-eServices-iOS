@@ -12,6 +12,7 @@
 @implementation Globals
 
 static NSString *contactId = @"";
+static NSString *contactPersonalPhoto = @"";
 static Account *currentAccount = nil;
 static NSNumber *notificationsCount;
 
@@ -21,6 +22,14 @@ static NSNumber *notificationsCount;
 
 + (void) setContactId:(NSString*)value {
     contactId = value;
+}
+
++ (NSString *) contactPersonalPhoto {
+    return contactPersonalPhoto;
+}
+
++ (void) setContactPersonalPhoto:(NSString *)value {
+    contactPersonalPhoto = value;
 }
 
 + (Account *) currentAccount {

@@ -13,6 +13,7 @@
 #import "TableViewSection.h"
 #import "TableViewSectionField.h"
 #import "RelatedServicesBarScrollView.h"
+#import "NSString+SFAdditions.h"
 
 @interface RecordMainDetailsViewController ()
 
@@ -30,8 +31,11 @@
     
     self.employeeNameLabel.text = self.NameValue;
     
+    if ([self.DefaultPhotoName isEmptyOrWhitespaceAndNewlines])
+        self.DefaultPhotoName = @"Default Person Image";
+    
     [self.profilePictureImageView loadImageFromSFAttachment:self.PhotoId
-                                           placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
+                                           placeholderImage:[UIImage imageNamed:self.DefaultPhotoName]];
     [self.profilePictureImageView maskImageToCircle];
     
     [self setupDetailsView];

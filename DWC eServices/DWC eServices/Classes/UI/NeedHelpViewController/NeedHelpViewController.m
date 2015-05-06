@@ -40,6 +40,26 @@
     [self loadCaseRecordType];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // Register for the events
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillShow:) name: UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillHide:) name: UIKeyboardWillHideNotification object:nil];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -184,6 +204,70 @@
     };
     
     [pickerTableVC showPopoverFromView:senderButton];
+}
+
+#pragma KeyBoard Notifications
+-(void) keyboardWillShow: (NSNotification *)notif {
+    NSDictionary *userInfo = [notif userInfo];
+    
+    // Get the origin of the keyboard when it's displayed.
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    
+    // Get the top of the keyboard as the y coordinate of its origin in self's view's
+    // coordinate system. The bottom of the text view's frame should align with the top
+    // of the keyboard's final position.
+    //
+    CGRect keyboardRect = [aValue CGRectValue];
+    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
+    
+    CGFloat keyboardTop = keyboardRect.origin.y;
+    CGRect newBiddingViewFrame = self.containerView.bounds;
+    newBiddingViewFrame.size.height = keyboardTop - self.containerView.bounds.origin.y;
+    
+    // Get the duration of the animation.
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    scrollViewOffset = self.scrollView.contentOffset;
+    
+    // Animate the resize of the text view's frame in sync with the keyboard's appearance.
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    
+    self.scrollView.frame = newBiddingViewFrame;
+
+    //CGRect textFieldRect = [self.answerTextView frame];
+    //textFieldRect.origin.y += 10;
+    //[self.servicesScrollView scrollRectToVisible:textFieldRect animated:YES];
+    
+    [UIView commitAnimations];
+}
+
+-(void) keyboardWillHide: (NSNotification *)notif {
+    NSDictionary *userInfo = [notif userInfo];
+    
+    /*
+     Restore the size of the text view (fill self's view).
+     Animate the resize so that it's in sync with the disappearance of the keyboard.
+     */
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:animationDuration];
+    
+    self.scrollView.frame = self.containerView.bounds;
+    
+    // Reset the scrollview to previous location
+    self.scrollView.contentOffset = scrollViewOffset;
+    
+    [UIView commitAnimations];
+}
+
+-(void) dismissKeyboard {
+    [self.view endEditing:YES];
 }
 
 @end

@@ -17,12 +17,16 @@
     NSIndexPath *selectedCaseTypeIndexPath;
     
     RecordType *caseRecordType;
+    
+    CGPoint scrollViewOffset;
+    CGRect containerViewFrame;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *caseTypeButton;
 @property (weak, nonatomic) IBOutlet UITextField *subjectTextField;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextArea;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 - (IBAction)submitButtonClicked:(id)sender;
 - (IBAction)caseTypeButtonClicked:(id)sender;

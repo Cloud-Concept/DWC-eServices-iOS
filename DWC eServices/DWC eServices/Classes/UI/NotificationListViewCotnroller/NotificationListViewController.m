@@ -238,7 +238,7 @@
     
     NotificationManagement *currentNotification = [notificationsArray objectAtIndex:indexPath.row];
     
-    return currentNotification.isFeedbackAllowed? 104.0 : 80;
+    return currentNotification.isFeedbackAllowed? 124 : 102;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

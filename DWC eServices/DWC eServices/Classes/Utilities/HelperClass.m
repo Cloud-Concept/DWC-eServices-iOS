@@ -12,7 +12,7 @@
 
 @implementation HelperClass
 
-+ (NSDate*)dateTimeFromString:(NSString*)dateStringValue {
++ (NSDate *)dateTimeFromString:(NSString *)dateStringValue {
     dateStringValue = [HelperClass stringCheckNull:dateStringValue];
     
     if ([dateStringValue isEqualToString:@""]) {
@@ -29,23 +29,23 @@
     return [format dateFromString:dateStringValue];
 }
 
-+ (NSString*)stringCheckNull:(NSString*)stringValue {
++ (NSString *)stringCheckNull:(NSString *)stringValue {
     if(![stringValue isKindOfClass:[NSNull class]] && stringValue)
         return stringValue;
     else
         return @"";
 }
 
-+ (NSNumber*)numberCheckNull:(NSNumber*)numberValue {
++ (NSNumber *)numberCheckNull:(NSNumber *)numberValue {
     if(![numberValue isKindOfClass:[NSNull class]] && numberValue)
         return numberValue;
     else
         return [NSNumber numberWithInt:0];
 }
 
-+ (NSString*)formatDateToString:(NSDate*)date {
++ (NSString *)formatDateToString:(NSDate *)date {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM-dd-yyyy"];
+    [formatter setDateFormat:@"dd-MMM-yyyy"];
     
     NSString *dateStr = [formatter stringFromDate:date];
     
@@ -54,7 +54,18 @@
     return dateStr;
 }
 
-+ (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
++ (NSString *)formatDateTimeToString:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd-MMM-yyyy hh:mm a"];
+    
+    NSString *dateStr = [formatter stringFromDate:date];
+    
+    NSLog(@"%@", dateStr);
+    
+    return dateStr;
+}
+
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     UIGraphicsBeginImageContext( newSize );
     [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -63,7 +74,7 @@
     return newImage;
 }
 
-+ (NSString*)formatNumberToString:(NSNumber*)number FormatStyle:(NSNumberFormatterStyle)numberFormatStyle MaximumFractionDigits:(NSUInteger)fractionDigits {
++ (NSString *)formatNumberToString:(NSNumber *)number FormatStyle:(NSNumberFormatterStyle)numberFormatStyle MaximumFractionDigits:(NSUInteger)fractionDigits {
     NSNumberFormatter *fmt = [[NSNumberFormatter alloc] init];
     [fmt setNumberStyle:numberFormatStyle]; // to get commas (or locale equivalent)
     [fmt setMaximumFractionDigits:fractionDigits]; // to avoid any decimal
@@ -81,7 +92,7 @@
     [alert show];
 }
 
-+ (NSString*)getRelationshipValue:(NSDictionary*)dictionary Key:(NSString*)key {
++ (NSString *)getRelationshipValue:(NSDictionary*)dictionary Key:(NSString *)key {
     if ([key containsString:@"."]) {
         //NSArray *keyValue = [key componentsSeparatedByString:@"."];
         //NSDictionary *newDictionary = [dictionary objectForKey:[keyValue objectAtIndex:0]];
@@ -137,6 +148,12 @@
         iconName = @"Notification Visa Icon";
     else if ([requestType isEqualToString:@"Access Card Services"])
         iconName = @"Notification Card Icon";
+    else if ([requestType isEqualToString:@"Registration Services"])
+        iconName = @"Notification Registration Icon";
+    else if ([requestType isEqualToString:@"Leasing Services"])
+        iconName = @"Notification Leasing Icon";
+    else if ([requestType isEqualToString:@"License Services"])
+        iconName = @"Notification License Icon";
     
     imageView.image = [UIImage imageNamed:iconName];
 }

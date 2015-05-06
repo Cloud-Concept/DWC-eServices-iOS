@@ -75,7 +75,7 @@
     [self.notificationButton setupButtonWithBadgeOnImage:[[Globals notificationsCount] integerValue]];
 }
 
-- (void)loadCompanyInfoWithLicenseInfo:(BOOL)shouldLoadLicenseInfo andNotificationCount:(BOOL)shouldLoadNotificationCount {
+- (void)loadCompanyInfoWithLicenseInfo:(BOOL)loadLicenseInfo andNotificationCount:(BOOL)shouldLoadNotificationCount {
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -100,6 +100,7 @@
         [Globals setCurrentAccount:account];
         
         [Globals setContactId:[dict objectForKey:@"ContactId"]];
+        [Globals setContactPersonalPhoto:[[dict objectForKey:@"Contact"] objectForKey:@"Personal_Photo__c" ]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             loadingCompanyInfo = NO;
@@ -110,7 +111,7 @@
             if (shouldLoadNotificationCount)
                 [self loadNotificationsCount];
             
-            if (shouldLoadLicenseInfo)
+            if (loadLicenseInfo)
                 [self loadLicenseInfo];
         });
         
@@ -120,7 +121,7 @@
     SFUserAccountManager *accountManager = [SFUserAccountManager sharedInstance];
     
     
-    NSArray *fields = @[@"ContactId, Contact.Name", @"Contact.Account.Id", @"Contact.Account.Account_Balance__c", @"Contact.Account.Portal_Balance__c", @"Contact.Account.Name", @"Contact.Account.License_Number_Formula__c", @"Contact.Account.BillingCity", @"Contact.Account.Company_Registration_Date__c", @"Contact.Account.Legal_Form__c", @"Contact.Account.Registration_Number_Value__c", @"Contact.Account.Phone", @"Contact.Account.Fax", @"Contact.Account.Email__c", @"Contact.Account.Mobile__c", @"Contact.Account.PRO_Email__c", @"Contact.Account.PRO_Mobile_Number__c", @"Contact.Account.BillingStreet", @"Contact.Account.BillingPostalCode", @"Contact.Account.BillingCountry", @"Contact.Account.BillingState", @"Contact.Account.Current_License_Number__r.Id", @"Contact.Account.Current_License_Number__r.License_Issue_Date__c", @"Contact.Account.Current_License_Number__r.License_Expiry_Date__c", @"Contact.Account.Current_License_Number__r.Commercial_Name__c", @"Contact.Account.Current_License_Number__r.Commercial_Name_Arabic__c", @"Contact.Account.Current_License_Number__r.License_Number_Value__c", @"Contact.Account.Current_License_Number__r.Validity_Status__c", @"Contact.Account.Current_License_Number__r.RecordType.Id", @"Contact.Account.Current_License_Number__r.RecordType.Name", @"Contact.Account.Current_License_Number__r.RecordType.DeveloperName", @"Contact.Account.Current_License_Number__r.RecordType.SObjectType", @"Contact.Account.Company_Logo__c"];
+    NSArray *fields = @[@"ContactId", @"Contact.Name", @"Contact.Personal_Photo__c", @"Contact.Account.Id", @"Contact.Account.Account_Balance__c", @"Contact.Account.Portal_Balance__c", @"Contact.Account.Name", @"Contact.Account.License_Number_Formula__c", @"Contact.Account.BillingCity", @"Contact.Account.Company_Registration_Date__c", @"Contact.Account.Legal_Form__c", @"Contact.Account.Registration_Number_Value__c", @"Contact.Account.Phone", @"Contact.Account.Fax", @"Contact.Account.Email__c", @"Contact.Account.Mobile__c", @"Contact.Account.PRO_Email__c", @"Contact.Account.PRO_Mobile_Number__c", @"Contact.Account.BillingStreet", @"Contact.Account.BillingPostalCode", @"Contact.Account.BillingCountry", @"Contact.Account.BillingState", @"Contact.Account.Current_License_Number__r.Id", @"Contact.Account.Current_License_Number__r.License_Issue_Date__c", @"Contact.Account.Current_License_Number__r.License_Expiry_Date__c", @"Contact.Account.Current_License_Number__r.Commercial_Name__c", @"Contact.Account.Current_License_Number__r.Commercial_Name_Arabic__c", @"Contact.Account.Current_License_Number__r.License_Number_Value__c", @"Contact.Account.Current_License_Number__r.Validity_Status__c", @"Contact.Account.Current_License_Number__r.RecordType.Id", @"Contact.Account.Current_License_Number__r.RecordType.Name", @"Contact.Account.Current_License_Number__r.RecordType.DeveloperName", @"Contact.Account.Current_License_Number__r.RecordType.SObjectType", @"Contact.Account.Company_Logo__c"];
     
     loadingCompanyInfo = YES;
     [self showLoadingAlertView];

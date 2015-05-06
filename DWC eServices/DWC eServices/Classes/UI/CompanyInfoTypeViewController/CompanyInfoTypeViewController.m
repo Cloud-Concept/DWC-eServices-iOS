@@ -116,6 +116,7 @@
 
 - (void)configureRecordMainViewController:(RecordMainDetailsViewController *)recordVC ForCompany:(Account *)account {
     recordVC.NameValue = account.name;
+    recordVC.PhotoId = account.companyLogo;
     
     NSMutableArray *sectionsArray = [NSMutableArray new];
     NSMutableArray *fieldsArray = [NSMutableArray new];
@@ -153,6 +154,7 @@
 
 - (void)configureRecordMainViewController:(RecordMainDetailsViewController *)recordVC ForLicense:(License *)license Company:(Account *)account{
     recordVC.NameValue = account.name;
+    recordVC.PhotoId = account.companyLogo;
     
     NSMutableArray *sectionsArray = [NSMutableArray new];
     NSMutableArray *fieldsArray = [NSMutableArray new];
@@ -183,35 +185,5 @@
     recordVC.licenseObject = license;
     recordVC.RelatedServicesMask = RelatedServiceTypeLicenseRenewal;
 }
-
-#pragma mark - Table view data source
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    DWCCompanyInfo *currentDWCCompanyInfo = [dwcCompanyInfoTypesArray objectAtIndex:indexPath.row];
-    
-    if (currentDWCCompanyInfo.Type != DWCCompanyInfoCompany && currentDWCCompanyInfo.Type != DWCCompanyInfoLicenseInfo)
-        return;
-    
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    RecordMainDetailsViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
-    
-    recordMainVC.NavBarTitle = currentDWCCompanyInfo.NavBarTitle;
-    
-    switch (currentDWCCompanyInfo.Type) {
-        case DWCCompanyInfoCompany:
-            [self configureRecordMainViewController:recordMainVC ForCompany:[Globals currentAccount]];
-            break;
-            case DWCCompanyInfoLicenseInfo:
-            [self configureRecordMainViewController:recordMainVC ForLicense:[Globals currentAccount].currentLicenseNumber Company:[Globals currentAccount]];
-            break;
-        default:
-            break;
-    }
-    
-    [self.navigationController pushViewController:recordMainVC animated:YES];
-}
-
 
 @end

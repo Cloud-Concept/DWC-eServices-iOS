@@ -14,6 +14,8 @@
 
 + (NSString *) contactId;
 + (void) setContactId:(NSString *)value;
++ (NSString *) contactPersonalPhoto;
++ (void) setContactPersonalPhoto:(NSString *)value;
 + (Account *) currentAccount;
 + (void) setCurrentAccount:(Account *)value;
 + (void)setNotificationsCount:(NSNumber *)value;

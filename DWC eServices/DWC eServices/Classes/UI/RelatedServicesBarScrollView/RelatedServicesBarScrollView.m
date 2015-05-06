@@ -57,7 +57,7 @@
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"New_NOC"
                                                                                 Label:@"New NOC"
                                                                                  Icon:@"Related Service Employee NOC Icon"
-                                                                                 Mask:RelatedServiceTypeNewEmoloyeeNOC]];
+                                                                                 Mask:RelatedServiceTypeNewEmployeeNOC]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"New_NOC_Company"
                                                                                 Label:@"New NOC"
@@ -251,7 +251,7 @@
 - (void)serviceButtonClicked:(UIButton*)sender {
     
     switch (sender.tag) {
-        case RelatedServiceTypeNewEmoloyeeNOC:
+        case RelatedServiceTypeNewEmployeeNOC:
             [self relatedServiceNewEmployeeNOCButtonClicked];
             break;
         case RelatedServiceTypeNewCompanyNOC:
@@ -623,7 +623,7 @@
 }
 
 - (void)relatedServiceNewEmployeeNOCButtonClicked {
-    [self openNewNOCFlow:RelatedServiceTypeNewEmoloyeeNOC];
+    [self openNewNOCFlow:RelatedServiceTypeNewEmployeeNOC];
 }
 
 - (void)relatedServiceNewCompanyNOCButtonClicked {
@@ -784,7 +784,7 @@
     
     NSUInteger servicesMask = 0;
     if ([visa.validityStatus isEqualToString:@"Issued"])
-        servicesMask |= RelatedServiceTypeNewEmoloyeeNOC;
+        servicesMask |= RelatedServiceTypeNewEmployeeNOC;
     
     /*
      if ([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"]) {
@@ -1083,6 +1083,7 @@
 - (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForLeasingInfo:(TenancyContract *)tenancyContract {
     
     recordVC.NameValue = tenancyContract.name;
+    recordVC.DefaultPhotoName = [NSString stringWithFormat:@"Lease %@ Icon", tenancyContract.contractType];
     
     NSMutableArray *sectionsArray = [NSMutableArray new];
     

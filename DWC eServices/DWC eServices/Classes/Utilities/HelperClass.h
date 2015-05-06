@@ -13,6 +13,7 @@
 + (NSString *)stringCheckNull:(NSString *)stringValue;
 + (NSNumber *)numberCheckNull:(NSNumber *)numberValue;
 + (NSString *)formatDateToString:(NSDate *)date;
++ (NSString *)formatDateTimeToString:(NSDate *)date;
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 + (NSString *)formatNumberToString:(NSNumber *)number FormatStyle:(NSNumberFormatterStyle)numberFormatStyle MaximumFractionDigits:(NSUInteger)fractionDigits;
 + (void)displayAlertDialogWithTitle:(NSString *)title Message:(NSString *)message;

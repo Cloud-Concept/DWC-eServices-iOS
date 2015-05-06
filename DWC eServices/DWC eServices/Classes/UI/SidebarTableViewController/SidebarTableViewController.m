@@ -9,6 +9,7 @@
 #import "SidebarTableViewController.h"
 #import "UIImageView+Additions.h"
 #import "SFUserAccountManager.h"
+#import "UIImageView+SFAttachment.h"
 #import "SWRevealViewController.h"
 #import "VisualforceWebviewViewController.h"
 #import "Globals.h"
@@ -66,6 +67,8 @@
     
     if (indexPath.row == 0) {
         UIImageView *imageView = (UIImageView*)[cell viewWithTag:10];
+        [imageView loadImageFromSFAttachment:[Globals contactPersonalPhoto]
+                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
         [imageView maskImageToCircle];
         
         SFUserAccountManager *accountManager = [SFUserAccountManager sharedInstance];

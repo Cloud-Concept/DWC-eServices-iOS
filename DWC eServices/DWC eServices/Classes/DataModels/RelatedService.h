@@ -10,7 +10,7 @@
 
 typedef enum {
     RelatedServiceTypeViewMyRequest = 0,
-    RelatedServiceTypeNewEmoloyeeNOC = 1,
+    RelatedServiceTypeNewEmployeeNOC = 1,
     RelatedServiceTypeNewCard = 2,
     RelatedServiceTypeRenewCard = 4,
     RelatedServiceTypeCancelCard = 8,

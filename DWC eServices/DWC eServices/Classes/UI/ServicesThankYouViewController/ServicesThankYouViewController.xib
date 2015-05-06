@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Corisande-Bold.ttf">
+            <string>CorisandeBold</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
+        </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
-            <string>CorisandeRegular</string>
             <string>CorisandeRegular</string>
         </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ServicesThankYouViewController">
             <connections>
-                <outlet property="messageTextView" destination="9C2-16-sR5" id="yyK-fk-BqK"/>
+                <outlet property="messageTextView" destination="Ltd-D5-5O0" id="8Ws-vp-VQw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,56 +26,55 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9C2-16-sR5">
-                    <rect key="frame" x="16" y="0.0" width="343" height="604"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <color key="textColor" red="0.1803921568627451" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbf-38-T20">
-                    <rect key="frame" x="106" y="612" width="163" height="47"/>
+                    <rect key="frame" x="16" y="612" width="343" height="47"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="47" id="CWs-2V-Mai"/>
-                        <constraint firstAttribute="width" constant="163" id="KLy-Z9-mES"/>
-                        <constraint firstAttribute="width" secondItem="Lbf-38-T20" secondAttribute="height" multiplier="163:47" id="UAc-GV-uvP"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
                     <state key="normal" title="Close" backgroundImage="Blue Button Background">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="UAc-GV-uvP"/>
-                        </mask>
-                    </variation>
                     <connections>
                         <action selector="closeButtonClicked:" destination="-1" eventType="touchUpInside" id="LNW-uX-63O"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank You" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2j-ta-gHv">
+                    <rect key="frame" x="148" y="118" width="80" height="20"/>
+                    <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="17"/>
+                    <color key="textColor" red="0.16862745098039217" green="0.14509803921568629" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltd-D5-5O0">
+                    <rect key="frame" x="16" y="155" width="343" height="437"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <string key="text" base64-UTF8="YES">
+V2UgY2FuIGNvbmZpcm0gdGhhdCB3ZSBoYXZlIHJlY2VpdmVkIHlvdXIgc3VibWlzc2lvbiBhbmQgeW91
+ciBSZWYgTm8jIDAwMDE0NTMKCldlIGNhbiBjb25maXJtIHRoYXQgd2UgaGF2ZSByZWNlaXZlZCB0aGUg
+cGF5bWVudCBvZiBBRUQgNjAgKGluY2x1ZGluZyBrbm93bGVkZ2UgZmVlIG9mIEFFRCAxMCkgAwoKWW91
+IHdpbGwgcmVjZWl2ZSBlLWNvcHkgb2YgeW91ciByZXF1ZXN0IE5PQyBzaG9ydGx5IG9uIGFhZGVsQGNs
+b3VkY29uY2VwdGdyb3VwLmNvbQo
+</string>
+                    <color key="textColor" red="0.16862745100000001" green="0.1450980392" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="0.95686274509803926" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="9C2-16-sR5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2fz-Kn-PLF"/>
-                <constraint firstAttribute="trailing" secondItem="9C2-16-sR5" secondAttribute="trailing" id="A5x-Bx-M9W"/>
-                <constraint firstItem="Lbf-38-T20" firstAttribute="top" secondItem="9C2-16-sR5" secondAttribute="bottom" constant="8" id="B4w-sq-Nmh"/>
-                <constraint firstItem="9C2-16-sR5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WCH-pw-pkE"/>
+                <constraint firstItem="q2j-ta-gHv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="118" id="2gh-HX-EXb"/>
+                <constraint firstItem="Lbf-38-T20" firstAttribute="top" secondItem="Ltd-D5-5O0" secondAttribute="bottom" constant="20" id="Sbt-bT-CcF"/>
+                <constraint firstItem="Ltd-D5-5O0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="Xec-hj-XWi"/>
+                <constraint firstAttribute="centerX" secondItem="q2j-ta-gHv" secondAttribute="centerX" id="XrZ-DC-dlw"/>
                 <constraint firstAttribute="bottom" secondItem="Lbf-38-T20" secondAttribute="bottom" constant="8" id="aKC-xB-nCm"/>
-                <constraint firstItem="Lbf-38-T20" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="106" id="eEG-md-D0B"/>
-                <constraint firstAttribute="trailing" secondItem="9C2-16-sR5" secondAttribute="trailing" constant="16" id="fCS-cq-D7A"/>
-                <constraint firstItem="9C2-16-sR5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="oi1-6a-eSa"/>
-                <constraint firstAttribute="trailing" secondItem="Lbf-38-T20" secondAttribute="trailing" constant="106" id="ouq-vu-BJs"/>
+                <constraint firstItem="Ltd-D5-5O0" firstAttribute="top" secondItem="q2j-ta-gHv" secondAttribute="bottom" constant="17" id="dfk-z8-hRW"/>
+                <constraint firstAttribute="trailing" secondItem="Ltd-D5-5O0" secondAttribute="trailing" constant="16" id="fxG-VD-D4A"/>
+                <constraint firstAttribute="trailing" secondItem="Lbf-38-T20" secondAttribute="trailing" constant="16" id="qGg-p7-jLE"/>
+                <constraint firstItem="Lbf-38-T20" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="zbB-hQ-zC8"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="A5x-Bx-M9W"/>
-                    <exclude reference="WCH-pw-pkE"/>
-                </mask>
-            </variation>
         </view>
     </objects>
     <resources>

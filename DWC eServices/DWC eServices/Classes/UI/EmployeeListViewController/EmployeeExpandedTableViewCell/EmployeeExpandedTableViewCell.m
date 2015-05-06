@@ -63,7 +63,7 @@
     servicesMask = 0;
     
     if ([visa.validityStatus isEqualToString:@"Issued"])
-        servicesMask |= RelatedServiceTypeNewEmoloyeeNOC;
+        servicesMask |= RelatedServiceTypeNewEmployeeNOC;
     
     /*
      if ([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"]) {

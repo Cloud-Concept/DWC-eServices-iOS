@@ -34,8 +34,10 @@
 - (void)refreshCellForTenancyContract:(TenancyContract *)tenancyContract indexPath:(NSIndexPath *)indexPath {
     currentIndexPath = indexPath;
     
+    NSString *defaultImageName =[NSString stringWithFormat:@"Lease %@ Icon", tenancyContract.contractType];
+    
     [self.profilePictureImageView loadImageFromSFAttachment:tenancyContract.personalPhotoId
-                                           placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
+                                           placeholderImage:[UIImage imageNamed:defaultImageName]];
     [self.profilePictureImageView maskImageToCircle];
     
     self.nameLabel.text = tenancyContract.name;

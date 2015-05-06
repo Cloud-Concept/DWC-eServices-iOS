@@ -136,7 +136,7 @@
     NSString *returnQuery;
     
     switch (self.relatedServiceType) {
-        case RelatedServiceTypeNewEmoloyeeNOC:
+        case RelatedServiceTypeNewEmployeeNOC:
         case RelatedServiceTypeNewCompanyNOC:
         case RelatedServiceTypeNewCard:
         case RelatedServiceTypeRenewCard:
@@ -250,7 +250,7 @@
     NSString *navBarTitle = @"";
     
     switch (self.relatedServiceType) {
-        case RelatedServiceTypeNewEmoloyeeNOC:
+        case RelatedServiceTypeNewEmployeeNOC:
         case RelatedServiceTypeNewCompanyNOC:
             navBarTitle = NSLocalizedString(@"navBarNewNOCTitle", @"");
             [self showNOCServiceFlow];
