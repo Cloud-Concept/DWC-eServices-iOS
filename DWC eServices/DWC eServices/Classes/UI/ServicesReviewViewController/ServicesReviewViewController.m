@@ -73,6 +73,7 @@
         NSString *requestStatus;
         NSString *requestType;
         NSString *requestCreatedDate;
+        NSString *requestRejectionReason;
         NSNumber *totalAmount = 0;
         BOOL isCourierRequired;
         NSArray *formFieldsArray;
@@ -84,6 +85,7 @@
             requestType = [HelperClass stringCheckNull:[dict objectForKey:@"Type"]];
             requestCreatedDate = [HelperClass stringCheckNull:[dict objectForKey:@"CreatedDate"]];
             isCourierRequired = [[dict objectForKey:@"isCourierRequired__c"] boolValue];
+            requestRejectionReason = [HelperClass stringCheckNull:[dict objectForKey:@"Application_Rejection_Reason__c"]];
             
             NSDictionary *employeeRefDict = [dict objectForKey:@"Employee_Ref__r"];
             if (![employeeRefDict isKindOfClass:[NSNull class]])
@@ -153,6 +155,7 @@
                         totalAmount:totalAmount
                   isCourierRequired:isCourierRequired
                   requestPersonName:requestPersonName
+                    requestRejectionReason:requestRejectionReason
                     formFieldsArray:formFieldsArray];
         });
     };
@@ -174,7 +177,7 @@
                                    completeBlock:successBlock];
 }
 
-- (void)displayReviewForm:(NSString *)requestNumber requestStatus:(NSString *)requestStatus requestType:(NSString *)requestType requestCreatedDate:(NSString *)requestCreatedDate totalAmount:(NSNumber *)totalAmount isCourierRequired:(BOOL) isCourierRequired requestPersonName:(NSString *)requestPersonName formFieldsArray:(NSArray *)formFieldsArray {
+- (void)displayReviewForm:(NSString *)requestNumber requestStatus:(NSString *)requestStatus requestType:(NSString *)requestType requestCreatedDate:(NSString *)requestCreatedDate totalAmount:(NSNumber *)totalAmount isCourierRequired:(BOOL) isCourierRequired requestPersonName:(NSString *)requestPersonName requestRejectionReason:(NSString *)requestRejectionReason formFieldsArray:(NSArray *)formFieldsArray {
     [self initServiceFieldsContentView];
     NSDate *createdDate = [SFDateUtil SOQLDateTimeStringToDate:requestCreatedDate];
     
@@ -213,6 +216,14 @@
     else {
         [self.requestPersonNameValueLabel removeFromSuperview];
         [self.requestPersonNameLabel removeFromSuperview];
+    }
+    
+    if ([requestType isEqualToString:@"Access Card Services"] && [requestStatus isEqualToString:@"Application Rejected"]) {
+        self.requestRejectionReasonValueLabel.text = requestRejectionReason;
+    }
+    else {
+        [self.requestRejectionReasonValueLabel removeFromSuperview];
+        [self.requestRejectionReasonLabel removeFromSuperview];
     }
     
     [servicesContentView drawReviewFormWithFormFieldsArray:formFieldsArray

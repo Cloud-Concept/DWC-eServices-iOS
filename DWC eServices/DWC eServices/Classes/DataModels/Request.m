@@ -28,8 +28,13 @@
     self.subType = [HelperClass stringCheckNull:[requestDict objectForKey:@"Sub_Type__c"]];
     self.subTypeFormula = [HelperClass stringCheckNull:[requestDict objectForKey:@"Sub_Type_Formula__c"]];
     self.webFormId = [HelperClass stringCheckNull:[requestDict objectForKey:@"Web_Form__c"]];
+    self.applicationRejectionReason = [HelperClass stringCheckNull:[requestDict objectForKey:@"Application_Rejection_Reason__c"]];
+    
+    
     self.caseRatingScore = [HelperClass numberCheckNull:[requestDict objectForKey:@"Case_Rating_Score__c"]];
+    
     self.createdDate = [SFDateUtil SOQLDateTimeStringToDate:[requestDict objectForKey:@"CreatedDate"]];
+    
     self.caseRecordType = [[RecordType alloc] initRecordType:[requestDict objectForKey:@"RecordType"]];
     self.employeeRef = [[Account alloc] initAccount:[requestDict objectForKey:@"Employee_Ref__r"]];
     

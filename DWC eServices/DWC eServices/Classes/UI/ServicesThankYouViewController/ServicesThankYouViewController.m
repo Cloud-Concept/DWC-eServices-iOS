@@ -32,10 +32,9 @@
 }
 
 - (void)initializeMessage {
-    
     if (self.isNeedHelp) {
         NSString *message = [NSString stringWithFormat:NSLocalizedString(@"NeedHelpThankYouMessage", @""), self.needHelpCaseNumber];
-        [self.messageTextView setText:message];
+        self.messageTextView.text = message;
         return;
     }
     
@@ -59,7 +58,9 @@
         [message appendFormat:NSLocalizedString(@"ServiceThankYouMessageNOCNote", @""), self.baseServicesViewController.createdCaseNOCEmailReceiver];
     }
     
-    [self.messageTextView setText:message];
+    self.messageTextView.text = message;
+    
+    [self.messageTextView setTextAlignment:NSTextAlignmentCenter];
 }
 
 - (IBAction)closeButtonClicked:(id)sender {

@@ -22,6 +22,7 @@
 #import "UIImageView+SFAttachment.h"
 #import "ViewStatementListViewController.h"
 #import "UIButton+Additions.h"
+#import "SFAuthenticationManager.h"
 
 @interface HomePageViewController ()
 
@@ -113,6 +114,8 @@
             
             if (loadLicenseInfo)
                 [self loadLicenseInfo];
+            
+            [self checkLicenseExpiryDate];
         });
         
     };
@@ -247,6 +250,37 @@
     logoutBarButtonItem.action = @selector(logoutButtonClicked:);
     
     self.navigationItem.rightBarButtonItem = logoutBarButtonItem;
+}
+
+- (void)checkLicenseExpiryDate {
+    
+    NSTimeInterval daysToExpire = [[Globals currentAccount].currentLicenseNumber.licenseExpiryDate timeIntervalSinceNow] / (3600 * 24);
+    
+    if (daysToExpire <= -30 || YES) {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"LicenseExpiredAlertTitle", @"")
+                                                                       message:NSLocalizedString(@"LicenseExpiredAlertMessage", @"")
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *retryAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"retry", @"")
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction *action) {
+                                                              shouldLoadLicenseInfo = YES;
+                                                              [self loadCompanyInfoWithLicenseInfo:shouldLoadLicenseInfo andNotificationCount:YES];
+                                                              shouldLoadLicenseInfo = NO;
+                                                          }];
+        
+        UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"logout", @"")
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             [[SFAuthenticationManager sharedManager] logout];
+                                                         }];
+        
+        [alert addAction:logoutAction];
+        [alert addAction:retryAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }
 }
 
 //*

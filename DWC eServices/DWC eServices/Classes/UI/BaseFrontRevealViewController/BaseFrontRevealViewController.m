@@ -10,6 +10,7 @@
 #import "BBBadgeBarButtonItem.h"
 #import "Globals.h"
 #import "NSString+SFAdditions.h"
+#import "HelperClass.h"
 
 @interface BaseFrontRevealViewController ()
 
@@ -23,6 +24,8 @@
     //self.hideSlidingMenu = NO;
     //self.hideNotificationIcon = NO;
     //self.hideBottomTabBar = NO;
+    self.navigationItem.hidesBackButton = YES;
+    
     self.revealViewController.navigationController.navigationBarHidden = YES;
     self.revealViewController.delegate = self;
     
@@ -48,11 +51,13 @@
 - (void)initNavigationItem {
     if (!self.hideSlidingMenu)
         [self initSlidingMenu];
-    else
+    else if (!self.hideBackButton)
         [self initBackButton];
     
     if (!self.hideNotificationIcon)
         [self initNotificationIcon];
+    else if (self.showLogoutButton)
+        [self setLogoutNavBarButton];
 }
 
 - (void)initBackButton {
@@ -200,6 +205,19 @@
 - (void)refreshNotificationsCount {
     if (!self.hideNotificationIcon)
         [self initNotificationIcon];
+}
+
+- (void)setLogoutNavBarButton {
+    UIBarButtonItem *logoutBarButtonItem = [UIBarButtonItem new];
+    logoutBarButtonItem.image = [UIImage imageNamed:@"Navigation Bar Logout Icon"];
+    logoutBarButtonItem.target = self;
+    logoutBarButtonItem.action = @selector(logoutButtonClicked:);
+    
+    self.navigationItem.rightBarButtonItem = logoutBarButtonItem;
+}
+
+- (void)logoutButtonClicked:(id)sender {
+    [HelperClass showLogoutConfirmationDialog:self];
 }
 
 #pragma mark - SWRevealViewControllerDelegate Protocol

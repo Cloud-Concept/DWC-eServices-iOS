@@ -15,6 +15,8 @@
 @property (nonatomic) BOOL hideSlidingMenu;
 @property (nonatomic) BOOL hideNotificationIcon;
 @property (nonatomic) BOOL hideBottomTabBar;
+@property (nonatomic) BOOL hideBackButton;
+@property (nonatomic) BOOL showLogoutButton;
 @property (nonatomic, copy) void (^navigationItemBackAction)(void);
 
 - (void)setNavigationBarTitle:(NSString *)title;

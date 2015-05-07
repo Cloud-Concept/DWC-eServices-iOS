@@ -27,5 +27,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *requestStatusValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *requestTotalAmountValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *requestTotalAmountLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *requestRejectionReasonValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *requestRejectionReasonLabel;
 @end
