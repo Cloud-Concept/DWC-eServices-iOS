@@ -256,7 +256,7 @@
     
     NSTimeInterval daysToExpire = [[Globals currentAccount].currentLicenseNumber.licenseExpiryDate timeIntervalSinceNow] / (3600 * 24);
     
-    if (daysToExpire <= -30 || YES) {
+    if (daysToExpire <= -30) {
         
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"LicenseExpiredAlertTitle", @"")
                                                                        message:NSLocalizedString(@"LicenseExpiredAlertMessage", @"")
