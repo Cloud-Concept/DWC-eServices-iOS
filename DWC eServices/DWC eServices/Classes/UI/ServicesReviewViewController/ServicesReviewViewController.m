@@ -203,7 +203,9 @@
     self.requestTypeValueLabel.text = requestType;
     
     //Show/Hide Total Amount
-    if (self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCancelCard) {
+    if (self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCancelCard &&
+        self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCompanyAddressChange &&
+        self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCompanyNameChange) {
         self.requestTotalAmountValueLabel.text = [HelperClass formatNumberToString:totalAmount
                                                                        FormatStyle:NSNumberFormatterDecimalStyle
                                                              MaximumFractionDigits:2];

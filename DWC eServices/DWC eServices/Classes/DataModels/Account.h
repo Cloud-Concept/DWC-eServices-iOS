@@ -37,6 +37,8 @@
 @property (nonatomic, strong) NSString *billingState;
 @property (nonatomic, strong) NSString *nationality;
 @property (nonatomic, strong) NSString *companyLogo;
+@property (nonatomic, strong) NSString *arabicAccountName;
+
 @property (nonatomic, strong) License *currentLicenseNumber;
 @property (nonatomic, strong) Passport *currentPassport;
 

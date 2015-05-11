@@ -183,7 +183,9 @@
         case RelatedServiceTypeCompanyAddressChange:
             formFieldsMutableArray = [self getAddressChangeFields];
             break;
-            
+        case RelatedServiceTypeCompanyNameChange:
+            formFieldsMutableArray = [self getNameChangeFields];
+            break;
         default:
             break;
     }
@@ -232,6 +234,22 @@
     if (!activeBCTenancyContract) {
         [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"PO_Box__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"AddressChangePOBox", @"") FieldValue:currentAccount.billingPostalCode IsParameter:NO IsRequired:YES]];
     }
+    
+    return [NSArray arrayWithArray:formFieldsMutableArray];
+}
+
+- (NSArray *)getNameChangeFields {
+    NSMutableArray *formFieldsMutableArray = [NSMutableArray new];
+    
+    Account *currentAccount = [Globals currentAccount];
+    
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"CurrentNameInformation" Type:@"CUSTOMTEXT" MobileLabel:NSLocalizedString(@"CurrentNameInformation", @"") FieldValue:@"" IsParameter:NO]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Company_Name_Before_Registration__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"NameChangeNameBefore", @"") FieldValue:currentAccount.name IsParameter:YES]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Company_Arabic_Name_Before_Registration__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"NameChangeNameArabicBefore", @"") FieldValue:currentAccount.arabicAccountName IsParameter:YES]];
+    
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"NewNameInformation" Type:@"CUSTOMTEXT" MobileLabel:NSLocalizedString(@"NewNameInformation", @"") FieldValue:@"" IsParameter:NO]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"New_Company_Name__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"NameChangeName", @"") FieldValue:@"" IsParameter:NO IsRequired:YES]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"New_Company_Name_Arabic__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"NameChangeNameArabic", @"") FieldValue:@"" IsParameter:NO IsRequired:NO]];
     
     return [NSArray arrayWithArray:formFieldsMutableArray];
 }

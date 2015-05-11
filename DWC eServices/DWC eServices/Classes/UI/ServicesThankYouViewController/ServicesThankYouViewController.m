@@ -47,7 +47,9 @@
     if (self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCancelCard &&
         self.baseServicesViewController.relatedServiceType != RelatedServiceTypeNewCard &&
         self.baseServicesViewController.relatedServiceType != RelatedServiceTypeRenewCard &&
-        self.baseServicesViewController.relatedServiceType != RelatedServiceTypeReplaceCard) {
+        self.baseServicesViewController.relatedServiceType != RelatedServiceTypeReplaceCard &&
+        self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCompanyNameChange &&
+        self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCompanyAddressChange) {
         [message appendString:@"\r\n \r\n"];
         [message appendFormat:NSLocalizedString(@"ServiceThankYouMessagePayment", @""), totalPriceString];
     }

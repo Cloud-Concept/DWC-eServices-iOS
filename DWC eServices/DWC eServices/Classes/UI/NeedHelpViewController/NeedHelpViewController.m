@@ -51,7 +51,7 @@
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
     
-    [self.view addGestureRecognizer:tap];
+    [self.containerView addGestureRecognizer:tap];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -189,6 +189,13 @@
 "AddressChangeEmail" = "New Email";
 "AddressChangePOBox" = "New PO Box";
 
+"CurrentNameInformation" = "Current Company Name";
+"NameChangeNameBefore" = "Current Company Name";
+"NameChangeNameArabicBefore" = "Current Company Name - Arabic";
+"NewNameInformation" = "New Company Name";
+"NameChangeName" = "New Company Name";
+"NameChangeNameArabic" = "New Company Name - Arabic";
+
 "RecordMainRecordDetialsTitle" = "DETAILS";
 "RecordMainRecordRelatedServicesTitle" = "RELATED SERVICES";
 

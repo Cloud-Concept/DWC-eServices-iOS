@@ -561,13 +561,15 @@
     attachmentsReturned = 0;
     failedImagedArray = [NSMutableArray new];
     
+    NSString *relatedObjectName = (!self.serviceFieldCaseObjectName || [self.serviceFieldCaseObjectName isEmptyOrWhitespaceAndNewlines]) ? self.currentWebForm.objectName : self.serviceFieldCaseObjectName;
+    
     for (EServiceDocument *doc in documentsArray) {
         NSDictionary *fields = [NSDictionary dictionaryWithObjectsAndKeys:
                                 doc.name, @"Name",
                                 doc.Id, @"eServices_Document__c",
                                 [Globals currentAccount].Id, @"Company__c",
                                 insertedCaseId, @"Request__c",
-                                insertedServiceId, self.currentWebForm.objectName,
+                                insertedServiceId, relatedObjectName,
                                 nil];
         
         void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {

@@ -807,6 +807,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="v1V-QF-OY9" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="LSR-qc-FQb"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Logout Cell" id="Jx4-zi-acZ">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -3418,11 +3421,12 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="GVR-mm-TFb"/>
-        <segue reference="7qA-mG-EzH"/>
-        <segue reference="5D3-hu-lXy"/>
-        <segue reference="Jb9-YF-d8A"/>
-        <segue reference="bLm-dC-Q62"/>
-        <segue reference="2kn-8S-W3V"/>
-        <segue reference="F4s-lC-Kis"/>
+        <segue reference="2Rx-1x-bAT"/>
+        <segue reference="4VQ-fx-BXn"/>
+        <segue reference="UQ7-2u-tlW"/>
+        <segue reference="LSR-qc-FQb"/>
+        <segue reference="pcT-uc-HUH"/>
+        <segue reference="Uzc-9V-jUW"/>
+        <segue reference="LyT-w6-0UF"/>
     </inferredMetricsTieBreakers>
 </document>
