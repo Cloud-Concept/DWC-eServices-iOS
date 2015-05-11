@@ -58,6 +58,7 @@ typedef enum {
 @property (strong, nonatomic) NSDictionary *serviceFields;
 @property (strong, nonatomic) NSDictionary *parameters;
 @property (strong, nonatomic) NSString *currentWebformId;
+@property (strong, nonatomic) NSString *serviceFieldCaseObjectName;
 
 @property (strong, nonatomic) NSString *createdCaseNumber;
 @property (strong, nonatomic) NSNumber *createdCaseTotalPrice;

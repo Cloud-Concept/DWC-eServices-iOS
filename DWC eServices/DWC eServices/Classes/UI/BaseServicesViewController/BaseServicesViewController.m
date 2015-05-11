@@ -32,6 +32,8 @@
 #import "License.h"
 #import "SFDateUtil.h"
 #import "CardManagement.h"
+#import "CompanyAmendmentViewController.h"
+#import "NSString+SFAdditions.h"
 
 @interface BaseServicesViewController ()
 
@@ -135,6 +137,8 @@
 - (NSString *)getCaseReviewQuery {
     NSString *returnQuery;
     
+    NSString *relatedObjectName = (!self.serviceFieldCaseObjectName || [self.serviceFieldCaseObjectName isEmptyOrWhitespaceAndNewlines]) ? self.currentWebForm.objectName : self.serviceFieldCaseObjectName;
+    
     switch (self.relatedServiceType) {
         case RelatedServiceTypeNewEmployeeNOC:
         case RelatedServiceTypeNewCompanyNOC:
@@ -144,7 +148,9 @@
         case RelatedServiceTypeCancelCard:
         case RelatedServiceTypeViewMyRequest:
         case RelatedServiceTypeRegistrationDocuments:
-            returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:self.currentWebForm.objectName];
+        case RelatedServiceTypeCompanyAddressChange:
+        case RelatedServiceTypeCompanyNameChange:
+            returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:relatedObjectName];
             break;
         case RelatedServiceTypeContractRenewal:
             returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:@"Tenancy_Contract__c" AddRelatedFields:NO];
@@ -296,6 +302,14 @@
             navBarTitle = NSLocalizedString(@"navBarRenewLicenseTitle", @"");
             [self showLicenseRenewalFlow];
             break;
+        case RelatedServiceTypeCompanyAddressChange:
+            navBarTitle = NSLocalizedString(@"navBarCompanyAddressChange", @"");
+            [self showCompanyAmendmentServiceFlow];
+            break;
+        case RelatedServiceTypeCompanyNameChange:
+            navBarTitle = NSLocalizedString(@"navBarCompanyNameChange", @"");
+            [self showCompanyAmendmentServiceFlow];
+            break;
         default:
             break;
     }
@@ -303,6 +317,13 @@
     currentServiceFlowType = ServiceFlowInitialPage;
     
     [super setNavigationBarTitle:navBarTitle];
+}
+
+- (void)showCompanyAmendmentServiceFlow {
+    CompanyAmendmentViewController *companyAmendmentVC = [CompanyAmendmentViewController new];
+    companyAmendmentVC.baseServicesViewController = self;
+    [self addChildViewController:companyAmendmentVC toView:self.serviceFlowView];
+    //[viewControllersStack pushObject:companyAmendmentVC];
 }
 
 - (void)showViewMyRequestFlow {
@@ -427,9 +448,10 @@
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self hideLoadingDialog];
+            
             [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
                                              Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
-            [self hideLoadingDialog];
         });
         
     };
@@ -478,8 +500,11 @@
     [self showLoadingDialog];
     
     NSMutableDictionary *mutableServiceFields = [NSMutableDictionary dictionaryWithDictionary:self.serviceFields];
-    [mutableServiceFields setObject:insertedCaseId forKey:@"Request__c"];
-    [mutableServiceFields setObject:self.currentWebForm.Id forKey:@"Web_Form__c"];
+    if (self.relatedServiceType != RelatedServiceTypeCompanyAddressChange &&
+        self.relatedServiceType != RelatedServiceTypeCompanyNameChange) {
+        [mutableServiceFields setObject:insertedCaseId forKey:@"Request__c"];
+        [mutableServiceFields setObject:self.currentWebForm.Id forKey:@"Web_Form__c"];
+    }
     
     if (insertedServiceId != nil && ![insertedServiceId isEqualToString:@""])
         [[SFRestAPI sharedInstance] performUpdateWithObjectType:self.currentWebForm.objectName
@@ -496,8 +521,11 @@
 
 - (void)updateCaseObject:(NSString*)caseId ServiceId:(NSString*)ServiceId {
     
+    if (!self.serviceFieldCaseObjectName || [self.serviceFieldCaseObjectName isEmptyOrWhitespaceAndNewlines])
+        self.serviceFieldCaseObjectName = self.currentWebForm.objectName;
+    
     NSDictionary *fields = [NSDictionary dictionaryWithObjectsAndKeys:
-                            ServiceId, self.currentWebForm.objectName,
+                            ServiceId, self.serviceFieldCaseObjectName,
                             nil];
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
@@ -691,7 +719,9 @@
     NSString *functionName = @"MobilePayAndSubmitWebService";
     
     if (self.relatedServiceType == RelatedServiceTypeContractRenewal ||
-        self.relatedServiceType == RelatedServiceTypeLicenseRenewal) {
+        self.relatedServiceType == RelatedServiceTypeLicenseRenewal ||
+        self.relatedServiceType == RelatedServiceTypeCompanyAddressChange ||
+        self.relatedServiceType == RelatedServiceTypeCompanyNameChange) {
         functionName = @"MobileSubmitAndPayRequestWebService";
     }
     

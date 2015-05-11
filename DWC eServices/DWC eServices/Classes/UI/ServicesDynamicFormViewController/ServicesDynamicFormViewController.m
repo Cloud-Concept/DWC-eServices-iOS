@@ -39,7 +39,7 @@
         }
     };
     
-    if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeContractRenewal || self.baseServicesViewController.relatedServiceType == RelatedServiceTypeLicenseRenewal)
+    if (!self.baseServicesViewController.currentWebformId)
         [self displayWebForm];
     else
         [self.baseServicesViewController getWebFormWithReturnBlock:returnBlock];

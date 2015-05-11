@@ -178,6 +178,17 @@
 "LicenseCommercialNameArabic" = "Commercial Name - Arabic";
 "LicenseNumberValue" = "License Number";
 
+"CurrentAddressInformation" = "Current Address Information";
+"AddressChangeMobileBefore" = "Current Mobile";
+"AddressChangeFaxBefore" = "Current Fax";
+"AddressChangeEmailBefore" = "Current Email";
+"AddressChangePOBoxBefore" = "Current PO Box";
+"NewAddressInformation" = "New Address Information";
+"AddressChangeMobile" = "New Mobile";
+"AddressChangeFax" = "New Fax";
+"AddressChangeEmail" = "New Email";
+"AddressChangePOBox" = "New PO Box";
+
 "RecordMainRecordDetialsTitle" = "DETAILS";
 "RecordMainRecordRelatedServicesTitle" = "RELATED SERVICES";
 
@@ -218,4 +229,6 @@
 "navBarDWCCompanyDocumentTypeCustomerDocumentTitle" = "CUSTOMER DOCUMENTS";
 "navBarStatementTitle" = "STATEMENT";
 "navBarNeedHelpTitle" = "NEED HELP";
+"navBarCompanyAddressChange" = "ADDRESS CHANGE";
+"navBarCompanyNameChange" = "COMPANY NAME CHANGE";
 

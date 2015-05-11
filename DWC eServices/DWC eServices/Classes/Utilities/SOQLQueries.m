@@ -59,6 +59,8 @@ static NSString *renewLicenseServiceAdminQuery = @"SELECT ID, Name, Display_Name
 
 static NSString *freeZonePaymentsQuery = @"SELECT Id, Name, CreatedDate, Transaction_Date__c, Paypal_Amount__c, Status__c, Payment_Type__c, Debit_Amount__c, Credit_Amount__c, Closing_Balance__C, Narrative__c, Effect_on_Account__c FROM Free_Zone_Payment__c WHERE Free_Zone_Customer__c = '%@' AND Effect_on_Account__c IN ('Credit', 'Debit') %@ ORDER BY CreatedDate DESC LIMIT %d OFFSET %d";
 
+static NSString *amendementServiceAdminQuery = @"SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Is_Active__c = true AND Service_Identifier__c = '%@'";
+
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
 }
@@ -190,5 +192,9 @@ static NSString *freeZonePaymentsQuery = @"SELECT Id, Name, CreatedDate, Transac
         queryFilter = [NSString stringWithFormat:@"AND %@", datesFilter];
     
     return [NSString stringWithFormat:freeZonePaymentsQuery, [Globals currentAccount].Id, queryFilter, limit, offset];
+}
+
++ (NSString *)amendementServiceAdminQuery:(NSString *)serviceIdentifier {
+    return [NSString stringWithFormat:amendementServiceAdminQuery, serviceIdentifier];
 }
 @end

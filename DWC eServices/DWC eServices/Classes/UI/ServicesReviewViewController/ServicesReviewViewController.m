@@ -16,6 +16,7 @@
 #import "BaseServicesViewController.h"
 #import "SFDateUtil.h"
 #import "Invoice.h"
+#import "NSString+SFAdditions.h"
 
 @interface ServicesReviewViewController ()
 
@@ -113,7 +114,9 @@
             
             self.baseServicesViewController.createdCaseTotalPrice = totalAmount;
             
-            NSString *parentLookup = [self.baseServicesViewController.currentWebForm.objectName stringByReplacingOccurrencesOfString:@"__c" withString:@"__r"];
+            NSString *relatedObjectName = (!self.baseServicesViewController.serviceFieldCaseObjectName || [self.baseServicesViewController.serviceFieldCaseObjectName isEmptyOrWhitespaceAndNewlines]) ? self.baseServicesViewController.currentWebForm.objectName : self.baseServicesViewController.serviceFieldCaseObjectName;
+            
+            NSString *parentLookup = [relatedObjectName stringByReplacingOccurrencesOfString:@"__c" withString:@"__r"];
             
             NSDictionary *serviceDict;
             

@@ -18,6 +18,16 @@
 }
 
 - (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue IsParameter:(BOOL)IsParameter {
+    return [self initFormField:formFieldId
+                          Name:Name
+                          Type:Type
+                   MobileLabel:MobileLabel
+                    FieldValue:FieldValue
+                   IsParameter:IsParameter
+                    IsRequired:NO];
+}
+
+- (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue IsParameter:(BOOL)IsParameter IsRequired:(BOOL)IsRequired {
     id formField = [self initFormField:formFieldId
                                   Name:Name
                            APIRequired:NO
@@ -37,7 +47,7 @@
                             PhoneValue:nil
                          PicklistValue:nil
                        PicklistEntries:nil
-                              Required:NO
+                              Required:IsRequired
                      TextAreaLongValue:nil
                          TextAreaValue:nil
                              TextValue:nil

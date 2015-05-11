@@ -119,6 +119,10 @@
 		137D5ACD1AF8A21C00E67C72 /* ReportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 137D5ACC1AF8A21C00E67C72 /* ReportsViewController.m */; };
 		137D5AD11AF8A40700E67C72 /* UIButton+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 137D5AD01AF8A40700E67C72 /* UIButton+Additions.m */; };
 		137D5AD51AF8CA7200E67C72 /* NeedHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 137D5AD41AF8CA7100E67C72 /* NeedHelpViewController.m */; };
+		1385164D1AFF424200ACF4B3 /* RegistrationAmendment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1385164C1AFF424200ACF4B3 /* RegistrationAmendment.m */; };
+		138516521AFF4EF500ACF4B3 /* CompanyAmendmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 138516501AFF4EF500ACF4B3 /* CompanyAmendmentViewController.m */; };
+		138516531AFF4EF500ACF4B3 /* CompanyAmendmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138516511AFF4EF500ACF4B3 /* CompanyAmendmentViewController.xib */; };
+		138516561AFF676D00ACF4B3 /* DWCContactInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 138516551AFF676D00ACF4B3 /* DWCContactInfo.m */; };
 		1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA121A88B6E700ECED05 /* NewNOCViewController.m */; };
 		1394EA1F1A88D31F00ECED05 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1C1A88D31F00ECED05 /* WYPopoverController.m */; };
 		1394EA201A88D31F00ECED05 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1E1A88D31F00ECED05 /* WYStoryboardPopoverSegue.m */; };
@@ -381,6 +385,13 @@
 		137D5AD01AF8A40700E67C72 /* UIButton+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Additions.m"; sourceTree = "<group>"; };
 		137D5AD31AF8CA7100E67C72 /* NeedHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeedHelpViewController.h; sourceTree = "<group>"; };
 		137D5AD41AF8CA7100E67C72 /* NeedHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeedHelpViewController.m; sourceTree = "<group>"; };
+		1385164B1AFF424200ACF4B3 /* RegistrationAmendment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationAmendment.h; sourceTree = "<group>"; };
+		1385164C1AFF424200ACF4B3 /* RegistrationAmendment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationAmendment.m; sourceTree = "<group>"; };
+		1385164F1AFF4EF500ACF4B3 /* CompanyAmendmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyAmendmentViewController.h; sourceTree = "<group>"; };
+		138516501AFF4EF500ACF4B3 /* CompanyAmendmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyAmendmentViewController.m; sourceTree = "<group>"; };
+		138516511AFF4EF500ACF4B3 /* CompanyAmendmentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyAmendmentViewController.xib; sourceTree = "<group>"; };
+		138516541AFF676D00ACF4B3 /* DWCContactInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCContactInfo.h; sourceTree = "<group>"; };
+		138516551AFF676D00ACF4B3 /* DWCContactInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCContactInfo.m; sourceTree = "<group>"; };
 		1394EA111A88B6E700ECED05 /* NewNOCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNOCViewController.h; sourceTree = "<group>"; };
 		1394EA121A88B6E700ECED05 /* NewNOCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNOCViewController.m; sourceTree = "<group>"; };
 		1394EA1B1A88D31F00ECED05 /* WYPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYPopoverController.h; sourceTree = "<group>"; };
@@ -668,6 +679,7 @@
 				132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */,
 				1318193D1A91CA9C00CAA4D6 /* BaseServicesViewController */,
 				134B8A1C1AD6B428005CCAD5 /* BBBadgeBarButtonItem */,
+				1385164E1AFF4EE500ACF4B3 /* CompanyAmendmentViewController */,
 				133E34C91ABFFA37002C3748 /* CompanyDocumentTypeListViewController */,
 				13CFE7321ABEEEF6009E47EC /* CompanyDocumentTypeViewController */,
 				13315ACD1AAC662A009E1819 /* CompanyInfoListViewController */,
@@ -784,6 +796,8 @@
 				13CFE7371ABEF1D6009E47EC /* DWCCompanyDocument.m */,
 				13315AC71AAC3845009E1819 /* DWCCompanyInfo.h */,
 				13315AC81AAC3845009E1819 /* DWCCompanyInfo.m */,
+				138516541AFF676D00ACF4B3 /* DWCContactInfo.h */,
+				138516551AFF676D00ACF4B3 /* DWCContactInfo.m */,
 				130C300B1A78E7BF00C95600 /* DWCEmployee.h */,
 				130C300C1A78E7BF00C95600 /* DWCEmployee.m */,
 				13081AEB1A76559D00B33509 /* EServiceAdministration.h */,
@@ -822,6 +836,8 @@
 				1331D21E1AC7E2D600B4AAD5 /* Quote.m */,
 				13081AF11A76559D00B33509 /* RecordType.h */,
 				13081AF21A76559D00B33509 /* RecordType.m */,
+				1385164B1AFF424200ACF4B3 /* RegistrationAmendment.h */,
+				1385164C1AFF424200ACF4B3 /* RegistrationAmendment.m */,
 				13481AEE1A823A5B00093331 /* RelatedService.h */,
 				13481AEF1A823A5B00093331 /* RelatedService.m */,
 				130E09651AA5B84400E6ED59 /* Request.h */,
@@ -1283,6 +1299,16 @@
 				137D5AD41AF8CA7100E67C72 /* NeedHelpViewController.m */,
 			);
 			path = NeedHelpViewController;
+			sourceTree = "<group>";
+		};
+		1385164E1AFF4EE500ACF4B3 /* CompanyAmendmentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1385164F1AFF4EF500ACF4B3 /* CompanyAmendmentViewController.h */,
+				138516501AFF4EF500ACF4B3 /* CompanyAmendmentViewController.m */,
+				138516511AFF4EF500ACF4B3 /* CompanyAmendmentViewController.xib */,
+			);
+			path = CompanyAmendmentViewController;
 			sourceTree = "<group>";
 		};
 		1394EA101A88B5C000ECED05 /* NewNOCViewController */ = {
@@ -1975,6 +2001,7 @@
 				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
 				130523E81A99F96800EF2268 /* ServicesReviewViewController.xib in Resources */,
 				13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */,
+				138516531AFF4EF500ACF4B3 /* CompanyAmendmentViewController.xib in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1986,6 +2013,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1385164D1AFF424200ACF4B3 /* RegistrationAmendment.m in Sources */,
 				13EE67981A7E556F00255174 /* RecordMainDetailsViewController.m in Sources */,
 				13081AF71A76559D00B33509 /* Account.m in Sources */,
 				130C30011A78DE0200C95600 /* EmployeeTableViewCell.m in Sources */,
@@ -2042,6 +2070,7 @@
 				134053BC1AEE50B5007A4773 /* FTWCache.m in Sources */,
 				13743ECE1AB04D4400D0B873 /* NotificationListViewController.m in Sources */,
 				13F39B0A1AE7CCEA003AA84E /* DashboardViewController.m in Sources */,
+				138516561AFF676D00ACF4B3 /* DWCContactInfo.m in Sources */,
 				1334F49F1ADE790000297ACE /* DragTableGestureObserver_ot.m in Sources */,
 				13E006F31AEFCBFA005EE312 /* CompanyInfoListLeasingExpandedTableViewCell.m in Sources */,
 				13315AD01AAC663D009E1819 /* CompanyInfoListViewController.m in Sources */,
@@ -2049,6 +2078,7 @@
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,
 				131F96CD1AA48D8400786B15 /* MyRequestListViewController.m in Sources */,
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
+				138516521AFF4EF500ACF4B3 /* CompanyAmendmentViewController.m in Sources */,
 				13081AFA1A76559D00B33509 /* EServiceAdministration.m in Sources */,
 				13481AF01A823A5B00093331 /* RelatedService.m in Sources */,
 				13F5A5A71AB0B64A00D92591 /* NotificationTableViewCell.m in Sources */,

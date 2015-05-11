@@ -135,6 +135,16 @@
                                                                                  Icon:@"Related Service Delete Icon"
                                                                                  Mask:RelatedServiceTypeDocumentDelete]];
     
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Address_Change"
+                                                                                Label:@"Address Change"
+                                                                                 Icon:@"Related Service Company Address Change Icon"
+                                                                                 Mask:RelatedServiceTypeCompanyAddressChange]];
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Name_Change"
+                                                                                Label:@"Name Change"
+                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Mask:RelatedServiceTypeCompanyNameChange]];
+    
     relatedServicesArray = relatedServicesMutableArray;
 }
 
@@ -299,6 +309,12 @@
         case RelatedServiceTypeDocumentDelete:
             [self relatedServiceTypeDocumentDeleteButtonClicked];
             break;
+        case RelatedServiceTypeCompanyAddressChange:
+            [self relatedServiceTypeCompanyAddressChangeButtonClicked];
+            break;
+        case RelatedServiceTypeCompanyNameChange:
+            [self relatedServiceTypeCompanyNameChangeButtonClicked];
+            break;
         default:
             break;
     }
@@ -349,6 +365,17 @@
     baseServicesVC.relatedServiceType = RelatedServiceTypeLicenseRenewal;
     baseServicesVC.currentLicense = self.licenseObject;
     baseServicesVC.createServiceRecord = NO;
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
+- (void)openNewCompanyAmendmentService:(RelatedServiceType)serviceType {
+    if (!parentViewController)
+        return;
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = serviceType;
+    baseServicesVC.createServiceRecord = YES;
     [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
@@ -740,6 +767,13 @@
     [self confirmDeleteCustomerDocument:self.companyDocumentObject];
 }
 
+- (void)relatedServiceTypeCompanyAddressChangeButtonClicked {
+    [self openNewCompanyAmendmentService:RelatedServiceTypeCompanyAddressChange];
+}
+
+- (void)relatedServiceTypeCompanyNameChangeButtonClicked {
+    [self openNewCompanyAmendmentService:RelatedServiceTypeCompanyNameChange];
+}
 
 
 - (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForPermanentEmployee:(Visa*)visa {

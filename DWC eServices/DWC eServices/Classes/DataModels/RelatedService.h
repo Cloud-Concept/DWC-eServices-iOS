@@ -27,6 +27,8 @@ typedef enum {
     RelatedServiceTypeDocumentPreview = 16384,
     RelatedServiceTypeDocumentEdit = 32768,
     RelatedServiceTypeDocumentDelete = 65536,
+    RelatedServiceTypeCompanyAddressChange = 131072,
+    RelatedServiceTypeCompanyNameChange = 262144,
 }RelatedServiceType;
 
 @interface RelatedService : NSObject
