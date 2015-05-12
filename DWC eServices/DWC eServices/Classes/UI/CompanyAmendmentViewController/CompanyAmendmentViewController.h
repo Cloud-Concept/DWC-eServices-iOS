@@ -30,6 +30,9 @@
     BOOL isLoadingTenancyContracts;
     BOOL isLoadingDWCContactInfo;
     BOOL isLoadingServiceIdentifier;
+    BOOL isLoadingCompanyNames;
+    
+    NSArray *companyNamesArray;
     
     NSString *caseSubType;
 }

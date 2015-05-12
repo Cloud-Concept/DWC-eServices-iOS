@@ -10,6 +10,7 @@
 #import "HelperClass.h"
 #import "SFDateUtil.h"
 #import "SFUserAccountManager.h"
+#import "FormFieldValidation.h"
 
 @implementation FormField
 
@@ -28,6 +29,17 @@
 }
 
 - (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue IsParameter:(BOOL)IsParameter IsRequired:(BOOL)IsRequired {
+    return [self initFormField:formFieldId
+                          Name:Name
+                          Type:Type
+                   MobileLabel:MobileLabel
+                    FieldValue:FieldValue
+                   IsParameter:IsParameter
+                    IsRequired:IsRequired
+     formFieldValidationsArray:nil];
+}
+
+- (id)initFormField:(NSString *)formFieldId Name:(NSString *)Name Type:(NSString*)Type MobileLabel:(NSString *)MobileLabel FieldValue:(NSString*)FieldValue IsParameter:(BOOL)IsParameter IsRequired:(BOOL)IsRequired formFieldValidationsArray:(NSArray *)formFieldValidationsArray {
     id formField = [self initFormField:formFieldId
                                   Name:Name
                            APIRequired:NO
@@ -60,6 +72,7 @@
                            MobileOrder:nil];
     
     formFieldValue = FieldValue;
+    self.formFieldValidations = formFieldValidationsArray;
     
     return formField;
 }
@@ -204,6 +217,9 @@
     copy.nameNoSpace = _nameNoSpace;
     copy.isDependentPicklist = _isDependentPicklist;
     copy.controllingField = _controllingField;
+    copy.shouldBeCloned = _shouldBeCloned;
+    
+    copy.formFieldValidations = _formFieldValidations;
     
     [copy setPicklistNamesDictionary:picklistNamesDictionary PicklistValuesDictionary:picklistValuesDictionary];
     [copy setFormFieldValue:formFieldValue];
@@ -491,6 +507,21 @@
     selectedPicklistIndexPath = nil;
     formFieldValue = nil;
     [((UIButton*)fieldView) setTitle:self.mobileLabel forState:UIControlStateNormal];
+}
+
+- (BOOL)validateField {
+    BOOL returnValidation = YES;
+    
+    for (FormFieldValidation *validation in self.formFieldValidations) {
+        if (![validation compare:formFieldValue]) {
+            returnValidation = NO;
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:validation.errorMessage];
+            break;
+        }
+    }
+    
+    return returnValidation;
 }
 
 #pragma UIPopoverControllerDelegate

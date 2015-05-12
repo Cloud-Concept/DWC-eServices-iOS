@@ -18,6 +18,7 @@
 #import "WebForm.h"
 #import "EServiceAdministration.h"
 #import "SOQLQueries.h"
+#import "FormFieldValidation.h"
 
 @interface CompanyAmendmentViewController ()
 
@@ -33,6 +34,7 @@
     [self loadTenancyContract];
     [self loadDwcContactInfo];
     [self loadEServiceAdministration];
+    [self loadCompanyNames];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,6 +82,41 @@
     NSString *selectQuery = @"SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE SObjectType IN ('Case', 'Registration_Amendments__c') AND DeveloperName IN ('Registration_Request', 'Address_Change' , 'Company_Name_Change' , 'Director_Removal' , 'Capital_Change')";
     
     isLoadingRecordTypes = YES;
+    [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
+}
+
+- (void)loadCompanyNames {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
+            isLoadingCompanyNames = NO;
+            [self hideLoadingDialog];
+        });
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        
+        NSMutableArray *namesMutableArray = [NSMutableArray new];
+        for (NSDictionary *obj in [dict objectForKey:@"records"]) {
+            Account *account = [[Account alloc] initAccount:obj];
+            [namesMutableArray addObject:account.name];
+        }
+        
+        companyNamesArray = [NSArray arrayWithArray:namesMutableArray];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            isLoadingCompanyNames = NO;
+            [self hideLoadingDialog];
+        });
+    };
+    
+    [self.baseServicesViewController showLoadingDialog];
+    
+    NSString *selectQuery = [NSString stringWithFormat:@"SELECT Id, Name FROM Account WHERE Id != '%@' AND RecordType.DeveloperName = 'DWC_Account_Registered'", [Globals currentAccount].Id];
+    
+    isLoadingCompanyNames = YES;
     [[SFRestAPI sharedInstance] performSOQLQuery:selectQuery
                                        failBlock:errorBlock
                                    completeBlock:successBlock];
@@ -227,12 +264,14 @@
         [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"PO_Box_Before_Change__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"AddressChangePOBoxBefore", @"") FieldValue:currentAccount.billingPostalCode IsParameter:YES]];
     }
     
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"NewAddressInformation" Type:@"CUSTOMTEXT" MobileLabel:NSLocalizedString(@"NewAddressInformation", @"") FieldValue:@"" IsParameter:NO]];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"NewAddressInformation" Type:@"CUSTOMTEXT" MobileLabel:NSLocalizedString(@"NewAddressInformation", @"") FieldValue:@"" IsParameter:NO IsRequired:NO]];
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Mobile__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"AddressChangeMobile", @"") FieldValue:currentAccount.mobile IsParameter:NO IsRequired:YES]];
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Fax__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"AddressChangeFax", @"") FieldValue:currentAccount.fax IsParameter:NO IsRequired:YES]];
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"E_Mail__c" Type:@"EMAIL" MobileLabel:NSLocalizedString(@"AddressChangeEmail", @"") FieldValue:currentAccount.email IsParameter:NO IsRequired:YES]];
-    if (!activeBCTenancyContract) {
-        [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"PO_Box__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"AddressChangePOBox", @"") FieldValue:currentAccount.billingPostalCode IsParameter:NO IsRequired:YES]];
+    if (!activeBCTenancyContract || YES) {
+        FormFieldValidation *POBoxValidation = [[FormFieldValidation alloc] initFormFieldValidationWithValue:dwcContactInfo.poBox compareType:FormFieldValidationComparisonNotEqual errorMessage:NSLocalizedString(@"POBoxDWCReservedAlertMessage", @"")];
+        
+        [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"PO_Box__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"AddressChangePOBox", @"") FieldValue:currentAccount.billingPostalCode IsParameter:NO IsRequired:YES formFieldValidationsArray:@[POBoxValidation]]];
     }
     
     return [NSArray arrayWithArray:formFieldsMutableArray];
@@ -248,14 +287,18 @@
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Company_Arabic_Name_Before_Registration__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"NameChangeNameArabicBefore", @"") FieldValue:currentAccount.arabicAccountName IsParameter:YES]];
     
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"NewNameInformation" Type:@"CUSTOMTEXT" MobileLabel:NSLocalizedString(@"NewNameInformation", @"") FieldValue:@"" IsParameter:NO]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"New_Company_Name__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"NameChangeName", @"") FieldValue:@"" IsParameter:NO IsRequired:YES]];
+    
+    FormFieldValidation *namesValidation = [[FormFieldValidation alloc] initFormFieldValidationWithArray:companyNamesArray compareType:FormFieldValidationComparisonNotEqual errorMessage:NSLocalizedString(@"CompanyNameReservedAlertMessage", @"")];
+    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"New_Company_Name__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"NameChangeName", @"") FieldValue:@"" IsParameter:NO IsRequired:YES formFieldValidationsArray:@[namesValidation]]];
+    
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"New_Company_Name_Arabic__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"NameChangeNameArabic", @"") FieldValue:@"" IsParameter:NO IsRequired:NO]];
     
     return [NSArray arrayWithArray:formFieldsMutableArray];
 }
 
 - (void)hideLoadingDialog {
-    if (isLoadingTenancyContracts || isLoadingRecordTypes || isLoadingDWCContactInfo ||isLoadingServiceIdentifier) {
+    if (isLoadingTenancyContracts || isLoadingRecordTypes || isLoadingDWCContactInfo ||
+        isLoadingServiceIdentifier || isLoadingCompanyNames) {
         return;
     }
     

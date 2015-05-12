@@ -40,6 +40,8 @@
 "DocumentsSizeAlertMessage" = "All documents should be less than 1 MB";
 "InvalidEmailFormatsAlertMessage" = "Invalid email format.";
 "LicenseExpiredAlertMessage" = "Your company licence has expired. You must renew your licence in order to continue with DWC smart services.You may renew your licence by logging into the DWC web portal or by visiting a DWC office";
+"POBoxDWCReservedAlertMessage" = "You can not use this P.O Box because it is reserved by DWC.";
+"CompanyNameReservedAlertMessage" = "This Company name is reserved by another registered company";
 
 "galleryDocumentSource" = "Gallery";
 "cameraDocumentSource" = "Camera";

@@ -89,6 +89,10 @@
         return;
     }
     
+    if (![self formFieldValidations]) {
+        return;
+    }
+    
     NSMutableDictionary *newFields = [NSMutableDictionary dictionaryWithDictionary:self.baseServicesViewController.serviceFields];
     
     if ([self.baseServicesViewController.currentWebForm.objectName isEqualToString:@"Case"])
@@ -313,6 +317,19 @@
     for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
         if ([formField.type isEqualToString:@"EMAIL"] && ![[formField getFormFieldValue] isValidEmail])
             returnValue = NO;
+    }
+    
+    return returnValue;
+}
+
+- (BOOL)formFieldValidations {
+    BOOL returnValue = YES;
+    
+    for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
+        if (![formField validateField]) {
+            returnValue = NO;
+            break;
+        }
     }
     
     return returnValue;

@@ -10,12 +10,12 @@
 
 @interface DWCContactInfo : NSObject
 
-@property (nonatomic, weak) NSString *accountNumber;
-@property (nonatomic, weak) NSString *bankAccountName;
-@property (nonatomic, weak) NSString *bankName;
-@property (nonatomic, weak) NSString *iBANNumber;
-@property (nonatomic, weak) NSString *poBox;
-@property (nonatomic, weak) NSString *swiftCode;
+@property (nonatomic, strong) NSString *accountNumber;
+@property (nonatomic, strong) NSString *bankAccountName;
+@property (nonatomic, strong) NSString *bankName;
+@property (nonatomic, strong) NSString *iBANNumber;
+@property (nonatomic, strong) NSString *poBox;
+@property (nonatomic, strong) NSString *swiftCode;
 
 - (id)initDWCContactInfo:(NSDictionary *)infoDict;
 
