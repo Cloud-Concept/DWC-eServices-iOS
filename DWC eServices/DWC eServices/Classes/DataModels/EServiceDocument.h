@@ -24,6 +24,8 @@
 @property (strong, nonatomic) NSString *companyDocumentId;
 @property (strong, nonatomic) NSData *attachment;
 @property (nonatomic) BOOL attachmentUploaded;
+@property (nonatomic) BOOL existingDocument;
+@property (strong, nonatomic) NSString* existingDocumentAttachmentId;
 
 - (id)initEServiceDocument:(NSDictionary *)eServiceDocumentDict;
 /*

@@ -14,6 +14,9 @@
 #import "BaseServicesViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "UIImageView+Additions.h"
+#import "DWCCompanyDocument.h"
+#import "SOQLQueries.h"
+#import "CompanyDocument.h"
 
 @interface ServicesUploadViewController ()
 
@@ -61,6 +64,10 @@
     BOOL isValid = YES;
     
     for (EServiceDocument *document in self.baseServicesViewController.currentServiceAdministration.serviceDocumentsArray) {
+        if (document.existingDocument && document.existingDocumentAttachmentId) {
+            continue;
+        }
+        
         if (!document.attachment)
             isValid = NO;
     }
@@ -160,6 +167,32 @@
     }
 }
 
+- (void)showExistingDocumentSelectForDocument:(EServiceDocument *)document {
+    DWCCompanyDocument *dwcCompanyDocument = [[DWCCompanyDocument alloc]
+                                              initDWCCompanyDocument:NSLocalizedString(@"DWCCompanyDocumentTypeCustomerDocument", @"")
+                                              NavBarTitle:NSLocalizedString(@"navBarDWCCompanyDocumentTypeCustomerDocumentTitle", @"")
+                                              DWCCompanyDocumentType:DWCCompanyDocumentTypeCustomerDocument
+                                              Query:[SOQLQueries customerDocumentsQuery]];
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    CompanyDocumentTypeListViewController *companyDocListVC = [storybord instantiateViewControllerWithIdentifier:@"Company Document List Page"];
+    companyDocListVC.currentDocumentType = dwcCompanyDocument;
+    companyDocListVC.selectDocumentDelegate = self;
+    companyDocListVC.isSelectDocument = YES;
+    currentUploadingDocument = document;
+    
+    [self presentViewController:companyDocListVC animated:YES completion:nil];
+}
+
+#pragma mark CompanyDocumentTypeListSelectDocumentDelegate
+- (void)didSelectCompanyDocument:(CompanyDocument *)companyDocument {
+    currentUploadingDocument.existingDocument = YES;
+    currentUploadingDocument.existingDocumentAttachmentId = companyDocument.attachmentId;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [currentUploadingDocument refreshButton];
+}
+
 #pragma mark UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     NSString *mediaType = info[UIImagePickerControllerMediaType];
@@ -171,6 +204,7 @@
         UIImage *resizedImage = [UIImageView imageWithImage:image scaledToSize:CGSizeMake(480, 640)];
         
         currentUploadingDocument.attachment = UIImagePNGRepresentation(resizedImage);
+        currentUploadingDocument.existingDocument = NO;
         [currentUploadingDocument refreshButton];
         
         if (_newMedia)

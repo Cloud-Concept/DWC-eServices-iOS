@@ -166,6 +166,15 @@
     [self tableRefresh];
 }
 
+- (void)documentSelectetAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.selectDocumentDelegate)
+        return;
+    
+    CompanyDocument *companyDocument = [dataRows objectAtIndex:indexPath.row];
+    
+    [self.selectDocumentDelegate didSelectCompanyDocument:companyDocument];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -197,6 +206,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray* rows = [NSMutableArray arrayWithCapacity:2];
+    
+    if (self.isSelectDocument) {
+        [self documentSelectetAtIndexPath:indexPath];
+        return;
+    }
     
     if (expandedRowIndexPath)
         [rows addObject:expandedRowIndexPath];

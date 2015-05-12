@@ -66,6 +66,8 @@
 
 - (void)deleteDocument {
     self.attachment = nil;
+    self.existingDocument = NO;
+    self.existingDocumentAttachmentId = @"";
     [self refreshButton];
 }
 
@@ -74,7 +76,7 @@
 }
 
 - (void)documentButtonClicked:(id)sender {
-    if (self.attachment) {
+    if (self.attachment || (self.existingDocument && self.existingDocumentAttachmentId)) {
         [ServiceDocumentHelperClass confirmDeleteDocument:self
                                            ViewController:buttonParentViewController];
     }

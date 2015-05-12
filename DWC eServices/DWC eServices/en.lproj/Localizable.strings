@@ -45,6 +45,7 @@
 
 "galleryDocumentSource" = "Gallery";
 "cameraDocumentSource" = "Camera";
+"existingDocumentSource" = "Existing Document";
 
 "homeDashboardButton" = "DASHBOARD";
 "homeMyRequestButton" = "MY REQUEST";

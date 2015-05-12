@@ -13,6 +13,12 @@
 
 @class DWCCompanyDocument;
 @class TenancyContract;
+@class CompanyDocument;
+@protocol CompanyDocumentTypeListSelectDocumentDelegate <NSObject>
+
+- (void)didSelectCompanyDocument:(CompanyDocument *)companyDocument;
+
+@end
 
 @interface CompanyDocumentTypeListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, SFRestDelegate>
 {
@@ -24,8 +30,12 @@
     NSIndexPath *expandedRowIndexPath;
 }
 
+@property (nonatomic) id<CompanyDocumentTypeListSelectDocumentDelegate> selectDocumentDelegate;
+
 @property (nonatomic, strong) DWCCompanyDocument *currentDocumentType;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (assign, nonatomic) BOOL isSelectDocument;
 
 - (void)refreshViewController;
 

@@ -38,7 +38,7 @@
 }
 
 + (void)refreshButton:(UIButton *)button forDocument:(EServiceDocument *)document {
-    NSString *backgroundImageName = document.attachment ? @"Delete Button" : @"Add Button";
+    NSString *backgroundImageName = document.attachment || (document.existingDocument && document.existingDocumentAttachmentId) ? @"Delete Button" : @"Add Button";
     
     [button setBackgroundImage:[UIImage imageNamed:backgroundImageName]
                       forState:UIControlStateNormal];
@@ -93,8 +93,16 @@
                                                                  [ServiceDocumentHelperClass showCameraInViewContoller:viewController forDocument:document];
                                                              }];
     
+    UIAlertAction *existingDocumentAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"existingDocumentSource", @"")
+                                                                     style:UIAlertActionStyleDefault
+                                                                   handler:^(UIAlertAction *action) {
+                                                                       NSLog(@"Camera Action");
+                                                                       [ServiceDocumentHelperClass showExistingDocumentSelectInViewContoller:viewController forDocument:document];
+                                                                   }];
+    
     [actionSheet addAction:cancelAction];
     [actionSheet addAction:openCameraAction];
+    [actionSheet addAction:existingDocumentAction];
     [actionSheet addAction:imagePickerAction];
     
     actionSheet.popoverPresentationController.sourceView = sender;
@@ -120,6 +128,21 @@
 
 + (void)showCameraInViewContoller:(UIViewController *)viewController forDocument:(EServiceDocument *)document {
     SEL selector = @selector(showCameraForDocument:);
+    
+    if ([viewController respondsToSelector:selector]) {
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[viewController methodSignatureForSelector:selector]];
+        
+        [invocation setSelector:selector];
+        [invocation setTarget:viewController];
+        
+        [invocation setArgument:&(document) atIndex:2];
+        
+        [invocation invoke];
+    }
+}
+
++ (void)showExistingDocumentSelectInViewContoller:(UIViewController *)viewController forDocument:(EServiceDocument *)document {
+    SEL selector = @selector(showExistingDocumentSelectForDocument:);
     
     if ([viewController respondsToSelector:selector]) {
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[viewController methodSignatureForSelector:selector]];

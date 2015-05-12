@@ -41,6 +41,12 @@
     //[self loadMyRequests];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self tableRefresh];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -200,9 +206,6 @@
     BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
     baseServicesVC.relatedServiceType = RelatedServiceTypeViewMyRequest;
     baseServicesVC.currentWebformId = request.webFormId;
-    baseServicesVC.backAction = ^(void) {
-        [self tableRefresh];
-    };
     [baseServicesVC initializeCaseId:request.Id];
     [self.navigationController pushViewController:baseServicesVC animated:YES];
 }

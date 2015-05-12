@@ -63,7 +63,7 @@
 - (void)backButtonPressed {
     
     if (self.backAction && self.relatedServiceType != RelatedServiceTypeViewMyRequest) {
-        self.backAction();
+        //self.backAction();
     }
     
     if (viewControllersStack.count <= 1) {
@@ -217,6 +217,9 @@
 - (void)popChildViewController {
     UIViewController *currentVC = [viewControllersStack popObject];
     [self removeChildVC:currentVC];
+    
+    if (currentServiceFlowType == ServiceFlowAttachmentsPage && self.backAction)
+        self.backAction();
     
     currentServiceFlowType--;
     
@@ -564,19 +567,27 @@
     NSString *relatedObjectName = (!self.serviceFieldCaseObjectName || [self.serviceFieldCaseObjectName isEmptyOrWhitespaceAndNewlines]) ? self.currentWebForm.objectName : self.serviceFieldCaseObjectName;
     
     for (EServiceDocument *doc in documentsArray) {
-        NSDictionary *fields = [NSDictionary dictionaryWithObjectsAndKeys:
-                                doc.name, @"Name",
-                                doc.Id, @"eServices_Document__c",
-                                [Globals currentAccount].Id, @"Company__c",
-                                insertedCaseId, @"Request__c",
-                                insertedServiceId, relatedObjectName,
-                                nil];
+        NSMutableDictionary *fields = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       doc.name, @"Name",
+                                       doc.Id, @"eServices_Document__c",
+                                       [Globals currentAccount].Id, @"Company__c",
+                                       insertedCaseId, @"Request__c",
+                                       insertedServiceId, relatedObjectName,
+                                       nil];
+        
+        if (doc.existingDocument && doc.existingDocumentAttachmentId) {
+            [fields setObject:doc.existingDocumentAttachmentId forKey:@"Attachment_Id__c"];
+        }
         
         void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
             NSString *companyDocumentId = [dict objectForKey:@"id"];
             doc.companyDocumentId = companyDocumentId;
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self addAttachment:doc];
+                if (doc.existingDocument) {
+                    [self uploadDidReturn:doc attachmentId:doc.existingDocumentAttachmentId];
+                }
+                else
+                    [self addAttachment:doc];
             });
         };
         
@@ -586,8 +597,17 @@
         
         [self showLoadingDialog];
         
-        if (doc.companyDocumentId != nil && ![doc.companyDocumentId isEqualToString:@""] && !doc.attachmentUploaded) {
+        if (doc.companyDocumentId != nil && ![doc.companyDocumentId isEqualToString:@""] && !doc.attachmentUploaded && !doc.existingDocument) {
             [self addAttachment:doc];
+        }
+        else if (doc.companyDocumentId != nil && ![doc.companyDocumentId isEqualToString:@""] && doc.existingDocument) {
+            fields = [NSMutableDictionary dictionaryWithObjectsAndKeys:doc.existingDocumentAttachmentId, @"Attachment_Id__c", nil];
+            
+            [[SFRestAPI sharedInstance] performUpdateWithObjectType:@"Company_Documents__c"
+                                                           objectId:doc.companyDocumentId
+                                                             fields:fields
+                                                          failBlock:errorBlock
+                                                      completeBlock:successBlock];
         }
         else if (!doc.attachmentUploaded) {
             [[SFRestAPI sharedInstance] performCreateWithObjectType:@"Company_Documents__c"

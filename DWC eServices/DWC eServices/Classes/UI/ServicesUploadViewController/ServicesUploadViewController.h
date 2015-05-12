@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CompanyDocumentTypeListViewController.h"
 
 @class EServiceDocument;
 @class BaseServicesViewController;
 
-@interface ServicesUploadViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ServicesUploadViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, CompanyDocumentTypeListSelectDocumentDelegate>
 {
     UIView *servicesContentView;
     BOOL _newMedia;
