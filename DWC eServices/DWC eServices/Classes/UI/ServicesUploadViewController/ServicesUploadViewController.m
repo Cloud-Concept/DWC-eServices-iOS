@@ -181,14 +181,16 @@
     companyDocListVC.isSelectDocument = YES;
     currentUploadingDocument = document;
     
-    [self presentViewController:companyDocListVC animated:YES completion:nil];
+    //[self presentViewController:companyDocListVC animated:YES completion:nil];
+    [self.baseServicesViewController.navigationController pushViewController:companyDocListVC animated:YES];
 }
 
 #pragma mark CompanyDocumentTypeListSelectDocumentDelegate
 - (void)didSelectCompanyDocument:(CompanyDocument *)companyDocument {
     currentUploadingDocument.existingDocument = YES;
     currentUploadingDocument.existingDocumentAttachmentId = companyDocument.attachmentId;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self.baseServicesViewController.navigationController popViewControllerAnimated:YES];
     
     [currentUploadingDocument refreshButton];
 }

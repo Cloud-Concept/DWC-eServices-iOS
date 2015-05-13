@@ -838,8 +838,8 @@
             formFieldPicklistCalls = 0;
             for (FormField *formField in self.currentWebForm.formFields) {
                 if ([formField.type isEqualToString:@"PICKLIST"]) {
-                    [self callPickListValuesWebService:formField];
                     formFieldPicklistCalls++;
+                    [self callPickListValuesWebService:formField];
                 }
                 else if ([formField.type isEqualToString:@"REFERENCE"] && !formField.isParameter) {
                     formFieldPicklistCalls++;
@@ -892,12 +892,11 @@
         NSDictionary *picklistNamesDictionary = [NSDictionary dictionaryWithObject:namesMutableArray forKey:formField.name];
         NSDictionary *picklistValuesDictionary = [NSDictionary dictionaryWithObject:idsMutableArray forKey:formField.name];
         
-        [formField setPicklistNamesDictionary:picklistNamesDictionary PicklistValuesDictionary:picklistValuesDictionary];
-        
         formFieldPicklistCalls--;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideLoadingDialog];
+            [formField setPicklistNamesDictionary:picklistNamesDictionary PicklistValuesDictionary:picklistValuesDictionary];
         });
     };
     
