@@ -193,11 +193,11 @@
 "AddressChangePOBox" = "New PO Box";
 
 "CurrentNameInformation" = "Current Company Name";
-"NameChangeNameBefore" = "Current Company Name";
-"NameChangeNameArabicBefore" = "Current Company Name - Arabic";
+"NameChangeNameBefore" = "Company Name";
+"NameChangeNameArabicBefore" = "Company Name (Arabic)";
 "NewNameInformation" = "New Company Name";
-"NameChangeName" = "New Company Name";
-"NameChangeNameArabic" = "New Company Name - Arabic";
+"NameChangeName" = "Company Name";
+"NameChangeNameArabic" = "Company Name (Arabic)";
 
 "RecordMainRecordDetialsTitle" = "DETAILS";
 "RecordMainRecordRelatedServicesTitle" = "RELATED SERVICES";
@@ -241,4 +241,8 @@
 "navBarNeedHelpTitle" = "NEED HELP";
 "navBarCompanyAddressChange" = "ADDRESS CHANGE";
 "navBarCompanyNameChange" = "COMPANY NAME CHANGE";
+"navBarDetails" = "DETAILS";
+"navBarRequiredDocuments" = "REQUIRED DOCUMENTS";
+"navBarPreview" = "PREVIEW";
+"navBarThankYou" = "THANK YOU";
 

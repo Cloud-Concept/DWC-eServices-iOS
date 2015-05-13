@@ -119,6 +119,81 @@
         [currentButton setBackgroundImage:[UIImage imageNamed:buttonImageName] forState:UIControlStateNormal];
     }
     
+    [self refreshNavBarTitle];
+    
+}
+
+- (void)refreshNavBarTitle {
+    NSString *navBarTitle = @"";
+    
+    switch (self.relatedServiceType) {
+        case RelatedServiceTypeNewEmployeeNOC:
+        case RelatedServiceTypeNewCompanyNOC:
+            navBarTitle = NSLocalizedString(@"navBarNewNOCTitle", @"");
+            break;
+        case RelatedServiceTypeNewCard:
+            navBarTitle = NSLocalizedString(@"navBarNewCardTitle", @"");
+            break;
+        case RelatedServiceTypeReplaceCard:
+            navBarTitle = NSLocalizedString(@"navBarReplaceCardTitle", @"");
+            break;
+        case RelatedServiceTypeCancelCard:
+            navBarTitle = NSLocalizedString(@"navBarCancelCardTitle", @"");
+            break;
+        case RelatedServiceTypeRenewCard:
+            navBarTitle = NSLocalizedString(@"navBarRenewCardTitle", @"");
+            break;
+        case RelatedServiceTypeNewVisa:
+            
+            break;
+        case RelatedServiceTypeRenewVisa:
+            
+            break;
+        case RelatedServiceTypeCancelVisa:
+            
+            break;
+        case RelatedServiceTypeViewMyRequest:
+            navBarTitle = NSLocalizedString(@"navBarViewMyRequestTitle", @"");
+            break;
+        case RelatedServiceTypeRegistrationDocuments:
+            navBarTitle = NSLocalizedString(@"navBarRegistrationDocumentsTitle", @"");
+            break;
+        case RelatedServiceTypeContractRenewal:
+            navBarTitle = NSLocalizedString(@"navBarRenewContractTitle", @"");
+            break;
+        case RelatedServiceTypeLicenseRenewal:
+            navBarTitle = NSLocalizedString(@"navBarRenewLicenseTitle", @"");
+            break;
+        case RelatedServiceTypeCompanyAddressChange:
+            navBarTitle = NSLocalizedString(@"navBarCompanyAddressChange", @"");
+            break;
+        case RelatedServiceTypeCompanyNameChange:
+            navBarTitle = NSLocalizedString(@"navBarCompanyNameChange", @"");
+            break;
+        default:
+            break;
+    }
+    
+    switch (currentServiceFlowType) {
+        case ServiceFlowInitialPage:
+            break;
+        case ServiceFlowFieldsPage:
+            navBarTitle = NSLocalizedString(@"navBarDetails", @"");
+            break;
+        case ServiceFlowAttachmentsPage:
+            navBarTitle = NSLocalizedString(@"navBarRequiredDocuments", @"");
+            break;
+        case ServiceFlowReviewPage:
+            navBarTitle = NSLocalizedString(@"navBarPreview", @"");
+            break;
+        case ServiceFlowThankYouPage:
+            navBarTitle = NSLocalizedString(@"navBarThankYou", @"");
+            break;
+        default:
+            break;
+    }
+    
+    [super setNavigationBarTitle:navBarTitle];
 }
 
 - (void)initializeCaseId:(NSString *)caseId {
@@ -503,9 +578,10 @@
     [self showLoadingDialog];
     
     NSMutableDictionary *mutableServiceFields = [NSMutableDictionary dictionaryWithDictionary:self.serviceFields];
+    [mutableServiceFields setObject:insertedCaseId forKey:@"Request__c"];
+    
     if (self.relatedServiceType != RelatedServiceTypeCompanyAddressChange &&
         self.relatedServiceType != RelatedServiceTypeCompanyNameChange) {
-        [mutableServiceFields setObject:insertedCaseId forKey:@"Request__c"];
         [mutableServiceFields setObject:self.currentWebForm.Id forKey:@"Web_Form__c"];
     }
     
