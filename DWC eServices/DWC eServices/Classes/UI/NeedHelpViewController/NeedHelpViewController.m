@@ -136,6 +136,7 @@
                             [Globals currentAccount].Id, @"AccountId",
                             self.subjectTextField.text, @"Subject",
                             self.descriptionTextArea.text, @"Description",
+                            caseRecordType.Id, @"RecordTypeId",
                             nil];
     
     [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
