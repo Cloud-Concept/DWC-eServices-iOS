@@ -64,6 +64,7 @@
     employeeListVC.currentDWCEmployee = dwcEmployee;
     employeeListVC.isSelectEmployee = YES;
     employeeListVC.selectEmployeeDelegate = self;
+    employeeListVC.hideFilter = YES;
     
     [self.navigationController pushViewController:employeeListVC animated:YES];
 

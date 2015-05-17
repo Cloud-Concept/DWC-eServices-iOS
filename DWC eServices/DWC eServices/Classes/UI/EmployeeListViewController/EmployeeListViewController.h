@@ -42,6 +42,7 @@
 
 @property (nonatomic) BOOL isSelectEmployee;
 @property (nonatomic) id <EmployeeListSelectEmployeeDelegate> selectEmployeeDelegate;
+@property (nonatomic) BOOL hideFilter;
 
 @property (weak, nonatomic) IBOutlet UITableView *employeesTableView;
 @property (weak, nonatomic) IBOutlet UIButton *addNewButton;

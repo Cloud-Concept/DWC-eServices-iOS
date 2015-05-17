@@ -38,6 +38,9 @@
     [self initializeSearchBar];
     [self initializeNewButton];
     
+    if (self.hideFilter)
+        [self.filterButton removeFromSuperview];
+    
     [self.employeesTableView setDragDelegate:self refreshDatePermanentKey:@""];
     self.employeesTableView.queryLimit = 15;
     
