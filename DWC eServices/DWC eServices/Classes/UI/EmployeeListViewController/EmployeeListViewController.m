@@ -269,6 +269,25 @@
     return expandedRowIndexPath && expandedRowIndexPath.row == indexPath.row && expandedRowIndexPath.section == indexPath.section;
 }
 
+- (void)employeeSelectetAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.selectEmployeeDelegate)
+        return;
+    
+    NSObject *selectedObject = [dataRows objectAtIndex:indexPath.row];
+
+    switch (self.currentDWCEmployee.Type) {
+        case PermanentEmployee:
+        case VisitVisaEmployee:
+            [self.selectEmployeeDelegate didSelectVisaEmployee:(Visa *)selectedObject];
+            break;
+        case ContractorEmployee:
+            [self.selectEmployeeDelegate didSelectCardEmployee:(CardManagement *)selectedObject];
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -314,6 +333,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray* rows = [NSMutableArray arrayWithCapacity:2];
 
+    if (self.isSelectEmployee) {
+        [self employeeSelectetAtIndexPath:indexPath];
+        return;
+    }
+    
     if (expandedRowIndexPath)
         [rows addObject:expandedRowIndexPath];
     

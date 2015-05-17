@@ -14,6 +14,13 @@
 @class DWCEmployee;
 @class SFRestRequest;
 
+@protocol EmployeeListSelectEmployeeDelegate <NSObject>
+
+- (void)didSelectVisaEmployee:(Visa *)selectedVisa;
+- (void)didSelectCardEmployee:(CardManagement *)selectedCard;
+
+@end
+
 @interface EmployeeListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDragLoadDelegate, UISearchResultsUpdating>
 {
     NSArray *dataRows;
@@ -32,6 +39,9 @@
     NSIndexPath *expandedRowIndexPath;
 }
 @property (nonatomic, strong) DWCEmployee *currentDWCEmployee;
+
+@property (nonatomic) BOOL isSelectEmployee;
+@property (nonatomic) id <EmployeeListSelectEmployeeDelegate> selectEmployeeDelegate;
 
 @property (weak, nonatomic) IBOutlet UITableView *employeesTableView;
 @property (weak, nonatomic) IBOutlet UIButton *addNewButton;

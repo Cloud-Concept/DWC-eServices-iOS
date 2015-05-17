@@ -129,6 +129,9 @@
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
             <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
         </mutableArray>
         <mutableArray key="Corisande-Regular.ttf">
             <string>CorisandeRegular</string>
@@ -450,6 +453,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="9Yx-mK-EUe" kind="push" identifier="QuickAccessSlidingMenuSegue" id="x3Y-bG-M9l"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxK-JZ-3Vl">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="162"/>
@@ -593,6 +599,7 @@
                         <segue destination="plW-Gu-FKn" kind="custom" identifier="sw_front_view_statement" customClass="SWRevealViewControllerSegueSetController" id="QmI-bY-BIH"/>
                         <segue destination="a7f-rQ-GHt" kind="custom" identifier="sw_front_reports" customClass="SWRevealViewControllerSegueSetController" id="F4s-lC-Kis"/>
                         <segue destination="v1V-QF-OY9" kind="custom" identifier="sw_front_need_help" customClass="SWRevealViewControllerSegueSetController" id="TcF-5U-Wmr"/>
+                        <segue destination="kGz-58-IJQ" kind="custom" identifier="sw_front_quick_access" customClass="SWRevealViewControllerSegueSetController" id="cCW-fv-agh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2v-bh-BDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -856,6 +863,110 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pic-5a-92A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1119.5" y="-420.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TFV-hT-ZMx">
+            <objects>
+                <navigationController id="kGz-58-IJQ" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eeZ-37-DgX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="EYL-aI-10R" kind="relationship" relationship="rootViewController" id="E1q-mA-1xz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aNI-F6-yEv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119.5" y="-2727.5"/>
+        </scene>
+        <!--Quick Access View Controller-->
+        <scene sceneID="vi8-Xm-gRg">
+            <objects>
+                <viewController id="EYL-aI-10R" customClass="QuickAccessViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8qk-gv-tHk"/>
+                        <viewControllerLayoutGuide type="bottom" id="8zn-gG-L4h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qei-0A-X0F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleAspectFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JRD-y7-WY2">
+                                <rect key="frame" x="113" y="99" width="149" height="90"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="15"/>
+                                <state key="normal" title="Company NOC" image="Related Service Company NOC Icon">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="companyNOCButtonClicked:" destination="EYL-aI-10R" eventType="touchUpInside" id="PMk-WA-wgL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="xFH-Cx-7DQ">
+                                <rect key="frame" x="113" y="479" width="149" height="90"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="15"/>
+                                <state key="normal" title="New Card" image="Related Service New Card Icon">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cardNewButtonClicked:" destination="EYL-aI-10R" eventType="touchUpInside" id="Src-hE-89j"/>
+                                </connections>
+                            </button>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbY-84-RlH">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="40v-Ut-za2"/>
+                                    <tabBarItem systemItem="more" id="CLR-qY-Xa7"/>
+                                </items>
+                            </tabBar>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ih7-gV-CAL">
+                                <rect key="frame" x="113" y="289" width="149" height="90"/>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="15"/>
+                                <state key="normal" title="Employee NOC" image="Related Service Employee NOC Icon">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="employeeNOCButtonClicked:" destination="EYL-aI-10R" eventType="touchUpInside" id="a4B-lF-uVz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xFH-Cx-7DQ" firstAttribute="top" secondItem="ih7-gV-CAL" secondAttribute="bottom" constant="100" id="5mv-Bm-CKG"/>
+                            <constraint firstItem="ih7-gV-CAL" firstAttribute="top" secondItem="JRD-y7-WY2" secondAttribute="bottom" constant="100" id="86t-E5-8Xn"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="trailing" secondItem="ih7-gV-CAL" secondAttribute="trailing" id="Abl-3i-w40"/>
+                            <constraint firstAttribute="centerX" secondItem="JRD-y7-WY2" secondAttribute="centerX" id="CSD-m4-pWP"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="top" secondItem="8qk-gv-tHk" secondAttribute="bottom" constant="35" id="Np0-Sx-O3a"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="height" secondItem="ih7-gV-CAL" secondAttribute="height" id="UVK-Fk-dPz"/>
+                            <constraint firstItem="8zn-gG-L4h" firstAttribute="top" secondItem="sbY-84-RlH" secondAttribute="bottom" id="Vhc-IV-3vP"/>
+                            <constraint firstItem="sbY-84-RlH" firstAttribute="leading" secondItem="qei-0A-X0F" secondAttribute="leading" id="dsy-Q2-w6E"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="leading" secondItem="xFH-Cx-7DQ" secondAttribute="leading" id="gdC-N1-HeC"/>
+                            <constraint firstAttribute="trailing" secondItem="sbY-84-RlH" secondAttribute="trailing" id="hFQ-Od-aAS"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="leading" secondItem="xFH-Cx-7DQ" secondAttribute="leading" id="lWv-sU-jf3"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="width" secondItem="xFH-Cx-7DQ" secondAttribute="width" id="new-Zw-fpi"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="height" secondItem="xFH-Cx-7DQ" secondAttribute="height" id="pYD-iB-m9Z"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="width" secondItem="ih7-gV-CAL" secondAttribute="width" id="qah-aa-rLI"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="leading" secondItem="ih7-gV-CAL" secondAttribute="leading" id="s6O-UC-Sfp"/>
+                            <constraint firstItem="sbY-84-RlH" firstAttribute="top" secondItem="xFH-Cx-7DQ" secondAttribute="bottom" constant="49" id="zVW-eV-HDK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jxx-9m-pkk"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bottomTabBar" destination="sbY-84-RlH" id="Vl0-Qx-z1O"/>
+                        <outlet property="cardNewButton" destination="xFH-Cx-7DQ" id="5C8-EX-GiA"/>
+                        <outlet property="companyNOCButton" destination="JRD-y7-WY2" id="QsE-Eb-ckk"/>
+                        <outlet property="employeeNOCButton" destination="ih7-gV-CAL" id="hEw-IL-h23"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zpJ-J4-5ZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1610.5" y="-2727.5"/>
         </scene>
         <!--Need Help View Controller-->
         <scene sceneID="qan-MG-0CX">
@@ -2861,7 +2972,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="15"/>
                                 <state key="normal" title="My Requests" image="Reports Service Request Icon">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -3395,6 +3506,9 @@
         <image name="Home Notification Icon" width="31" height="31"/>
         <image name="Home Quick Access Icon" width="32" height="26"/>
         <image name="Home Reports Icon" width="34" height="33"/>
+        <image name="Related Service Company NOC Icon" width="53" height="53"/>
+        <image name="Related Service Employee NOC Icon" width="53" height="53"/>
+        <image name="Related Service New Card Icon" width="53" height="53"/>
         <image name="Reports Service Request Icon" width="75" height="77"/>
         <image name="Reports Statement of Account Icon" width="75" height="77"/>
         <image name="Services Timeline Bullet Next" width="26" height="26"/>
@@ -3417,13 +3531,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="GVR-mm-TFb"/>
-        <segue reference="2Rx-1x-bAT"/>
-        <segue reference="4VQ-fx-BXn"/>
-        <segue reference="UQ7-2u-tlW"/>
-        <segue reference="LSR-qc-FQb"/>
-        <segue reference="pcT-uc-HUH"/>
-        <segue reference="Uzc-9V-jUW"/>
-        <segue reference="LyT-w6-0UF"/>
+        <segue reference="x3Y-bG-M9l"/>
+        <segue reference="Jb9-YF-d8A"/>
+        <segue reference="TcF-5U-Wmr"/>
+        <segue reference="bLm-dC-Q62"/>
+        <segue reference="2kn-8S-W3V"/>
+        <segue reference="5D3-hu-lXy"/>
+        <segue reference="7qA-mG-EzH"/>
+        <segue reference="F4s-lC-Kis"/>
     </inferredMetricsTieBreakers>
 </document>

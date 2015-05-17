@@ -128,6 +128,7 @@
 		1394EA1F1A88D31F00ECED05 /* WYPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1C1A88D31F00ECED05 /* WYPopoverController.m */; };
 		1394EA201A88D31F00ECED05 /* WYStoryboardPopoverSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1394EA1E1A88D31F00ECED05 /* WYStoryboardPopoverSegue.m */; };
 		139658141AB9797B0091C451 /* Passport.m in Sources */ = {isa = PBXBuildFile; fileRef = 139658131AB9797B0091C451 /* Passport.m */; };
+		139AD03A1B089029006FBD9B /* QuickAccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139AD0391B089029006FBD9B /* QuickAccessViewController.m */; };
 		139E6B5E1A7A3CED00D1D451 /* Occupation.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B5D1A7A3CED00D1D451 /* Occupation.m */; };
 		139E6B611A7A432500D1D451 /* SOQLQueries.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B601A7A432500D1D451 /* SOQLQueries.m */; };
 		139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B691A7A6F2600D1D451 /* UIImageView+SFAttachment.m */; };
@@ -403,6 +404,8 @@
 		1394EA1E1A88D31F00ECED05 /* WYStoryboardPopoverSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYStoryboardPopoverSegue.m; sourceTree = "<group>"; };
 		139658121AB9797B0091C451 /* Passport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Passport.h; sourceTree = "<group>"; };
 		139658131AB9797B0091C451 /* Passport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Passport.m; sourceTree = "<group>"; };
+		139AD0381B089029006FBD9B /* QuickAccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickAccessViewController.h; sourceTree = "<group>"; };
+		139AD0391B089029006FBD9B /* QuickAccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickAccessViewController.m; sourceTree = "<group>"; };
 		139E6B5C1A7A3CED00D1D451 /* Occupation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Occupation.h; sourceTree = "<group>"; };
 		139E6B5D1A7A3CED00D1D451 /* Occupation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Occupation.m; sourceTree = "<group>"; };
 		139E6B5F1A7A432500D1D451 /* SOQLQueries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOQLQueries.h; sourceTree = "<group>"; };
@@ -703,6 +706,7 @@
 				1394EA101A88B5C000ECED05 /* NewNOCViewController */,
 				13743ECB1AB04D3700D0B873 /* NotificationListViewCotnroller */,
 				1324D8961A89E98B003AA356 /* PickerTableViewController */,
+				139AD0371B08901C006FBD9B /* QuickAccessViewController */,
 				13EE67951A7E555600255174 /* RecordMainDetailsViewController */,
 				134053BF1AEE605E007A4773 /* RelatedServicesBarScrollView */,
 				137D5ACA1AF8A20900E67C72 /* ReportsViewController */,
@@ -1335,6 +1339,15 @@
 				1394EA1E1A88D31F00ECED05 /* WYStoryboardPopoverSegue.m */,
 			);
 			path = WYPopoverController;
+			sourceTree = "<group>";
+		};
+		139AD0371B08901C006FBD9B /* QuickAccessViewController */ = {
+			isa = PBXGroup;
+			children = (
+				139AD0381B089029006FBD9B /* QuickAccessViewController.h */,
+				139AD0391B089029006FBD9B /* QuickAccessViewController.m */,
+			);
+			path = QuickAccessViewController;
 			sourceTree = "<group>";
 		};
 		139E6B661A7A6F2600D1D451 /* Categories */ = {
@@ -2040,6 +2053,7 @@
 				1334F49D1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m in Sources */,
 				131CA86E1A80C93400A79B12 /* TableViewSection.m in Sources */,
 				137D5ACD1AF8A21C00E67C72 /* ReportsViewController.m in Sources */,
+				139AD03A1B089029006FBD9B /* QuickAccessViewController.m in Sources */,
 				134B8A1F1AD6B428005CCAD5 /* BBBadgeBarButtonItem.m in Sources */,
 				1353CBDC1AAD9B5300E57FAC /* LegalRepresentative.m in Sources */,
 				130E096C1AA5C42800E6ED59 /* MyRequestTableViewCell.m in Sources */,

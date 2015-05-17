@@ -545,12 +545,12 @@
     if(insertedCaseId != nil && ![insertedCaseId  isEqual: @""])
         [[SFRestAPI sharedInstance] performUpdateWithObjectType:@"Case"
                                                        objectId:insertedCaseId
-                                                         fields:self.caseFields
+                                                         fields:mutableCaseFields
                                                       failBlock:errorBlock
                                                   completeBlock:successBlock];
     else
         [[SFRestAPI sharedInstance] performCreateWithObjectType:@"Case"
-                                                         fields:self.caseFields
+                                                         fields:mutableCaseFields
                                                       failBlock:errorBlock
                                                   completeBlock:successBlock];
 }
