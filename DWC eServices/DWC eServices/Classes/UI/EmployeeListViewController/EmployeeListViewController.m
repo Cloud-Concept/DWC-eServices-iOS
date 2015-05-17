@@ -18,6 +18,7 @@
 #import "BaseServicesViewController.h"
 #import "PickerTableViewController.h"
 #import "RelatedServicesBarScrollView.h"
+#import "NSString+SFAdditions.h"
 
 @interface EmployeeListViewController ()
 
@@ -76,7 +77,8 @@
         selectedFilter = value;
         [self refreshFilterButton];
         [picklist dismissPopover:YES];
-        [self refreshEmployeesTable];
+        //[self refreshEmployeesTable];
+        [self.employeesTableView triggerRefresh];
     };
     
     [pickerTableVC showPopoverFromView:sender];
@@ -204,8 +206,11 @@
         });
     };
     
-    restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:[NSString stringWithFormat:self.currentDWCEmployee.SOQLQuery,
-                                                                self.employeesTableView.queryLimit, self.employeesTableView.queryOffset]
+    NSString *querySelectedFilter = selectedFilter;
+    if ([selectedFilter isEqualToString:@"All"])
+        querySelectedFilter = @"%";
+    
+    restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:[NSString stringWithFormat:self.currentDWCEmployee.SOQLQuery, querySelectedFilter, self.employeesTableView.queryLimit, self.employeesTableView.queryOffset]
                                                      failBlock:errorBlock
                                                  completeBlock:successBlock];
 }
