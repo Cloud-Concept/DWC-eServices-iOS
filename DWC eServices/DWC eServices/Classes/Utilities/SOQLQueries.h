@@ -18,7 +18,7 @@
 + (NSString *)caseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray RelatedObject:(NSString *)RelatedObject;
 + (NSString *)caseReviewQuery:(NSString *)caseId Fields:(NSArray *)formFieldsArray RelatedObject:(NSString *)RelatedObject AddRelatedFields:(BOOL)AddRelatedFields;
 + (NSString *)cardTypeQueryForDuration:(NSString *)duration CardType:(NSString *)cardType;
-+ (NSString *)myRequestsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset;
++ (NSString *)myRequestsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset status:(NSString *)status type:(NSString *)type;
 + (NSString *)companyShareholdersQuery;
 + (NSString *)companyManagersQuery;
 + (NSString *)companyDirectorsQuery;

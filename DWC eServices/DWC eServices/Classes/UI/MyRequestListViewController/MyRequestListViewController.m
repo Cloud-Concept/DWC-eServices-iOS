@@ -61,7 +61,8 @@
         selectedStatusFilter = value;
         [self refreshStatusFilterButton];
         [picklist dismissPopover:YES];
-        [self refreshRequestsTable];
+        //[self refreshRequestsTable];
+        [self.requestsTableView triggerRefresh];
     };
     
     [pickerTableVC showPopoverFromView:sender];
@@ -76,7 +77,8 @@
         selectedServiceFilter = value;
         [self refreshServiceFilterButton];
         [picklist dismissPopover:YES];
-        [self refreshRequestsTable];
+        //[self refreshRequestsTable];
+        [self.requestsTableView triggerRefresh];
     };
     
     [pickerTableVC showPopoverFromView:sender];
@@ -193,8 +195,18 @@
         });
     };
     
+    NSString *querySelectedStatus = selectedStatusFilter;
+    if ([selectedStatusFilter isEqualToString:@"All"])
+        querySelectedStatus = @"%";
+    
+    NSString *querySelectedServiceType = selectedServiceFilter;
+    if ([selectedServiceFilter isEqualToString:@"All"])
+        querySelectedServiceType = @"%";
+    
     NSString *query = [SOQLQueries myRequestsQueryWithLimit:self.requestsTableView.queryLimit
-                                                     offset:self.requestsTableView.queryOffset];
+                                                     offset:self.requestsTableView.queryOffset
+                                                     status:querySelectedStatus
+                                                       type:querySelectedServiceType];
     
     restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:query
                                                      failBlock:errorBlock

@@ -31,7 +31,7 @@ static NSString *caseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Typ
 
 static NSString *cardCaseReviewQuery = @"SELECT CaseNumber, CreatedDate, Status, Type, Card_Management__r.Duration__c, Card_Management__r.Card_Type__c, (SELECT ID, Amount__c FROM Invoices__r)";
 
-static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case WHERE AccountId = '%@' ORDER BY CreatedDate DESC LIMIT %d OFFSET %d";
+static NSString *myRequestsQuery = @"SELECT Id, CaseNumber, Status, Type, Web_Form__c, CreatedDate, Sub_Type__c, Sub_Type_Formula__c, RecordType.Id, RecordType.Name, RecordType.DeveloperName, RecordType.SobjectType, Employee_Ref__r.Id, Employee_Ref__r.Name FROM Case WHERE AccountId = '%@' AND Status LIKE '%@' AND Type LIKE '%@' ORDER BY CreatedDate DESC LIMIT %d OFFSET %d";
 
 static NSString *companyShareholdersQuery = @"SELECT Id, No_of_Shares__c, Ownership_of_Share__c, Shareholder__r.Id, Shareholder__r.Name, Shareholder__r.Nationality__c, Shareholder__r.Current_Passport__r.Id, Shareholder__r.Current_Passport__r.Name, Shareholder__r.Current_Passport__r.Passport_Expiry_Date__c, Shareholder__r.Current_Passport__r.Passport_Issue_Date__c, Shareholder__r.Current_Passport__r.Passport_Type__c, Shareholder__r.Current_Passport__r.Passport_Place_of_Issue__c, Shareholder_Status__c, Ownership_End_Date__c, Ownership_Start_Date__c FROM Share_Ownership__c WHERE Company__c = '%@' ORDER BY Shareholder__r.Name LIMIT %%d OFFSET %%d";
 
@@ -126,8 +126,8 @@ static NSString *amendementServiceAdminQuery = @"SELECT ID, Name, Display_Name__
     return queryString;
 }
 
-+ (NSString *)myRequestsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset {
-    return [NSString stringWithFormat:myRequestsQuery, [Globals currentAccount].Id, limit, offset];
++ (NSString *)myRequestsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset status:(NSString *)status type:(NSString *)type {
+    return [NSString stringWithFormat:myRequestsQuery, [Globals currentAccount].Id, status, type, limit, offset];
 }
 
 + (NSString *)companyShareholdersQuery {
