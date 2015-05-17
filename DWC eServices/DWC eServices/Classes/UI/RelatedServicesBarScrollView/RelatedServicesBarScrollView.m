@@ -81,7 +81,7 @@
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Replace_Card"
                                                                                 Label:@"Replace Card"
-                                                                                 Icon:@"Related Service Replace Card Icon Icon"
+                                                                                 Icon:@"Related Service Replace Card Icon"
                                                                                  Mask:RelatedServiceTypeReplaceCard]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"New_Visa"

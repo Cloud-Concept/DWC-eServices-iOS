@@ -362,7 +362,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat rowHeight = 85;
+    CGFloat rowHeight = 93;
     
     if ([self isIndexPathExpanded:indexPath])
         rowHeight += kRelatedServicesScrollViewHeight;

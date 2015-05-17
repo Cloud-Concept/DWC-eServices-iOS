@@ -49,6 +49,8 @@
         self.rowTwoValueLabel.hidden = YES;
     }
     
+    [self.rowFourLabel removeFromSuperview];
+    [self.rowFourValueLabel removeFromSuperview];
     
     currentIndexPath = indexPath;
 }
@@ -74,6 +76,9 @@
         self.rowTwoLabel.hidden = YES;
         self.rowTwoValueLabel.hidden = YES;
     }
+    
+    self.rowFourLabel.text = @"Status:";
+    self.rowFourValueLabel.text = currentCard.status;
     
     currentIndexPath = indexPath;
 }
