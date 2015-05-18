@@ -203,11 +203,41 @@
     
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
-        UIImage *resizedImage = [UIImageView imageWithImage:image scaledToSize:CGSizeMake(480, 640)];
         
-        currentUploadingDocument.attachment = UIImagePNGRepresentation(resizedImage);
-        currentUploadingDocument.existingDocument = NO;
-        [currentUploadingDocument refreshButton];
+        NSData *imageData = UIImagePNGRepresentation(image);
+        float documentSize = imageData.length / 1024.0 / 1024.0;
+        
+        if (documentSize > 1) {
+            //UIImage *resizedImage = [UIImageView imageWithImage:image scaledToSize:CGSizeMake(480, 640)];
+            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                             message:NSLocalizedString(@"DocumentResizeAlertMessage", @"")
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *resizeAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"resize", @"")
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction *action) {
+                                                                     UIImage *resizedImage = [UIImageView imageWithImage:image scaledToSize:CGSizeMake(480, 640)];
+                                                                     currentUploadingDocument.attachment = UIImagePNGRepresentation(resizedImage);
+                                                                     currentUploadingDocument.existingDocument = NO;
+                                                                     [currentUploadingDocument refreshButton];
+                                                                 }];
+            
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", @"")
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction *action) {
+                                                                     
+                                                                 }];
+            
+            [alertVC addAction:resizeAction];
+            [alertVC addAction:noAction];
+            
+            [self presentViewController:alertVC animated:YES completion:nil];
+        }
+        else {
+            currentUploadingDocument.attachment = imageData;
+            currentUploadingDocument.existingDocument = NO;
+            [currentUploadingDocument refreshButton];
+        }
         
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,

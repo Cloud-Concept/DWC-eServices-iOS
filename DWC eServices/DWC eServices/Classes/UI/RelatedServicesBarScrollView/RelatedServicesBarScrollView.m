@@ -1206,9 +1206,9 @@
     
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
-        UIImage *resizedImage = [UIImageView imageWithImage:image scaledToSize:CGSizeMake(480, 640)];
+        //UIImage *resizedImage = [UIImageView imageWithImage:image scaledToSize:CGSizeMake(480, 640)];
         
-        NSData *attachment = UIImagePNGRepresentation(resizedImage);
+        NSData *attachment = UIImagePNGRepresentation(image);
         
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
@@ -1218,9 +1218,29 @@
         
         float documentSize = attachment.length / 1024.0 / 1024.0;
         
-        if (documentSize > 1)
-            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
-                                             Message:NSLocalizedString(@"DocumentsSizeAlertMessage", @"")];
+        if (documentSize > 1) {
+            UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                             message:NSLocalizedString(@"DocumentResizeAlertMessage", @"")
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *resizeAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"resize", @"")
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction *action) {
+                                                                     UIImage *resizedImage = [UIImageView imageWithImage:image scaledToSize:CGSizeMake(480, 640)];
+                                                                     [self uploadCompanyDocument:UIImagePNGRepresentation(resizedImage)];
+                                                                 }];
+            
+            UIAlertAction *noAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel", @"")
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction *action) {
+                                                                 
+                                                             }];
+            
+            [alertVC addAction:resizeAction];
+            [alertVC addAction:noAction];
+            
+            [parentViewController presentViewController:alertVC animated:YES completion:nil];
+        }
         else
             [self uploadCompanyDocument:attachment];
     }

@@ -16,6 +16,7 @@
 "back" = "Back";
 "retry" = "Retry";
 "logout" = "Logout";
+"resize" = "Resize";
 
 "no_results_found" = "No results found";
 
@@ -42,6 +43,7 @@
 "LicenseExpiredAlertMessage" = "Your company licence has expired. You must renew your licence in order to continue with DWC smart services.You may renew your licence by logging into the DWC web portal or by visiting a DWC office";
 "POBoxDWCReservedAlertMessage" = "You can not use this P.O Box because it is reserved by DWC.";
 "CompanyNameReservedAlertMessage" = "This Company name is reserved by another registered company";
+"DocumentResizeAlertMessage" = "The document you choose is greater than 1 MB. The document needs to be resized";
 
 "galleryDocumentSource" = "Gallery";
 "cameraDocumentSource" = "Camera";
