@@ -2249,12 +2249,6 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDu-J2-eax">
-                                                    <rect key="frame" x="80" y="61" width="31" height="13"/>
-                                                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="11"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kl-qu-fqj">
                                                     <rect key="frame" x="115" y="61" width="252" height="13"/>
                                                     <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="11"/>
@@ -2295,6 +2289,12 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbr-os-6Z7">
                                                     <rect key="frame" x="166" y="46" width="201" height="13"/>
                                                     <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDu-J2-eax">
+                                                    <rect key="frame" x="80" y="61" width="31" height="13"/>
+                                                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2346,10 +2346,10 @@
                                             <outlet property="rowFourValueLabel" destination="B3X-z3-rmr" id="yi0-ik-qQ9"/>
                                             <outlet property="rowOneLabel" destination="4kV-XW-vMl" id="DCZ-JF-Nro"/>
                                             <outlet property="rowOneValueLabel" destination="fQi-Od-038" id="jkI-dI-ZyV"/>
-                                            <outlet property="rowThreeLabel" destination="ssx-pB-Jgs" id="zaq-cy-Rk6"/>
-                                            <outlet property="rowThreeValueLabel" destination="Bbr-os-6Z7" id="9Ov-Ld-R6I"/>
-                                            <outlet property="rowTwoLabel" destination="WDu-J2-eax" id="fuX-bc-6QE"/>
-                                            <outlet property="rowTwoValueLabel" destination="3kl-qu-fqj" id="DqK-qU-jRX"/>
+                                            <outlet property="rowThreeLabel" destination="WDu-J2-eax" id="VTu-S7-iCi"/>
+                                            <outlet property="rowThreeValueLabel" destination="3kl-qu-fqj" id="O2D-EU-Oq5"/>
+                                            <outlet property="rowTwoLabel" destination="ssx-pB-Jgs" id="1XS-Mt-QLp"/>
+                                            <outlet property="rowTwoValueLabel" destination="Bbr-os-6Z7" id="pkl-3C-O6q"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EmployeeTableViewCell" rowHeight="93" id="SL2-hb-RWY" customClass="EmployeeTableViewCell">
@@ -2459,10 +2459,10 @@
                                             <outlet property="rowFourValueLabel" destination="vwi-3n-r51" id="SKT-Mf-AHp"/>
                                             <outlet property="rowOneLabel" destination="Wvo-ey-P7s" id="uZe-XO-9Uo"/>
                                             <outlet property="rowOneValueLabel" destination="2SM-qK-wh8" id="csX-dq-tpE"/>
-                                            <outlet property="rowThreeLabel" destination="VHt-NU-YBs" id="Rlb-hL-Qee"/>
-                                            <outlet property="rowThreeValueLabel" destination="0qg-Uy-gOK" id="81B-VP-gPj"/>
-                                            <outlet property="rowTwoLabel" destination="uxV-8k-YpI" id="KNy-oQ-ttj"/>
-                                            <outlet property="rowTwoValueLabel" destination="MTj-Zt-BDn" id="l8E-P8-lca"/>
+                                            <outlet property="rowThreeLabel" destination="uxV-8k-YpI" id="61I-Gf-JYg"/>
+                                            <outlet property="rowThreeValueLabel" destination="MTj-Zt-BDn" id="GK7-9K-33F"/>
+                                            <outlet property="rowTwoLabel" destination="VHt-NU-YBs" id="2su-AK-Iva"/>
+                                            <outlet property="rowTwoValueLabel" destination="0qg-Uy-gOK" id="tlo-Fy-uAC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

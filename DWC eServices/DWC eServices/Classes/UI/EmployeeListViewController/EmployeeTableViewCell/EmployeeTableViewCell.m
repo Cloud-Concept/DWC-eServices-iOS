@@ -36,17 +36,17 @@
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
     [self.profilePictureImageView maskImageToCircle];
     
-    self.rowThreeValueLabel.text = currentVisa.passportNumber;
+    self.rowTwoValueLabel.text = currentVisa.passportNumber;
     
     if ([currentVisa.validityStatus isEqualToString:@"Issued"] || [currentVisa.validityStatus isEqualToString:@"Expired"]) {
-        self.rowTwoValueLabel.text = [HelperClass formatDateToString:currentVisa.expiryDate];
-        self.rowTwoValueLabel.hidden = NO;
-        self.rowTwoLabel.text = @"Visa Expiry:";
-        self.rowTwoLabel.hidden = NO;
+        self.rowThreeValueLabel.text = [HelperClass formatDateToString:currentVisa.expiryDate];
+        self.rowThreeValueLabel.hidden = NO;
+        self.rowThreeLabel.text = @"Visa Expiry:";
+        self.rowThreeLabel.hidden = NO;
     }
     else {
-        self.rowTwoLabel.hidden = YES;
-        self.rowTwoValueLabel.hidden = YES;
+        self.rowThreeLabel.hidden = YES;
+        self.rowThreeValueLabel.hidden = YES;
     }
     
     [self.rowFourLabel removeFromSuperview];
@@ -64,21 +64,23 @@
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
     [self.profilePictureImageView maskImageToCircle];
     
-    self.rowThreeValueLabel.text = currentCard.passportNumber;
+    self.rowTwoValueLabel.text = currentCard.passportNumber;
+    
+    self.rowThreeLabel.text = @"Status:";
+    self.rowThreeValueLabel.text = currentCard.status;
     
     if (currentCard.cardExpiryDate) {
-        self.rowTwoLabel.hidden = NO;
-        self.rowTwoLabel.text = @"Card Expiry:";
-        self.rowTwoValueLabel.hidden = NO;
-        self.rowTwoValueLabel.text = [HelperClass formatDateToString:currentCard.cardExpiryDate];
+        self.rowFourLabel.hidden = NO;
+        self.rowFourLabel.text = @"Card Expiry:";
+        self.rowFourValueLabel.hidden = NO;
+        self.rowFourValueLabel.text = [HelperClass formatDateToString:currentCard.cardExpiryDate];
     }
     else {
-        self.rowTwoLabel.hidden = YES;
-        self.rowTwoValueLabel.hidden = YES;
+        self.rowFourLabel.hidden = YES;
+        self.rowFourValueLabel.hidden = YES;
     }
     
-    self.rowFourLabel.text = @"Status:";
-    self.rowFourValueLabel.text = currentCard.status;
+    
     
     currentIndexPath = indexPath;
 }
