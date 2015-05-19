@@ -312,7 +312,7 @@
                                          forState:UIControlStateNormal];
             [((UIButton*)fieldView) setTitle:self.mobileLabel forState:UIControlStateNormal];
             [((UIButton*)fieldView).titleLabel setFont:[UIFont fontWithName:@"CorisandeRegular" size:14.0f]];
-            NSString *backgroundImage = isEnabled ? @"Dropdown Button" : @"Textfield Background";
+            NSString *backgroundImage = isEnabled ? @"Dropdown Button" : @"Textfield Disabled Background";
             [((UIButton*)fieldView) setBackgroundImage:[UIImage imageNamed:backgroundImage]
                                               forState:UIControlStateNormal];
             
@@ -339,7 +339,9 @@
             
             fieldView = [UITextField new];
             [((UITextField*)fieldView) setBorderStyle:UITextBorderStyleNone];
-            [((UITextField*)fieldView) setBackground:[UIImage imageNamed:@"Textfield Background"]];
+            
+            NSString *backgroundImageName = isEnabled ? @"Textfield Background" : @"Textfield Disabled Background";
+            [((UITextField*)fieldView) setBackground:[UIImage imageNamed:backgroundImageName]];
             
             UIKeyboardType keyboardType = [self.type isEqualToString:@"DOUBLE"] ? UIKeyboardTypeDecimalPad : UIKeyboardTypeASCIICapable;
             [((UITextField*)fieldView) setKeyboardType:keyboardType];
