@@ -49,9 +49,9 @@
 "cameraDocumentSource" = "Camera";
 "existingDocumentSource" = "Existing Document";
 
-"homeDashboardButton" = "DASHBOARD";
-"homeMyRequestButton" = "MY REQUEST";
-"homeNotificationButton" = "NOTIFICATION";
+"homeDashboardButton" = "DASHBOARDS";
+"homeMyRequestButton" = "MY REQUESTS";
+"homeNotificationButton" = "NOTIFICATIONS";
 "homeEmployeesButton" = "VISAS & CARDS";
 "homeCurrentBalanceLabel" = "CURRENT BALANCE";
 "homeViewStatementButton" = "View Statement";
@@ -146,7 +146,7 @@
 "LegalRepresentativePersonalInformation" = "Personal Information";
 "LegalRepresentativeInformation" = "Legal Representative Information";
 
-"DWCCompanyDocumentTypeDWCDocument" = "DWC Documents";
+"DWCCompanyDocumentTypeDWCDocument" = "True Copies";
 "DWCCompanyDocumentTypeCustomerDocument" = "Customer Documents";
 
 "PermanentEmployee" = "Permanent Employee";
@@ -210,9 +210,9 @@
 
 "NeedHelpThankYouMessage" = "Dear Customer\r\n\r\nThank you for providing a valuable feedback. Our team will review your feedback and get back to you as soon as possible. You case number is \"%@\". To track and see the update on your case, please go to My case tab and see the detail \r\n\r\n For any urgent enquiry, Call us at +971 4 816 0000 or use our online chat option";
 
-"navBarDashboardTitle" = "DASHBOARD";
-"navBarMyRequestTitle" = "MY REQUEST";
-"navBarNotificationTitle" = "NOTIFICATION";
+"navBarDashboardTitle" = "DASHBOARDS";
+"navBarMyRequestTitle" = "MY REQUESTS";
+"navBarNotificationTitle" = "NOTIFICATIONS";
 "navBarEmployeesTitle" = "VISAS & CARDS";
 "navBarServicesTitle" = "SERVICES";
 "navBarCompanyInfoTitle" = "COMPANY INFO";
@@ -247,4 +247,6 @@
 "navBarRequiredDocuments" = "REQUIRED DOCUMENTS";
 "navBarPreview" = "PREVIEW";
 "navBarThankYou" = "THANK YOU";
+"navBarReportsTitle" = "REPORTS";
+"navBarQuickAccessTitle" = "QUICK ACCESS";
 

@@ -22,6 +22,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [super setNavigationBarTitle:NSLocalizedString(@"navBarQuickAccessTitle", @"")];
+    
     [self.companyNOCButton setupButtonWithTextUnderImage];
     [self.cardNewButton setupButtonWithTextUnderImage];
     [self.employeeNOCButton setupButtonWithTextUnderImage];

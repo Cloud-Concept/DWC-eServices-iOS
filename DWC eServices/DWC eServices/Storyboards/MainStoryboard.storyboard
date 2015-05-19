@@ -898,9 +898,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="JRD-y7-WY2">
-                                <rect key="frame" x="113" y="99" width="149" height="90"/>
+                                <rect key="frame" x="101" y="99" width="173" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="BmM-RH-xOv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="15"/>
-                                <state key="normal" title="Company NOC" image="Related Service Company NOC Icon">
+                                <state key="normal" title="Company NOC" image="Quick Access Company NOC Icon">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -909,14 +912,31 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="xFH-Cx-7DQ">
-                                <rect key="frame" x="113" y="479" width="149" height="90"/>
+                                <rect key="frame" x="101" y="389" width="173" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="uK9-iQ-uSj"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="15"/>
-                                <state key="normal" title="New Card" image="Related Service New Card Icon">
+                                <state key="normal" title="New Card" image="Quick Access New Card Icon">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="cardNewButtonClicked:" destination="EYL-aI-10R" eventType="touchUpInside" id="Src-hE-89j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ih7-gV-CAL">
+                                <rect key="frame" x="101" y="244" width="173" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="pj8-ZL-lfj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="15"/>
+                                <state key="normal" title="Employee NOC" image="Quick Access Employee NOC Icon">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="employeeNOCButtonClicked:" destination="EYL-aI-10R" eventType="touchUpInside" id="a4B-lF-uVz"/>
                                 </connections>
                             </button>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbY-84-RlH">
@@ -927,36 +947,20 @@
                                     <tabBarItem systemItem="more" id="CLR-qY-Xa7"/>
                                 </items>
                             </tabBar>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ih7-gV-CAL">
-                                <rect key="frame" x="113" y="289" width="149" height="90"/>
-                                <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="15"/>
-                                <state key="normal" title="Employee NOC" image="Related Service Employee NOC Icon">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="employeeNOCButtonClicked:" destination="EYL-aI-10R" eventType="touchUpInside" id="a4B-lF-uVz"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xFH-Cx-7DQ" firstAttribute="top" secondItem="ih7-gV-CAL" secondAttribute="bottom" constant="100" id="5mv-Bm-CKG"/>
-                            <constraint firstItem="ih7-gV-CAL" firstAttribute="top" secondItem="JRD-y7-WY2" secondAttribute="bottom" constant="100" id="86t-E5-8Xn"/>
-                            <constraint firstItem="JRD-y7-WY2" firstAttribute="trailing" secondItem="ih7-gV-CAL" secondAttribute="trailing" id="Abl-3i-w40"/>
-                            <constraint firstAttribute="centerX" secondItem="JRD-y7-WY2" secondAttribute="centerX" id="CSD-m4-pWP"/>
-                            <constraint firstItem="JRD-y7-WY2" firstAttribute="top" secondItem="8qk-gv-tHk" secondAttribute="bottom" constant="35" id="Np0-Sx-O3a"/>
-                            <constraint firstItem="JRD-y7-WY2" firstAttribute="height" secondItem="ih7-gV-CAL" secondAttribute="height" id="UVK-Fk-dPz"/>
-                            <constraint firstItem="8zn-gG-L4h" firstAttribute="top" secondItem="sbY-84-RlH" secondAttribute="bottom" id="Vhc-IV-3vP"/>
-                            <constraint firstItem="sbY-84-RlH" firstAttribute="leading" secondItem="qei-0A-X0F" secondAttribute="leading" id="dsy-Q2-w6E"/>
-                            <constraint firstItem="JRD-y7-WY2" firstAttribute="leading" secondItem="xFH-Cx-7DQ" secondAttribute="leading" id="gdC-N1-HeC"/>
-                            <constraint firstAttribute="trailing" secondItem="sbY-84-RlH" secondAttribute="trailing" id="hFQ-Od-aAS"/>
-                            <constraint firstItem="JRD-y7-WY2" firstAttribute="leading" secondItem="xFH-Cx-7DQ" secondAttribute="leading" id="lWv-sU-jf3"/>
-                            <constraint firstItem="JRD-y7-WY2" firstAttribute="width" secondItem="xFH-Cx-7DQ" secondAttribute="width" id="new-Zw-fpi"/>
-                            <constraint firstItem="JRD-y7-WY2" firstAttribute="height" secondItem="xFH-Cx-7DQ" secondAttribute="height" id="pYD-iB-m9Z"/>
-                            <constraint firstItem="JRD-y7-WY2" firstAttribute="width" secondItem="ih7-gV-CAL" secondAttribute="width" id="qah-aa-rLI"/>
-                            <constraint firstItem="JRD-y7-WY2" firstAttribute="leading" secondItem="ih7-gV-CAL" secondAttribute="leading" id="s6O-UC-Sfp"/>
-                            <constraint firstItem="sbY-84-RlH" firstAttribute="top" secondItem="xFH-Cx-7DQ" secondAttribute="bottom" constant="49" id="zVW-eV-HDK"/>
+                            <constraint firstItem="xFH-Cx-7DQ" firstAttribute="centerX" secondItem="sbY-84-RlH" secondAttribute="centerX" id="5a8-k4-iBE"/>
+                            <constraint firstItem="xFH-Cx-7DQ" firstAttribute="leading" secondItem="ih7-gV-CAL" secondAttribute="leading" id="Bk7-0E-En0"/>
+                            <constraint firstItem="ih7-gV-CAL" firstAttribute="leading" secondItem="JRD-y7-WY2" secondAttribute="leading" id="Cuc-3Z-gFK"/>
+                            <constraint firstItem="xFH-Cx-7DQ" firstAttribute="top" secondItem="ih7-gV-CAL" secondAttribute="bottom" constant="55" id="I1P-jn-ZMF"/>
+                            <constraint firstItem="ih7-gV-CAL" firstAttribute="top" secondItem="JRD-y7-WY2" secondAttribute="bottom" constant="55" id="Mzd-25-3oL"/>
+                            <constraint firstItem="xFH-Cx-7DQ" firstAttribute="trailing" secondItem="ih7-gV-CAL" secondAttribute="trailing" id="NvF-hW-Eoc"/>
+                            <constraint firstItem="sbY-84-RlH" firstAttribute="bottom" secondItem="8zn-gG-L4h" secondAttribute="top" id="YLc-EQ-IdB"/>
+                            <constraint firstAttribute="trailing" secondItem="sbY-84-RlH" secondAttribute="trailing" id="h0i-Li-kbz"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="top" secondItem="8qk-gv-tHk" secondAttribute="bottom" constant="35" id="rCe-DT-Sh8"/>
+                            <constraint firstItem="sbY-84-RlH" firstAttribute="leading" secondItem="qei-0A-X0F" secondAttribute="leading" id="rMJ-14-Dnk"/>
+                            <constraint firstItem="JRD-y7-WY2" firstAttribute="trailing" secondItem="ih7-gV-CAL" secondAttribute="trailing" id="xnm-h3-Ad7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jxx-9m-pkk"/>
@@ -3014,7 +3018,7 @@
                                 </items>
                             </tabBar>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Cvd-Cv-DeD">
-                                <rect key="frame" x="112" y="72" width="150" height="150"/>
+                                <rect key="frame" x="112" y="104" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Gcp-hx-2fE"/>
                                     <constraint firstAttribute="height" constant="150" id="xf5-aa-1g6"/>
@@ -3029,7 +3033,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-Ch-tcU">
-                                <rect key="frame" x="112" y="286" width="150" height="150"/>
+                                <rect key="frame" x="112" y="318" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="0cf-d4-vOK"/>
                                     <constraint firstAttribute="height" constant="150" id="tNM-eS-Mha"/>
@@ -3049,7 +3053,8 @@
                             <constraint firstItem="F8J-d3-SO8" firstAttribute="top" secondItem="aj7-Sd-qQG" secondAttribute="bottom" id="Gil-Qu-nLL"/>
                             <constraint firstItem="aj7-Sd-qQG" firstAttribute="leading" secondItem="PmT-kK-BDb" secondAttribute="leading" id="HWL-iO-Oco"/>
                             <constraint firstAttribute="trailing" secondItem="aj7-Sd-qQG" secondAttribute="trailing" id="atN-xd-nsU"/>
-                            <constraint firstItem="Cvd-Cv-DeD" firstAttribute="top" secondItem="NjT-2M-nh9" secondAttribute="bottom" constant="8" id="o10-tA-emd"/>
+                            <constraint firstItem="Cvd-Cv-DeD" firstAttribute="height" secondItem="aMc-Ch-tcU" secondAttribute="height" id="fbr-Pr-cZF"/>
+                            <constraint firstItem="Cvd-Cv-DeD" firstAttribute="top" secondItem="NjT-2M-nh9" secondAttribute="bottom" constant="40" id="o10-tA-emd"/>
                             <constraint firstAttribute="centerX" secondItem="Cvd-Cv-DeD" secondAttribute="centerX" id="oux-2n-LFE"/>
                             <constraint firstAttribute="centerX" secondItem="aMc-Ch-tcU" secondAttribute="centerX" id="r2L-ta-RnH"/>
                             <constraint firstItem="aMc-Ch-tcU" firstAttribute="top" secondItem="Cvd-Cv-DeD" secondAttribute="bottom" constant="64" id="wLh-1Q-9eo"/>
@@ -3555,9 +3560,9 @@
         <image name="Home Notification Icon" width="31" height="31"/>
         <image name="Home Quick Access Icon" width="32" height="26"/>
         <image name="Home Reports Icon" width="34" height="33"/>
-        <image name="Related Service Company NOC Icon" width="53" height="53"/>
-        <image name="Related Service Employee NOC Icon" width="53" height="53"/>
-        <image name="Related Service New Card Icon" width="53" height="53"/>
+        <image name="Quick Access Company NOC Icon" width="77" height="77"/>
+        <image name="Quick Access Employee NOC Icon" width="77" height="77"/>
+        <image name="Quick Access New Card Icon" width="77" height="77"/>
         <image name="Reports Service Request Icon" width="75" height="77"/>
         <image name="Reports Statement of Account Icon" width="75" height="77"/>
         <image name="Services Timeline Bullet Next" width="26" height="26"/>

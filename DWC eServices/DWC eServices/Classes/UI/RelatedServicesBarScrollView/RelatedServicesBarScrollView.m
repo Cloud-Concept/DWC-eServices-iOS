@@ -116,7 +116,7 @@
     
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Document_True_Copy"
-                                                                                Label:@"True Copy"
+                                                                                Label:@"Request True Copy"
                                                                                  Icon:@"Related Service True Copy Icon"
                                                                                  Mask:RelatedServiceTypeDocumentTrueCopy]];
     

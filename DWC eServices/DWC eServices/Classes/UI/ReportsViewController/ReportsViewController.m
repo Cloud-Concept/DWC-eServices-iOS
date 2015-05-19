@@ -21,6 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [super setNavigationBarTitle:NSLocalizedString(@"navBarReportsTitle", @"")];
+    
     [self.myRequestButton setupButtonWithTextUnderImage];
     [self.statementOfAccountButton setupButtonWithTextUnderImage];
 }
