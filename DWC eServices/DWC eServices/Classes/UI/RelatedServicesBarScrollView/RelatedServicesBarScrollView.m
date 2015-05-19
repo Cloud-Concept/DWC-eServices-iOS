@@ -187,6 +187,9 @@
         [button addTarget:self action:@selector(serviceButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [button setupButtonWithTextUnderImage];
         
+        button.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        button.titleLabel.textAlignment = NSTextAlignmentCenter;
+        
         button.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self addSubview:button];
@@ -750,7 +753,8 @@
     NSString *url = @"";
     
     if (self.eServicesDocumentChecklistObject) {
-        url = [NSString stringWithFormat:@"/apex/%@%@", self.eServicesDocumentChecklistObject.templateNameLink, [Globals currentAccount].Id];
+        url = [NSString stringWithFormat:@"/apex/%@", self.eServicesDocumentChecklistObject.templateNameLink];
+        url = [url stringByReplacingOccurrencesOfString:@"<tenId>" withString:self.activeBCTenancyContractObject.Id];
     }
     else if (self.companyDocumentObject) {
         url = [NSString stringWithFormat:@"servlet/servlet.FileDownload?file=%@", self.companyDocumentObject.attachmentId];
