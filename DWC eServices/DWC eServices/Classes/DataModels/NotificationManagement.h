@@ -27,6 +27,8 @@
 @property (nonatomic) BOOL isMessageRead;
 @property (nonatomic) BOOL isPushNotificationAllowed;
 
+@property (nonatomic) BOOL isRequestAlreadyRated;
+
 @property (nonatomic, strong) Request *request;
 
 - (id)initNotificationManager:(NSDictionary *)notificationManagerDict;

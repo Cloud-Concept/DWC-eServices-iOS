@@ -195,6 +195,7 @@
     
     [self refreshNotificationsCount];
     
+    self.tableView.queryOffset = 0;
     [self loadNotificationsRefresh:YES];
 }
 

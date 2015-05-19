@@ -35,6 +35,8 @@
         NSLog(@"ReturnBlock: Star rating changed to %.1f", rating);
         
         [self updateRequestRatingScore:[NSNumber numberWithFloat:rating]];
+        
+        self.currentNotification.request.caseRatingScore = [NSNumber numberWithFloat:rating];
     };
 }
 
@@ -46,6 +48,8 @@
 
 - (void)refreshCellForNotification:(NotificationManagement *)notification {
     [super refreshCellForNotification:notification];
+    
+    self.notificationRating.editable = !notification.isRequestAlreadyRated;
     
     [self setRatingScore:notification.request.caseRatingScore];
 }

@@ -41,6 +41,8 @@
     
     self.request = [[Request alloc] initRequest:[notificationManagerDict objectForKey:@"Case__r"]];
     
+    self.isRequestAlreadyRated = [self.request.caseRatingScore floatValue] > 0;
+    
     return self;
 }
 
