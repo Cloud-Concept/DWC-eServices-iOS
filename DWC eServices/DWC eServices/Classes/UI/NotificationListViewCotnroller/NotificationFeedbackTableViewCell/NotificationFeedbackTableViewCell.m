@@ -12,6 +12,7 @@
 #import "Request.h"
 #import "FVCustomAlertView.h"
 #import "SFRestAPI+Blocks.h"
+#import "HelperClass.h"
 
 @implementation NotificationFeedbackTableViewCell
 
@@ -72,6 +73,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             //[FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ThanksAlertTitle", @"")
+                                             Message:NSLocalizedString(@"RatingThankYouMessage", @"")];
         });
         
     };
