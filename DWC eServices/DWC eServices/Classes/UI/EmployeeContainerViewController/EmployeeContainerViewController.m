@@ -13,6 +13,9 @@
 #import "SOQLQueries.h"
 #import "SwipePageViewController.h"
 #import "UIViewController+ChildViewController.h"
+#import "DWCSFRequestManager.h"
+#import "Visa.h"
+#import "CardManagement.h"
 
 @interface EmployeeContainerViewController ()
 
@@ -30,17 +33,26 @@
     [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:NSLocalizedString(@"PermanentEmployee", @"")
                                                                NavBarTitle:NSLocalizedString(@"navBarPermanentEmployeeTitle", @"")
                                                            DWCEmployeeType:PermanentEmployee
-                                                                     Query:[SOQLQueries permanentEmployeesQuery]]];
+                                                                     Query:[SOQLQueries permanentEmployeesQuery]
+                                                                  CacheKey:kPermanentEmployeeCacheKey
+                                                                ObjectType:@"Visa__c"
+                                                               ObjectClass:[Visa class]]];
     
     [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:NSLocalizedString(@"ContractorEmployee", @"")
                                                                NavBarTitle:NSLocalizedString(@"navBarContractorTitle", @"")
                                                            DWCEmployeeType:ContractorEmployee
-                                                                     Query:[SOQLQueries contractorsQuery]]];
+                                                                     Query:[SOQLQueries contractorsQuery]
+                                                                  CacheKey:kAccessCardCacheKey
+                                                                ObjectType:@"Card_Management__c"
+                                                               ObjectClass:[CardManagement class]]];
     
     [dwcEmployeesTypesArray addObject:[[DWCEmployee alloc] initDWCEmployee:NSLocalizedString(@"VisitVisaEmployee", @"")
                                                                NavBarTitle:NSLocalizedString(@"navBarVisitVisaTitle", @"")
                                                            DWCEmployeeType:VisitVisaEmployee
-                                                                     Query:[SOQLQueries visitVisaEmployeesQuery]]];
+                                                                     Query:[SOQLQueries visitVisaEmployeesQuery]
+                                                                  CacheKey:kVisitVisaCacheKey
+                                                                ObjectType:@"Visa__c"
+                                                               ObjectClass:[Visa class]]];
     
     NSMutableArray *viewControllersMutableArray = [NSMutableArray new];
     NSMutableArray *pageLabelMutableArray = [NSMutableArray new];

@@ -12,6 +12,9 @@
 #import "CompanyDocumentTypeListViewController.h"
 #import "SwipePageViewController.h"
 #import "UIViewController+ChildViewController.h"
+#import "DWCSFRequestManager.h"
+#import "EServicesDocumentChecklist.h"
+#import "CompanyDocument.h"
 
 @interface CompanyDocumentTypeViewController ()
 
@@ -31,13 +34,19 @@
                                            initDWCCompanyDocument:NSLocalizedString(@"DWCCompanyDocumentTypeDWCDocument", @"")
                                            NavBarTitle:NSLocalizedString(@"navBarDWCCompanyDocumentTypeDWCDocumentTitle", @"")
                                            DWCCompanyDocumentType:DWCCompanyDocumentTypeDWCDocument
-                                           Query:[SOQLQueries dwcDocumentsQuery]]];
+                                           Query:[SOQLQueries dwcDocumentsQuery]
+                                           CacheKey:kDWCDocumentCacheKey
+                                           ObjectType:@"eServices_Document_Checklist__c"
+                                           ObjectClass:[EServicesDocumentChecklist class]]];
     
     [companyDocumentsTypesArray addObject:[[DWCCompanyDocument alloc]
                                            initDWCCompanyDocument:NSLocalizedString(@"DWCCompanyDocumentTypeCustomerDocument", @"")
                                            NavBarTitle:NSLocalizedString(@"navBarDWCCompanyDocumentTypeCustomerDocumentTitle", @"")
                                            DWCCompanyDocumentType:DWCCompanyDocumentTypeCustomerDocument
-                                           Query:[SOQLQueries customerDocumentsQuery]]];
+                                           Query:[SOQLQueries customerDocumentsQuery]
+                                           CacheKey:kCustomerDocumentCacheKey
+                                           ObjectType:@"Company_Documents__c"
+                                           ObjectClass:[CompanyDocument class]]];
     
     
     NSMutableArray *viewControllersMutableArray = [NSMutableArray new];

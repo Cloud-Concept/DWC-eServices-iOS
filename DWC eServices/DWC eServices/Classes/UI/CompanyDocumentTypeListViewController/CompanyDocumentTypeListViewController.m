@@ -19,6 +19,7 @@
 #import "Account.h"
 #import "TenancyContract.h"
 #import "RelatedServicesBarScrollView.h"
+#import "DWCSFRequestManager.h"
 
 @interface CompanyDocumentTypeListViewController ()
 
@@ -33,7 +34,7 @@
     [self.tableView setDragDelegate:self refreshDatePermanentKey:@""];
     self.tableView.queryLimit = 15;
     
-    
+    shouldClearCacheOnRefresh = NO;
     switch (self.currentDocumentType.Type) {
         case DWCCompanyDocumentTypeCustomerDocument:
             [self.tableView triggerRefresh];
@@ -44,6 +45,7 @@
         default:
             break;
     }
+    shouldClearCacheOnRefresh = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,8 +66,13 @@
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         NSArray *records = [dict objectForKey:@"records"];
         
-        if (isRefresh)
+        if (isRefresh) {
             dataRows = [NSMutableArray new];
+            
+            [DWCSFRequestManager writeRecordsArrayToCache:[dict objectForKey:@"records"]
+                                               objectType:self.currentDocumentType.ObjectType
+                                                 cacheKey:self.currentDocumentType.CacheKey];
+        }
         
         NSMutableArray *dataMutableArray = [NSMutableArray arrayWithArray:dataRows];
         
@@ -94,10 +101,13 @@
         });
     };
     
-    restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:[NSString stringWithFormat:self.currentDocumentType.SOQLQuery,
+    restRequest = [DWCSFRequestManager performSOQLQuery:[NSString stringWithFormat:self.currentDocumentType.SOQLQuery,
                                                                 self.tableView.queryLimit, self.tableView.queryOffset]
                                                      failBlock:errorBlock
-                                                 completeBlock:successBlock];
+                                                 completeBlock:successBlock
+                                            objectClass:self.currentDocumentType.ObjectClass
+                                               cacheKey:self.currentDocumentType.CacheKey
+                                           forceRequest:!isRefresh];
 }
 
 - (void)loadTenancyContract {
@@ -292,6 +302,9 @@
 
 #pragma mark - Table view Drag Load
 - (void)dragTableDidTriggerRefresh:(UITableView *)tableView {
+    if (shouldClearCacheOnRefresh)
+        [DWCSFRequestManager removeCacheForCacheKey:self.currentDocumentType.CacheKey];
+    
     [self tableRefresh];
 }
 

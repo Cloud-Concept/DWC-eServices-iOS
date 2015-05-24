@@ -11,6 +11,8 @@
 #import "UIButton+Additions.h"
 #import "DWCEmployee.h"
 #import "SOQLQueries.h"
+#import "DWCSFRequestManager.h"
+#import "Visa.h"
 
 @interface QuickAccessViewController ()
 
@@ -59,7 +61,10 @@
     DWCEmployee *dwcEmployee = [[DWCEmployee alloc] initDWCEmployee:NSLocalizedString(@"PermanentEmployee", @"")
                                                         NavBarTitle:NSLocalizedString(@"navBarPermanentEmployeeTitle", @"")
                                                     DWCEmployeeType:PermanentEmployee
-                                                              Query:[SOQLQueries permanentEmployeesQuery]];
+                                                              Query:[SOQLQueries permanentEmployeesQuery]
+                                                           CacheKey:kPermanentEmployeeCacheKey
+                                                         ObjectType:@"Visa__c"
+                                                        ObjectClass:[Visa class]];
     
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     EmployeeListViewController *employeeListVC = [storybord instantiateViewControllerWithIdentifier:@"Employee List Page"];

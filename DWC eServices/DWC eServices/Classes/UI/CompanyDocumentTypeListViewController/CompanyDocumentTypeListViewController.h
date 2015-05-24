@@ -14,6 +14,8 @@
 @class DWCCompanyDocument;
 @class TenancyContract;
 @class CompanyDocument;
+@class EServicesDocumentChecklist;
+
 @protocol CompanyDocumentTypeListSelectDocumentDelegate <NSObject>
 
 - (void)didSelectCompanyDocument:(CompanyDocument *)companyDocument;
@@ -28,6 +30,8 @@
     SFRestRequest *restRequest;
     
     NSIndexPath *expandedRowIndexPath;
+    
+    BOOL shouldClearCacheOnRefresh;
 }
 
 @property (nonatomic) id<CompanyDocumentTypeListSelectDocumentDelegate> selectDocumentDelegate;

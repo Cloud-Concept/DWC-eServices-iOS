@@ -8,7 +8,7 @@
 
 #import "MyRequestListViewController.h"
 #import "MyRequestTableViewCell.h"
-#import "SFRestAPI+Blocks.h"
+#import "SFRestRequest.h"
 #import "SOQLQueries.h"
 #import "Request.h"
 #import "RecordType.h"
@@ -16,6 +16,7 @@
 #import "RelatedService.h"
 #import "BaseServicesViewController.h"
 #import "PickerTableViewController.h"
+#import "DWCSFRequestManager.h"
 
 @interface MyRequestListViewController ()
 
@@ -37,14 +38,17 @@
     [self.requestsTableView setDragDelegate:self refreshDatePermanentKey:@""];
     self.requestsTableView.queryLimit = 15;
     
+    shouldClearCacheOnRefresh = NO;
     [self.requestsTableView triggerRefresh];
+    shouldClearCacheOnRefresh = YES;
     //[self loadMyRequests];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self tableRefresh];
+    if (!restRequest)
+        [self tableRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -165,8 +169,13 @@
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         NSArray *records = [dict objectForKey:@"records"];
         
-        if (isRefresh)
+        if (isRefresh) {
             dataRows = [NSArray new];
+            
+            [DWCSFRequestManager writeRecordsArrayToCache:records
+                                               objectType:@"Case"
+                                                 cacheKey:kMyRequestsCacheKey];
+        }
         
         NSMutableArray *mutableResults = [NSMutableArray arrayWithArray:dataRows];
         for (NSDictionary *recordDict in records) {
@@ -208,9 +217,12 @@
                                                      status:querySelectedStatus
                                                        type:querySelectedServiceType];
     
-    restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:query
-                                                     failBlock:errorBlock
-                                                 completeBlock:successBlock];
+    restRequest = [DWCSFRequestManager performSOQLQuery:query
+                                              failBlock:errorBlock
+                                          completeBlock:successBlock
+                                            objectClass:[Request class]
+                                               cacheKey:kMyRequestsCacheKey
+                                           forceRequest:!isRefresh];
 }
 
 - (void)openViewMyRequestFlow:(Request *)request {
@@ -288,6 +300,9 @@
 
 #pragma mark - Table view Drag Load
 - (void)dragTableDidTriggerRefresh:(UITableView *)tableView {
+    if (shouldClearCacheOnRefresh)
+        [DWCSFRequestManager removeCacheForCacheKey:kMyRequestsCacheKey];
+    
     [self tableRefresh];
 }
 

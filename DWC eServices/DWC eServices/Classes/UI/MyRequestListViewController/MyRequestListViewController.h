@@ -29,6 +29,8 @@
     NSString *searchBarText;
     
     SFRestRequest *restRequest;
+    
+    BOOL shouldClearCacheOnRefresh;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *requestsTableView;

@@ -113,6 +113,7 @@
 		1354F5521AF74651004A6CBA /* CustomerDocumentExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1354F5511AF74651004A6CBA /* CustomerDocumentExpandedTableViewCell.m */; };
 		1354F5551AF75C48004A6CBA /* DWCDocumentExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1354F5541AF75C48004A6CBA /* DWCDocumentExpandedTableViewCell.m */; };
 		1354F5591AF78365004A6CBA /* UIImageView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1354F5581AF78365004A6CBA /* UIImageView+Additions.m */; };
+		13603C1F1B0DC17700E1E68C /* DWCSFRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13603C1E1B0DC17700E1E68C /* DWCSFRequestManager.m */; };
 		136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136377BE1A767C2C00282F72 /* FVCustomAlertView.m */; };
 		13743ECA1AB02E4F00D0B873 /* NotificationManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 13743EC91AB02E4F00D0B873 /* NotificationManagement.m */; };
 		13743ECE1AB04D4400D0B873 /* NotificationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13743ECD1AB04D4400D0B873 /* NotificationListViewController.m */; };
@@ -375,6 +376,8 @@
 		1354F5571AF78365004A6CBA /* UIImageView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Additions.h"; sourceTree = "<group>"; };
 		1354F5581AF78365004A6CBA /* UIImageView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Additions.m"; sourceTree = "<group>"; };
 		1356A9501A70D78600CF217A /* Corisande-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Bold-Italic.ttf"; sourceTree = "<group>"; };
+		13603C1D1B0DC17700E1E68C /* DWCSFRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCSFRequestManager.h; sourceTree = "<group>"; };
+		13603C1E1B0DC17700E1E68C /* DWCSFRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCSFRequestManager.m; sourceTree = "<group>"; };
 		136377BD1A767C2C00282F72 /* FVCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVCustomAlertView.h; sourceTree = "<group>"; };
 		136377BE1A767C2C00282F72 /* FVCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVCustomAlertView.m; sourceTree = "<group>"; };
 		13743EC81AB02E4F00D0B873 /* NotificationManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManagement.h; sourceTree = "<group>"; };
@@ -755,6 +758,8 @@
 				13411AFA1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m */,
 				139E6B5F1A7A432500D1D451 /* SOQLQueries.h */,
 				139E6B601A7A432500D1D451 /* SOQLQueries.m */,
+				13603C1D1B0DC17700E1E68C /* DWCSFRequestManager.h */,
+				13603C1E1B0DC17700E1E68C /* DWCSFRequestManager.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -2106,6 +2111,7 @@
 				1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */,
 				1350B3C81B01D60B00321107 /* FormFieldValidation.m in Sources */,
 				1334F4A11ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m in Sources */,
+				13603C1F1B0DC17700E1E68C /* DWCSFRequestManager.m in Sources */,
 				13CFE72E1ABECF13009E47EC /* EServicesDocumentChecklist.m in Sources */,
 				137D5AD51AF8CA7200E67C72 /* NeedHelpViewController.m in Sources */,
 				134053B51AEE35ED007A4773 /* EmployeeExpandedTableViewCell.m in Sources */,
@@ -2272,7 +2278,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e6dd463-17ec-4baa-ad31-a0fd61421764";
+				PROVISIONING_PROFILE = "bb2d072c-eda4-411b-a64e-7eb4e185db87";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -2315,7 +2321,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5e6dd463-17ec-4baa-ad31-a0fd61421764";
+				PROVISIONING_PROFILE = "bb2d072c-eda4-411b-a64e-7eb4e185db87";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

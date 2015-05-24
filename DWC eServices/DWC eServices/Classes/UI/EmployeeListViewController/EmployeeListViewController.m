@@ -19,6 +19,7 @@
 #import "PickerTableViewController.h"
 #import "RelatedServicesBarScrollView.h"
 #import "NSString+SFAdditions.h"
+#import "DWCSFRequestManager.h"
 
 @interface EmployeeListViewController ()
 
@@ -45,7 +46,9 @@
     [self.employeesTableView setDragDelegate:self refreshDatePermanentKey:@""];
     self.employeesTableView.queryLimit = 15;
     
+    shouldClearCacheOnRefresh = NO;
     [self.employeesTableView triggerRefresh];
+    shouldClearCacheOnRefresh = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -175,8 +178,14 @@
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         NSArray *records = [dict objectForKey:@"records"];
         
-        if (isRefresh)
+        if (isRefresh) {
             dataRows = [NSArray new];
+            
+            [DWCSFRequestManager writeRecordsArrayToCache:[dict objectForKey:@"records"]
+                                               objectType:self.currentDWCEmployee.ObjectType
+                                                 cacheKey:self.currentDWCEmployee.CacheKey];
+
+        }
         
         NSMutableArray *employeesMutableArray = [NSMutableArray arrayWithArray:dataRows];
         
@@ -210,9 +219,12 @@
     if ([selectedFilter isEqualToString:@"All"])
         querySelectedFilter = @"%";
     
-    restRequest = [[SFRestAPI sharedInstance] performSOQLQuery:[NSString stringWithFormat:self.currentDWCEmployee.SOQLQuery, querySelectedFilter, self.employeesTableView.queryLimit, self.employeesTableView.queryOffset]
-                                                     failBlock:errorBlock
-                                                 completeBlock:successBlock];
+    restRequest = [DWCSFRequestManager performSOQLQuery:[NSString stringWithFormat:self.currentDWCEmployee.SOQLQuery, querySelectedFilter, self.employeesTableView.queryLimit, self.employeesTableView.queryOffset]
+                                              failBlock:errorBlock
+                                          completeBlock:successBlock
+                                            objectClass:self.currentDWCEmployee.ObjectClass
+                                               cacheKey:self.currentDWCEmployee.CacheKey
+                                           forceRequest:!isRefresh];
 }
 
 - (void)refreshEmployeesTable {
@@ -388,6 +400,9 @@
 
 #pragma mark - Table view Drag Load
 - (void)dragTableDidTriggerRefresh:(UITableView *)tableView {
+    if (shouldClearCacheOnRefresh)
+        [DWCSFRequestManager removeCacheForCacheKey:self.currentDWCEmployee.CacheKey];
+    
     [self tableRefresh];
 }
 

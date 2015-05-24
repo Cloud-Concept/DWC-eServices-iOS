@@ -37,6 +37,8 @@
     SFRestRequest *restRequest;
     
     NSIndexPath *expandedRowIndexPath;
+    
+    BOOL shouldClearCacheOnRefresh;
 }
 @property (nonatomic, strong) DWCEmployee *currentDWCEmployee;
 
