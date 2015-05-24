@@ -38,6 +38,11 @@
                                            placeholderImage:[UIImage imageNamed:self.DefaultPhotoName]];
     [self.profilePictureImageView maskImageToCircle];
     
+    if (self.hideImageNameSection) {
+        [self.employeeNameLabel removeFromSuperview];
+        [self.profilePictureImageView removeFromSuperview];
+    }
+    
     [self setupDetailsView];
 }
 

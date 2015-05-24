@@ -28,6 +28,7 @@
 @property (strong, nonatomic) CardManagement *cardManagementObject;
 
 @property (nonatomic) BOOL isBottomBarHidden;
+@property (nonatomic) BOOL hideImageNameSection;
 @property (nonatomic) NSUInteger RelatedServicesMask;
 
 //@property (weak, nonatomic) IBOutlet UIView *paginationView;

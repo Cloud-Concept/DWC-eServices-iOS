@@ -117,6 +117,7 @@
 - (void)configureRecordMainViewController:(RecordMainDetailsViewController *)recordVC ForCompany:(Account *)account {
     recordVC.NameValue = account.name;
     recordVC.PhotoId = account.companyLogo;
+    recordVC.hideImageNameSection = YES;
     
     NSMutableArray *sectionsArray = [NSMutableArray new];
     NSMutableArray *fieldsArray = [NSMutableArray new];
@@ -162,6 +163,7 @@
 - (void)configureRecordMainViewController:(RecordMainDetailsViewController *)recordVC ForLicense:(License *)license Company:(Account *)account{
     recordVC.NameValue = account.name;
     recordVC.PhotoId = account.companyLogo;
+    recordVC.hideImageNameSection = YES;
     
     NSMutableArray *sectionsArray = [NSMutableArray new];
     NSMutableArray *fieldsArray = [NSMutableArray new];
