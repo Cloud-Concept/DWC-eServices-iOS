@@ -31,7 +31,7 @@
     
     self.employeeNameLabel.text = self.NameValue;
     
-    if ([self.DefaultPhotoName isEmptyOrWhitespaceAndNewlines])
+    if (!self.DefaultPhotoName || [self.DefaultPhotoName isEmptyOrWhitespaceAndNewlines])
         self.DefaultPhotoName = @"Default Person Image";
     
     [self.profilePictureImageView loadImageFromSFAttachment:self.PhotoId
