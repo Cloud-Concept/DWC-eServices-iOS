@@ -29,6 +29,9 @@
 #import "SalesforceSDKManager.h"
 #import "SFUserAccountManager.h"
 #import "SFLogger.h"
+#import "NetworkReachability.h"
+#import "CustomIOS7AlertView.h"
+#import "NoInternetPopoverViewController.h"
 
 // Fill these in when creating a new Connected Application on Force.com
 
@@ -65,6 +68,22 @@ static NSString * const OAuthRedirectURI        = @"dwcmobile://auth/success";
 @implementation AppDelegate
 
 @synthesize window = _window;
+
+- (CustomIOS7AlertView *) customAlertView{
+    if(_customAlertView)
+        return _customAlertView;
+    
+    _customAlertView = [[CustomIOS7AlertView alloc] init];
+    
+    NoInternetPopoverViewController *noInternetPopoverViewController = [[NoInternetPopoverViewController alloc] initNoInternetPopoverViewController];
+    
+    [_customAlertView setContainerView:noInternetPopoverViewController.view];
+    [_customAlertView setButtonTitles:nil];
+    
+    [_customAlertView setUseMotionEffects:true];
+    
+    return _customAlertView;
+}
 
 - (id)init
 {
@@ -106,6 +125,7 @@ static NSString * const OAuthRedirectURI        = @"dwcmobile://auth/success";
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor whiteColor],
                                                             NSFontAttributeName: [UIFont fontWithName:@"CorisandeRegular" size:0.0]}];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kNetworkReachabilityChangedNotification object:nil];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self initializeAppViewState];
@@ -223,6 +243,31 @@ static NSString * const OAuthRedirectURI        = @"dwcmobile://auth/success";
         [self initializeAppViewState];
         [[SalesforceSDKManager sharedManager] launch];
     }];
+}
+
+/*!
+ * Called by Reachability whenever status changes.
+ */
+- (void) reachabilityChanged:(NSNotification *)notification
+{
+    if ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone Simulator"])
+        return;
+    
+    NetworkReachability* curReach = [notification object];
+    NSParameterAssert([curReach isKindOfClass:[NetworkReachability class]]);
+    
+    if([curReach currentReachabilityStatus] == NotReachable) {
+        self.isReachable = NO;
+        if(![self.customAlertView isVisible]) {
+            [self.customAlertView show];
+        }
+    }
+    else {
+        self.isReachable = YES;
+        if([self.customAlertView isVisible]) {
+            [self.customAlertView close];
+        }
+    }
 }
 
 @end

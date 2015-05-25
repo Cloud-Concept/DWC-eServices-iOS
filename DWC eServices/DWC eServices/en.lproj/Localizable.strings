@@ -208,6 +208,7 @@
 "ServiceThankYouMessage" = "We can confirm that we have received your submission and your Ref No # %@.";
 "ServiceThankYouMessagePayment" = "We can confirm that we have received the payment of AED %@ (including knowledge fee of AED 10)";
 "ServiceThankYouMessageNOCNote" = "You will receive e-copy of your NOC shortly on %@";
+"ServiceThankYouMessageCards" = "Your account will be debited AED %@ (including AED 10 knowledge fee) and you will be notified when the payment is complete";
 
 "NeedHelpThankYouMessage" = "Dear Customer\r\n\r\nThank you for providing a valuable feedback. Our team will review your feedback and get back to you as soon as possible. You case number is \"%@\". To track and see the update on your case, please go to My case tab and see the detail \r\n\r\n For any urgent enquiry, Call us at +971 4 816 0000 or use our online chat option";
 

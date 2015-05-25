@@ -135,6 +135,10 @@
 		139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B691A7A6F2600D1D451 /* UIImageView+SFAttachment.m */; };
 		139E6B6E1A7A6F2600D1D451 /* UIView+MGBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B6C1A7A6F2600D1D451 /* UIView+MGBadgeView.m */; };
 		139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */; };
+		13A062861B12FBB300108167 /* NetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A062851B12FBB300108167 /* NetworkReachability.m */; };
+		13A0628B1B1306D800108167 /* NoInternetPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A062891B1306D800108167 /* NoInternetPopoverViewController.m */; };
+		13A0628C1B1306D800108167 /* NoInternetPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A0628A1B1306D800108167 /* NoInternetPopoverViewController.xib */; };
+		13A062901B1306FD00108167 /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A0628F1B1306FD00108167 /* CustomIOS7AlertView.m */; };
 		13BCE7681AC9585600AF28C6 /* LicenseRenewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCE7661AC9585600AF28C6 /* LicenseRenewViewController.m */; };
 		13BCE7691AC9585600AF28C6 /* LicenseRenewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13BCE7671AC9585600AF28C6 /* LicenseRenewViewController.xib */; };
 		13CFE72E1ABECF13009E47EC /* EServicesDocumentChecklist.m in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE72D1ABECF13009E47EC /* EServicesDocumentChecklist.m */; };
@@ -419,6 +423,13 @@
 		139E6B6C1A7A6F2600D1D451 /* UIView+MGBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MGBadgeView.m"; sourceTree = "<group>"; };
 		139E6B701A7A6FC200D1D451 /* UIView+RoundCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RoundCorner.h"; sourceTree = "<group>"; };
 		139E6B711A7A6FC200D1D451 /* UIView+RoundCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RoundCorner.m"; sourceTree = "<group>"; };
+		13A062841B12FBB300108167 /* NetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkReachability.h; sourceTree = "<group>"; };
+		13A062851B12FBB300108167 /* NetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkReachability.m; sourceTree = "<group>"; };
+		13A062881B1306D800108167 /* NoInternetPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetPopoverViewController.h; sourceTree = "<group>"; };
+		13A062891B1306D800108167 /* NoInternetPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetPopoverViewController.m; sourceTree = "<group>"; };
+		13A0628A1B1306D800108167 /* NoInternetPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoInternetPopoverViewController.xib; sourceTree = "<group>"; };
+		13A0628E1B1306FD00108167 /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
+		13A0628F1B1306FD00108167 /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
 		13BCE7651AC9585600AF28C6 /* LicenseRenewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseRenewViewController.h; sourceTree = "<group>"; };
 		13BCE7661AC9585600AF28C6 /* LicenseRenewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseRenewViewController.m; sourceTree = "<group>"; };
 		13BCE7671AC9585600AF28C6 /* LicenseRenewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseRenewViewController.xib; sourceTree = "<group>"; };
@@ -694,6 +705,7 @@
 				13315ACD1AAC662A009E1819 /* CompanyInfoListViewController */,
 				13315AC31AAC24CB009E1819 /* CompanyInfoTypeViewController */,
 				13073B8A1AC3E61500F25EC6 /* ContractRenewalEditViewController */,
+				13A0628D1B1306FD00108167 /* CustomIOS7AlertView */,
 				13F39B071AE7CCD0003AA84E /* DashboardViewController */,
 				13081B001A7655BD00B33509 /* DatePickerViewController */,
 				131ECF301AC29BB500EDA9EB /* EDStarRating */,
@@ -707,6 +719,7 @@
 				137D5AD21AF8CA5D00E67C72 /* NeedHelpViewController */,
 				131048BE1A9EFCD9006A400B /* NewCardViewController */,
 				1394EA101A88B5C000ECED05 /* NewNOCViewController */,
+				13A062871B1306D800108167 /* NoInternetPopoverViewController */,
 				13743ECB1AB04D3700D0B873 /* NotificationListViewCotnroller */,
 				1324D8961A89E98B003AA356 /* PickerTableViewController */,
 				139AD0371B08901C006FBD9B /* QuickAccessViewController */,
@@ -750,16 +763,18 @@
 		1307BAD11A6F83A4004E6325 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				13603C1D1B0DC17700E1E68C /* DWCSFRequestManager.h */,
+				13603C1E1B0DC17700E1E68C /* DWCSFRequestManager.m */,
 				13081AE11A7625C400B33509 /* Globals.h */,
 				13081AE21A7625C400B33509 /* Globals.m */,
 				1307BAEA1A6FDAC3004E6325 /* HelperClass.h */,
 				1307BAEB1A6FDAC3004E6325 /* HelperClass.m */,
+				13A062841B12FBB300108167 /* NetworkReachability.h */,
+				13A062851B12FBB300108167 /* NetworkReachability.m */,
 				13411AF91A931E8E009AC2F5 /* ServiceDocumentHelperClass.h */,
 				13411AFA1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m */,
 				139E6B5F1A7A432500D1D451 /* SOQLQueries.h */,
 				139E6B601A7A432500D1D451 /* SOQLQueries.m */,
-				13603C1D1B0DC17700E1E68C /* DWCSFRequestManager.h */,
-				13603C1E1B0DC17700E1E68C /* DWCSFRequestManager.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1400,6 +1415,25 @@
 			path = "UIView+RoundCorner";
 			sourceTree = "<group>";
 		};
+		13A062871B1306D800108167 /* NoInternetPopoverViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13A062881B1306D800108167 /* NoInternetPopoverViewController.h */,
+				13A062891B1306D800108167 /* NoInternetPopoverViewController.m */,
+				13A0628A1B1306D800108167 /* NoInternetPopoverViewController.xib */,
+			);
+			path = NoInternetPopoverViewController;
+			sourceTree = "<group>";
+		};
+		13A0628D1B1306FD00108167 /* CustomIOS7AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				13A0628E1B1306FD00108167 /* CustomIOS7AlertView.h */,
+				13A0628F1B1306FD00108167 /* CustomIOS7AlertView.m */,
+			);
+			path = CustomIOS7AlertView;
+			sourceTree = "<group>";
+		};
 		13BCE7641AC9584100AF28C6 /* LicenseRenewViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2007,6 +2041,7 @@
 				131819471A91D6C100CAA4D6 /* Localizable.strings in Resources */,
 				824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */,
 				1307BAE71A6F938B004E6325 /* Images.xcassets in Resources */,
+				13A0628C1B1306D800108167 /* NoInternetPopoverViewController.xib in Resources */,
 				1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */,
 				131ECF3F1AC2D2F700EDA9EB /* MainStoryboard.storyboard in Resources */,
 				131819441A91D65900CAA4D6 /* InfoPlist.strings in Resources */,
@@ -2090,6 +2125,7 @@
 				13073B8E1AC3E63800F25EC6 /* ContractRenewalEditViewController.m in Sources */,
 				130523E61A99C56D00EF2268 /* UIViewController+ChildViewController.m in Sources */,
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
+				13A062901B1306FD00108167 /* CustomIOS7AlertView.m in Sources */,
 				13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */,
 				134053BC1AEE50B5007A4773 /* FTWCache.m in Sources */,
 				13743ECE1AB04D4400D0B873 /* NotificationListViewController.m in Sources */,
@@ -2102,6 +2138,7 @@
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,
 				131F96CD1AA48D8400786B15 /* MyRequestListViewController.m in Sources */,
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
+				13A0628B1B1306D800108167 /* NoInternetPopoverViewController.m in Sources */,
 				138516521AFF4EF500ACF4B3 /* CompanyAmendmentViewController.m in Sources */,
 				13081AFA1A76559D00B33509 /* EServiceAdministration.m in Sources */,
 				13481AF01A823A5B00093331 /* RelatedService.m in Sources */,
@@ -2127,6 +2164,7 @@
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
 				132D38B61AE9262000D61A3E /* NSDate+CreateSpecificDate.m in Sources */,
 				133E34D91AC02CF6002C3748 /* VisualforceWebviewViewController.m in Sources */,
+				13A062861B12FBB300108167 /* NetworkReachability.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,
 				13081AF91A76559D00B33509 /* Country.m in Sources */,
 				139E6B6E1A7A6F2600D1D451 /* UIView+MGBadgeView.m in Sources */,

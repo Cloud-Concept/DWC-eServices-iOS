@@ -17,6 +17,7 @@
 #import "DWCCompanyDocument.h"
 #import "SOQLQueries.h"
 #import "CompanyDocument.h"
+#import "DWCSFRequestManager.h"
 
 @interface ServicesUploadViewController ()
 
@@ -172,7 +173,10 @@
                                               initDWCCompanyDocument:NSLocalizedString(@"DWCCompanyDocumentTypeCustomerDocument", @"")
                                               NavBarTitle:NSLocalizedString(@"navBarDWCCompanyDocumentTypeCustomerDocumentTitle", @"")
                                               DWCCompanyDocumentType:DWCCompanyDocumentTypeCustomerDocument
-                                              Query:[SOQLQueries customerDocumentsQuery]];
+                                              Query:[SOQLQueries customerDocumentsQuery]
+                                              CacheKey:kCustomerDocumentCacheKey
+                                              ObjectType:kCustomerDocumentCacheKey
+                                              ObjectClass:[CompanyDocument class]];
     
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     CompanyDocumentTypeListViewController *companyDocListVC = [storybord instantiateViewControllerWithIdentifier:@"Company Document List Page"];

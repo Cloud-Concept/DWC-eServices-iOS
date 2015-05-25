@@ -24,6 +24,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class NetworkReachability;
+@class CustomIOS7AlertView;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    CustomIOS7AlertView *_customAlertView;
+}
+
+@property (strong, nonatomic) NetworkReachability *reachability;
+@property (nonatomic) BOOL isReachable;
 
 @end

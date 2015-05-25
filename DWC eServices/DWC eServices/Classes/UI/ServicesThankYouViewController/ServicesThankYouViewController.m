@@ -10,6 +10,7 @@
 #import "BaseServicesViewController.h"
 #import "HelperClass.h"
 #import "SWRevealViewController.h"
+#import "EServiceAdministration.h"
 
 @interface ServicesThankYouViewController ()
 
@@ -52,6 +53,10 @@
         self.baseServicesViewController.relatedServiceType != RelatedServiceTypeCompanyAddressChange) {
         [message appendString:@"\r\n \r\n"];
         [message appendFormat:NSLocalizedString(@"ServiceThankYouMessagePayment", @""), totalPriceString];
+    }
+    else {
+        [message appendString:@"\r\n \r\n"];
+        [message appendFormat:NSLocalizedString(@"ServiceThankYouMessageCards", @""), self.baseServicesViewController.currentServiceAdministration.amount];
     }
     
     if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeNewCompanyNOC ||
