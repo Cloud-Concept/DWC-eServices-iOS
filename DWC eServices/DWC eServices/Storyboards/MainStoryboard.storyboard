@@ -3108,13 +3108,13 @@
                                                         <constraint firstAttribute="width" constant="75" id="xQ2-iK-Hlg"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction No:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bg7-i1-2yQ">
-                                                    <rect key="frame" x="98" y="10" width="72" height="13"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Employee Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bg7-i1-2yQ">
+                                                    <rect key="frame" x="98" y="10" width="78" height="13"/>
                                                     <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XZ-IN-uQO">
-                                                    <rect key="frame" x="178" y="10" width="188" height="13"/>
+                                                    <rect key="frame" x="184" y="10" width="182" height="13"/>
                                                     <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="11"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -3209,9 +3209,10 @@
                                             <outlet property="paymentBalanceValueLabel" destination="84p-gy-nWj" id="9LH-Ho-GXR"/>
                                             <outlet property="paymentCreditDebitValueLabel" destination="rDt-3E-n1A" id="1UI-JS-zxh"/>
                                             <outlet property="paymentDateValueLabel" destination="yLX-BO-ivK" id="csT-PO-XXi"/>
+                                            <outlet property="paymentEmployeeNameTitleLabel" destination="bg7-i1-2yQ" id="6YP-9Z-jLg"/>
+                                            <outlet property="paymentEmployeeNameValueLabel" destination="4XZ-IN-uQO" id="eC9-1G-4pF"/>
                                             <outlet property="paymentIconImageView" destination="COF-jZ-d41" id="aLf-03-fm4"/>
                                             <outlet property="paymentStatusValueLabel" destination="lgI-wi-Ki0" id="P4E-x8-typ"/>
-                                            <outlet property="paymentTransactionNumberValueLabel" destination="4XZ-IN-uQO" id="1zo-2h-brh"/>
                                             <outlet property="verticalSpaceStatusBalance" destination="qqI-pi-FsH" id="WMB-96-h2T"/>
                                         </connections>
                                     </tableViewCell>

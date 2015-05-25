@@ -9,6 +9,7 @@
 #import "FreeZonePayment.h"
 #import "HelperClass.h"
 #import "SFDateUtil.h"
+#import "Request.h"
 
 @implementation FreeZonePayment
 
@@ -43,6 +44,8 @@
         self.freeZonePaymentType = FreeZonePaymentTypeDebit;
     else
         self.freeZonePaymentType = FreeZonePaymentTypeNA;
+    
+    self.request = [[Request alloc] initRequest:[freeZonePaymentDict objectForKey:@"Request__r"]];
     
     return self;
 }

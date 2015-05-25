@@ -14,6 +14,8 @@ typedef enum {
     FreeZonePaymentTypeDebit,
 } FreeZonePaymentType;
 
+@class Request;
+
 @interface FreeZonePayment : NSObject
 
 @property (strong, nonatomic) NSString *Id;
@@ -30,6 +32,8 @@ typedef enum {
 @property (strong, nonatomic) NSNumber *debitAmount;
 @property (strong, nonatomic) NSNumber *creditAmount;
 @property (strong, nonatomic) NSNumber *closingBalance;
+
+@property (strong, nonatomic) Request *request;
 
 @property (assign, nonatomic) FreeZonePaymentType freeZonePaymentType;
 

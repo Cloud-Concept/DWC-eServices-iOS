@@ -9,6 +9,9 @@
 #import "ViewStatementTableViewCell.h"
 #import "FreeZonePayment.h"
 #import "HelperClass.h"
+#import "Account.h"
+#import "Request.h"
+#import "NSString+SFAdditions.h"
 
 @implementation ViewStatementTableViewCell
 
@@ -23,7 +26,18 @@
 }
 
 - (void)displayValueForPayment:(FreeZonePayment *)currentPayment {
-    self.paymentTransactionNumberValueLabel.text = currentPayment.name;
+    self.paymentEmployeeNameValueLabel.text = currentPayment.request.employeeRef.name;
+    
+    if (!currentPayment.request || !currentPayment.request.employeeRef || [currentPayment.request.employeeRef.name isEmptyOrWhitespaceAndNewlines]) {
+        self.paymentEmployeeNameTitleLabel.hidden = YES;
+        self.paymentEmployeeNameValueLabel.hidden = YES;
+    }
+    else {
+        self.paymentEmployeeNameTitleLabel.hidden = NO;
+        self.paymentEmployeeNameValueLabel.hidden = NO;
+    }
+        
+    
     self.paymentDateValueLabel.text = [HelperClass formatDateToString:currentPayment.transactionDate];
     self.paymentStatusValueLabel.text = currentPayment.status;
     

@@ -13,7 +13,8 @@
 @interface ViewStatementTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *paymentIconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *paymentTransactionNumberValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *paymentEmployeeNameValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *paymentEmployeeNameTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *paymentDateValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *paymentCreditDebitValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *paymentBalanceValueLabel;

@@ -154,7 +154,7 @@
         predicateString = [NSMutableString stringWithString:statusFilterPredicate];
     
     if (![searchBarText isEqualToString:@""]) {
-        NSString *nameFilter = [NSString stringWithFormat:@"caseNumber contains[c] '%@'", searchBarText];
+        NSString *nameFilter = [NSString stringWithFormat:@"caseNumber contains[c] '%@' OR employeeRef.name contains[c] '%@'", searchBarText, searchBarText];
         if ([predicateString isEqualToString:@""])
             predicateString = [NSMutableString stringWithString:nameFilter];
         else
