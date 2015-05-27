@@ -23,6 +23,7 @@
 #import "ViewStatementListViewController.h"
 #import "UIButton+Additions.h"
 #import "SFAuthenticationManager.h"
+#import "HelperClass.h"
 
 @interface HomePageViewController ()
 
@@ -101,7 +102,7 @@
         [Globals setCurrentAccount:account];
         
         [Globals setContactId:[dict objectForKey:@"ContactId"]];
-        [Globals setContactPersonalPhoto:[[dict objectForKey:@"Contact"] objectForKey:@"Personal_Photo__c" ]];
+        [Globals setContactPersonalPhoto:[HelperClass stringCheckNull:[[dict objectForKey:@"Contact"] objectForKey:@"Personal_Photo__c"]]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             loadingCompanyInfo = NO;

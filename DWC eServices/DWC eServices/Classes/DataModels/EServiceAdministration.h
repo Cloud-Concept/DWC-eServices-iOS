@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *renewVFGenerator;
 @property (strong, nonatomic) NSString *replaceVFGenerator;
 @property (strong, nonatomic) NSString *recordTypePicklist;
+@property (strong, nonatomic) NSString *serviceVFPage;
 @property (strong, nonatomic) NSArray *serviceDocumentsArray;
 @property (strong, nonatomic) NSOrderedSet *authoritiesOrderedSet;
 @property (strong, nonatomic) NSDictionary *authorityLanguagesDictionary;

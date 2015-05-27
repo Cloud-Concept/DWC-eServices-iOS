@@ -32,6 +32,7 @@
     self.replaceVFGenerator = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Replace_VF_Generator__c"]];
     self.recordTypePicklist = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Record_Type_Picklist__c"]];
     self.requireKnowledgeFee = [[eServiceAdministrationDict objectForKey:@"Require_Knowledge_Fee__c"] boolValue];
+    self.serviceVFPage = [HelperClass stringCheckNull:[eServiceAdministrationDict objectForKey:@"Service_VF_Page__c"]];
     
     NSArray *serviceDocumentsArray = [NSArray new];
     NSMutableArray *documentsMutableArray = [NSMutableArray new];

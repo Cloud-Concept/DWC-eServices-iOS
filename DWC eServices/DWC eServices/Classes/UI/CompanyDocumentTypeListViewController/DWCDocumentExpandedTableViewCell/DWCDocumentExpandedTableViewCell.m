@@ -39,6 +39,10 @@
     
     servicesMask = 0;
     
+    if (!activeBCTenancyContract && [currentEServicesDocumentChecklist.templateNameLink containsString:@"<tenId>"]) {
+        currentEServicesDocumentChecklist.availableForPreview = NO;
+    }
+    
     if (currentEServicesDocumentChecklist.availableForPreview)
         servicesMask |= RelatedServiceTypeDocumentPreview;
     

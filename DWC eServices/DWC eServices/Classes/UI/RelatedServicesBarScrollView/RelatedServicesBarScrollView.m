@@ -39,6 +39,7 @@
 #import "CompanyDocument.h"
 #import "UIImageView+Additions.h"
 #import "UIButton+Additions.h"
+#import "EServiceAdministration.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @implementation RelatedServicesBarScrollView
@@ -753,8 +754,13 @@
     NSString *url = @"";
     
     if (self.eServicesDocumentChecklistObject) {
-        url = [NSString stringWithFormat:@"/apex/%@", self.eServicesDocumentChecklistObject.templateNameLink];
-        url = [url stringByReplacingOccurrencesOfString:@"<tenId>" withString:self.activeBCTenancyContractObject.Id];
+        url = [NSString stringWithFormat:@"/apex%@", self.eServicesDocumentChecklistObject.eServiceAdministration.serviceVFPage];
+        url = [url stringByReplacingOccurrencesOfString:@"<AccountId>" withString:[Globals currentAccount].Id];
+        url = [url stringByReplacingOccurrencesOfString:@"<AccId>" withString:[Globals currentAccount].Id];
+        url = [url stringByReplacingOccurrencesOfString:@"<licId>" withString:[Globals currentAccount].currentLicenseNumber.Id];
+        
+        if (self.activeBCTenancyContractObject)
+            url = [url stringByReplacingOccurrencesOfString:@"<tenId>" withString:self.activeBCTenancyContractObject.Id];
     }
     else if (self.companyDocumentObject) {
         url = [NSString stringWithFormat:@"servlet/servlet.FileDownload?file=%@", self.companyDocumentObject.attachmentId];
