@@ -35,7 +35,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Home NavBar DWC Logo"]];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Home NavBar DWC Logo"]];
+    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Home NavBar DWC Logo"]];
+    
+    UIBarButtonItem *logoItem = [[UIBarButtonItem alloc] initWithCustomView:logoImageView];
+    [self.navigationItem setLeftBarButtonItem:logoItem animated:NO];
     
     [self setupHomeButton:self.dashboardButton TitleKey:@"homeDashboardButton"];
     [self setupHomeButton:self.employeesButton TitleKey:@"homeEmployeesButton"];
