@@ -501,7 +501,7 @@
 		821C8F2E18C5309B000FAF96 /* SFUserAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserAccount.h; sourceTree = "<group>"; };
 		821C8F2F18C5309B000FAF96 /* SFUserAccountConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserAccountConstants.h; sourceTree = "<group>"; };
 		821C8F3018C5309B000FAF96 /* SFUserAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUserAccountManager.h; sourceTree = "<group>"; };
-		824A9DD51724E16400C9BD79 /* DWC eServices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DWC eServices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		824A9DD51724E16400C9BD79 /* iDWC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDWC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824A9DD81724E16400C9BD79 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		824A9DDA1724E16400C9BD79 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		824A9DDC1724E16400C9BD79 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1673,7 +1673,7 @@
 		824A9DD61724E16400C9BD79 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				824A9DD51724E16400C9BD79 /* DWC eServices.app */,
+				824A9DD51724E16400C9BD79 /* iDWC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1978,9 +1978,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		824A9DD41724E16400C9BD79 /* DWC eServices */ = {
+		824A9DD41724E16400C9BD79 /* iDWC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 824A9DFB1724E16400C9BD79 /* Build configuration list for PBXNativeTarget "DWC eServices" */;
+			buildConfigurationList = 824A9DFB1724E16400C9BD79 /* Build configuration list for PBXNativeTarget "iDWC" */;
 			buildPhases = (
 				824A9DD11724E16400C9BD79 /* Sources */,
 				824A9DD21724E16400C9BD79 /* Frameworks */,
@@ -1990,9 +1990,9 @@
 			);
 			dependencies = (
 			);
-			name = "DWC eServices";
+			name = iDWC;
 			productName = DWCeServices;
-			productReference = 824A9DD51724E16400C9BD79 /* DWC eServices.app */;
+			productReference = 824A9DD51724E16400C9BD79 /* iDWC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2009,7 +2009,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 824A9DD01724E16400C9BD79 /* Build configuration list for PBXProject "DWC eServices" */;
+			buildConfigurationList = 824A9DD01724E16400C9BD79 /* Build configuration list for PBXProject "iDWC" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2021,7 +2021,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				824A9DD41724E16400C9BD79 /* DWC eServices */,
+				824A9DD41724E16400C9BD79 /* iDWC */,
 			);
 		};
 /* End PBXProject section */
@@ -2315,7 +2315,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = iDWC;
 				PROVISIONING_PROFILE = "bb2d072c-eda4-411b-a64e-7eb4e185db87";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -2358,7 +2358,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = iDWC;
 				PROVISIONING_PROFILE = "bb2d072c-eda4-411b-a64e-7eb4e185db87";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -2369,7 +2369,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		824A9DD01724E16400C9BD79 /* Build configuration list for PBXProject "DWC eServices" */ = {
+		824A9DD01724E16400C9BD79 /* Build configuration list for PBXProject "iDWC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				824A9DF91724E16400C9BD79 /* Debug */,
@@ -2378,7 +2378,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		824A9DFB1724E16400C9BD79 /* Build configuration list for PBXNativeTarget "DWC eServices" */ = {
+		824A9DFB1724E16400C9BD79 /* Build configuration list for PBXNativeTarget "iDWC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				824A9DFC1724E16400C9BD79 /* Debug */,

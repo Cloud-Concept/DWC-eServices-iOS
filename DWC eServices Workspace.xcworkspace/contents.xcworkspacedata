@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:DWC eServices/DWC eServices.xcodeproj">
+      location = "group:/Users/Za2loom/Development/CloudConcept/iOS/DWC-eServices-iOS/DWC eServices/iDWC.xcodeproj">
    </FileRef>
 </Workspace>

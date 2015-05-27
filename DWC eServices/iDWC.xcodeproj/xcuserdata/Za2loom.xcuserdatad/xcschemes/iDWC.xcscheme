@@ -7,6 +7,20 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "824A9DD41724E16400C9BD79"
+               BuildableName = "DWC eServices.app"
+               BlueprintName = "DWC eServices"
+               ReferencedContainer = "container:DWC eServices.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
@@ -15,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "824A9DD41724E16400C9BD79"
-               BuildableName = "DWC eServices.app"
-               BlueprintName = "DWC eServices"
-               ReferencedContainer = "container:DWC eServices.xcodeproj">
+               BuildableName = "iDWC.app"
+               BlueprintName = "iDWC"
+               ReferencedContainer = "container:iDWC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -53,9 +67,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "824A9DD41724E16400C9BD79"
-            BuildableName = "DWC eServices.app"
-            BlueprintName = "DWC eServices"
-            ReferencedContainer = "container:DWC eServices.xcodeproj">
+            BuildableName = "iDWC.app"
+            BlueprintName = "iDWC"
+            ReferencedContainer = "container:iDWC.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
