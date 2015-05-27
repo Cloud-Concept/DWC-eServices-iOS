@@ -92,20 +92,21 @@
             if (![employeeRefDict isKindOfClass:[NSNull class]])
                 requestPersonName = [employeeRefDict objectForKey:@"Name"];
             
+            totalAmount = nil;
             NSDictionary *serviceRequestedDict = [dict objectForKey:@"Service_Requested__r"];
             if(![serviceRequestedDict isKindOfClass:[NSNull class]]) {
                 totalAmount = [serviceRequestedDict objectForKey:@"Total_Amount__c"];
             }
             
             NSDictionary *invoicesArray = [dict objectForKey:@"Invoices__r"];
-            if(![invoicesArray isKindOfClass:[NSNull class]]) {
+            if(![invoicesArray isKindOfClass:[NSNull class]] && !totalAmount) {
                 for (NSDictionary *invoiceDict in [invoicesArray objectForKey:@"records"]) {
                     Invoice *invoice = [[Invoice alloc] initInvoice:invoiceDict];
                     totalAmount = [NSNumber numberWithFloat:([totalAmount floatValue] + [invoice.amount floatValue])];
                 }
             }
             invoicesArray = [dict objectForKey:@"Invoices1__r"];
-            if(![invoicesArray isKindOfClass:[NSNull class]]) {
+            if(![invoicesArray isKindOfClass:[NSNull class]] && !totalAmount) {
                 for (NSDictionary *invoiceDict in [invoicesArray objectForKey:@"records"]) {
                     Invoice *invoice = [[Invoice alloc] initInvoice:invoiceDict];
                     totalAmount = [NSNumber numberWithFloat:([totalAmount floatValue] + [invoice.amount floatValue])];
