@@ -225,6 +225,7 @@
     self.nationality = [HelperClass stringCheckNull:[accountDict objectForKey:@"Nationality__c"]];
     self.companyLogo = [HelperClass stringCheckNull:[accountDict objectForKey:@"Company_Logo__c"]];
     self.arabicAccountName = [HelperClass stringCheckNull:[accountDict objectForKey:@"Arabic_Account_Name__c"]];
+    self.personalPhotoId = [HelperClass stringCheckNull:[accountDict objectForKey:@"Personal_Photo__pc"]];
     
     self.currentLicenseNumber = [[License alloc] initLicense:
                                  [accountDict objectForKey:@"Current_License_Number__r"]];

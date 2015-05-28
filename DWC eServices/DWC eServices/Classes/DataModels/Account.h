@@ -38,6 +38,7 @@
 @property (nonatomic, strong) NSString *nationality;
 @property (nonatomic, strong) NSString *companyLogo;
 @property (nonatomic, strong) NSString *arabicAccountName;
+@property (nonatomic, strong) NSString *personalPhotoId;
 
 @property (nonatomic, strong) License *currentLicenseNumber;
 @property (nonatomic, strong) Passport *currentPassport;

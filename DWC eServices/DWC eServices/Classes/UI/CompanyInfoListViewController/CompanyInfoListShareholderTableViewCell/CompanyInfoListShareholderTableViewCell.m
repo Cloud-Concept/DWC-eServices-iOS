@@ -33,7 +33,7 @@
 - (void)refreshCellForShareholder:(ShareOwnership *)shareholder indexPath:(NSIndexPath *)indexPath {
     currentIndexPath = indexPath;
     
-    [self.profilePictureImageView loadImageFromSFAttachment:shareholder.personalPhotoId
+    [self.profilePictureImageView loadImageFromSFAttachment:shareholder.shareholder.personalPhotoId
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
     [self.profilePictureImageView maskImageToCircle];
     

@@ -48,7 +48,7 @@
 - (void)refreshCellForDirector:(Directorship *)director indexPath:(NSIndexPath *)indexPath {
     currentIndexPath = indexPath;
     
-    [self.profilePictureImageView loadImageFromSFAttachment:director.personalPhotoId
+    [self.profilePictureImageView loadImageFromSFAttachment:director.director.personalPhotoId
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
     [self.profilePictureImageView maskImageToCircle];
     
@@ -62,7 +62,7 @@
 - (void)refreshCellForManager:(ManagementMember *)manager indexPath:(NSIndexPath *)indexPath {
     currentIndexPath = indexPath;
     
-    [self.profilePictureImageView loadImageFromSFAttachment:manager.personalPhotoId
+    [self.profilePictureImageView loadImageFromSFAttachment:manager.manager.personalPhotoId
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
     [self.profilePictureImageView maskImageToCircle];
     
@@ -76,7 +76,7 @@
 - (void)refreshCellForLegalRepresentative:(LegalRepresentative *)legalRepresentative indexPath:(NSIndexPath *)indexPath {
     currentIndexPath = indexPath;
     
-    [self.profilePictureImageView loadImageFromSFAttachment:legalRepresentative.personalPhotoId
+    [self.profilePictureImageView loadImageFromSFAttachment:legalRepresentative.legalRepresentative.personalPhotoId
                                            placeholderImage:[UIImage imageNamed:@"Default Person Image"]];
     [self.profilePictureImageView maskImageToCircle];
     
