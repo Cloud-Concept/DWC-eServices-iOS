@@ -179,6 +179,10 @@
 #warning handle error here
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.baseServicesViewController hideLoadingDialog];
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
+            
+            [self.baseServicesViewController backButtonPressed];
         });
     };
     
@@ -233,9 +237,12 @@
     };
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
-#warning handle error here
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.baseServicesViewController hideLoadingDialog];
+            
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
+            [self.baseServicesViewController backButtonPressed];
         });
     };
     

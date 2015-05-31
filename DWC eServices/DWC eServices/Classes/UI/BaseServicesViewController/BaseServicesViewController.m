@@ -77,10 +77,24 @@
     
 }
 
-- (void) hideAndDisableRightNavigationItem
-{
+- (void)hideAndDisableRightNavigationItem {
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor clearColor]];
     [self.navigationItem.leftBarButtonItem setEnabled:NO];
+}
+
+- (void)displayAlertDialogWithTitle:(NSString *)title Message:(NSString *)message {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                             message:message
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok", @"")
+                                                       style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                                           [self.navigationController popViewControllerAnimated:YES];
+                                                       }];
+    
+    [alertController addAction:okAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)initTimeline {
@@ -668,7 +682,11 @@
         };
         
         void (^errorBlock) (NSError*) = ^(NSError *e) {
-#warning Handle error
+            [failedImagedArray addObject:doc];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self uploadDidReturn:doc attachmentId:nil];
+            });
         };
         
         [self showLoadingDialog];
@@ -926,9 +944,11 @@
     };
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
-#warning handle error here
         dispatch_async(dispatch_get_main_queue(), ^{
             [self hideLoadingDialog];
+            
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
             
             if (returnBlock) {
                 returnBlock(NO);
@@ -950,8 +970,10 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         formFieldPicklistCalls--;
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             [self hideLoadingDialog];
+            
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
@@ -1015,7 +1037,8 @@
     [self hideLoadingDialog];
     
     if ([returnValue containsString:@"Error"]) {
-#warning Handle Error
+        [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                         Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
     }
     else {
         insertedServiceId = [returnValue substringFromIndex:[returnValue rangeOfString:@":"].location + 1];
@@ -1092,8 +1115,10 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self hideLoadingDialog];
+        
+        [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                         Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
     });
-#warning Handle error
 }
 
 - (void)requestDidTimeout:(SFRestRequest *)request {
@@ -1106,8 +1131,10 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self hideLoadingDialog];
+        
+        [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                         Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
     });
-#warning Handle error
 }
 
 /*

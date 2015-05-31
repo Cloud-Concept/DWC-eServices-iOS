@@ -167,7 +167,9 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.baseServicesViewController hideLoadingDialog];
-#warning handle error here
+            
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
         
     };

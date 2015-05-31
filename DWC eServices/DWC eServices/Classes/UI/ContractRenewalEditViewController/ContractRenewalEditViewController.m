@@ -45,8 +45,10 @@
 - (void)loadEServiceAdministration:(NSString *)serviceIdentifier {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            
+            [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                 Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
@@ -206,8 +208,9 @@
     //caseRecordTypeId
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                 Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     

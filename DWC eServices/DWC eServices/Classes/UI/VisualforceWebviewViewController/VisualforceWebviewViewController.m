@@ -9,6 +9,7 @@
 #import "VisualforceWebviewViewController.h"
 #import "SFUserAccountManager.h"
 #import "FVCustomAlertView.h"
+#import "HelperClass.h"
 
 @interface VisualforceWebviewViewController ()
 
@@ -47,8 +48,9 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-#warning Handle Error
     [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+    [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                     Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {

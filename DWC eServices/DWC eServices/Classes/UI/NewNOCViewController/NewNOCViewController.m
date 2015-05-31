@@ -202,8 +202,10 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         loadingNOCTypes = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning handle error here
             [self hideLoadingDialog];
+            
+            [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                 Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
@@ -241,8 +243,9 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         loadingRecordTypes = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning handle error here
             [self hideLoadingDialog];
+            [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                 Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     

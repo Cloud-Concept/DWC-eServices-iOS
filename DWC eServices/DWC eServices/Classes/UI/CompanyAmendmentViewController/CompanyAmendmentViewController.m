@@ -19,6 +19,7 @@
 #import "EServiceAdministration.h"
 #import "SOQLQueries.h"
 #import "FormFieldValidation.h"
+#import "HelperClass.h"
 
 @interface CompanyAmendmentViewController ()
 
@@ -45,9 +46,10 @@
 - (void)loadRecordTypes {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             isLoadingRecordTypes = NO;
             [self hideLoadingDialog];
+            [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                 Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
@@ -90,9 +92,10 @@
 - (void)loadCompanyNames {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             isLoadingCompanyNames = NO;
             [self hideLoadingDialog];
+            [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                 Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
@@ -125,9 +128,10 @@
 - (void)loadDwcContactInfo {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             isLoadingDWCContactInfo = NO;
             [self hideLoadingDialog];
+            [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                 Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
@@ -169,9 +173,10 @@
 - (void)loadEServiceAdministration {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             isLoadingServiceIdentifier = NO;
             [self hideLoadingDialog];
+            [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                 Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
@@ -333,8 +338,9 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         isLoadingTenancyContracts = NO;
         [self hideLoadingDialog];
+        [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
     });
-#warning Handle error
 }
 
 - (void)requestDidCancelLoad:(SFRestRequest *)request {
@@ -343,8 +349,9 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         isLoadingTenancyContracts = NO;
         [self hideLoadingDialog];
+        [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
     });
-#warning Handle error
 }
 
 - (void)requestDidTimeout:(SFRestRequest *)request {
@@ -353,8 +360,9 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         isLoadingTenancyContracts = NO;
         [self hideLoadingDialog];
+        [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
     });
-#warning Handle error
 }
 
 /*

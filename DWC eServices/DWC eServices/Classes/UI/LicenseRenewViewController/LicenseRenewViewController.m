@@ -102,8 +102,9 @@
 - (void)loadEServiceAdministration {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                 Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
@@ -139,8 +140,9 @@
 - (void)loadCaseRecordType {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                                 Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     

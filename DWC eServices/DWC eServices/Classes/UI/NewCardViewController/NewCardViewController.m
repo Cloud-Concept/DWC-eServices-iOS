@@ -226,7 +226,8 @@
     };
     
     void (^errorBlock) (NSError*) = ^(NSError *e) {
-#warning Handle Error
+        [self.baseServicesViewController displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
     };
     
     NSString *selectQuery = @"SELECT Id, Name, DeveloperName, SobjectType FROM RecordType WHERE (SobjectType = 'Case' AND DeveloperName = 'Access_Card_Request') OR (SObjectType = 'Card_Management__c')";
@@ -263,7 +264,10 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.baseServicesViewController hideLoadingDialog];
-#warning Handle Error
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
+            
+            [self resetDurationButtons];
         });
     };
     

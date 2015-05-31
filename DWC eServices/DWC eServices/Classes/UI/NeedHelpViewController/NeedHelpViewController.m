@@ -65,6 +65,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)displayAlertDialogWithTitle:(NSString *)title Message:(NSString *)message {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                             message:message
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok", @"")
+                                                       style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                                           [self.navigationController popViewControllerAnimated:YES];
+                                                       }];
+    
+    [alertController addAction:okAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 - (void)refreshCaseTypeButton {
     [self.caseTypeButton setTitle:[caseTypesArray objectAtIndex:selectedCaseTypeIndexPath.row] forState:UIControlStateNormal];
 }
@@ -72,8 +87,9 @@
 - (void)loadCaseRecordType {
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                      Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
@@ -116,6 +132,8 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
@@ -151,6 +169,8 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                             Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
         });
     };
     
