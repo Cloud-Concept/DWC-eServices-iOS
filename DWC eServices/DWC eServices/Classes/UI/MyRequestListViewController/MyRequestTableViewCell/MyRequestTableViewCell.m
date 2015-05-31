@@ -43,6 +43,20 @@
         [self.requestPersonNameLabel removeFromSuperview];
         [self.requestPersonNameValueLabel removeFromSuperview];
     }
+    
+    NSString *statusIconName = @"Request Other Status Icon";
+    if ([currentRequest.status isEqualToString:@"Completed"])
+        statusIconName = @"Request Completed Status Icon";
+    else if ([currentRequest.status isEqualToString:@"Application Rejected"])
+        statusIconName = @"Request Rejected Status Icon";
+    else if ([currentRequest.status isEqualToString:@"Draft"])
+        statusIconName = @"Request Draft Status Icon";
+    else if ([currentRequest.status isEqualToString:@"Ready for collection"] ||
+             [currentRequest.status isEqualToString:@"Ready for Collection"])
+        statusIconName = @"Request Ready Collection Status Icon";
+    
+    self.requestStatusIconImageView.image = [UIImage imageNamed:statusIconName];
+    
 }
 
 @end

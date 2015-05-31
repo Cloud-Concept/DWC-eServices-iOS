@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -114,6 +114,13 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G0L-EO-cMX">
+                        <rect key="frame" x="292" y="8" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Uhc-WU-NhX"/>
+                            <constraint firstAttribute="width" constant="20" id="XwU-zJ-z9C"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="A4C-Yv-kg6" firstAttribute="top" secondItem="pIj-iD-rLC" secondAttribute="top" id="1Kc-Wj-zkG"/>
@@ -151,9 +158,11 @@
                     <constraint firstItem="05P-iW-vd5" firstAttribute="top" secondItem="B7I-J6-xEP" secondAttribute="top" id="hrx-SH-YKg"/>
                     <constraint firstItem="05P-iW-vd5" firstAttribute="leading" secondItem="B7I-J6-xEP" secondAttribute="trailing" constant="11" id="hz2-El-moY"/>
                     <constraint firstItem="Ddt-OI-dPi" firstAttribute="leading" secondItem="wdh-Gy-UhU" secondAttribute="leading" id="l0J-Vl-Siw"/>
+                    <constraint firstItem="G0L-EO-cMX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="l1j-5j-DpW"/>
                     <constraint firstItem="wdh-Gy-UhU" firstAttribute="top" secondItem="JGV-UC-dBE" secondAttribute="bottom" constant="4" id="lHN-w0-s4K"/>
                     <constraint firstItem="pIj-iD-rLC" firstAttribute="top" secondItem="wdh-Gy-UhU" secondAttribute="bottom" constant="8" id="lJ1-Tt-qtV"/>
                     <constraint firstItem="5hM-jk-1dy" firstAttribute="leading" secondItem="JGV-UC-dBE" secondAttribute="trailing" constant="8" id="mFN-8I-ybf"/>
+                    <constraint firstAttribute="trailing" secondItem="G0L-EO-cMX" secondAttribute="trailing" constant="8" id="ml8-9S-k22"/>
                     <constraint firstItem="S84-N0-tjs" firstAttribute="bottom" secondItem="Ddt-OI-dPi" secondAttribute="bottom" id="pQN-eh-DU0"/>
                     <constraint firstItem="Ddt-OI-dPi" firstAttribute="height" secondItem="wdh-Gy-UhU" secondAttribute="height" id="pc2-3w-Gqh"/>
                     <constraint firstItem="S84-N0-tjs" firstAttribute="trailing" secondItem="H11-Ek-hsD" secondAttribute="trailing" id="r1n-0n-6nE"/>
@@ -182,6 +191,7 @@
                 <outlet property="requestPersonNameLabel" destination="wdh-Gy-UhU" id="MNp-2G-gqL"/>
                 <outlet property="requestPersonNameValueLabel" destination="H11-Ek-hsD" id="4KG-Y5-5pu"/>
                 <outlet property="requestRequestedServiceValueLabel" destination="5hM-jk-1dy" id="kKt-Ij-Q7D"/>
+                <outlet property="requestStatusIconImageView" destination="G0L-EO-cMX" id="oN4-Jj-1Io"/>
                 <outlet property="requestStatusValueLabel" destination="A4C-Yv-kg6" id="Tr7-0P-PEc"/>
                 <outlet property="requestTypeValueLabel" destination="BwC-kD-qyU" id="lyE-SX-UwM"/>
             </connections>

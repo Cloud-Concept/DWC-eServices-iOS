@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *requestRequestedServiceValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *requestPersonNameValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *requestPersonNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *requestStatusIconImageView;
 
 - (void)displayValueForRequest:(Request *)currentRequest;
 
