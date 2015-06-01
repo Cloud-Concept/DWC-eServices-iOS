@@ -35,12 +35,12 @@
 
 // Fill these in when creating a new Connected Application on Force.com
 
-/*BPark Env
-static NSString * const RemoteAccessConsumerKey = @"3MVG9Gmy2zmPB01pXLIoc2_JncxlaR4fBK8B03DEaxjtbAlOzUN.rdOQhLoIrZwW3CB5.mLHgl0rJseRxr63A";
-static NSString * const LoginHostUrl            = @"bpark-dwc.cs7.force.com/portal";
+//*Production Env
+static NSString * const RemoteAccessConsumerKey = @"3MVG9WtWSKUDG.x4vb34GvJQPxE1sN.eJ1GfuUpDHEMSeumJCoE1Qw_dXJ1sCRKXnNyxasiuCRrJjGHZJGXVt";
+static NSString * const LoginHostUrl            = @"dwc.force.com/portal";
 //*/
 
-//*Testing Env
+/*Testing Env
 static NSString * const RemoteAccessConsumerKey = @"3MVG9sLbBxQYwWqsa8dlM02Kaxs1PH5oIbF_o2Y4FfeOoF.1__CEjo_6_fIBta82uOIvzvuJ9tVtR1iU9PbtA";
 static NSString * const LoginHostUrl            = @"test-dwc.cs14.force.com/portal";
 //*/

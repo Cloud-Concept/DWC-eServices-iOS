@@ -2005,7 +2005,7 @@
 				ORGANIZATIONNAME = "Cloud Concept";
 				TargetAttributes = {
 					824A9DD41724E16400C9BD79 = {
-						DevelopmentTeam = 9M23A99R9P;
+						DevelopmentTeam = 7L63S6S4ES;
 					};
 				};
 			};
@@ -2316,7 +2316,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = iDWC;
-				PROVISIONING_PROFILE = "bb2d072c-eda4-411b-a64e-7eb4e185db87";
+				PROVISIONING_PROFILE = "fff16ace-7756-4cf7-be52-b19ab9a0f9a7";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -2359,7 +2359,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = iDWC;
-				PROVISIONING_PROFILE = "bb2d072c-eda4-411b-a64e-7eb4e185db87";
+				PROVISIONING_PROFILE = "fff16ace-7756-4cf7-be52-b19ab9a0f9a7";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

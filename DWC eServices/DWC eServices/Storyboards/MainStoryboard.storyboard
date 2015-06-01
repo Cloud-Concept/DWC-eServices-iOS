@@ -639,7 +639,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Home Cell" id="gZH-xP-izZ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Home Cell" id="gZH-xP-izZ">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gZH-xP-izZ" id="2FY-VO-VL3">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -657,7 +657,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Dashboard Cell" id="6LD-7r-HRK">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Dashboard Cell" id="6LD-7r-HRK">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6LD-7r-HRK" id="iho-VP-ygc">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -678,7 +678,7 @@
                                     <segue destination="Cd5-46-KxL" kind="custom" identifier="" customClass="SWRevealViewControllerSeguePushController" id="pcT-uc-HUH"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="My Request Cell" id="R92-iS-gir">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="My Request Cell" id="R92-iS-gir">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R92-iS-gir" id="MMf-lD-OGE">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -699,7 +699,7 @@
                                     <segue destination="Dhg-Kf-bTW" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="4VQ-fx-BXn"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Company Info Cell" id="lDv-wR-o23">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Company Info Cell" id="lDv-wR-o23">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lDv-wR-o23" id="RmT-hn-LOK">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -720,7 +720,7 @@
                                     <segue destination="vvG-Xy-cGz" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="UQ7-2u-tlW"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Employees Cell" id="qWY-hN-0Vd">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Employees Cell" id="qWY-hN-0Vd">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qWY-hN-0Vd" id="kmZ-H8-tPe">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -741,7 +741,7 @@
                                     <segue destination="nqg-iG-M4U" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Uzc-9V-jUW"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Company Documents Cell" id="f8h-vG-jzx">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Company Documents Cell" id="f8h-vG-jzx">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f8h-vG-jzx" id="2e3-a1-lr6">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -762,7 +762,7 @@
                                     <segue destination="ASx-pj-9eg" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="LyT-w6-0UF"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Reports Cell" id="UAc-AU-bSg">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Reports Cell" id="UAc-AU-bSg">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UAc-AU-bSg" id="M7D-so-2o3">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -783,7 +783,7 @@
                                     <segue destination="a7f-rQ-GHt" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="2Rx-1x-bAT"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Services Cell" id="Bah-yo-mdK">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Services Cell" id="Bah-yo-mdK">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bah-yo-mdK" id="5M5-Tf-Ybq">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -801,7 +801,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Need Help Cell" id="1wf-S2-vhF">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Need Help Cell" id="1wf-S2-vhF">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1wf-S2-vhF" id="5AI-km-ags">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -822,7 +822,7 @@
                                     <segue destination="v1V-QF-OY9" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="LSR-qc-FQb"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Logout Cell" id="Jx4-zi-acZ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Logout Cell" id="Jx4-zi-acZ">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jx4-zi-acZ" id="OhZ-3l-6Z5">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -3588,12 +3588,12 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="x3Y-bG-M9l"/>
-        <segue reference="Jb9-YF-d8A"/>
-        <segue reference="TcF-5U-Wmr"/>
-        <segue reference="bLm-dC-Q62"/>
-        <segue reference="2kn-8S-W3V"/>
-        <segue reference="5D3-hu-lXy"/>
-        <segue reference="7qA-mG-EzH"/>
-        <segue reference="F4s-lC-Kis"/>
+        <segue reference="LSR-qc-FQb"/>
+        <segue reference="Uzc-9V-jUW"/>
+        <segue reference="2Rx-1x-bAT"/>
+        <segue reference="LyT-w6-0UF"/>
+        <segue reference="4VQ-fx-BXn"/>
+        <segue reference="UQ7-2u-tlW"/>
+        <segue reference="pcT-uc-HUH"/>
     </inferredMetricsTieBreakers>
 </document>
