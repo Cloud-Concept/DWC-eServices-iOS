@@ -66,8 +66,16 @@
     //Show Notification Count in Homepage
     //[self loadNotificationsCount];
     
+    if (![Globals currentAccount]) {
+        [self loadCompanyInfoWithLicenseInfo:shouldLoadLicenseInfo andNotificationCount:YES];
+    }
+    else {
+        [self loadNotificationsCount];
+        [self loadCompanyBalance];
+    }
+    
     [self setNotificationNumberBadge];
-    [self loadCompanyInfoWithLicenseInfo:shouldLoadLicenseInfo andNotificationCount:YES];
+    
     shouldLoadLicenseInfo = NO;
 }
 
@@ -188,16 +196,16 @@
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
 #warning Handle Error
-            loadingNotificationsCount = NO;
-            [self hideLoadingAlertView];
+            //loadingNotificationsCount = NO;
+            //[self hideLoadingAlertView];
         });
         
     };
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            loadingNotificationsCount = NO;
-            [self hideLoadingAlertView];
+            //loadingNotificationsCount = NO;
+            //[self hideLoadingAlertView];
             
             for (NSDictionary *record in [dict objectForKey:@"records"]) {
                 NSNumber *notificationsCount = [record objectForKey:@"expr0"];
@@ -207,13 +215,46 @@
         });
     };
     
-    loadingNotificationsCount = YES;
-    [self showLoadingAlertView];
+    //loadingNotificationsCount = YES;
+    //[self showLoadingAlertView];
     
-    [[SFRestAPI sharedInstance]
-     performSOQLQuery:[SOQLQueries notificationsCountQuery]
-     failBlock:errorBlock
-     completeBlock:successBlock];
+    [[SFRestAPI sharedInstance] performSOQLQuery:[SOQLQueries notificationsCountQuery]
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
+}
+
+- (void)loadCompanyBalance {
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+#warning Handle Error
+            //loadingNotificationsCount = NO;
+            //[self hideLoadingAlertView];
+        });
+        
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        NSDictionary *accountDict = [[dict objectForKey:@"Contact"] objectForKey:@"Account"];
+        
+        Account *account = [[Account alloc] initAccount:accountDict];
+        
+        [Globals currentAccount].portalBalance = account.portalBalance;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self refreshLabels];
+        });
+    };
+    
+    SFUserAccountManager *accountManager = [SFUserAccountManager sharedInstance];
+    
+    NSArray *fields = @[@"Contact.Account.Portal_Balance__c"];
+    
+    [[SFRestAPI sharedInstance] performRetrieveWithObjectType:@"User"
+                                                     objectId:accountManager.currentUser.credentials.userId
+                                                    fieldList:fields
+                                                    failBlock:errorBlock
+                                                completeBlock:successBlock];
+    
 }
 
 - (void)refreshLabels {
@@ -242,7 +283,8 @@
 }
 
 - (void)hideLoadingAlertView {
-    if (loadingCompanyInfo || loadingLicenseInfo || loadingNotificationsCount)
+    //loadingNotificationsCount
+    if (loadingCompanyInfo || loadingLicenseInfo)
         return;
     
     [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
