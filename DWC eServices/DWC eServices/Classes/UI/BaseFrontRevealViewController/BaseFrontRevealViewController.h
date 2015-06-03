@@ -21,4 +21,5 @@
 
 - (void)setNavigationBarTitle:(NSString *)title;
 - (void)refreshNotificationsCount;
+- (void)displayAlertDialogWithTitle:(NSString *)title Message:(NSString *)message;
 @end

@@ -61,6 +61,8 @@ static NSString *freeZonePaymentsQuery = @"SELECT Id, Name, CreatedDate, Transac
 
 static NSString *amendementServiceAdminQuery = @"SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Is_Active__c = true AND Service_Identifier__c = '%@'";
 
+static NSString *licenseRenewInProgressQuery = @"SELECT ID, (SELECT Id, Status__c FROM Invoices__r WHERE Status__c = 'Paid') FROM License__c WHERE Renewal_for_License__c = '%@'";
+
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
 }
@@ -197,4 +199,9 @@ static NSString *amendementServiceAdminQuery = @"SELECT ID, Name, Display_Name__
 + (NSString *)amendementServiceAdminQuery:(NSString *)serviceIdentifier {
     return [NSString stringWithFormat:amendementServiceAdminQuery, serviceIdentifier];
 }
+
++ (NSString *)licenseRenewInProgressQuery:(NSString *)currentLicenseId {
+    return [NSString stringWithFormat:licenseRenewInProgressQuery, currentLicenseId];
+}
+
 @end

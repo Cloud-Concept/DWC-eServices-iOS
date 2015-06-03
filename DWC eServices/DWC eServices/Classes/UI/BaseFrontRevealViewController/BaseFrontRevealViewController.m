@@ -220,6 +220,21 @@
     [HelperClass showLogoutConfirmationDialog:self];
 }
 
+- (void)displayAlertDialogWithTitle:(NSString *)title Message:(NSString *)message {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+                                                                             message:message
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok", @"")
+                                                       style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                                                           [self.navigationController popViewControllerAnimated:YES];
+                                                       }];
+    
+    [alertController addAction:okAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - SWRevealViewControllerDelegate Protocol
 
 - (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position {

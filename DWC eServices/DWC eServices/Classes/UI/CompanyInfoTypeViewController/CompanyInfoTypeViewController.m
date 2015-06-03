@@ -22,6 +22,8 @@
 #import "RelatedService.h"
 #import "SwipePageViewController.h"
 #import "UIViewController+ChildViewController.h"
+#import "SFRestAPI+Blocks.h"
+#import "FVCustomAlertView.h"
 
 @interface CompanyInfoTypeViewController ()
 
@@ -35,19 +37,62 @@
     
     [super setNavigationBarTitle:NSLocalizedString(@"navBarCompanyInfoTitle", @"")];
     
+    [self loadLicenseRenewInProgress];
+}
+
+- (void)loadLicenseRenewInProgress {
+    
+    void (^errorBlock) (NSError*) = ^(NSError *e) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+            [self displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                      Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
+        });
+        
+    };
+    
+    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+        
+        for (NSDictionary *record in [dict objectForKey:@"records"]) {
+            NSArray *invoicesArray = [record objectForKey:@"Invoices__r"];
+            if (invoicesArray.count > 0) {
+                hasLicenseRenewalInProgress = YES;
+            }
+        }
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setSwipeViewDisplay];
+            [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
+        });
+    };
+    
+    [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
+    
+    [[SFRestAPI sharedInstance] performSOQLQuery:[SOQLQueries licenseRenewInProgressQuery:[Globals currentAccount].currentLicenseNumber.Id]
+                                       failBlock:errorBlock
+                                   completeBlock:successBlock];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)setSwipeViewDisplay {
     dwcCompanyInfoTypesArray = [NSMutableArray new];
     
     /*
-    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
-                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoCompany", @"")
-                                         NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoCompanyTitle", @"")
-                                         DWCCompanyInfoType:DWCCompanyInfoCompany]];
-    
-    [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
-                                         initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLicenseInfo", @"")
-                                         NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoLicenseInfoTitle", @"")
-                                         DWCCompanyInfoType:DWCCompanyInfoLicenseInfo]];
-    */
+     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
+     initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoCompany", @"")
+     NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoCompanyTitle", @"")
+     DWCCompanyInfoType:DWCCompanyInfoCompany]];
+     
+     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
+     initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLicenseInfo", @"")
+     NavBarTitle:NSLocalizedString(@"navBarDWCCompanyInfoLicenseInfoTitle", @"")
+     DWCCompanyInfoType:DWCCompanyInfoLicenseInfo]];
+     */
     
     [dwcCompanyInfoTypesArray addObject:[[DWCCompanyInfo alloc]
                                          initDWCCompanyInfo:NSLocalizedString(@"DWCCompanyInfoLeasingInfo", @"")
@@ -90,7 +135,7 @@
     
     [self configureRecordMainViewController:companyInfoMainVC ForCompany:[Globals currentAccount]];
     [self configureRecordMainViewController:licenseInfoMainVC ForLicense:[Globals currentAccount].currentLicenseNumber Company:[Globals currentAccount]];
-
+    
     [viewControllersMutableArray addObjectsFromArray:@[companyInfoMainVC, licenseInfoMainVC]];
     [pageLabelMutableArray addObjectsFromArray:@[NSLocalizedString(@"DWCCompanyInfoCompany", @""), NSLocalizedString(@"DWCCompanyInfoLicenseInfo", @"")]];
     
@@ -107,11 +152,6 @@
     swipePageVC.pageLabelArray = pageLabelMutableArray;
     
     [self addChildViewController:swipePageVC toView:self.containerView];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)configureRecordMainViewController:(RecordMainDetailsViewController *)recordVC ForCompany:(Account *)account {
@@ -192,7 +232,16 @@
     
     recordVC.DetailsSectionsArray = sectionsArray;
     recordVC.licenseObject = license;
-    recordVC.RelatedServicesMask = RelatedServiceTypeLicenseRenewal;
+    
+    
+    NSUInteger relatedServices = 0;
+    NSTimeInterval daysToExpire = [[Globals currentAccount].currentLicenseNumber.licenseExpiryDate timeIntervalSinceNow] / (3600 * 24);
+    
+    if (daysToExpire <= 60 && !hasLicenseRenewalInProgress) {
+        relatedServices |= RelatedServiceTypeLicenseRenewal;
+    }
+    
+    recordVC.RelatedServicesMask = relatedServices;
 }
 
 @end

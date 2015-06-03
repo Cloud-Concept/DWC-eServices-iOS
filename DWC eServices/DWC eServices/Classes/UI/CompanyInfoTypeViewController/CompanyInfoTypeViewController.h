@@ -12,6 +12,7 @@
 @interface CompanyInfoTypeViewController : BaseFrontRevealViewController
 {
     NSMutableArray *dwcCompanyInfoTypesArray;
+    BOOL hasLicenseRenewalInProgress;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;

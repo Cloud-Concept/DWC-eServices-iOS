@@ -89,6 +89,5 @@ typedef enum {
 - (NSString *)getCaseReviewQuery;
 - (void)getWebFormWithReturnBlock:(void (^)(BOOL))returnBlock;
 - (void)initializeCaseId:(NSString *)caseId;
-- (void)displayAlertDialogWithTitle:(NSString *)title Message:(NSString *)message;
 - (void)backButtonPressed;
 @end

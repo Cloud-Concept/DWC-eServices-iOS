@@ -33,4 +33,5 @@
 + (NSString *)renewLicenseServiceAdminQuery;
 + (NSString *)freeZonePaymentsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset datesFilter:(NSString *)datesFilter;
 + (NSString *)amendementServiceAdminQuery:(NSString *)serviceIdentifier;
++ (NSString *)licenseRenewInProgressQuery:(NSString *)currentLicenseId;
 @end
