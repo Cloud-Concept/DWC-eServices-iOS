@@ -38,6 +38,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Initial Page Background" width="489" height="516"/>
+        <image name="Initial Page Background" width="320" height="568"/>
     </resources>
 </document>
