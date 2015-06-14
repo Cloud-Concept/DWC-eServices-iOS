@@ -32,6 +32,7 @@
 #import "NetworkReachability.h"
 #import "CustomIOS7AlertView.h"
 #import "NoInternetPopoverViewController.h"
+#import "AnimatedSplashViewController.h"
 
 // Fill these in when creating a new Connected Application on Force.com
 
@@ -187,8 +188,10 @@ static NSString * const OAuthRedirectURI        = @"dwcmobile://auth/success";
     //RootViewController *rootVC = [[RootViewController alloc] initWithNibName:nil bundle:nil];
     //UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:rootVC];
     
-    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    UIViewController *vc =[storybord instantiateInitialViewController];
+    //UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    //UIViewController *vc =[storybord instantiateInitialViewController];
+    
+    AnimatedSplashViewController *vc = [AnimatedSplashViewController new];
     
     self.window.rootViewController = vc;
 }

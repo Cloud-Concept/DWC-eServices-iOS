@@ -43,8 +43,8 @@
     if (![[amendmentDict objectForKey:@"Amendment_Effective_Date__c"] isKindOfClass:[NSNull class]])
         self.amendmentEffectiveDate = [SFDateUtil SOQLDateTimeStringToDate:[amendmentDict objectForKey:@"Amendment_Effective_Date__c"]];
     
-    self.company = [[Account alloc] initAccount:[amendmentDict objectForKey:@"Company__c"]];
-    self.country = [[Country alloc] initCountry:[amendmentDict objectForKey:@"Country__c"]];
+    self.company = [[Account alloc] initAccount:[amendmentDict objectForKey:@"Company__r"]];
+    self.country = [[Country alloc] initCountry:[amendmentDict objectForKey:@"Country__r"]];
     self.recordType = [[RecordType alloc] initRecordType:[amendmentDict objectForKey:@"RecordType"]];
 
     return self;

@@ -90,6 +90,9 @@
 		1334F4A01ADE790000297ACE /* DragTableHeaderView_ot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4971ADE790000297ACE /* DragTableHeaderView_ot.m */; };
 		1334F4A11ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F4991ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m */; };
 		1334F4A21ADE790000297ACE /* UITableView+DragLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1334F49C1ADE790000297ACE /* UITableView+DragLoad.m */; };
+		133A937B1B26CB8B00F7902E /* AnimatedSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133A93791B26CB8B00F7902E /* AnimatedSplashViewController.m */; };
+		133A937C1B26CB8B00F7902E /* AnimatedSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133A937A1B26CB8B00F7902E /* AnimatedSplashViewController.xib */; };
+		133A93801B26CFAA00F7902E /* UIImageView+AnimationCompletion.m in Sources */ = {isa = PBXBuildFile; fileRef = 133A937F1B26CFAA00F7902E /* UIImageView+AnimationCompletion.m */; };
 		133E34CC1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34CB1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m */; };
 		133E34D11ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D01ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m */; };
 		133E34D41ABFFFCC002C3748 /* DWCDocumentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133E34D31ABFFFCC002C3748 /* DWCDocumentTableViewCell.m */; };
@@ -336,6 +339,11 @@
 		1334F4991ADE790000297ACE /* UIScrollView+DragTableSafeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+DragTableSafeAnimation.m"; sourceTree = "<group>"; };
 		1334F49B1ADE790000297ACE /* UITableView+DragLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+DragLoad.h"; sourceTree = "<group>"; };
 		1334F49C1ADE790000297ACE /* UITableView+DragLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DragLoad.m"; sourceTree = "<group>"; };
+		133A93781B26CB8B00F7902E /* AnimatedSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedSplashViewController.h; sourceTree = "<group>"; };
+		133A93791B26CB8B00F7902E /* AnimatedSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedSplashViewController.m; sourceTree = "<group>"; };
+		133A937A1B26CB8B00F7902E /* AnimatedSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedSplashViewController.xib; sourceTree = "<group>"; };
+		133A937E1B26CFAA00F7902E /* UIImageView+AnimationCompletion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AnimationCompletion.h"; sourceTree = "<group>"; };
+		133A937F1B26CFAA00F7902E /* UIImageView+AnimationCompletion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AnimationCompletion.m"; sourceTree = "<group>"; };
 		133E34CA1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyDocumentTypeListViewController.h; sourceTree = "<group>"; };
 		133E34CB1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyDocumentTypeListViewController.m; sourceTree = "<group>"; };
 		133E34CF1ABFFFB7002C3748 /* CustomerDocumentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerDocumentTableViewCell.h; sourceTree = "<group>"; };
@@ -696,6 +704,7 @@
 		1307BAC81A6F83A4004E6325 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				133A93771B26CB8100F7902E /* AnimatedSplashViewController */,
 				132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */,
 				1318193D1A91CA9C00CAA4D6 /* BaseServicesViewController */,
 				134B8A1C1AD6B428005CCAD5 /* BBBadgeBarButtonItem */,
@@ -1169,6 +1178,25 @@
 			path = "Public Class";
 			sourceTree = "<group>";
 		};
+		133A93771B26CB8100F7902E /* AnimatedSplashViewController */ = {
+			isa = PBXGroup;
+			children = (
+				133A93781B26CB8B00F7902E /* AnimatedSplashViewController.h */,
+				133A93791B26CB8B00F7902E /* AnimatedSplashViewController.m */,
+				133A937A1B26CB8B00F7902E /* AnimatedSplashViewController.xib */,
+			);
+			path = AnimatedSplashViewController;
+			sourceTree = "<group>";
+		};
+		133A937D1B26CF8F00F7902E /* UIImageView+AnimationCompletion */ = {
+			isa = PBXGroup;
+			children = (
+				133A937E1B26CFAA00F7902E /* UIImageView+AnimationCompletion.h */,
+				133A937F1B26CFAA00F7902E /* UIImageView+AnimationCompletion.m */,
+			);
+			path = "UIImageView+AnimationCompletion";
+			sourceTree = "<group>";
+		};
 		133E34C91ABFFA37002C3748 /* CompanyDocumentTypeListViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1378,6 +1406,7 @@
 				134053B61AEE50A3007A4773 /* NSString+MD5 */,
 				137D5ACE1AF8A3F800E67C72 /* UIButton+Additions */,
 				1354F5561AF78351004A6CBA /* UIImageView+Additions */,
+				133A937D1B26CF8F00F7902E /* UIImageView+AnimationCompletion */,
 				139E6B671A7A6F2600D1D451 /* UIImageView+SFAttachment */,
 				1334F48D1ADE790000297ACE /* UITableView+DragLoad */,
 				13063A8A1A8B749E00A1DEA2 /* UIView+DynamicForm */,
@@ -2058,6 +2087,7 @@
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
 				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
 				130523E81A99F96800EF2268 /* ServicesReviewViewController.xib in Resources */,
+				133A937C1B26CB8B00F7902E /* AnimatedSplashViewController.xib in Resources */,
 				13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */,
 				138516531AFF4EF500ACF4B3 /* CompanyAmendmentViewController.xib in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,
@@ -2116,6 +2146,7 @@
 				130E09671AA5B84400E6ED59 /* Request.m in Sources */,
 				13CFE7311ABEDF3A009E47EC /* CompanyDocument.m in Sources */,
 				139E6B721A7A6FC200D1D451 /* UIView+RoundCorner.m in Sources */,
+				133A937B1B26CB8B00F7902E /* AnimatedSplashViewController.m in Sources */,
 				134053C21AEE6075007A4773 /* RelatedServicesBarScrollView.m in Sources */,
 				13073B941AC415C200F25EC6 /* ContractLineItem.m in Sources */,
 				13481AE61A82257100093331 /* RecordRelatedViewController.m in Sources */,
@@ -2125,6 +2156,7 @@
 				13073B8E1AC3E63800F25EC6 /* ContractRenewalEditViewController.m in Sources */,
 				130523E61A99C56D00EF2268 /* UIViewController+ChildViewController.m in Sources */,
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
+				133A93801B26CFAA00F7902E /* UIImageView+AnimationCompletion.m in Sources */,
 				13A062901B1306FD00108167 /* CustomIOS7AlertView.m in Sources */,
 				13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */,
 				134053BC1AEE50B5007A4773 /* FTWCache.m in Sources */,

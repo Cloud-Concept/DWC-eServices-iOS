@@ -70,6 +70,8 @@
         [self loadCompanyInfoWithLicenseInfo:shouldLoadLicenseInfo andNotificationCount:YES];
     }
     else {
+        [self refreshLabels];
+        [self checkLicenseExpiryDate];
         [self loadNotificationsCount];
         [self loadCompanyBalance];
     }
