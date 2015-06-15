@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Initial Page Background" translatesAutoresizingMaskIntoConstraints="NO" id="Lc5-V4-nQd">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Animation Screen 1" translatesAutoresizingMaskIntoConstraints="NO" id="Lc5-V4-nQd">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SUk-9E-zTm">
@@ -38,6 +38,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Initial Page Background" width="320" height="568"/>
+        <image name="Animation Screen 1" width="320" height="568"/>
     </resources>
 </document>

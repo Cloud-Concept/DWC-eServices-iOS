@@ -55,7 +55,7 @@
         
         for (NSDictionary *record in [dict objectForKey:@"records"]) {
             NSArray *invoicesArray = [record objectForKey:@"Invoices__r"];
-            if (invoicesArray.count > 0) {
+            if (![invoicesArray isKindOfClass:[NSNull class]] && invoicesArray.count > 0) {
                 hasLicenseRenewalInProgress = YES;
             }
         }
