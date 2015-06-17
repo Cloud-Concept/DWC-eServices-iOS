@@ -149,7 +149,7 @@
     };
     
     NSDictionary *fields = [NSDictionary dictionaryWithObjectsAndKeys:
-                            caseRecordType.Id, @"Type",
+                            [caseTypesArray objectAtIndex:selectedCaseTypeIndexPath.row], @"Type",
                             [Globals contactId], @"ContactId",
                             [Globals currentAccount].Id, @"AccountId",
                             self.subjectTextField.text, @"Subject",
