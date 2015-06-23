@@ -58,6 +58,7 @@
 
 - (IBAction)statusFilterButtonClicked:(id)sender {
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.pickerType = PickerTableViewControllerTypeSingleChoice;
     pickerTableVC.valuesArray = statusFilterStringArray;
     pickerTableVC.selectedIndexPath = selectedStatusFilterIndexPath;
     pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {

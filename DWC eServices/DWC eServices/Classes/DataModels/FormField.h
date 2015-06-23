@@ -23,6 +23,7 @@
     UILabel *reviewFieldNameLabel;
     
     NSIndexPath *selectedPicklistIndexPath;
+    NSArray *selectedMultiPicklistIndexPath;
     
     NSMutableArray *childrenPicklistFormFieldsArray;
     

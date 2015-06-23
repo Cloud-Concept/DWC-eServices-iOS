@@ -130,6 +130,7 @@
 
 - (IBAction)filterButtonClicked:(id)sender {
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.pickerType = PickerTableViewControllerTypeSingleChoice;
     pickerTableVC.valuesArray = filterStringArray;
     pickerTableVC.selectedIndexPath = selectedFilterIndexPath;
     pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {

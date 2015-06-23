@@ -42,6 +42,7 @@
     UIButton *senderButton = sender;
     
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.pickerType = PickerTableViewControllerTypeSingleChoice;
     pickerTableVC.valuesArray = cardTypesDescriptionsArray;
     pickerTableVC.selectedIndexPath = selectedCardTypeIndexPath;
     pickerTableVC.valuePicked = ^(NSString *value, NSIndexPath *indexPath, PickerTableViewController *picklist) {

@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "WYPopoverController.h"
 
+
+typedef enum {
+    PickerTableViewControllerTypeSingleChoice,
+    PickerTableViewControllerTypeMultiChoice,
+} PickerTableViewControllerType;
+
 @interface PickerTableViewController : UITableViewController <WYPopoverControllerDelegate>
 {
     WYPopoverController *popoverController;
@@ -16,8 +22,11 @@
 
 @property (strong, nonatomic) NSArray *valuesArray;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+@property (strong, nonatomic) NSMutableArray *selectedMultiIndexPath;
+@property (assign, nonatomic) PickerTableViewControllerType pickerType;
 
 @property (nonatomic, copy) void (^valuePicked)(NSString *, NSIndexPath *, PickerTableViewController *);
+@property (nonatomic, copy) void (^multipleValuesPicked)(NSArray *, NSArray *, PickerTableViewController *);
 @property (nonatomic, copy) void (^valuePickCanceled)(PickerTableViewController *);
 
 - (void)showPopoverFromView:(UIView*)sender;

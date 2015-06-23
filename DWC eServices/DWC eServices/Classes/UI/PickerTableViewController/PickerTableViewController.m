@@ -39,6 +39,58 @@
     [popoverController dismissPopoverAnimated:animated];
 }
 
+- (void)setCellCheckmark:(UITableViewCell *)cell currentIndexPath:(NSIndexPath *)indexPath {
+    if (self.pickerType == PickerTableViewControllerTypeSingleChoice) {
+        if (self.selectedIndexPath)
+            cell.accessoryType = self.selectedIndexPath.row == indexPath.row ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    }
+    else if (self.pickerType == PickerTableViewControllerTypeMultiChoice) {
+        BOOL isSelected = NO;
+        
+        for (NSIndexPath *newIndexPath in self.selectedMultiIndexPath) {
+            if (newIndexPath.row == indexPath.row) {
+                isSelected = YES;
+                break;
+            }
+        }
+        
+       cell.accessoryType = isSelected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    }
+}
+
+- (void)singleChoiceDidSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedIndexPath = indexPath;
+    [self.tableView reloadData];
+    
+    if (!self.valuePicked)
+        return;
+    
+    NSString *selectedValue = [self.valuesArray objectAtIndex:indexPath.row];
+    self.valuePicked(selectedValue, indexPath, self);
+}
+
+- (void)multipleChoiceDidSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    BOOL isFound = NO;
+    
+    for (NSIndexPath *newIndexPath in self.selectedMultiIndexPath) {
+        if (newIndexPath.row == indexPath.row) {
+            isFound = YES;
+            [self.selectedMultiIndexPath removeObject:newIndexPath];
+            break;
+        }
+    }
+    
+    if (!isFound) {
+        if (!self.selectedMultiIndexPath)
+            self.selectedMultiIndexPath = [NSMutableArray new];
+        
+        [self.selectedMultiIndexPath addObject:indexPath];
+    }
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -62,8 +114,7 @@
     // Configure the cell...
     cell.textLabel.text = [self.valuesArray objectAtIndex:indexPath.row];
     
-    if (self.selectedIndexPath)
-        cell.accessoryType = self.selectedIndexPath.row == indexPath.row ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    [self setCellCheckmark:cell currentIndexPath:indexPath];
     
     return cell;
 }
@@ -72,19 +123,35 @@
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedIndexPath = indexPath;
-    [self.tableView reloadData];
-    
-    if (!self.valuePicked)
-        return;
-    
-    NSString *selectedValue = [self.valuesArray objectAtIndex:indexPath.row];
-    self.valuePicked(selectedValue, indexPath, self);
+    switch (self.pickerType) {
+        case PickerTableViewControllerTypeSingleChoice:
+            [self singleChoiceDidSelectRowAtIndexPath:indexPath];
+            break;
+        case PickerTableViewControllerTypeMultiChoice:
+            [self multipleChoiceDidSelectRowAtIndexPath:indexPath];
+            break;
+        default:
+            break;
+    }
 }
 
 
 #pragma mark - WYPopoverControllerDelegate
 - (void)popoverControllerDidDismissPopover:(WYPopoverController *)popoverController {
+    if (self.pickerType == PickerTableViewControllerTypeMultiChoice) {
+        
+        if (!self.multipleValuesPicked) {
+            
+            NSMutableArray *selectedValues = [NSMutableArray new];
+            for (NSIndexPath *indexPath in self.selectedMultiIndexPath) {
+                [selectedValues addObject:[self.valuesArray objectAtIndex:indexPath.row]];
+            }
+            self.multipleValuesPicked(selectedValues, self.selectedMultiIndexPath, self);
+        }
+        
+        return;
+    }
+    
     if (!self.valuePickCanceled)
         return;
     

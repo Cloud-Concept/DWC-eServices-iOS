@@ -65,12 +65,14 @@
     if ([visa.validityStatus isEqualToString:@"Issued"])
         servicesMask |= RelatedServiceTypeNewEmployeeNOC;
     
-    /*
-     if ([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"]) {
-     servicesMask |= RelatedServiceTypeRenewVisa;
-     servicesMask |= RelatedServiceTypeCancelVisa;
+    
+     if (([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"])
+         &&
+         ([visa.visaType isEqualToString:@"Employment"] || [visa.visaType isEqualToString:@"Transfer - External"] || [visa.visaType isEqualToString:@"Transfer - Internal"])) {
+         servicesMask |= RelatedServiceTypeRenewVisa;
+         //servicesMask |= RelatedServiceTypeCancelVisa;
      }
-     */
+    
 }
 
 - (void)refreshVisitVisaServices:(Visa *)visa dwcEmployee:(DWCEmployee *)dwcEmployee {

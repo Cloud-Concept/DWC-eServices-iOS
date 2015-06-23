@@ -216,6 +216,7 @@
     UIButton *senderButton = sender;
     
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.pickerType = PickerTableViewControllerTypeSingleChoice;
     pickerTableVC.valuesArray = caseTypesArray;
     pickerTableVC.selectedIndexPath = selectedCaseTypeIndexPath;
     pickerTableVC.valuePicked = ^(NSString *value, NSIndexPath *indexPath, PickerTableViewController *picklist) {

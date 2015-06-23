@@ -75,6 +75,7 @@
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
     pickerTableVC.valuesArray = filterStringArray;
     pickerTableVC.selectedIndexPath = selectedFilterIndexPath;
+    pickerTableVC.pickerType = PickerTableViewControllerTypeSingleChoice;
     pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
         selectedFilterIndexPath = indexPath;
         selectedFilter = value;

@@ -57,6 +57,7 @@
     }
     
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    pickerTableVC.pickerType = PickerTableViewControllerTypeSingleChoice;
     pickerTableVC.valuesArray = stringArray;
     pickerTableVC.selectedIndexPath = selectedNOCTypeIndexPath;
     pickerTableVC.valuePicked = ^(NSString *value, NSIndexPath *indexPath, PickerTableViewController *picklist) {

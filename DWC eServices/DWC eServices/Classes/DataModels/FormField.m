@@ -402,13 +402,27 @@
     UIButton *senderButton = (UIButton*)fieldView;
     
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
+    
+    if ([self.type isEqualToString:@"PICKLIST"])
+        pickerTableVC.pickerType = PickerTableViewControllerTypeSingleChoice;
+    else
+        pickerTableVC.pickerType = PickerTableViewControllerTypeMultiChoice;
+    
     pickerTableVC.valuesArray = stringArray;
     pickerTableVC.selectedIndexPath = selectedPicklistIndexPath;
+    pickerTableVC.selectedMultiIndexPath = [NSMutableArray arrayWithArray:selectedMultiPicklistIndexPath];
+    
     pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
         
         [self picklistValueSelected:value indexPath:indexPath];
         
         [picklist dismissPopover:YES];
+    };
+    pickerTableVC.multipleValuesPicked = ^(NSArray * valuesArray, NSArray * indexPathArray, PickerTableViewController *picklist) {
+        
+        [self multiplePicklistValueSelected:valuesArray indexPath:indexPathArray];
+        
+        //[picklist dismissPopover:YES];
     };
     
     [pickerTableVC showPopoverFromView:senderButton];
@@ -498,6 +512,30 @@
     
     for (FormField *childFormField in childrenPicklistFormFieldsArray) {
         [childFormField parentPicklistChanged];
+    }
+}
+
+- (void)multiplePicklistValueSelected:(NSArray *)valueArray indexPath:(NSArray *)indexPathArray {
+    selectedMultiPicklistIndexPath = indexPathArray;
+    
+    NSMutableString *mutableValue = [NSMutableString new];
+    NSMutableString *mutableLabelValue = [NSMutableString new];
+    
+    for (NSString *value in valueArray) {
+        [mutableValue appendFormat:@"%@,", value];
+        [mutableLabelValue appendFormat:@"%@, ", value];
+    }
+    
+    if (mutableValue.length > 0) {
+        [mutableValue deleteCharactersInRange:NSMakeRange(mutableValue.length - 1, 1)];
+        formFieldValue = mutableValue;
+        
+        [mutableLabelValue deleteCharactersInRange:NSMakeRange(mutableLabelValue.length - 2, 2)];
+        pickListLabelValue = mutableLabelValue;
+    }
+    else {
+        formFieldValue = @"";
+        pickListLabelValue = @"";
     }
 }
 
