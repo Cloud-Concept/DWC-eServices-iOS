@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Account;
+
 @interface Passport : NSObject
 
 @property (nonatomic, strong) NSString *Id;
@@ -17,6 +19,8 @@
 
 @property (nonatomic, strong) NSDate *passportIssueDate;
 @property (nonatomic, strong) NSDate *passportExpiryDate;
+
+@property (nonatomic, strong) Account *passportHolder;
 
 - (id)initPassport:(NSDictionary *)passportDict;
 /*

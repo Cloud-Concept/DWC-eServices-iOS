@@ -140,7 +140,7 @@
 - (void)popoverControllerDidDismissPopover:(WYPopoverController *)popoverController {
     if (self.pickerType == PickerTableViewControllerTypeMultiChoice) {
         
-        if (!self.multipleValuesPicked) {
+        if (self.multipleValuesPicked) {
             
             NSMutableArray *selectedValues = [NSMutableArray new];
             for (NSIndexPath *indexPath in self.selectedMultiIndexPath) {

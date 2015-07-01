@@ -11,6 +11,8 @@
 @class Account;
 @class Country;
 @class Occupation;
+@class Passport;
+@class Qualification;
 
 @interface Visa : NSObject
 
@@ -20,8 +22,12 @@
 @property (nonatomic, strong) NSString *salutation;
 @property (nonatomic, strong) NSString *salutationArabic;
 @property (nonatomic, strong) NSString *applicantFullName;
+@property (nonatomic, strong) NSString *applicantFullNameArabic;
+@property (nonatomic, strong) NSString *applicantFirstName;
 @property (nonatomic, strong) NSString *applicantFirstNameArabic;
+@property (nonatomic, strong) NSString *applicantMiddleName;
 @property (nonatomic, strong) NSString *applicantMiddleNameArabic;
+@property (nonatomic, strong) NSString *applicantLastName;
 @property (nonatomic, strong) NSString *applicantLastNameArabic;
 @property (nonatomic, strong) NSString *applicantEmail;
 @property (nonatomic, strong) NSString *applicantMobileNumber;
@@ -34,6 +40,25 @@
 @property (nonatomic, strong) NSString *accompaniedBy;
 @property (nonatomic, strong) NSString *visitVisaDuration;
 @property (nonatomic, strong) NSString *employeeID;
+@property (nonatomic, strong) NSString *dependentVisaType;
+@property (nonatomic, strong) NSString *languages;
+@property (nonatomic, strong) NSString *maritalStatus;
+@property (nonatomic, strong) NSString *motherName;
+@property (nonatomic, strong) NSString *passportPlaceOfIssue;
+@property (nonatomic, strong) NSString *placeOfBirth;
+@property (nonatomic, strong) NSString *serviceIdentifier;
+@property (nonatomic, strong) NSString *transferringCompanyExternal;
+@property (nonatomic, strong) NSString *transferringFreezone;
+
+@property (nonatomic, assign) BOOL deliverEntryPermit;
+@property (nonatomic, assign) BOOL deliverPassportVisaStamped;
+@property (nonatomic, assign) BOOL inCountry;
+@property (nonatomic, assign) BOOL localAmendment;
+@property (nonatomic, assign) BOOL urgentProcessing;
+@property (nonatomic, assign) BOOL urgentStamping;
+
+@property (nonatomic, strong) NSNumber *monthlyAllowancesInAED;
+@property (nonatomic, strong) NSNumber *monthlyBasicSalaryInAED;
 
 @property (nonatomic, strong) NSDate *passportExpiry;
 @property (nonatomic, strong) NSDate *expiryDate;
@@ -44,6 +69,13 @@
 @property (nonatomic, strong) Country *countryOfBirth;
 @property (nonatomic, strong) Country *currentNationality;
 @property (nonatomic, strong) Occupation *jobTitleAtImmigration;
+@property (nonatomic, strong) Passport *passport;
+@property (nonatomic, strong) Country *passportIssueCountry;
+@property (nonatomic, strong) Country *previousNationality;
+@property (nonatomic, strong) Qualification *qualification;
+@property (nonatomic, strong) Visa *renewalForVisa;
+@property (nonatomic, strong) Account *sponsoringEmployeeAcc;
+@property (nonatomic, strong) Account *transferringCompany;
 
 - (id)initVisa:(NSDictionary *)visaDict;
 /*

@@ -33,6 +33,12 @@
     [self.baseServicesViewController.nextButton setTitle:NSLocalizedString(@"PayAndSubmitButton", @"")
                                                 forState:UIControlStateNormal];;
     
+    if (self.baseServicesViewController.relatedServiceType == RelatedServiceTypeRenewVisa) {
+        for (FormField *formField in self.baseServicesViewController.currentWebForm.formFields) {
+            formField.hidden = NO;
+        }
+    }
+    
     [self getCaseDetails];
 }
 

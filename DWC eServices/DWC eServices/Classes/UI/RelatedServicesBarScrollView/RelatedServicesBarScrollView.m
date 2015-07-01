@@ -383,6 +383,18 @@
     [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
+- (void)openRenewVisaFlow {
+    if (!parentViewController)
+        return;
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = RelatedServiceTypeRenewVisa;
+    baseServicesVC.currentVisaObject = self.visaObject;
+    baseServicesVC.createServiceRecord = YES;
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+}
+
 - (void)openVisualforcePage:(NSString *)url {
     VisualforceWebviewViewController *vfWebviewVC = [VisualforceWebviewViewController new];
     
@@ -682,7 +694,7 @@
 }
 
 - (void)relatedServiceRenewVisaButtonClicked {
-    
+    [self openRenewVisaFlow];
 }
 
 - (void)relatedServiceCancelVisaButtonClicked {

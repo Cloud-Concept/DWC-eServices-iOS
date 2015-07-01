@@ -71,7 +71,8 @@
                            MobileLabel:MobileLabel
                            MobileOrder:nil];
     
-    formFieldValue = FieldValue;
+    //formFieldValue = FieldValue;
+    [self setFormFieldValue:FieldValue];
     self.formFieldValidations = formFieldValidationsArray;
     
     return formField;
@@ -305,6 +306,7 @@
         BOOL isEnabled = !(self.isCalculated || self.isParameter);
         
         if ([self.type isEqualToString:@"PICKLIST"] ||
+            [self.type isEqualToString:@"MULTIPICKLIST"] ||
             [self.type isEqualToString:@"REFERENCE"] ||
             [self.type isEqualToString:@"DATE"]) {
             fieldView = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -323,6 +325,7 @@
                 [((UIButton*)fieldView) setTitle:formFieldValue forState:UIControlStateNormal];
             
             if ([self.type isEqualToString:@"PICKLIST"] ||
+                [self.type isEqualToString:@"MULTIPICKLIST"] ||
                 [self.type isEqualToString:@"REFERENCE"]) {
                 [((UIButton*)fieldView) setTitle:pickListLabelValue forState:UIControlStateNormal];
             }
@@ -403,7 +406,7 @@
     
     PickerTableViewController *pickerTableVC = [PickerTableViewController new];
     
-    if ([self.type isEqualToString:@"PICKLIST"])
+    if ([self.type isEqualToString:@"PICKLIST"] || [self.type isEqualToString:@"REFERENCE"] )
         pickerTableVC.pickerType = PickerTableViewControllerTypeSingleChoice;
     else
         pickerTableVC.pickerType = PickerTableViewControllerTypeMultiChoice;
@@ -413,7 +416,7 @@
     pickerTableVC.selectedMultiIndexPath = [NSMutableArray arrayWithArray:selectedMultiPicklistIndexPath];
     
     pickerTableVC.valuePicked = ^(NSString * value, NSIndexPath * indexPath, PickerTableViewController *picklist) {
-        
+
         [self picklistValueSelected:value indexPath:indexPath];
         
         [picklist dismissPopover:YES];
@@ -468,6 +471,12 @@
         else if ([self.type isEqualToString:@"BOOLEAN"]) {
             [((UISwitch *)fieldView) setOn:[formFieldValue isEqualToString:@"1"]];
         }
+        else if ([self.type isEqualToString:@"DATE"]) {
+            NSDate *date  = [SFDateUtil SOQLDateTimeStringToDate:formFieldValue];
+            
+            [((UIButton*)fieldView) setTitle:[HelperClass formatDateToString:date] forState:UIControlStateNormal];
+            
+        }
     }
 }
 
@@ -478,11 +487,43 @@
 }
 
 - (void)setPicklistNamesDictionary:(NSDictionary *)namesDict PicklistValuesDictionary:(NSDictionary *)valuesDict {
-    picklistNamesDictionary = namesDict;
-    picklistValuesDictionary = valuesDict;
-    
-    if (formFieldValue && ![formFieldValue isEqualToString:@""])
+    if (picklistNamesDictionary && picklistValuesDictionary) {
+        NSMutableArray *namesArray = [picklistNamesDictionary objectForKey:self.name];
+        NSMutableArray *valuesArray = [picklistValuesDictionary objectForKey:self.name];
+        
+        NSArray *newNamesArray = [namesDict objectForKey:self.name];
+        NSArray *newValuesArray = [valuesDict objectForKey:self.name];
+        
+        [namesArray addObjectsFromArray:newNamesArray];
+        [valuesArray addObjectsFromArray:newValuesArray];
+        
+        [picklistNamesDictionary setObject:namesArray forKey:self.name];
+        [picklistValuesDictionary setObject:valuesArray forKey:self.name];
+    }
+    else {
+        picklistNamesDictionary = [NSMutableDictionary dictionaryWithDictionary:namesDict];
+        picklistValuesDictionary = [NSMutableDictionary dictionaryWithDictionary:valuesDict];
+    }
+    if (formFieldValue && ![formFieldValue isEqualToString:@""]) {
+        if ([self.type isEqualToString:@"REFERENCE"]) {
+            
+            NSArray *picklistValuesArray = [picklistValuesDictionary objectForKey:self.name];
+            NSInteger index = 0;
+            
+            for (NSString *picklistValue in picklistValuesArray) {
+                if ([formFieldValue isEqualToString:picklistValue]) {
+                    break;
+                }
+                index++;
+            }
+            
+            if (index < picklistValuesArray.count) {
+                NSString *value = [[picklistNamesDictionary objectForKey:self.name] objectAtIndex:index];
+                [self picklistValueSelected:value indexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+            }
+        }
         return;
+    }
     
     if (picklistNamesDictionary && picklistNamesDictionary.count > 0) {
         NSArray *stringArray = [NSArray new];
@@ -522,7 +563,7 @@
     NSMutableString *mutableLabelValue = [NSMutableString new];
     
     for (NSString *value in valueArray) {
-        [mutableValue appendFormat:@"%@,", value];
+        [mutableValue appendFormat:@"%@;", value];
         [mutableLabelValue appendFormat:@"%@, ", value];
     }
     
@@ -532,6 +573,8 @@
         
         [mutableLabelValue deleteCharactersInRange:NSMakeRange(mutableLabelValue.length - 2, 2)];
         pickListLabelValue = mutableLabelValue;
+        
+        [self setPicklistLabel:pickListLabelValue];
     }
     else {
         formFieldValue = @"";

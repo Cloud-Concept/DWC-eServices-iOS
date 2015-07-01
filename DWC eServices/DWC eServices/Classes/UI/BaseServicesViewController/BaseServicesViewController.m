@@ -33,7 +33,10 @@
 #import "SFDateUtil.h"
 #import "CardManagement.h"
 #import "CompanyAmendmentViewController.h"
+#import "RenewVisaViewController.h"
 #import "NSString+SFAdditions.h"
+#import "Visa.h"
+#import "Passport.h"
 
 @interface BaseServicesViewController ()
 
@@ -47,6 +50,8 @@
     // Do any additional setup after loading the view.
     self.hideSlidingMenu = YES;
     self.hideNotificationIcon = YES;
+    
+    requestPathFormFieldsDictionary = [NSMutableDictionary new];
     
     __typeof(self) __weak weakSelf = self;
     self.navigationItemBackAction = ^(void) {
@@ -146,7 +151,7 @@
             
             break;
         case RelatedServiceTypeRenewVisa:
-            
+            navBarTitle = NSLocalizedString(@"navBarRenewVisaTitle", @"");
             break;
         case RelatedServiceTypeCancelVisa:
             
@@ -224,6 +229,7 @@
         case RelatedServiceTypeRegistrationDocuments:
         case RelatedServiceTypeCompanyAddressChange:
         case RelatedServiceTypeCompanyNameChange:
+        case RelatedServiceTypeRenewVisa:
             returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:relatedObjectName];
             break;
         case RelatedServiceTypeContractRenewal:
@@ -272,7 +278,10 @@
             [self showFieldsFlowPage];
             break;
         case ServiceFlowFieldsPage:
-            [self createCaseRecord];
+            if (self.relatedServiceType == RelatedServiceTypeRenewVisa)
+                [self callSubmitRenewVisaWebservice];
+            else
+                [self createCaseRecord];
             break;
         case ServiceFlowAttachmentsPage:
             [self createCompanyDocuments:self.currentServiceAdministration.serviceDocumentsArray];
@@ -358,7 +367,8 @@
             
             break;
         case RelatedServiceTypeRenewVisa:
-            
+            navBarTitle = NSLocalizedString(@"navBarRenewVisaTitle", @"");
+            [self showRenewVisaFlow];
             break;
         case RelatedServiceTypeCancelVisa:
             
@@ -394,6 +404,13 @@
     currentServiceFlowType = ServiceFlowInitialPage;
     
     [super setNavigationBarTitle:navBarTitle];
+}
+
+- (void)showRenewVisaFlow {
+    RenewVisaViewController *renewVisaVC = [RenewVisaViewController new];
+    renewVisaVC.baseServicesViewController = self;
+    [self addChildViewController:renewVisaVC toView:self.serviceFlowView];
+    [viewControllersStack pushObject:renewVisaVC];
 }
 
 - (void)showCompanyAmendmentServiceFlow {
@@ -822,7 +839,8 @@
     if (self.relatedServiceType == RelatedServiceTypeContractRenewal ||
         self.relatedServiceType == RelatedServiceTypeLicenseRenewal ||
         self.relatedServiceType == RelatedServiceTypeCompanyAddressChange ||
-        self.relatedServiceType == RelatedServiceTypeCompanyNameChange) {
+        self.relatedServiceType == RelatedServiceTypeCompanyNameChange ||
+        self.relatedServiceType == RelatedServiceTypeRenewVisa) {
         functionName = @"MobileSubmitAndPayRequestWebService";
     }
     
@@ -895,7 +913,45 @@
     pickListValuesRequest.queryParams = [NSDictionary dictionaryWithObject:formField.Id forKey:@"fieldId"];
     
     [self showLoadingDialog];
+    formFieldPicklistCalls++;
     [[SFRestAPI sharedInstance] send:pickListValuesRequest delegate:self];
+}
+
+- (void)callSubmitRenewVisaWebservice {
+    SFRestRequest *renewVisaRequest = [[SFRestRequest alloc] init];
+    renewVisaRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/MobileSubmitRenewVisaWebService"];
+    renewVisaRequest.method = SFRestMethodPOST;
+    renewVisaRequest.path = @"/services/apexrest/MobileSubmitRenewVisaWebService";
+    
+    //NSMutableDictionary *wrapperDict = [NSDictionary dictionaryWithObjects:@[insertedCaseId, self.currentLicense.Id] forKeys:@[@"caseId", @"licenseId"]];
+    
+    NSMutableDictionary *wrapperDict = [NSMutableDictionary new];
+    [wrapperDict setObject:[Globals currentAccount].Id forKey:@"AccountId"];
+    [wrapperDict setObject:self.renewedVisaObject.Id forKey:@"VisaId"];
+    [wrapperDict setObject:self.renewedVisaObject.renewalForVisa.Id forKey:@"RenewalForVisa"];
+    [wrapperDict setObject:self.renewedVisaObject.passport.passportHolder.Id forKey:@"PassportHolderId"];
+    
+    for (FormField *formField in self.currentWebForm.formFields) {
+        if (formField.isParameter && !([formField.name isEqualToString:@"In_Country__c"] ||
+                                      [formField.name isEqualToString:@"Local_Amendment__c"] ||
+                                      [formField.name isEqualToString:@"Urgent_Processing__c"] ||
+                                      [formField.name isEqualToString:@"Urgent_Stamping__c"]))
+            continue;
+        
+        NSString *fieldName = [formField.name stringByReplacingOccurrencesOfString:@"__c" withString:@""];
+        NSString *fieldValue = [formField getFormFieldValue];
+        if ([formField.type isEqualToString:@"DATE"]) {
+            //fieldValue = [SFDateUtil]
+        }
+        [wrapperDict setObject:fieldValue forKey:fieldName];
+    }
+    
+    NSDictionary *bodyDict = [NSDictionary dictionaryWithObject:wrapperDict forKey:@"wrapper"];
+    
+    renewVisaRequest.queryParams = bodyDict;
+    
+    [self showLoadingDialog];
+    [[SFRestAPI sharedInstance] send:renewVisaRequest delegate:self];
 }
 
 - (void)getWebFormWithReturnBlock:(void (^)(BOOL))returnBlock {
@@ -917,11 +973,9 @@
             formFieldPicklistCalls = 0;
             for (FormField *formField in self.currentWebForm.formFields) {
                 if ([formField.type isEqualToString:@"PICKLIST"]) {
-                    formFieldPicklistCalls++;
                     [self callPickListValuesWebService:formField];
                 }
                 else if ([formField.type isEqualToString:@"REFERENCE"] && !formField.isParameter) {
-                    formFieldPicklistCalls++;
                     [self getReferencePicklistValues:formField];
                 }
             }
@@ -963,31 +1017,53 @@
     };
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        NSArray *records = [dict objectForKey:@"records"];
-        NSMutableArray *idsMutableArray = [NSMutableArray new];
-        NSMutableArray *namesMutableArray = [NSMutableArray new];
-        
-        for (NSDictionary *recordDict in records) {
-            [idsMutableArray addObject:[recordDict objectForKey:@"Id"]];
-            [namesMutableArray addObject:[recordDict objectForKey:@"Name"]];
-        }
-        
-        NSDictionary *picklistNamesDictionary = [NSDictionary dictionaryWithObject:namesMutableArray forKey:formField.name];
-        NSDictionary *picklistValuesDictionary = [NSDictionary dictionaryWithObject:idsMutableArray forKey:formField.name];
-        
-        formFieldPicklistCalls--;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self hideLoadingDialog];
-            [formField setPicklistNamesDictionary:picklistNamesDictionary PicklistValuesDictionary:picklistValuesDictionary];
-        });
+        [self handleGetReferencePicklistValuesReturn:dict formField:formField requestPath:@""];
     };
     
     [self showLoadingDialog];
     
+    formFieldPicklistCalls++;
     [[SFRestAPI sharedInstance] performSOQLQuery:[NSString stringWithFormat:@"SELECT Id, Name FROM %@ ORDER BY Name", formField.textValue]
                                        failBlock:errorBlock
                                    completeBlock:successBlock];
+}
+
+- (void)handleGetReferencePicklistValuesReturn:(NSDictionary *)dict formField:(FormField *)formField requestPath:(NSString *)requestPath{
+    
+    if (!formField) {
+        formField = [requestPathFormFieldsDictionary objectForKey:requestPath];
+    }
+    
+    NSArray *records = [dict objectForKey:@"records"];
+    NSMutableArray *idsMutableArray = [NSMutableArray new];
+    NSMutableArray *namesMutableArray = [NSMutableArray new];
+    
+    for (NSDictionary *recordDict in records) {
+        [idsMutableArray addObject:[recordDict objectForKey:@"Id"]];
+        [namesMutableArray addObject:[recordDict objectForKey:@"Name"]];
+    }
+    
+    NSDictionary *picklistNamesDictionary = [NSDictionary dictionaryWithObject:namesMutableArray forKey:formField.name];
+    NSDictionary *picklistValuesDictionary = [NSDictionary dictionaryWithObject:idsMutableArray forKey:formField.name];
+    
+    formFieldPicklistCalls--;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self hideLoadingDialog];
+        [formField setPicklistNamesDictionary:picklistNamesDictionary PicklistValuesDictionary:picklistValuesDictionary];
+        
+        NSString *nextRecordsUrl = [dict objectForKey:@"nextRecordsUrl"];
+        if (nextRecordsUrl != nil) {
+            SFRestRequest *continuedRequest = [SFRestRequest requestWithMethod:SFRestMethodGET path:nextRecordsUrl queryParams:nil];
+            
+            formFieldPicklistCalls++;
+            [self showLoadingDialog];
+            [requestPathFormFieldsDictionary setObject:formField forKey:nextRecordsUrl];
+            
+            [[SFRestAPI sharedInstance] send:continuedRequest delegate:self];
+            
+        }
+    });
 }
 
 - (void)handlePayAndSubmitWebserviceReturn:(id)jsonResponse {
@@ -1035,6 +1111,27 @@
     }
 }
 
+- (void)handleSubmitRenewVisaWebService:(id)jsonResponse {
+    NSString *returnValue = [[NSString alloc] initWithData:jsonResponse encoding:NSUTF8StringEncoding];
+    returnValue = [returnValue stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+    NSLog(@"request:didLoadResponse: %@", returnValue);
+    [self hideLoadingDialog];
+    
+    if ([returnValue containsString:@"Error"]) {
+        [HelperClass displayAlertDialogWithTitle:NSLocalizedString(@"ErrorAlertTitle", @"")
+                                         Message:NSLocalizedString(@"ErrorAlertMessage", @"")];
+    }
+    else {
+        insertedCaseId = returnValue;
+        insertedServiceId = self.renewedVisaObject.Id;
+        
+        if ([self hasAttachments])
+            [self showAttachmentsFlowPage];
+        else
+            [self showReviewFlowPage];
+    }
+}
+
 - (void)handlePickListValuesWebServiceReturn:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
     NSError *error;
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
@@ -1055,9 +1152,9 @@
 #pragma mark - SFRestAPIDelegate
 
 - (void)request:(SFRestRequest *)request didLoadResponse:(id)jsonResponse {
-    NSError *error;
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
-    NSLog(@"request:didLoadResponse: %@", dict);
+    //NSError *error;
+    //NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonResponse options:kNilOptions error:&error];
+    //NSLog(@"request:didLoadResponse: %@", dict);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if ([request.path containsString:@"MobilePayAndSubmitWebService"] ||
@@ -1072,6 +1169,11 @@
         else if ([request.path containsString:@"MobilePickListValuesWebService"]) {
             formFieldPicklistCalls--;
             [self handlePickListValuesWebServiceReturn:request didLoadResponse:jsonResponse];
+        }
+        else if ([request.path containsString:@"MobileSubmitRenewVisaWebService"])
+            [self handleSubmitRenewVisaWebService:jsonResponse];
+        else {
+            [self handleGetReferencePicklistValuesReturn:jsonResponse formField:nil requestPath:request.path];
         }
     });
 }

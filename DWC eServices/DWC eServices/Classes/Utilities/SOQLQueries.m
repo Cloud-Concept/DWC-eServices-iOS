@@ -13,7 +13,9 @@
 
 @implementation SOQLQueries
 
-static NSString *visaEmployeesQuery = @"SELECT Id, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, Applicant_Mobile_Number__c, Applicant_Gender__c, Passport_Country__c, Passport_Number__c, Passport_Expiry__c, Date_of_Birth__c, Salutation__c, Visa_Type__c, Visa_Expiry_Date__c,  Applicant_Full_Name__c, Visa_Validity_Status__c, Accompanied_By__c, Visit_Visa_Duration__c, Country_of_Birth__r.Id, Country_of_Birth__r.Name, Current_Nationality__r.Id, Current_Nationality__r.Name, Job_Title_at_Immigration__r.Id, Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, Visa_Holder__r.Name, Visa_Holder__r.BillingCity FROM Visa__c WHERE Sponsoring_Company__c = '%@' AND Visa_Validity_Status__c LIKE '%%@' %@ ORDER BY Visa_Expiry_Date__c DESC LIMIT %%d OFFSET %%d";
+static NSString *renewedVisaQuery = @"SELECT Id, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, Applicant_Mobile_Number__c, Applicant_Full_Name_Arabic__c, Applicant_Gender__c, Passport_Country__c, Passport_Number__c, Passport_Expiry__c, Date_of_Birth__c, Salutation__c, Visa_Type__c, Visa_Expiry_Date__c,  Applicant_Full_Name__c, Visa_Validity_Status__c, Accompanied_By__c, Visit_Visa_Duration__c, Country_of_Birth__r.Id, Country_of_Birth__r.Name, Current_Nationality__r.Id, Current_Nationality__r.Name, Job_Title_at_Immigration__r.Id, Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, Visa_Holder__r.Name, Visa_Holder__r.BillingCity, Applicant_First_Name__c, Applicant_Last_Name__c, Applicant_Middle_Name__c, Deliver_Entry_Permit__c, Deliver_Passport_Visa_Stamped__c, Dependent_Visa_Type__c, In_Country__c, Languages__c, Local_Amendment__c, Marital_Status__c, Monthly_Allowances_in_AED__c, Monthly_Basic_Salary_in_AED__c, Mother_Name__c, Name, Passport__r.Id, Passport__r.Passport_Holder__r.Id, Passport_Issue_Country__r.Id, Passport_Issue_Country__r.Name, Passport_Place_of_Issue__c, Place_of_Birth__c,Previous_Nationality__r.Id, Previous_Nationality__r.Name, Qualification__r.Id, Qualification__r.Name, Renewal_for_Visa__r.Id, Service_Identifier__c, Sponsoring_Employee_Acc__r.Id, Sponsoring_Employee_Acc__r.Name, Transferring_Company__r.Id, Transferring_Company_External__c, Transferring_Freezone__c, Urgent_Processing__c, Urgent_Stamping__c FROM Visa__c WHERE ID = '%@'";
+
+static NSString *visaEmployeesQuery = @"SELECT Id, Employee_ID__c, Personal_Photo__c, Salutation_Arabic__c, Applicant_Middle_Name_Arabic__c, Applicant_Last_Name_Arabic__c, Applicant_First_Name_Arabic__c, Religion__c, Applicant_Email__c, Applicant_Mobile_Number__c, Applicant_Full_Name_Arabic__c, Applicant_Gender__c, Passport_Country__c, Passport_Number__c, Passport_Expiry__c, Date_of_Birth__c, Salutation__c, Visa_Type__c, Visa_Expiry_Date__c,  Applicant_Full_Name__c, Visa_Validity_Status__c, Accompanied_By__c, Visit_Visa_Duration__c, Country_of_Birth__r.Id, Country_of_Birth__r.Name, Current_Nationality__r.Id, Current_Nationality__r.Name, Job_Title_at_Immigration__r.Id, Job_Title_at_Immigration__r.Name, Sponsoring_Company__c, Sponsoring_Company__r.Name, Visa_Holder__c, Visa_Holder__r.Id, Visa_Holder__r.Name, Visa_Holder__r.BillingCity, Applicant_First_Name__c, Applicant_Last_Name__c, Applicant_Middle_Name__c, Deliver_Entry_Permit__c, Deliver_Passport_Visa_Stamped__c, Dependent_Visa_Type__c, In_Country__c, Languages__c, Local_Amendment__c, Marital_Status__c, Monthly_Allowances_in_AED__c, Monthly_Basic_Salary_in_AED__c, Mother_Name__c, Name, Passport__r.Id, Passport_Issue_Country__r.Id, Passport_Issue_Country__r.Name, Passport_Place_of_Issue__c, Place_of_Birth__c,Previous_Nationality__r.Id, Previous_Nationality__r.Name, Qualification__r.Id, Qualification__r.Name, Renewal_for_Visa__r.Id, Service_Identifier__c, Sponsoring_Employee_Acc__r.Id, Sponsoring_Employee_Acc__r.Name, Transferring_Company__r.Id, Transferring_Company_External__c, Transferring_Freezone__c, Urgent_Processing__c, Urgent_Stamping__c FROM Visa__c WHERE Sponsoring_Company__c = '%@' AND Visa_Validity_Status__c LIKE '%%@' %@ ORDER BY Visa_Expiry_Date__c DESC LIMIT %%d OFFSET %%d";
 
 static NSString *permanentEmployeeFilter = @" AND Visa_Validity_Status__c IN ('Issued', 'Expired', 'Cancelled', 'Under Process', 'Under Renewal') AND Visa_Type__c IN ('Employment', 'Transfer - External', 'Transfer - Internal')";
 
@@ -61,7 +63,15 @@ static NSString *freeZonePaymentsQuery = @"SELECT Id, Name, CreatedDate, Transac
 
 static NSString *amendementServiceAdminQuery = @"SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Is_Active__c = true AND Service_Identifier__c = '%@'";
 
+static NSString *visaRenewServiceAdminQuery = @"SELECT ID, Name, Display_Name__c, Service_Identifier__c, Amount__c, Total_Amount__c, (SELECT ID, Name, Type__c, Language__c, Document_Type__c, Authority__c FROM eServices_Document_Checklists__r) FROM Receipt_Template__c WHERE Is_Active__c = true AND Service_Identifier__c = '%@'";
+
 static NSString *licenseRenewInProgressQuery = @"SELECT ID, (SELECT Id, Status__c FROM Invoices__r WHERE Status__c = 'Paid') FROM License__c WHERE Renewal_for_License__c = '%@'";
+
+static NSString *objectSettingsQuery = @"SELECT Availability__c, Default_Value__c, Editable__c, Field_API_Name__c, Is_Active__c, Object_API_Name__c, Related_To__c, Use_Defaults__c FROM Object_Settings__c WHERE Is_Active__c = true AND Object_API_Name__c = '%@' AND Related_To__c = '%@'";
+
++ (NSString *)renewedVisaQuery:(NSString *)visaId {
+    return [NSString stringWithFormat:renewedVisaQuery, visaId];
+}
 
 + (NSString *)visitVisaEmployeesQuery {
     return [NSString stringWithFormat:visaEmployeesQuery, [Globals currentAccount].Id, visitVisaFilter];
@@ -204,4 +214,11 @@ static NSString *licenseRenewInProgressQuery = @"SELECT ID, (SELECT Id, Status__
     return [NSString stringWithFormat:licenseRenewInProgressQuery, currentLicenseId];
 }
 
++ (NSString *)objectSettingsQuery:(NSString *)objectAPIName relatedTo:(NSString *)relatedTo {
+    return [NSString stringWithFormat:objectSettingsQuery, objectAPIName, relatedTo];
+}
+
++ (NSString *)visaRenewServiceAdminQuery:(NSString *)serviceIdentifierID {
+    return [NSString stringWithFormat:visaRenewServiceAdminQuery, serviceIdentifierID];
+}
 @end

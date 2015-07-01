@@ -18,6 +18,7 @@
 @class TenancyContract;
 @class License;
 @class CardManagement;
+@class FormField;
 
 typedef enum {
     ServiceFlowInitialPage,
@@ -44,6 +45,8 @@ typedef enum {
     
     NSArray *timelineButtonsArray;
     ServiceFlowPageType currentServiceFlowType;
+    
+    NSMutableDictionary *requestPathFormFieldsDictionary;
 }
 
 @property (nonatomic) RelatedServiceType relatedServiceType;
@@ -52,6 +55,7 @@ typedef enum {
 @property (strong, nonatomic) TenancyContract *currentContract;
 @property (strong, nonatomic) License *currentLicense;
 @property (strong, nonatomic) CardManagement *currentCardManagement;
+@property (strong, nonatomic) Visa *renewedVisaObject;
 
 @property (strong, nonatomic) EServiceAdministration *currentServiceAdministration;
 @property (strong, nonatomic) NSDictionary *caseFields;
@@ -90,4 +94,5 @@ typedef enum {
 - (void)getWebFormWithReturnBlock:(void (^)(BOOL))returnBlock;
 - (void)initializeCaseId:(NSString *)caseId;
 - (void)backButtonPressed;
+- (void)getReferencePicklistValues:(FormField *)formField;
 @end

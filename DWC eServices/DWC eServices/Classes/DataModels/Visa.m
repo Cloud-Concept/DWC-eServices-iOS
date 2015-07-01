@@ -12,6 +12,8 @@
 #import "Account.h"
 #import "Country.h"
 #import "Occupation.h"
+#import "Passport.h"
+#import "Qualification.h"
 
 @implementation Visa
 
@@ -43,6 +45,30 @@
     self.accompaniedBy = [HelperClass stringCheckNull:[visaDict objectForKey:@"Accompanied_By__c"]];
     self.visitVisaDuration = [HelperClass stringCheckNull:[visaDict objectForKey:@"Visit_Visa_Duration__c"]];
     
+    self.applicantFirstName = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_First_Name__c"]];
+    self.applicantMiddleName = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_Middle_Name__c"]];
+    self.applicantLastName = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_Last_Name__c"]];
+    self.dependentVisaType = [HelperClass stringCheckNull:[visaDict objectForKey:@"Dependent_Visa_Type__c"]];
+    self.languages = [HelperClass stringCheckNull:[visaDict objectForKey:@"Languages__c"]];
+    self.maritalStatus = [HelperClass stringCheckNull:[visaDict objectForKey:@"Marital_Status__c"]];
+    self.motherName = [HelperClass stringCheckNull:[visaDict objectForKey:@"Mother_Name__c"]];
+    self.passportPlaceOfIssue = [HelperClass stringCheckNull:[visaDict objectForKey:@"Passport_Place_of_Issue__c"]];
+    self.placeOfBirth = [HelperClass stringCheckNull:[visaDict objectForKey:@"Place_of_Birth__c"]];
+    self.serviceIdentifier = [HelperClass stringCheckNull:[visaDict objectForKey:@"Service_Identifier__c"]];
+    self.transferringCompanyExternal = [HelperClass stringCheckNull:[visaDict objectForKey:@"Transferring_Company_External__c"]];
+    self.transferringFreezone = [HelperClass stringCheckNull:[visaDict objectForKey:@"Transferring_Freezone__c"]];
+    self.applicantFullNameArabic  = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_Full_Name_Arabic__c"]];
+    
+    self.deliverEntryPermit = [[visaDict objectForKey:@"Deliver_Entry_Permit__c"] boolValue];
+    self.deliverPassportVisaStamped = [[visaDict objectForKey:@"Deliver_Passport_Visa_Stamped__c"] boolValue];
+    self.inCountry = [[visaDict objectForKey:@"In_Country__c"] boolValue];
+    self.localAmendment = [[visaDict objectForKey:@"Local_Amendment__c"] boolValue];
+    self.urgentProcessing = [[visaDict objectForKey:@"urgent_Processing__c"] boolValue];
+    self.urgentStamping = [[visaDict objectForKey:@"Urgent_Stamping__c"] boolValue];
+
+    self.monthlyAllowancesInAED = [HelperClass numberCheckNull:[visaDict objectForKey:@"Monthly_Allowances_in_AED__c"]];
+    self.monthlyBasicSalaryInAED = [HelperClass numberCheckNull:[visaDict objectForKey:@"Monthly_Basic_Salary_in_AED__c"]];
+    
     if (![[visaDict objectForKey:@"Passport_Expiry__c"] isKindOfClass:[NSNull class]])
         self.passportExpiry = [SFDateUtil SOQLDateTimeStringToDate:[visaDict objectForKey:@"Passport_Expiry__c"]];
     
@@ -57,6 +83,14 @@
     self.countryOfBirth = [[Country alloc] initCountry:[visaDict objectForKey:@"Country_of_Birth__r"]];
     self.currentNationality = [[Country alloc] initCountry:[visaDict objectForKey:@"Current_Nationality__r"]];
     self.jobTitleAtImmigration = [[Occupation alloc] initOccupation:[visaDict objectForKey:@"Job_Title_at_Immigration__r"]];
+    
+    self.passport = [[Passport alloc] initPassport:[visaDict objectForKey:@"Passport__r"]];
+    self.passportIssueCountry = [[Country alloc] initCountry:[visaDict objectForKey:@"Passport_Issue_Country__r"]];
+    self.previousNationality = [[Country alloc] initCountry:[visaDict objectForKey:@"Previous_Nationality__r"]];
+    self.qualification = [[Qualification alloc] initQualification:[visaDict objectForKey:@"Qualification__r"]];
+    self.renewalForVisa = [[Visa alloc] initVisa:[visaDict objectForKey:@"Renewal_for_Visa__r"]];
+    self.sponsoringEmployeeAcc = [[Account alloc] initAccount:[visaDict objectForKey:@"Sponsoring_Employee_Acc__r"]];
+    self.transferringCompany = [[Account alloc] initAccount:[visaDict objectForKey:@"Transferring_Company__r"]];
     
     return self;
 }

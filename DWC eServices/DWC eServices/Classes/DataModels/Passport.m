@@ -9,6 +9,7 @@
 #import "Passport.h"
 #import "HelperClass.h"
 #import "SFDateUtil.h"
+#import "Account.h"
 
 @implementation Passport
 
@@ -29,6 +30,8 @@
     
     if (![[passportDict objectForKey:@"Passport_Expiry_Date__c"] isKindOfClass:[NSNull class]])
         self.passportExpiryDate = [SFDateUtil SOQLDateTimeStringToDate:[passportDict objectForKey:@"Passport_Expiry_Date__c"]];
+    
+    self.passportHolder = [[Account alloc] initAccount:[passportDict objectForKey:@"Passport_Holder__r"]];
     
     return self;
 }

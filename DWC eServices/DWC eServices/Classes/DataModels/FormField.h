@@ -27,8 +27,8 @@
     
     NSMutableArray *childrenPicklistFormFieldsArray;
     
-    NSDictionary *picklistNamesDictionary;
-    NSDictionary *picklistValuesDictionary;
+    NSMutableDictionary *picklistNamesDictionary;
+    NSMutableDictionary *picklistValuesDictionary;
 }
 
 @property (strong, nonatomic) NSString *Id;

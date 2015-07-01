@@ -10,6 +10,7 @@
 
 @interface SOQLQueries : NSObject
 
++ (NSString *)renewedVisaQuery:(NSString *)visaId;
 + (NSString *)visitVisaEmployeesQuery;
 + (NSString *)permanentEmployeesQuery;
 + (NSString *)contractorsQuery;
@@ -34,4 +35,6 @@
 + (NSString *)freeZonePaymentsQueryWithLimit:(NSInteger)limit offset:(NSInteger)offset datesFilter:(NSString *)datesFilter;
 + (NSString *)amendementServiceAdminQuery:(NSString *)serviceIdentifier;
 + (NSString *)licenseRenewInProgressQuery:(NSString *)currentLicenseId;
++ (NSString *)objectSettingsQuery:(NSString *)objectAPIName relatedTo:(NSString *)relatedTo;
++ (NSString *)visaRenewServiceAdminQuery:(NSString *)serviceIdentifierID;
 @end

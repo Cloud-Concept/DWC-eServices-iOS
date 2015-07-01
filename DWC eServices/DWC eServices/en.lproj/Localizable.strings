@@ -251,4 +251,42 @@
 "navBarThankYou" = "THANK YOU";
 "navBarReportsTitle" = "REPORTS";
 "navBarQuickAccessTitle" = "QUICK ACCESS";
+"navBarRenewVisaTitle" = "RENEW VISA";
+
+
+"EmployeeDetails" = "Employee Details";
+"EmployeeDetailsEmployeeName" = "Name";
+"EmployeeDetailsEmployeeArabicName" = "Arabic Name";
+"EmployeeDetailsEmployeeGender" = "Gender";
+"EmployeeDetailsEmployeeDateOfBirth" = "Date of Birth";
+"EmployeeDetailsEmployeeCountryOfBirth" = "Birth Country";
+"EmployeeDetailsEmployeePlaceOfBirth" = "Place Country";
+"EmployeeDetailsEmployeeEmail" = "Email";
+"EmployeeDetailsEmployeeMobile" = "Mobile";
+"EmployeeDetailsEmployeeMaritalStatus" = "Marital Status";
+"EmployeeDetailsEmployeeMotherName" = "Mother\'s Name";
+"EmployeeDetailsEmployeeCurrentNationality" = "Current Nationality";
+"EmployeeDetailsEmployeePreviousNationality" = "Previous Nationality";
+"EmployeeDetailsEmployeeReligion" = "Religion";
+"EmployeeDetailsEmployeeLanguagesSpoken" = "Languages Spoken";
+"PassportDetails" = "Passport Details";
+"PassportDetailsEmployeePassportNumber" = "Passport No";
+"PassportDetailsEmployeePassportPassportExpiryDate" = "Date of Expiry";
+"PassportDetailsEmployeePassportIssueCountry" = "Country of Issue";
+"PassportDetailsEmployeePassportPassportIssuePlace" = "Place of Issue";
+"VisaDetailsTitle" = "Visa Details";
+"VisaDetailsEmployeeMonthlySalary" = "Monthly Salary (AED)";
+"VisaDetailsEmployeeMonthlyAllowance" = "Monthly Allowance (AED)";
+"VisaDetailsEmployeeOccupation" = "Occupation";
+"VisaDetailsEmployeeQualification" = "Qualification";
+"AdditionsTitle" = "Additions";
+
+
+"Urgent_Stamping__c" = "Urgent Stamping";
+"Deliver_Entry_Permit__c" = "Deliver Entry Permit";
+"Deliver_Passport_Visa_Stamped__c" = "Deliver Passport Visa Stamped";
+"In_Country__c" = "In Country";
+"Local_Amendment__c" = "Local Amendment";
+"Urgent_Processing__c" = "Urgent Processing";
+
 

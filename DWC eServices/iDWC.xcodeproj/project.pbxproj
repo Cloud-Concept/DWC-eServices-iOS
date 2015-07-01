@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1300DA421B3934A3005A9BE7 /* RenewVisaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1300DA401B3934A3005A9BE7 /* RenewVisaViewController.m */; };
+		1300DA431B3934A3005A9BE7 /* RenewVisaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1300DA411B3934A3005A9BE7 /* RenewVisaViewController.xib */; };
+		1300DA491B395847005A9BE7 /* Qualification.m in Sources */ = {isa = PBXBuildFile; fileRef = 1300DA481B395847005A9BE7 /* Qualification.m */; };
 		1302913C1A76C88D000E119C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1302913B1A76C88D000E119C /* SWRevealViewController.m */; };
 		130523DE1A99C05500EF2268 /* ServicesUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130523DD1A99C05500EF2268 /* ServicesUploadViewController.xib */; };
 		130523E61A99C56D00EF2268 /* UIViewController+ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 130523E51A99C56D00EF2268 /* UIViewController+ChildViewController.m */; };
@@ -116,6 +119,7 @@
 		1354F5521AF74651004A6CBA /* CustomerDocumentExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1354F5511AF74651004A6CBA /* CustomerDocumentExpandedTableViewCell.m */; };
 		1354F5551AF75C48004A6CBA /* DWCDocumentExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1354F5541AF75C48004A6CBA /* DWCDocumentExpandedTableViewCell.m */; };
 		1354F5591AF78365004A6CBA /* UIImageView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1354F5581AF78365004A6CBA /* UIImageView+Additions.m */; };
+		13555E3E1B3FDA000077CB50 /* ObjectSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 13555E3D1B3FDA000077CB50 /* ObjectSettings.m */; };
 		13603C1F1B0DC17700E1E68C /* DWCSFRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 13603C1E1B0DC17700E1E68C /* DWCSFRequestManager.m */; };
 		136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 136377BE1A767C2C00282F72 /* FVCustomAlertView.m */; };
 		13743ECA1AB02E4F00D0B873 /* NotificationManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 13743EC91AB02E4F00D0B873 /* NotificationManagement.m */; };
@@ -193,6 +197,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1300DA3F1B3934A3005A9BE7 /* RenewVisaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenewVisaViewController.h; sourceTree = "<group>"; };
+		1300DA401B3934A3005A9BE7 /* RenewVisaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenewVisaViewController.m; sourceTree = "<group>"; };
+		1300DA411B3934A3005A9BE7 /* RenewVisaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RenewVisaViewController.xib; sourceTree = "<group>"; };
+		1300DA471B395847005A9BE7 /* Qualification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Qualification.h; sourceTree = "<group>"; };
+		1300DA481B395847005A9BE7 /* Qualification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Qualification.m; sourceTree = "<group>"; };
 		1302913A1A76C88D000E119C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		1302913B1A76C88D000E119C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		130523DD1A99C05500EF2268 /* ServicesUploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesUploadViewController.xib; sourceTree = "<group>"; };
@@ -387,6 +396,8 @@
 		1354F5541AF75C48004A6CBA /* DWCDocumentExpandedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCDocumentExpandedTableViewCell.m; sourceTree = "<group>"; };
 		1354F5571AF78365004A6CBA /* UIImageView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Additions.h"; sourceTree = "<group>"; };
 		1354F5581AF78365004A6CBA /* UIImageView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Additions.m"; sourceTree = "<group>"; };
+		13555E3C1B3FDA000077CB50 /* ObjectSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectSettings.h; sourceTree = "<group>"; };
+		13555E3D1B3FDA000077CB50 /* ObjectSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectSettings.m; sourceTree = "<group>"; };
 		1356A9501A70D78600CF217A /* Corisande-Bold-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Corisande-Bold-Italic.ttf"; sourceTree = "<group>"; };
 		13603C1D1B0DC17700E1E68C /* DWCSFRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCSFRequestManager.h; sourceTree = "<group>"; };
 		13603C1E1B0DC17700E1E68C /* DWCSFRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCSFRequestManager.m; sourceTree = "<group>"; };
@@ -654,6 +665,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1300DA3E1B393414005A9BE7 /* RenewVisaViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1300DA3F1B3934A3005A9BE7 /* RenewVisaViewController.h */,
+				1300DA401B3934A3005A9BE7 /* RenewVisaViewController.m */,
+				1300DA411B3934A3005A9BE7 /* RenewVisaViewController.xib */,
+			);
+			path = RenewVisaViewController;
+			sourceTree = "<group>";
+		};
 		130291391A76C88D000E119C /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +755,7 @@
 				139AD0371B08901C006FBD9B /* QuickAccessViewController */,
 				13EE67951A7E555600255174 /* RecordMainDetailsViewController */,
 				134053BF1AEE605E007A4773 /* RelatedServicesBarScrollView */,
+				1300DA3E1B393414005A9BE7 /* RenewVisaViewController */,
 				137D5ACA1AF8A20900E67C72 /* ReportsViewController */,
 				13EE67911A7E50A500255174 /* RKSwipeBetweenViewControllers */,
 				13063A861A8B6C0000A1DEA2 /* ServicesDynamicFormViewController */,
@@ -870,6 +892,8 @@
 				139658131AB9797B0091C451 /* Passport.m */,
 				13073B981AC4176500F25EC6 /* Product.h */,
 				13073B991AC4176500F25EC6 /* Product.m */,
+				1300DA471B395847005A9BE7 /* Qualification.h */,
+				1300DA481B395847005A9BE7 /* Qualification.m */,
 				1331D21D1AC7E2D600B4AAD5 /* Quote.h */,
 				1331D21E1AC7E2D600B4AAD5 /* Quote.m */,
 				13081AF11A76559D00B33509 /* RecordType.h */,
@@ -896,6 +920,8 @@
 				13081AF41A76559D00B33509 /* Visa.m */,
 				13081AF51A76559D00B33509 /* WebForm.h */,
 				13081AF61A76559D00B33509 /* WebForm.m */,
+				13555E3C1B3FDA000077CB50 /* ObjectSettings.h */,
+				13555E3D1B3FDA000077CB50 /* ObjectSettings.m */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -2091,6 +2117,7 @@
 				13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */,
 				138516531AFF4EF500ACF4B3 /* CompanyAmendmentViewController.xib in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,
+				1300DA431B3934A3005A9BE7 /* RenewVisaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2121,6 +2148,7 @@
 				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
 				13E006E41AEFBE4F005EE312 /* CompanyInfoListBaseTableViewCell.m in Sources */,
 				1334F49D1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m in Sources */,
+				1300DA421B3934A3005A9BE7 /* RenewVisaViewController.m in Sources */,
 				131CA86E1A80C93400A79B12 /* TableViewSection.m in Sources */,
 				137D5ACD1AF8A21C00E67C72 /* ReportsViewController.m in Sources */,
 				139AD03A1B089029006FBD9B /* QuickAccessViewController.m in Sources */,
@@ -2156,6 +2184,7 @@
 				13073B8E1AC3E63800F25EC6 /* ContractRenewalEditViewController.m in Sources */,
 				130523E61A99C56D00EF2268 /* UIViewController+ChildViewController.m in Sources */,
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
+				13555E3E1B3FDA000077CB50 /* ObjectSettings.m in Sources */,
 				133A93801B26CFAA00F7902E /* UIImageView+AnimationCompletion.m in Sources */,
 				13A062901B1306FD00108167 /* CustomIOS7AlertView.m in Sources */,
 				13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */,
@@ -2191,6 +2220,7 @@
 				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
 				1353CBD91AAD92B700E57FAC /* Directorship.m in Sources */,
 				130F7DD21AAEE76300380628 /* License.m in Sources */,
+				1300DA491B395847005A9BE7 /* Qualification.m in Sources */,
 				133E34CC1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m in Sources */,
 				13081AFB1A76559D00B33509 /* EServiceDocument.m in Sources */,
 				132CCFB01A779C6B007A40AE /* SidebarTableViewController.m in Sources */,
