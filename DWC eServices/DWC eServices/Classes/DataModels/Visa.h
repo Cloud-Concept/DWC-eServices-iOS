@@ -13,6 +13,7 @@
 @class Occupation;
 @class Passport;
 @class Qualification;
+@class RecordType;
 
 @interface Visa : NSObject
 
@@ -49,6 +50,7 @@
 @property (nonatomic, strong) NSString *serviceIdentifier;
 @property (nonatomic, strong) NSString *transferringCompanyExternal;
 @property (nonatomic, strong) NSString *transferringFreezone;
+@property (nonatomic, strong) NSString *residencyFileNumber;
 
 @property (nonatomic, assign) BOOL deliverEntryPermit;
 @property (nonatomic, assign) BOOL deliverPassportVisaStamped;
@@ -76,6 +78,8 @@
 @property (nonatomic, strong) Visa *renewalForVisa;
 @property (nonatomic, strong) Account *sponsoringEmployeeAcc;
 @property (nonatomic, strong) Account *transferringCompany;
+
+@property (nonatomic, strong) RecordType *recordType;
 
 - (id)initVisa:(NSDictionary *)visaDict;
 /*

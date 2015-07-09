@@ -698,7 +698,15 @@
 }
 
 - (void)relatedServiceCancelVisaButtonClicked {
+    if (!parentViewController)
+        return;
     
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
+    baseServicesVC.relatedServiceType = RelatedServiceTypeCancelVisa;
+    baseServicesVC.renewedVisaObject = self.visaObject;
+    baseServicesVC.createServiceRecord = NO;
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
 - (void)relatedServiceContractRenewalButtonClicked {

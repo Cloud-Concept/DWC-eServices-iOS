@@ -42,6 +42,7 @@
 
 @property (nonatomic, strong) License *currentLicenseNumber;
 @property (nonatomic, strong) Passport *currentPassport;
+@property (nonatomic, strong) Account *currentManager;
 
 - (id)initAccount:(NSDictionary *)accountDict;
 

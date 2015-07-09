@@ -14,6 +14,7 @@
 #import "Occupation.h"
 #import "Passport.h"
 #import "Qualification.h"
+#import "RecordType.h"
 
 @implementation Visa
 
@@ -44,6 +45,7 @@
     self.employeeID = [HelperClass stringCheckNull:[visaDict objectForKey:@"Employee_ID__c"]];
     self.accompaniedBy = [HelperClass stringCheckNull:[visaDict objectForKey:@"Accompanied_By__c"]];
     self.visitVisaDuration = [HelperClass stringCheckNull:[visaDict objectForKey:@"Visit_Visa_Duration__c"]];
+    self.residencyFileNumber = [HelperClass stringCheckNull:[visaDict objectForKey:@"Residency_File_Number__c"]];;
     
     self.applicantFirstName = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_First_Name__c"]];
     self.applicantMiddleName = [HelperClass stringCheckNull:[visaDict objectForKey:@"Applicant_Middle_Name__c"]];
@@ -91,6 +93,7 @@
     self.renewalForVisa = [[Visa alloc] initVisa:[visaDict objectForKey:@"Renewal_for_Visa__r"]];
     self.sponsoringEmployeeAcc = [[Account alloc] initAccount:[visaDict objectForKey:@"Sponsoring_Employee_Acc__r"]];
     self.transferringCompany = [[Account alloc] initAccount:[visaDict objectForKey:@"Transferring_Company__r"]];
+    self.recordType = [[RecordType alloc] initRecordType:[visaDict objectForKey:@"RecordType"]];
     
     return self;
 }

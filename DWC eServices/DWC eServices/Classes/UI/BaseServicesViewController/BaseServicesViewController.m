@@ -34,6 +34,7 @@
 #import "CardManagement.h"
 #import "CompanyAmendmentViewController.h"
 #import "RenewVisaViewController.h"
+#import "CancelVisaViewController.h"
 #import "NSString+SFAdditions.h"
 #import "Visa.h"
 #import "Passport.h"
@@ -230,6 +231,7 @@
         case RelatedServiceTypeCompanyAddressChange:
         case RelatedServiceTypeCompanyNameChange:
         case RelatedServiceTypeRenewVisa:
+        case RelatedServiceTypeCancelVisa:
             returnQuery = [SOQLQueries caseReviewQuery:insertedCaseId Fields:self.currentWebForm.formFields RelatedObject:relatedObjectName];
             break;
         case RelatedServiceTypeContractRenewal:
@@ -371,7 +373,8 @@
             [self showRenewVisaFlow];
             break;
         case RelatedServiceTypeCancelVisa:
-            
+            navBarTitle = NSLocalizedString(@"navBarCancelVisaTitle", @"");
+            [self showCancelVisaFlow];
             break;
         case RelatedServiceTypeViewMyRequest:
             navBarTitle = NSLocalizedString(@"navBarViewMyRequestTitle", @"");
@@ -411,6 +414,13 @@
     renewVisaVC.baseServicesViewController = self;
     [self addChildViewController:renewVisaVC toView:self.serviceFlowView];
     [viewControllersStack pushObject:renewVisaVC];
+}
+
+- (void) showCancelVisaFlow {
+    CancelVisaViewController *cancelVisaVC = [CancelVisaViewController new];
+    cancelVisaVC.baseServicesViewController = self;
+    [self addChildViewController:cancelVisaVC toView:self.serviceFlowView];
+    //[viewControllersStack pushObject:renewVisaVC];
 }
 
 - (void)showCompanyAmendmentServiceFlow {
@@ -479,6 +489,10 @@
 }
 
 - (void)showAttachmentsFlowPage {
+    
+    if (self.relatedServiceType == RelatedServiceTypeCancelVisa)
+        insertedServiceId = self.renewedVisaObject.Id;
+    
     currentServiceFlowType = ServiceFlowAttachmentsPage;
     
     ServicesUploadViewController *servicesUploadVC = [ServicesUploadViewController new];
@@ -840,7 +854,8 @@
         self.relatedServiceType == RelatedServiceTypeLicenseRenewal ||
         self.relatedServiceType == RelatedServiceTypeCompanyAddressChange ||
         self.relatedServiceType == RelatedServiceTypeCompanyNameChange ||
-        self.relatedServiceType == RelatedServiceTypeRenewVisa) {
+        self.relatedServiceType == RelatedServiceTypeRenewVisa ||
+        self.relatedServiceType == RelatedServiceTypeCancelVisa) {
         functionName = @"MobileSubmitAndPayRequestWebService";
     }
     

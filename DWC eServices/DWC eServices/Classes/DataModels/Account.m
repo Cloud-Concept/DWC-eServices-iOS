@@ -231,6 +231,8 @@
                                  [accountDict objectForKey:@"Current_License_Number__r"]];
     self.currentPassport = [[Passport alloc] initPassport:[accountDict objectForKey:@"Current_Passport__r"]];;
     
+    self.currentManager = [[Account alloc] initAccount:[accountDict objectForKey:@"Current_Manager__r"]];
+    
     return self;
 }
 

@@ -252,9 +252,10 @@
 "navBarReportsTitle" = "REPORTS";
 "navBarQuickAccessTitle" = "QUICK ACCESS";
 "navBarRenewVisaTitle" = "RENEW VISA";
+"navBarCancelVisaTitle" = "CANCEL VISA";
 
 
-"EmployeeDetails" = "Employee Details";
+"EmployeeDetailsTitle" = "Employee Details";
 "EmployeeDetailsEmployeeName" = "Name";
 "EmployeeDetailsEmployeeArabicName" = "Arabic Name";
 "EmployeeDetailsEmployeeGender" = "Gender";
@@ -269,7 +270,7 @@
 "EmployeeDetailsEmployeePreviousNationality" = "Previous Nationality";
 "EmployeeDetailsEmployeeReligion" = "Religion";
 "EmployeeDetailsEmployeeLanguagesSpoken" = "Languages Spoken";
-"PassportDetails" = "Passport Details";
+"PassportDetailsTitle" = "Passport Details";
 "PassportDetailsEmployeePassportNumber" = "Passport No";
 "PassportDetailsEmployeePassportPassportExpiryDate" = "Date of Expiry";
 "PassportDetailsEmployeePassportIssueCountry" = "Country of Issue";
@@ -280,7 +281,8 @@
 "VisaDetailsEmployeeOccupation" = "Occupation";
 "VisaDetailsEmployeeQualification" = "Qualification";
 "AdditionsTitle" = "Additions";
-
+"ServicesTitle" = "Services";
+"VisaUrgentCancellation" = "Urgent Cancellation 250 AED";
 
 "Urgent_Stamping__c" = "Urgent Stamping";
 "Deliver_Entry_Permit__c" = "Deliver Entry Permit";

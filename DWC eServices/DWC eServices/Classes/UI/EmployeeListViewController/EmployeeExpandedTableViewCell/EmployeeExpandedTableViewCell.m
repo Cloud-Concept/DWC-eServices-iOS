@@ -11,6 +11,8 @@
 #import "CardManagement.h"
 #import "RelatedService.h"
 #import "RelatedServicesBarScrollView.h"
+#import "Globals.h"
+#import "Account.h"
 
 @implementation EmployeeExpandedTableViewCell
 
@@ -72,6 +74,16 @@
          servicesMask |= RelatedServiceTypeRenewVisa;
          //servicesMask |= RelatedServiceTypeCancelVisa;
      }
+    
+    
+    BOOL isCurrentManager = [visa.visaHolder.Id isEqualToString:[Globals currentAccount].currentManager.Id];
+    if ([visa.validityStatus isEqualToString:@"Issued"] && [visa.visaType isEqualToString:@"Employment"] && !isCurrentManager) {
+        servicesMask |= RelatedServiceTypeCancelVisa;
+    }
+    
+    if (([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Under Process"] || [visa.validityStatus isEqualToString:@"Under Renewal"]) && ([visa.visaType isEqualToString:@"Employment"] || [visa.visaType isEqualToString:@"Transfer - External"] || [visa.visaType isEqualToString:@"Transfer - Internal"]) && !isCurrentManager) {
+        servicesMask |= RelatedServiceTypeCancelVisa;
+    }
     
 }
 

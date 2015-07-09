@@ -70,6 +70,8 @@
 		131F96CD1AA48D8400786B15 /* MyRequestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 131F96CC1AA48D8400786B15 /* MyRequestListViewController.m */; };
 		1324D89A1A89E9AB003AA356 /* PickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1324D8981A89E9AB003AA356 /* PickerTableViewController.m */; };
 		1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */; };
+		132744631B4ABAFA00AADCC3 /* CancelVisaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132744611B4ABAFA00AADCC3 /* CancelVisaViewController.m */; };
+		132744641B4ABAFA00AADCC3 /* CancelVisaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132744621B4ABAFA00AADCC3 /* CancelVisaViewController.xib */; };
 		1328E7D91A95C7DF00475E90 /* NewNOCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1328E7D81A95C7DF00475E90 /* NewNOCViewController.xib */; };
 		1328E7DB1A96042600475E90 /* ServicesDynamicFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1328E7DA1A96042600475E90 /* ServicesDynamicFormViewController.xib */; };
 		132CCFAC1A779C1A007A40AE /* EmployeeContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132CCFAB1A779C1A007A40AE /* EmployeeContainerViewController.m */; };
@@ -304,6 +306,9 @@
 		1324D8971A89E9AB003AA356 /* PickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerTableViewController.h; sourceTree = "<group>"; };
 		1324D8981A89E9AB003AA356 /* PickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerTableViewController.m; sourceTree = "<group>"; };
 		1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickerTableViewController.xib; sourceTree = "<group>"; };
+		132744601B4ABAFA00AADCC3 /* CancelVisaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelVisaViewController.h; sourceTree = "<group>"; };
+		132744611B4ABAFA00AADCC3 /* CancelVisaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelVisaViewController.m; sourceTree = "<group>"; };
+		132744621B4ABAFA00AADCC3 /* CancelVisaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelVisaViewController.xib; sourceTree = "<group>"; };
 		1328E7D81A95C7DF00475E90 /* NewNOCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewNOCViewController.xib; sourceTree = "<group>"; };
 		1328E7DA1A96042600475E90 /* ServicesDynamicFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesDynamicFormViewController.xib; sourceTree = "<group>"; };
 		132CCFAA1A779C1A007A40AE /* EmployeeContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeContainerViewController.h; sourceTree = "<group>"; };
@@ -729,6 +734,7 @@
 				132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */,
 				1318193D1A91CA9C00CAA4D6 /* BaseServicesViewController */,
 				134B8A1C1AD6B428005CCAD5 /* BBBadgeBarButtonItem */,
+				1327445F1B4ABAAD00AADCC3 /* CancelVisaViewController */,
 				1385164E1AFF4EE500ACF4B3 /* CompanyAmendmentViewController */,
 				133E34C91ABFFA37002C3748 /* CompanyDocumentTypeListViewController */,
 				13CFE7321ABEEEF6009E47EC /* CompanyDocumentTypeViewController */,
@@ -1048,6 +1054,16 @@
 				1324D8991A89E9AB003AA356 /* PickerTableViewController.xib */,
 			);
 			path = PickerTableViewController;
+			sourceTree = "<group>";
+		};
+		1327445F1B4ABAAD00AADCC3 /* CancelVisaViewController */ = {
+			isa = PBXGroup;
+			children = (
+				132744601B4ABAFA00AADCC3 /* CancelVisaViewController.h */,
+				132744611B4ABAFA00AADCC3 /* CancelVisaViewController.m */,
+				132744621B4ABAFA00AADCC3 /* CancelVisaViewController.xib */,
+			);
+			path = CancelVisaViewController;
 			sourceTree = "<group>";
 		};
 		132B92CA1A7F676300C237B0 /* RecordRelatedViewController */ = {
@@ -2092,6 +2108,7 @@
 				1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */,
 				131048C31A9EFDB0006A400B /* NewCardViewController.xib in Resources */,
 				1307BAE51A6F938B004E6325 /* Corisande-Light.ttf in Resources */,
+				132744641B4ABAFA00AADCC3 /* CancelVisaViewController.xib in Resources */,
 				13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */,
 				131819471A91D6C100CAA4D6 /* Localizable.strings in Resources */,
 				824A9E3D1724E9F400C9BD79 /* readme.txt in Resources */,
@@ -2249,6 +2266,7 @@
 				13315ACC1AAC5ADB009E1819 /* ShareOwnership.m in Sources */,
 				13063A891A8B6C1300A1DEA2 /* ServicesDynamicFormViewController.m in Sources */,
 				139E6B6D1A7A6F2600D1D451 /* UIImageView+SFAttachment.m in Sources */,
+				132744631B4ABAFA00AADCC3 /* CancelVisaViewController.m in Sources */,
 				133E34D11ABFFFB7002C3748 /* CustomerDocumentTableViewCell.m in Sources */,
 				13063A8D1A8B74AC00A1DEA2 /* UIView+DynamicForm.m in Sources */,
 				1334F4A21ADE790000297ACE /* UITableView+DragLoad.m in Sources */,
