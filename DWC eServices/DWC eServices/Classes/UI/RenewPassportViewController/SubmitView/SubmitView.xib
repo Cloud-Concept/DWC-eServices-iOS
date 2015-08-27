@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SubmitView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ege-mQ-5Ss">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="557"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Notification Registration Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Cee-3c-Obl">
+                            <rect key="frame" x="125" y="8" width="124" height="124"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="124" id="GeP-ay-1UH"/>
+                                <constraint firstAttribute="width" constant="124" id="Y8J-dS-o4V"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZh-CK-oQr">
+                            <rect key="frame" x="10" y="493" width="150" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="150" id="jjj-dd-jgL"/>
+                            </constraints>
+                            <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelBTN:" destination="iN0-l3-epB" eventType="touchUpInside" id="RLa-6e-H8m"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUr-Hg-X88">
+                            <rect key="frame" x="165" y="493" width="150" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="150" id="mvJ-e5-gov"/>
+                            </constraints>
+                            <state key="normal" title="Submit" backgroundImage="Blue Button Background">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="nextBTNClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="fz9-Z1-oEG"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passport Holder" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgG-hw-mP3">
+                            <rect key="frame" x="50" y="166" width="120" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="Nwe-zN-IbM"/>
+                                <constraint firstAttribute="width" constant="120" id="dOK-yR-VFq"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="old passport No" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4Y-1g-Fxi">
+                            <rect key="frame" x="50" y="205" width="120" height="21"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Passport no" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGW-Q2-ZCE">
+                            <rect key="frame" x="50" y="245" width="120" height="21"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issue Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWd-Re-dxa">
+                            <rect key="frame" x="50" y="283" width="120" height="21"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expiry Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TD2-uv-Hm9">
+                            <rect key="frame" x="50" y="318" width="120" height="21"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place of issue" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPj-wG-27Y">
+                            <rect key="frame" x="50" y="356" width="120" height="21"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvN-yx-hfX">
+                            <rect key="frame" x="182" y="166" width="32" height="21"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iN-YH-wSV">
+                            <rect key="frame" x="182" y="205" width="32" height="21"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inh-ge-M7I">
+                            <rect key="frame" x="182" y="245" width="32" height="21"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gx-kw-LOh">
+                            <rect key="frame" x="182" y="283" width="32" height="21"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8B-ZJ-fJJ">
+                            <rect key="frame" x="182" y="321" width="32" height="16"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kw7-Kl-3iO">
+                            <rect key="frame" x="182" y="360" width="32" height="16"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMv-VW-67W">
+                            <rect key="frame" x="182" y="396" width="32" height="18"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country of issue" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwe-s3-SnY">
+                            <rect key="frame" x="50" y="394" width="120" height="21"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="hwe-s3-SnY" firstAttribute="height" secondItem="tPj-wG-27Y" secondAttribute="height" id="1D5-95-Hqi"/>
+                        <constraint firstItem="PgG-hw-mP3" firstAttribute="top" secondItem="Cee-3c-Obl" secondAttribute="bottom" constant="34" id="1uY-NW-YK0"/>
+                        <constraint firstItem="PgG-hw-mP3" firstAttribute="leading" secondItem="ege-mQ-5Ss" secondAttribute="leading" constant="50" id="1yC-Zc-Nxq"/>
+                        <constraint firstItem="PgG-hw-mP3" firstAttribute="height" secondItem="X4Y-1g-Fxi" secondAttribute="height" id="2On-zs-nq9"/>
+                        <constraint firstItem="nZh-CK-oQr" firstAttribute="centerY" secondItem="eUr-Hg-X88" secondAttribute="centerY" id="2lC-Dk-jzL"/>
+                        <constraint firstAttribute="bottom" secondItem="eUr-Hg-X88" secondAttribute="bottom" constant="25" id="2qN-1a-tER"/>
+                        <constraint firstItem="Kw7-Kl-3iO" firstAttribute="centerY" secondItem="tPj-wG-27Y" secondAttribute="centerY" constant="1" id="3S6-fQ-08X"/>
+                        <constraint firstItem="tPj-wG-27Y" firstAttribute="top" secondItem="TD2-uv-Hm9" secondAttribute="bottom" constant="17" id="6RW-QS-zmS"/>
+                        <constraint firstAttribute="trailing" secondItem="eUr-Hg-X88" secondAttribute="trailing" constant="5" id="6sC-kU-Ufr"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eUr-Hg-X88" secondAttribute="trailing" constant="5" id="78z-Tr-MYX"/>
+                        <constraint firstItem="PgG-hw-mP3" firstAttribute="width" secondItem="X4Y-1g-Fxi" secondAttribute="width" id="8RX-6A-a3f"/>
+                        <constraint firstItem="JMv-VW-67W" firstAttribute="leading" secondItem="hwe-s3-SnY" secondAttribute="trailing" constant="12" id="8Yv-z6-mND"/>
+                        <constraint firstItem="TD2-uv-Hm9" firstAttribute="top" secondItem="SWd-Re-dxa" secondAttribute="bottom" constant="14" id="9OX-2f-4DI"/>
+                        <constraint firstItem="Inh-ge-M7I" firstAttribute="leading" secondItem="nGW-Q2-ZCE" secondAttribute="trailing" constant="12" id="A9m-Mu-gYx"/>
+                        <constraint firstAttribute="bottom" secondItem="nZh-CK-oQr" secondAttribute="bottom" constant="25" id="Bkh-sz-WeE"/>
+                        <constraint firstItem="X4Y-1g-Fxi" firstAttribute="centerX" secondItem="nGW-Q2-ZCE" secondAttribute="centerX" id="DWg-e1-P5v"/>
+                        <constraint firstItem="9iN-YH-wSV" firstAttribute="leading" secondItem="X4Y-1g-Fxi" secondAttribute="trailing" constant="12" id="GRC-GR-saS"/>
+                        <constraint firstItem="TD2-uv-Hm9" firstAttribute="width" secondItem="SWd-Re-dxa" secondAttribute="width" id="JEP-Rn-qDV"/>
+                        <constraint firstItem="SWd-Re-dxa" firstAttribute="top" secondItem="nGW-Q2-ZCE" secondAttribute="bottom" constant="17" id="K0P-FD-Sn5"/>
+                        <constraint firstItem="6gx-kw-LOh" firstAttribute="top" secondItem="Inh-ge-M7I" secondAttribute="bottom" constant="17" id="OCW-Ur-mPi"/>
+                        <constraint firstItem="X8B-ZJ-fJJ" firstAttribute="leading" secondItem="TD2-uv-Hm9" secondAttribute="trailing" constant="12" id="QGm-Yo-XFg"/>
+                        <constraint firstItem="nGW-Q2-ZCE" firstAttribute="top" secondItem="X4Y-1g-Fxi" secondAttribute="bottom" constant="19" id="Qla-dh-XXJ"/>
+                        <constraint firstItem="nZh-CK-oQr" firstAttribute="top" secondItem="hwe-s3-SnY" secondAttribute="bottom" constant="78" id="RZa-xJ-Pc9"/>
+                        <constraint firstAttribute="centerX" secondItem="Cee-3c-Obl" secondAttribute="centerX" constant="-27" id="SEH-Go-UHY"/>
+                        <constraint firstItem="X4Y-1g-Fxi" firstAttribute="top" secondItem="PgG-hw-mP3" secondAttribute="bottom" constant="18" id="Tsq-G3-fEy"/>
+                        <constraint firstItem="TD2-uv-Hm9" firstAttribute="centerY" secondItem="X8B-ZJ-fJJ" secondAttribute="centerY" id="X1P-KN-qcK"/>
+                        <constraint firstItem="Inh-ge-M7I" firstAttribute="top" secondItem="9iN-YH-wSV" secondAttribute="bottom" constant="19" id="XbO-yL-qGd"/>
+                        <constraint firstItem="Kw7-Kl-3iO" firstAttribute="leading" secondItem="tPj-wG-27Y" secondAttribute="trailing" constant="12" id="YJE-ar-JLA"/>
+                        <constraint firstItem="X4Y-1g-Fxi" firstAttribute="leading" secondItem="ege-mQ-5Ss" secondAttribute="leading" constant="50" id="Zak-df-AMF"/>
+                        <constraint firstItem="SWd-Re-dxa" firstAttribute="centerY" secondItem="6gx-kw-LOh" secondAttribute="centerY" id="aEz-KS-zG6"/>
+                        <constraint firstItem="nZh-CK-oQr" firstAttribute="width" secondItem="eUr-Hg-X88" secondAttribute="width" id="aHO-h6-MQh"/>
+                        <constraint firstItem="X4Y-1g-Fxi" firstAttribute="width" secondItem="nGW-Q2-ZCE" secondAttribute="width" id="aJF-AH-m9i"/>
+                        <constraint firstItem="Inh-ge-M7I" firstAttribute="centerY" secondItem="nGW-Q2-ZCE" secondAttribute="centerY" id="cQE-V1-VBc"/>
+                        <constraint firstItem="Cee-3c-Obl" firstAttribute="top" secondItem="ege-mQ-5Ss" secondAttribute="top" constant="8" id="caf-gW-4GS"/>
+                        <constraint firstItem="nZh-CK-oQr" firstAttribute="leading" secondItem="ege-mQ-5Ss" secondAttribute="leading" constant="10" id="cgF-EL-qa4"/>
+                        <constraint firstItem="X4Y-1g-Fxi" firstAttribute="top" secondItem="PgG-hw-mP3" secondAttribute="bottom" constant="18" id="crj-aw-PZf"/>
+                        <constraint firstItem="TD2-uv-Hm9" firstAttribute="height" secondItem="tPj-wG-27Y" secondAttribute="height" id="dVq-CE-ZgB"/>
+                        <constraint firstItem="hwe-s3-SnY" firstAttribute="centerX" secondItem="tPj-wG-27Y" secondAttribute="centerX" id="euA-4T-4zL"/>
+                        <constraint firstItem="TD2-uv-Hm9" firstAttribute="height" secondItem="SWd-Re-dxa" secondAttribute="height" id="fjg-nF-bVv"/>
+                        <constraint firstItem="hwe-s3-SnY" firstAttribute="width" secondItem="tPj-wG-27Y" secondAttribute="width" id="fq2-fQ-xis"/>
+                        <constraint firstItem="yvN-yx-hfX" firstAttribute="top" secondItem="Cee-3c-Obl" secondAttribute="bottom" constant="34" id="g2I-vQ-K2x"/>
+                        <constraint firstItem="SWd-Re-dxa" firstAttribute="centerX" secondItem="nGW-Q2-ZCE" secondAttribute="centerX" id="hYt-nQ-XO5"/>
+                        <constraint firstItem="yvN-yx-hfX" firstAttribute="centerY" secondItem="PgG-hw-mP3" secondAttribute="centerY" id="jom-hx-cBB"/>
+                        <constraint firstItem="hwe-s3-SnY" firstAttribute="top" secondItem="tPj-wG-27Y" secondAttribute="bottom" constant="17" id="kF2-SN-N5N"/>
+                        <constraint firstItem="eUr-Hg-X88" firstAttribute="top" secondItem="JMv-VW-67W" secondAttribute="bottom" constant="79" id="kuM-OQ-cw2"/>
+                        <constraint firstItem="9iN-YH-wSV" firstAttribute="top" secondItem="yvN-yx-hfX" secondAttribute="bottom" constant="18" id="lSZ-10-yJw"/>
+                        <constraint firstItem="TD2-uv-Hm9" firstAttribute="centerX" secondItem="tPj-wG-27Y" secondAttribute="centerX" id="nlw-TT-TXr"/>
+                        <constraint firstItem="yvN-yx-hfX" firstAttribute="leading" secondItem="PgG-hw-mP3" secondAttribute="trailing" constant="12" id="oI1-0x-pkt"/>
+                        <constraint firstItem="X4Y-1g-Fxi" firstAttribute="height" secondItem="nGW-Q2-ZCE" secondAttribute="height" id="qbV-MW-v9C"/>
+                        <constraint firstItem="hwe-s3-SnY" firstAttribute="centerY" secondItem="JMv-VW-67W" secondAttribute="centerY" id="qqm-pb-lsW"/>
+                        <constraint firstItem="TD2-uv-Hm9" firstAttribute="centerX" secondItem="SWd-Re-dxa" secondAttribute="centerX" id="r8c-Gf-LQA"/>
+                        <constraint firstItem="9iN-YH-wSV" firstAttribute="centerY" secondItem="X4Y-1g-Fxi" secondAttribute="centerY" id="rxh-A7-uKa"/>
+                        <constraint firstItem="SWd-Re-dxa" firstAttribute="width" secondItem="nGW-Q2-ZCE" secondAttribute="width" id="t4r-2X-Qhz"/>
+                        <constraint firstItem="SWd-Re-dxa" firstAttribute="height" secondItem="nGW-Q2-ZCE" secondAttribute="height" id="tlh-Ws-Zzo"/>
+                        <constraint firstItem="6gx-kw-LOh" firstAttribute="leading" secondItem="SWd-Re-dxa" secondAttribute="trailing" constant="12" id="vQY-fp-WyO"/>
+                        <constraint firstItem="TD2-uv-Hm9" firstAttribute="width" secondItem="tPj-wG-27Y" secondAttribute="width" id="vkv-DL-GXS"/>
+                        <constraint firstItem="nZh-CK-oQr" firstAttribute="height" secondItem="eUr-Hg-X88" secondAttribute="height" id="zgv-oi-Z1Q"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ege-mQ-5Ss" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2LP-GG-4Cq"/>
+                <constraint firstAttribute="trailing" secondItem="ege-mQ-5Ss" secondAttribute="trailing" constant="55" id="POC-26-Pdi"/>
+                <constraint firstAttribute="bottom" secondItem="ege-mQ-5Ss" secondAttribute="bottom" constant="110" id="U3i-JT-Eer"/>
+                <constraint firstItem="ege-mQ-5Ss" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WFs-LA-HbM"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <connections>
+                <outlet property="CountryOfIssue" destination="JMv-VW-67W" id="Cwj-yW-wLA"/>
+                <outlet property="ExpiryDate" destination="X8B-ZJ-fJJ" id="lTJ-NA-18S"/>
+                <outlet property="holderView" destination="ege-mQ-5Ss" id="1Pd-9m-s7V"/>
+                <outlet property="issueDate" destination="6gx-kw-LOh" id="F5i-0p-mQu"/>
+                <outlet property="oldPassportNO" destination="9iN-YH-wSV" id="zNb-8d-C4c"/>
+                <outlet property="passportHolder" destination="yvN-yx-hfX" id="40M-Sf-edO"/>
+                <outlet property="placeOfIssue" destination="Kw7-Kl-3iO" id="gjB-lQ-vEd"/>
+                <outlet property="requestedPassportNo" destination="Inh-ge-M7I" id="Dvg-wz-jz1"/>
+            </connections>
+            <point key="canvasLocation" x="163.5" y="142.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Black Button Background" width="5" height="5"/>
+        <image name="Blue Button Background" width="7" height="38"/>
+        <image name="Notification Registration Icon" width="53" height="53"/>
+    </resources>
+</document>

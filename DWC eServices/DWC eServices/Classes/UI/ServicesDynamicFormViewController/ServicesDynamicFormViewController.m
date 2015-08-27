@@ -123,7 +123,8 @@
     else {
         serviceFlowPage = ServiceFlowReviewPage;
     }
-    
+        // George updated next button to reflect the above instead of "ServiceFlowFieldsPage"
+    // (!self.baseServicesViewController.currentWebformId)?serviceFlowPage:
     [self.baseServicesViewController nextButtonClicked:ServiceFlowFieldsPage];
 }
 

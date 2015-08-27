@@ -118,6 +118,11 @@
                     totalAmount = [NSNumber numberWithFloat:([totalAmount floatValue] + [invoice.amount floatValue])];
                 }
             }
+            if(self.baseServicesViewController.relatedServiceType == RelatedServiceTypeCancelVisa){
+                for (FormField *field in self.baseServicesViewController.currentWebForm.formFields)
+                    if([field.name isEqualToString:@"Urgent_Cancellation__c"] && [[field getFormFieldValue] isEqualToString:@"1"])
+                        totalAmount = [NSNumber numberWithFloat:([totalAmount floatValue] +250.0)];
+            }
             
             self.baseServicesViewController.createdCaseTotalPrice = totalAmount;
             
@@ -147,7 +152,9 @@
                 NSString *relationName = field.name;
                 if ([field.type isEqualToString:@"REFERENCE"])
                     relationName = [field.name stringByReplacingOccurrencesOfString:@"__c" withString:@"__r.Name"];
-                
+                if([field.name isEqualToString:@"Urgent_Cancellation__c"])
+                    continue;
+                    
                 [field setFormFieldValue:[HelperClass getRelationshipValue:serviceDict Key:relationName]];
                 field.isCalculated = true;
                 

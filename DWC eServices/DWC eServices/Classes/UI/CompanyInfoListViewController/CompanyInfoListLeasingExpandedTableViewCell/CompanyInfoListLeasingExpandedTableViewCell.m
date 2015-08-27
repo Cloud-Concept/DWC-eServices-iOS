@@ -45,6 +45,7 @@
         servicesMask |= RelatedServiceTypeContractRenewal;
     
     servicesMask |= RelatedServiceTypeOpenDetials;
+    servicesMask |= RelatedServiceTypeContractCancelation;
     
     [self renderServicesButtons];
 }

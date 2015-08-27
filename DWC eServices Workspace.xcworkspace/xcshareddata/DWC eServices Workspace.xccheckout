@@ -10,29 +10,27 @@
 	<string>DWC eServices Workspace</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>219B0ED0EB5D4CBACE00A89DD74B3B2D0E4FDD59</key>
+		<key>9da11e8d-cd54-d681-2759-ce57b7db7bff</key>
 		<string>https://github.com/Cloud-Concept/DWC-eServices-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>DWC eServices Workspace.xcworkspace</string>
+	<string>trunk/DWC eServices Workspace.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>219B0ED0EB5D4CBACE00A89DD74B3B2D0E4FDD59</key>
-		<string>..</string>
+		<key>9da11e8d-cd54-d681-2759-ce57b7db7bff</key>
+		<string>../..</string>
 	</dict>
-	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/Cloud-Concept/DWC-eServices-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>219B0ED0EB5D4CBACE00A89DD74B3B2D0E4FDD59</string>
+	<string>9da11e8d-cd54-d681-2759-ce57b7db7bff</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
+			<string>public.vcs.subversion</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>219B0ED0EB5D4CBACE00A89DD74B3B2D0E4FDD59</string>
+			<string>9da11e8d-cd54-d681-2759-ce57b7db7bff</string>
 			<key>IDESourceControlWCCName</key>
 			<string>DWC-eServices-iOS</string>
 		</dict>

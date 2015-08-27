@@ -255,22 +255,27 @@ static NSString * const OAuthRedirectURI        = @"dwcmobile://auth/success";
 {
     if ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone Simulator"])
         return;
-    
-    NetworkReachability* curReach = [notification object];
-    NSParameterAssert([curReach isKindOfClass:[NetworkReachability class]]);
-    
-    if([curReach currentReachabilityStatus] == NotReachable) {
-        self.isReachable = NO;
-        if(![self.customAlertView isVisible]) {
-            [self.customAlertView show];
+    @try {
+        NetworkReachability* curReach = [notification object];
+//        NSParameterAssert([curReach isKindOfClass:[NetworkReachability class]]);
+        
+        if([curReach currentReachabilityStatus] == NotReachable) {
+            self.isReachable = NO;
+            if(![self.customAlertView isVisible]) {
+                [self.customAlertView show];
+            }
+        }
+        else {
+            self.isReachable = YES;
+            if([self.customAlertView isVisible]) {
+                [self.customAlertView close];
+            }
         }
     }
-    else {
-        self.isReachable = YES;
-        if([self.customAlertView isVisible]) {
-            [self.customAlertView close];
-        }
+    @catch (NSException *exception) {
+        NSLog(@"%@",exception);
     }
+    
 }
 
 @end

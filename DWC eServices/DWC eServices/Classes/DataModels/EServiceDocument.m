@@ -58,7 +58,6 @@
     
     return documentButton;
 }
-
 - (void)deleteDocumentAndButton {
     [self deleteDocument];
     documentButton = nil;

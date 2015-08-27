@@ -74,7 +74,9 @@
          servicesMask |= RelatedServiceTypeRenewVisa;
          //servicesMask |= RelatedServiceTypeCancelVisa;
      }
-    
+    // added by George
+    if ([visa.validityStatus isEqualToString:@"Issued"])
+        servicesMask |= RelatedServiceTypeRenewPassport;
     
     BOOL isCurrentManager = [visa.visaHolder.Id isEqualToString:[Globals currentAccount].currentManager.Id];
     if ([visa.validityStatus isEqualToString:@"Issued"] && [visa.visaType isEqualToString:@"Employment"] && !isCurrentManager) {

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Corisande-Bold.ttf">
+            <string>CorisandeBold</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ThanksView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="380"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoL-ad-tu4">
+                    <rect key="frame" x="8" y="106" width="320" height="168"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <string key="text">We can confirm that we have received your submission and your Ref No# 0001453
+
+
+You will receive e-copy of your request NOC shortly on ----@cloudconceptgroup.com
+</string>
+                    <color key="textColor" red="0.16862745100000001" green="0.1450980392" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrg-re-OEQ">
+                    <rect key="frame" x="16" y="314" width="287" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="N8J-in-wv5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="14"/>
+                    <state key="normal" title="Close" backgroundImage="Blue Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="CloseBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="RFK-OQ-G9A"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank You" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J84-yI-HS8">
+                    <rect key="frame" x="120" y="30" width="80" height="61"/>
+                    <fontDescription key="fontDescription" name="CorisandeBold" family="CorisandeBold" pointSize="17"/>
+                    <color key="textColor" red="0.16862745100000001" green="0.1450980392" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Mrg-re-OEQ" firstAttribute="top" secondItem="UoL-ad-tu4" secondAttribute="bottom" constant="2" id="2rx-3P-I0g"/>
+                <constraint firstItem="Mrg-re-OEQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="2tw-UL-JE6"/>
+                <constraint firstAttribute="centerX" secondItem="Mrg-re-OEQ" secondAttribute="centerX" id="GYb-vd-Hve"/>
+                <constraint firstAttribute="centerX" secondItem="UoL-ad-tu4" secondAttribute="centerX" constant="-8" id="Gzv-1h-EUN"/>
+                <constraint firstAttribute="centerX" secondItem="J84-yI-HS8" secondAttribute="centerX" id="K3i-Gw-jhi"/>
+                <constraint firstItem="Mrg-re-OEQ" firstAttribute="top" secondItem="UoL-ad-tu4" secondAttribute="bottom" constant="40" id="LLk-ri-BqM"/>
+                <constraint firstAttribute="trailing" secondItem="Mrg-re-OEQ" secondAttribute="trailing" constant="17" id="Mpu-jK-UPb"/>
+                <constraint firstAttribute="trailing" secondItem="Mrg-re-OEQ" secondAttribute="trailing" constant="8" id="N23-7t-4SJ"/>
+                <constraint firstItem="UoL-ad-tu4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Uip-ny-0WM"/>
+                <constraint firstItem="J84-yI-HS8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="V4s-KP-Zfd"/>
+                <constraint firstItem="Mrg-re-OEQ" firstAttribute="top" secondItem="UoL-ad-tu4" secondAttribute="bottom" constant="20" id="WSO-47-J2k"/>
+                <constraint firstItem="J84-yI-HS8" firstAttribute="centerX" secondItem="Mrg-re-OEQ" secondAttribute="centerX" constant="-0.5" id="dqV-vJ-Tlo"/>
+                <constraint firstAttribute="centerY" secondItem="UoL-ad-tu4" secondAttribute="centerY" id="eNe-Qc-bb5"/>
+                <constraint firstItem="J84-yI-HS8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-1" id="fCF-hW-sgh"/>
+                <constraint firstAttribute="bottom" secondItem="Mrg-re-OEQ" secondAttribute="bottom" constant="19" id="mw2-sT-ItC"/>
+                <constraint firstItem="UoL-ad-tu4" firstAttribute="top" secondItem="J84-yI-HS8" secondAttribute="bottom" constant="15" id="qoI-hh-d4t"/>
+                <constraint firstItem="Mrg-re-OEQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="uA8-wl-jaN"/>
+                <constraint firstAttribute="trailing" secondItem="UoL-ad-tu4" secondAttribute="trailing" constant="-8" id="wQ5-rQ-qmp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="dqV-vJ-Tlo"/>
+                    <exclude reference="fCF-hW-sgh"/>
+                    <exclude reference="2rx-3P-I0g"/>
+                    <exclude reference="N23-7t-4SJ"/>
+                    <exclude reference="WSO-47-J2k"/>
+                    <exclude reference="uA8-wl-jaN"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="message" destination="UoL-ad-tu4" id="UrD-Vp-uxf"/>
+            </connections>
+            <point key="canvasLocation" x="201.5" y="92"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Blue Button Background" width="7" height="38"/>
+    </resources>
+</document>

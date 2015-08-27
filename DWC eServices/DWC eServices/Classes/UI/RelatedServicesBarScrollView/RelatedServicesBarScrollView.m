@@ -40,7 +40,10 @@
 #import "UIImageView+Additions.h"
 #import "UIButton+Additions.h"
 #import "EServiceAdministration.h"
+#import "RenewPassportSteperViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "LicenseCancelationViewController.h"
+#import "CancelLeasingViewController.h"
 
 @implementation RelatedServicesBarScrollView
 
@@ -94,6 +97,11 @@
                                                                                 Label:@"Renew Visa"
                                                                                  Icon:@"Related Service Renew Visa Icon"
                                                                                  Mask:RelatedServiceTypeRenewVisa]];
+    // Added by George
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Renew_passport"
+                                                                                Label:@"Renew Passport"
+                                                                                 Icon:@"Related Service Employee NOC Icon"
+                                                                                 Mask:RelatedServiceTypeRenewPassport]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Cancel_Visa"
                                                                                 Label:@"Cancel Visa"
@@ -145,6 +153,18 @@
                                                                                 Label:@"Name Change"
                                                                                  Icon:@"Related Service Company Director Change Icon"
                                                                                  Mask:RelatedServiceTypeCompanyNameChange]];
+    
+    // added by George
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Cancel_License"
+                                                                                Label:@"Cancel License"
+                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Mask:RelatedServiceTypeLicenseCancelation]];
+    // added by george cancel Contract
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Cancel_Contract"
+                                                                                Label:@"Cancel Contract"
+                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Mask:RelatedServiceTypeContractCancelation]];
     
     relatedServicesArray = relatedServicesMutableArray;
 }
@@ -319,6 +339,18 @@
         case RelatedServiceTypeCompanyNameChange:
             [self relatedServiceTypeCompanyNameChangeButtonClicked];
             break;
+            // added by George
+        case RelatedServiceTypeRenewPassport:
+            [self relatedServiceTypeRenewPassportButtonClicked];
+            break;
+        // added By george
+        case RelatedServiceTypeLicenseCancelation:
+            [self relatedServiceTypeLicenseCancelationButtonClicked];
+            break;
+            // added by george cancel contract
+        case RelatedServiceTypeContractCancelation:
+            [self relatedServiceTypeContractCancelationButtonClicked];
+            break;
         default:
             break;
     }
@@ -335,6 +367,8 @@
     baseServicesVC.createServiceRecord = YES;
     [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
 }
+
+
 
 - (void)openCardManagementFlow:(RelatedServiceType)serviceType CreateServiceRecord:(BOOL)CreateServiceRecord {
     if (!parentViewController)
@@ -382,7 +416,17 @@
     baseServicesVC.createServiceRecord = YES;
     [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
 }
-
+// added by George
+-(void)openRenewPassport:(RelatedServiceType)serviceType{
+#pragma warning to be Completed george
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    RenewPassportSteperViewController *renewPassportSteper =[storybord instantiateViewControllerWithIdentifier:@"RenewPassportSteperViewController"];
+    renewPassportSteper.renewedPassportObject = self.visaObject;
+    renewPassportSteper.relatedServiceType = RelatedServiceTypeRenewPassport;
+    [parentViewController.navigationController pushViewController:renewPassportSteper animated:YES];
+    
+}
 - (void)openRenewVisaFlow {
     if (!parentViewController)
         return;
@@ -716,7 +760,32 @@
 - (void)relatedServiceLicenseRenewalButtonClicked {
     [self openLicenseRenewalFlow];
 }
-
+// added By george
+- (void)relatedServiceTypeLicenseCancelationButtonClicked {
+    [self openLicenseCancelFlow];
+}
+-(void) openContractCancelFlow{
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    CancelLeasingViewController *cancelLeasing= [storybord instantiateViewControllerWithIdentifier:@"CancelLeasingViewController"];
+    cancelLeasing.relatedServiceType = RelatedServiceTypeContractCancelation;
+    cancelLeasing.currentContract = self.contractObject;
+    [parentViewController.navigationController pushViewController:cancelLeasing animated:YES];
+}
+// added By george cancel contract
+- (void)relatedServiceTypeContractCancelationButtonClicked {
+    [self openContractCancelFlow];
+}
+- (void)openLicenseCancelFlow {
+    if (!parentViewController)
+        return;
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+     LicenseCancelationViewController *licenseCancelation= [storybord instantiateViewControllerWithIdentifier:@"LicenseCancelationViewController"];
+    licenseCancelation.relatedServiceType = RelatedServiceTypeLicenseCancelation;
+    licenseCancelation.currentLicense = self.licenseObject;
+//    licenseCancelation.createServiceRecord = NO;
+    [parentViewController.navigationController pushViewController:licenseCancelation animated:YES];
+}
 - (void)relatedServiceOpenDetialsButtonClicked {
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     RecordMainDetailsViewController *recordMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
@@ -804,7 +873,10 @@
 - (void)relatedServiceTypeCompanyNameChangeButtonClicked {
     [self openNewCompanyAmendmentService:RelatedServiceTypeCompanyNameChange];
 }
-
+//added by George
+- (void)relatedServiceTypeRenewPassportButtonClicked {
+    [self openRenewPassport:RelatedServiceTypeRenewPassport];
+}
 
 - (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForPermanentEmployee:(Visa*)visa {
     recordVC.visaObject = visa;

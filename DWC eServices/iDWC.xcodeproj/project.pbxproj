@@ -196,6 +196,32 @@
 		82BBB5A71793944400374DD8 /* libSalesforceOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BBB5A61793944400374DD8 /* libSalesforceOAuth.a */; };
 		82BBB5C01793946800374DD8 /* libSalesforceSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BBB5BF1793946800374DD8 /* libSalesforceSDKCore.a */; };
 		82F6F66A18E4D0280033CACD /* libSalesforceSecurity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F6F66918E4D0280033CACD /* libSalesforceSecurity.a */; };
+		FA54CEC81B85B18C00C9DE7B /* ThanksView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA54CEC71B85B18C00C9DE7B /* ThanksView.m */; };
+		FA54CECA1B85B1A100C9DE7B /* ThanksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA54CEC91B85B1A100C9DE7B /* ThanksView.xib */; };
+		FA54CECD1B85B1D800C9DE7B /* SubmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA54CECC1B85B1D800C9DE7B /* SubmitView.m */; };
+		FA54CECF1B85B1E800C9DE7B /* SubmitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA54CECE1B85B1E800C9DE7B /* SubmitView.xib */; };
+		FA59FE561B8EF23B003BE49C /* ThanksCancelLeasingView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE551B8EF23B003BE49C /* ThanksCancelLeasingView.m */; };
+		FA6DC0FD1B8C81C10044C099 /* CancelLeasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6DC0FC1B8C81C10044C099 /* CancelLeasingViewController.m */; };
+		FA9016B41B89D93C00837555 /* LicenseCancelationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9016B31B89D93C00837555 /* LicenseCancelationViewController.m */; };
+		FAB84A5B1B831AFD001CB3AE /* RenewPassportSteperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A5A1B831AFD001CB3AE /* RenewPassportSteperViewController.m */; };
+		FAB84A5E1B831E32001CB3AE /* PassportRequestDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A5D1B831E32001CB3AE /* PassportRequestDetailsView.m */; };
+		FAB84A851B833C21001CB3AE /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A631B833C21001CB3AE /* IQNSArray+Sort.m */; };
+		FAB84A861B833C22001CB3AE /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A651B833C21001CB3AE /* IQUITextFieldView+Additions.m */; };
+		FAB84A871B833C22001CB3AE /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A671B833C21001CB3AE /* IQUIView+Hierarchy.m */; };
+		FAB84A881B833C22001CB3AE /* IQUIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A691B833C21001CB3AE /* IQUIViewController+Additions.m */; };
+		FAB84A891B833C22001CB3AE /* IQUIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A6B1B833C21001CB3AE /* IQUIWindow+Hierarchy.m */; };
+		FAB84A8A1B833C22001CB3AE /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A701B833C21001CB3AE /* IQKeyboardManager.m */; };
+		FAB84A8B1B833C22001CB3AE /* IQKeyboardReturnKeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A721B833C21001CB3AE /* IQKeyboardReturnKeyHandler.m */; };
+		FAB84A8C1B833C22001CB3AE /* IQSegmentedNextPrevious.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A751B833C21001CB3AE /* IQSegmentedNextPrevious.m */; };
+		FAB84A8D1B833C22001CB3AE /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A781B833C21001CB3AE /* IQTextView.m */; };
+		FAB84A8E1B833C22001CB3AE /* IQBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A7B1B833C21001CB3AE /* IQBarButtonItem.m */; };
+		FAB84A8F1B833C22001CB3AE /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A7D1B833C21001CB3AE /* IQTitleBarButtonItem.m */; };
+		FAB84A901B833C22001CB3AE /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A7F1B833C21001CB3AE /* IQToolbar.m */; };
+		FAB84A911B833C22001CB3AE /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB84A811B833C21001CB3AE /* IQUIView+IQKeyboardToolbar.m */; };
+		FAB84A921B833C22001CB3AE /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FAB84A841B833C21001CB3AE /* IQKeyboardManager.bundle */; };
+		FACA05111B846B9F007CBDC5 /* UploadDocumentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FACA05101B846B9F007CBDC5 /* UploadDocumentsView.m */; };
+		FACA05131B846BB9007CBDC5 /* UploadDocumentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FACA05121B846BB9007CBDC5 /* UploadDocumentsView.xib */; };
+		FAFB8B0F1B8B3AAE0060D493 /* LicenseCancellationThanksView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFB8B0E1B8B3AAE0060D493 /* LicenseCancellationThanksView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -633,6 +659,57 @@
 		82F6F66718E4D0280033CACD /* SFPasscodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPasscodeManager.h; sourceTree = "<group>"; };
 		82F6F66818E4D0280033CACD /* SFPasscodeProviderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPasscodeProviderManager.h; sourceTree = "<group>"; };
 		82F6F66918E4D0280033CACD /* libSalesforceSecurity.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSalesforceSecurity.a; sourceTree = "<group>"; };
+		FA54CEC61B85B18C00C9DE7B /* ThanksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThanksView.h; sourceTree = "<group>"; };
+		FA54CEC71B85B18C00C9DE7B /* ThanksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThanksView.m; sourceTree = "<group>"; };
+		FA54CEC91B85B1A100C9DE7B /* ThanksView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThanksView.xib; sourceTree = "<group>"; };
+		FA54CECB1B85B1D800C9DE7B /* SubmitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitView.h; sourceTree = "<group>"; };
+		FA54CECC1B85B1D800C9DE7B /* SubmitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitView.m; sourceTree = "<group>"; };
+		FA54CECE1B85B1E800C9DE7B /* SubmitView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubmitView.xib; sourceTree = "<group>"; };
+		FA59FE541B8EF23B003BE49C /* ThanksCancelLeasingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThanksCancelLeasingView.h; sourceTree = "<group>"; };
+		FA59FE551B8EF23B003BE49C /* ThanksCancelLeasingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThanksCancelLeasingView.m; sourceTree = "<group>"; };
+		FA6DC0FB1B8C81C10044C099 /* CancelLeasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelLeasingViewController.h; sourceTree = "<group>"; };
+		FA6DC0FC1B8C81C10044C099 /* CancelLeasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CancelLeasingViewController.m; sourceTree = "<group>"; };
+		FA9016B21B89D93C00837555 /* LicenseCancelationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseCancelationViewController.h; sourceTree = "<group>"; };
+		FA9016B31B89D93C00837555 /* LicenseCancelationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseCancelationViewController.m; sourceTree = "<group>"; };
+		FAB84A591B831AFD001CB3AE /* RenewPassportSteperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenewPassportSteperViewController.h; sourceTree = "<group>"; };
+		FAB84A5A1B831AFD001CB3AE /* RenewPassportSteperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenewPassportSteperViewController.m; sourceTree = "<group>"; };
+		FAB84A5C1B831E32001CB3AE /* PassportRequestDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportRequestDetailsView.h; sourceTree = "<group>"; };
+		FAB84A5D1B831E32001CB3AE /* PassportRequestDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportRequestDetailsView.m; sourceTree = "<group>"; };
+		FAB84A621B833C21001CB3AE /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
+		FAB84A631B833C21001CB3AE /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
+		FAB84A641B833C21001CB3AE /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
+		FAB84A651B833C21001CB3AE /* IQUITextFieldView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUITextFieldView+Additions.m"; sourceTree = "<group>"; };
+		FAB84A661B833C21001CB3AE /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
+		FAB84A671B833C21001CB3AE /* IQUIView+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+Hierarchy.m"; sourceTree = "<group>"; };
+		FAB84A681B833C21001CB3AE /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIViewController+Additions.h"; sourceTree = "<group>"; };
+		FAB84A691B833C21001CB3AE /* IQUIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIViewController+Additions.m"; sourceTree = "<group>"; };
+		FAB84A6A1B833C21001CB3AE /* IQUIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIWindow+Hierarchy.h"; sourceTree = "<group>"; };
+		FAB84A6B1B833C21001CB3AE /* IQUIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		FAB84A6D1B833C21001CB3AE /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		FAB84A6E1B833C21001CB3AE /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		FAB84A6F1B833C21001CB3AE /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
+		FAB84A701B833C21001CB3AE /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
+		FAB84A711B833C21001CB3AE /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
+		FAB84A721B833C21001CB3AE /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
+		FAB84A741B833C21001CB3AE /* IQSegmentedNextPrevious.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQSegmentedNextPrevious.h; sourceTree = "<group>"; };
+		FAB84A751B833C21001CB3AE /* IQSegmentedNextPrevious.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQSegmentedNextPrevious.m; sourceTree = "<group>"; };
+		FAB84A771B833C21001CB3AE /* IQTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
+		FAB84A781B833C21001CB3AE /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
+		FAB84A7A1B833C21001CB3AE /* IQBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQBarButtonItem.h; sourceTree = "<group>"; };
+		FAB84A7B1B833C21001CB3AE /* IQBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQBarButtonItem.m; sourceTree = "<group>"; };
+		FAB84A7C1B833C21001CB3AE /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		FAB84A7D1B833C21001CB3AE /* IQTitleBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTitleBarButtonItem.m; sourceTree = "<group>"; };
+		FAB84A7E1B833C21001CB3AE /* IQToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
+		FAB84A7F1B833C21001CB3AE /* IQToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQToolbar.m; sourceTree = "<group>"; };
+		FAB84A801B833C21001CB3AE /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		FAB84A811B833C21001CB3AE /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
+		FAB84A821B833C21001CB3AE /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
+		FAB84A841B833C21001CB3AE /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		FACA050F1B846B9F007CBDC5 /* UploadDocumentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadDocumentsView.h; sourceTree = "<group>"; };
+		FACA05101B846B9F007CBDC5 /* UploadDocumentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadDocumentsView.m; sourceTree = "<group>"; };
+		FACA05121B846BB9007CBDC5 /* UploadDocumentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadDocumentsView.xib; sourceTree = "<group>"; };
+		FAFB8B0D1B8B3AAE0060D493 /* LicenseCancellationThanksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseCancellationThanksView.h; sourceTree = "<group>"; };
+		FAFB8B0E1B8B3AAE0060D493 /* LicenseCancellationThanksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseCancellationThanksView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -730,6 +807,9 @@
 		1307BAC81A6F83A4004E6325 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				FA6DC0FA1B8C816F0044C099 /* CancelLeasingViewController */,
+				FA9016B11B89D3A600837555 /* LicenseCancelViewController */,
+				FACC43DD1B82054F00C3BD75 /* RenewPassportViewController */,
 				133A93771B26CB8100F7902E /* AnimatedSplashViewController */,
 				132CCFB11A77C4E9007A40AE /* BaseFrontRevealViewController */,
 				1318193D1A91CA9C00CAA4D6 /* BaseServicesViewController */,
@@ -1796,6 +1876,7 @@
 		824A9E301724E2A900C9BD79 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FAB84A5F1B833C21001CB3AE /* Libraries */,
 				139E6B661A7A6F2600D1D451 /* Categories */,
 				13081AE41A76559D00B33509 /* DataModels */,
 				1307BAC81A6F83A4004E6325 /* UI */,
@@ -2046,6 +2127,174 @@
 			path = SalesforceSecurity;
 			sourceTree = "<group>";
 		};
+		FA54CEC41B85B14E00C9DE7B /* SubmitView */ = {
+			isa = PBXGroup;
+			children = (
+				FA54CECB1B85B1D800C9DE7B /* SubmitView.h */,
+				FA54CECC1B85B1D800C9DE7B /* SubmitView.m */,
+				FA54CECE1B85B1E800C9DE7B /* SubmitView.xib */,
+			);
+			path = SubmitView;
+			sourceTree = "<group>";
+		};
+		FA54CEC51B85B14E00C9DE7B /* ThanksView */ = {
+			isa = PBXGroup;
+			children = (
+				FA54CEC61B85B18C00C9DE7B /* ThanksView.h */,
+				FA54CEC71B85B18C00C9DE7B /* ThanksView.m */,
+				FA54CEC91B85B1A100C9DE7B /* ThanksView.xib */,
+			);
+			path = ThanksView;
+			sourceTree = "<group>";
+		};
+		FA6DC0FA1B8C816F0044C099 /* CancelLeasingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA6DC0FB1B8C81C10044C099 /* CancelLeasingViewController.h */,
+				FA6DC0FC1B8C81C10044C099 /* CancelLeasingViewController.m */,
+				FA59FE541B8EF23B003BE49C /* ThanksCancelLeasingView.h */,
+				FA59FE551B8EF23B003BE49C /* ThanksCancelLeasingView.m */,
+			);
+			path = CancelLeasingViewController;
+			sourceTree = "<group>";
+		};
+		FA9016B11B89D3A600837555 /* LicenseCancelViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA9016B21B89D93C00837555 /* LicenseCancelationViewController.h */,
+				FA9016B31B89D93C00837555 /* LicenseCancelationViewController.m */,
+				FAFB8B0D1B8B3AAE0060D493 /* LicenseCancellationThanksView.h */,
+				FAFB8B0E1B8B3AAE0060D493 /* LicenseCancellationThanksView.m */,
+			);
+			path = LicenseCancelViewController;
+			sourceTree = "<group>";
+		};
+		FAB84A581B831AB8001CB3AE /* RenewPassportSteperViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAB84A591B831AFD001CB3AE /* RenewPassportSteperViewController.h */,
+				FAB84A5A1B831AFD001CB3AE /* RenewPassportSteperViewController.m */,
+			);
+			path = RenewPassportSteperViewController;
+			sourceTree = "<group>";
+		};
+		FAB84A5F1B833C21001CB3AE /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				FAB84A601B833C21001CB3AE /* IQKeyBoardManager */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		FAB84A601B833C21001CB3AE /* IQKeyBoardManager */ = {
+			isa = PBXGroup;
+			children = (
+				FAB84A611B833C21001CB3AE /* Categories */,
+				FAB84A6C1B833C21001CB3AE /* Constants */,
+				FAB84A6F1B833C21001CB3AE /* IQKeyboardManager.h */,
+				FAB84A701B833C21001CB3AE /* IQKeyboardManager.m */,
+				FAB84A711B833C21001CB3AE /* IQKeyboardReturnKeyHandler.h */,
+				FAB84A721B833C21001CB3AE /* IQKeyboardReturnKeyHandler.m */,
+				FAB84A731B833C21001CB3AE /* IQSegmentedNextPrevious */,
+				FAB84A761B833C21001CB3AE /* IQTextView */,
+				FAB84A791B833C21001CB3AE /* IQToolbar */,
+				FAB84A821B833C21001CB3AE /* KeyboardManager.h */,
+				FAB84A831B833C21001CB3AE /* Resources */,
+			);
+			path = IQKeyBoardManager;
+			sourceTree = "<group>";
+		};
+		FAB84A611B833C21001CB3AE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FAB84A621B833C21001CB3AE /* IQNSArray+Sort.h */,
+				FAB84A631B833C21001CB3AE /* IQNSArray+Sort.m */,
+				FAB84A641B833C21001CB3AE /* IQUITextFieldView+Additions.h */,
+				FAB84A651B833C21001CB3AE /* IQUITextFieldView+Additions.m */,
+				FAB84A661B833C21001CB3AE /* IQUIView+Hierarchy.h */,
+				FAB84A671B833C21001CB3AE /* IQUIView+Hierarchy.m */,
+				FAB84A681B833C21001CB3AE /* IQUIViewController+Additions.h */,
+				FAB84A691B833C21001CB3AE /* IQUIViewController+Additions.m */,
+				FAB84A6A1B833C21001CB3AE /* IQUIWindow+Hierarchy.h */,
+				FAB84A6B1B833C21001CB3AE /* IQUIWindow+Hierarchy.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		FAB84A6C1B833C21001CB3AE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FAB84A6D1B833C21001CB3AE /* IQKeyboardManagerConstants.h */,
+				FAB84A6E1B833C21001CB3AE /* IQKeyboardManagerConstantsInternal.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		FAB84A731B833C21001CB3AE /* IQSegmentedNextPrevious */ = {
+			isa = PBXGroup;
+			children = (
+				FAB84A741B833C21001CB3AE /* IQSegmentedNextPrevious.h */,
+				FAB84A751B833C21001CB3AE /* IQSegmentedNextPrevious.m */,
+			);
+			path = IQSegmentedNextPrevious;
+			sourceTree = "<group>";
+		};
+		FAB84A761B833C21001CB3AE /* IQTextView */ = {
+			isa = PBXGroup;
+			children = (
+				FAB84A771B833C21001CB3AE /* IQTextView.h */,
+				FAB84A781B833C21001CB3AE /* IQTextView.m */,
+			);
+			path = IQTextView;
+			sourceTree = "<group>";
+		};
+		FAB84A791B833C21001CB3AE /* IQToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				FAB84A7A1B833C21001CB3AE /* IQBarButtonItem.h */,
+				FAB84A7B1B833C21001CB3AE /* IQBarButtonItem.m */,
+				FAB84A7C1B833C21001CB3AE /* IQTitleBarButtonItem.h */,
+				FAB84A7D1B833C21001CB3AE /* IQTitleBarButtonItem.m */,
+				FAB84A7E1B833C21001CB3AE /* IQToolbar.h */,
+				FAB84A7F1B833C21001CB3AE /* IQToolbar.m */,
+				FAB84A801B833C21001CB3AE /* IQUIView+IQKeyboardToolbar.h */,
+				FAB84A811B833C21001CB3AE /* IQUIView+IQKeyboardToolbar.m */,
+			);
+			path = IQToolbar;
+			sourceTree = "<group>";
+		};
+		FAB84A831B833C21001CB3AE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FAB84A841B833C21001CB3AE /* IQKeyboardManager.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FACA050E1B845876007CBDC5 /* UploadDocumentView */ = {
+			isa = PBXGroup;
+			children = (
+				FACA050F1B846B9F007CBDC5 /* UploadDocumentsView.h */,
+				FACA05101B846B9F007CBDC5 /* UploadDocumentsView.m */,
+				FACA05121B846BB9007CBDC5 /* UploadDocumentsView.xib */,
+			);
+			name = UploadDocumentView;
+			path = NextViews;
+			sourceTree = "<group>";
+		};
+		FACC43DD1B82054F00C3BD75 /* RenewPassportViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA54CEC41B85B14E00C9DE7B /* SubmitView */,
+				FA54CEC51B85B14E00C9DE7B /* ThanksView */,
+				FACA050E1B845876007CBDC5 /* UploadDocumentView */,
+				FAB84A581B831AB8001CB3AE /* RenewPassportSteperViewController */,
+				FAB84A5C1B831E32001CB3AE /* PassportRequestDetailsView.h */,
+				FAB84A5D1B831E32001CB3AE /* PassportRequestDetailsView.m */,
+			);
+			path = RenewPassportViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2108,6 +2357,7 @@
 				1307BAE91A6F938B004E6325 /* Settings.bundle in Resources */,
 				131048C31A9EFDB0006A400B /* NewCardViewController.xib in Resources */,
 				1307BAE51A6F938B004E6325 /* Corisande-Light.ttf in Resources */,
+				FA54CECA1B85B1A100C9DE7B /* ThanksView.xib in Resources */,
 				132744641B4ABAFA00AADCC3 /* CancelVisaViewController.xib in Resources */,
 				13481AE71A82257100093331 /* RecordRelatedViewController.xib in Resources */,
 				131819471A91D6C100CAA4D6 /* Localizable.strings in Resources */,
@@ -2120,12 +2370,15 @@
 				130E096D1AA5C42800E6ED59 /* MyRequestTableViewCell.xib in Resources */,
 				13BCE7691AC9585600AF28C6 /* LicenseRenewViewController.xib in Resources */,
 				133E34DA1AC02CF6002C3748 /* VisualforceWebviewViewController.xib in Resources */,
+				FACA05131B846BB9007CBDC5 /* UploadDocumentsView.xib in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
 				1328E7D91A95C7DF00475E90 /* NewNOCViewController.xib in Resources */,
 				134B8A1B1AD697F4005CCAD5 /* ServicesThankYouViewController.xib in Resources */,
 				130523DE1A99C05500EF2268 /* ServicesUploadViewController.xib in Resources */,
 				1328E7DB1A96042600475E90 /* ServicesDynamicFormViewController.xib in Resources */,
+				FA54CECF1B85B1E800C9DE7B /* SubmitView.xib in Resources */,
 				1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */,
+				FAB84A921B833C22001CB3AE /* IQKeyboardManager.bundle in Resources */,
 				133469B61AECFB400029F9B5 /* SwipePageViewController.xib in Resources */,
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
 				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
@@ -2145,18 +2398,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA54CECD1B85B1D800C9DE7B /* SubmitView.m in Sources */,
+				FA59FE561B8EF23B003BE49C /* ThanksCancelLeasingView.m in Sources */,
 				1385164D1AFF424200ACF4B3 /* RegistrationAmendment.m in Sources */,
 				13EE67981A7E556F00255174 /* RecordMainDetailsViewController.m in Sources */,
 				13081AF71A76559D00B33509 /* Account.m in Sources */,
+				FA6DC0FD1B8C81C10044C099 /* CancelLeasingViewController.m in Sources */,
+				FAB84A8A1B833C22001CB3AE /* IQKeyboardManager.m in Sources */,
 				130C30011A78DE0200C95600 /* EmployeeTableViewCell.m in Sources */,
 				137D5AD11AF8A40700E67C72 /* UIButton+Additions.m in Sources */,
 				13315AD41AAC7056009E1819 /* CompanyInfoListTableViewCell.m in Sources */,
+				FA54CEC81B85B18C00C9DE7B /* ThanksView.m in Sources */,
 				1302913C1A76C88D000E119C /* SWRevealViewController.m in Sources */,
 				13F39B0D1AE7D7D6003AA84E /* FreeZonePayment.m in Sources */,
 				130F7DD51AAF2B9000380628 /* LicenseActivity.m in Sources */,
 				13073B9A1AC4176500F25EC6 /* Product.m in Sources */,
+				FAB84A8E1B833C22001CB3AE /* IQBarButtonItem.m in Sources */,
 				130F7DD81AAF2C6800380628 /* BusinessActivity.m in Sources */,
 				133469AB1AECD72F0029F9B5 /* NSString+HelperAdditions.m in Sources */,
+				FAB84A861B833C22001CB3AE /* IQUITextFieldView+Additions.m in Sources */,
 				1331D21F1AC7E2D600B4AAD5 /* Quote.m in Sources */,
 				1318194B1A91FCB900CAA4D6 /* ServicesUploadViewController.m in Sources */,
 				130C300A1A78E1FE00C95600 /* EmployeeListViewController.m in Sources */,
@@ -2164,6 +2424,7 @@
 				13081AE31A7625C400B33509 /* Globals.m in Sources */,
 				1307BAD21A6F83A4004E6325 /* InitialViewController.m in Sources */,
 				13E006E41AEFBE4F005EE312 /* CompanyInfoListBaseTableViewCell.m in Sources */,
+				FAB84A8C1B833C22001CB3AE /* IQSegmentedNextPrevious.m in Sources */,
 				1334F49D1ADE790000297ACE /* ComOpenThreadOTScreenshotHelperSwizzleHelper.m in Sources */,
 				1300DA421B3934A3005A9BE7 /* RenewVisaViewController.m in Sources */,
 				131CA86E1A80C93400A79B12 /* TableViewSection.m in Sources */,
@@ -2177,9 +2438,12 @@
 				1354F5591AF78365004A6CBA /* UIImageView+Additions.m in Sources */,
 				130CFAB11AC1E620006D7CA0 /* Invoice.m in Sources */,
 				133E34D41ABFFFCC002C3748 /* DWCDocumentTableViewCell.m in Sources */,
+				FAFB8B0F1B8B3AAE0060D493 /* LicenseCancellationThanksView.m in Sources */,
 				13315AC91AAC3845009E1819 /* DWCCompanyInfo.m in Sources */,
 				134053B91AEE50A3007A4773 /* NSString+MD5.m in Sources */,
 				1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */,
+				FA9016B41B89D93C00837555 /* LicenseCancelationViewController.m in Sources */,
+				FAB84A8F1B833C22001CB3AE /* IQTitleBarButtonItem.m in Sources */,
 				131CA87E1A80F91500A79B12 /* RecordDetailTableViewCell.m in Sources */,
 				13411AFB1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m in Sources */,
 				824A9DE51724E16400C9BD79 /* main.m in Sources */,
@@ -2187,6 +2451,7 @@
 				136377BF1A767C2C00282F72 /* FVCustomAlertView.m in Sources */,
 				137610D71AB82E3B0084D878 /* TenancyContract.m in Sources */,
 				13F39B111AE7DC6D003AA84E /* ViewStatementListViewController.m in Sources */,
+				FAB84A5E1B831E32001CB3AE /* PassportRequestDetailsView.m in Sources */,
 				1394EA1F1A88D31F00ECED05 /* WYPopoverController.m in Sources */,
 				130E09671AA5B84400E6ED59 /* Request.m in Sources */,
 				13CFE7311ABEDF3A009E47EC /* CompanyDocument.m in Sources */,
@@ -2198,11 +2463,14 @@
 				13081AFE1A76559D00B33509 /* Visa.m in Sources */,
 				13E006E71AEFC358005EE312 /* CompanyInfoListExpandedTableViewCell.m in Sources */,
 				139E6B611A7A432500D1D451 /* SOQLQueries.m in Sources */,
+				FAB84A911B833C22001CB3AE /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				13073B8E1AC3E63800F25EC6 /* ContractRenewalEditViewController.m in Sources */,
 				130523E61A99C56D00EF2268 /* UIViewController+ChildViewController.m in Sources */,
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
 				13555E3E1B3FDA000077CB50 /* ObjectSettings.m in Sources */,
 				133A93801B26CFAA00F7902E /* UIImageView+AnimationCompletion.m in Sources */,
+				FAB84A8B1B833C22001CB3AE /* IQKeyboardReturnKeyHandler.m in Sources */,
+				FAB84A901B833C22001CB3AE /* IQToolbar.m in Sources */,
 				13A062901B1306FD00108167 /* CustomIOS7AlertView.m in Sources */,
 				13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */,
 				134053BC1AEE50B5007A4773 /* FTWCache.m in Sources */,
@@ -2215,8 +2483,10 @@
 				134B8A1A1AD697F4005CCAD5 /* ServicesThankYouViewController.m in Sources */,
 				13081AF81A76559D00B33509 /* CardManagement.m in Sources */,
 				131F96CD1AA48D8400786B15 /* MyRequestListViewController.m in Sources */,
+				FAB84A851B833C21001CB3AE /* IQNSArray+Sort.m in Sources */,
 				1307BAD91A6F8FEE004E6325 /* HomePageViewController.m in Sources */,
 				13A0628B1B1306D800108167 /* NoInternetPopoverViewController.m in Sources */,
+				FAB84A871B833C22001CB3AE /* IQUIView+Hierarchy.m in Sources */,
 				138516521AFF4EF500ACF4B3 /* CompanyAmendmentViewController.m in Sources */,
 				13081AFA1A76559D00B33509 /* EServiceAdministration.m in Sources */,
 				13481AF01A823A5B00093331 /* RelatedService.m in Sources */,
@@ -2234,6 +2504,8 @@
 				133469B51AECFB400029F9B5 /* SwipePageViewController.m in Sources */,
 				139658141AB9797B0091C451 /* Passport.m in Sources */,
 				13E006ED1AEFC9AE005EE312 /* CompanyInfoListShareholderExpandedTableViewCell.m in Sources */,
+				FAB84A8D1B833C22001CB3AE /* IQTextView.m in Sources */,
+				FACA05111B846B9F007CBDC5 /* UploadDocumentsView.m in Sources */,
 				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
 				1353CBD91AAD92B700E57FAC /* Directorship.m in Sources */,
 				130F7DD21AAEE76300380628 /* License.m in Sources */,
@@ -2247,8 +2519,11 @@
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,
 				13081AF91A76559D00B33509 /* Country.m in Sources */,
 				139E6B6E1A7A6F2600D1D451 /* UIView+MGBadgeView.m in Sources */,
+				FAB84A891B833C22001CB3AE /* IQUIWindow+Hierarchy.m in Sources */,
 				132F0D081A948FCC003FFC24 /* ServicesReviewViewController.m in Sources */,
 				1307BAEC1A6FDAC3004E6325 /* HelperClass.m in Sources */,
+				FAB84A881B833C22001CB3AE /* IQUIViewController+Additions.m in Sources */,
+				FAB84A5B1B831AFD001CB3AE /* RenewPassportSteperViewController.m in Sources */,
 				132CCFAC1A779C1A007A40AE /* EmployeeContainerViewController.m in Sources */,
 				13743ECA1AB02E4F00D0B873 /* NotificationManagement.m in Sources */,
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
@@ -2314,7 +2589,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bassam Shaker (2GHNNBP4VB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bassam Shaker (2GHNNBP4VB)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2329,6 +2605,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2346,7 +2623,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bassam Shaker (2GHNNBP4VB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bassam Shaker (2GHNNBP4VB)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2354,6 +2632,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2365,7 +2644,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bassam Shaker (2GHNNBP4VB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bassam Shaker (2GHNNBP4VB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DWC eServices/DWCeServices-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2396,7 +2676,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = iDWC;
-				PROVISIONING_PROFILE = "fff16ace-7756-4cf7-be52-b19ab9a0f9a7";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -2408,7 +2688,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bassam Shaker (2GHNNBP4VB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bassam Shaker (2GHNNBP4VB)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DWC eServices/DWCeServices-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2439,7 +2720,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = iDWC;
-				PROVISIONING_PROFILE = "fff16ace-7756-4cf7-be52-b19ab9a0f9a7";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

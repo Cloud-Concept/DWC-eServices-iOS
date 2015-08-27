@@ -59,7 +59,6 @@
         [weakSelf backButtonPressed];
     };
     
-
     viewControllersStack = [[Stack alloc] init];
     [self showServiceFlow];
     
@@ -282,6 +281,9 @@
         case ServiceFlowFieldsPage:
             if (self.relatedServiceType == RelatedServiceTypeRenewVisa)
                 [self callSubmitRenewVisaWebservice];
+            // to be changed
+//            else if (self.relatedServiceType == RelatedServiceTypeCancelVisa)
+//                [self callSubmitRenewVisaWebservice];
             else
                 [self createCaseRecord];
             break;
@@ -289,6 +291,7 @@
             [self createCompanyDocuments:self.currentServiceAdministration.serviceDocumentsArray];
             break;
         case ServiceFlowReviewPage:
+            [self showReviewFlowPage];
             break;
         default:
             break;
@@ -854,16 +857,41 @@
         self.relatedServiceType == RelatedServiceTypeLicenseRenewal ||
         self.relatedServiceType == RelatedServiceTypeCompanyAddressChange ||
         self.relatedServiceType == RelatedServiceTypeCompanyNameChange ||
-        self.relatedServiceType == RelatedServiceTypeRenewVisa ||
-        self.relatedServiceType == RelatedServiceTypeCancelVisa) {
+        self.relatedServiceType == RelatedServiceTypeRenewVisa
+       ) {
         functionName = @"MobileSubmitAndPayRequestWebService";
     }
+    if( self.relatedServiceType == RelatedServiceTypeCancelVisa){
+                functionName = @"MobileSubmitCancelVisaWebService";
+    }
     
+    // MobileSubmitCancelVisaWebService
     SFRestRequest *payAndSubmitRequest = [[SFRestRequest alloc] init];
     payAndSubmitRequest.endpoint = [NSString stringWithFormat:@"/services/apexrest/%@", functionName];
     payAndSubmitRequest.method = SFRestMethodPOST;
     payAndSubmitRequest.path = [NSString stringWithFormat:@"/services/apexrest/%@", functionName];
-    payAndSubmitRequest.queryParams = [NSDictionary dictionaryWithObject:insertedCaseId forKey:@"caseId"];
+    if(self.relatedServiceType == RelatedServiceTypeCancelVisa)
+    {
+        NSMutableDictionary *wrapperDict = [NSMutableDictionary new];
+        [wrapperDict setObject:[Globals currentAccount].Id forKey:@"AccountId"];
+        [wrapperDict setObject:self.renewedVisaObject.Id forKey:@"visaId"];
+        // add by George to Handle urgent cancellation field
+        for (FormField *field in self.currentWebForm.formFields)
+            if([field.name isEqualToString:@"Urgent_Cancellation__c"] )
+                [wrapperDict setObject:[NSNumber numberWithBool:([[field getFormFieldValue] isEqualToString:@"1"])?1:0] forKey:@"Urgent_Cancellation"];
+        
+        [wrapperDict setObject:self.renewedVisaObject.passport.passportHolder.Id forKey:@"PassportHolderId"];
+        // identifier "Residency Permit Cancellation"
+        [wrapperDict setObject:@"Residency Permit Cancellation" forKey:@"serviceIdentifier"];
+        [wrapperDict setObject:self.renewedVisaObject.applicantEmail forKey:@"ApplicantEmail"];
+        
+        NSDictionary *bodyDict = [NSDictionary dictionaryWithObject:wrapperDict forKey:@"wrapper"];
+       
+        
+        payAndSubmitRequest.queryParams = bodyDict;
+    }
+    else
+        payAndSubmitRequest.queryParams = [NSDictionary dictionaryWithObject:insertedCaseId forKey:@"caseId"];
     
     [self showLoadingDialog];
     [[SFRestAPI sharedInstance] send:payAndSubmitRequest delegate:self];
@@ -1173,7 +1201,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if ([request.path containsString:@"MobilePayAndSubmitWebService"] ||
-            [request.path containsString:@"MobileSubmitAndPayRequestWebService"])
+            [request.path containsString:@"MobileSubmitAndPayRequestWebService"] ||[request.path containsString:@"MobileSubmitCancelVisaWebService"])
             [self handlePayAndSubmitWebserviceReturn:jsonResponse];
         else if ([request.path containsString:@"MobileGenerateInvoiceWebService"])
             [self handleGenerateInvoiceWebServiceReturn:jsonResponse];

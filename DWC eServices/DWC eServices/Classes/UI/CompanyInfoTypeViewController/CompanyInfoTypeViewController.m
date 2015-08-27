@@ -128,8 +128,10 @@
     NSMutableArray *pageLabelMutableArray = [NSMutableArray new];
     
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    
     RecordMainDetailsViewController *companyInfoMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     companyInfoMainVC.isBottomBarHidden = YES;
+    
     RecordMainDetailsViewController *licenseInfoMainVC = [storybord instantiateViewControllerWithIdentifier:@"RecordMainViewController"];
     licenseInfoMainVC.isBottomBarHidden = YES;
     
@@ -237,9 +239,12 @@
     NSUInteger relatedServices = 0;
     NSTimeInterval daysToExpire = [[Globals currentAccount].currentLicenseNumber.licenseExpiryDate timeIntervalSinceNow] / (3600 * 24);
     
+    
     if (daysToExpire <= 60 && !hasLicenseRenewalInProgress) {
         relatedServices |= RelatedServiceTypeLicenseRenewal;
     }
+    // added By george
+    relatedServices |= RelatedServiceTypeLicenseCancelation;
     
     recordVC.RelatedServicesMask = relatedServices;
 }

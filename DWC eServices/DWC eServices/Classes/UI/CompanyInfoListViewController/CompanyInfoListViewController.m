@@ -128,6 +128,28 @@
     restRequest.queryParams = paramsDict;
     
     [[SFRestAPI sharedInstance] send:restRequest delegate:self];
+    
+    
+//    void (^errorBlock) (NSError*) = ^(NSError *e) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            if (isRefresh)
+//                [self.tableView finishRefresh];
+//            else
+//                [self.tableView finishLoadMore];
+//        });
+//    };
+//    
+//    void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
+//        NSArray *records = [dict objectForKey:@"records"];
+//        
+//    };
+//
+//    [[SFRestAPI sharedInstance] performSOQLQuery:[NSString stringWithFormat:self.currentDWCCompanyInfo.SOQLQuery,
+//                                                  self.tableView.queryLimit, self.tableView.queryOffset]
+//                                       failBlock:errorBlock
+//                                   completeBlock:successBlock];
+    
+    
 }
 
 - (void)tableLoadMore {

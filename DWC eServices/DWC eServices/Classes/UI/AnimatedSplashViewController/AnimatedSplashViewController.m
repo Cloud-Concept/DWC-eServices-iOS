@@ -31,7 +31,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self performSelector:@selector(setupAnimationView) withObject:nil afterDelay:0.5f];
+    [self performSelector:@selector(setupAnimationView) withObject:nil afterDelay:1.0f];
     //[self setupAnimationView];
 }
 

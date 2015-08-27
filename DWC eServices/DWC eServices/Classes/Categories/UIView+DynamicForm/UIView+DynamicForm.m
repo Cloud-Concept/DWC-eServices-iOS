@@ -364,6 +364,78 @@
                                                       constant:0.0]];
 }
 
+
+- (void)drawAttachmentButtons:(NSArray *) attachmentArray viewController:(UIViewController *)viewController {
+    NSMutableDictionary *viewsDictionary = [NSMutableDictionary new];
+    
+    for (EServiceDocument *document in attachmentArray) {
+        UIButton *button = [document getDocumentButton:viewController];
+        [viewsDictionary setObject:button forKey:document.nameNoSpace];
+        button.translatesAutoresizingMaskIntoConstraints = NO;
+        [self addSubview:button];
+    }
+    
+    
+    NSDictionary *metrics = @{@"fieldHeight": @40,
+                              @"leftMargin": @16,
+                              @"rightMargin": @16,
+                              @"fieldsMargin": @16,
+                              @"topMargin": @20,
+                              @"bottomMargin": @20,
+                              @"buttonHeight": @47,
+                              @"buttonsSpacing": @16,
+                              @"buttonsTopMargin": @40
+                              };
+    
+    for (NSInteger index = 0; index < attachmentArray.count; index++) {
+        
+        EServiceDocument *currentdocument = [attachmentArray objectAtIndex:index];
+        EServiceDocument *previousdocument = nil;
+        
+        NSString *heightRule = [NSString stringWithFormat:@"V:[%@(fieldHeight)]", currentdocument.nameNoSpace];
+        NSArray *field_constraint_V = [NSLayoutConstraint constraintsWithVisualFormat:heightRule
+                                                                              options:0
+                                                                              metrics:metrics
+                                                                                views:viewsDictionary];
+        [self addConstraints:field_constraint_V];
+        
+        if(index != 0)
+            previousdocument = [attachmentArray objectAtIndex:index - 1];
+        
+        NSString *horizontalRule = [NSString stringWithFormat:@"H:|-leftMargin-[%@]-rightMargin-|", currentdocument.nameNoSpace];
+        NSArray *constraint_POS_H = [NSLayoutConstraint constraintsWithVisualFormat:horizontalRule
+                                                                            options:0
+                                                                            metrics:metrics
+                                                                              views:viewsDictionary];
+        
+        NSMutableString *verticalRule = [NSMutableString stringWithString:@"V:"];
+        
+        if (previousdocument == nil)
+        {
+            [verticalRule appendString:@"|-topMargin-"];
+        }
+        else
+        {
+            [verticalRule appendFormat:@"[%@]-fieldsMargin-", previousdocument.nameNoSpace];
+        }
+        
+        [verticalRule appendFormat:@"[%@]", currentdocument.nameNoSpace];
+        
+//        if (index == attachmentArray.count - 1 && (!cancelButton && !nextButton)) {
+//            [verticalRule appendString:@"-|"];
+//        }
+        NSArray *constraint_POS_V = [NSLayoutConstraint constraintsWithVisualFormat:verticalRule
+                                                                            options:0
+                                                                            metrics:metrics
+                                                                              views:viewsDictionary];
+        
+        
+        [self addConstraints:constraint_POS_H];
+        [self addConstraints:constraint_POS_V];
+        
+    }
+}
+
 - (void)drawReviewFormWithFormFieldsArray:(NSArray *)formFieldsArray cancelButton:(UIButton *)cancelButton nextButton:(UIButton *)nextButton {
     
     NSMutableDictionary *viewsDictionary = [NSMutableDictionary new];
