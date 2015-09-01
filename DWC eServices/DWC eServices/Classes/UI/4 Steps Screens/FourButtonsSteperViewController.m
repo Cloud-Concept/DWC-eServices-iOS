@@ -1,70 +1,156 @@
 //
-//  RenewPassportSteperViewController.m
+//  FourButtonsSteperViewController.m
 //  iDWC
 //
-//  Created by George on 8/18/15.
+//  Created by George Hanna Adly on 8/30/15.
 //  Copyright (c) 2015 Cloud Concept. All rights reserved.
 //
 
-#import "RenewPassportSteperViewController.h"
-#import "UploadDocumentsView.h"
-#import "Passport.h"
-#import "Account.h"
-#import "Country.h"
-#import "UIView+DynamicForm.h"
-#import "EServiceAdministration.h"
-#import "EServiceDocument.h"
-#import "HelperClass.h"
-#import "BaseServicesViewController.h"
+#import "FourButtonsSteperViewController.h"
+#import "FVCustomAlertView.h"
+#import "CapitalChangeDetailsView.h"
+#import "DWCCompanyDocument.h"
+#import "CompanyDocumentTypeListViewController.h"
+#import "SOQLQueries.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "UIImageView+Additions.h"
 #import "DWCCompanyDocument.h"
 #import "SOQLQueries.h"
 #import "CompanyDocument.h"
 #import "DWCSFRequestManager.h"
-#import "SubmitView.h"
-#import "ThanksView.h"
+#import "CapitalChangeDocumentView.h"
+#import "CapitalChangePayView.h"
+#import "ThankYouPhaseView.h"
+#import "DirectorRemovalView.h"
+#import "DirectorPayAndSubmitView.h"
 
-@interface RenewPassportSteperViewController ()
+@interface FourButtonsSteperViewController ()
 
 @end
 
-@implementation RenewPassportSteperViewController
+@implementation FourButtonsSteperViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.currentScreen = PassportDetails;
-    
-    [self.passportDetailsView setDelegate:self];
-    
     self.navigationItem.hidesBackButton = YES;
     UIBarButtonItem* leftItem =[[UIBarButtonItem alloc] initWithTitle:nil style:self.navigationItem.backBarButtonItem.style target:self action:@selector(backButtonPressed:)];
     [leftItem setImage:[UIImage imageNamed:@"Navigation Bar Back Button Icon"]];
     [leftItem setTintColor:[UIColor whiteColor]];
     [self.navigationItem setLeftBarButtonItem:leftItem];
+    
+    
+}
+-(void)viewDidAppear:(BOOL)animated{
+    if (!self.currentScreen){
+        self.currentScreen++;
+//        [self.holderView addSubview:[self getView:self.currentScreen]];
+        self.holderView.frame = [self getView:self.currentScreen].frame;
+        [self.flowScrollerView setContentSize:self.holderView.frame.size];
+        [self.holderView addSubview:[self getView:self.currentScreen]];
+    }
     [self initNavigationTitle:self.currentScreen];
     [self setTimeLineButton:self.currentScreen type:@"Current"];
-    [self.passportDetailsView setTag:PassportDetails];
 }
--(void)viewWillAppear:(BOOL)animated{
-    [self.passportDetailsView.oldPassportNo setText:self.renewedPassportObject.passportNumber];
-    [self.passportDetailsView.passportHolder setText:self.renewedPassportObject.visaHolder.name];
-    [self.passportDetailsView.CountryOfIssue setText:self.renewedPassportObject.passportIssueCountry.name];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
-- (void)initNavigationTitle:(RenewPassportCurrentScreen) currentScreen {
-    NSString *navBarTitle = NSLocalizedString(@"navBarNewPASSPORTTitle", @"");
+-(void)NextScreen:(FourStepsCurrentScreenPhase)next{
+    DLog(@"George");
+    self.currentScreen = next;
+    [self initNavigationTitle:self.currentScreen];
+    [self setTimeLineButton:self.currentScreen type:@"Current"];
+    [self setTimeLineButton:(self.currentScreen-1) type:@"Finished"];
+    [self.flowScrollerView setScrollEnabled:YES];
+    [self.flowScrollerView setContentOffset:CGPointMake(0,0) animated:NO];
+    
+    
+    UIView* nextView =[self getView:self.currentScreen];
+    [[self.holderView viewWithTag:self.currentScreen-1] setHidden:YES];
+    
+    self.holderView.frame = nextView.frame;
+    [self.flowScrollerView setContentSize:self.holderView.frame.size];
+    [self.holderView addSubview:nextView];
+    
+}
+-(UIView*)getView:(FourStepsCurrentScreenPhase)screen{
+    UIView* view;
+    if(screen == ViewDetailsStep){
+        if (self.relatedServiceType == RelatedServiceTypeCapitalChange) {
+            view = [[CapitalChangeDetailsView alloc] initWithFrame:CGRectZero];
+            [(CapitalChangeDetailsView*)view setTag:ViewDetailsStep];
+            [(CapitalChangeDetailsView*)view setDelegate:self];
+            [(CapitalChangeDetailsView*)view requestCapitalShareAmount];
+        }
+        else if (self.relatedServiceType == RelatedServiceTypeDirectorRemoval) {
+            view = [[DirectorRemovalView alloc] initWithFrame:CGRectZero];
+            [(DirectorRemovalView*)view setTag:ViewDetailsStep];
+            [(DirectorRemovalView*)view setDelegate:self];
+            [(DirectorRemovalView*)view setDirector];
+//            [self.flowScrollerView setScrollEnabled:NO];
+        }
+    }
+    else if (screen == UploadDocumentsStep){
+        view = [[CapitalChangeDocumentView alloc] initWithFrame:CGRectZero];
+        [(CapitalChangeDocumentView*)view setTag:UploadDocumentsStep];
+        [(CapitalChangeDocumentView*)view setDelegate:self];
+        [(CapitalChangeDocumentView*)view loadEservice];
+//        [self.flowScrollerView setScrollEnabled:NO];
+    }
+    else if (screen == SubmitScreenStep){
+        if (self.relatedServiceType == RelatedServiceTypeCapitalChange) {
+            view = [[CapitalChangePayView alloc] initWithFrame:CGRectZero];
+            [(CapitalChangePayView*)view setTag:SubmitScreenStep];
+            [(CapitalChangePayView*)view setDelegate:self];
+            [(CapitalChangePayView*)view setActionType:@"SubmitRequestCapitalChange"];
+            [(CapitalChangePayView*)view setLabels];
+//            [self.flowScrollerView setScrollEnabled:NO];
+        }
+       else if (self.relatedServiceType == RelatedServiceTypeDirectorRemoval) {
+            view = [[DirectorPayAndSubmitView alloc] initWithFrame:CGRectZero];
+            [(DirectorPayAndSubmitView*)view setTag:SubmitScreenStep];
+            [(DirectorPayAndSubmitView*)view setDelegate:self];
+            [(DirectorPayAndSubmitView*)view setActionType:@"SubmitRequestDirectorRemoval"];
+            [(DirectorPayAndSubmitView*)view setLabels];
+//            [self.flowScrollerView setScrollEnabled:NO];
+        }
+    }
+    else if (screen == ThanksScreenStep){
+        view = [[ThankYouPhaseView alloc] initWithFrame:CGRectZero];
+        [(ThankYouPhaseView*)view setDelegate:self];
+        [(ThankYouPhaseView*)view setMessageText:[NSMutableString stringWithFormat:NSLocalizedString(@"ServiceThankYouMessage", @""), self.caseID]];
+        [(ThankYouPhaseView*)view setTag:ThanksScreenStep];
+//        [self.flowScrollerView setScrollEnabled:NO];
+    }
+    return view;
+}
+
+
+- (void)initNavigationTitle:(FourStepsCurrentScreenPhase) currentScreen {
+    NSString *navBarTitle = @"";
     
     switch (currentScreen) {
-        case PassportDetails:
-            navBarTitle = NSLocalizedString(@"navBarNewPASSPORTTitle", @"");
+        case ViewDetailsStep:
+            switch (self.relatedServiceType) {
+                case RelatedServiceTypeDirectorRemoval:
+                    navBarTitle = NSLocalizedString(@"navBarDirectoryRemoval", @"");
+                    break;
+                    
+                case RelatedServiceTypeCapitalChange:
+                    navBarTitle = NSLocalizedString(@"navBarchangeCapital", @"");
+                    break;
+                default:
+                    break;
+            }
+            
             break;
-        case UploadDocuments:
+        case UploadDocumentsStep:
             navBarTitle = NSLocalizedString(@"uploadDocumentTitle", @"");
             break;
-        case SubmitScreen:
+        case SubmitScreenStep:
             navBarTitle = NSLocalizedString(@"PayAndSubmitButton", @"");
             break;
-        case ThanksScreen:
+        case ThanksScreenStep:
             navBarTitle = NSLocalizedString(@"ThanksAlertTitle", @"");
             break;
             
@@ -73,7 +159,20 @@
     }
     [self setTitle:navBarTitle];
 }
--(void)setTimeLineButton:(RenewPassportCurrentScreen)scr type:(NSString*)status{
+- (void)backButtonPressed:(id)sender {
+    DLog(@"in this class %@",@"george");
+    if(self.currentScreen == ViewDetailsStep || self.currentScreen == ThanksScreenStep)
+        [self cancelServiceButtonClicked];
+    else
+    {
+        [self setTimeLineButton:self.currentScreen type:@"Next"];
+        [[self.holderView viewWithTag:self.currentScreen] removeFromSuperview];
+        self.currentScreen-=1;
+        [self setTimeLineButton:self.currentScreen type:@"Current"];
+        [[self.holderView viewWithTag:self.currentScreen] setHidden:NO];
+    }
+}
+-(void)setTimeLineButton:(FourStepsCurrentScreenPhase)scr type:(NSString*)status{
     
     // status is equal "Finished" or "Next" or "Current"
     UIButton *currentButton = (UIButton*)[self.timelineView viewWithTag:scr];
@@ -83,70 +182,6 @@
     NSString *imgName=[NSString stringWithFormat:@"Services Timeline Bullet %@",status];
     [currentButton setBackgroundImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
 }
-- (void)backButtonPressed:(id)sender {
-    DLog(@"in this class %@",@"george");
-    if(self.currentScreen == PassportDetails)
-        [self cancelServiceButtonClicked];
-    else
-    {
-        [self setTimeLineButton:self.currentScreen type:@"Next"];
-        [[self.view viewWithTag:self.currentScreen] removeFromSuperview];
-        self.currentScreen-=1;
-        [self setTimeLineButton:self.currentScreen type:@"Current"];
-        [[self.view viewWithTag:self.currentScreen] setHidden:NO];
-    }
-}
--(void)NextScreen:(RenewPassportCurrentScreen)next{
-    DLog(@"George");
-    self.currentScreen = next;
-    [self initNavigationTitle:self.currentScreen];
-    [self setTimeLineButton:self.currentScreen type:@"Current"];
-    [self setTimeLineButton:(self.currentScreen-1) type:@"Finished"];
-    [self.serviceFlowView setContentOffset:CGPointZero animated:YES];
-    
-//    UIScrollView * scroller = [[UIScrollView alloc] init];
-//    scroller.backgroundColor = [UIColor clearColor]; // just so I can see it
-//    scroller.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    UIView* nextView =[self getView:self.currentScreen];
-    [self.contentView addSubview:nextView];
-
-    [self.serviceFlowView setContentSize:self.contentView.bounds.size];
-    [self.serviceFlowView layoutIfNeeded];
-   
-}
--(UIView*)getView:(RenewPassportCurrentScreen)screen{
-    UIView* view;
-    if(screen == UploadDocuments){
-        view = [[UploadDocumentsView alloc] initWithFrame:CGRectZero];
-        [(UploadDocumentsView*)view setDelegate:self];
-        [(UploadDocumentsView*)view loadEservice];
-        [(UploadDocumentsView*)view setTag:UploadDocuments];
-         [self.passportDetailsView setHidden:true];
-    }
-    else if (screen == SubmitScreen){
-        view = [[SubmitView alloc] initWithFrame:CGRectZero];
-        [(SubmitView*)view setDelegate:self];
-        [(SubmitView*)view initFields];
-        [(SubmitView*)view setTag:SubmitScreen];
-    }
-    else if (screen == ThanksScreen){
-        view = [[ThanksView alloc] initWithFrame:CGRectZero];
-        [(ThanksView*)view setDelegate:self];
-        [(ThanksView*)view setMessageText];
-        [(ThanksView*)view setTag:ThanksScreen];
-    }
-    return view;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
--(void)objectsFromSubview:(id)sender{
-    
-}
-
 - (void)cancelServiceButtonClicked {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"ConfirmAlertTitle", @"")
                                                                    message:NSLocalizedString(@"CancelServiceAlertMessage", @"")
@@ -172,11 +207,13 @@
     
 }
 
--(NSString*)getCaseID{
-    return caseID;
+- (void)showLoadingDialog {
+    if(![FVCustomAlertView isShowingAlert])
+        [FVCustomAlertView showDefaultLoadingAlertOnView:nil withTitle:NSLocalizedString(@"loading", @"") withBlur:YES];
 }
--(void)setCaseIDValue:(NSString*)value{
-    caseID=value;
+
+- (void)hideLoadingDialog {
+    [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
 }
 
 #pragma mark override Method must be done
@@ -235,7 +272,7 @@
 - (void)didSelectCompanyDocument:(CompanyDocument *)companyDocument {
     self.currentUploadingDocument.existingDocument = YES;
     self.currentUploadingDocument.existingDocumentAttachmentId = companyDocument.attachmentId;
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    //    [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
     
     [self.currentUploadingDocument refreshButton];

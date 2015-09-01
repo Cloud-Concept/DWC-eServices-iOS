@@ -199,6 +199,11 @@
     servicesMask |= RelatedServiceTypeCompanyAddressChange;
     servicesMask |= RelatedServiceTypeCompanyNameChange;
     
+    // added by george
+    servicesMask |= RelatedServiceTypeNameReservation;
+    servicesMask |= RelatedServiceTypeCapitalChange;
+
+
     recordVC.RelatedServicesMask = servicesMask;
 }
 

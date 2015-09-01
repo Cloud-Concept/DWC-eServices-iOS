@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CapitalChangePayView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="401"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTH-7D-ccs">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="401"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edI-CI-Vws">
+                            <rect key="frame" x="8" y="329" width="140" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="DNp-Vm-zyY"/>
+                                <constraint firstAttribute="width" constant="140" id="FCx-fv-zGH"/>
+                            </constraints>
+                            <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="jWn-QS-9jj"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Amount:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLI-7Y-nCs">
+                            <rect key="frame" x="73" y="135" width="93" height="17.5"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Share Capital:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FiK-W4-pXn">
+                            <rect key="frame" x="41" y="98" width="125" height="17.5"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBl-SO-McQ">
+                            <rect key="frame" x="174" y="99" width="52" height="16"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYg-aa-Ywh">
+                            <rect key="frame" x="174" y="136" width="52" height="16"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4o-9K-Xxb">
+                            <rect key="frame" x="172" y="329" width="140" height="40"/>
+                            <state key="normal" title="Pay/Submit" backgroundImage="Blue Button Background">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="Submit:" destination="iN0-l3-epB" eventType="touchUpInside" id="ggr-pp-gQg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="vLI-7Y-nCs" firstAttribute="trailing" secondItem="FiK-W4-pXn" secondAttribute="trailing" id="2aZ-gi-UAa"/>
+                        <constraint firstItem="edI-CI-Vws" firstAttribute="leading" secondItem="UTH-7D-ccs" secondAttribute="leading" constant="8" id="8uZ-mz-QD4"/>
+                        <constraint firstItem="wBl-SO-McQ" firstAttribute="leading" secondItem="GYg-aa-Ywh" secondAttribute="leading" id="9Ye-9z-9pG"/>
+                        <constraint firstItem="FiK-W4-pXn" firstAttribute="leading" secondItem="UTH-7D-ccs" secondAttribute="leading" constant="41" id="IfM-TB-i2J"/>
+                        <constraint firstAttribute="trailing" secondItem="K4o-9K-Xxb" secondAttribute="trailing" constant="8" id="TDL-OG-GNf"/>
+                        <constraint firstItem="edI-CI-Vws" firstAttribute="centerY" secondItem="K4o-9K-Xxb" secondAttribute="centerY" id="YrH-qP-Ex5"/>
+                        <constraint firstItem="vLI-7Y-nCs" firstAttribute="top" secondItem="FiK-W4-pXn" secondAttribute="bottom" constant="20" id="cOa-cx-Phn"/>
+                        <constraint firstItem="edI-CI-Vws" firstAttribute="top" secondItem="vLI-7Y-nCs" secondAttribute="bottom" constant="176.5" id="cc9-o7-55d"/>
+                        <constraint firstItem="wBl-SO-McQ" firstAttribute="leading" secondItem="FiK-W4-pXn" secondAttribute="trailing" constant="8" id="dsV-Yt-zab"/>
+                        <constraint firstItem="wBl-SO-McQ" firstAttribute="centerY" secondItem="FiK-W4-pXn" secondAttribute="centerY" constant="0.25" id="dsg-cC-Q6J"/>
+                        <constraint firstItem="edI-CI-Vws" firstAttribute="width" secondItem="K4o-9K-Xxb" secondAttribute="width" id="hSR-SJ-ZER"/>
+                        <constraint firstItem="vLI-7Y-nCs" firstAttribute="centerY" secondItem="GYg-aa-Ywh" secondAttribute="centerY" constant="-0.25" id="kwp-8w-Wmq"/>
+                        <constraint firstItem="edI-CI-Vws" firstAttribute="height" secondItem="K4o-9K-Xxb" secondAttribute="height" id="otD-0A-a0o"/>
+                        <constraint firstItem="FiK-W4-pXn" firstAttribute="top" secondItem="UTH-7D-ccs" secondAttribute="top" constant="98" id="tLe-0V-8pz"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="UTH-7D-ccs" secondAttribute="bottom" id="a5b-bZ-Xef"/>
+                <constraint firstAttribute="trailing" secondItem="UTH-7D-ccs" secondAttribute="trailing" id="pb7-OL-rQT"/>
+                <constraint firstItem="UTH-7D-ccs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qKU-7k-3Vg"/>
+                <constraint firstItem="UTH-7D-ccs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vWA-lA-f89"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="amountLabel" destination="GYg-aa-Ywh" id="opd-Pg-kTj"/>
+                <outlet property="shareCapitalLabel" destination="wBl-SO-McQ" id="FQz-IF-WW5"/>
+            </connections>
+            <point key="canvasLocation" x="244" y="-9.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Black Button Background" width="5" height="5"/>
+        <image name="Blue Button Background" width="7" height="38"/>
+    </resources>
+</document>

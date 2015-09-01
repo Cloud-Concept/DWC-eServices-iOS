@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CapitalChangeDetailsView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abs-0r-Bk8">
+                    <rect key="frame" x="0.0" y="39" width="320" height="105.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYb-lH-ZkH">
+                            <rect key="frame" x="8" y="3" width="36.5" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="BRU-tO-5bZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXn-0A-72U">
+                            <rect key="frame" x="8" y="32" width="304" height="62.5"/>
+                            <string key="text">- This service will be subject to approval.
+- Make sure your new capital should be minimum AED 300,000 and MUST be numeric with no decimal value.</string>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="iYb-lH-ZkH" firstAttribute="top" secondItem="Abs-0r-Bk8" secondAttribute="top" constant="3" id="0Ow-pY-Ncv"/>
+                        <constraint firstAttribute="bottom" secondItem="jXn-0A-72U" secondAttribute="bottom" constant="11" id="8go-Gx-g7Z"/>
+                        <constraint firstAttribute="trailing" secondItem="jXn-0A-72U" secondAttribute="trailing" constant="8" id="DeE-oU-E9s"/>
+                        <constraint firstItem="jXn-0A-72U" firstAttribute="leading" secondItem="Abs-0r-Bk8" secondAttribute="leading" constant="8" id="SbO-QM-QZD"/>
+                        <constraint firstItem="jXn-0A-72U" firstAttribute="top" secondItem="iYb-lH-ZkH" secondAttribute="bottom" constant="8" id="lpX-Co-jjW"/>
+                        <constraint firstItem="iYb-lH-ZkH" firstAttribute="leading" secondItem="Abs-0r-Bk8" secondAttribute="leading" constant="8" id="urL-le-dbX"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Capital(AED)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVk-eT-78a">
+                    <rect key="frame" x="8" y="171" width="146" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="c8a-Af-vMZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Share Capital(AED)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCB-Iq-ZBx">
+                    <rect key="frame" x="8" y="266" width="185.5" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="6Nd-6K-UO1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gCZ-aF-AGc">
+                    <rect key="frame" x="8" y="202" width="304" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="mvy-tR-deT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="gfS-K6-ifR"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bpP-oL-Szy">
+                    <rect key="frame" x="8" y="292" width="304" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="QPP-22-zaa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="aQ0-Sc-adv"/>
+                    </connections>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHh-VF-MnZ">
+                    <rect key="frame" x="172" y="382" width="140" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="DlC-1d-jwz"/>
+                        <constraint firstAttribute="height" constant="40" id="Ubd-5e-Zev"/>
+                    </constraints>
+                    <state key="normal" title="Next" backgroundImage="Blue Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="nextButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="hff-es-yxy"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9c-Rh-lDd">
+                    <rect key="frame" x="8" y="382" width="140" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" placeholder="YES" id="2xo-nj-IQq"/>
+                        <constraint firstAttribute="width" constant="140" id="dxm-8x-Guu"/>
+                    </constraints>
+                    <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="rf4-M2-meV"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="z9c-Rh-lDd" firstAttribute="leading" secondItem="bpP-oL-Szy" secondAttribute="leading" id="4R5-17-ClK"/>
+                <constraint firstAttribute="trailing" secondItem="gCZ-aF-AGc" secondAttribute="trailing" constant="8" id="8BM-Vu-qRp"/>
+                <constraint firstItem="mCB-Iq-ZBx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="BXo-VM-0ke"/>
+                <constraint firstItem="bpP-oL-Szy" firstAttribute="top" secondItem="mCB-Iq-ZBx" secondAttribute="bottom" constant="5" id="FpG-EB-SgN"/>
+                <constraint firstItem="z9c-Rh-lDd" firstAttribute="height" secondItem="FHh-VF-MnZ" secondAttribute="height" constant="10" id="Izz-7Q-bKx"/>
+                <constraint firstItem="bpP-oL-Szy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="JXl-ZI-cgP"/>
+                <constraint firstItem="gCZ-aF-AGc" firstAttribute="top" secondItem="rVk-eT-78a" secondAttribute="bottom" constant="10" id="K7h-ln-DGO"/>
+                <constraint firstItem="Abs-0r-Bk8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rc4-9Y-1eJ"/>
+                <constraint firstItem="Abs-0r-Bk8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="39" id="VKs-Ju-FMl"/>
+                <constraint firstItem="bpP-oL-Szy" firstAttribute="trailing" secondItem="FHh-VF-MnZ" secondAttribute="trailing" id="ZEA-Y5-xie"/>
+                <constraint firstAttribute="trailing" secondItem="Abs-0r-Bk8" secondAttribute="trailing" id="bNN-6h-ZDV"/>
+                <constraint firstItem="z9c-Rh-lDd" firstAttribute="centerY" secondItem="FHh-VF-MnZ" secondAttribute="centerY" id="deY-HS-f31"/>
+                <constraint firstItem="z9c-Rh-lDd" firstAttribute="width" secondItem="FHh-VF-MnZ" secondAttribute="width" id="dsL-OK-mKZ"/>
+                <constraint firstItem="z9c-Rh-lDd" firstAttribute="height" secondItem="FHh-VF-MnZ" secondAttribute="height" id="f2w-xc-Pfn"/>
+                <constraint firstItem="rVk-eT-78a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="kRL-Jb-5qe"/>
+                <constraint firstItem="rVk-eT-78a" firstAttribute="top" secondItem="Abs-0r-Bk8" secondAttribute="bottom" constant="27" id="mCA-wy-soJ"/>
+                <constraint firstItem="gCZ-aF-AGc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="mgR-OE-rwO"/>
+                <constraint firstAttribute="trailing" secondItem="bpP-oL-Szy" secondAttribute="trailing" constant="8" id="t49-tV-3WU"/>
+                <constraint firstItem="mCB-Iq-ZBx" firstAttribute="top" secondItem="gCZ-aF-AGc" secondAttribute="bottom" constant="24" id="t6Q-6T-Pnv"/>
+                <constraint firstItem="z9c-Rh-lDd" firstAttribute="top" secondItem="bpP-oL-Szy" secondAttribute="bottom" constant="50" id="tId-hT-TQ0"/>
+                <constraint firstItem="rVk-eT-78a" firstAttribute="top" secondItem="Abs-0r-Bk8" secondAttribute="bottom" constant="27" id="xKU-Ny-VRo"/>
+                <constraint firstAttribute="centerX" secondItem="Abs-0r-Bk8" secondAttribute="centerX" id="z9n-6u-pKG"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Izz-7Q-bKx"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="oldShareCapital" destination="gCZ-aF-AGc" id="BD2-5F-ucA"/>
+                <outlet property="requestedShareCapital" destination="bpP-oL-Szy" id="GKv-qt-6KM"/>
+            </connections>
+            <point key="canvasLocation" x="250" y="171"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Black Button Background" width="5" height="5"/>
+        <image name="Blue Button Background" width="7" height="38"/>
+    </resources>
+</document>

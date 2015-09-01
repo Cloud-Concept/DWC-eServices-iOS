@@ -196,6 +196,26 @@
 		82BBB5A71793944400374DD8 /* libSalesforceOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BBB5A61793944400374DD8 /* libSalesforceOAuth.a */; };
 		82BBB5C01793946800374DD8 /* libSalesforceSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BBB5BF1793946800374DD8 /* libSalesforceSDKCore.a */; };
 		82F6F66A18E4D0280033CACD /* libSalesforceSecurity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F6F66918E4D0280033CACD /* libSalesforceSecurity.a */; };
+		9D4C4F7F1B92F05200AC5164 /* FourButtonsSteperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C4F7E1B92F05200AC5164 /* FourButtonsSteperViewController.m */; };
+		9D4C4F821B92F08700AC5164 /* ThreeButtonsSteperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C4F811B92F08700AC5164 /* ThreeButtonsSteperViewController.m */; };
+		9D4C4F881B92FA5C00AC5164 /* NameReservationData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C4F871B92FA5C00AC5164 /* NameReservationData.m */; };
+		9D4C4F8A1B92FA7800AC5164 /* NameReservationData.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4C4F891B92FA7800AC5164 /* NameReservationData.xib */; };
+		9D4C4F8E1B93352900AC5164 /* NameReservationPayAndSubmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C4F8D1B93352900AC5164 /* NameReservationPayAndSubmitView.m */; };
+		9D4C4F901B93354100AC5164 /* NameReservationPayandSubmitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4C4F8F1B93354100AC5164 /* NameReservationPayandSubmitView.xib */; };
+		9D4C4F931B9344A800AC5164 /* ThankYouPhase.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4C4F921B9344A800AC5164 /* ThankYouPhase.xib */; };
+		9D4C4F961B9344B800AC5164 /* ThankYouPhaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C4F951B9344B800AC5164 /* ThankYouPhaseView.m */; };
+		9D5E775B1B9450CB00D02326 /* DirectorRemovalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5E775A1B9450CB00D02326 /* DirectorRemovalView.xib */; };
+		9D5E775E1B9450E600D02326 /* DirectorRemovalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E775D1B9450E600D02326 /* DirectorRemovalView.m */; };
+		9D5E776E1B9459DB00D02326 /* CapitalChangeDocumentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5E776D1B9459DB00D02326 /* CapitalChangeDocumentView.xib */; };
+		9D5E77711B9459EB00D02326 /* CapitalChangeDocumentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E77701B9459EB00D02326 /* CapitalChangeDocumentView.m */; };
+		9D5E77751B9477EA00D02326 /* CapitalChangePayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E77741B9477EA00D02326 /* CapitalChangePayView.m */; };
+		9D5E77771B9477FE00D02326 /* CapitalChangePayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5E77761B9477FE00D02326 /* CapitalChangePayView.xib */; };
+		9D6CD09F1B95A3AE002259CA /* DummyFile.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9D6CD09E1B95A3AE002259CA /* DummyFile.rtf */; };
+		9D6CD0A21B95A3B8002259CA /* DummyFile.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9D6CD0A11B95A3B8002259CA /* DummyFile.rtf */; };
+		9DE577911B936C2B00D07756 /* CapitalChangeDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE577901B936C2B00D07756 /* CapitalChangeDetailsView.m */; };
+		9DE577931B936C4E00D07756 /* CapitalChangeDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE577921B936C4E00D07756 /* CapitalChangeDetailsView.xib */; };
+		9DE7CCC91B94A8A90013927E /* DirectorPayAndSubmitView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE7CCC81B94A8A90013927E /* DirectorPayAndSubmitView.xib */; };
+		9DE7CCCC1B94A8BC0013927E /* DirectorPayAndSubmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DE7CCCB1B94A8BC0013927E /* DirectorPayAndSubmitView.m */; };
 		FA54CEC81B85B18C00C9DE7B /* ThanksView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA54CEC71B85B18C00C9DE7B /* ThanksView.m */; };
 		FA54CECA1B85B1A100C9DE7B /* ThanksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA54CEC91B85B1A100C9DE7B /* ThanksView.xib */; };
 		FA54CECD1B85B1D800C9DE7B /* SubmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA54CECC1B85B1D800C9DE7B /* SubmitView.m */; };
@@ -659,6 +679,36 @@
 		82F6F66718E4D0280033CACD /* SFPasscodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPasscodeManager.h; sourceTree = "<group>"; };
 		82F6F66818E4D0280033CACD /* SFPasscodeProviderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPasscodeProviderManager.h; sourceTree = "<group>"; };
 		82F6F66918E4D0280033CACD /* libSalesforceSecurity.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSalesforceSecurity.a; sourceTree = "<group>"; };
+		9D4C4F7D1B92F05200AC5164 /* FourButtonsSteperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourButtonsSteperViewController.h; sourceTree = "<group>"; };
+		9D4C4F7E1B92F05200AC5164 /* FourButtonsSteperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourButtonsSteperViewController.m; sourceTree = "<group>"; };
+		9D4C4F801B92F08700AC5164 /* ThreeButtonsSteperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeButtonsSteperViewController.h; sourceTree = "<group>"; };
+		9D4C4F811B92F08700AC5164 /* ThreeButtonsSteperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeButtonsSteperViewController.m; sourceTree = "<group>"; };
+		9D4C4F861B92FA5C00AC5164 /* NameReservationData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameReservationData.h; sourceTree = "<group>"; };
+		9D4C4F871B92FA5C00AC5164 /* NameReservationData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameReservationData.m; sourceTree = "<group>"; };
+		9D4C4F891B92FA7800AC5164 /* NameReservationData.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameReservationData.xib; sourceTree = "<group>"; };
+		9D4C4F8C1B93352900AC5164 /* NameReservationPayAndSubmitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameReservationPayAndSubmitView.h; sourceTree = "<group>"; };
+		9D4C4F8D1B93352900AC5164 /* NameReservationPayAndSubmitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameReservationPayAndSubmitView.m; sourceTree = "<group>"; };
+		9D4C4F8F1B93354100AC5164 /* NameReservationPayandSubmitView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameReservationPayandSubmitView.xib; sourceTree = "<group>"; };
+		9D4C4F921B9344A800AC5164 /* ThankYouPhase.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThankYouPhase.xib; sourceTree = "<group>"; };
+		9D4C4F941B9344B800AC5164 /* ThankYouPhaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThankYouPhaseView.h; sourceTree = "<group>"; };
+		9D4C4F951B9344B800AC5164 /* ThankYouPhaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThankYouPhaseView.m; sourceTree = "<group>"; };
+		9D5E775A1B9450CB00D02326 /* DirectorRemovalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectorRemovalView.xib; sourceTree = "<group>"; };
+		9D5E775C1B9450E600D02326 /* DirectorRemovalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectorRemovalView.h; sourceTree = "<group>"; };
+		9D5E775D1B9450E600D02326 /* DirectorRemovalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectorRemovalView.m; sourceTree = "<group>"; };
+		9D5E776D1B9459DB00D02326 /* CapitalChangeDocumentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CapitalChangeDocumentView.xib; sourceTree = "<group>"; };
+		9D5E776F1B9459EB00D02326 /* CapitalChangeDocumentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapitalChangeDocumentView.h; sourceTree = "<group>"; };
+		9D5E77701B9459EB00D02326 /* CapitalChangeDocumentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapitalChangeDocumentView.m; sourceTree = "<group>"; };
+		9D5E77731B9477EA00D02326 /* CapitalChangePayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapitalChangePayView.h; sourceTree = "<group>"; };
+		9D5E77741B9477EA00D02326 /* CapitalChangePayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapitalChangePayView.m; sourceTree = "<group>"; };
+		9D5E77761B9477FE00D02326 /* CapitalChangePayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CapitalChangePayView.xib; sourceTree = "<group>"; };
+		9D6CD09E1B95A3AE002259CA /* DummyFile.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = DummyFile.rtf; sourceTree = "<group>"; };
+		9D6CD0A11B95A3B8002259CA /* DummyFile.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = DummyFile.rtf; sourceTree = "<group>"; };
+		9DE5778F1B936C2B00D07756 /* CapitalChangeDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapitalChangeDetailsView.h; sourceTree = "<group>"; };
+		9DE577901B936C2B00D07756 /* CapitalChangeDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapitalChangeDetailsView.m; sourceTree = "<group>"; };
+		9DE577921B936C4E00D07756 /* CapitalChangeDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CapitalChangeDetailsView.xib; sourceTree = "<group>"; };
+		9DE7CCC81B94A8A90013927E /* DirectorPayAndSubmitView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectorPayAndSubmitView.xib; sourceTree = "<group>"; };
+		9DE7CCCA1B94A8BC0013927E /* DirectorPayAndSubmitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectorPayAndSubmitView.h; sourceTree = "<group>"; };
+		9DE7CCCB1B94A8BC0013927E /* DirectorPayAndSubmitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectorPayAndSubmitView.m; sourceTree = "<group>"; };
 		FA54CEC61B85B18C00C9DE7B /* ThanksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThanksView.h; sourceTree = "<group>"; };
 		FA54CEC71B85B18C00C9DE7B /* ThanksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThanksView.m; sourceTree = "<group>"; };
 		FA54CEC91B85B1A100C9DE7B /* ThanksView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThanksView.xib; sourceTree = "<group>"; };
@@ -807,6 +857,11 @@
 		1307BAC81A6F83A4004E6325 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9D4C4F831B92F9F900AC5164 /* CapitalChangeViews */,
+				9D4C4F841B92F9F900AC5164 /* DirectorRemovalViews */,
+				9D4C4F851B92F9F900AC5164 /* NameReservationViews */,
+				9D4C4F7B1B92F01200AC5164 /* 3 Steps Screens */,
+				9D4C4F7C1B92F01200AC5164 /* 4 Steps Screens */,
 				FA6DC0FA1B8C816F0044C099 /* CancelLeasingViewController */,
 				FA9016B11B89D3A600837555 /* LicenseCancelViewController */,
 				FACC43DD1B82054F00C3BD75 /* RenewPassportViewController */,
@@ -2127,6 +2182,127 @@
 			path = SalesforceSecurity;
 			sourceTree = "<group>";
 		};
+		9D4C4F7B1B92F01200AC5164 /* 3 Steps Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9D4C4F801B92F08700AC5164 /* ThreeButtonsSteperViewController.h */,
+				9D4C4F811B92F08700AC5164 /* ThreeButtonsSteperViewController.m */,
+			);
+			path = "3 Steps Screens";
+			sourceTree = "<group>";
+		};
+		9D4C4F7C1B92F01200AC5164 /* 4 Steps Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9D4C4F7D1B92F05200AC5164 /* FourButtonsSteperViewController.h */,
+				9D4C4F7E1B92F05200AC5164 /* FourButtonsSteperViewController.m */,
+			);
+			path = "4 Steps Screens";
+			sourceTree = "<group>";
+		};
+		9D4C4F831B92F9F900AC5164 /* CapitalChangeViews */ = {
+			isa = PBXGroup;
+			children = (
+				9D6CD09D1B95A3AE002259CA /* DirectorRemovalDocuments */,
+				9D5E77721B9477D400D02326 /* CapitalChangePayAndSubmit */,
+				9D5E776C1B9459C700D02326 /* CapitalChangeDocuments */,
+				9DE5778F1B936C2B00D07756 /* CapitalChangeDetailsView.h */,
+				9DE577901B936C2B00D07756 /* CapitalChangeDetailsView.m */,
+				9DE577921B936C4E00D07756 /* CapitalChangeDetailsView.xib */,
+			);
+			path = CapitalChangeViews;
+			sourceTree = "<group>";
+		};
+		9D4C4F841B92F9F900AC5164 /* DirectorRemovalViews */ = {
+			isa = PBXGroup;
+			children = (
+				9D6CD0A01B95A3B8002259CA /* DirectorRemovalDocuments */,
+				9DE7CCC71B94A3B40013927E /* DirectorPayAndSubmit */,
+				9D5E775A1B9450CB00D02326 /* DirectorRemovalView.xib */,
+				9D5E775C1B9450E600D02326 /* DirectorRemovalView.h */,
+				9D5E775D1B9450E600D02326 /* DirectorRemovalView.m */,
+			);
+			path = DirectorRemovalViews;
+			sourceTree = "<group>";
+		};
+		9D4C4F851B92F9F900AC5164 /* NameReservationViews */ = {
+			isa = PBXGroup;
+			children = (
+				9D4C4F911B93449500AC5164 /* ThankyouPage */,
+				9D4C4F8B1B9334E300AC5164 /* PayandSubmitView */,
+				9D4C4F861B92FA5C00AC5164 /* NameReservationData.h */,
+				9D4C4F871B92FA5C00AC5164 /* NameReservationData.m */,
+				9D4C4F891B92FA7800AC5164 /* NameReservationData.xib */,
+			);
+			path = NameReservationViews;
+			sourceTree = "<group>";
+		};
+		9D4C4F8B1B9334E300AC5164 /* PayandSubmitView */ = {
+			isa = PBXGroup;
+			children = (
+				9D4C4F8C1B93352900AC5164 /* NameReservationPayAndSubmitView.h */,
+				9D4C4F8D1B93352900AC5164 /* NameReservationPayAndSubmitView.m */,
+				9D4C4F8F1B93354100AC5164 /* NameReservationPayandSubmitView.xib */,
+			);
+			path = PayandSubmitView;
+			sourceTree = "<group>";
+		};
+		9D4C4F911B93449500AC5164 /* ThankyouPage */ = {
+			isa = PBXGroup;
+			children = (
+				9D4C4F921B9344A800AC5164 /* ThankYouPhase.xib */,
+				9D4C4F941B9344B800AC5164 /* ThankYouPhaseView.h */,
+				9D4C4F951B9344B800AC5164 /* ThankYouPhaseView.m */,
+			);
+			path = ThankyouPage;
+			sourceTree = "<group>";
+		};
+		9D5E776C1B9459C700D02326 /* CapitalChangeDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				9D5E776D1B9459DB00D02326 /* CapitalChangeDocumentView.xib */,
+				9D5E776F1B9459EB00D02326 /* CapitalChangeDocumentView.h */,
+				9D5E77701B9459EB00D02326 /* CapitalChangeDocumentView.m */,
+			);
+			path = CapitalChangeDocuments;
+			sourceTree = "<group>";
+		};
+		9D5E77721B9477D400D02326 /* CapitalChangePayAndSubmit */ = {
+			isa = PBXGroup;
+			children = (
+				9D5E77731B9477EA00D02326 /* CapitalChangePayView.h */,
+				9D5E77741B9477EA00D02326 /* CapitalChangePayView.m */,
+				9D5E77761B9477FE00D02326 /* CapitalChangePayView.xib */,
+			);
+			path = CapitalChangePayAndSubmit;
+			sourceTree = "<group>";
+		};
+		9D6CD09D1B95A3AE002259CA /* DirectorRemovalDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				9D6CD09E1B95A3AE002259CA /* DummyFile.rtf */,
+			);
+			path = DirectorRemovalDocuments;
+			sourceTree = "<group>";
+		};
+		9D6CD0A01B95A3B8002259CA /* DirectorRemovalDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				9D6CD0A11B95A3B8002259CA /* DummyFile.rtf */,
+			);
+			path = DirectorRemovalDocuments;
+			sourceTree = "<group>";
+		};
+		9DE7CCC71B94A3B40013927E /* DirectorPayAndSubmit */ = {
+			isa = PBXGroup;
+			children = (
+				9DE7CCC81B94A8A90013927E /* DirectorPayAndSubmitView.xib */,
+				9DE7CCCA1B94A8BC0013927E /* DirectorPayAndSubmitView.h */,
+				9DE7CCCB1B94A8BC0013927E /* DirectorPayAndSubmitView.m */,
+			);
+			path = DirectorPayAndSubmit;
+			sourceTree = "<group>";
+		};
 		FA54CEC41B85B14E00C9DE7B /* SubmitView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2366,26 +2542,36 @@
 				13A0628C1B1306D800108167 /* NoInternetPopoverViewController.xib in Resources */,
 				1324D89B1A89E9AB003AA356 /* PickerTableViewController.xib in Resources */,
 				131ECF3F1AC2D2F700EDA9EB /* MainStoryboard.storyboard in Resources */,
+				9D5E775B1B9450CB00D02326 /* DirectorRemovalView.xib in Resources */,
 				131819441A91D65900CAA4D6 /* InfoPlist.strings in Resources */,
+				9D6CD09F1B95A3AE002259CA /* DummyFile.rtf in Resources */,
 				130E096D1AA5C42800E6ED59 /* MyRequestTableViewCell.xib in Resources */,
+				9DE577931B936C4E00D07756 /* CapitalChangeDetailsView.xib in Resources */,
 				13BCE7691AC9585600AF28C6 /* LicenseRenewViewController.xib in Resources */,
 				133E34DA1AC02CF6002C3748 /* VisualforceWebviewViewController.xib in Resources */,
+				9D4C4F901B93354100AC5164 /* NameReservationPayandSubmitView.xib in Resources */,
 				FACA05131B846BB9007CBDC5 /* UploadDocumentsView.xib in Resources */,
 				1307BAD31A6F83A4004E6325 /* InitialViewController.xib in Resources */,
+				9D5E776E1B9459DB00D02326 /* CapitalChangeDocumentView.xib in Resources */,
+				9D4C4F931B9344A800AC5164 /* ThankYouPhase.xib in Resources */,
 				1328E7D91A95C7DF00475E90 /* NewNOCViewController.xib in Resources */,
+				9DE7CCC91B94A8A90013927E /* DirectorPayAndSubmitView.xib in Resources */,
 				134B8A1B1AD697F4005CCAD5 /* ServicesThankYouViewController.xib in Resources */,
 				130523DE1A99C05500EF2268 /* ServicesUploadViewController.xib in Resources */,
 				1328E7DB1A96042600475E90 /* ServicesDynamicFormViewController.xib in Resources */,
 				FA54CECF1B85B1E800C9DE7B /* SubmitView.xib in Resources */,
 				1307BAE31A6F938B004E6325 /* Californian-Bold.ttf in Resources */,
+				9D5E77771B9477FE00D02326 /* CapitalChangePayView.xib in Resources */,
 				FAB84A921B833C22001CB3AE /* IQKeyboardManager.bundle in Resources */,
 				133469B61AECFB400029F9B5 /* SwipePageViewController.xib in Resources */,
+				9D6CD0A21B95A3B8002259CA /* DummyFile.rtf in Resources */,
 				824A9FDF1725079100C9BD79 /* openssl_license.txt in Resources */,
 				1307BAE41A6F938B004E6325 /* Corisande-Bold.ttf in Resources */,
 				130523E81A99F96800EF2268 /* ServicesReviewViewController.xib in Resources */,
 				133A937C1B26CB8B00F7902E /* AnimatedSplashViewController.xib in Resources */,
 				13081B051A7655BD00B33509 /* DatePickerViewController.xib in Resources */,
 				138516531AFF4EF500ACF4B3 /* CompanyAmendmentViewController.xib in Resources */,
+				9D4C4F8A1B92FA7800AC5164 /* NameReservationData.xib in Resources */,
 				824A9FE61725079100C9BD79 /* LICENSE in Resources */,
 				1300DA431B3934A3005A9BE7 /* RenewVisaViewController.xib in Resources */,
 			);
@@ -2436,6 +2622,7 @@
 				132D38B21AE8D7A300D61A3E /* ViewStatementTableViewCell.m in Sources */,
 				13CFE7381ABEF1D6009E47EC /* DWCCompanyDocument.m in Sources */,
 				1354F5591AF78365004A6CBA /* UIImageView+Additions.m in Sources */,
+				9D4C4F881B92FA5C00AC5164 /* NameReservationData.m in Sources */,
 				130CFAB11AC1E620006D7CA0 /* Invoice.m in Sources */,
 				133E34D41ABFFFCC002C3748 /* DWCDocumentTableViewCell.m in Sources */,
 				FAFB8B0F1B8B3AAE0060D493 /* LicenseCancellationThanksView.m in Sources */,
@@ -2443,6 +2630,7 @@
 				134053B91AEE50A3007A4773 /* NSString+MD5.m in Sources */,
 				1394EA141A88B6E700ECED05 /* NewNOCViewController.m in Sources */,
 				FA9016B41B89D93C00837555 /* LicenseCancelationViewController.m in Sources */,
+				9D4C4F961B9344B800AC5164 /* ThankYouPhaseView.m in Sources */,
 				FAB84A8F1B833C22001CB3AE /* IQTitleBarButtonItem.m in Sources */,
 				131CA87E1A80F91500A79B12 /* RecordDetailTableViewCell.m in Sources */,
 				13411AFB1A931E8E009AC2F5 /* ServiceDocumentHelperClass.m in Sources */,
@@ -2466,10 +2654,12 @@
 				FAB84A911B833C22001CB3AE /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				13073B8E1AC3E63800F25EC6 /* ContractRenewalEditViewController.m in Sources */,
 				130523E61A99C56D00EF2268 /* UIViewController+ChildViewController.m in Sources */,
+				9D5E77711B9459EB00D02326 /* CapitalChangeDocumentView.m in Sources */,
 				13081AFC1A76559D00B33509 /* FormField.m in Sources */,
 				13555E3E1B3FDA000077CB50 /* ObjectSettings.m in Sources */,
 				133A93801B26CFAA00F7902E /* UIImageView+AnimationCompletion.m in Sources */,
 				FAB84A8B1B833C22001CB3AE /* IQKeyboardReturnKeyHandler.m in Sources */,
+				9D4C4F8E1B93352900AC5164 /* NameReservationPayAndSubmitView.m in Sources */,
 				FAB84A901B833C22001CB3AE /* IQToolbar.m in Sources */,
 				13A062901B1306FD00108167 /* CustomIOS7AlertView.m in Sources */,
 				13073B971AC4169F00F25EC6 /* InventoryUnit.m in Sources */,
@@ -2508,6 +2698,7 @@
 				FACA05111B846B9F007CBDC5 /* UploadDocumentsView.m in Sources */,
 				131048C21A9EFDB0006A400B /* NewCardViewController.m in Sources */,
 				1353CBD91AAD92B700E57FAC /* Directorship.m in Sources */,
+				9D4C4F821B92F08700AC5164 /* ThreeButtonsSteperViewController.m in Sources */,
 				130F7DD21AAEE76300380628 /* License.m in Sources */,
 				1300DA491B395847005A9BE7 /* Qualification.m in Sources */,
 				133E34CC1ABFFA4F002C3748 /* CompanyDocumentTypeListViewController.m in Sources */,
@@ -2516,11 +2707,14 @@
 				132D38B61AE9262000D61A3E /* NSDate+CreateSpecificDate.m in Sources */,
 				133E34D91AC02CF6002C3748 /* VisualforceWebviewViewController.m in Sources */,
 				13A062861B12FBB300108167 /* NetworkReachability.m in Sources */,
+				9DE577911B936C2B00D07756 /* CapitalChangeDetailsView.m in Sources */,
 				13081AFD1A76559D00B33509 /* RecordType.m in Sources */,
 				13081AF91A76559D00B33509 /* Country.m in Sources */,
 				139E6B6E1A7A6F2600D1D451 /* UIView+MGBadgeView.m in Sources */,
 				FAB84A891B833C22001CB3AE /* IQUIWindow+Hierarchy.m in Sources */,
 				132F0D081A948FCC003FFC24 /* ServicesReviewViewController.m in Sources */,
+				9DE7CCCC1B94A8BC0013927E /* DirectorPayAndSubmitView.m in Sources */,
+				9D5E77751B9477EA00D02326 /* CapitalChangePayView.m in Sources */,
 				1307BAEC1A6FDAC3004E6325 /* HelperClass.m in Sources */,
 				FAB84A881B833C22001CB3AE /* IQUIViewController+Additions.m in Sources */,
 				FAB84A5B1B831AFD001CB3AE /* RenewPassportSteperViewController.m in Sources */,
@@ -2529,12 +2723,14 @@
 				824A9E331724E2A900C9BD79 /* AppDelegate.m in Sources */,
 				130C300D1A78E7BF00C95600 /* DWCEmployee.m in Sources */,
 				1334F4A01ADE790000297ACE /* DragTableHeaderView_ot.m in Sources */,
+				9D4C4F7F1B92F05200AC5164 /* FourButtonsSteperViewController.m in Sources */,
 				13CFE7351ABEEF05009E47EC /* CompanyDocumentTypeViewController.m in Sources */,
 				131819401A91CAB200CAA4D6 /* BaseServicesViewController.m in Sources */,
 				139E6B5E1A7A3CED00D1D451 /* Occupation.m in Sources */,
 				13EE67941A7E50A500255174 /* RKSwipeBetweenViewControllers.m in Sources */,
 				1334F49E1ADE790000297ACE /* DragTableFooterView_ot.m in Sources */,
 				13BCE7681AC9585600AF28C6 /* LicenseRenewViewController.m in Sources */,
+				9D5E775E1B9450E600D02326 /* DirectorRemovalView.m in Sources */,
 				13081B041A7655BD00B33509 /* DatePickerViewController.m in Sources */,
 				1354F5521AF74651004A6CBA /* CustomerDocumentExpandedTableViewCell.m in Sources */,
 				13E006EA1AEFC669005EE312 /* CompanyInfoListShareholderTableViewCell.m in Sources */,

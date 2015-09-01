@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DirectorPayAndSubmitView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="440"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAo-Pg-FfX">
+                    <rect key="frame" x="8" y="307.5" width="140" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="7b1-Uf-fzf"/>
+                        <constraint firstAttribute="width" constant="140" id="PQh-f5-K1L"/>
+                    </constraints>
+                    <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="Fwy-bS-7BS"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Amount:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9I-3i-Eoz">
+                    <rect key="frame" x="71" y="150" width="98" height="17.5"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Director Name:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLW-le-7JH">
+                    <rect key="frame" x="71" y="113" width="100" height="17.5"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4BG-z7-TwE">
+                    <rect key="frame" x="179" y="115" width="52" height="16"/>
+                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZr-Ee-khb">
+                    <rect key="frame" x="177" y="151" width="52" height="16"/>
+                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjF-Y7-0fB">
+                    <rect key="frame" x="172" y="307" width="140" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="FTB-Cp-EPR"/>
+                        <constraint firstAttribute="height" constant="40" id="PUR-2z-bAS"/>
+                    </constraints>
+                    <state key="normal" title="Pay/Submit" backgroundImage="Blue Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="Submit:" destination="iN0-l3-epB" eventType="touchUpInside" id="vDU-sl-WlT"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="BAo-Pg-FfX" firstAttribute="top" secondItem="u9I-3i-Eoz" secondAttribute="bottom" constant="140" id="1h1-w6-Qzs"/>
+                <constraint firstItem="4BG-z7-TwE" firstAttribute="leading" secondItem="mLW-le-7JH" secondAttribute="trailing" constant="8" id="5UK-eC-xzZ"/>
+                <constraint firstItem="u9I-3i-Eoz" firstAttribute="trailing" secondItem="mLW-le-7JH" secondAttribute="trailing" constant="-7" id="BKC-dF-F2t"/>
+                <constraint firstItem="u9I-3i-Eoz" firstAttribute="top" secondItem="mLW-le-7JH" secondAttribute="bottom" constant="20" id="CcR-C5-S5W"/>
+                <constraint firstItem="u9I-3i-Eoz" firstAttribute="top" secondItem="mLW-le-7JH" secondAttribute="bottom" constant="20" id="Dts-Bc-oUQ"/>
+                <constraint firstItem="sZr-Ee-khb" firstAttribute="centerY" secondItem="u9I-3i-Eoz" secondAttribute="centerY" constant="0.75" id="FfS-nh-8Hh"/>
+                <constraint firstItem="BAo-Pg-FfX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="G7O-su-R2c"/>
+                <constraint firstItem="sZr-Ee-khb" firstAttribute="leading" secondItem="4BG-z7-TwE" secondAttribute="leading" constant="-2" id="I4a-Kh-U8k"/>
+                <constraint firstItem="sZr-Ee-khb" firstAttribute="leading" secondItem="u9I-3i-Eoz" secondAttribute="trailing" constant="8" id="Jek-qe-tbA"/>
+                <constraint firstItem="sZr-Ee-khb" firstAttribute="leading" secondItem="4BG-z7-TwE" secondAttribute="leading" constant="-2" id="JlP-IV-KEq"/>
+                <constraint firstItem="mLW-le-7JH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="71" id="JmL-xV-lfn"/>
+                <constraint firstItem="mLW-le-7JH" firstAttribute="centerY" secondItem="4BG-z7-TwE" secondAttribute="centerY" constant="-1.25" id="Ni4-Ad-5j4"/>
+                <constraint firstItem="u9I-3i-Eoz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="71" id="TNx-3a-pfF"/>
+                <constraint firstItem="4BG-z7-TwE" firstAttribute="leading" secondItem="mLW-le-7JH" secondAttribute="trailing" constant="8" id="b7c-E3-Nq5"/>
+                <constraint firstItem="TjF-Y7-0fB" firstAttribute="centerY" secondItem="BAo-Pg-FfX" secondAttribute="centerY" constant="-0.5" id="bY4-M3-s52"/>
+                <constraint firstItem="u9I-3i-Eoz" firstAttribute="trailing" secondItem="mLW-le-7JH" secondAttribute="trailing" constant="-2" id="iE6-b7-WYQ"/>
+                <constraint firstAttribute="trailing" secondItem="TjF-Y7-0fB" secondAttribute="trailing" constant="8" id="v2k-V4-Qg0"/>
+                <constraint firstItem="mLW-le-7JH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="113" id="z5u-wm-eTz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="BKC-dF-F2t"/>
+                    <exclude reference="5UK-eC-xzZ"/>
+                    <exclude reference="I4a-Kh-U8k"/>
+                    <exclude reference="Jek-qe-tbA"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="amountLabel" destination="sZr-Ee-khb" id="6H0-IK-TdZ"/>
+                <outlet property="directorLabel" destination="4BG-z7-TwE" id="YHm-QZ-MeV"/>
+            </connections>
+            <point key="canvasLocation" x="362" y="140"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Black Button Background" width="5" height="5"/>
+        <image name="Blue Button Background" width="7" height="38"/>
+    </resources>
+</document>

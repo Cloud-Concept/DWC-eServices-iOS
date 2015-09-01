@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CapitalChangeDocumentView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSO-hr-sjP">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="391"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="suC-Xc-KSC">
+                            <rect key="frame" x="172" y="332" width="140" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="39" id="NB9-cL-262"/>
+                                <constraint firstAttribute="width" constant="140" id="kDb-fy-s5g"/>
+                            </constraints>
+                            <state key="normal" title="Next" backgroundImage="Blue Button Background">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="nextButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="AEk-zf-o1V"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVx-a1-XoD">
+                            <rect key="frame" x="8" y="332" width="140" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="140" id="UY1-Ki-ojW"/>
+                                <constraint firstAttribute="height" constant="39" id="Ufm-cU-rrD"/>
+                            </constraints>
+                            <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="d6e-03-xzv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="mVx-a1-XoD" firstAttribute="leading" secondItem="qSO-hr-sjP" secondAttribute="leading" constant="8" id="Kpy-WG-OYx"/>
+                        <constraint firstItem="mVx-a1-XoD" firstAttribute="top" secondItem="qSO-hr-sjP" secondAttribute="top" constant="332" id="Xyq-9j-iff"/>
+                        <constraint firstItem="mVx-a1-XoD" firstAttribute="centerY" secondItem="suC-Xc-KSC" secondAttribute="centerY" id="lkJ-lY-Noz"/>
+                        <constraint firstAttribute="trailing" secondItem="suC-Xc-KSC" secondAttribute="trailing" constant="8" id="uUT-2H-qgf"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="qSO-hr-sjP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MDy-j2-10u"/>
+                <constraint firstAttribute="trailing" secondItem="qSO-hr-sjP" secondAttribute="trailing" id="Val-25-2Ga"/>
+                <constraint firstItem="qSO-hr-sjP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YJL-P4-V75"/>
+                <constraint firstAttribute="bottom" secondItem="qSO-hr-sjP" secondAttribute="bottom" constant="59" id="wFJ-ve-jeX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="dynamicView" destination="qSO-hr-sjP" id="cnT-xn-pUf"/>
+            </connections>
+            <point key="canvasLocation" x="162" y="-5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Black Button Background" width="5" height="5"/>
+        <image name="Blue Button Background" width="7" height="38"/>
+    </resources>
+</document>

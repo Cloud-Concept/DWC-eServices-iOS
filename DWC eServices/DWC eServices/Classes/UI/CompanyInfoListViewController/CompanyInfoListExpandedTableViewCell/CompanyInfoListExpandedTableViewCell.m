@@ -9,6 +9,9 @@
 #import "CompanyInfoListExpandedTableViewCell.h"
 #import "RelatedServicesBarScrollView.h"
 #import "RelatedService.h"
+#import "Directorship.h"
+#import "Account.h"
+#import "Globals.h"
 
 @implementation CompanyInfoListExpandedTableViewCell
 
@@ -64,6 +67,11 @@
     
     servicesMask = 0;
     servicesMask |= RelatedServiceTypeOpenDetials;
+    NSLog(@"%@",[Globals currentAccount].legalForm);
+    if ([director.roles containsString:@"Director"] && [[Globals currentAccount].legalForm isEqual:@"DWC-LLC"]) {
+        servicesMask |= RelatedServiceTypeDirectorRemoval;
+    }
+
     
     [self renderServicesButtons];
 }

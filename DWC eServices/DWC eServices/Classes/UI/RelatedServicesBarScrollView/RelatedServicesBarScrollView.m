@@ -44,6 +44,8 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "LicenseCancelationViewController.h"
 #import "CancelLeasingViewController.h"
+#import "ThreeButtonsSteperViewController.h"
+#import "FourButtonsSteperViewController.h"
 
 @implementation RelatedServicesBarScrollView
 
@@ -165,6 +167,28 @@
                                                                                 Label:@"Cancel Contract"
                                                                                  Icon:@"Related Service Company Director Change Icon"
                                                                                  Mask:RelatedServiceTypeContractCancelation]];
+    
+    
+    
+    // added by George (Name Reservation, Director Removal, Capital Change)
+    
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Name_Reservation"
+                                                                                Label:@"Reserve Name"
+                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Mask:RelatedServiceTypeNameReservation]];
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Director_Removal"
+                                                                                Label:@"Remove Director"
+                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Mask:RelatedServiceTypeDirectorRemoval]];
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Capital_Change"
+                                                                                Label:@"Change Capital"
+                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Mask:RelatedServiceTypeCapitalChange]];
+
+    
     
     relatedServicesArray = relatedServicesMutableArray;
 }
@@ -351,15 +375,64 @@
         case RelatedServiceTypeContractCancelation:
             [self relatedServiceTypeContractCancelationButtonClicked];
             break;
+            //added by George
+        case RelatedServiceTypeNameReservation:
+            [self relatedServiceTypeNameReservationButtonClicked];
+            break;
+        case RelatedServiceTypeDirectorRemoval:
+            [self relatedServiceTypeDirectorRemovalButtonClicked];
+            break;
+        case RelatedServiceTypeCapitalChange:
+            [self relatedServiceTypeCapitalChangeButtonClicked];
+            break;
+            
         default:
             break;
     }
+}
+// added By george Name Reservation
+- (void)relatedServiceTypeNameReservationButtonClicked {
+    [self openNameReservation:RelatedServiceTypeNameReservation];
+}
+// added By george Director Removal
+- (void)relatedServiceTypeDirectorRemovalButtonClicked {
+    [self openDirectorRemoval:RelatedServiceTypeDirectorRemoval];
+}
+// added By george Capital Change
+- (void)relatedServiceTypeCapitalChangeButtonClicked {
+    [self openCapitalChange:RelatedServiceTypeCapitalChange];
+}
+
+-(void)openNameReservation:(RelatedServiceType)serviceType{
+    // 3 Steps only (Details,Submit,Thanks you)
+    
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    ThreeButtonsSteperViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"ThreeButtonsSteperViewController"];
+    baseServicesVC.relatedServiceType = serviceType;
+
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+}
+-(void)openDirectorRemoval:(RelatedServiceType)serviceType{
+    // 4 steps only (Details, upload document, pay & submit, Thank you)
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    FourButtonsSteperViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"FourButtonsSteperViewController"];
+    baseServicesVC.relatedServiceType = serviceType;
+    baseServicesVC.directorObject = self.directorObject;
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+    
+}
+-(void)openCapitalChange:(RelatedServiceType)serviceType{
+    // 4 steps only (Details, upload document, pay & submit, Thank you)
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    FourButtonsSteperViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"FourButtonsSteperViewController"];
+    baseServicesVC.relatedServiceType = serviceType;
+    
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
 }
 
 - (void)openNewNOCFlow:(RelatedServiceType)serviceType {
     if (!parentViewController)
         return;
-    
     UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     BaseServicesViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"BaseServicesViewController"];
     baseServicesVC.relatedServiceType = serviceType;

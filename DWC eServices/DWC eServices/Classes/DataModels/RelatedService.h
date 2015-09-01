@@ -35,7 +35,12 @@ typedef enum {
     // added by george cancel License
     RelatedServiceTypeLicenseCancelation = 1048576,
     // added by george cancel Contract
-    RelatedServiceTypeContractCancelation = 2097152
+    RelatedServiceTypeContractCancelation = 2097152,
+    
+    // added by George (Name Reservation, Director Removal, Capital Change)
+    RelatedServiceTypeNameReservation = 4194304,
+    RelatedServiceTypeDirectorRemoval = 8388608,
+    RelatedServiceTypeCapitalChange = 16777216,
     
 }RelatedServiceType;
 

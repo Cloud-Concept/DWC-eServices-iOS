@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NameReservationPayAndSubmitView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFZ-r5-rb1">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PS3-3d-1US">
+                            <rect key="frame" x="8" y="325.5" width="140" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="WLp-w0-gY6"/>
+                                <constraint firstAttribute="width" constant="140" id="z5O-1g-fx1"/>
+                            </constraints>
+                            <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="es7-88-26d"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 2:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSH-oY-APN">
+                            <rect key="frame" x="84" y="135" width="60.5" height="17.5"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 1:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJ2-WP-gbN">
+                            <rect key="frame" x="84" y="100" width="60.5" height="17.5"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 3:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZK-02-rAv">
+                            <rect key="frame" x="84" y="168" width="60.5" height="17.5"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otl-bY-sfT">
+                            <rect key="frame" x="161" y="100" width="52" height="16"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtE-x4-gLv">
+                            <rect key="frame" x="161" y="137" width="52" height="16"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choice 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZb-hL-jbb">
+                            <rect key="frame" x="161" y="170" width="52" height="16"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3H-Cg-nTY">
+                            <rect key="frame" x="172" y="325" width="140" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="qyq-ZK-cKP"/>
+                                <constraint firstAttribute="width" constant="140" id="w8I-gG-6bi"/>
+                            </constraints>
+                            <state key="normal" title="Submit" backgroundImage="Blue Button Background">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="Submit:" destination="iN0-l3-epB" eventType="touchUpInside" id="XXi-Rn-guW"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="tJ2-WP-gbN" firstAttribute="leading" secondItem="DFZ-r5-rb1" secondAttribute="leading" constant="84" id="8kX-9a-bkN"/>
+                        <constraint firstItem="fSH-oY-APN" firstAttribute="leading" secondItem="DFZ-r5-rb1" secondAttribute="leading" constant="84" id="9ch-6d-cDs"/>
+                        <constraint firstItem="PS3-3d-1US" firstAttribute="leading" secondItem="DFZ-r5-rb1" secondAttribute="leading" constant="8" id="H9a-Fc-aPc"/>
+                        <constraint firstItem="otl-bY-sfT" firstAttribute="centerY" secondItem="tJ2-WP-gbN" secondAttribute="centerY" constant="-0.25" id="He7-aw-FIe"/>
+                        <constraint firstItem="BtE-x4-gLv" firstAttribute="leading" secondItem="fSH-oY-APN" secondAttribute="trailing" constant="16.5" id="HhF-1i-cEZ"/>
+                        <constraint firstAttribute="height" constant="450" id="I98-Lj-anr"/>
+                        <constraint firstItem="fSH-oY-APN" firstAttribute="centerY" secondItem="BtE-x4-gLv" secondAttribute="centerY" constant="-1.25" id="KWI-Pr-aok"/>
+                        <constraint firstItem="PS3-3d-1US" firstAttribute="centerY" secondItem="J3H-Cg-nTY" secondAttribute="centerY" constant="0.5" id="NTR-oM-peD"/>
+                        <constraint firstItem="PS3-3d-1US" firstAttribute="width" secondItem="J3H-Cg-nTY" secondAttribute="width" id="PhL-A4-3Hg"/>
+                        <constraint firstItem="PS3-3d-1US" firstAttribute="top" secondItem="BZK-02-rAv" secondAttribute="bottom" constant="140" id="Qro-SX-NUi"/>
+                        <constraint firstAttribute="width" constant="320" id="TzZ-f4-qCp"/>
+                        <constraint firstItem="PS3-3d-1US" firstAttribute="height" secondItem="J3H-Cg-nTY" secondAttribute="height" id="aCT-Aw-b5s"/>
+                        <constraint firstItem="BZK-02-rAv" firstAttribute="top" secondItem="fSH-oY-APN" secondAttribute="bottom" constant="15.5" id="bb5-oc-sbF"/>
+                        <constraint firstItem="tJ2-WP-gbN" firstAttribute="top" secondItem="DFZ-r5-rb1" secondAttribute="top" constant="100" id="f5r-Ws-IPL"/>
+                        <constraint firstItem="otl-bY-sfT" firstAttribute="leading" secondItem="tJ2-WP-gbN" secondAttribute="trailing" constant="16.5" id="gwX-DE-i86"/>
+                        <constraint firstItem="NZb-hL-jbb" firstAttribute="leading" secondItem="BZK-02-rAv" secondAttribute="trailing" constant="16.5" id="o3u-Ok-01p"/>
+                        <constraint firstItem="fSH-oY-APN" firstAttribute="top" secondItem="tJ2-WP-gbN" secondAttribute="bottom" constant="17.5" id="qmM-y7-xqg"/>
+                        <constraint firstItem="NZb-hL-jbb" firstAttribute="centerY" secondItem="BZK-02-rAv" secondAttribute="centerY" constant="1.75" id="qpI-Y0-4of"/>
+                        <constraint firstAttribute="trailing" secondItem="J3H-Cg-nTY" secondAttribute="trailing" constant="8" id="tVU-7P-7Ov"/>
+                        <constraint firstItem="BZK-02-rAv" firstAttribute="leading" secondItem="DFZ-r5-rb1" secondAttribute="leading" constant="84" id="wFB-mw-xMq"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DFZ-r5-rb1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0ax-b7-Wp9"/>
+                <constraint firstAttribute="trailing" secondItem="DFZ-r5-rb1" secondAttribute="trailing" id="Baq-oX-gu8"/>
+                <constraint firstItem="DFZ-r5-rb1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="L2z-Ok-1AG"/>
+                <constraint firstAttribute="bottom" secondItem="DFZ-r5-rb1" secondAttribute="bottom" id="jqG-qn-1gJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="choice1" destination="otl-bY-sfT" id="zhB-sp-q3v"/>
+                <outlet property="choice2" destination="BtE-x4-gLv" id="OMe-WG-edg"/>
+                <outlet property="choice3" destination="NZb-hL-jbb" id="oeG-CS-9ij"/>
+            </connections>
+            <point key="canvasLocation" x="220" y="16"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Black Button Background" width="5" height="5"/>
+        <image name="Blue Button Background" width="7" height="38"/>
+    </resources>
+</document>

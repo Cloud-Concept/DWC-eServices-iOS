@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Corisande-Light.ttf">
+            <string>CorisandeLight</string>
+            <string>CorisandeLight</string>
+        </mutableArray>
+        <mutableArray key="Corisande-Regular.ttf">
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+            <string>CorisandeRegular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DirectorRemovalView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ju-2v-RKr">
+                    <rect key="frame" x="0.0" y="29" width="320" height="63"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-This service will be subject to approval." lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnE-Rp-vRm">
+                            <rect key="frame" x="8" y="30" width="304" height="16"/>
+                            <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN2-29-Zh8">
+                            <rect key="frame" x="8" y="5" width="42.5" height="17.5"/>
+                            <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="XN2-29-Zh8" firstAttribute="leading" secondItem="9ju-2v-RKr" secondAttribute="leading" constant="8" id="8JM-Mb-SzD"/>
+                        <constraint firstItem="JnE-Rp-vRm" firstAttribute="leading" secondItem="9ju-2v-RKr" secondAttribute="leading" constant="8" id="CjW-7y-EsU"/>
+                        <constraint firstAttribute="trailing" secondItem="JnE-Rp-vRm" secondAttribute="trailing" constant="8" id="gCS-eI-A2d"/>
+                        <constraint firstAttribute="bottom" secondItem="JnE-Rp-vRm" secondAttribute="bottom" constant="17" id="hI0-sr-u9Q"/>
+                        <constraint firstItem="XN2-29-Zh8" firstAttribute="top" secondItem="9ju-2v-RKr" secondAttribute="top" constant="5" id="xVa-hH-wmC"/>
+                        <constraint firstItem="JnE-Rp-vRm" firstAttribute="top" secondItem="XN2-29-Zh8" secondAttribute="bottom" constant="8" id="xfv-Be-l3F"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Director" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqV-Bc-qvb">
+                    <rect key="frame" x="8" y="116" width="54" height="17.5"/>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k4k-qd-eLU">
+                    <rect key="frame" x="8" y="145" width="304" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="TNw-hg-d0j"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeLight" family="CorisandeLight" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axl-al-YhI">
+                    <rect key="frame" x="8" y="344" width="140" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="RG0-0C-TIH"/>
+                        <constraint firstAttribute="width" constant="140" id="YAq-Xm-TsX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <state key="normal" title="Cancel" backgroundImage="Black Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="tP8-M2-pGm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhU-nW-GyR">
+                    <rect key="frame" x="172" y="344" width="140" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="39" id="LpV-od-JsV"/>
+                        <constraint firstAttribute="width" constant="140" id="bzD-vd-oKN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="CorisandeRegular" family="CorisandeRegular" pointSize="15"/>
+                    <state key="normal" title="Next" backgroundImage="Blue Button Background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="nextButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="rxf-oV-j2N"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.95686274510000002" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="axl-al-YhI" firstAttribute="top" secondItem="k4k-qd-eLU" secondAttribute="bottom" constant="159" id="0KG-BL-msW"/>
+                <constraint firstAttribute="centerX" secondItem="9ju-2v-RKr" secondAttribute="centerX" id="5Yv-Z8-N8a"/>
+                <constraint firstItem="k4k-qd-eLU" firstAttribute="top" secondItem="CqV-Bc-qvb" secondAttribute="bottom" constant="11" id="6SB-Uv-RgR"/>
+                <constraint firstItem="CqV-Bc-qvb" firstAttribute="top" secondItem="9ju-2v-RKr" secondAttribute="bottom" constant="24" id="FZl-S0-kuj"/>
+                <constraint firstAttribute="trailing" secondItem="k4k-qd-eLU" secondAttribute="trailing" constant="8" id="G67-lJ-dcY"/>
+                <constraint firstItem="axl-al-YhI" firstAttribute="centerY" secondItem="vhU-nW-GyR" secondAttribute="centerY" id="Ktq-fy-xbc"/>
+                <constraint firstItem="9ju-2v-RKr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="TMr-KH-QRB"/>
+                <constraint firstItem="k4k-qd-eLU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Vc4-r4-sEU"/>
+                <constraint firstAttribute="trailing" secondItem="9ju-2v-RKr" secondAttribute="trailing" id="WuN-A6-i5F"/>
+                <constraint firstItem="axl-al-YhI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="aSy-DZ-oWa"/>
+                <constraint firstAttribute="trailing" secondItem="vhU-nW-GyR" secondAttribute="trailing" constant="8" id="i6u-3o-Stw"/>
+                <constraint firstItem="CqV-Bc-qvb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="nhU-7c-ATM"/>
+                <constraint firstItem="9ju-2v-RKr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tPF-DJ-1iP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="directorName" destination="k4k-qd-eLU" id="fgD-Kd-3UN"/>
+            </connections>
+            <point key="canvasLocation" x="269" y="133"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Black Button Background" width="5" height="5"/>
+        <image name="Blue Button Background" width="7" height="38"/>
+    </resources>
+</document>
