@@ -38,7 +38,7 @@
 #import "NSString+SFAdditions.h"
 #import "Visa.h"
 #import "Passport.h"
-
+#import "RecordType.h"
 @interface BaseServicesViewController ()
 
 @end
@@ -575,6 +575,8 @@
     if (self.currentWebForm && self.currentWebForm.Id)
         [mutableCaseFields setObject:self.currentWebForm.Id forKey:@"Visual_Force_Generator__c"];
     
+    
+    // visa_ref__c, visa_holder__c,service_identifier
     if(insertedCaseId != nil && ![insertedCaseId  isEqual: @""])
         [[SFRestAPI sharedInstance] performUpdateWithObjectType:@"Case"
                                                        objectId:insertedCaseId
@@ -882,8 +884,25 @@
         
         [wrapperDict setObject:self.renewedVisaObject.passport.passportHolder.Id forKey:@"PassportHolderId"];
         // identifier "Residency Permit Cancellation"
-        [wrapperDict setObject:@"Residency Permit Cancellation" forKey:@"serviceIdentifier"];
+        
+        NSString* serviceIdentifier=@"";
+        if([self.renewedVisaObject.recordType.developerName isEqualToString:@"Employment_Visa_Issued"] || [self.renewedVisaObject.recordType.developerName isEqualToString:@"Transfer_Visa_Issued"]){
+            serviceIdentifier  = @"Residency Permit Cancellation";
+        }else  if(([self.renewedVisaObject.recordType.developerName isEqualToString:@"Employment_Visa_Under_Process"] || [self.renewedVisaObject.recordType.developerName isEqualToString:@"Transfer_Visa_Under_Process"])&& self.renewedVisaObject.residencyFileNumber.length){
+            serviceIdentifier = @"Residency Permit Cancellation";
+        }else  if([self.renewedVisaObject.recordType.developerName isEqualToString:@"Employment_Visa_Under_Process"] || [self.renewedVisaObject.recordType.developerName isEqualToString:@"Transfer_Visa_Under_Process"]){
+            serviceIdentifier = @"Entry Permit Cancellation";
+        }else  if([self.renewedVisaObject.recordType.developerName isEqualToString:@"Visit_Visa_Issued"]){
+            serviceIdentifier = @"Visit Visa Cancellation";
+        }
+
+        
+        [wrapperDict setObject:serviceIdentifier forKey:@"serviceIdentifier"];
+        
+        
+        
         [wrapperDict setObject:self.renewedVisaObject.applicantEmail forKey:@"ApplicantEmail"];
+         [wrapperDict setObject:insertedCaseId forKey:@"caseId"];
         
         NSDictionary *bodyDict = [NSDictionary dictionaryWithObject:wrapperDict forKey:@"wrapper"];
        

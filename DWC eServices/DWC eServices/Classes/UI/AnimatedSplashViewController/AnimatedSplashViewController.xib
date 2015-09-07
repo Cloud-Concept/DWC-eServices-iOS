@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -16,28 +16,28 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Animation Screen 1" translatesAutoresizingMaskIntoConstraints="NO" id="tb7-tQ-5Bo">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                </imageView>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="30m-fU-XN8">
-                    <rect key="frame" x="169" y="550" width="37" height="37"/>
+                    <rect key="frame" x="169" y="545" width="37" height="37"/>
                 </activityIndicatorView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DubaiSouthLogo" translatesAutoresizingMaskIntoConstraints="NO" id="tb7-tQ-5Bo">
+                    <rect key="frame" x="37" y="72" width="300" height="300"/>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.54117647058823526" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="tb7-tQ-5Bo" secondAttribute="bottom" id="J8n-BV-YE0"/>
-                <constraint firstAttribute="trailing" secondItem="tb7-tQ-5Bo" secondAttribute="trailing" id="YEf-3h-CgE"/>
-                <constraint firstAttribute="bottom" secondItem="30m-fU-XN8" secondAttribute="bottom" constant="80" id="YsX-Kf-Bcm"/>
-                <constraint firstItem="tb7-tQ-5Bo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dgE-qd-xND"/>
+                <constraint firstAttribute="bottom" secondItem="tb7-tQ-5Bo" secondAttribute="bottom" constant="295" id="J8n-BV-YE0"/>
+                <constraint firstAttribute="trailing" secondItem="tb7-tQ-5Bo" secondAttribute="trailing" constant="38" id="YEf-3h-CgE"/>
+                <constraint firstAttribute="bottom" secondItem="30m-fU-XN8" secondAttribute="bottom" constant="85" id="YsX-Kf-Bcm"/>
+                <constraint firstItem="tb7-tQ-5Bo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="dgE-qd-xND"/>
                 <constraint firstItem="30m-fU-XN8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="169" id="fXS-Hx-3BC"/>
                 <constraint firstAttribute="trailing" secondItem="30m-fU-XN8" secondAttribute="trailing" constant="169" id="fgG-qr-lXm"/>
-                <constraint firstItem="tb7-tQ-5Bo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xLJ-up-eyr"/>
+                <constraint firstItem="tb7-tQ-5Bo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="72" id="xLJ-up-eyr"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>
     <resources>
-        <image name="Animation Screen 1" width="320" height="568"/>
+        <image name="DubaiSouthLogo" width="100" height="100"/>
     </resources>
 </document>

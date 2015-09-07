@@ -247,9 +247,13 @@
     
     if (daysToExpire <= 60 && !hasLicenseRenewalInProgress) {
         relatedServices |= RelatedServiceTypeLicenseRenewal;
+        relatedServices |= RelatedServiceTypeLicenseRenewActivityChange;
     }
     // added By george
     relatedServices |= RelatedServiceTypeLicenseCancelation;
+    // george Renew License
+    relatedServices |= RelatedServiceTypeLicenseChangeActivityChange;
+    
     
     recordVC.RelatedServicesMask = relatedServices;
 }

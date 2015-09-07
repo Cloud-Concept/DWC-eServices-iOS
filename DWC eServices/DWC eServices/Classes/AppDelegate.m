@@ -99,7 +99,7 @@ static NSString * const OAuthRedirectURI        = @"dwcmobile://auth/success";
         __weak AppDelegate *weakSelf = self;
         [SalesforceSDKManager sharedManager].postLaunchAction = ^(SFSDKLaunchAction launchActionList) {
             [weakSelf log:SFLogLevelInfo format:@"Post-launch: launch actions taken: %@", [SalesforceSDKManager launchActionsStringRepresentation:launchActionList]];
-            [weakSelf setupRootViewController];
+            [weakSelf setupRootViewController];    
         };
         [SalesforceSDKManager sharedManager].launchErrorAction = ^(NSError *error, SFSDKLaunchAction launchActionList) {
             [weakSelf log:SFLogLevelError format:@"Error during SDK launch: %@", [error localizedDescription]];
@@ -120,14 +120,18 @@ static NSString * const OAuthRedirectURI        = @"dwcmobile://auth/success";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    UIImage *navBackgroundImage = [UIImage imageNamed:@"Home NavBar Background"];
-    [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
+//    UIImage *navBackgroundImage = [UIImage imageNamed:@"Home NavBar Background"];
+//    [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.0f/255.0f green:136.0f/255.0f blue:146.0f/255.0f alpha:1.0]];
+    
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor whiteColor],
                                                             NSFontAttributeName: [UIFont fontWithName:@"CorisandeRegular" size:0.0]}];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kNetworkReachabilityChangedNotification object:nil];
     
+    
+    self.cachingBusinessActivity = [NSMutableDictionary new];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self initializeAppViewState];
     
@@ -191,7 +195,7 @@ static NSString * const OAuthRedirectURI        = @"dwcmobile://auth/success";
     //UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     //UIViewController *vc =[storybord instantiateInitialViewController];
     
-    AnimatedSplashViewController *vc = [AnimatedSplashViewController new];
+    AnimatedSplashViewController *vc = [[AnimatedSplashViewController alloc] initWithNibName:@"AnimatedSplashViewController" bundle:nil];
     
     self.window.rootViewController = vc;
 }

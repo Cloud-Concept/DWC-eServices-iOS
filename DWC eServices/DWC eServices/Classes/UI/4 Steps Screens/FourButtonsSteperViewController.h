@@ -12,6 +12,7 @@
 #import "EServiceDocument.h"
 #import "UploadDocumentsView.h"
 #import "Directorship.h"
+#import "License.h"
 
 typedef NS_ENUM(NSUInteger, FourStepsCurrentScreenPhase) {
     ViewDetailsStep = 1,
@@ -26,9 +27,12 @@ typedef NS_ENUM(NSUInteger, FourStepsCurrentScreenPhase) {
 
 // this caseid is used to get documents
 @property(strong,nonatomic)NSString* caseID;
+@property(strong,nonatomic)NSString* caseNumber;
 
 @property (nonatomic) RelatedServiceType relatedServiceType;
 @property (nonatomic) FourStepsCurrentScreenPhase currentScreen;
+
+@property(strong,nonatomic)License* licenseObject;
 
 
 @property (strong, nonatomic) Directorship *directorObject;

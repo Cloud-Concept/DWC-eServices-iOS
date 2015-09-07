@@ -279,7 +279,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
     });
-#warning Handle error
 }
 
 - (void)requestDidCancelLoad:(SFRestRequest *)request {
@@ -288,7 +287,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
     });
-#warning Handle error
 }
 
 - (void)requestDidTimeout:(SFRestRequest *)request {
@@ -297,7 +295,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [FVCustomAlertView hideAlertFromMainWindowWithFading:YES];
     });
-#warning Handle error
 }
 
 #pragma mark - Table view Drag Load

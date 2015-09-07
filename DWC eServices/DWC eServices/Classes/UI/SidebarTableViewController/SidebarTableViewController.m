@@ -77,9 +77,11 @@
         nameLabel.text = accountManager.currentUser.fullName;
     }
     else {
-        cell.backgroundView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"Slide Menu Cell Background"]
-                                                                  stretchableImageWithLeftCapWidth:0.0
-                                                                  topCapHeight:5.0]];
+//        cell.backgroundView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"Slide Menu Cell Background"]
+//                                                                  stretchableImageWithLeftCapWidth:0.0
+//                                                                  topCapHeight:5.0]];
+        
+        [cell setBackgroundColor:[UIColor colorWithRed:0.0f/255.0f green:136.0f/255.0f blue:146.0f/255.0f alpha:1.0]];
     }
     
     return cell;

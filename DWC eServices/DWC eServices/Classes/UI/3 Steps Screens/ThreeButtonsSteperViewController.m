@@ -22,10 +22,12 @@
     [super viewDidLoad];
     
     self.navigationItem.hidesBackButton = YES;
-    UIBarButtonItem* leftItem =[[UIBarButtonItem alloc] initWithTitle:nil style:self.navigationItem.backBarButtonItem.style target:self action:@selector(backButtonPressed:)];
-    [leftItem setImage:[UIImage imageNamed:@"Navigation Bar Back Button Icon"]];
-    [leftItem setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setLeftBarButtonItem:leftItem];
+    if(self.currentScreen != ThanksPhase){
+        UIBarButtonItem* leftItem =[[UIBarButtonItem alloc] initWithTitle:nil style:self.navigationItem.backBarButtonItem.style target:self action:@selector(backButtonPressed:)];
+        [leftItem setImage:[UIImage imageNamed:@"Navigation Bar Back Button Icon"]];
+        [leftItem setTintColor:[UIColor whiteColor]];
+        [self.navigationItem setLeftBarButtonItem:leftItem];
+    }
     
     self.currentScreen = ViewDetails;
     [self initNavigationTitle:self.currentScreen];
@@ -35,8 +37,8 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     // here to add the condition for any related service flow
-        self.holderView.frame = [self getView:self.currentScreen].frame;
-        [self.flowScrollerView setContentSize:self.holderView.frame.size];
+    self.holderView.frame = [self getView:self.currentScreen].frame;
+    [self.flowScrollerView setContentSize:self.holderView.frame.size];
     [self.holderView addSubview:[self getView:self.currentScreen]];
     
 }
@@ -51,7 +53,7 @@
     [self initNavigationTitle:self.currentScreen];
     [self setTimeLineButton:self.currentScreen type:@"Current"];
     [self setTimeLineButton:(self.currentScreen-1) type:@"Finished"];
-//    [self.flowScrollerView setScrollEnabled:YES];
+    //    [self.flowScrollerView setScrollEnabled:YES];
     [self.flowScrollerView setContentOffset:CGPointMake(0,0) animated:NO];
     
     
@@ -77,13 +79,14 @@
         [(NameReservationPayAndSubmitView*)view setTag:SubmitPhase];
         [(NameReservationPayAndSubmitView*)view setDelegate:self];
         [(NameReservationPayAndSubmitView*)view setLabels];
-//        [self.flowScrollerView setScrollEnabled:NO];
+        //        [self.flowScrollerView setScrollEnabled:NO];
     }
     else if (screen == ThanksPhase){
-            view = [[ThankYouPhaseView alloc] initWithFrame:CGRectZero];
-            [(ThankYouPhaseView*)view setDelegate:self];
-            [(ThankYouPhaseView*)view setMessageText:[NSMutableString stringWithFormat:NSLocalizedString(@"ServiceThankYouMessage", @""), self.refrenceNumber]];
-            [(ThankYouPhaseView*)view setTag:ThanksPhase];
+        self.navigationItem.leftBarButtonItem = nil;
+        view = [[ThankYouPhaseView alloc] initWithFrame:CGRectZero];
+        [(ThankYouPhaseView*)view setDelegate:self];
+        [(ThankYouPhaseView*)view setMessageText: self.refrenceNumber];
+        [(ThankYouPhaseView*)view setTag:ThanksPhase];
     }
     return view;
 }

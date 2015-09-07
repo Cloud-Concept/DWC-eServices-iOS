@@ -16,6 +16,7 @@
 #import "LicenseActivity.h"
 #import "HelperClass.h"
 #import "SOQLQueries.h"
+#import "SFAuthenticationManager.h"
 
 @interface AnimatedSplashViewController ()
 
@@ -25,14 +26,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [self performSelector:@selector(setupAnimationView) withObject:nil afterDelay:1.0f];
-    //[self setupAnimationView];
+//    [self performSelector:@selector(loadCompanyInfoWithLicenseInfo) withObject:nil afterDelay:.5f];
+
+    [self loadCompanyInfoWithLicenseInfo];
+//                [self setupRootViewController];
+//    [self setupAnimationView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,11 +56,13 @@
     self.animationImageView.animationDuration = 2.5;
     
     [self.animationImageView startAnimatingWithCompletionBlock:^(BOOL success) {
+    
         [self loadCompanyInfoWithLicenseInfo];
+    
     }];
     
     self.animationImageView.image = [UIImage imageNamed:@"Animation Screen 22"];
-    //[self.animationImageView startAnimating];
+    [self.animationImageView startAnimating];
     
     
 }
@@ -78,26 +82,22 @@
 }
 
 - (void)loadCompanyInfoWithLicenseInfo {
-    
     void (^errorBlock) (NSError*) = ^(NSError *e) {
         dispatch_async(dispatch_get_main_queue(), ^{
-#warning Handle Error
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error occured" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DWC" message:@"An error has been occured please re-login" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
             
             [alert show];
+            
+            [[SFAuthenticationManager sharedManager] logout];
+            
         });
         
     };
     
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        
-        
         NSDictionary *accountDict = [[dict objectForKey:@"Contact"] objectForKey:@"Account"];
-        
         Account *account = [[Account alloc] initAccount:accountDict];
-        
         [Globals setCurrentAccount:account];
-        
         [Globals setContactId:[dict objectForKey:@"ContactId"]];
         [Globals setContactPersonalPhoto:[HelperClass stringCheckNull:[[dict objectForKey:@"Contact"] objectForKey:@"Personal_Photo__c"]]];
         
@@ -106,11 +106,7 @@
         });
         
     };
-    
-    
     SFUserAccountManager *accountManager = [SFUserAccountManager sharedInstance];
-    
-    
     NSArray *fields = @[@"ContactId", @"Contact.Name", @"Contact.Personal_Photo__c", @"Contact.Account.Id", @"Contact.Account.Account_Balance__c", @"Contact.Account.Portal_Balance__c", @"Contact.Account.Name", @"Contact.Account.Arabic_Account_Name__c", @"Contact.Account.License_Number_Formula__c", @"Contact.Account.BillingCity", @"Contact.Account.Company_Registration_Date__c", @"Contact.Account.Legal_Form__c", @"Contact.Account.Registration_Number_Value__c", @"Contact.Account.Phone", @"Contact.Account.Fax", @"Contact.Account.Email__c", @"Contact.Account.Mobile__c", @"Contact.Account.PRO_Email__c", @"Contact.Account.PRO_Mobile_Number__c", @"Contact.Account.BillingStreet", @"Contact.Account.BillingPostalCode", @"Contact.Account.BillingCountry", @"Contact.Account.BillingState", @"Contact.Account.Current_License_Number__r.Id", @"Contact.Account.Current_License_Number__r.License_Issue_Date__c", @"Contact.Account.Current_License_Number__r.License_Expiry_Date__c", @"Contact.Account.Current_License_Number__r.Commercial_Name__c", @"Contact.Account.Current_License_Number__r.Commercial_Name_Arabic__c", @"Contact.Account.Current_License_Number__r.License_Number_Value__c", @"Contact.Account.Current_Manager__r.Id", @"Contact.Account.Current_License_Number__r.Validity_Status__c", @"Contact.Account.Current_License_Number__r.RecordType.Id", @"Contact.Account.Current_License_Number__r.RecordType.Name", @"Contact.Account.Current_License_Number__r.RecordType.DeveloperName", @"Contact.Account.Current_License_Number__r.RecordType.SObjectType", @"Contact.Account.Company_Logo__c"];
     
     [self.activityIndicator startAnimating];
@@ -131,12 +127,8 @@
         });
         
     };
-    
     void (^successBlock)(NSDictionary *dict) = ^(NSDictionary *dict) {
-        
-        
         NSMutableArray *licenseActivityMutableArray = [NSMutableArray new];
-        
         for (NSDictionary *licenseActivityDict in [dict objectForKey:@"records"]) {
             [licenseActivityMutableArray addObject:[[LicenseActivity alloc] initLicenseActivity:licenseActivityDict]];
         }
@@ -148,8 +140,6 @@
         });
         
     };
-    
-    
     [[SFRestAPI sharedInstance] performSOQLQuery:[SOQLQueries licenseActivityQueryForLicenseId:[Globals currentAccount].currentLicenseNumber.Id]
                                        failBlock:errorBlock
                                    completeBlock:successBlock];
@@ -157,13 +147,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

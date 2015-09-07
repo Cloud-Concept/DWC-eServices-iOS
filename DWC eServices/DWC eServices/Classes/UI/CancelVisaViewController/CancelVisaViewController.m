@@ -112,11 +112,11 @@
     [self showLoadingDialog];
     
     NSString *serviceIdentifier = @"";
-    if([self.baseServicesViewController.renewedVisaObject.recordType.developerName isEqualToString:@"Employment_Visa_Issued"]){
+    if([self.baseServicesViewController.renewedVisaObject.recordType.developerName isEqualToString:@"Employment_Visa_Issued"] || [self.baseServicesViewController.renewedVisaObject.recordType.developerName isEqualToString:@"Transfer_Visa_Issued"]){
         serviceIdentifier  = @"Residency Permit Cancellation";
-    }else  if([self.baseServicesViewController.renewedVisaObject.recordType.developerName isEqualToString:@"Employment_Visa_Under_Process"] && self.baseServicesViewController.renewedVisaObject.residencyFileNumber != nil){
+    }else  if(([self.baseServicesViewController.renewedVisaObject.recordType.developerName isEqualToString:@"Employment_Visa_Under_Process"] || [self.baseServicesViewController.renewedVisaObject.recordType.developerName isEqualToString:@"Transfer_Visa_Under_Process"])&& self.baseServicesViewController.renewedVisaObject.residencyFileNumber.length){
         serviceIdentifier = @"Residency Permit Cancellation";
-    }else  if([self.baseServicesViewController.renewedVisaObject.recordType.developerName isEqualToString:@"Employment_Visa_Under_Process"]){
+    }else  if([self.baseServicesViewController.renewedVisaObject.recordType.developerName isEqualToString:@"Employment_Visa_Under_Process"] || [self.baseServicesViewController.renewedVisaObject.recordType.developerName isEqualToString:@"Transfer_Visa_Under_Process"]){
         serviceIdentifier = @"Entry Permit Cancellation";
     }else  if([self.baseServicesViewController.renewedVisaObject.recordType.developerName isEqualToString:@"Visit_Visa_Issued"]){
         serviceIdentifier = @"Visit Visa Cancellation";
@@ -133,33 +133,33 @@
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"EmployeeDetailsTitle" Type:@"CUSTOMTEXT" MobileLabel:NSLocalizedString(@"EmployeeDetailsTitle", @"") FieldValue:@"" IsParameter:YES]];
     
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Applicant_Full_Name__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeName", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.applicantFullName IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Applicant_Gender__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeGender", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.applicantGender IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Date_of_Birth__c" Type:@"DATE" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeDateOfBirth", @"") FieldValue:[HelperClass formatDateToString:self.baseServicesViewController.renewedVisaObject.dateOfBirth] IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Country_of_Birth__c" Type:@"REFERENCE" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeCountryOfBirth", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.countryOfBirth.name IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Applicant_Email__c" Type:@"EMAIL" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeEmail", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.applicantEmail IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Applicant_Mobile_Number__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeMobile", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.applicantMobileNumber IsParameter:YES]];
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Applicant_Gender__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeGender", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.applicantGender IsParameter:YES]];
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Date_of_Birth__c" Type:@"DATE" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeDateOfBirth", @"") FieldValue:[HelperClass formatDateToString:self.baseServicesViewController.renewedVisaObject.dateOfBirth] IsParameter:YES]];
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Country_of_Birth__c" Type:@"REFERENCE" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeCountryOfBirth", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.countryOfBirth.name IsParameter:YES]];
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Applicant_Email__c" Type:@"EMAIL" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeEmail", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.applicantEmail IsParameter:YES]];
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Applicant_Mobile_Number__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeMobile", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.applicantMobileNumber IsParameter:YES]];
     
-    FormField *maritalStatus = [[FormField alloc] initFormField:@"" Name:@"Marital_Status__c" Type:@"PICKLIST" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeMaritalStatus", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.maritalStatus IsParameter:YES];
-    NSArray *maritalStatusValues = @[@"Single", @"Married", @"Divorced", @"Widowed"];
-    [maritalStatus setPicklistNamesDictionary:@{maritalStatus.name:maritalStatusValues} PicklistValuesDictionary:@{maritalStatus.name:maritalStatusValues}];
-    [maritalStatus setPicklistLabel:self.baseServicesViewController.renewedVisaObject.maritalStatus];
-    [formFieldsMutableArray addObject:maritalStatus];
+//    FormField *maritalStatus = [[FormField alloc] initFormField:@"" Name:@"Marital_Status__c" Type:@"PICKLIST" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeMaritalStatus", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.maritalStatus IsParameter:YES];
+//    NSArray *maritalStatusValues = @[@"Single", @"Married", @"Divorced", @"Widowed"];
+//    [maritalStatus setPicklistNamesDictionary:@{maritalStatus.name:maritalStatusValues} PicklistValuesDictionary:@{maritalStatus.name:maritalStatusValues}];
+//    [maritalStatus setPicklistLabel:self.baseServicesViewController.renewedVisaObject.maritalStatus];
+//    [formFieldsMutableArray addObject:maritalStatus];
+//    
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Mother_Name__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeMotherName", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.motherName IsParameter:YES]];
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Current_Nationality__c" Type:@"REFERENCE" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeCurrentNationality", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.currentNationality.name IsParameter:YES]];
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Previous_Nationality__c" Type:@"REFERENCE" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeePreviousNationality", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.previousNationality.name IsParameter:YES]];
     
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Mother_Name__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeMotherName", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.motherName IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Current_Nationality__c" Type:@"REFERENCE" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeCurrentNationality", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.currentNationality.name IsParameter:YES]];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Previous_Nationality__c" Type:@"REFERENCE" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeePreviousNationality", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.previousNationality.name IsParameter:YES]];
+//    FormField *religion = [[FormField alloc] initFormField:@"" Name:@"Religion__c" Type:@"PICKLIST" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeReligion", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.religion IsParameter:YES];
+//    NSArray *religionStatusValues = @[@"Bahaei", @"Budhist", @"Christian", @"Hindu", @"Kadiani", @"Muslim", @"Sikh"];
+//    [religion setPicklistNamesDictionary:@{religion.name:religionStatusValues} PicklistValuesDictionary:@{religion.name:religionStatusValues}];
+//    [religion setPicklistLabel:self.baseServicesViewController.renewedVisaObject.religion];
+//    [formFieldsMutableArray addObject:religion];
     
-    FormField *religion = [[FormField alloc] initFormField:@"" Name:@"Religion__c" Type:@"PICKLIST" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeReligion", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.religion IsParameter:YES];
-    NSArray *religionStatusValues = @[@"Bahaei", @"Budhist", @"Christian", @"Hindu", @"Kadiani", @"Muslim", @"Sikh"];
-    [religion setPicklistNamesDictionary:@{religion.name:religionStatusValues} PicklistValuesDictionary:@{religion.name:religionStatusValues}];
-    [religion setPicklistLabel:self.baseServicesViewController.renewedVisaObject.religion];
-    [formFieldsMutableArray addObject:religion];
-    
-    FormField *languages = [[FormField alloc] initFormField:@"" Name:@"Languages__c" Type:@"MULTIPICKLIST" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeLanguagesSpoken", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.languages IsParameter:YES];
-    NSArray *languagesValues = @[@"Arabic", @"English", @"French"];
-    [languages setPicklistNamesDictionary:@{languages.name:languagesValues} PicklistValuesDictionary:@{languages.name:languagesValues}];
-    [languages setPicklistLabel:self.baseServicesViewController.renewedVisaObject.languages];
-    [formFieldsMutableArray addObject:languages];
+//    FormField *languages = [[FormField alloc] initFormField:@"" Name:@"Languages__c" Type:@"MULTIPICKLIST" MobileLabel:NSLocalizedString(@"EmployeeDetailsEmployeeLanguagesSpoken", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.languages IsParameter:YES];
+//    NSArray *languagesValues = @[@"Arabic", @"English", @"French"];
+//    [languages setPicklistNamesDictionary:@{languages.name:languagesValues} PicklistValuesDictionary:@{languages.name:languagesValues}];
+//    [languages setPicklistLabel:self.baseServicesViewController.renewedVisaObject.languages];
+//    [formFieldsMutableArray addObject:languages];
     
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"PassportDetailsTitle" Type:@"CUSTOMTEXT" MobileLabel:NSLocalizedString(@"PassportDetailsTitle", @"") FieldValue:@"" IsParameter:YES]];
     
@@ -171,15 +171,15 @@
     [formFieldsMutableArray addObject:passportCountry];
     [self.baseServicesViewController getReferencePicklistValues:passportCountry];
     
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Passport_Place_of_Issue__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"PassportDetailsEmployeePassportPassportIssuePlace", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.passportPlaceOfIssue IsParameter:YES]];
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Passport_Place_of_Issue__c" Type:@"STRING" MobileLabel:NSLocalizedString(@"PassportDetailsEmployeePassportPassportIssuePlace", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.passportPlaceOfIssue IsParameter:YES]];
     
     [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"VisaDetailsTitle" Type:@"CUSTOMTEXT" MobileLabel:NSLocalizedString(@"VisaDetailsTitle", @"") FieldValue:@"" IsParameter:YES]];
     
-    NSString *monthlyBasicSalaryString = [HelperClass formatNumberToString:self.baseServicesViewController.renewedVisaObject.monthlyBasicSalaryInAED FormatStyle:NSNumberFormatterNoStyle MaximumFractionDigits:2];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Monthly_Basic_Salary_in_AED__c" Type:@"DOUBLE" MobileLabel:NSLocalizedString(@"VisaDetailsEmployeeMonthlySalary", @"") FieldValue:monthlyBasicSalaryString IsParameter:YES]];
+//    NSString *monthlyBasicSalaryString = [HelperClass formatNumberToString:self.baseServicesViewController.renewedVisaObject.monthlyBasicSalaryInAED FormatStyle:NSNumberFormatterNoStyle MaximumFractionDigits:2];
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Monthly_Basic_Salary_in_AED__c" Type:@"DOUBLE" MobileLabel:NSLocalizedString(@"VisaDetailsEmployeeMonthlySalary", @"") FieldValue:monthlyBasicSalaryString IsParameter:YES]];
     
-    NSString *monthlyAllowanceString = [HelperClass formatNumberToString:self.baseServicesViewController.renewedVisaObject.monthlyAllowancesInAED FormatStyle:NSNumberFormatterNoStyle MaximumFractionDigits:2];
-    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Monthly_Allowances_in_AED__c" Type:@"DOUBLE" MobileLabel:NSLocalizedString(@"VisaDetailsEmployeeMonthlyAllowance", @"") FieldValue:monthlyAllowanceString IsParameter:YES]];
+//    NSString *monthlyAllowanceString = [HelperClass formatNumberToString:self.baseServicesViewController.renewedVisaObject.monthlyAllowancesInAED FormatStyle:NSNumberFormatterNoStyle MaximumFractionDigits:2];
+//    [formFieldsMutableArray addObject:[[FormField alloc] initFormField:@"" Name:@"Monthly_Allowances_in_AED__c" Type:@"DOUBLE" MobileLabel:NSLocalizedString(@"VisaDetailsEmployeeMonthlyAllowance", @"") FieldValue:monthlyAllowanceString IsParameter:YES]];
     
     FormField *occupation = [[FormField alloc] initFormField:@"" Name:@"Job_Title_at_Immigration__c" Type:@"REFERENCE" MobileLabel:NSLocalizedString(@"VisaDetailsEmployeeOccupation", @"") FieldValue:self.baseServicesViewController.renewedVisaObject.jobTitleAtImmigration.Id IsParameter:YES];
     occupation.textValue = @"Occupation__c";

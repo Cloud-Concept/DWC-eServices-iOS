@@ -82,8 +82,11 @@
         
         // TO be added and validated
         [params setObject:self.passportNumberField.text forKey:@"passportNo"];
-        [params setObject:[SFDateUtil toSOQLDateTimeString:[SFDateUtil SOQLDateTimeStringToDate:self.issueDate.titleLabel.text] isDateTime:NO] forKey:@"passportIssueDate"];
-        [params setObject:[SFDateUtil toSOQLDateTimeString:[SFDateUtil SOQLDateTimeStringToDate:self.expiryDate.titleLabel.text] isDateTime:NO] forKey:@"passportExpiryDate"];
+        [params setObject:[SFDateUtil toSOQLDateTimeString:issueDate isDateTime:NO] forKey:@"passportIssueDate"];
+        
+//        [SFDateUtil toSOQLDateTimeString:[SFDateUtil SOQLDateTimeStringToDate:[visaDict objectForKey:@"Passport_Expiry__c"] isDateTime:NO]
+        
+        [params setObject:[SFDateUtil toSOQLDateTimeString:ExpiryDate isDateTime:NO] forKey:@"passportExpiryDate"];
         [params setObject:self.placeOfIssueField.text forKey:@"passportPlaceOfIssue"];
         
         payAndSubmitRequest.queryParams = [NSDictionary dictionaryWithObject:params forKey:@"wrapper"];

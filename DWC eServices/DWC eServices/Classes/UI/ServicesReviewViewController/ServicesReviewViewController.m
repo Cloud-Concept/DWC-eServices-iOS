@@ -150,10 +150,12 @@
                 }
                 
                 NSString *relationName = field.name;
+                
+                if([field.name isEqualToString:@"Urgent_Cancellation__c"] || [field.name containsString:@"Country_of_Birth"])
+                    continue;
                 if ([field.type isEqualToString:@"REFERENCE"])
                     relationName = [field.name stringByReplacingOccurrencesOfString:@"__c" withString:@"__r.Name"];
-                if([field.name isEqualToString:@"Urgent_Cancellation__c"])
-                    continue;
+
                     
                 [field setFormFieldValue:[HelperClass getRelationshipValue:serviceDict Key:relationName]];
                 field.isCalculated = true;

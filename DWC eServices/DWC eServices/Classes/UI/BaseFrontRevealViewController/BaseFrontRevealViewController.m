@@ -78,7 +78,7 @@
     
     BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
     barButton.badgeValue = [NSString stringWithFormat:@"%@", [Globals notificationsCount]];
-    barButton.badgeBGColor = [UIColor colorWithRed:0.2156 green:0.749 blue:0.741 alpha:1];
+    barButton.badgeBGColor = [UIColor clearColor];
     barButton.badgeFont = [UIFont fontWithName:@"CorisandeLight" size:8.0f];
     barButton.shouldHideBadgeAtZero = YES;
     

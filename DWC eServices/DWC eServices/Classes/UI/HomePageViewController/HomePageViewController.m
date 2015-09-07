@@ -36,7 +36,9 @@
     // Do any additional setup after loading the view.
     
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Home NavBar DWC Logo"]];
-    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Home NavBar DWC Logo"]];
+//    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Home NavBar DWC Logo"]];
+    
+    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DubaiSouthSmallLogo"]];
     
     UIBarButtonItem *logoItem = [[UIBarButtonItem alloc] initWithCustomView:logoImageView];
     [self.navigationItem setLeftBarButtonItem:logoItem animated:NO];

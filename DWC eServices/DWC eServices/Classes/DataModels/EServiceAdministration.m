@@ -50,7 +50,7 @@
             [documentsMutableArray addObject:newDocument];
         }
         else if ([currentDocumentType isEqualToString:@"Download"]) {
-            NSString *authority = [obj objectForKey:@"Authority__c"];
+            NSString *authority =  [HelperClass stringCheckNull:[obj objectForKey:@"Authority__c"]];
             [authoritiesMutableOrderedSet addObject:authority];
             
             NSMutableOrderedSet *languagesMutableOrderedSet;

@@ -42,6 +42,10 @@ typedef enum {
     RelatedServiceTypeDirectorRemoval = 8388608,
     RelatedServiceTypeCapitalChange = 16777216,
     
+    // added by George (renew license, Change License)
+        RelatedServiceTypeLicenseRenewActivityChange = 33554432,
+        RelatedServiceTypeLicenseChangeActivityChange = 67108864,
+    
 }RelatedServiceType;
 
 @interface RelatedService : NSObject

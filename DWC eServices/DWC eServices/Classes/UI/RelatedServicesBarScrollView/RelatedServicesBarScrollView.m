@@ -153,19 +153,19 @@
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Name_Change"
                                                                                 Label:@"Name Change"
-                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Icon:@"Name Change Icon"
                                                                                  Mask:RelatedServiceTypeCompanyNameChange]];
     
     // added by George
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Cancel_License"
                                                                                 Label:@"Cancel License"
-                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Icon:@"Cancel License Icon"
                                                                                  Mask:RelatedServiceTypeLicenseCancelation]];
     // added by george cancel Contract
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Cancel_Contract"
                                                                                 Label:@"Cancel Contract"
-                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Icon:@"Contract Cancel Icon"
                                                                                  Mask:RelatedServiceTypeContractCancelation]];
     
     
@@ -175,19 +175,32 @@
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Name_Reservation"
                                                                                 Label:@"Reserve Name"
-                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Icon:@"Name Reservation Icon"
                                                                                  Mask:RelatedServiceTypeNameReservation]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Director_Removal"
                                                                                 Label:@"Remove Director"
-                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Icon:@"Remove Directory Icon"
                                                                                  Mask:RelatedServiceTypeDirectorRemoval]];
     
     [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"Capital_Change"
                                                                                 Label:@"Change Capital"
-                                                                                 Icon:@"Related Service Company Director Change Icon"
+                                                                                 Icon:@"Capital Change Icon"
                                                                                  Mask:RelatedServiceTypeCapitalChange]];
 
+    // added by george (License Renew with Activity / Change License with Activity)
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"License_renew_Activity_Change"
+                                                                                Label:@"Renew License Activity"
+                                                                                 Icon:@"License Renew Activity Icon"
+                                                                                 Mask:RelatedServiceTypeLicenseRenewActivityChange]];
+    
+    [relatedServicesMutableArray addObject:[[RelatedService alloc] initRelatedService:@"License_Change_Activity_Change"
+                                                                                Label:@"Change License Activity"
+                                                                                 Icon:@"License Change Activity Icon"
+                                                                                 Mask:RelatedServiceTypeLicenseChangeActivityChange]];
+    
+    
     
     
     relatedServicesArray = relatedServicesMutableArray;
@@ -385,11 +398,45 @@
         case RelatedServiceTypeCapitalChange:
             [self relatedServiceTypeCapitalChangeButtonClicked];
             break;
-            
+        case RelatedServiceTypeLicenseRenewActivityChange:
+            [self relatedServiceTypeLicenseRenewActivityChangButtonClicked];
+            break;
+        case RelatedServiceTypeLicenseChangeActivityChange:
+            [self relatedServiceTypeLicenseChangeActivityChangeButtonClicked];
+            break;
         default:
             break;
     }
 }
+
+
+-(void)relatedServiceTypeLicenseRenewActivityChangButtonClicked{
+        [self openLicenseRenewalActivity:RelatedServiceTypeLicenseRenewActivityChange];
+}
+-(void)relatedServiceTypeLicenseChangeActivityChangeButtonClicked{
+        [self openLicenseChangeActivity:RelatedServiceTypeLicenseChangeActivityChange];
+}
+
+-(void)openLicenseRenewalActivity:(RelatedServiceType)serviceType{
+    // 4 steps only (Details, upload document, pay & submit, Thank you)
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    FourButtonsSteperViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"FourButtonsSteperViewController"];
+    baseServicesVC.relatedServiceType = serviceType;
+    baseServicesVC.licenseObject = self.licenseObject;
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+    
+}
+-(void)openLicenseChangeActivity:(RelatedServiceType)serviceType{
+    // 4 steps only (Details, upload document, pay & submit, Thank you)
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    FourButtonsSteperViewController *baseServicesVC = [storybord instantiateViewControllerWithIdentifier:@"FourButtonsSteperViewController"];
+    baseServicesVC.relatedServiceType = serviceType;
+    baseServicesVC.licenseObject = self.licenseObject;
+    [parentViewController.navigationController pushViewController:baseServicesVC animated:YES];
+    
+}
+
+
 // added By george Name Reservation
 - (void)relatedServiceTypeNameReservationButtonClicked {
     [self openNameReservation:RelatedServiceTypeNameReservation];
@@ -1008,6 +1055,7 @@
 - (void)configureRecordMainViewController:(RecordMainDetailsViewController*)recordVC ForVisitVisa:(Visa*)visa {
     recordVC.NameValue = visa.applicantFullName;
     recordVC.PhotoId = visa.personalPhotoId;
+    recordVC.visaObject = visa;
     NSMutableArray *sectionsArray = [NSMutableArray new];
     
     NSMutableArray *fieldsArray = [NSMutableArray new];
@@ -1044,10 +1092,8 @@
     
     NSUInteger servicesMask = 0;
     
-    /*
-     if ([visa.validityStatus isEqualToString:@"Issued"] || [visa.validityStatus isEqualToString:@"Expired"])
-     servicesMask |= RelatedServiceTypeCancelVisa;
-     */
+    //added By George
+    servicesMask |= RelatedServiceTypeCancelVisa;
     
     recordVC.RelatedServicesMask = servicesMask;
 }

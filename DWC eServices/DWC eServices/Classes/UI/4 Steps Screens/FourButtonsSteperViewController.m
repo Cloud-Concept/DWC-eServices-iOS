@@ -23,6 +23,8 @@
 #import "ThankYouPhaseView.h"
 #import "DirectorRemovalView.h"
 #import "DirectorPayAndSubmitView.h"
+#import "RenewAndChangeLicense.h"
+#import "RenewAndChangePaySubmitView.h"
 
 @interface FourButtonsSteperViewController ()
 
@@ -33,20 +35,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.hidesBackButton = YES;
-    UIBarButtonItem* leftItem =[[UIBarButtonItem alloc] initWithTitle:nil style:self.navigationItem.backBarButtonItem.style target:self action:@selector(backButtonPressed:)];
-    [leftItem setImage:[UIImage imageNamed:@"Navigation Bar Back Button Icon"]];
-    [leftItem setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setLeftBarButtonItem:leftItem];
+    
+        UIBarButtonItem* leftItem =[[UIBarButtonItem alloc] initWithTitle:nil style:self.navigationItem.backBarButtonItem.style target:self action:@selector(backButtonPressed:)];
+        [leftItem setImage:[UIImage imageNamed:@"Navigation Bar Back Button Icon"]];
+        [leftItem setTintColor:[UIColor whiteColor]];
+        [self.navigationItem setLeftBarButtonItem:leftItem];
     
     
 }
 -(void)viewDidAppear:(BOOL)animated{
     if (!self.currentScreen){
         self.currentScreen++;
-//        [self.holderView addSubview:[self getView:self.currentScreen]];
-        self.holderView.frame = [self getView:self.currentScreen].frame;
+        //        [self.holderView addSubview:[self getView:self.currentScreen]];
+        UIView* initialView =[self getView:self.currentScreen];
+        self.holderView.frame = initialView.frame;
         [self.flowScrollerView setContentSize:self.holderView.frame.size];
-        [self.holderView addSubview:[self getView:self.currentScreen]];
+        [self.holderView addSubview:initialView];
     }
     [self initNavigationTitle:self.currentScreen];
     [self setTimeLineButton:self.currentScreen type:@"Current"];
@@ -87,7 +91,13 @@
             [(DirectorRemovalView*)view setTag:ViewDetailsStep];
             [(DirectorRemovalView*)view setDelegate:self];
             [(DirectorRemovalView*)view setDirector];
-//            [self.flowScrollerView setScrollEnabled:NO];
+        }
+        else if (self.relatedServiceType == RelatedServiceTypeLicenseRenewActivityChange || self.relatedServiceType == RelatedServiceTypeLicenseChangeActivityChange)
+        {
+            view = [[RenewAndChangeLicense alloc] initWithFrame:CGRectZero];
+            [(RenewAndChangeLicense*)view setTag:ViewDetailsStep];
+            [(RenewAndChangeLicense*)view setDelegate:self];
+            [(RenewAndChangeLicense*)view setDeleg];
         }
     }
     else if (screen == UploadDocumentsStep){
@@ -95,7 +105,7 @@
         [(CapitalChangeDocumentView*)view setTag:UploadDocumentsStep];
         [(CapitalChangeDocumentView*)view setDelegate:self];
         [(CapitalChangeDocumentView*)view loadEservice];
-//        [self.flowScrollerView setScrollEnabled:NO];
+        //        [self.flowScrollerView setScrollEnabled:NO];
     }
     else if (screen == SubmitScreenStep){
         if (self.relatedServiceType == RelatedServiceTypeCapitalChange) {
@@ -104,23 +114,31 @@
             [(CapitalChangePayView*)view setDelegate:self];
             [(CapitalChangePayView*)view setActionType:@"SubmitRequestCapitalChange"];
             [(CapitalChangePayView*)view setLabels];
-//            [self.flowScrollerView setScrollEnabled:NO];
+            //            [self.flowScrollerView setScrollEnabled:NO];
         }
-       else if (self.relatedServiceType == RelatedServiceTypeDirectorRemoval) {
+        else if (self.relatedServiceType == RelatedServiceTypeDirectorRemoval) {
             view = [[DirectorPayAndSubmitView alloc] initWithFrame:CGRectZero];
             [(DirectorPayAndSubmitView*)view setTag:SubmitScreenStep];
             [(DirectorPayAndSubmitView*)view setDelegate:self];
             [(DirectorPayAndSubmitView*)view setActionType:@"SubmitRequestDirectorRemoval"];
             [(DirectorPayAndSubmitView*)view setLabels];
-//            [self.flowScrollerView setScrollEnabled:NO];
+            //            [self.flowScrollerView setScrollEnabled:NO];
+        }
+        else if (self.relatedServiceType == RelatedServiceTypeLicenseChangeActivityChange || self.relatedServiceType == RelatedServiceTypeLicenseRenewActivityChange) {
+            view = [[RenewAndChangePaySubmitView alloc] initWithFrame:CGRectZero];
+            [(RenewAndChangePaySubmitView*)view setTag:SubmitScreenStep];
+            [(RenewAndChangePaySubmitView*)view setDelegate:self];
+            [(RenewAndChangePaySubmitView*)view setDeleg];
+            
         }
     }
     else if (screen == ThanksScreenStep){
+        self.navigationItem.leftBarButtonItem = nil;
         view = [[ThankYouPhaseView alloc] initWithFrame:CGRectZero];
         [(ThankYouPhaseView*)view setDelegate:self];
-        [(ThankYouPhaseView*)view setMessageText:[NSMutableString stringWithFormat:NSLocalizedString(@"ServiceThankYouMessage", @""), self.caseID]];
+        [(ThankYouPhaseView*)view setMessageText: self.caseID];
         [(ThankYouPhaseView*)view setTag:ThanksScreenStep];
-//        [self.flowScrollerView setScrollEnabled:NO];
+        //        [self.flowScrollerView setScrollEnabled:NO];
     }
     return view;
 }

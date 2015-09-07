@@ -32,6 +32,7 @@
     CustomIOS7AlertView *_customAlertView;
 }
 
+@property(strong,nonatomic) NSMutableDictionary* cachingBusinessActivity;
 @property (strong, nonatomic) NetworkReachability *reachability;
 @property (nonatomic) BOOL isReachable;
 
